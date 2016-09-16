@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright (c) 2008, 2009, Oracle and/or its affiliates.
+All rights reserved. -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+<af:panelStretchLayout inlineStyle="width:100%;" id="psl1_vtt">
+  <f:facet name="center">
+    <af:toolbox id="ohwVTToolBox">      
+      <af:toolbar id="viewTopicToolbar" flex="2" stretchId="stretchVTToolbar">
+        <af:spacer id="stretchVTToolbar" clientComponent="true" />                    
+        <af:inputText id="findTextInput" 
+                      label="#{ohw.richResourceBundle['vtt.find_in_doc']}"
+                      clientComponent="true"
+                      styleClass="AFNoWrapMarker">
+            <af:clientListener type="keyPress" 
+                               method="VTToolBarPeer.handleKeyPress" />
+        </af:inputText>
+        <af:commandToolbarButton id="nextFind" 
+                                 icon="helppages.resource?name=next.png"
+                                 depressedIcon="helppages.resource?name=next_dwn.png"
+                                 hoverIcon="helppages.resource?name=next_ovr.png"
+                                 shortDesc="#{ohw.richResourceBundle['vtt.next_find_tooltip']}"
+                                 accessKey="n">
+          <af:clientListener type="action"
+                             method="VTToolBarPeer.findNextInPage" />
+        </af:commandToolbarButton>
+        <af:commandToolbarButton id="prevFind" 
+                                 icon="helppages.resource?name=previous.png"
+                                 depressedIcon="helppages.resource?name=previous_dwn.png"
+                                 hoverIcon="helppages.resource?name=previous_ovr.png"
+                                 shortDesc="#{ohw.richResourceBundle['vtt.prev_find_tooltip']}"
+                                 accessKey="u">
+          <af:clientListener type="action"
+                             method="VTToolBarPeer.findPrevInPage" />
+        </af:commandToolbarButton>
+        <af:outputText id="noTextMatch" 
+                     visible="false"
+                     clientComponent="true"
+                     value="#{ohw.richResourceBundle['vtt.no_match']}"/>
+        <af:outputText id="onlyOneMatch" 
+                     visible="false"
+                     clientComponent="true"
+                     value="#{ohw.richResourceBundle['vtt.only_one_match']}"/>
+      </af:toolbar>
+    </af:toolbox>
+  </f:facet>
+</af:panelStretchLayout>
+</jsp:root>

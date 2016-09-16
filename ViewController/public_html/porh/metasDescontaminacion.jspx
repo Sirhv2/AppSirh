@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{metasDescontaminacion.d2}">
+      <af:form id="f2" binding="#{metasDescontaminacion.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{metasDescontaminacion.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{metasDescontaminacion.ps1}"
+                                  id="ps1" splitterPosition="620">
+                  <f:facet name="first">
+                    <af:panelBox text="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                 binding="#{metasDescontaminacion.pb1}"
+                                 id="pb1" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{metasDescontaminacion.psl2}"
+                                             id="psl2" startWidth="0px"
+                                             endWidth="0px" topHeight="0px"
+                                             bottomHeight="0px">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{metasDescontaminacion.pc1}"
+                                              id="pc1" featuresOff="detach ">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{metasDescontaminacion.listaParametros}"
+                                      var="row" rowBandingInterval="1"
+                                      binding="#{metasDescontaminacion.t_parametros}"
+                                      id="t_parametros" rowSelection="single"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      selectionListener="#{metasDescontaminacion.t_usos_selectionListener}">
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.USO_DEL_TRAMO}"
+                                         id="c1" width="120"
+                                         sortProperty="nombreUso">
+                                <af:outputText value="#{row.nombreUso}" id="ot1"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PLAZO}"
+                                         align="start" id="c2"
+                                         sortProperty="objetivo" width="80">
+                                <af:outputText value="#{row.objetivo}"
+                                               id="ot2"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.FECHA}"
+                                         id="c3" sortProperty="fecha"
+                                         width="80" minimumWidth="12">
+                                <af:outputText value="#{row.fecha}" id="ot3"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                         id="c4" sortProperty="parametro"
+                                         width="200">
+                                <af:outputText value="#{row.parametro}"
+                                               id="ot4"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.UNIDAD}"
+                                         id="c5" sortProperty="unidad">
+                                <af:outputText value="#{row.valor}   #{row.unidad}" id="ot5"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox text="#{viewcontrollerBundle.METAS_USO}"
+                                 binding="#{metasDescontaminacion.pb_metas}"
+                                 id="pb_metas" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{metasDescontaminacion.psl3}"
+                                             id="psl3" startWidth="0px"
+                                             endWidth="0px" topHeight="80px"
+                                             bottomHeight="0px">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{metasDescontaminacion.pc2}"
+                                              id="pc2">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{metasDescontaminacion.listaMetas}"
+                                      var="row" rowBandingInterval="1"
+                                      binding="#{metasDescontaminacion.t_metas}"
+                                      id="t_metas" rowSelection="single"
+                                      selectionListener="#{metasDescontaminacion.t_metas_selectionListener}">
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.FECHA_MUESTRA}"
+                                         align="start" id="c6"
+                                         sortProperty="fecha_muestra">
+                                <af:outputText value="#{row.fecha_muestra}"
+                                               id="ot8"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.FECHA_REGISTRO}"
+                                         align="start" id="c8" visible="false"
+                                         sortProperty="fecha_registro">
+                                <af:outputText value="#{row.fecha_registro}"
+                                               id="ot6"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.VALOR}"
+                                         align="start" id="c7"
+                                         sortProperty="valor">
+                                <af:outputText value="#{row.valor}" id="ot7"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelFormLayout binding="#{metasDescontaminacion.pfl1}"
+                                              id="pfl1" maxColumns="2" rows="2">
+                            <af:inputDate label="#{viewcontrollerBundle.FECHA_MUESTRA}"
+                                          binding="#{metasDescontaminacion.id_fecha_muestra}"
+                                          id="id_fecha_muestra" columns="10"
+                                          showRequired="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.PAR_VALOR}"
+                                          binding="#{metasDescontaminacion.it_valor}"
+                                          id="it_valor" showRequired="true"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{metasDescontaminacion.s1}"
+                                       id="s1"/>
+                            <af:outputText
+                                           binding="#{metasDescontaminacion.ot_unidad}"
+                                           id="ot_unidad" value="unidad"/>
+                            <f:facet name="footer">
+                              <af:panelGroupLayout binding="#{metasDescontaminacion.pgl2}"
+                                                   id="pgl2"
+                                                   layout="vertical">
+                                <af:spacer width="10" height="10"
+                                           binding="#{metasDescontaminacion.s2}"
+                                           id="s2"/>
+                                <af:panelGroupLayout binding="#{metasDescontaminacion.pgl3}"
+                                                     id="pgl3"
+                                                     layout="horizontal"
+                                                     halign="center">
+                                  <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                    binding="#{metasDescontaminacion.cb_aceptar}"
+                                                    id="cb_aceptar"
+                                                    actionListener="#{metasDescontaminacion.cb_adicionar_avance_actionListener}"
+                                                    disabled="#{metasDescontaminacion.parametroSeleccionado == null}"/>
+                                </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                            </f:facet>
+                          </af:panelFormLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{metasDescontaminacion.pgl1}"
+                                     id="pgl1"
+                                     layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{metasDescontaminacion.s4}" id="s4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{metasDescontaminacion.cl1}"
+                                  id="cl1"
+                                  action="fuentes"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{metasDescontaminacion.s5}" id="s5"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH}:  #{metasDescontaminacion.planOrdenamiento.numeroActo}"
+                                  binding="#{metasDescontaminacion.cl2}"
+                                  id="cl2"
+                                  action="priorizacion"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{metasDescontaminacion.s6}" id="s6"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:metasDescontaminacion-->
+</jsp:root>

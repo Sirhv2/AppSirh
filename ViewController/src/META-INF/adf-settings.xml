@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adf-settings xmlns="http://xmlns.oracle.com/adf/settings">
+  <adf-faces-config xmlns="http://xmlns.oracle.com/adf/faces/settings">
+    <help-provider>
+      <help-provider-class>oracle.help.web.rich.helpProvider.OHWHelpProvider</help-provider-class>
+      <property>
+        <property-name>ohwConfigFileURL</property-name>
+        <value>/helpsets/ohwconfig.xml</value>
+      </property>
+      <!--property><property-name>group</property-name><value>null</value></property-->
+      <property>
+        <property-name>baseURI</property-name>
+        <value>/Sirh/newhelp/</value>
+      </property>
+    </help-provider>
+  </adf-faces-config>
+</adf-settings>

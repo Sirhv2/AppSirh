@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{consultaOrganizaciones.d2}">
+      <af:form id="f2" binding="#{consultaOrganizaciones.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{consultaOrganizaciones.psl2}"
+                                   id="psl2" startWidth="0px" endWidth="0px"
+                                   topHeight="30px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl10}"
+                                     id="pgl10" layout="scroll">
+                  <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl11}"
+                                       id="pgl11" layout="vertical">
+                    <af:spacer width="10" height="10"
+                               binding="#{consultaOrganizaciones.s6}" id="s6"/>
+                    <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl12}"
+                                         id="pgl12" layout="horizontal">
+                      <af:outputText value='#{viewcontrollerBundle.SELECCIONE_CRITERIOS}'
+                                     binding="#{consultaOrganizaciones.ot3}"
+                                     id="ot3" styleClass="AFInstructionText"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{consultaOrganizaciones.s1}" id="s1"/>
+                    <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl1}"
+                                         id="pgl1" layout="horizontal">
+                      <af:inputText label="#{viewcontrollerBundle.TRM_NOMBRE}"
+                                    binding="#{consultaOrganizaciones.it_nombre}"
+                                    id="it_nombre" columns="50"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{consultaOrganizaciones.s7}" id="s7"/>
+                    <af:panelSplitter binding="#{consultaOrganizaciones.ps3}"
+                                      id="ps3"
+                                      inlineStyle="width:100%; height:150.0px;"
+                                      splitterPosition="500" disabled="true">
+                      <f:facet name="first">
+                        <af:panelBox text="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                     binding="#{consultaOrganizaciones.pb5}"
+                                     id="pb5" showDisclosure="false"
+                                     inlineStyle="height:145.0px;">
+                          <f:facet name="toolbar"/>
+                          <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl13}"
+                                               id="pgl13" layout="scroll">
+                            <af:selectManyListbox label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                  binding="#{consultaOrganizaciones.sml_deptos}"
+                                                  id="sml_deptos" size="999"
+                                                  simple="true"
+                                                  autoSubmit="true"
+                                                  immediate="true"
+                                                  valueChangeListener="#{consultaOrganizaciones.sml_deptos_valueChangeListener}"
+                                                  inlineStyle="width:100%; text-align:left;">
+                              <f:selectItems value="#{consultaOrganizaciones.listaDepartamentos}"
+                                             binding="#{consultaOrganizaciones.si5}"
+                                             id="si5"/>
+                            </af:selectManyListbox>
+                          </af:panelGroupLayout>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelBox text="#{viewcontrollerBundle.MUNICIPIO}"
+                                     binding="#{consultaOrganizaciones.pb6}"
+                                     id="pb6" showDisclosure="false"
+                                     inlineStyle="height:145.0px;">
+                          <f:facet name="toolbar"/>
+                          <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl14}"
+                                               id="pgl14" layout="scroll">
+                            <af:selectManyListbox label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                  binding="#{consultaOrganizaciones.sml_municipios}"
+                                                  id="sml_municipios"
+                                                  size="99999"
+                                                  inlineStyle="width:100%; text-align:left;"
+                                                  simple="true">
+                              <f:selectItems value="#{consultaOrganizaciones.listaMunicipios}"
+                                             binding="#{consultaOrganizaciones.si6}"
+                                             id="si6"/>
+                            </af:selectManyListbox>
+                          </af:panelGroupLayout>
+                        </af:panelBox>
+                      </f:facet>
+                    </af:panelSplitter>
+                    <af:spacer width="10" height="10"
+                               binding="#{consultaOrganizaciones.s8}" id="s8"/>
+                    <af:panelSplitter binding="#{consultaOrganizaciones.ps4}"
+                                      id="ps4" disabled="true"
+                                      splitterPosition="500"
+                                      inlineStyle="width:100%; height:150.0px;">
+                      <f:facet name="first">
+                        <af:panelBox text="#{viewcontrollerBundle.GESTI_U00F3N__}"
+                                     binding="#{consultaOrganizaciones.pb7}"
+                                     id="pb7" showDisclosure="false"
+                                     inlineStyle="height:145.0px;">
+                          <f:facet name="toolbar"/>
+                          <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl15}"
+                                               id="pgl15" layout="scroll">
+                            <af:selectManyListbox label="#{viewcontrollerBundle.GESTI_U00F3N__}"
+                                                  size="999"
+                                                  binding="#{consultaOrganizaciones.sml_gestion}"
+                                                  id="sml_gestion" simple="true"
+                                                  inlineStyle="width:100%; text-align:left;">
+                              <f:selectItems value="#{consultaOrganizaciones.listaGestion}"
+                                             binding="#{consultaOrganizaciones.si7}"
+                                             id="si7"/>
+                            </af:selectManyListbox>
+                          </af:panelGroupLayout>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelBox text="#{viewcontrollerBundle.INVESTIGACI_U00F3N}"
+                                     binding="#{consultaOrganizaciones.pb8}"
+                                     id="pb8" showDisclosure="false"
+                                     inlineStyle="height:145.0px;">
+                          <f:facet name="toolbar"/>
+                          <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl16}"
+                                               id="pgl16" layout="scroll">
+                            <af:selectManyListbox label="Investigación"
+                                                  binding="#{consultaOrganizaciones.sml_investigacion}"
+                                                  id="sml_investigacion"
+                                                  size="999" simple="true"
+                                                  inlineStyle="text-align:left;">
+                              <f:selectItems value="#{consultaOrganizaciones.listaInvestigacion}"
+                                             binding="#{consultaOrganizaciones.si8}"
+                                             id="si8"/>
+                            </af:selectManyListbox>
+                          </af:panelGroupLayout>
+                        </af:panelBox>
+                      </f:facet>
+                    </af:panelSplitter>
+                    <af:spacer width="10" height="20"
+                               binding="#{consultaOrganizaciones.s9}" id="s9"/>
+                    <af:panelGroupLayout binding="#{consultaOrganizaciones.pgl17}"
+                                         id="pgl17" layout="horizontal"
+                                         halign="center">
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{consultaOrganizaciones.cb_consultar}"
+                                        id="cb_consultar"
+                                        icon="/imgs/binoculars_24.png"
+                                        action="#{consultaOrganizaciones.getAccion}"
+                                        actionListener="#{consultaOrganizaciones.cb_consultar_actionListener}"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{consultaOrganizaciones.s10}"
+                                 id="s10"/>
+                      <af:commandButton text="#{viewcontrollerBundle.menu_regresar}"
+                                        binding="#{consultaOrganizaciones.cb2}"
+                                        id="cb2" icon="/imgs/back.png"
+                                        action="dashboard"/>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout id="pgl18"
+                                     binding="#{consultaOrganizaciones.pgl18}"
+                                     halign="center" layout="vertical">
+                  <af:outputText value="Consulta de Organizaciones"
+                                 binding="#{consultaOrganizaciones.ot4}"
+                                 styleClass="AFBrandingBarTitle" id="ot4"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:consultaOrganizaciones-->
+</jsp:root>

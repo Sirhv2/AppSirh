@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>  
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{indices.d2}">
+      <af:form id="f2" binding="#{indices.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{indices.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{indices.ps1}" id="ps1"
+                                  splitterPosition="600" disabled="true">
+                  <f:facet name="first">
+                    <af:panelBox text="#{viewcontrollerBundle.INDICADORES}"
+                                 binding="#{indices.pb_indicadores}"
+                                 id="pb_indicadores" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{indices.psl2}"
+                                             id="psl2" startWidth="0px"
+                                             endWidth="0px" topHeight="120px"
+                                             bottomHeight="0px">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{indices.pc1}" id="pc1">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{indices.listaIndicadores}"
+                                      var="row" rowBandingInterval="1"
+                                      binding="#{indices.t_indicadores}"
+                                      id="t_indicadores"
+                                      selectionListener="#{indices.t_indicadores_selectionListener}"
+                                      rowSelection="single"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.NOMBRE_INDICADOR}"
+                                         align="start" id="c2" width="300">
+                                <af:outputText value="#{row.nombre}" id="ot6"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.META} #{viewcontrollerBundle.CORTO_PLAZO}"
+                                         align="start" id="c3" width="80">
+                                <af:outputText value="#{row.metaCp}" id="ot5"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.FECHA}  #{viewcontrollerBundle.CORTO_PLAZO}"
+                                         align="start" id="c7" width="80">
+                                <af:outputText value="#{row.fechaCp}" id="ot7"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.META} #{viewcontrollerBundle.MEDIANO_PLAZO}"
+                                         align="start" id="c5" width="80">
+                                <af:outputText value="#{row.metaMp}" id="ot9"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.FECHA}  #{viewcontrollerBundle.MEDIANO_PLAZO}"
+                                         align="start" id="c1" width="80">
+                                <af:outputText value="#{row.fechaMp}" id="ot4"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.META} #{viewcontrollerBundle.LARGO_PLAZO}"
+                                         align="start" id="c6" width="80">
+                                <af:outputText value="#{row.metaLp}" id="ot10"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.FECHA}  #{viewcontrollerBundle.LARGO_PLAZO}"
+                                         align="start" id="c4" width="80">
+                                <af:outputText value="#{row.fechaLp}" id="ot8"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start">
+                       
+                            <af:panelGroupLayout binding="#{indices.pg46}" id="pg46">
+                              
+                              <af:popup binding="#{indices.p_borrar_indicador}" id="p_borrar_indicador">
+                                <af:dialog binding="#{indices.d_borrar_indicador}"
+                                           id="d_borrar_indicador" type="okCancel"
+                                           title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                                           dialogListener="#{indices.d_borrar_indicador_dialogListener}"
+                                           cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}">
+                                  <af:outputText value="Confirma que desea borrar el indicador y todos los registro de avance asociados?" binding="#{indices.ot40}"
+                                                 id="ot40"/>
+                                </af:dialog>
+                              </af:popup>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelGroupLayout binding="#{indices.pgl3}"
+                                               id="pgl3" layout="vertical"
+                                               halign="left">
+                            <af:panelFormLayout binding="#{indices.pfl1}"
+                                                id="pfl1">
+                              <af:inputText label="#{viewcontrollerBundle.NOMBRE_INDICADOR}"
+                                            binding="#{indices.it_nombre}"
+                                            id="it_nombre"
+                                            showRequired="true"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="10" height="5"
+                                       binding="#{indices.s8}" id="s8"/>
+                            <af:panelGroupLayout binding="#{indices.pgl4}"
+                                                 id="pgl4" layout="horizontal">
+                              <af:spacer width="5" height="10"
+                                         binding="#{indices.s3}" id="s3"/>
+                              <af:panelGroupLayout binding="#{indices.pgl5}"
+                                                   id="pgl5" layout="vertical">
+                                <af:panelGroupLayout binding="#{indices.pgl2}"
+                                                     id="pgl2"
+                                                     layout="horizontal">
+                                  <af:outputText value="#{viewcontrollerBundle.CORTO_PLAZO}"
+                                                 binding="#{indices.ot1}"
+                                                 id="ot1"/>
+                                </af:panelGroupLayout>
+                                <af:panelFormLayout binding="#{indices.pfl2}"
+                                                    id="pfl2" rows="1"
+                                                    maxColumns="999"
+                                                    labelAlignment="top">
+                                  <af:inputText label="#{viewcontrollerBundle.META_}"
+                                                binding="#{indices.it_meta_cp}"
+                                                id="it_meta_cp" columns="4"
+                                                showRequired="true"
+                                                maximumLength="6">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="5"
+                                                      groupingUsed="true"/>
+                                  </af:inputText>
+                                  <af:inputDate label="#{viewcontrollerBundle.FECHA}"
+                                                binding="#{indices.id_fecha_cp}"
+                                                id="id_fecha_cp" columns="8"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="5" height="10"
+                                         binding="#{indices.s1}" id="s1"/>
+                              <af:panelGroupLayout binding="#{indices.pgl6}"
+                                                   id="pgl6"
+                                                   layout="vertical">
+                                <af:panelGroupLayout binding="#{indices.pgl7}"
+                                                     id="pgl7"
+                                                     layout="horizontal">
+                                  <af:outputText value="#{viewcontrollerBundle.MEDIANO_PLAZO}"
+                                                 binding="#{indices.ot2}"
+                                                 id="ot2"/>
+                                </af:panelGroupLayout>
+                                <af:panelFormLayout binding="#{indices.pfl3}"
+                                                    id="pfl3"
+                                                    rows="1" maxColumns="999"
+                                                    labelAlignment="top">
+                                  <af:inputText label="#{viewcontrollerBundle.META_}"
+                                                binding="#{indices.it_meta_mp}"
+                                                id="it_meta_mp" columns="4"
+                                                showRequired="true"
+                                                maximumLength="5">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="5"
+                                                      groupingUsed="true"/>
+                                  </af:inputText>
+                                  <af:inputDate label="#{viewcontrollerBundle.FECHA}"
+                                                binding="#{indices.id_fecha_mp}"
+                                                id="id_fecha_mp" columns="8"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                              <af:spacer width="5" height="10"
+                                         binding="#{indices.s2}" id="s2"/>
+                              <af:panelGroupLayout binding="#{indices.pgl8}"
+                                                   id="pgl8"
+                                                   layout="vertical">
+                                <af:panelGroupLayout binding="#{indices.pgl9}"
+                                                     id="pgl9"
+                                                     layout="horizontal">
+                                  <af:outputText value="#{viewcontrollerBundle.LARGO_PLAZO}"
+                                                 binding="#{indices.ot3}"
+                                                 id="ot3"/>
+                                </af:panelGroupLayout>
+                                <af:panelFormLayout binding="#{indices.pfl4}"
+                                                    id="pfl4"
+                                                    rows="1" maxColumns="999"
+                                                    labelAlignment="top">
+                                  <af:inputText label="#{viewcontrollerBundle.META_}"
+                                                binding="#{indices.it_meta_lp}"
+                                                id="it_meta_lp" columns="4"
+                                                showRequired="true"
+                                                maximumLength="5">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="5"
+                                                      groupingUsed="true"/>
+                                  </af:inputText>
+                                  <af:inputDate label="#{viewcontrollerBundle.FECHA}"
+                                                binding="#{indices.id_fecha_lp}"
+                                                id="id_fecha_lp" columns="8"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="5"
+                                       binding="#{indices.s7}" id="s7"/>
+                            <af:panelGroupLayout binding="#{indices.pgl10}"
+                                                 id="pgl10"
+                                                 layout="horizontal">
+                              <af:spacer width="10" height="10"
+                                         binding="#{indices.s9}" id="s9"/>
+                              <af:commandButton text="#{viewcontrollerBundle.ADICIONAR}"
+                                                binding="#{indices.cb_adicionar_indicador}"
+                                                id="cb_adicionar_indicador"
+                                                actionListener="#{indices.cb_adicionar_indicador_actionListener}"/>
+                              <af:spacer width="10" height="10" binding="#{indices.spacer1}" id="spacer1"/>
+                              <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}" binding="#{indices.cb_borrar_indicador}" id="cb_borrar_indicador"
+                                                actionListener="#{indices.cb_borrar_indicador_actionListener}"
+                                                visible="#{indices.mostrarBotonBorrar}"/>
+                            </af:panelGroupLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox text="Seguimiento de Indicadores" binding="#{indices.pb_avance}"
+                                 id="pb_avance" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{indices.psl3}"
+                                             id="psl3" startWidth="0px"
+                                             endWidth="0px" topHeight="120px"
+                                             bottomHeight="0px">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{indices.pc2}" id="pc2">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{indices.listaSeguimiento}"
+                                      var="row" rowBandingInterval="0"
+                                      binding="#{indices.t_seguimiento}"
+                                      id="t_seguimiento"
+                                      selectionListener="#{indices.t_seguimiento_selectionListener}"
+                                      rowSelection="single"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.FECHA} "
+                                         align="start" id="c10"
+                                         sortProperty="fecha">
+                                <af:outputText value="#{row.fecha}" id="ot14"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.META} "
+                                         align="right" id="c8"
+                                         sortProperty="valor">
+                                <af:outputText value="#{row.valor}"
+                                               id="ot17"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelGroupLayout binding="#{indices.pgl11}"
+                                               id="pgl11" layout="vertical">
+                            <af:panelFormLayout binding="#{indices.pfl5}"
+                                                id="pfl5">
+                              <f:facet name="footer"/>
+                              <af:inputText label="#{viewcontrollerBundle.NOMBRE_INDICADOR}"
+                                            binding="#{indices.it_nombre_seg}"
+                                            id="it_nombre_seg" readOnly="true"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="10" height="5"
+                                       binding="#{indices.s10}" id="s10"/>
+                            <af:panelGroupLayout binding="#{indices.pgl12}"
+                                                 id="pgl12"
+                                                 layout="horizontal">
+                              <af:spacer width="10" height="10"
+                                         binding="#{indices.s13}" id="s13"/>
+                              <af:panelGroupLayout binding="#{indices.pgl14}"
+                                                   id="pgl14"
+                                                   layout="vertical">
+                                <af:panelGroupLayout binding="#{indices.pgl15}"
+                                                     id="pgl15"
+                                                     layout="horizontal">
+                                  <af:outputText value="Meta Alcanzada"
+                                                 binding="#{indices.ot11}"
+                                                 id="ot11"/>
+                                </af:panelGroupLayout>
+                                <af:panelFormLayout binding="#{indices.pfl6}"
+                                                    id="pfl6" rows="1"
+                                                    maxColumns="99999"
+                                                    labelAlignment="top">
+                                  <f:facet name="footer"/>
+                                  <af:inputText label="Valor"
+                                                binding="#{indices.it_seg_meta_cp}"
+                                                id="it_seg_meta_cp" columns="8"
+                                                showRequired="true"
+                                                maximumLength="5">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="5"
+                                                      groupingUsed="true"/>
+                                  </af:inputText>
+                                  <af:inputDate label="#{viewcontrollerBundle.FECHA}"
+                                                binding="#{indices.id_seg_fecha_cp}"
+                                                id="id_seg_fecha_cp"
+                                                columns="8"/>
+                                </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:spacer width="10" height="5"
+                                       binding="#{indices.s11}" id="s11"/>
+                            <af:panelGroupLayout binding="#{indices.pgl13}"
+                                                 id="pgl13"
+                                                 layout="horizontal">
+                              <af:spacer width="10" height="10"
+                                         binding="#{indices.s12}" id="s12"/>
+                              <af:commandButton text="Adicionar"
+                                                binding="#{indices.cb_adicionar_seguimiento}"
+                                                id="cb_adicionar_seguimiento"
+                                                disabled="#{indices.indicadorSeleccionado == null || indices.indicadorSeleccionado.permitirSeguimiento == true}"
+                                                actionListener="#{indices.cb_adicionar_seguimiento_actionListener}"/>
+                            </af:panelGroupLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{indices.pgl1}" id="pgl1"
+                                     layout="horizontal">
+                  <af:spacer width="50" height="10" binding="#{indices.s4}"
+                             id="s4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{indices.cl1}" id="cl1"
+                                  action="fuentes"/>
+                  <af:spacer width="10" height="10" binding="#{indices.s5}"
+                             id="s5"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH}:  #{indices.planOrdenamiento.numeroActo}"
+                                  binding="#{indices.cl2}" id="cl2"
+                                  action="priorizacion"/>
+                                  
+                                  <af:spacer width="10" height="10" 
+                             id="sf6"/>
+                                   <af:commandLink text="Fuente:  #{indices.nombreFuente}"
+                                   id="clf3"
+                                 action="puntosMonitoreoTramo"/>
+                                   <af:spacer width="10" height="10" 
+                             id="s6"/>
+                                   <af:commandLink text="Tramo:  #{indices.tramo.nombre}"
+                                   id="cl3"
+                                 action="puntosMonitoreoTramo"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:indices-->
+</jsp:root>

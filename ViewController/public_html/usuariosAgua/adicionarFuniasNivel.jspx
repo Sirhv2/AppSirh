@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{adicionarFuniasNivelBean.document1}" id="document1">
+      <af:form binding="#{adicionarFuniasNivelBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarUsoBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1"
+                                   >
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{adicionarFuniasNivelBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     >
+                    <af:panelBox text="#{viewcontrollerBundle.NIV_MODULO}"
+                                 binding="#{adicionarFuniasNivelBean.panelBox1}"
+                                 id="panelBox1" showDisclosure="false"
+                                 >
+                      <f:facet name="toolbar"/>
+                      
+                        <af:panelSplitter binding="#{adicionarFuniasNivelBean.panelSplitter1}"
+                                            id="panelSplitter1" disabled="true"
+                                            orientation="vertical"
+                                            splitterPosition="110"
+                                          inlineStyle="width:100%; height:100%;">
+                            <f:facet name="first">
+                            
+                        <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             binding="#{adicionarFuniasNivelBean.panelGroupLayout5}"
+                                             id="panelGroupLayout5">
+                          <af:panelFormLayout binding="#{adicionarFuniasNivelBean.panelFormLayout1}"
+                                              id="panelFormLayout1"
+                                              maxColumns="4" rows="3" >
+                            <af:inputDate label="#{viewcontrollerBundle.NIV_FECHA}"
+                                          binding="#{adicionarFuniasNivelBean.idFechaMedicion}"
+                                          id="idFechaMedicion" columns="8"
+                                          value="#{adicionarFuniasNivelBean.nivelSeleccionado.fechaMedicion}"
+                                          showRequired="true"
+                                          />
+                            
+                            <af:inputText label="#{viewcontrollerBundle.NIV_PROFUNDIDAD}"
+                                          binding="#{adicionarFuniasNivelBean.itProfundidadMedicion}"
+                                          id="itProfundidadMedicion" columns="5" 
+                                          value="#{adicionarFuniasNivelBean.nivelSeleccionado.profundidad}"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.NIV_TIPO_NIVEL}"
+                                                binding="#{adicionarFuniasNivelBean.socTipoNivelMedicion}"
+                                                id="socTipoNivelMedicion"
+                                                value="#{adicionarFuniasNivelBean.nivelSeleccionado.objTipoNivel}" 
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasNivelBean.listaTipoNivel}"
+                                             binding="#{adicionarFuniasNivelBean.siTipoNivelMedicion}"
+                                             id="siTipoNivelMedicion"/>
+                            </af:selectOneChoice>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.NIV_HORA}"
+                                                binding="#{adicionarFuniasNivelBean.socHoraMedicion}"
+                                                id="socHoraMedicion"
+                                                value="#{adicionarFuniasNivelBean.nivelSeleccionado.horaMedicion}"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasNivelBean.listaHora}"
+                                             binding="#{adicionarFuniasNivelBean.siHora1Medicion}"
+                                             id="siHora1Medicion"/>
+                            </af:selectOneChoice>
+                            
+                            <af:inputText label="#{viewcontrollerBundle.NIV_PIEZOMETRIA}"
+                                          binding="#{adicionarFuniasNivelBean.itPiezometriaMedicion}"
+                                          id="itPiezometriaMedicion" columns="5"
+                                          value="#{adicionarFuniasNivelBean.nivelSeleccionado.nivelPiezometrico}"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.NIV_METODO}"
+                                                binding="#{adicionarFuniasNivelBean.socMetodoMedicion}"
+                                                id="socMetodoMedicion"
+                                                value="#{adicionarFuniasNivelBean.nivelSeleccionado.objMetodoMedida}"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasNivelBean.listaMetodoMedida}"
+                                             binding="#{adicionarFuniasNivelBean.siMetodoMedicion}"
+                                             id="siMetodoMedicion"/>
+                            </af:selectOneChoice>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.NIV_MINUTO}"
+                                                binding="#{adicionarFuniasNivelBean.socMinutosMedicion}"
+                                                id="socMinutosMedicion"
+                                                value="#{adicionarFuniasNivelBean.nivelSeleccionado.minutoMedicion}"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasNivelBean.listaMin}"
+                                             binding="#{adicionarFuniasNivelBean.siMinutosMedicion}"
+                                             id="siMinutosMedicion"/>
+                            </af:selectOneChoice>
+                            
+                            <af:inputText label="#{viewcontrollerBundle.NIV_MEDIA}"
+                                          binding="#{adicionarFuniasNivelBean.itNivelMedioMedicion}"
+                                          id="itNivelMedioMedicion" columns="5"
+                                          value="#{adicionarFuniasNivelBean.nivelSeleccionado.nivelMedio}"
+                                          showRequired="true"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.NIV_INSTRUMENTO}"
+                                                binding="#{adicionarFuniasNivelBean.socInstrumentoMedicion}"
+                                                id="socInstrumentoMedicion"
+                                                value="#{adicionarFuniasNivelBean.nivelSeleccionado.objInstrumentoMedida}"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasNivelBean.listaInstrumentos}"
+                                             binding="#{adicionarFuniasNivelBean.siInstrumentosMedicion}"
+                                             id="siInstrumentosMedicion"/>
+                            </af:selectOneChoice>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.NIV_PERIODO}"
+                                                binding="#{adicionarFuniasNivelBean.socHorarioMedicion}"
+                                                id="socHorarioMedicion"
+                                                value="#{adicionarFuniasNivelBean.nivelSeleccionado.periodoMedicion}"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasNivelBean.listaHorario}"
+                                             binding="#{adicionarFuniasNivelBean.siHorarioMedicion}"
+                                             id="siHorarioMedicion"/>
+                            </af:selectOneChoice>
+
+                            
+                            <af:inputText label="#{viewcontrollerBundle.NIV_OSERVACION}"
+                                          binding="#{adicionarFuniasNivelBean.itObservacionMedicion}"
+                                          id="itObservacionMedicion" rows="3"
+                                          columns="45"
+                                          value="#{adicionarFuniasNivelBean.nivelSeleccionado.observacion}"/>
+                          </af:panelFormLayout>
+                          
+                          <af:panelGroupLayout binding="#{adicionarFuniasNivelBean.panelGroupLayout6}"
+                                               id="panelGroupLayout6"
+                                               layout="horizontal"
+                                               halign="center">
+                              <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasNivelBean.spacer2}"
+                                       id="spacer2"/>
+                             <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                              binding="#{adicionarFuniasNivelBean.cmbAceptar}"
+                                              id="cmbAceptar"
+                                               action="#{adicionarFuniasNivelBean.cmbAceptar_action}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasNivelBean.spacer3}"
+                                       id="spacer3"/>
+                          </af:panelGroupLayout>
+                          
+                        </af:panelGroupLayout>
+                      </f:facet>
+                            <f:facet name="second">
+                              <af:panelCollection binding="#{adicionarFuniasNivelBean.panelCollection1}"
+                                                  id="panelCollection1" >
+                                <f:facet name="menus">
+                                  <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                           binding="#{adicionarFuniasNivelBean.menu1}"
+                                           id="menu1">
+                                    <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                        binding="#{adicionarFuniasNivelBean.commandMenuItem1}"
+                                                        id="commandMenuItem1"
+                                                        icon="/imgs/edit_24.png"
+                                                        immediate="true"
+                                                        partialSubmit="true"
+                                                        actionListener="#{adicionarFuniasNivelBean.commandMenuItem1_actionListener}"
+                                                        action="#{adicionarFuniasNivelBean.getAction}"
+                                                        />
+                                    <af:commandMenuItem text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                        binding="#{adicionarFuniasNivelBean.commandMenuItem2}"
+                                                        id="commandMenuItem2"
+                                                        icon="/imgs/delete.png"
+                                                        immediate="true"
+                                                        partialSubmit="true"
+                                                        actionListener="#{adicionarFuniasNivelBean.commandMenuItem2_actionListener}"
+                                                        action="#{adicionarFuniasNivelBean.getAction}"
+                                                        />
+                                  </af:menu>
+                                </f:facet>
+
+                                <af:table var="row"
+                                          binding="#{adicionarFuniasNivelBean.tnivel}"
+                                          id="tnivel" rowSelection="single"
+                                          value="#{adicionarFuniasNivelBean.listaNiveles}"
+                                          selectionListener="#{adicionarFuniasNivelBean.tnivel_selectionListener}"
+                                          rowBandingInterval="1"
+                                          emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                          >
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_FECHA}"
+                                             sortProperty="fechaMedicion"
+                                             >
+                                    <af:outputText value="#{row.fechaMedicion}"/>
+                                  </af:column>
+                                  <af:column sortable="false"
+                                             headerText="#{viewcontrollerBundle.NIV_HORA}"
+                                             sortProperty="horaMedicion"
+                                             >
+                                    <af:outputText value="#{row.hora}:#{row.minuto} #{row.periodoMedicion} "/>
+                                  </af:column>
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_TIPO_NIVEL}"
+                                             sortProperty="tipoNivel"
+                                             >
+                                    <af:outputText value="#{row.tipoNivel}" converter="ListaConverter" />
+                                  </af:column>
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_PROFUNDIDAD}"
+                                             sortProperty="profundidad"
+                                             >
+                                    <af:outputText value="#{row.profundidad}"/>
+                                  </af:column>
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_PIEZOMETRIA}"
+                                             sortProperty="nivelPiezometrico"
+                                             >
+                                    <af:outputText value="#{row.nivelPiezometrico}"/>
+                                  </af:column>
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_MEDIA}"
+                                             sortProperty="nivelMedio"
+                                             >
+                                    <af:outputText value="#{row.nivelMedio}"/>
+                                  </af:column>
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_METODO}"
+                                             sortProperty="metodoMedida"
+                                             >
+                                    <af:outputText value="#{row.metodoMedida}" converter="ListaConverter" />
+                                  </af:column>
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.NIV_INSTRUMENTO}"
+                                             sortProperty="instrumento"
+                                             >
+                                    <af:outputText value="#{row.instrumento}" converter="ListaConverter" />
+                                  </af:column>
+                                </af:table>
+                              </af:panelCollection>
+                            </f:facet>
+                          </af:panelSplitter>
+                         
+                    </af:panelBox>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{adicionarFuniasNivelBean.panelGroupLayout3}"
+                                     id="panelGroupLayout3" halign="left" layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarFuniasNivelBean.spacer4}"
+                             id="spacer4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  binding="#{adicionarFuniasNivelBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="usuariosAgua" />
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarFuniasNivelBean.spacer5}"
+                             id="spacer5"/>
+                  <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario}:"
+                                  binding="#{adicionarFuniasNivelBean.commandLink2}"
+                                  id="commandLink2" action="detalleUsuario">
+                                  <af:outputText value="#{adicionarFuniasNivelBean.usuario.nombre}"
+                                  binding="#{adicionarFuniasNivelBean.otnombre}" id="otnombre"/>
+                                  <af:spacer width="5" height="10" id="sapell"/>
+                                               
+                                  <af:outputText value="#{adicionarFuniasNivelBean.usuario.apellido}"
+                                  visible="#{adicionarFuniasNivelBean.usuario.tipoUsuario.codigo ==5}"
+                                  binding="#{adicionarFuniasNivelBean.otapellido}" id="otapellido"/>
+                  </af:commandLink >
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarFuniasNivelBean.spacer6}"
+                             id="spacer6"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PREDIO}: #{adicionarFuniasNivelBean.predio.nombre}"
+                                  binding="#{adicionarFuniasNivelBean.commandLink3}"
+                                  id="commandLink3" action="detallePredio"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarFuniasNivelBean.spacer7}"
+                             id="spacer7"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CONCESI_U00F3N__} : #{adicionarFuniasNivelBean.concesion.numeroExpediente}"
+                                  binding="#{adicionarFuniasNivelBean.commandLink4}"
+                                  id="commandLink4"
+                                  action="detalleConcesion"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarFuniasNivelBean.spacer8}"
+                             id="spacer8"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CPT_CAPTACION} : #{adicionarFuniasNivelBean.captacion.objTipoFuenteCaptacion.valor}"
+                                  binding="#{adicionarFuniasNivelBean.commandLink5}"
+                                  id="commandLink5"
+                                  action="detalleCaptacion"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarFuniasNivelBean.spacer9}"
+                             id="spacer9"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FUNIAS_LISTA}"
+                                  binding="#{adicionarFuniasNivelBean.commandLink6}"
+                                  id="commandLink6"
+                                  action="listarFunias"
+                                  />
+                   <af:spacer width="5" height="10" id="satodos"/>
+                  <af:outputText value="#{viewcontrollerBundle.FUNIAS_MODULO} : #{viewcontrollerBundle.NIV_MODULO}"
+                                 binding="#{adicionarFuniasNivelBean.outputText26}"
+                                 id="outputText26"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarFuniasNivelBean-->
+</jsp:root>

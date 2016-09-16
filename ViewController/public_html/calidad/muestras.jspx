@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{muestras.document1}" id="document1">
+      <af:form binding="#{muestras.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{muestras.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="1px"
+                                   topHeight="37px" bottomHeight="7px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{muestras.panelSplitter1}"
+                                  id="panelSplitter1" disabled="true" orientation="vertical"
+                                  splitterPosition="62">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{muestras.panelFormLayout1}"
+                                        id="panelFormLayout1" maxColumns="5"
+                                        rows="2">
+                      <af:selectOneChoice label="#{viewcontrollerBundle.PTO_NOMBRE}"
+                                          binding="#{muestras.sc_puntos}"
+                                          id="sc_puntos"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{ muestras.listaPuntos}"
+                                       binding="#{muestras.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.MST_NRO_MUESTRA}"
+                                    binding="#{muestras.it_nroMuestra}"
+                                    id="it_nroMuestra"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MST_TIPO}"
+                                          binding="#{muestras.tipoMuestra}"
+                                          id="tipoMuestra"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{ muestras.listaTipoMuestra}"
+                                       binding="#{muestras.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:inputDate label="#{viewcontrollerBundle.MST_FECHA}"
+                                    binding="#{muestras.fmuestra}"
+                                    id="fmuestra"/>
+                      <af:panelGroupLayout binding="#{muestras.panelGroupLayout1}"
+                                           id="panelGroupLayout1">
+                        <af:spacer width="10" height="10"
+                                   binding="#{muestras.spacer1}" id="spacer1"/>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                          binding="#{muestras.cb_filtrar}"
+                                          id="cb_filtrar"
+                                          icon="/imgs/binoculars_24.png"
+                                          actionListener="#{muestras.cb_filtrar_actionListener}"/>
+                      </af:panelGroupLayout>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelCollection binding="#{muestras.panelCollection1}"
+                                        id="panelCollection1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{muestras.m_archivo}"
+                                 id="m_archivo">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                              binding="#{muestras.commandMenuItem1}"
+                                              id="commandMenuItem1"
+                                              actionListener="#{muestras.cmi_imprimir_actionListener}"
+                                              immediate="true"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                       <af:table value="#{muestras.listaMuestras}" var="row"
+                                binding="#{muestras.t_muestras}"
+                                id="t_muestras" rowSelection="single"
+                                 width="100%">
+                                <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.PTO_TEXT}" width="180"
+                                           sortProperty="nombre_punto">
+                          <af:outputText value="#{row.nombre_punto}"/>
+                        </af:column>
+                         <af:column headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   width="107" sortable="true"
+                                   sortProperty="fuente">
+                          <af:outputText value="#{row.fuente}"/>
+                        </af:column>
+                         <af:column headerText="#{viewcontrollerBundle.TRM_TRAMO}"
+                                   width="107" sortable="true"
+                                   sortProperty="tramo">
+                          <af:outputText value="#{row.tramo}"/>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.MST_NRO_MUESTRA}"
+                                   width="140" sortProperty="nro_muestra">
+                          <af:outputText value="#{row.nro_muestra}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.MST_TIPO}"
+                                   width="198" sortProperty="tipo_muestra">
+                         
+                          <af:commandLink text="#{row.tipo_muestra}"
+                                          id="cc"
+                                          action="detallemuestra"
+                                          actionListener="#{muestras.detalleMuestra_actionListener}"
+                                          immediate="true">
+                            <f:attribute value="#{row.id}"
+                                     name="codigo"/>
+                                
+                          </af:commandLink>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.MST_FECHA}"
+                                    width="160" sortProperty="fecha_muestreo">
+                          <af:outputText value="#{row.fecha_muestreo}"/>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.MST_HORA}"
+                                    width="130" sortProperty="hora_muestra">
+                          <af:outputText value="#{row.hora_muestra}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.MST_CAUDAL}"
+                                   width="90">
+                          <af:outputText value="#{row.caudal}"/>
+                        </af:column>
+                      </af:table>
+                      
+                      
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{muestras.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:activeOutputText value="#{viewcontrollerBundle.MODULO_MUESTRAS}"
+                                       binding="#{muestras.activeOutputText1}"
+                                       id="activeOutputText1"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{muestras.spacer2}" id="spacer2"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:muestras-->
+</jsp:root>

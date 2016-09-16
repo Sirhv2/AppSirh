@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>          
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{reporteNodosAutoridad.d2}">
+      <af:form id="f2" binding="#{reporteNodosAutoridad.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            
+              <af:panelStretchLayout binding="#{reporteNodosAutoridad.panelStretchLayout1}" id="panelStretchLayout1" topHeight="32px"
+                                     bottomHeight="2px">
+                <f:facet name="center">
+                <af:panelSplitter binding="#{reporteNodosAutoridad.ps1}" id="ps1" splitterPosition="50" orientation="vertical" disabled="true">
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="scroll" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" binding="#{reporteNodosAutoridad.panelGroupLayout11}" id="panelGroupLayout11">
+                    <af:panelFormLayout binding="#{reporteNodosAutoridad.pfl11}" id="pfl11" rows="1" labelAlignment="top" maxColumns="999999">
+                      <af:selectOneChoice label="Autoridad"
+                                          binding="#{reporteNodosAutoridad.soc_autoridad_id}"
+                                          id="soc_autoridad_id"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" 
+                                        
+                                         
+                                          immediate="true"
+                                          autoSubmit="true">
+                        <f:selectItems value="#{reporteNodosAutoridad.listaAutoridades}"
+                                       binding="#{reporteNodosAutoridad.si1Autoridad}" id="si1a"/>
+                                       
+                      </af:selectOneChoice>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}" binding="#{reporteNodosAutoridad.cb_buscar11}" id="cb_buscar11"
+                                        actionListener="#{reporteNodosAutoridad.cb_buscar_actionListener}" icon="/imgs/binoculars_24.png"/>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelCollection binding="#{reporteNodosAutoridad.pc11}" id="pc11">
+                    <f:facet name="menus">
+                      <af:menu text="#{viewcontrollerBundle.menu_archivo}" binding="#{reporteNodosAutoridad.m21}" id="m21">
+                        <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}" binding="#{reporteNodosAutoridad.cmi_imprimir1}" id="cmi_imprimir1"
+                                            actionListener="#{reporteNodosAutoridad.cmi_imprimir_actionListener}"/>
+                          </af:menu>
+                    </f:facet>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{reporteNodosAutoridad.listaReporteNodosAutoridad}" var="row" rowBandingInterval="1"
+                              binding="#{reporteNodosAutoridad.t_reporteNodosAutoridad}"
+                              id="t_reporteNodosAutoridad"
+                              rowSelection="single" emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                              
+                              
+                        <af:column sortable="true"
+                                   headerText="MODULO" id="c7"
+                                   sortProperty="modulo" width="80"
+                                   >
+                          <af:outputText value="#{row.modulo}" id="ot7"/>
+                        </af:column>
+                      
+                      
+                       <af:column sortable="true"  headerText="Nodo"
+                                   id="c37"
+                                   sortProperty="cantidadRegistros" width="80"
+                                   >
+                          <af:outputText value="#{row.cantidadRegistros}" id="ot37"/>
+                        </af:column>
+                        
+                        
+                         <af:column sortable="true"
+                                   headerText="IDEAM" id="c7w"
+                                   sortProperty="login" width="120"
+                                   >
+                          <af:outputText value="#{row.cantidadRegistrosIDEAM}" id="otw7"/>
+                        </af:column>
+                        
+                        
+                           <af:column sortable="true"
+                                   headerText="DIFERENCIA" id="c7Ew"
+                                    width="120"
+                                   >
+                          <af:outputText value="#{row.diferencia}" id="otw73"/>
+                           
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="ADVERTENCIA" id="c7Egw"
+                                    width="120"
+                                   >
+                         
+                            <af:image id="image1"
+                                              source='#{row.diferencia == 0 ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                        </af:column>
+                             <af:column sortable="true"
+                                   headerText="FECHA" id="c7ff"
+                                   sortProperty="fecha" width="100"
+                                   >
+                          <af:outputText value="#{row.fechaRegistro}" id="otwff"/>
+                        </af:column>
+                        
+                        
+                        
+                      </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelSplitter>
+         </f:facet>
+                <f:facet name="top">
+                  <af:panelGroupLayout binding="#{reporteNodosAutoridad.panelGroupLayout2}" id="panelGroupLayout2">
+                    <af:outputText value="Reporte Nodos vs IDEAM" binding="#{reporteNodosAutoridad.outputText1}" id="outputText1"
+                     styleClass="AFBrandingBarTitle"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="bottom">
+                  <af:panelGroupLayout binding="#{reporteNodosAutoridad.pgl1}" id="pgl1">
+                    <af:popup binding="#{reporteNodosAutoridad.p_errores}" id="p_errores">
+                      <af:dialog binding="#{reporteNodosAutoridad.d_errores}"
+                                 id="d_errores" type="ok"
+                                 title="Errores de Validación"
+                                 affirmativeTextAndAccessKey="#{viewcontrollerBundle.boton_cerrar}">
+                        <af:panelFormLayout binding="#{reporteNodosAutoridad.pfl1}"
+                                            id="pfl1">
+                          <af:outputText value="Errores de Validación para la Concesión"
+                                         binding="#{reporteNodosAutoridad.ot_errores}"
+                                         id="ot_errores"/>
+                          <af:inputText label="Label 1"
+                                        binding="#{reporteNodosAutoridad.it_errores}"
+                                        id="it_errores" columns="50" rows="5"
+                                        simple="true" readOnly="true"/>
+                        </af:panelFormLayout>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelStretchLayout>
+              
+           
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:reporteNodosAutoridad-->
+</jsp:root>

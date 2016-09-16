@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright (c) 2008, 2009, Oracle and/or its affiliates. 
+All rights reserved. -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" version="1.2"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description>This component will show the Rich OHW TOC</description>
+        <attribute>
+          <attribute-name>navigator</attribute-name>
+          <description>The Navigator object</description>
+          <required>true</required>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelStretchLayout id="ptpsl1">
+      <f:facet name="center">
+        <af:tree id="topicTree" var="topicItem"
+                 value="#{attrs.navigator.treeModel}" 
+                 rowSelection="single"
+                 disclosedRowKeys="#{attrs.navigator.disclosedTreeState}"
+                 clientComponent="true"
+                 selectionListener="#{attrs.navigator.treeSelectionListener}"
+                 displayRow="selected">
+          <f:facet name="contextMenu">
+            <af:popup contentDelivery="lazyUncached" id="ptp1">
+              <af:menu id="ptm1">
+                <af:group id="ptg1">
+                  <af:commandMenuItem text="#{ohw.richResourceBundle['contents.print_this_topic']}"
+                                      id="ptcmi1">
+                    <af:clientListener type="action"
+                                       method="RichOHWGlobalToolbarPeer.printViewTopicContent"/>
+                  </af:commandMenuItem>
+                  <af:commandMenuItem text="#{ohw.richResourceBundle['contents.email_topic_link']}"
+                                      id="ptcmi2">
+                    <af:clientListener type="action"
+                                       method="RichOHWGlobalToolbarPeer.sendTopicLinkEmail"/>
+                  </af:commandMenuItem>
+                  <af:commandMenuItem text="#{ohw.richResourceBundle['contents.show_url']}"
+                                      id="ptcmi3">
+                    <af:clientListener type="action"
+                                       method="RichOHWGlobalToolbarPeer.showBrowserURL"/>
+                  </af:commandMenuItem>
+                </af:group>
+              </af:menu>
+            </af:popup>
+          </f:facet>
+          <f:facet name="nodeStamp">
+            <af:panelGroupLayout id="ptpgl1">
+              <af:switcher defaultFacet="book" facetName="#{topicItem.icon}" id="pts1">
+                <f:facet name="book">
+                  <af:image id="bookNodeStampImage"
+                            source="helppages.resource?name=openbook.png"
+                            shortDesc="#{topicItem.text}"
+                            styleClass="TOCNodeImageStyle"
+                            clientComponent="true"/>
+                </f:facet>
+                <f:facet name="chapter">
+                  <af:image id="chapterNodeStampImage"
+                            source="helppages.resource?name=folderclosed_ena.png"
+                            shortDesc="#{topicItem.text}"
+                            styleClass="TOCNodeImageStyle"
+                            clientComponent="true"/>
+                </f:facet>
+                <f:facet name="topic">
+                  <af:image id="topicNodeStampImage"
+                            source="helppages.resource?name=filenode_ena.png"
+                            shortDesc="#{topicItem.text}"
+                            styleClass="TOCNodeImageStyle"
+                            clientComponent="true"/>
+                </f:facet>
+              </af:switcher>
+              <af:outputText id="topicNodeStampText" value="#{topicItem.text}"
+                             shortDesc="#{topicItem.text}"
+                             inlineStyle="color:Black;" clientComponent="true">
+                <af:clientAttribute name="destination"
+                                    value="#{topicItem.destination}"/>
+              </af:outputText>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="pathStamp">
+            <af:panelGroupLayout id="ptpgl2">
+              <af:switcher defaultFacet="book" facetName="#{topicItem.icon}" id="pts2">
+                <f:facet name="book">
+                  <af:image id="bookPathStampImage"
+                            source="helppages.resource?name=/openbook.png"
+                            shortDesc="#{topicItem.text}"
+                            styleClass="TOCNodeImageStyle"
+                            clientComponent="true"/>
+                </f:facet>
+                <f:facet name="chapter">
+                  <af:image id="chapterPathStampImage"
+                            source="helppages.resource?name=folderclosed_ena.png"
+                            shortDesc="#{topicItem.text}"
+                            styleClass="TOCNodeImageStyle"
+                            clientComponent="true"/>
+                </f:facet>
+                <f:facet name="topic">
+                  <af:image id="topicPathStampImagePath"
+                            source="helppages.resource?name=filenode_ena.png"
+                            shortDesc="#{topicItem.text}"
+                            styleClass="TOCNodeImageStyle"
+                            clientComponent="true"/>
+                </f:facet>
+              </af:switcher>
+              <af:outputText id="topicPathStampText" value="#{topicItem.text}"
+                             shortDesc="#{topicItem.text}"
+                             inlineStyle="color:Black;" 
+                             clientComponent="true">
+                <af:clientAttribute name="destination"
+                                    value="#{topicItem.destination}"/>
+              </af:outputText>
+            </af:panelGroupLayout>
+          </f:facet>
+          <af:clientListener type="selection"
+                             method="RichTOCNavPeer.selectionChanged"/>
+        </af:tree>
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:pageTemplateDef>
+</jsp:root>

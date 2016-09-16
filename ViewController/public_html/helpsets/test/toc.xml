@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<toc version="1.0">
+        <tocitem text="Fuentes">
+		<tocitem title="" target="fuentes" text="Fuentes superficiales y subterraneas"/>
+                 <tocitem title="" target="adicionarFuente" text="Adicionar una fuente"/>
+                <tocitem title="" target="detalleFuente" text="Detalle de una fuente"/>
+                 <tocitem title="" target="adicionarTramo" text="Adicionar tramos a una fuente"/>
+                </tocitem>
+	<tocitem text="Usuarios y predios">
+		<tocitem title="" target="seguridad_login" text="Login"/>
+                <tocitem title="" target="antesDeEmpezar" text="Antes de empezar"/>
+                <tocitem title="" target="usuarios" text="Usuarios del agua"/>
+                 <tocitem title="" target="detalleUsuario" text="Editar un usuario del agua"/>
+                 <tocitem title="" target="detallePredio" text="Editar un predio"/>
+	</tocitem>
+	<tocitem text="Actos administrativos">
+                <tocitem title="" target="detalleConcesion" text="Adicionar una concesion" />
+                <tocitem title="" target="adicionarCaptacionDetalle" text="Adicionar una captaci�n" />
+                <tocitem title="" target="Permisos" text="Adicionar un permiso de vertimiento" />
+        </tocitem>      
+	<tocitem text="Modulo de calidad">
+		<tocitem title="" target="puntosdeMonitoreo" text="Puntos de monitoreo" />
+                <tocitem title="" target="adicionarPuntosMonitoreo" text="Adicionar un Punto de monitoreo" />
+                <tocitem title="" target="detallePuntoMonitoreo" text="Detalle de un un Punto de monitoreo" />
+                <tocitem title="" target="detalleMuestra" text="Detalle de una muestra" />
+                <tocitem title="" target="adicionarMuestra" text="Adicionar muestras" />
+  		<tocitem title="" target="adicionarMedicion" text="Adicionar mediciones" />
+                <tocitem title="" target="muestras" text="Listar Puntos de monitoreo y sus muestras" />
+        </tocitem>    
+        <tocitem text="Conflictos">
+                <tocitem title="" target="estadoConflicto" text="Estado del conflicto" />
+                <tocitem title="" target="particularidadesConflicto" text="Particularidades del conflicto" />
+                <tocitem title="" target="sectorProyecto" text="Sectores del Proyecto del conflicto" />
+                <tocitem title="" target="actoresIdentificados" text="Actores Identificados en el conflicto" />
+        </tocitem>  
+</toc>

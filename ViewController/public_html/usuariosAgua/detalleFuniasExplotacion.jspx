@@ -1,0 +1,418 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{detalleFuniasExplotacion.document1}" id="document1">
+      <af:form binding="#{detalleFuniasExplotacion.form1}" id="form1"
+               usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleFuniasExplotacion.panelStretchLayout1}"
+                                   id="panelStretchLayout1" inlineStyle="width:100%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout layout="scroll"
+                                     binding="#{detalleFuniasExplotacion.panelGroupLayout10}"
+                                     id="panelGroupLayout10"
+                                     inlineStyle="width:100%;"
+                                     >
+                  <af:panelBox text="#{viewcontrollerBundle.SBT_FUN_EXP_MOD}"
+                               binding="#{detalleFuniasExplotacion.pnlbDatos}"
+                               id="pnlbDatos" inlineStyle="width:100%;">
+                    <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout1}"
+                                         id="panelGroupLayout1" 
+                                         inlineStyle="width:100%;">
+                      <af:panelFormLayout binding="#{detalleFuniasExplotacion.panelFormLayout1}"
+                                          id="panelFormLayout1">
+                        <f:facet name="footer"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{detalleFuniasExplotacion.spacer12}"
+                                   id="spacer12"/>
+                        <af:outputText value="#{viewcontrollerBundle.FUN_DATOS}"
+                                       binding="#{detalleFuniasExplotacion.otBasicos}"
+                                       id="otBasicos"/>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.FUN_METODO_EXPLOTACION}"
+                                            binding="#{detalleFuniasExplotacion.socMetodoExplotacion}"
+                                            id="socMetodoExplotacion"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            value="#{detalleFuniasExplotacion.funias.objMetodoExplotacion}"
+                                            showRequired="true"
+                                            >
+                          <f:selectItems value="#{detalleFuniasExplotacion.listaMetodoExplotacion}"
+                                         binding="#{detalleFuniasExplotacion.siMetodoExplotacion}"
+                                         id="siMetodoExplotacion"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.FUN_TIPO_ENERGIA}"
+                                            binding="#{detalleFuniasExplotacion.socTipoEnergia}"
+                                            id="socTipoEnergia"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            value="#{detalleFuniasExplotacion.funias.objTipoEnergia}"
+                                            showRequired="true"
+                                            >
+                          <f:selectItems value="#{detalleFuniasExplotacion.listaTipoEnergia}"
+                                         binding="#{detalleFuniasExplotacion.siTipoEnergia}"
+                                         id="siTipoEnergia"/>
+                        </af:selectOneChoice>
+                        <af:spacer width="10" height="10"
+                                   binding="#{detalleFuniasExplotacion.spacer14}"
+                                   id="spacer14"/>
+                        <af:outputText value="#{viewcontrollerBundle.SBT_FUN_BOMBA}"
+                                       binding="#{detalleFuniasExplotacion.otBomba}"
+                                       id="otBomba"/>
+                        <af:inputText label="#{viewcontrollerBundle.SBT_FUN_BOMBA_CLS}"
+                                      binding="#{detalleFuniasExplotacion.itClasebomba}"
+                                      id="itClasebomba"
+                                      value="#{detalleFuniasExplotacion.funias.bombaClase}"
+                                      />
+                        <af:inputText label="#{viewcontrollerBundle.SBT_FUN_BOMBA_MDL}"
+                                      binding="#{detalleFuniasExplotacion.itModeloBomba}"
+                                      id="itModeloBomba"
+                                      value="#{detalleFuniasExplotacion.funias.bombaTipo}"
+                                      />
+                        <af:inputText label="#{viewcontrollerBundle.SBT_FUN_BOMBA_PTN}"
+                                      binding="#{detalleFuniasExplotacion.itPotenciaBomba}"
+                                      id="itPotenciaBomba"
+                                      value="#{detalleFuniasExplotacion.funias.bombaPotencia}"
+                                      >
+                          <af:convertNumber integerOnly="false"
+                                            maxFractionDigits="2"
+                                            pattern="####.##"/>
+                        </af:inputText>
+                        <af:inputText label="#{viewcontrollerBundle.SBT_FUN_BOMBA_PRF}"
+                                      binding="#{detalleFuniasExplotacion.itProfundidadSuccion}"
+                                      id="itProfundidadSuccion"
+                                      value="#{detalleFuniasExplotacion.funias.bombaProfundidadSuccion}"
+                                      >
+                          <af:convertNumber integerOnly="false"
+                                            maxFractionDigits="2"
+                                            pattern="####.##"/>
+                        </af:inputText>
+                        <af:spacer width="10" height="10"
+                                   binding="#{detalleFuniasExplotacion.spacer13}"
+                                   id="spacer13"/>
+                        <af:outputText value="#{viewcontrollerBundle.FUN_TUBERIA}"
+                                       binding="#{detalleFuniasExplotacion.otTuberiaExplotacion}"
+                                       id="otTuberiaExplotacion"/>
+                        <af:inputText label="#{viewcontrollerBundle.FUN_DIAMETRO}"
+                                      binding="#{detalleFuniasExplotacion.itDiametro}"
+                                      id="itDiametro"
+                                      value="#{detalleFuniasExplotacion.funias.diametro}"
+                                      >
+                          <af:convertNumber type="number" integerOnly="false"
+                                            maxIntegerDigits="5"
+                                            minIntegerDigits="1"
+                                            maxFractionDigits="3"
+                                            minFractionDigits="0"
+                                            pattern="#####.###"/>
+                        </af:inputText>
+                        <af:inputText label="#{viewcontrollerBundle.FUN_LONGITUD}"
+                                      binding="#{detalleFuniasExplotacion.itLongitud}"
+                                      id="itLongitud"
+                                      value="#{detalleFuniasExplotacion.funias.longitud}"
+                                      >
+                          <af:convertNumber type="number" integerOnly="false"
+                                            maxIntegerDigits="5"
+                                            minIntegerDigits="1"
+                                            maxFractionDigits="3"
+                                            minFractionDigits="0"
+                                            pattern="#####.###"/>
+                        </af:inputText>
+                        <af:inputText label="#{viewcontrollerBundle.FUN_MATERIAL}"
+                                      binding="#{detalleFuniasExplotacion.itMaterial}"
+                                      id="itMaterial" rows="4" columns="80"
+                                      value="#{detalleFuniasExplotacion.funias.material}"
+                                      />
+                        <af:spacer width="10" height="10"
+                                   binding="#{detalleFuniasExplotacion.spacer15}"
+                                   id="spacer15"/>
+                        <af:outputText value="#{viewcontrollerBundle.SBT_FUN_DOCUMENTOS}"
+                                       binding="#{detalleFuniasExplotacion.otDocumentos}"
+                                       id="otDocumentos"/>
+                        <af:inputFile label="#{viewcontrollerBundle.SBT_FUN_DOC_BOMBEO}"
+                                      binding="#{detalleFuniasExplotacion.ifDocumentoBombeo}"
+                                      id="ifDocumentoBombeo"
+                                      value="#{detalleFuniasExplotacion.uploadedFile}"
+                                      autoSubmit="true" immediate="true"
+                                      valueChangeListener="#{detalleFuniasExplotacion.ifDocumentoBombeo_valueChangeListener}"
+                                      visible="#{!detalleFuniasExplotacion.fileBombeo}"
+                                      />
+                        <af:inputFile label="#{viewcontrollerBundle.SBT_FUN_DOC_FILTRO}"
+                                      binding="#{detalleFuniasExplotacion.ifDocumentoFiltros}"
+                                      id="ifDocumentoFiltros"
+                                      value="#{detalleFuniasExplotacion.uploadedFile1}"
+                                      autoSubmit="true" immediate="true"
+                                      valueChangeListener="#{detalleFuniasExplotacion.ifDocumentoFiltro_valueChangeListener}"
+                                      visible="#{!detalleFuniasExplotacion.fileFiltro}"
+                                      />
+                        <af:inputFile label="#{viewcontrollerBundle.SBT_FUN_DOC_FOTO}"
+                                      binding="#{detalleFuniasExplotacion.ifDocumentoPozo}"
+                                      id="ifDocumentoPozo"
+                                      value="#{detalleFuniasExplotacion.uploadedFile2}"
+                                      autoSubmit="true" immediate="true"
+                                      valueChangeListener="#{detalleFuniasExplotacion.ifDocumentoFoto_valueChangeListener}"
+                                      visible="#{!detalleFuniasExplotacion.filePozo}"
+                                      />
+                        <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout3}"
+                                             id="panelGroupLayout3">
+                          <af:panelCollection binding="#{detalleFuniasExplotacion.panelCollection1}"
+                                              id="panelCollection1"
+                                              inlineStyle="width:100%; height:90px;"
+                                              visible="#{detalleFuniasExplotacion.archivosRelacionados}"
+                                              >
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{detalleFuniasExplotacion.menu1}"
+                                       id="menu1">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.SBT_FUN_DOC_MEN_VER}"
+                                                    binding="#{detalleFuniasExplotacion.cmiVer}"
+                                                    id="cmiVer"
+                                                    icon="/imgs/edit_24.png"
+                                                    immediate="true"
+                                                    partialSubmit="true"
+                                                    actionListener="#{detalleFuniasExplotacion.cl_documento_actionListener}"/>
+                                <af:commandMenuItem text="#{viewcontrollerBundle.SBT_FUN_DOC_MEN_BORRAR}"
+                                                    binding="#{detalleFuniasExplotacion.cmiBorrar}"
+                                                    id="cmiBorrar"
+                                                    icon="/imgs/cross_24.png"
+                                                    immediate="true"
+                                                    partialSubmit="true"
+                                                    actionListener="#{detalleFuniasExplotacion.cb_borrar_docto_actionListener}"/>
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table var="row"
+                                      binding="#{detalleFuniasExplotacion.table1}"
+                                      id="table1"
+                                      value="#{detalleFuniasExplotacion.listaArchivosRelacionados}"
+                                      rowSelection="single"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      
+                                      >
+                              <af:column sortable="false"
+                                         headerText="Contenido">
+                                <af:outputText value="Archivo"/>
+                              </af:column>
+                              <af:column sortable="false" headerText="Tipo">
+                                <af:outputText value="#{row.tipo}"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleFuniasExplotacion.spacer17}"
+                                     id="spacer17"/>
+                        </af:panelGroupLayout>
+                        <af:spacer width="10" height="10"
+                                   binding="#{detalleFuniasExplotacion.spacer18}"
+                                   id="spacer18"/>
+                      </af:panelFormLayout>
+                      <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout5}"
+                                           id="panelGroupLayout5"
+                                           inlineStyle="width:100%;"
+                                           layout="vertical">
+                        <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout6}"
+                                             id="panelGroupLayout6"
+                                             layout="horizontal"
+                                             inlineStyle="width:100%; text-align:center;">
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleFuniasExplotacion.spacer8}"
+                                     id="spacer8"/>
+                          <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                            binding="#{detalleFuniasExplotacion.cbAceptar}"
+                                            id="cbAceptar"
+                                            icon="/imgs/check_mark.png"
+                                            actionListener="#{detalleFuniasExplotacion.cbAceptar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleFuniasExplotacion.spacer9}"
+                                     id="spacer9"/>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                            binding="#{detalleFuniasExplotacion.cbBorrar}"
+                                            id="cbBorrar" icon="/imgs/close.png"
+                                            actionListener="#{detalleFuniasExplotacion.cbBorrar_actionListener}"
+                                            disabled="#{!(detalleFuniasExplotacion.funias.id > 0)}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleFuniasExplotacion.spacer16}"
+                                     id="spacer16"/>
+                        </af:panelGroupLayout>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout7}"
+                                     id="panelGroupLayout7">
+                  <af:popup binding="#{detalleFuniasExplotacion.p_borrar_docto}"
+                            id="p_borrar_docto">
+                    <af:dialog binding="#{detalleFuniasExplotacion.d_borrar_docto}"
+                               id="d_borrar_docto"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                               >
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_BORRAR_ARCHIVO}?"
+                                     binding="#{detalleFuniasExplotacion.ot100}"
+                                     id="ot100"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{detalleFuniasExplotacion.popup_borrar}"
+                            id="popup_borrar">
+                    <af:dialog binding="#{detalleFuniasExplotacion.d_borrar}"
+                               id="d_borrar"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               type="none"
+                                affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                               >
+                      <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout8}"
+                                           id="panelGroupLayout8">
+                        <af:outputText value="outputText3"
+                                       binding="#{detalleFuniasExplotacion.ot_borrar_1}"
+                                       id="ot_borrar_1"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{detalleFuniasExplotacion.spacer11}"
+                                   id="spacer11"/>
+                        <af:outputText value="outputText4"
+                                       binding="#{detalleFuniasExplotacion.ot_borrar_2}"
+                                       id="ot_borrar_2"/>
+                      </af:panelGroupLayout>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout9}"
+                                             id="panelGroupLayout9">
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                            binding="#{detalleFuniasExplotacion.cb_si_borrar}"
+                                            id="cb_si_borrar"
+                                            actionListener="#{detalleFuniasExplotacion.cb_si_borrar_actionListener}"
+                                            action="listarFunias"
+                                            />
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleFuniasExplotacion.spacer10}"
+                                     id="spacer10"/>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                            binding="#{detalleFuniasExplotacion.cb_no_borrar}"
+                                            id="cb_no_borrar"
+                                            actionListener="#{detalleFuniasExplotacion.cb_no_borrar_actionListener}"
+                                            />
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{detalleFuniasExplotacion.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{detalleFuniasExplotacion.d_registro_exitoso}"
+                               id="d_registro_exitoso"
+                               title="#{viewcontrollerBundle.USO_ACTUALIZADO}"
+                                type="none" closeIconVisible="false"
+                                affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               >
+                      <f:facet name="buttonBar">
+                        <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                          binding="#{detalleFuniasExplotacion.cbAceptarDi}"
+                                          id="cbAceptarDi"
+                                          action="listarFunias"
+                                          />
+                      </f:facet>
+                      <af:panelStretchLayout binding="#{detalleFuniasExplotacion.panelStretchLayout2}"
+                                             id="panelStretchLayout2"
+                                             endWidth="0px"
+                                             topHeight="0px" bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;"
+                                             >
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="#{viewcontrollerBundle.FUN_ACTUALIZADO}"
+                                         binding="#{detalleFuniasExplotacion.ot8}"
+                                         id="ot8"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image binding="#{detalleFuniasExplotacion.i1}"
+                                    id="i1"
+                                    source="/imgs/info.png"
+                                    shortDesc="info"
+                                    />
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{detalleFuniasExplotacion.panelGroupLayout4}"
+                                     id="panelGroupLayout4"
+                                     layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer1}"
+                             id="spacer1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  binding="#{detalleFuniasExplotacion.commandLink1}"
+                                  id="commandLink1"
+                                  action="usuariosAgua"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer2}"
+                             id="spacer2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{detalleFuniasExplotacion.usuario.nombre}"
+                                  binding="#{detalleFuniasExplotacion.commandLink2}"
+                                  id="commandLink2"
+                                  action="detalleUsuario"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer3}"
+                             id="spacer3"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PREDIO} : #{detalleFuniasExplotacion.predio.nombre}"
+                                  binding="#{detalleFuniasExplotacion.commandLink3}"
+                                  id="commandLink3"
+                                  action="detallePredio"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer4}"
+                             id="spacer4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CONCESI_U00F3N__} : #{detalleFuniasExplotacion.concesion.numeroExpediente}"
+                                  binding="#{detalleFuniasExplotacion.commandLink4}"
+                                  id="commandLink4"
+                                  action="detalleConcesion"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer5}"
+                             id="spacer5"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CPT_CAPTACION} : #{detalleFuniasExplotacion.captacion.objTipoFuenteCaptacion.valor}"
+                                  binding="#{detalleFuniasExplotacion.commandLink5}"
+                                  id="commandLink5"
+                                  action="detalleCaptacion"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer6}"
+                             id="spacer6"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FUNIAS_LISTA}"
+                                  binding="#{detalleFuniasExplotacion.commandLink6}"
+                                  id="commandLink6"
+                                  action="listarFunias"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuniasExplotacion.spacer7}"
+                             id="spacer7"/>
+                  <af:outputText value="#{viewcontrollerBundle.FUNIAS_MODULO} : #{viewcontrollerBundle.SBT_FUN_EXP_MOD}"
+                                 binding="#{detalleFuniasExplotacion.outputText3}"
+                                 id="outputText3"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleFuniasExplotacion-->
+</jsp:root>

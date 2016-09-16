@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{AdicionarAdmon.d1}">
+      <af:form id="f1" binding="#{AdicionarAdmon.f1}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout id="psl_total" startWidth="0px"
+                                   endWidth="0px" topHeight="20px"
+                                   bottomHeight="0px">
+              <f:facet name="center">
+                <af:panelStretchLayout id="psl12" startWidth="0px"
+                                       endWidth="0px" topHeight="0px"
+                                       bottomHeight="0px"
+                                       styleClass="AFStretchWidth">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelGroupLayout layout="vertical" halign="center">
+                      <af:outputText id="ot5" styleClass="AFBrandingBarTitle"
+                                     value="Preguntas PUEAA"/>
+                      <af:panelFormLayout id="pfl15m1" labelWidth="340"
+                                          fieldWidth="450px"
+                                          labelAlignment="start"
+                                          inlineStyle="text-align:center;"
+                                          maxColumns="1" rows="9999">
+                          <af:selectBooleanRadio text="Si"
+                                                 label="#{viewcontrollerBundle.PREGUNTA1}"
+                                                 binding="#{AdicionarAdmon.sbrPr1Si}"
+                                                 id="sbrPr1Si" group="Pr1"
+                                                 value="1"/>
+                          <af:selectBooleanRadio text="No"
+                                                 binding="#{AdicionarAdmon.sbrPr1No}"
+                                                 id="sbrPr1No" selected="true"
+                                                 group="Pr1" value="0"/>
+                          <af:selectBooleanRadio text="Si"
+                                                 label="#{viewcontrollerBundle.PREGUNTA2}"
+                                                 binding="#{AdicionarAdmon.sbrPr2Si}"
+                                                 id="sbrPr2Si" group="Pr2"
+                                                 value="1"/>
+                          <af:selectBooleanRadio text="No"
+                                                 binding="#{AdicionarAdmon.sbrPr2No}"
+                                                 id="sbrPr2No" selected="true"
+                                                 group="Pr2" value="0"/>
+                        <af:selectBooleanRadio text="Si"
+                                               label="#{viewcontrollerBundle.PREGUNTA3}"
+                                               binding="#{AdicionarAdmon.sbrPr3Si}"
+                                               id="sbrPr3Si" group="Pr3"
+                                               value="1"/>
+                        <af:selectBooleanRadio text="No"
+                                               binding="#{AdicionarAdmon.sbrPr3No}"
+                                               id="sbrPr3No" selected="true"
+                                               group="Pr3" value="0"/>
+                        <af:selectBooleanRadio text="Si"
+                                               label="#{viewcontrollerBundle.PREGUNTA4}"
+                                               binding="#{AdicionarAdmon.sbrPr4Si}"
+                                               id="sbrPr4Si" group="Pr4"
+                                               value="1"/>
+                        <af:selectBooleanRadio text="No"
+                                               binding="#{AdicionarAdmon.sbrPr4No}"
+                                               id="sbrPr4No" selected="true"
+                                               group="Pr4" value="0"/>
+                        <af:selectBooleanRadio text="Si"
+                                               label="#{viewcontrollerBundle.PREGUNTA5}"
+                                               binding="#{AdicionarAdmon.sbrPr5Si}"
+                                               id="sbrPr5Si" group="Pr5"
+                                               value="1"/>
+                        <af:selectBooleanRadio text="No"
+                                               binding="#{AdicionarAdmon.sbrPr5No}"
+                                               id="sbrPr5No" selected="true"
+                                               group="Pr5" value="0"/>
+                        <af:selectBooleanRadio text="Si"
+                                               label="#{viewcontrollerBundle.PREGUNTA6}"
+                                               binding="#{AdicionarAdmon.sbrPr6Si}"
+                                               id="sbrPr6Si" group="Pr6"
+                                               value="1"/>
+                        <af:selectBooleanRadio text="No"
+                                               binding="#{AdicionarAdmon.sbrPr6No}"
+                                               id="sbrPr6No" selected="true"
+                                               group="Pr6" value="0"/>
+                        <af:commandButton text="Guardar" id="cbGuardar"
+                                          binding="#{AdicionarAdmon.cbGuardar}"
+                                          actionListener="#{AdicionarAdmon.cbGuardar_actionListener}"
+                                          partialSubmit="true"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="start"></f:facet>
+                  <f:facet name="end"></f:facet>
+                  <f:facet name="top"></f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AdicionarAdmon-->
+</jsp:root>

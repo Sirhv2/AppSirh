@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelStretchLayout binding="#{graficoEfectividad.pslg1}" id="pslg1"
+                         startWidth="0px" endWidth="0px" topHeight="70px"
+                         bottomHeight="0px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <dvt:lineGraph id="lg1" subType="LINE_VERT_ABS"
+                     binding="#{graficoEfectividad.lg1}"
+                     shortDesc="Comportamiento" animationOnDisplay="AUTO" contentDelivery="immediate"
+                     dynamicResize="DYNAMIC_SIZE"
+                     tabularData="#{graficoEfectividad.data}"
+                     drillingEnabled="true" o1AxisTitle="Fecha de Muestra"
+                     y1AxisTitle="Valor">
+        <dvt:background >
+          <dvt:specialEffects fillType="FT_COLOR"/>
+        </dvt:background>
+        <dvt:graphPlotArea/>
+        <dvt:seriesSet defaultLineWidth="3">
+          <dvt:series index="0" markerShape="MS_SQUARE"/>
+        </dvt:seriesSet>
+        <dvt:o1Axis/>
+        <dvt:y1Axis />
+        <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      </dvt:lineGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout binding="#{graficoEfectividad.pgl1}" id="pgl1"
+                           layout="vertical">
+        <af:outputText value="#{viewcontrollerBundle.USO_DEL_TRAMO}:  #{graficoEfectividad.nombreUso}"
+                       binding="#{graficoEfectividad.ot_uso}"
+                       id="ot_uso"/>
+        <af:spacer width="10" height="5" binding="#{graficoEfectividad.s1}"
+                   id="s1"/>
+        <af:outputText value="#{viewcontrollerBundle.PLAZO}:  #{graficoEfectividad.nombrePlazo}"
+                       binding="#{graficoEfectividad.ot_plazo}"
+                       id="ot_plazo"/>
+        <af:spacer width="10" height="5" binding="#{graficoEfectividad.s2}"
+                   id="s2"/>
+        <af:outputText value="#{graficoEfectividad.titulo}"
+                       binding="#{graficoEfectividad.ot_prametro}"
+                       id="ot_prametro"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:graficoEfectividad-->
+</jsp:root>

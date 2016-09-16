@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form binding="#{NormaUsos.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{NormaUsos.panelStretchLayout1}"
+                                   id="panelStretchLayout1" bottomHeight="7px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{NormaUsos.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="400"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelBox
+                                 binding="#{NormaUsos.panelBoxNorma}"
+                                 id="panelBoxNorma"
+                                 text="#{viewcontrollerBundle.PANEL1_TITULO_NORMA}"
+                                 showDisclosure="false">
+                      <af:panelStretchLayout binding="#{NormaUsos.panelStretchLayout2}"
+                                             id="panelStretchLayout2"
+                                             topHeight="117px">
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{NormaUsos.panelCollection1}"
+                                              id="panelCollection1">
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{NormaUsos.menu1}" id="menu1">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.NORMA_EDITAR}"
+                                                    binding="#{NormaUsos.cmi_editNorma}"
+                                                    id="cmi_editNorma"
+                                                    actionListener="#{NormaUsos.cmi_editNorma_actionListener}"
+                                                    immediate="true"/>
+                                <af:commandMenuItem
+                                                    binding="#{NormaUsos.cmi_borrar}"
+                                                    id="cmi_borrar"
+                                                    text="#{viewcontrollerBundle.menu_borrar}"
+                                                    actionListener="#{NormaUsos.cmi_borrar_norma_actionListener}"/>
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table var="row" binding="#{NormaUsos.tableUsos}"
+                             value="#{NormaUsos.listadoNormas}"  rowSelection="single"
+                                      id="tableUsos"
+                                       selectionListener="#{NormaUsos.tableUsos_selectionListener}"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                                <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.NOMBRE_NORMA}"
+                                         align="start" id="c21" width="183">
+                                <af:outputText value="#{row.nombreNorma}"
+                                               id="ot12"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.USO_USO}"
+                                         align="start" id="c1" width="113">
+                                <af:outputText value="#{row.listaUsos.valor}"
+                                               id="ot1"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="Riesgo"
+                                         align="start" id="c2" width="87">
+                                <af:outputText value="#{row.listaRiesgo.valor}"
+                                               id="ot2"/>
+                              </af:column>
+                            
+                            </af:table>
+                            <af:popup binding="#{NormaUsos.popup_borrar}"
+                                      id="popup_borrar">
+                              <af:dialog binding="#{NormaUsos.d_confirmar_borrado}"
+                                         id="d_confirmar_borrado"  closeIconVisible="false" type="none">
+                                <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout4}"
+                                                     id="panelGroupLayout4"
+                                                     layout="vertical">
+                                  <af:activeOutputText
+                                                       binding="#{NormaUsos.ot_borrar1}"
+                                                       id="ot_borrar1"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{NormaUsos.spacer1}"
+                                             id="spacer1"/>
+                                  <af:activeOutputText
+                                                       binding="#{NormaUsos.ot_borrar2}"
+                                                       id="ot_borrar2"/>
+                                </af:panelGroupLayout>
+                                <f:facet name="buttonBar">
+                                  <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout5}"
+                                                       id="panelGroupLayout5">
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                                      binding="#{NormaUsos.cb_si_borrar}"
+                                                      id="cb_si_borrar"
+                                                      actionListener="#{NormaUsos.cb_si_borrar_actionListener}"/>
+                                    <af:spacer width="10" height="10"
+                                               binding="#{NormaUsos.spacer2}"
+                                               id="spacer2"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                                      binding="#{NormaUsos.cb_no_borrar}"
+                                                      id="cb_no_borrar"
+                                                      actionListener="#{NormaUsos.cb_no_borrar_actionListener}"/>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                              </af:dialog>
+                            </af:popup>
+                            
+                           
+                            
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout1}"
+                                               id="panelGroupLayout1">
+                            <af:panelFormLayout binding="#{NormaUsos.panelFormLayout1}"
+                                                id="panelFormLayout1"
+                                                maxColumns="999999" rows="4"
+                                                inlineStyle="height:64px;">
+                              <af:inputText label="#{viewcontrollerBundle.NOMBRE_NORMA}"
+                                            binding="#{NormaUsos.it_nombreNorma}"
+                                            id="it_nombreNorma"
+                                            immediate="true"
+                                            showRequired="true"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.USO_NORMA}"
+                              
+                              
+                                                  binding="#{NormaUsos.sc_usos}"
+                                                  id="sc_usos"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  showRequired="true"
+                                                  autoSubmit="true"
+                                                  valueChangeListener="#{NormaUsos.socUso_valueChangeListener}">
+                                <f:selectItems value="#{ NormaUsos.listaUsos}"
+                                               binding="#{NormaUsos.selectItems5}"
+                                               id="selectItems5"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="Nivel Riesgo"
+                                                  binding="#{NormaUsos.sc_riesgo}"
+                                                  id="sc_riesgo"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  showRequired="true">
+                                <f:selectItems value="#{ NormaUsos.listaRiesgo}"
+                                               binding="#{NormaUsos.selectItems2}"
+                                               id="selectItems2"/>
+                              </af:selectOneChoice>
+                              <af:commandButton text="Agregar"
+                                                binding="#{NormaUsos.cb_guardarNorma}"
+                                                id="cb_guardarNorma"
+                                                actionListener="#{NormaUsos.cb_guardaNorma_actionListener}"/>
+                              <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                binding="#{NormaUsos.cb_editarNorma}"
+                                                id="cb_editarNorma"
+                                                actionListener="#{NormaUsos.cb_actualizarNorma_actionlistener}"
+                                                visible="false"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                      <af:panelBox text="#{viewcontrollerBundle.PANEL2_TITULO_PARAMETROS}"
+                                   binding="#{NormaUsos.panelBox2}"
+                                   id="panelBox2" showDisclosure="false">
+                        <af:panelStretchLayout binding="#{NormaUsos.panelLimites}"
+                                               id="panelLimites"
+                                               bottomHeight="41px"
+                                               topHeight="83px"
+                                               inlineStyle="width:663px;"
+                                               visible="true">
+                          <f:facet name="center">
+                            <af:panelCollection binding="#{NormaUsos.panelCollection21}"
+                                                id="panelCollection21">
+                              <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{NormaUsos.menu2}" id="menu2">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.NORMA_EDITAR}"
+                                                    binding="#{NormaUsos.cmi_editarLimite}"
+                                                    id="cmi_editarLimite"
+                                                    actionListener="#{NormaUsos.cmi_editarLimite_actionListener}"/>
+                                <af:commandMenuItem text="#{viewcontrollerBundle.menu_borrar}"
+                                                    binding="#{NormaUsos.cmi_borrarLimite}"
+                                                    id="cmi_borrarLimite"
+                                                    actionListener="#{NormaUsos.cmi_borrarLimite_actionListener}"/>
+                              </af:menu>
+                            </f:facet>
+                              <f:facet name="statusbar"/>
+                            <af:table var="row"  binding="#{NormaUsos.tableLimites}"
+                                      value="#{NormaUsos.listadoLimitesParametros}"  rowSelection="single"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      selectionListener="#{NormaUsos.tableLimites_selectionListener}"
+                                      id="tableLimites">
+                                      
+                                      
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.PAR_NOMBRE}">
+                                <af:outputText value="#{row.listaParametros.valor}"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.PAR_UNIDAD}">
+                                <af:outputText value="#{row.listaUnidad.valor}"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.PAR_SIGNO}">
+                                <af:outputText value="#{row.listaSignos.valor}"/>
+                              </af:column>
+                            
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.PAR_VALOR}">
+                                <af:outputText value="#{row.valor_parametro}"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          </f:facet>
+                          <f:facet name="top">
+                            <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout3}"
+                                                 id="panelGroupLayout3"
+                                                 layout="vertical">
+                            <af:panelFormLayout binding="#{NormaUsos.panelFormLayout3}"
+                                                  id="panelFormLayout3"
+                                                  maxColumns="999999" rows="2">
+                                <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                    binding="#{NormaUsos.seletPar}"
+                                                    id="seletPar"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true"
+                                                    immediate="true">
+                                  <f:selectItems value="#{ NormaUsos.listaParametro}"
+                                                 binding="#{NormaUsos.selectItems1}"
+                                                 id="selectItems1"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.PAR_SIGNO}"
+                                                    binding="#{NormaUsos.selectSigno}"
+                                                    id="selectSigno"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true"
+                                                    immediate="true"
+                                                    valueChangeListener="#{NormaUsos.signo_valueChangeListener}"
+                                                    autoSubmit="true">
+                                  <f:selectItems value="#{ NormaUsos.listaSigno}"
+                                                 binding="#{NormaUsos.selectItems4}"
+                                                 id="selectItems4"/>
+                                </af:selectOneChoice>
+                              
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PAR_UNIDAD}"
+                                                    binding="#{NormaUsos.selectUnid}"
+                                                    id="selectUnid"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true"
+                                                    immediate="true">
+                                  <f:selectItems value="#{ NormaUsos.listaUnidad}"
+                                                 binding="#{NormaUsos.selectItems3}"
+                                                 id="selectItems3"/>
+                                </af:selectOneChoice>
+                                <af:inputText label="#{viewcontrollerBundle.PAR_VALOR}"
+                                              binding="#{NormaUsos.it_valor}"
+                                              id="it_valor" columns="8"
+                                              showRequired="true"
+                                              immediate="true">
+                                
+                              </af:inputText>
+                            
+                              <af:commandButton text="#{viewcontrollerBundle.publicacion_btn_aceptar}"
+                                                  binding="#{NormaUsos.cb_guardar}"
+                                                  id="cb_guardar"
+                                                  immediate="true"
+                                                  actionListener="#{NormaUsos.cb_guardaLimitesNorma_actionListener}"/>
+                              <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                binding="#{NormaUsos.cb_actualizarLim}"
+                                                id="cb_actualizarLim"
+                                                actionListener="#{NormaUsos.cb_actualizarLim_actionlistener}"
+                                                visible="false"/>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{NormaUsos.panelFormLayout2}"
+                                                id="panelFormLayout2"
+                                                maxColumns="1" rows="1">
+                               <af:inputText label="#{viewcontrollerBundle.PAR_VALOR2}"
+                                            binding="#{NormaUsos.it_valor2}"
+                                            id="it_valor2" columns="8"
+                                             visible="false" immediate="true"/>
+                              <af:inputText label="Valor Carácter"
+                                            binding="#{NormaUsos.it_valorChar}"
+                                            id="it_valorChar" columns="12"
+                                            visible="false" immediate="true"/>
+                              <af:commandButton
+                                                binding="#{NormaUsos.cb_grafico}"
+                                                id="cb_grafico"
+                                                text="#{viewcontrollerBundle.NORMA_GRAFICO}"
+                                                actionListener="#{NormaUsos.graficar_actionListener}"
+                                                action="#{NormaUsos.getAccionGraficar}"
+                                                visible="false"/>
+                            </af:panelFormLayout>
+                            <af:popup binding="#{NormaUsos.p_registro_lim}"
+                                      id="p_registro_lim">
+                              <af:dialog binding="#{NormaUsos.d_registro_lim}"
+                                           id="d_registro_lim" type="none"
+                               closeIconVisible="false"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}">
+                                <af:panelStretchLayout binding="#{NormaUsos.panelStretchLayout4}"
+                                                       id="panelStretchLayout4"  topHeight="0px"
+                                             bottomHeight="117px"
+                                             inlineStyle="height:35px; width:331px;">
+                                
+                                  <f:facet name="center">
+                                    <af:activeOutputText  value="#{viewcontrollerBundle.PAR_REGISTRO_EXITOSO}"
+                                               binding="#{NormaUsos.t_registro_lim}"
+                                               id="t_registro_lim"/>
+                                  </f:facet>
+                                  <f:facet name="start">
+                                    <af:image source="/imgs/info.png"
+                                              binding="#{NormaUsos.image1}"
+                                              id="image1"/>
+                                  </f:facet>
+                                  <f:facet name="end"/>
+                                  <f:facet name="top"/>
+                                </af:panelStretchLayout>
+                                <f:facet name="buttonBar">
+                                  <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout2}"
+                                                       id="panelGroupLayout2">
+                                    <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{NormaUsos.cb_aceptar_lim}"
+                                            id="cb_aceptar_lim"/>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                              </af:dialog>
+                            </af:popup>
+                            <af:popup binding="#{NormaUsos.p_elim_lim}"
+                                      id="p_elim_lim">
+                              <af:dialog binding="#{NormaUsos.d_elim_lim}"
+                                         id="d_elim_lim" type="none">
+                                <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout6}"
+                                                     id="panelGroupLayout6"
+                                                     layout="vertical">
+                                  <af:activeOutputText
+                                                       binding="#{NormaUsos.ac_borrar1}"
+                                                       id="ac_borrar1"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{NormaUsos.spacer3}"
+                                             id="spacer3"/>
+                                  <af:activeOutputText
+                                                       binding="#{NormaUsos.ac_borrar2}"
+                                                       id="ac_borrar2"/>
+                                </af:panelGroupLayout>
+                                <f:facet name="buttonBar">
+                                  <af:panelGroupLayout binding="#{NormaUsos.panelGroupLayout7}"
+                                                       id="panelGroupLayout7">
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                                      binding="#{NormaUsos.cb_si_borraLim}"
+                                                      id="cb_si_borraLim"
+                                                      actionListener="#{NormaUsos.cb_si_borrarLim_actionListener}"/>
+                                    <af:spacer width="10" height="10"
+                                               binding="#{NormaUsos.spacer4}"
+                                               id="spacer4"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.OPCION_NO}"
+                                                      binding="#{NormaUsos.cb_no_borraLim}"
+                                                      id="cb_no_borraLim"
+                                                      actionListener="#{NormaUsos.cb_no_borrarLim_actionListener}"/>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                              </af:dialog>
+                            </af:popup>
+                          </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelStretchLayout>
+                      </af:panelBox>
+                  
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:NormaUsos-->
+</jsp:root>

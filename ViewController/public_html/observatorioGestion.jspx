@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{observatorioGestionBacking.document1}"
+                 id="document1">
+      <af:form binding="#{observatorioGestionBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioGestionBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:switcher binding="#{observatorioGestionBacking.centerSwitcher}"
+                             id="centerSwitcher" defaultFacet="restored">
+                  <f:facet name="restored">
+                    <af:panelStretchLayout binding="#{observatorioGestionBacking.psl2}"
+                                           id="psl2">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelDashboard binding="#{observatorioGestionBacking.dashboard}"
+                                           id="dashboard" shortDesc="panel"
+                                           columns="2" rowHeight="175px">
+                          <af:dataFlavor flavorClass="javax.faces.component.UIComponent"
+                                         discriminant="fromDashboardSideBar"/>
+                          <af:panelBox text="#{viewcontrollerBundle.FORMACI_U00F3N_DE_ESPECIALISTA}"
+                                       binding="#{observatorioGestionBacking.pbFormacion}"
+                                       id="pbFormacion" showDisclosure="false"
+                                       visible="true" type="stretch">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc47}"
+                                                       id="dc47"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc46"
+                                                     viewId="estadisticas/formacionEspecialistas.jsff"
+                                                     binding="#{observatorioGestionBacking.dc46}"/>
+                          </af:panelBox>
+                          <af:panelBox text="#{viewcontrollerBundle.INVESTIGACI_U00F3N_DE_ESPECIAL}"
+                                       binding="#{observatorioGestionBacking.pbInvestigacion}"
+                                       id="pbInvestigacion" visible="true"
+                                       type="stretch" showDisclosure="false">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc49}"
+                                                       id="dc49"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc48"
+                                                     viewId="estadisticas/investigacionGestion.jsff"
+                                                     binding="#{observatorioGestionBacking.dc48}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Estadisticas POMCA"
+                                       binding="#{observatorioGestionBacking.boxPomca}"
+                                       id="boxPomca" showDisclosure="false"
+                                       type="stretch" visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc52}"
+                                                       id="dc52"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc53"
+                                                     viewId="pomca/enlacesParametros.jsff"
+                                                     binding="#{observatorioGestionBacking.dc53}"/>
+                          </af:panelBox>
+                          <af:panelBox text="#{viewcontrollerBundle.GESTI_U00F3N_DE_ESPECIALISTAS}"
+                                       binding="#{observatorioGestionBacking.pbGestion}"
+                                       id="pbGestion" visible="true"
+                                       showDisclosure="false" type="stretch">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc51}"
+                                                       id="dc51"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc50"
+                                                     viewId="estadisticas/gestionEspecialistas.jsff"
+                                                     binding="#{observatorioGestionBacking.dc50}"/>
+                          </af:panelBox>
+                          <af:panelBox text="#{viewcontrollerBundle.ESTADISTICAS_PORH}"
+                                       binding="#{observatorioGestionBacking.boxPorh}"
+                                       id="boxPorh" showDisclosure="false"
+                                       type="stretch" visible="true"
+                                       inlineStyle="text-align:left;">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dctoolbarporh}"
+                                                       id="dctoolbarporh"/>
+                            </f:facet>
+                            <af:commandLink text="Reporte 1"
+                                            binding="#{observatorioGestionBacking.commandLinkPorhObservatorio1}"
+                                            id="commandLinkPorhObservatorio1"
+                                            action="dashBoardPorhGrafico1"/>
+                            <af:spacer width="10" height="10"
+                                       id="sdashBoardPorhGrafico1"/>
+                            <af:commandLink text="Reporte 2" visible="false"
+                                            binding="#{observatorioGestionBacking.commandLinkPorhObservatorio2}"
+                                            id="commandLinkPorhObservatorio2"
+                                            action="dashBoardPorhGrafico2"/>
+                            <af:spacer width="10" height="10"
+                                       id="sdashBoardPorhGrafico2"/>
+                            <af:commandLink text="Reporte 3" visible="false"
+                                            binding="#{observatorioGestionBacking.commandLinkPorhObservatorio3}"
+                                            id="commandLinkPorhObservatorio3"
+                                            action="dashBoardPorhGrafico3"/>
+                            <af:spacer width="10" height="10"
+                                       id="sdashBoardPorhGrafico3"/>
+                            <af:commandLink text="Reporte 4" visible="false"
+                                            binding="#{observatorioGestionBacking.commandLinkPorhObservatorio4}"
+                                            id="commandLinkPorhObservatorio4"
+                                            action="dashBoardPorhGrafico4"/>
+                            <af:spacer width="10" height="10"
+                                       id="sdashBoardPorhGrafico4"/>
+                          </af:panelBox>
+                          <!--JHOSEPH INI-->
+                          <af:panelBox text="Estadisticas PUEAA" id="boxpPuea"
+                                       showDisclosure="false"
+                                       inlineStyle="text-align: left;"
+                                       type="stretch">
+                            <h:outputLink value="/Sirh/faces/JSPueaEstados.jspx"
+                                          style="border:1px solid white;text-align:rigth;">
+                              <h:outputText value="Estados PUEAA"
+                                            id="LinkPUEAEst"
+                                            style="border:1px solid white;text-align:rigth;"/>
+                            </h:outputLink>
+                            <h:outputLink value="/Sirh/faces/JSPueaSeguimiento.jspx"
+                                          style="border:1px solid white;text-align:rigth;">
+                              <h:outputText value="Seguimientos PUEAA"
+                                            id="LinkPUEASeg"
+                                            style="border:1px solid white;text-align:rigth;"/>
+                            </h:outputLink>
+                          </af:panelBox>
+                          <!--JHOSEPH FIN-->
+                          <af:panelBox text="Conflictos asociados al agua"
+                                       binding="#{observatorioGestionBacking.conflictosTipo}"
+                                       id="conflictosTipo"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc56}"
+                                                       id="dc56"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc57"
+                                                     viewId="estadisticas/conflictosPorTipo.jsff"
+                                                     binding="#{observatorioGestionBacking.dc57}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Conflictos por Fuente"
+                                       binding="#{observatorioGestionBacking.conflictosXFuente}"
+                                       id="conflictosXFuente"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc58}"
+                                                       id="dc58"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc59"
+                                                     viewId="estadisticas/conflictosXFuente.jsff"
+                                                     binding="#{observatorioGestionBacking.dc59}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Busquedas FUENTES"
+                                       binding="#{observatorioGestionBacking.boxFuentes}"
+                                       id="boxFuentes" showDisclosure="false"
+                                       type="stretch" visible="false">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioGestionBacking.dc54}"
+                                                       id="dc54"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc55"
+                                                     viewId="estadisticas/enlacesBusquedas.jsff"
+                                                     binding="#{observatorioGestionBacking.dc55}"/>
+                          </af:panelBox>
+                        </af:panelDashboard>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top">
+                        <af:panelGroupLayout binding="#{observatorioGestionBacking.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="horizontal">
+                          <af:navigationPane binding="#{observatorioGestionBacking.npItems}"
+                                             id="npItems" hint="bar">
+                            <af:commandNavigationItem text="Observatorio"
+                                                      binding="#{observatorioGestionBacking.commandNavigationItem1}"
+                                                      id="commandNavigationItem1"
+                                                      action="observatorio"/>
+                            <af:spacer width="10" height="10"/>
+                            <af:commandNavigationItem text="Observatorio Aguas Superficiales "
+                                                      action="observatorioSuperficiales"/>
+                            <af:forEach var="item"
+                                        items="#{observatorioGestionBacking.listaCategoriasGestion}">
+                              <af:spacer width="10" height="10" id="s3"/>
+                              <af:commandNavigationItem text="#{item.nombre}"
+                                                        id="cni1"
+                                                        actionListener="#{observatorioGestionBacking.showPresetItems}"
+                                                        partialSubmit="true"
+                                                        immediate="true">
+                                <af:panelDashboardBehavior for="dashboard"
+                                                           index="#{observatorioGestionBacking.indexIfRendered}"
+                                                           type="insert"/>
+                              </af:commandNavigationItem>
+                            </af:forEach>
+                            <af:commandNavigationItem text="Todo"
+                                                      binding="#{observatorioGestionBacking.commandNavigationItem2}"
+                                                      id="commandNavigationItem2"
+                                                      actionListener="#{observatorioGestionBacking.restaurarTodo}"
+                                                      partialSubmit="true"
+                                                      immediate="true"/>
+                            <af:commandNavigationItem text="Hoja Pomca"
+                                                      id="commandNavigationItem4"
+                                                      action="hojaPomca"/>
+                          </af:navigationPane>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="maximized">
+                    <af:panelStretchLayout binding="#{observatorioGestionBacking.psl3}"
+                                           id="psl3">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{observatorioGestionBacking.maximizedTitle}"
+                                     binding="#{observatorioGestionBacking.pb_max}"
+                                     id="pb_max" showDisclosure="false">
+                          <f:facet name="toolbar">
+                            <af:declarativeComponent viewId="dashBoard/toolbarMaximized.jsff"
+                                                     binding="#{observatorioGestionBacking.dc12}"
+                                                     id="dc12"/>
+                          </f:facet>
+                          <af:declarativeComponent id="dc11"
+                                                   viewId="#{observatorioGestionBacking.maximizedPanelUrl}"
+                                                   binding="#{observatorioGestionBacking.dc11}"/>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:switcher>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioGestionBacking-->
+</jsp:root>

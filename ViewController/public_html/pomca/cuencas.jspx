@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{CuencasBean.document1}" id="document1">
+      <af:form binding="#{CuencasBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{CuencasBean.pslf1}" id="pslf1"
+                                   startWidth="2px" endWidth="0px"
+                                   topHeight="39px" bottomHeight="16px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{CuencasBean.psf1}" id="psf1"
+                                  orientation="vertical" splitterPosition="64"
+                                  disabled="true">
+                  <f:facet name="second">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{CuencasBean.panelGroupLayout1}"
+                                         id="panelGroupLayout1">
+                      
+                      <af:panelBox text="#{viewcontrollerBundle.CUENTA_TITULO}"
+                                   binding="#{CuencasBean.panelBox1}"
+                                   id="panelBox1" showDisclosure="false"
+                                   inlineStyle="height:280px;">
+                        <af:activeOutputText value="Establecer POMCAS"
+                                             binding="#{CuencasBean.activeOutputText2}"
+                                             id="activeOutputText2"
+                                             styleClass="AFBrandingBarTitle"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{CuencasBean.spacer2}"
+                                   id="spacer2"/>
+                        <af:panelCollection binding="#{CuencasBean.panelCollection1}"
+                                          id="panelCollection1"
+                                          inlineStyle="width:100%; height:175px;">
+                        <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                   binding="#{CuencasBean.menu11}" id="menu11">
+                            <af:commandMenuItem text="Establecer POMCA"
+                                                id="cm_pomca_pomt_plan1"
+                                                binding="#{CuencasBean.cm_pomca_pomt_plan1}"
+                                                action="#{CuencasBean.cm_pomca_pomt_plan_action}"/>
+                              <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                  binding="#{CuencasBean.cmiConsultar}"
+                                                  id="cmiConsultar"
+                                                  action="#{CuencasBean.cmiConsultar_action}"
+                                                  />
+                            </af:menu>
+                        </f:facet>
+                        <af:table var="row" binding="#{CuencasBean.t_cuencas1}"
+                                  id="t_cuencas1" rowSelection="single"
+                                  value="#{CuencasBean.listaCuencasAreas}"
+                                  rowBandingInterval="1"
+                                  emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                  selectionListener="#{CuencasBean.t_cuencas_selectionListener}"
+                                  inlineStyle="height:167px;">
+                          <af:column sortable="true"
+                                     headerText="#{viewcontrollerBundle.CUENCA_NOMBRE}"
+                                     sortProperty="nombre" width="226">
+                            <af:outputText value="#{row.nombre}"/>
+                          </af:column>
+                          <af:column sortable="true"
+                                     headerText="#{viewcontrollerBundle.CODIGO_ZNF}"
+                                     sortProperty="idTipoFuente.valor"
+                                     width="94">
+                            <af:outputText value="#{row.codigoZnf}"/>
+                          </af:column>
+                          <af:column sortable="true"
+                                     headerText="#{viewcontrollerBundle.AREA_JURISD_AUTORIDAD}"
+                                     sortProperty="codigoCuencaAA" width="94">
+                            <af:outputText value="#{row.areaJurisdAutoridad}"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.CNC_FUENTE_PPAL}"
+                                     width="114">
+                            <af:outputText value="#{row.detalleCuenca.fuente.nombre}" />
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                        <af:activeOutputText value="Consultar POMCAS"
+                                             binding="#{CuencasBean.activeOutputText3}"
+                                             id="activeOutputText3"
+                                             styleClass="AFBrandingBarTitle"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{CuencasBean.spacer3}"
+                                   id="spacer3"/>
+                        <af:panelCollection binding="#{CuencasBean.panelCollection2}"
+                                            id="panelCollection2"
+                                             inlineStyle="width:100%; height:175px;">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table var="row"
+                                    binding="#{CuencasBean.t_cuencasTodas}"
+                                    id="t_cuencasTodas"
+                                    value="#{CuencasBean.listaCuencas}"
+                                    inlineStyle="height:125px;">
+                            <af:column sortable="true"
+                                       headerText="#{viewcontrollerBundle.CUENCA_NOMBRE}"
+                                       sortProperty="nombre" width="226">
+                              <af:outputText value="#{row.nombre}"/>
+                            </af:column>
+                            <af:column sortable="true"
+                                       headerText="#{viewcontrollerBundle.CODIGO_ZNF}"
+                                       sortProperty="idTipoFuente.valor"
+                                       width="94">
+                              <af:outputText value="#{row.codigoZnf}"/>
+                            </af:column>
+                            <af:column sortable="true"
+                                       headerText="#{viewcontrollerBundle.AREA_JURISD_AUTORIDAD}"
+                                       sortProperty="codigoCuencaAA" width="94">
+                              <af:outputText value="#{row.areaJurisdAutoridad}"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <f:facet name="toolbar"/>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{CuencasBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:activeOutputText value="#{viewcontrollerBundle.CUENTA_TITULO}"
+                                       binding="#{CuencasBean.activeOutputText1}"
+                                       id="activeOutputText1"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{CuencasBean.spacer1}" id="spacer1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:CuencasBean-->
+</jsp:root>

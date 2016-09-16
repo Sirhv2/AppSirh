@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{tramitesRua.d2}">
+      <af:form id="f2" binding="#{tramitesRua.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{tramitesRua.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="32px"
+                                   bottomHeight="2px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{tramitesRua.ps1}" id="ps1"
+                                  splitterPosition="5" orientation="vertical"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{tramitesRua.panelGroupLayout11}"
+                                         id="panelGroupLayout11"/>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelCollection binding="#{tramitesRua.pc11}" id="pc11">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{tramitesRua.m21}" id="m21">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                              binding="#{tramitesRua.cmi_imprimir1}"
+                                              id="cmi_imprimir1"
+                                              actionListener="#{tramitesRua.cmi_imprimir_actionListener}"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{tramitesRua.listaTramitesRua}"
+                                var="row" rowBandingInterval="1"
+                                binding="#{tramitesRua.t_tramitesRua}"
+                                id="t_tramitesRua" rowSelection="single"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                        <af:column id="cvv"
+                                   headerText="#{viewcontrollerBundle.login_campo_usuario}"
+                                   sortable="true" sortProperty="nombreUsuario"
+                                   width="170">
+                          <af:outputText value="#{row.nombreUsuario}"/>
+                        </af:column>
+                        <af:column id="cdxvv"
+                                   headerText="#{viewcontrollerBundle.PREDIO}"
+                                   sortable="true" sortProperty="nombrePredio"
+                                   width="170">
+                          <af:outputText value="#{row.nombrePredio}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.NUMERO_DE_EXPEDIENTE}"
+                                   align="start" id="c1"
+                                   sortProperty="numeroExpediente" width="70">
+                          <af:outputText value="#{row.numeroExpediente}"
+                                         id="conSinLink"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCION_CAUDAL}"
+                                   id="c2" sortProperty="resolucionCaudal"
+                                   width="70">
+                          <af:outputText value="#{row.resolucionCaudal}"
+                                         id="ot3"/>
+                        </af:column>
+                        <af:column id="ccaudal"
+                                   headerText="#{viewcontrollerBundle.CAUDAL}"
+                                   sortable="true"
+                                   sortProperty="caudal" width="70">
+                          <af:outputText value="#{row.caudal}"
+                                         id="ocaudal"/>
+                        </af:column>
+                             <af:column id="ccauddal"
+                                   headerText="Tipo Tramite"
+                                   sortable="true"
+                                   sortProperty="tipoTramite" width="60">
+                          <af:outputText value="#{row.tipoTramite}"
+                                         id="ocaudddal"/>
+                        </af:column>
+                        
+                        <af:column id="cfechainicio"
+                                   headerText="#{viewcontrollerBundle.FECHA_INICIO}"
+                                   sortable="true" sortProperty="fecha_inicio"
+                                   width="60">
+                          <af:outputText value="#{row.fecha_inicio}"/>
+                        </af:column>
+                        <af:column id="cfechafin"
+                                   headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}"
+                                   sortable="true" sortProperty="fecha_fin"
+                                   width="60">
+                          <af:outputText value="#{row.fecha_fin}"/>
+                        </af:column>
+                        <af:column id="autoridad" headerText="Autoridad"
+                                   sortable="true"
+                                   sortProperty="nombreAutoridad" width="80">
+                          <af:outputText value="#{row.nombreAutoridad}"/>
+                        </af:column>
+                        <af:column id="origen" headerText="Origen"
+                                   sortable="true"
+                                   sortProperty="origen" width="40">
+                          <af:outputText value="#{row.origen}"/>
+                        </af:column>
+                        <af:column sortable="true" headerText="Trasmitido"
+                                   id="c7Egw" width="50">
+                          <af:image id="image1"
+                                    source='#{row.aprobadoTrasmitido == 1 ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                        </af:column>
+                        <af:column sortable="true" headerText="Aprobar"
+                                   id="c7ssEgw" width="60">
+                                   
+                                   <af:commandButton text="Aprobar"
+                                          binding="#{tramitesRua.cb_aprobar}"
+                                          id="cb_tran" visible='#{row.aprobado}' 
+                                          actionListener="#{tramitesRua.cb_aprobar_actionListener}"
+                                          icon="/imgs/addavailable_dwn.png"/>
+                                   </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{tramitesRua.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:outputText value="Búsquedas de Tramites "
+                                 binding="#{tramitesRua.outputText1}"
+                                 id="outputText1"
+                                 styleClass="AFBrandingBarTitle"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{tramitesRua.pgl1}" id="pgl1">
+                  <af:panelFormLayout binding="#{tramitesRua.pfl1}" id="pfl1"></af:panelFormLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:tramitesRua-->
+</jsp:root>

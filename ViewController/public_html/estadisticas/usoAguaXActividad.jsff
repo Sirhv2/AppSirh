@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:usoAguaXActividad-->
+  <af:panelStretchLayout binding="#{usoAguaXActividad.psl1}" id="psl1"
+                         startWidth="0px" endWidth="0px" topHeight="0px"
+                         bottomHeight="0px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <dvt:horizontalBarGraph id="hbg1"
+                              binding="#{usoAguaXActividad.hbg1}"
+                              value="#{usoAguaXActividad.graphData}"
+                              threeDEffect="true" imageHeight="1000"
+                              imageWidth="1000" contentDelivery="immediate"
+                              dynamicResize="DYNAMIC_SIZE"
+                              drillingEnabled="true"
+                              subType="BAR_HORIZ_CLUST_2Y">
+        <dvt:background>
+          <dvt:specialEffects/>
+        </dvt:background>
+        <dvt:graphPlotArea/>
+        <dvt:seriesSet>
+          <dvt:series/>
+        </dvt:seriesSet>
+        <dvt:o1Axis/>
+        <dvt:y1Axis/>
+        <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      </dvt:horizontalBarGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

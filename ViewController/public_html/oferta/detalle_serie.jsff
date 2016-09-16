@@ -1,0 +1,1170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelTabbed inlineStyle="width:100%; height:350px;" >
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_DATOS_ESTACION}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESCR_DATOS_ESTACION}">
+      <af:panelGroupLayout >
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50" >
+          <af:outputLabel value="Nombre: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.nombreEs}"/>
+          <af:outputLabel value="Código Catalogo: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.codCatalogoEs}"/>
+          <af:outputLabel value="Escala: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.escalaEs}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Categoria: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.descCategoria}"/>
+          <af:outputLabel value="Clase: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.descClase}"/>
+          <af:outputLabel value="Tipo: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.descTipo}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Area: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.nomArea}"/>
+          <af:outputLabel value="Zona: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.nomZona}"/>
+          <af:outputLabel value="Subzona: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.nomSubzona}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Corriente: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.idCorriente}"/>
+          <af:outputLabel value="Estado: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.descEstado}"/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Altitud: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.altitud}"/>
+          <af:outputLabel value="Altura de Referencia: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.alturaReferenciaEs}"/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Latitud: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.gradosLatitud}° #{detalleEstacionBacking.estacionSeleccionada.minutosLatitud}' #{detalleEstacionBacking.estacionSeleccionada.segundosLatitud}&quot;"/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Longitud: "/>
+          <af:outputText value="#{detalleEstacionBacking.estacionSeleccionada.gradosLongitud}° #{detalleEstacionBacking.estacionSeleccionada.minutosLongitud}' #{detalleEstacionBacking.estacionSeleccionada.segundosLongitud}&quot;"/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+          <af:outputLabel value=""/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="Datos Morfometricos"
+                       shortDesc="#{viewcontrollerBundle.OF_DESCR_DATOS_ESTACION}"
+                       rendered="#{detalleEstacionBacking.flagMorfo}">
+      <af:panelGroupLayout halign="center">
+        <af:image shortDesc="grafMorfo" source="/imgs/datosMorfo.png"
+                  inlineStyle="width:132px; height:80px;"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Area de la cuenca (km 2)"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.areaCuencaStr}"/>
+          <af:outputLabel value="Densidad de drenaje "/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.densidadDrenajeStr}"/>
+          <af:outputLabel value="Desnivel del cauce"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.desnivelCauceStr}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Perimetro de la cuenca  (km)"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.perimetroStr}"/>
+          <af:outputLabel value="Densidad de corrientes"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.densidadDrenajeStr}"/>
+          <af:outputLabel value="Bosque (km2)"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.bosqueStr}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Pendiente media de la cuenca (%)"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.pendienteMediaCuencaStr}"/>
+          <af:outputLabel value="Pendiente media del cauce"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.pendienteMediaCauceStr}"/>
+          <af:outputLabel value="Elavacion media de la cuenca (msnm)"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.elevacionMediaStr}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Desnivel cuenca (m)"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.desnivelStr}"/>
+          <af:outputLabel value="Longitud del cauce"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.longitudCauceStr}"/>
+          <af:outputLabel value="Compacidad"/>
+          <af:outputText value="#{detalleEstacionBacking.datosAdicionalesEstacion.compacidadStr}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10"/>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_TABLA}"
+                       rendered="#{detalleEstacionBacking.diaria or detalleEstacionBacking.mensual}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESCR_TABLA_DATOS}"
+                       >
+      <af:panelGroupLayout inlineStyle="width:100%; height:100%;">
+        
+	<af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESCR_TABLA_DATOS}"
+                       inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <af:panelCollection inlineStyle="width:99%; height:100%;" >
+          <f:facet name="menus">
+            <af:menu text="#{viewcontrollerBundle.menu_archivo}" >
+                <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                  immediate="true"
+                                  partialSubmit="true"
+                                  rendered="#{detalleEstacionBacking.diaria}"
+                                  >
+                      <af:exportCollectionActionListener exportedId="table1"
+                                                         type="excelHTML"
+                                                         filename="serieDiaria.xls"/>
+                </af:commandMenuItem>
+                <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                  immediate="true"
+                                  partialSubmit="true"
+                                  rendered="#{detalleEstacionBacking.mensual}"
+                                  >
+                      <af:exportCollectionActionListener exportedId="table2"
+                                                         type="excelHTML"
+                                                         filename="serieMensual.xls"/>
+                </af:commandMenuItem>
+            </af:menu>
+          </f:facet>
+          
+          <af:table var="row" rendered="#{detalleEstacionBacking.diaria}"
+                    value="#{detalleEstacionBacking.datos}"
+                    id="table1" 
+                    >
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_AGNO}"
+                       width="25">
+              <af:outputText value="#{row.drsAno}"/>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES}"
+                       width="25">
+              <af:outputText value="#{row.drsMes}"/>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA1}"
+                       width="25">
+              <af:outputText value="#{row.drsValor1}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA2}"
+                       width="25">
+              <af:outputText value="#{row.drsValor2}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA3}"
+                       width="25">
+              <af:outputText value="#{row.drsValor3}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA4}"
+                       width="25">
+              <af:outputText value="#{row.drsValor4}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA5}"
+                       width="25">
+              <af:outputText value="#{row.drsValor5}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA6}"
+                       width="25">
+              <af:outputText value="#{row.drsValor6}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA7}"
+                       width="25">
+              <af:outputText value="#{row.drsValor7}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA8}"
+                       width="25">
+              <af:outputText value="#{row.drsValor8}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA9}"
+                       width="25">
+              <af:outputText value="#{row.drsValor9}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA10}"
+                       width="25">
+              <af:outputText value="#{row.drsValor10}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA11}"
+                       width="25">
+              <af:outputText value="#{row.drsValor11}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA12}"
+                       width="25">
+              <af:outputText value="#{row.drsValor12}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA13}"
+                       width="25">
+              <af:outputText value="#{row.drsValor13}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA14}"
+                       width="25">
+              <af:outputText value="#{row.drsValor14}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA15}"
+                       width="25">
+              <af:outputText value="#{row.drsValor15}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA16}"
+                       width="25">
+              <af:outputText value="#{row.drsValor16}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA17}"
+                       width="25">
+              <af:outputText value="#{row.drsValor17}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA18}"
+                       width="25">
+              <af:outputText value="#{row.drsValor18}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA19}"
+                       width="25">
+              <af:outputText value="#{row.drsValor19}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA20}"
+                       width="25">
+              <af:outputText value="#{row.drsValor20}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA21}"
+                       width="25">
+              <af:outputText value="#{row.drsValor21}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA22}"
+                       width="25">
+              <af:outputText value="#{row.drsValor22}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA23}"
+                       width="25">
+              <af:outputText value="#{row.drsValor23}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA24}"
+                       width="25">
+              <af:outputText value="#{row.drsValor24}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA25}"
+                       width="25">
+              <af:outputText value="#{row.drsValor25}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA26}"
+                       width="25">
+              <af:outputText value="#{row.drsValor26}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA27}"
+                       width="25">
+              <af:outputText value="#{row.drsValor27}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA28}"
+                       width="25">
+              <af:outputText value="#{row.drsValor28}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA29}"
+                       width="25">
+              <af:outputText value="#{row.drsValor29}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA30}"
+                       width="25">
+              <af:outputText value="#{row.drsValor30}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_DIA31}"
+                       width="25">
+              <af:outputText value="#{row.drsValor31}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+          <af:table var="row" rendered="#{detalleEstacionBacking.mensual}"
+                    value="#{detalleEstacionBacking.datos}"
+                    id="table2" 
+                    >
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_AGNO}"
+                       width="25">
+              <af:outputText value="#{row.mnsAno}"/>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES1}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor1}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES2}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor2}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES3}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor3}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES4}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor4}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES5}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor5}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES6}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor6}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES7}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor7}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES8}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor8}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES9}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor9}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES10}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor10}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES11}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor11}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortable="false"
+                       headerText="#{viewcontrollerBundle.LABEL_MES12}"
+                       width="25">
+              <af:outputText value="#{row.mnsValor12}">
+                <f:convertNumber maxFractionDigits="2"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+          
+        </af:panelCollection>
+        
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_FRECUENCIA_DATOS}"
+                       rendered="#{detalleEstacionBacking.showPromedio and detalleEstacionBacking.mensual}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESCR_SERIE_ANUAL}">
+      <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESCR_SERIE_ANUAL}"
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <dvt:barGraph subType="BAR_VERT_CLUST"
+                      tabularData="#{detalleEstacionBacking.tabularDataFrecuencia}"
+                      dynamicResize="FIXED_SIZE" imageHeight="300"
+                      imageWidth="1000" y1AxisTitle="Nivel medio mensual(centimetros)"
+                      o1AxisTitle="Años">
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet>
+            <dvt:series/>
+          </dvt:seriesSet>
+          <dvt:o1Axis/>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="#####.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea rendered="false"/>
+        </dvt:barGraph>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_RESUMEN_NUMERICO}"
+                       rendered="#{detalleEstacionBacking.diaria or detalleEstacionBacking.mensual}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESCR_RESUMEN_NUMERICO}">
+      <af:panelGroupLayout inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESCR_RESUMEN_NUMERICO}"
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          
+          <af:outputLabel value="Número datos: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.poblacion}">
+            <f:convertNumber integerOnly="true"/>
+          </af:outputText>
+          
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Número datos faltantes: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.nulos}">
+            <f:convertNumber integerOnly="true"/>
+          </af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Tratamiento datos faltantes: "/>
+          <af:outputText value="No incluidos en el análisis"/>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Fecha inicio datos: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.fechaMinima}"></af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Fecha fin datos: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.fechaMaxima}"></af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Suma datos: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.sumaDatos}">
+            <f:convertNumber integerOnly="false" maxFractionDigits="2"
+                             minFractionDigits="0"/>
+          </af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Media: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.media}">
+            <f:convertNumber integerOnly="false" minFractionDigits="0"
+                             maxFractionDigits="2"/>
+          </af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Máximo valor: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.maximo}">
+            <f:convertNumber integerOnly="false" minFractionDigits="0"
+                             maxFractionDigits="2"/>
+          </af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Mínimo valor: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.minimo}">
+            <f:convertNumber integerOnly="false" minFractionDigits="0"
+                             maxFractionDigits="2"/>
+          </af:outputText>
+        </af:panelFormLayout>
+        
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Q25: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.q25}"></af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="Q75: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.q75}"></af:outputText>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="2" rows="1" labelAlignment="top"
+                            fieldWidth="150" labelWidth="50">
+          <af:outputLabel value="IQR: "/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.iqr}"></af:outputText>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_HISTORICA}"
+                       rendered="#{detalleEstacionBacking.showHistorico}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESCR_SERIE_HISTORICA}">
+      <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESCR_SERIE_HISTORICA}"
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <dvt:lineGraph subType="LINE_VERT_ABS"
+                       tabularData="#{detalleEstacionBacking.tabularDataHistorico}"
+                       imageFormat="PNG" dynamicResize="FIXED_SIZE"
+                       imageWidth="1000" imageHeight="300"
+                       y1AxisTitle="#{detalleEstacionBacking.unidad}"
+                       o1AxisTitle="Fecha">
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet>
+            <dvt:series markerShape="MS_SQUARE" assignedToY2="true"
+                        color="#ff0000" lineWidth="1"/>
+          </dvt:seriesSet>
+          <dvt:o1Axis/>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="#####.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea rendered="false"/>
+        </dvt:lineGraph>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_CURVA}"
+                       rendered="#{detalleEstacionBacking.showCurva}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESC_CURVA_DURACION}">
+      <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESC_CURVA_DURACION}"
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <dvt:lineGraph subType="LINE_VERT_ABS"
+                       tabularData="#{detalleEstacionBacking.tabularDataDuracion}"
+                       imageFormat="PNG" dynamicResize="FIXED_SIZE"
+                       imageHeight="300" imageWidth="1000"
+                       y1AxisTitle="#{detalleEstacionBacking.unidadMedida}"
+                       o1AxisTitle="Porcentaje">
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet>
+            <dvt:series markerShape="MS_SQUARE" assignedToY2="true"
+                        color="#ff0000" lineWidth="1"/>
+          </dvt:seriesSet>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="#####.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea automaticPlacement="AP_NEVER"/>
+          <dvt:o1TickLabel textRotation="TR_HORIZ_ROTATE_90"
+                           tickLabelSkipMode="TLS_AUTOMATIC"
+                           tickLabelSkipCount="9" tickLabelSkipFirst="10"
+                           automaticRotation="AR_HORIZ_ROTATE_90">
+            <dvt:graphFont name="SansSerif" size="10" color="#000000"
+                           bold="false" italic="false" underline="false"/>
+          </dvt:o1TickLabel>
+          <dvt:legendArea rendered="false"/>
+          
+        </dvt:lineGraph>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="Indice IRH"
+                       rendered="#{detalleEstacionBacking.showCurva}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESC_IRH}">
+      <af:panelGroupLayout halign="center">
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="300" labelWidth="50">
+          <af:outputLabel value="Numero datos"/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.poblacion}"/>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="300" labelWidth="50">
+          <af:outputLabel value="Volumen total (Vt)"/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.areaTotal}"/>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="300" labelWidth="50">
+          <af:outputLabel value="Area bajo el 50% (Vp)"/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.areaTotal50}"/>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="300" labelWidth="50">
+          <af:outputLabel value="Indice Retencion y Regulacion Hidrica - IRH (Vp/Vt)"/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.irh}"/>
+        </af:panelFormLayout>
+        <af:panelFormLayout maxColumns="6" rows="1" labelAlignment="top"
+                            fieldWidth="300" labelWidth="50">
+          <af:outputLabel value="Categoria IRH"/>
+          <af:outputText value="#{detalleEstacionBacking.estadigrafos.categoriaIrh}"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="20"/>
+        <af:image shortDesc="catIrh" source="/imgs/categoriaIrh.png"/>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_ANUAL}"
+                       rendered="#{detalleEstacionBacking.showAnual}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESC_ANUAL}">
+      <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_IRH}"
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <dvt:lineGraph subType="LINE_VERT_ABS"
+                       tabularData="#{detalleEstacionBacking.tabularDataBoxPlot}"
+                       dynamicResize="FIXED_SIZE" imageWidth="1000"
+                       imageHeight="300"
+                       y1AxisTitle="#{detalleEstacionBacking.unidadMedida}"
+                       o1AxisTitle="Fecha" >
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                         defaultAssignedToY2="DY2_TRUE">
+            <dvt:series markerShape="MS_DIAMOND" color="#ff0000" lineWidth="1" />
+            <dvt:series color="#3173ff" lineStyle="LS_DOTTED" lineWidth="1" />
+            <dvt:series color="#00ff26" lineWidth="1"/>
+          </dvt:seriesSet>
+          <dvt:o1Axis/>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="#####.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea position="LAP_BOTTOM"/>
+          
+        </dvt:lineGraph>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_TAB_MULTIANUAL}"
+                       rendered="#{detalleEstacionBacking.diaria or detalleEstacionBacking.mensual}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESC_DATOS_MULTIANUALES}" inlineStyle="height:1000px;">
+      <af:panelStretchLayout inlineStyle="width:100%; height:1000px;">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:panelSplitter splitterPosition="170" disabled="true"
+                            orientation="vertical">
+            <f:facet name="first" >
+              <af:panelStretchLayout topHeight="0px" startWidth="0px"
+                                     endWidth="0px" bottomHeight="0px"
+                                     inlineStyle="width:100%;"
+                                     rendered="#{detalleEstacionBacking.mensual}"
+                                     >
+                <f:facet name="center">
+                  <af:panelGroupLayout inlineStyle="width:100%; height:100%;"
+                                       >
+                    <af:panelSplitter disabled="true" orientation="horizontal"
+                                      splitterPosition="550"
+                                      inlineStyle="width:100%;"
+                                      >
+                      <f:facet name="first">
+                        
+                        <af:panelCollection inlineStyle="width:100%; height:150px;">
+                            <f:facet name="menus">
+                                <af:menu text="#{viewcontrollerBundle.menu_archivo}" >
+                                    <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                                      immediate="true"
+                                                      partialSubmit="true"
+                                                      rendered="#{detalleEstacionBacking.mensual}"
+                                                      >
+                                          <af:exportCollectionActionListener exportedId="table3"
+                                                                             type="excelHTML"
+                                                                             filename="datosMultianuales.xls"/>
+                                    </af:commandMenuItem>
+                                    
+                                </af:menu>
+                            </f:facet>
+                          <af:table var="row"
+                                    rendered="#{detalleEstacionBacking.mensual}"
+                                    value="#{detalleEstacionBacking.datosMultianuales}"
+                                    id="table3"
+                                    >
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_AGNO}"
+                                       width="25">
+                              <af:outputText value="#{row.ano}"/>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES1}"
+                                       width="25">
+                              <af:outputText value="#{row.enero}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES2}"
+                                       width="25">
+                              <af:outputText value="#{row.febrero}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES3}"
+                                       width="25">
+                              <af:outputText value="#{row.marzo}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES4}"
+                                       width="25">
+                              <af:outputText value="#{row.abril}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES5}"
+                                       width="25">
+                              <af:outputText value="#{row.mayo}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES6}"
+                                       width="25">
+                              <af:outputText value="#{row.junio}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES7}"
+                                       width="25">
+                              <af:outputText value="#{row.julio}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES8}"
+                                       width="25">
+                              <af:outputText value="#{row.agosto}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES9}"
+                                       width="25">
+                              <af:outputText value="#{row.septiembre}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES10}"
+                                       width="25">
+                              <af:outputText value="#{row.octubre}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES11}"
+                                       width="25">
+                              <af:outputText value="#{row.noviembre}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_MES12}"
+                                       width="25">
+                              <af:outputText value="#{row.diciembre}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                          </af:table>
+                        
+                        </af:panelCollection>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelCollection inlineStyle="width:100%; height:150px;">
+                            <f:facet name="menus">
+                                <af:menu text="#{viewcontrollerBundle.menu_archivo}" >
+                                    <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                                      immediate="true"
+                                                      partialSubmit="true"
+                                                      rendered="#{detalleEstacionBacking.mensual}"
+                                                      >
+                                          <af:exportCollectionActionListener exportedId="table4"
+                                                                             type="excelHTML"
+                                                                             filename="datosInterAnuales.xls"/>
+                                    </af:commandMenuItem>
+                                    
+                                </af:menu>
+                            </f:facet>
+                          <af:table var="row"
+                                    rendered="#{detalleEstacionBacking.mensual}"
+                                    value="#{detalleEstacionBacking.datos}"
+                                    id="table4"
+                                    >
+                            <af:column sortable="false"
+                                       headerText="#{viewcontrollerBundle.LABEL_AGNO}"
+                                       width="25">
+                              <af:outputText value="#{row.mnsAno}"/>
+                            </af:column>
+                            <af:column sortable="false"
+                                       headerText="Promedio"
+                                       width="50">
+                              <af:outputText value="#{row.promedio}">
+                                <f:convertNumber maxFractionDigits="2"/>
+                              </af:outputText>
+                            </af:column>
+                            
+                          </af:table>
+                        
+                        </af:panelCollection>
+                      </f:facet>
+                    </af:panelSplitter>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelStretchLayout>
+            </f:facet>
+            <f:facet name="second">
+              <af:panelGroupLayout layout="scroll">
+                <af:panelCollection inlineStyle="width:100%; height:100px;">
+                    <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}" >
+                            <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                              immediate="true"
+                                              partialSubmit="true"
+                                              >
+                                  <af:exportCollectionActionListener exportedId="table5"
+                                                                     type="excelHTML"
+                                                                     filename="datosPromediosAnuales.xls"/>
+                            </af:commandMenuItem>
+                            
+                        </af:menu>
+                    </f:facet>
+                  <af:table var="row"
+                            value="#{detalleEstacionBacking.datosMultianualesResumen}"
+                            id="table5"
+                            >
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_TIPO}"
+                               width="50">
+                      <af:outputText value="#{row.tipo}"/>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES1}"
+                               width="35">
+                      <af:outputText value="#{row.enero}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES2}"
+                               width="35">
+                      <af:outputText value="#{row.febrero}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES3}"
+                               width="35">
+                      <af:outputText value="#{row.marzo}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES4}"
+                               width="35">
+                      <af:outputText value="#{row.abril}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES5}"
+                               width="35">
+                      <af:outputText value="#{row.mayo}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES6}"
+                               width="35">
+                      <af:outputText value="#{row.junio}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES7}"
+                               width="35">
+                      <af:outputText value="#{row.julio}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES8}"
+                               width="35">
+                      <af:outputText value="#{row.agosto}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES9}"
+                               width="35">
+                      <af:outputText value="#{row.septiembre}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES10}"
+                               width="35">
+                      <af:outputText value="#{row.octubre}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES11}"
+                               width="35">
+                      <af:outputText value="#{row.noviembre}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.LABEL_MES12}"
+                               width="35">
+                      <af:outputText value="#{row.diciembre}">
+                        <f:convertNumber maxFractionDigits="2"/>
+                      </af:outputText>
+                    </af:column>
+                  </af:table>
+                
+                </af:panelCollection>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:panelSplitter>
+        </f:facet>
+        <f:facet name="top">
+          <af:panelGroupLayout layout="horizontal">
+            <af:spacer width="10" height="10"/>
+            <af:outputText value="#{viewcontrollerBundle.OF_DESC_DATOS_MULTIANUALES}" 
+                           inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                            />
+            <af:spacer width="10" height="10"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelStretchLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_MULTIANUAL}"
+                       rendered="#{detalleEstacionBacking.showMultianual}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESC_GRAF_MULTIANUALES}">
+      <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESC_GRAF_MULTIANUALES}" 
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <dvt:lineGraph subType="LINE_VERT_ABS"
+                       tabularData="#{detalleEstacionBacking.tabularDataMultianual}"
+                       dynamicResize="FIXED_SIZE" imageWidth="1000"
+                       imageHeight="300"
+                       y1AxisTitle="#{detalleEstacionBacking.unidadMedida}"
+                       o1AxisTitle="Fecha">
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                         defaultAssignedToY2="DY2_TRUE">
+            <dvt:series markerShape="MS_DIAMOND" color="#ff0000" lineWidth="1"/>
+            <dvt:series color="#3173ff" lineStyle="LS_DOTTED" lineWidth="1"/>
+            <dvt:series color="#00ff26" lineStyle="LS_DOTTED" lineWidth="1"/>
+            <dvt:series markerShape="MS_CIRCLE" assignedToY2="true"
+                        color="#ff00ff" lineWidth="1"/>
+          </dvt:seriesSet>
+          <dvt:o1Axis/>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="#####.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea position="LAP_BOTTOM"/>
+        </dvt:lineGraph>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem text="#{viewcontrollerBundle.OF_GRAF_HISTOGRAMA}"
+                       rendered="#{detalleEstacionBacking.showHistograma}"
+                       shortDesc="#{viewcontrollerBundle.OF_DESC_HISTOGRAMA}">
+      <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+        <af:spacer width="10" height="10"/>
+        <af:outputText value="#{viewcontrollerBundle.OF_DESC_HISTOGRAMA}" 
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+        <af:spacer width="10" height="10"/>
+        <dvt:barGraph subType="BAR_VERT_CLUST"
+                      tabularData="#{detalleEstacionBacking.tabularDataHistograma}"
+                      dynamicResize="FIXED_SIZE" imageHeight="300"
+                      imageWidth="1000" y1AxisTitle="#{detalleEstacionBacking.unidad}"
+                      o1AxisTitle="Rangos">
+		      
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet >
+            <dvt:series />
+            
+          </dvt:seriesSet>
+          <dvt:o1Axis/>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="###.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea rendered="false"/>
+          
+        </dvt:barGraph>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    
+    <af:showDetailItem text="Precipitación vs Evaporación"
+                        rendered="#{detalleEstacionBacking.flagCompara}"
+                        shortDesc="#{viewcontrollerBundle.OF_DESC_PvsE}">
+         <af:panelGroupLayout layout="scroll"
+                           inlineStyle="width:100%; height:100%;">
+              <af:spacer width="10" height="10"/>
+              <af:outputText value="#{viewcontrollerBundle.OF_DESC_PvsE}" 
+                        inlineStyle="color:Red; font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:left;"
+                       />
+              <af:spacer width="10" height="10"/>
+        <dvt:lineGraph subType="LINE_VERT_ABS"
+                       tabularData="#{detalleEstacionBacking.tabularData}"
+                       dynamicResize="FIXED_SIZE" imageWidth="1000"
+                       imageHeight="300"
+                       y1AxisTitle="Prec. vs Evap."
+                       o1AxisTitle="Año">
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPlotArea/>
+          <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                         defaultAssignedToY2="DY2_TRUE">
+            <dvt:series markerShape="MS_DIAMOND" color="#ff0000" lineWidth="1"/>
+            <dvt:series color="#3173ff"  lineWidth="1"/>
+          </dvt:seriesSet>
+          <dvt:o1Axis/>
+          <dvt:y1Axis >
+            <dvt:numberFormat numberFormatString="#####.##"/>
+          </dvt:y1Axis>
+          <dvt:legendArea position="LAP_BOTTOM"/>
+        </dvt:lineGraph>
+      </af:panelGroupLayout>
+      
+    </af:showDetailItem>
+  </af:panelTabbed>
+</jsp:root>

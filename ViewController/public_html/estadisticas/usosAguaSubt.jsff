@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:panelStretchLayout binding="#{UsosAguaSubtBean.panelStretchLayout1}" id="panelStretchLayout1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <dvt:barGraph id="barGraphUsosAgua" subType="BAR_VERT_CLUST" binding="#{UsosAguaSubtBean.barGraphUsosAgua}"
+      value="#{ UsosAguaSubtBean.graphData}"
+       shortDesc="Usos del agua" contentDelivery="immediate" dynamicResize="DYNAMIC_SIZE">>
+        <dvt:background>
+          <dvt:specialEffects/>
+        </dvt:background>
+        <dvt:graphPlotArea/>
+        <dvt:seriesSet>
+          <dvt:series/>
+        </dvt:seriesSet>
+         <dvt:markerText>
+            <dvt:x1Format>
+            <dvt:numberFormat decimalDigit="0"/>
+            </dvt:x1Format>
+            <dvt:y1Format>
+            <dvt:numberFormat decimalDigit="0"/>
+            </dvt:y1Format>
+        </dvt:markerText>
+        <dvt:o1Axis/>
+        <dvt:y1Axis/>
+        <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      </dvt:barGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:UsosAguaSubtBean-->
+</jsp:root>

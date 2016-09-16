@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{AlertContBean.document1}" id="document1">
+      <af:form binding="#{AlertContBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{AlertContBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{AlertContBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="199"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{AlertContBean.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{AlertContBean.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertContBean.spacer4}"
+                                   id="spacer4"/>
+                       
+                       
+                        <af:commandLink text="Observatorio"
+                                        binding="#{AlertContBean.commandLink1}"
+                                        id="commandLink1"
+                                        action="observatorio"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertContBean.spacer1}"
+                                   id="spacer1"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA1}"
+                                        binding="#{AlertContBean.clink_grafico1}"
+                                        id="clink_grafico1"
+                                        action="alertaDisponibilidad"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertContBean.spacer6}"
+                                   id="spacer6"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA_ICA}"
+                                        binding="#{AlertContBean.commandLink2}"
+                                        id="commandLink2"
+                                        action="alertaIca"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertContBean.spacer2}"
+                                   id="spacer2"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA3}"
+                                        binding="#{AlertContBean.commandLink3}"
+                                        id="commandLink3" action="oferta"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertContBean.spacer3}"
+                                   id="spacer3"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA4}"
+                                        binding="#{AlertContBean.commandLink4}"
+                                        id="commandLink4"
+                                        action="contaminacion"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{AlertContBean.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelBox text="#{viewcontrollerBundle.GRAFICO_ALERTA2}"
+                                   binding="#{AlertContBean.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1"
+                                   showDisclosure="false" immediate="true"
+                                   inlineStyle="width:800px; height:600px;">
+                        <f:facet name="toolbar"/>
+                        <af:panelSplitter binding="#{AlertContBean.panelSplitter2}"
+                                          id="panelSplitter2"
+                                          orientation="vertical"
+                                          splitterPosition="90" disabled="true"
+                                          inlineStyle="width:100%;">
+                          <f:facet name="first">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{AlertContBean.panelGroupLayout4}"
+                                                 id="panelGroupLayout4">
+                              <af:panelFormLayout binding="#{AlertContBean.panelFormLayout12}"
+                                                  id="panelFormLayout12"
+                                                  rows="1" maxColumns="1">
+                                <af:selectOneChoice label="#{viewcontrollerBundle.PTO_TEXT}"
+                                                    binding="#{AlertContBean.sc_puntos}"
+                                                    id="sc_puntos"
+                                                    immediate="true"
+                                                    showRequired="true"
+                                                    autoSubmit="true"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    valueChangeListener="#{AlertContBean.sc_punto_valueChangeListener}">
+                                  <f:selectItems value="#{AlertContBean.listaPuntos}"
+                                                 binding="#{AlertContBean.selectpuntos}"
+                                                 id="selectpuntos"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                    binding="#{AlertContBean.seletPar}"
+                                                    id="seletPar"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true"
+                                                    immediate="true"
+                                                    valueChangeListener="#{AlertContBean.sc_parametro_valueChangeListener}"
+                                                    autoSubmit="true">
+                                  <f:selectItems value="#{AlertContBean.listaParametro}"
+                                                 binding="#{AlertContBean.selectItems3}"
+                                                 id="selectItems3"/>
+                                </af:selectOneChoice>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <f:facet name="second">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{AlertContBean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelFormLayout binding="#{AlertContBean.panelFormGrafico}"
+                                                  id="panelFormGrafico"
+                                                  maxColumns="1" rows="1"
+                                                  visible="false">
+                                <af:activeOutputText binding="#{AlertContBean.datos1}"
+                                                     id="datos1"
+                                                     value="#{viewcontrollerBundle.NORMA_DATOS}"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:activeOutputText binding="#{AlertContBean.dparamtro}"
+                                                     id="dparamtro"/>
+                                <af:activeOutputText binding="#{AlertContBean.dunidad}"
+                                                     id="dunidad"/>
+                                <dvt:lineGraph id="lineGraph11"
+                                               subType="LINE_VERT_ABS"
+                                               binding="#{AlertContBean.lineGraph11}"
+                                               tabularData="#{AlertContBean.listObjectGrafico}"
+                                               imageFormat="FLASH"
+                                               inlineStyle="width:880px;height:320px;"
+                                               animationOnDisplay="AUTO">
+                                  <dvt:background>
+                                    <dvt:specialEffects/>
+                                  </dvt:background>
+                                  <dvt:graphPlotArea/>
+                                  <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                                                 defaultAssignedToY2="DY2_TRUE"
+                                                 defaultLineWidth="3">
+                                    <dvt:series lineStyle="LS_SOLID"
+                                                color="#FF0000" lineWidth="2"/>
+                                    <dvt:series lineStyle="LS_SOLID"
+                                                color="#0000FF" lineWidth="2"/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:lineGraph>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelSplitter>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AlertContBean-->
+</jsp:root>

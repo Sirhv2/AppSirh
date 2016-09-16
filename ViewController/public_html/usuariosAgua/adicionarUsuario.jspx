@@ -1,0 +1,959 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{adicionarUsuario.d2}">
+      <af:form id="f2" binding="#{adicionarUsuario.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarUsuario.psl12}"
+                                   id="psl12"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="0px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100.0%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{adicionarUsuario.pgl115}"
+                                     id="pgl115">
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_USUARIO_DEL_AGUA} #{viewcontrollerBundle.PASO_1__TIPO_DE_USUARIO}"
+                               binding="#{adicionarUsuario.pb_paso_1}"
+                               id="pb_paso_1"
+                               showDisclosure="false" visible="true">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsuario.psl_paso_1}"
+                                           id="psl_paso_1"
+                                           inlineStyle="height:400.0px; width:100%;"
+                                           bottomHeight="51px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl265}"
+                                             id="pgl265"
+                                             halign="right" layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl398}"
+                                               id="pgl398" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_next_paso_1}"
+                                              id="cb_next_paso_1"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_next_paso_1_actionListener}"/>
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarUsuario.s141}"
+                                       id="s141"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelFormLayout binding="#{adicionarUsuario.pfl178}"
+                                            id="pfl178">
+                          <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_DE_USUARIO}"
+                                              binding="#{adicionarUsuario.soc_tipo_usuario}"
+                                              id="soc_tipo_usuario" showRequired="true"
+                                              value="#{adicionarUsuario.usuarioAgua.tipoUsuario}"
+                                              valueChangeListener="#{adicionarUsuario.soc_tipo_usuario_valueChangeListener}"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaTiposUsuarios}"
+                                           binding="#{adicionarUsuario.si1}"
+                                           id="si1"/>
+                          </af:selectOneChoice>
+                        
+                          <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                              binding="#{adicionarUsuario.soc_tipo_id}"
+                                              id="soc_tipo_id" showRequired="true"
+                                              value="#{adicionarUsuario.usuarioAgua.tipoDocumento}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              valueChangeListener="#{adicionarUsuario.soc_tipo_id_valueChangeListener}"
+                                              autoSubmit="true"
+                                              immediate="true">
+                            <f:selectItems value="#{adicionarUsuario.listaTiposDocumento}"
+                                           binding="#{adicionarUsuario.si2}"
+                                           id="si2"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                        binding="#{adicionarUsuario.it_numero_id}"
+                                        id="it_numero_id" showRequired="true"
+                                        value="#{adicionarUsuario.usuarioAgua.numeroDocumento}"
+                                        contentStyle="text-transform:uppercase;"
+                                        valueChangeListener="#{adicionarUsuario.it_numero_id_valueChangeListener}"
+                                        autoSubmit="true" immediate="true"/>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s245}"
+                                   id="s245"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s3}" id="s3"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText value="#{viewcontrollerBundle.SELECCIONE_EL_TIPO_DE_USUARIO_}"
+                                       binding="#{adicionarUsuario.ot174}"
+                                       id="ot174"
+                                       styleClass="AFBrandingBarTitle"/>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_USUARIO_DEL_AGUA} #{viewcontrollerBundle.PASO_2__INFORMACI_U00F3N_DEL_U}"
+                               binding="#{adicionarUsuario.pb_paso_2_natural}"
+                               id="pb_paso_2_natural" showDisclosure="false"
+                               visible="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsuario.psl_paso2_natural}"
+                                           id="psl_paso2_natural"
+                                           inlineStyle="height:400.0px; width:100%;">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl4}"
+                                             id="pgl4" layout="vertical"
+                                             halign="right">
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl5}"
+                                               id="pgl5" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarUsuario.cb_prev_paso_2_nat}"
+                                              id="cb_prev_paso_2_nat"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarUsuario.cb_prev_paso_2_nat_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s4}"
+                                       id="s4"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_next_paso_2_nat}"
+                                              id="cb_next_paso_2_nat"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_next_paso_2_nat_actionListener}"/>
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarUsuario.s5}"
+                                       id="s5"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelFormLayout binding="#{adicionarUsuario.pfl2}"
+                                            id="pfl2">
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_nombres}"
+                                        binding="#{adicionarUsuario.it_nombres_nat}"
+                                        id="it_nombres_nat"
+                                        value="#{adicionarUsuario.usuarioAgua.nombre}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                        binding="#{adicionarUsuario.it_apellidos_nat}"
+                                        id="it_apellidos_nat" showRequired="true"
+                                        value="#{adicionarUsuario.usuarioAgua.apellido}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                        binding="#{adicionarUsuario.it_direccion_nat}"
+                                        id="it_direccion_nat"
+                                        value="#{adicionarUsuario.usuarioAgua.direccion}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{adicionarUsuario.soc_depto_nat}"
+                                              id="soc_depto_nat"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true"
+                                              valueChangeListener="#{adicionarUsuario.soc_depto_nat_valueChangeListener}"
+                                              immediate="true"
+                                              autoSubmit="true">
+                            <f:selectItems value="#{adicionarUsuario.listaDepartamentos}"
+                                           binding="#{adicionarUsuario.si3}"
+                                           id="si3"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{adicionarUsuario.soc_municipio_nat}"
+                                              id="soc_municipio_nat"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true">
+                            <f:selectItems value="#{adicionarUsuario.listaMunicipios}"
+                                           binding="#{adicionarUsuario.si4}"
+                                           id="si4"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                        binding="#{adicionarUsuario.it_telefono_nat}"
+                                        id="it_telefono_nat"
+                                        value="#{adicionarUsuario.usuarioAgua.telefono}"/>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                        binding="#{adicionarUsuario.it_email_nat}"
+                                        id="it_email_nat"
+                                        value="#{adicionarUsuario.usuarioAgua.email}"/>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s7}" id="s7"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s6}" id="s6"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText value="#{viewcontrollerBundle.INGRESE_LA_INFORMACI_U00F3N_DE}"
+                                       binding="#{adicionarUsuario.ot236}"
+                                       id="ot236"
+                                       styleClass="AFBrandingBarTitle"/>
+                      </f:facet>
+                    </af:panelStretchLayout>                  
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_USUARIO_DEL_AGUA} #{viewcontrollerBundle.PASO_2__INFORMACI_U00F3N_DEL_U}"
+                               binding="#{adicionarUsuario.pb_paso_2_juridica}"
+                               id="pb_paso_2_juridica" showDisclosure="false"
+                               visible="false" inlineStyle="height:100%;">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsuario.psl4}"
+                                           id="psl4"
+                                           inlineStyle="width:100%; height:400px;">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl6}"
+                                             id="pgl6" layout="vertical"
+                                             halign="right">
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl7}"
+                                               id="pgl7" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarUsuario.cb_prev_paso_2_jur}"
+                                              id="cb_prev_paso_2_jur"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarUsuario.cb_prev_paso_2_jur_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s8}"
+                                       id="s8"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_next_paso2_jur}"
+                                              id="cb_next_paso2_jur"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_next_paso2_jur_actionListener}"/>
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarUsuario.s9}"
+                                       id="s9"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelFormLayout binding="#{adicionarUsuario.pfl3}"
+                                            id="pfl3">
+                          <af:inputText label="#{viewcontrollerBundle.RAZ_U00F3N_SOCIAL}"
+                                        binding="#{adicionarUsuario.it_nombre_jur}"
+                                        id="it_nombre_jur"
+                                        value="#{adicionarUsuario.usuarioAgua.nombre}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                        binding="#{adicionarUsuario.it_direccion_jur}"
+                                        id="it_direccion_jur"
+                                        value="#{adicionarUsuario.usuarioAgua.direccion}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{adicionarUsuario.soc_departamento_jur}"
+                                              id="soc_departamento_jur" showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                              valueChangeListener="#{adicionarUsuario.soc_depto_nat_valueChangeListener}">
+                            <f:selectItems value="#{adicionarUsuario.listaDepartamentos}"
+                                           binding="#{adicionarUsuario.si5}"
+                                           id="si5"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{adicionarUsuario.soc_municipio_jur}"
+                                              id="soc_municipio_jur"
+                                              showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaMunicipios}"
+                                           binding="#{adicionarUsuario.si6}"
+                                           id="si6"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                        binding="#{adicionarUsuario.it_telefono_jur}"
+                                        id="it_telefono_jur"
+                                        value="#{adicionarUsuario.usuarioAgua.telefono}"/>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                        binding="#{adicionarUsuario.it_email_jur}"
+                                        id="it_email_jur"
+                                        value="#{adicionarUsuario.usuarioAgua.email}"/>
+                          <af:inputText label="#{viewcontrollerBundle.ACTIVIDAD_CIIU}"
+                                        binding="#{adicionarUsuario.it_ciiu}"
+                                        id="it_ciiu" showRequired="true"
+                                        columns="10" readOnly="true"
+                                        value="#{adicionarUsuario.usuarioAgua.actividadCiiu != null ? adicionarUsuario.usuarioAgua.actividadCiiu.codigo : &quot;&quot;}"/>
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl19}"
+                                               id="pgl19" layout="horizontal">
+                            <af:outputLabel
+                                            binding="#{adicionarUsuario.ol_ciiu}"
+                                            id="ol_ciiu"/>
+                            <af:message binding="#{adicionarUsuario.m3}"
+                                        id="m3" for="ol_ciiu"/>
+                            <af:inputText label="Label 1"
+                                          binding="#{adicionarUsuario.it_desc_ciiu}"
+                                          id="it_desc_ciiu" simple="true"
+                                          rows="3" readOnly="true"
+                                          value="#{adicionarUsuario.usuarioAgua.actividadCiiu != null ? adicionarUsuario.usuarioAgua.actividadCiiu.descripcion : &quot;&quot;}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s29}"
+                                       id="s29"/>
+                            <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                              binding="#{adicionarUsuario.cb_mostrar_ciiu}"
+                                              id="cb_mostrar_ciiu"
+                                              icon="/imgs/binoculars_24.png"
+                                              actionListener="#{adicionarUsuario.cb_mostrar_ciiu_actionListener}"/>
+                          </af:panelGroupLayout>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s11}" id="s11"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s10}" id="s10"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText value="#{viewcontrollerBundle.INGRESE_LA_INFORMACI_U00F3N__0}"
+                                       binding="#{adicionarUsuario.ot3}"
+                                       id="ot3"
+                                       styleClass="AFBrandingBarTitle"/>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_USUARIO_DEL_AGUA}  #{viewcontrollerBundle.PASO_2__INFORMACI_U00F3N_DEL_M}"
+                               binding="#{adicionarUsuario.pb_paso2_mun}"
+                               id="pb_paso2_mun" visible="false"
+                               inlineStyle="height:100%;"
+                               showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsuario.psl5}"
+                                           id="psl5"
+                                           inlineStyle="width:100%; height:400.0px;">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl8}"
+                                             id="pgl8" layout="vertical"
+                                             halign="right">
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl9}"
+                                               id="pgl9" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarUsuario.cb_prev_paso2_mun}"
+                                              id="cb_prev_paso2_mun"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarUsuario.cb_prev_paso2_mun_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s12}"
+                                       id="s12"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_next_paso2_mun}"
+                                              id="cb_next_paso2_mun"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_next_paso2_mun_actionListener}"/>
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarUsuario.s13}"
+                                       id="s13"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelFormLayout binding="#{adicionarUsuario.pfl4}"
+                                            id="pfl4">
+                          <af:inputText label="#{viewcontrollerBundle.NOMBRE_DE_LA_EMPRESA}"
+                                        binding="#{adicionarUsuario.it_nombre_mun}"
+                                        id="it_nombre_mun"
+                                        value="#{adicionarUsuario.usuarioAgua.nombre}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                        binding="#{adicionarUsuario.it_direccion_mun}"
+                                        id="it_direccion_mun"
+                                        value="#{adicionarUsuario.usuarioAgua.direccion}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{adicionarUsuario.soc_depto_mun}"
+                                              id="soc_depto_mun"
+                                              showRequired="true"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                              valueChangeListener="#{adicionarUsuario.soc_depto_nat_valueChangeListener}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaDepartamentos}"
+                                           binding="#{adicionarUsuario.si7}"
+                                           id="si7"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{adicionarUsuario.soc_municipio_mun}"
+                                              id="soc_municipio_mun"
+                                              showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaMunicipios}"
+                                           binding="#{adicionarUsuario.si8}"
+                                           id="si8"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                        binding="#{adicionarUsuario.it_telefono_mun}"
+                                        id="it_telefono_mun"
+                                        value="#{adicionarUsuario.usuarioAgua.telefono}"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_DE_CENTRO_POBLADO}"
+                                              binding="#{adicionarUsuario.soc_tipo_centro_poblado}"
+                                              id="soc_tipo_centro_poblado"
+                                              showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaTipoCentroPoblado}"
+                                           binding="#{adicionarUsuario.si16}"
+                                           id="si16"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.CENTRO_POBLADO}"
+                                        binding="#{adicionarUsuario.it_centro_poblado_mun}"
+                                        id="it_centro_poblado_mun"
+                                        shortDesc="Nombre del Centro Poblado al cual abastece"
+                                        value="#{adicionarUsuario.predio.nombreCentroPoblado}"
+                                        showRequired="true"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.CLASIFICACION_DEL_SUELO}"
+                                              binding="#{adicionarUsuario.soc_mun_tipo_suelo}"
+                                              id="soc_mun_tipo_suelo"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaClasificacionSuelo}"
+                                           binding="#{adicionarUsuario.si17}"
+                                           id="si17"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                        binding="#{adicionarUsuario.it_emanil_mun}"
+                                        id="it_emanil_mun"
+                                        value="#{adicionarUsuario.usuarioAgua.email}"/>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s15}" id="s15"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s14}" id="s14"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText value="#{viewcontrollerBundle.INGRESE_LA_INFORMACI_U00F3N__1}"
+                                       binding="#{adicionarUsuario.ot4}"
+                                       id="ot4"
+                                       styleClass="AFBrandingBarTitle"/>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_USUARIO_DEL_AGUA}  #{viewcontrollerBundle.PASO___DETALLE_DEL_PREDIO}"
+                               binding="#{adicionarUsuario.pb_paso_predio}"
+                               id="pb_paso_predio" visible="false"
+                               showDisclosure="false"
+                               inlineStyle="height:100%;">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsuario.psl6}"
+                                           id="psl6"
+                                           inlineStyle="width:100%; height:420px;">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl10}"
+                                             id="pgl10" layout="vertical"
+                                             halign="right">
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl11}"
+                                               id="pgl11" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.boton_cancelar}"
+                                              binding="#{adicionarUsuario.cb_cancelar_predio}"
+                                              id="cb_cancelar_predio"
+                                              icon="/imgs/close.png"
+                                              actionListener="#{adicionarUsuario.cb_cancelar_predio_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s20}"
+                                       id="s20"/>
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarUsuario.cb_prev_predio}"
+                                              id="cb_prev_predio"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarUsuario.cb_prev_predio_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s16}"
+                                       id="s16"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_terminar}"
+                                              id="cb_terminar"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_terminar_actionListener}"/>
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarUsuario.s17}"
+                                       id="s17"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout id="group999" layout="scroll"
+                                             inlineStyle=" height:450px;">
+                        <af:panelFormLayout binding="#{adicionarUsuario.pfl5}"
+                                            id="pfl5">
+                          <af:inputText label="#{viewcontrollerBundle.menu_nombre}"
+                                        binding="#{adicionarUsuario.it_nombre_predio}"
+                                        id="it_nombre_predio"
+                                        showRequired="true"
+                                        value="#{adicionarUsuario.predio.nombre}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                        binding="#{adicionarUsuario.it_direccion_predio}"
+                                        id="it_direccion_predio"
+                                        showRequired="true"
+                                        value="#{adicionarUsuario.predio.direccion}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{adicionarUsuario.soc_depto_predio}"
+                                              id="soc_depto_predio"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true"
+                                              value="#{adicionarUsuario.predio.departamento}"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                              valueChangeListener="#{adicionarUsuario.soc_depto_predio_valueChangeListener}">
+                            <f:selectItems value="#{adicionarUsuario.listaDeptosPredio}"
+                                           binding="#{adicionarUsuario.si9}"
+                                           id="si9"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{adicionarUsuario.soc_municipio_predio}"
+                                              id="soc_municipio_predio"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true"
+                                              value="#{adicionarUsuario.predio.municipio}">
+                            <f:selectItems value="#{adicionarUsuario.listaMunPredio}"
+                                           binding="#{adicionarUsuario.si10}"
+                                           id="si10"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.C_EDULA_CATASTRAL}"
+                                        binding="#{adicionarUsuario.it_cedula_predio}"
+                                        id="it_cedula_predio"
+                                        showRequired="true"
+                                        value="#{adicionarUsuario.predio.cedulaCatastral}"
+                                        contentStyle="text-transform:uppercase;"/>
+                            <af:inputText label="#{viewcontrollerBundle.MATRICULA_CATASTRAL}"
+                                          binding="#{adicionarUsuario.it_matricula}"
+                                          id="it_matricula"
+                                          value="#{adicionarUsuario.predio.matriculaCatastral}"
+                                          showRequired="true"
+                                          contentStyle="text-transform:uppercase;"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.CLASIFICACION_DEL_SUELO}"
+                                              binding="#{adicionarUsuario.soc_clasifica_suelo}"
+                                              id="soc_clasifica_suelo"
+                                              showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              value="#{adicionarUsuario.predio.tipoSuelo}">
+                            <f:selectItems value="#{adicionarUsuario.listaClasificacionSuelo}"
+                                           binding="#{adicionarUsuario.si11}"
+                                           id="si11"/>
+                          </af:selectOneChoice>
+                         
+                            <af:inputText label="Area"
+                                        binding="#{adicionarUsuario.itarea}"
+                                        id="itarea" columns="7"
+                                          value="#{adicionarUsuario.predio.area}"
+                                        />
+                          <af:selectOneChoice label="#{viewcontrollerBundle.SISTEMA_DE_REFERENCIA}"
+                                              binding="#{adicionarUsuario.soc_sistema_referencia}"
+                                              id="soc_sistema_referencia"
+                                              value="#{adicionarUsuario.predio.sistemaReferencia}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              >
+                            <f:selectItems value="#{adicionarUsuario.listaSistemasReferencia}"
+                                           binding="#{adicionarUsuario.si12}"
+                                           id="si12"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.ALTITUD}"
+                                        binding="#{adicionarUsuario.it_altitud}"
+                                        id="it_altitud" 
+                                        columns="7"
+                                        value="#{adicionarUsuario.predio.altitud}">
+                        <af:convertNumber type="number"
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="false"
+                                                  groupingUsed="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="3"  />
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="5500.0"/>
+                            </af:inputText>
+                            
+                          </af:panelFormLayout>
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl13}"
+                                               id="pgl13" layout="vertical">
+                            <af:panelFormLayout binding="#{adicionarUsuario.pfl6}"
+                                              id="pfl6" rows="1"
+                                              maxColumns="99999"
+                                              labelAlignment="top">
+                            <f:facet name="footer"/>
+                              <af:spacer width="80" height="10"
+                                         binding="#{adicionarUsuario.s22}"
+                                         id="s22"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                              binding="#{adicionarUsuario.ol1}"
+                                              id="ol1"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                          binding="#{adicionarUsuario.it_grados}"
+                                          id="it_grados" columns="5"
+                                          
+                                          value="#{adicionarUsuario.predio.gradosLatitud}">
+                              <af:convertNumber type="number"
+                                                integerOnly="true"
+                                                minIntegerDigits="1"
+                                                maxIntegerDigits="2"/>
+                              <af:validateLongRange minimum="-4"
+                                                    maximum="15"/>
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                          binding="#{adicionarUsuario.it_minutos}"
+                                          id="it_minutos" columns="5"
+                                          
+                                          value="#{adicionarUsuario.predio.minutosLatitud}">
+                              <af:convertNumber type="number"
+                                                integerOnly="true"
+                                                minIntegerDigits="1"
+                                                maxIntegerDigits="2"/>
+                              <af:validateLongRange minimum="0" maximum="59"/>
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                          binding="#{adicionarUsuario.it_segundos}"
+                                          id="it_segundos" columns="5"
+                                          
+                                          value="#{adicionarUsuario.predio.segundosLatitud}">
+                              <af:convertNumber type="number"
+                                                integerOnly="false"
+                                                minIntegerDigits="1"
+                                                maxIntegerDigits="2"
+                                                minFractionDigits="0"
+                                                maxFractionDigits="5"
+                                                pattern="##.#####"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                            </af:inputText>
+                          </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{adicionarUsuario.pfl9}"
+                                                id="pfl9" rows="1"
+                                                maxColumns="999999"
+                                                labelAlignment="top">
+                              <f:facet name="footer"/>
+                              <af:spacer width="80" height="10"
+                                         binding="#{adicionarUsuario.s30}"
+                                         id="s30"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                              binding="#{adicionarUsuario.ol2}"
+                                              id="ol2"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{adicionarUsuario.it2}"
+                                            id="it2" columns="5"
+                                            
+                                            value="#{adicionarUsuario.predio.gradosLongitud}">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{adicionarUsuario.it1}"
+                                            id="it1" columns="5"
+                                            
+                                            value="#{adicionarUsuario.predio.minutosLongitud}">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{adicionarUsuario.it3}"
+                                            id="it3" columns="5"
+                                            
+                                            value="#{adicionarUsuario.predio.segundosLongitud}">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"
+                                                  pattern="##.#####"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                             <af:inputText label="#{viewcontrollerBundle.OBSERVACIONES}"
+                                          binding="#{adicionarUsuario.it_observaciones}"
+                                          id="it_observaciones"
+                                          value="#{adicionarUsuario.predio.observaciones}"
+                                          rows="3" columns="80"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s19}" id="s19"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s18}" id="s18"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText
+                                       binding="#{adicionarUsuario.ot5}"
+                                       id="ot5"
+                                       styleClass="AFBrandingBarTitle"
+                                       value="#{viewcontrollerBundle.INGRESE_LOS_DATOS_DEL_PREDIO}"/>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.REPRESENTANTE_LEGAL}"
+                               binding="#{adicionarUsuario.pb_paso_rep_legal}"
+                               id="pb_paso_rep_legal" showDisclosure="false"
+                               visible="false" inlineStyle="height:100%;">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsuario.psl8}"
+                                           id="psl8"
+                                           inlineStyle="width:100%; height:400.0px;">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl15}"
+                                             id="pgl15" layout="vertical"
+                                             halign="right">
+                          <af:panelGroupLayout binding="#{adicionarUsuario.pgl16}"
+                                               id="pgl16" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarUsuario.cb_prev_rep_legal}"
+                                              id="cb_prev_rep_legal"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarUsuario.cb_prev_rep_legal_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s23}"
+                                       id="s23"/>
+                            <af:commandButton text="#{viewcontrollerBundle.boton_cancelar}"
+                                              binding="#{adicionarUsuario.cb_cancelar_rep_legal}"
+                                              id="cb_cancelar_rep_legal"
+                                              visible="#{adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==2 || adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==136 || adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==956}"
+                                              icon="/imgs/close.png"
+                                              actionListener="#{adicionarUsuario.cb_cancelar_predio_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarUsuario.s28}"
+                                       id="s28"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_terminar_mun}"
+                                              id="cb_terminar_mun"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_terminar_mun_actionListener}"
+                                              visible="#{adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==2 || adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==136 || adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==956}"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsuario.cb_next_rep_legal}"
+                                              id="cb_next_rep_legal"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsuario.cb_next_rep_legal_actionListener}"
+                                              visible="#{adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==3 || adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==4 || adicionarUsuario.usuarioAgua.tipoUsuario.codigo ==1}"/>
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarUsuario.s24}"
+                                       id="s24"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelFormLayout binding="#{adicionarUsuario.pfl7}"
+                                            id="pfl7">
+                          <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                              binding="#{adicionarUsuario.soc_rep_tipo_id}"
+                                              id="soc_rep_tipo_id"
+                                              value="#{adicionarUsuario.representanteLegal.tipoDocumento}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true">
+                            <f:selectItems value="#{adicionarUsuario.listaTiposDocumento}"
+                                           binding="#{adicionarUsuario.si15}"
+                                           id="si15"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                        binding="#{adicionarUsuario.it_repl_numero_id}"
+                                        id="it_repl_numero_id"
+                                        value="#{adicionarUsuario.representanteLegal.numeroDocumento}"
+                                        contentStyle="text-transform:uppercase;"
+                                        showRequired="true"/>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_nombres}"
+                                        binding="#{adicionarUsuario.it_repl_nombres}"
+                                        id="it_repl_nombres" showRequired="true"
+                                        value="#{adicionarUsuario.representanteLegal.nombres}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                        binding="#{adicionarUsuario.it_repl_apellidos}"
+                                        id="it_repl_apellidos" showRequired="true"
+                                        value="#{adicionarUsuario.representanteLegal.apellidos}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                        binding="#{adicionarUsuario.it_repl_direccion}"
+                                        id="it_repl_direccion" showRequired="true"
+                                        value="#{adicionarUsuario.representanteLegal.direccion}"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{adicionarUsuario.soc_repl_depto}"
+                                              id="soc_repl_depto" showRequired="true"
+                                              value="#{adicionarUsuario.representanteLegal.departamento}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              valueChangeListener="#{adicionarUsuario.soc_repl_depto_valueChangeListener}"
+                                              immediate="true"
+                                              autoSubmit="true">
+                            <f:selectItems
+                                           binding="#{adicionarUsuario.si13}"
+                                           id="si13"
+                                           value="#{adicionarUsuario.listaDeptosRepresentante}"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{adicionarUsuario.soc_repl_municipio}"
+                                              id="soc_repl_municipio" showRequired="true"
+                                              value="#{adicionarUsuario.representanteLegal.municipio}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                            <f:selectItems value="#{adicionarUsuario.listaMunRepresentante}"
+                                           binding="#{adicionarUsuario.si14}"
+                                           id="si14"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                        binding="#{adicionarUsuario.it_repl_telefono}"
+                                        id="it_repl_telefono"
+                                        value="#{adicionarUsuario.representanteLegal.telefono}"/>
+                          <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                        binding="#{adicionarUsuario.it_repl_email}"
+                                        id="it_repl_email"
+                                        value="#{adicionarUsuario.representanteLegal.email}"/>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s26}" id="s26"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarUsuario.s25}" id="s25"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText value="#{viewcontrollerBundle.INGRESE_LA_INFORMACI_U00F3N__2}"
+                                       binding="#{adicionarUsuario.ot9}"
+                                       id="ot9"
+                                       styleClass="AFBrandingBarTitle"/>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{adicionarUsuario.p_cancelar}"
+                            id="p_cancelar">
+                    <af:dialog binding="#{adicionarUsuario.d_cancelar}"
+                               id="d_cancelar" type="none"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                               noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}">
+                      <af:outputText value="#{viewcontrollerBundle.CONFRIMA_CANCELACION}"
+                                     binding="#{adicionarUsuario.ot6}"
+                                     id="ot6"/>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl12}"
+                                             id="pgl12">
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                            binding="#{adicionarUsuario.cb_si_cancelar}"
+                                            id="cb_si_cancelar"
+                                            action="#{adicionarUsuario.getCancelarAction}"
+                                            actionListener="#{adicionarUsuario.cb_si_cancelar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{adicionarUsuario.s21}"
+                                     id="s21"/>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                            binding="#{adicionarUsuario.cb_no_cancelar}"
+                                            id="cb_no_cancelar"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{adicionarUsuario.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{adicionarUsuario.d_registro_exitoso}"
+                               id="d_registro_exitoso" type="none"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               closeIconVisible="false">
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{adicionarUsuario.pgl14}"
+                                             id="pgl14">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{adicionarUsuario.cb_aceptar}"
+                                            id="cb_aceptar"
+                                            actionListener="#{adicionarUsuario.cb_aceptar_actionListener}"
+                                            action="#{adicionarUsuario.getCancelarAction}"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:panelStretchLayout binding="#{adicionarUsuario.psl7}"
+                                             id="psl7" endWidth="0px"
+                                             topHeight="0px" bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="#{viewcontrollerBundle.REGISTRO_USUARIO_PREDIO_OK}"
+                                         binding="#{adicionarUsuario.ot8}"
+                                         id="ot8"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image source="/imgs/info.png" shortDesc="info"
+                                    binding="#{adicionarUsuario.i1}" id="i1"/>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{adicionarUsuario.p_ciiu}" id="p_ciiu">
+                    <af:dialog binding="#{adicionarUsuario.d_ciiu}"
+                               id="d_ciiu" type="yesNoCancel"
+                               title="#{viewcontrollerBundle.SELECCIONAR_ACTIVIDAD_CIIU}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                               noTextAndAccessKey="#{viewcontrollerBundle.SELECCIONAR}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{adicionarUsuario.d_ciiu_dialogListener}">
+                      <af:panelStretchLayout binding="#{adicionarUsuario.psl9}"
+                                             id="psl9" startWidth="0px"
+                                             endWidth="0px" topHeight="40px"
+                                             bottomHeight="0px"
+                                             inlineStyle="width:691px; height:411px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                        <f:subview id="s27" binding="#{adicionarUsuario.s27}">
+                        <jsp:include page="/usuariosAgua/buscarCiiu.jsff" flush="false"/>
+                      </f:subview>                        
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelFormLayout binding="#{adicionarUsuario.pfl8}"
+                                              id="pfl8">
+                            <af:message binding="#{adicionarUsuario.m2}" id="m2"
+                                        for="ol_mensaje" messageType="error"/>
+                            <af:outputLabel
+                                            binding="#{adicionarUsuario.ol_invisible}"
+                                            id="ol_invisible"/>
+                            <af:outputLabel
+                                            binding="#{adicionarUsuario.ol_mensaje}"
+                                            id="ol_mensaje"/>
+                          </af:panelFormLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarUsuario-->
+</jsp:root>

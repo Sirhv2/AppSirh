@@ -1,0 +1,663 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{ofertaDemanda.d2}">
+      <af:form id="f2" binding="#{ofertaDemanda.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{ofertaDemanda.psl_total}"
+                                   id="psl_total" startWidth="0px"
+                                   endWidth="0px" topHeight="20px"
+                                   bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{ofertaDemanda.pgl2}" id="pgl2"
+                                     layout="scroll">
+                  <af:panelBox text="#{viewcontrollerBundle.DETALLE_PLAN_DE_ODENAMIENTO}"
+                               binding="#{ofertaDemanda.pb1}" id="pb1"
+                               showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout binding="#{ofertaDemanda.pfl1}"
+                                        id="pfl1" labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderOferta}">
+                      <af:outputText value="#{viewcontrollerBundle.PORH_OFERTA}"
+                                     binding="#{ofertaDemanda.ot1}" id="ot1"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl2" rows="3"
+                                        visible="#{ofertaDemanda.renderOferta}">
+                      <af:inputText label="#{viewcontrollerBundle.OFERTA_TOTAL} #{viewcontrollerBundle.A_U00F1O_HUMEDO}"
+                                    binding="#{ofertaDemanda.it1}" id="it1"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.oferta_tot_anno_hum}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.OFERTA_TOTAL} #{viewcontrollerBundle.A_U00F1O_MEDIO}"
+                                    binding="#{ofertaDemanda.it_oferta_anio_medio}"
+                                    id="it_oferta_anio_medio" columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.oferta_tot_anno_medio}"
+                                    valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                    immediate="true" autoSubmit="true"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.OFERTA_TOTAL} #{viewcontrollerBundle.A_U00F1O_SECO}"
+                                    binding="#{ofertaDemanda.it15}" id="it15"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.oferta_tot_anno_seco}"
+                                    maximumLength="8"/>
+                      <af:inputText
+                                    binding="#{ofertaDemanda.it2}" id="it2"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.oferta_neta}"
+                                    maximumLength="8"
+                                    label="#{viewcontrollerBundle.OFERTA_DISPONIBLE}"/>
+                      <af:inputText label="#{viewcontrollerBundle.OFERTA_DISPONIBLE}"
+                                    binding="#{ofertaDemanda.it_oferta_disponible}"
+                                    id="it_oferta_disponible" columns="10"
+                                    value="#{ofertaDemanda.valorOfertaDisponibleCalculada}"
+                                    readOnly="true" rendered="false"/>
+                      <af:inputText label="#{viewcontrollerBundle.PORH_OYD_METODO_EMPLEADO}"
+                                    binding="#{ofertaDemanda.inputTextmetodo_empleado}"
+                                    id="inputTextmetodo_empleado" columns="80"
+                                    rows="4"
+                                    value="#{ofertaDemanda.ofertaDemanda.metodo_empleado}"
+                                    maximumLength="300"/>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10"
+                               visible="#{ofertaDemanda.renderOferta}"
+                               binding="#{ofertaDemanda.s3}" id="s3"/>
+                    <af:panelFormLayout id="pfl_3" labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderOferta}">
+                      <af:outputText value="#{viewcontrollerBundle.CAUDAL__}"
+                                     binding="#{ofertaDemanda.ot4}" id="ot4"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_4"
+                                        visible="#{ofertaDemanda.renderOferta}">
+                      <af:panelCollection binding="#{ofertaDemanda.pc1}"
+                                          id="pc1" inlineStyle="width:95%;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{ofertaDemanda.listaCaudal}" var="row"
+                                  rowBandingInterval="1"
+                                  binding="#{ofertaDemanda.t_caudal}"
+                                  id="t_caudal" autoHeightRows="2"
+                                  contentDelivery="immediate" width="95%">
+                          <af:column sortable="false" align="start" id="c1"
+                                     rowHeader="false" width="200">
+                            <af:outputText value="#{row.nombre}" id="ot2"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.ENERO}"
+                                     id="c3" width="60">
+                            <af:inputText label="Label 1" id="it13"
+                                          value="#{row.enero}" columns="8"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.FENRERO}"
+                                     id="c4" width="60">
+                            <af:inputText label="Label 1" id="inputText1"
+                                          value="#{row.febrero}" columns="8"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.MARZO}"
+                                     id="c5" width="60">
+                            <af:inputText label="Label 1" id="inputText2"
+                                          value="#{row.marzo}" columns="8"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.ABRIL__}"
+                                     id="c6" width="60">
+                            <af:inputText label="Label 1" id="inputText3"
+                                          value="#{row.abril}" columns="8"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.MAYO}"
+                                     id="c7" width="60">
+                            <af:inputText label="Label 1" id="inputText4"
+                                          value="#{row.mayo}" columns="8"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.JUNIO}"
+                                     id="c8" width="60">
+                            <af:inputText label="Label 1" id="inputText5"
+                                          value="#{row.junio}" columns="8"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.JULIO}"
+                                     id="c9" width="60">
+                            <af:inputText label="Label 1" id="inputText6"
+                                          value="#{row.julio}" columns="8"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.AGOSTO}"
+                                     id="c10" width="60">
+                            <af:inputText label="Label 1" id="inputText7"
+                                          value="#{row.agosto}" columns="8"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.SEPTIEMBRE}"
+                                     id="c11" width="60">
+                            <af:inputText label="Label 1" id="inputText8"
+                                          value="#{row.septiembre}" columns="8"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.OCTUBRE}"
+                                     id="c12" width="60">
+                            <af:inputText label="Label 1" id="inputText9"
+                                          value="#{row.octubre}" columns="8"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.NOVIEMBRE}"
+                                     id="c13" width="60">
+                            <af:inputText label="Label 1" id="inputText10"
+                                          value="#{row.noviembre}" columns="8"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          autoSubmit="true" maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.DICIEMBRE}"
+                                     id="c14" width="60">
+                            <af:inputText label="Label 1" id="inputText11"
+                                          value="#{row.diciembre}" columns="8"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.it_oferta_anio_medio_valueChangeListener}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.MEDIO_ANUAL}"
+                                     id="c_total" width="60">
+                            <af:inputText label="Label 1" id="inputText12"
+                                          binding="#{ofertaDemanda.caudalTotal}"
+                                          value="#{row.promedio}" columns="8"
+                                          readOnly="true" maximumLength="8"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10"
+                               visible="#{ofertaDemanda.renderOferta}"
+                               id="spacer_caudal_ambiental"/>
+                    <af:panelFormLayout id="pfl_caudal_ambiental"
+                                        labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderOferta}">
+                      <af:outputText value="#{viewcontrollerBundle.CAUDAL_AMBIENTAL}"
+                                     binding="#{ofertaDemanda.outputText_caudal_ambiental}"
+                                     id="outputText_caudal_ambiental"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_caudal_ambiental_input_metodologia"
+                                        labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderOferta}">
+                      <af:selectOneChoice label="#{viewcontrollerBundle.CAUDAL_AMBIENTAL_INPUT}"
+                                          binding="#{ofertaDemanda.selectOneChoiceMetodologia}"
+                                          id="selectOneChoiceMetodologia"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeListenerMetodologia}"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          value="#{ofertaDemanda.ofertaDemanda.cau_amb_met}"
+                                          autoSubmit="true">
+                        <f:selectItems value="#{ofertaDemanda.metodologiasCaudalAmbiental}"
+                                       binding="#{ofertaDemanda.selectItemsMetodologia}"
+                                       id="selectItemsMetodologia"/>
+                      </af:selectOneChoice>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_caudal_ambiental_metodologia_1"
+                                        binding="#{ofertaDemanda.panelFormLayoutMetodologia1}"
+                                        labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderMetodologia1 and ofertaDemanda.renderOferta}">
+                      <af:inputText label="#{viewcontrollerBundle.CAUDAL_AMBIENTAL_INPUT}"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.cau_amb_met1_val}"
+                                    maximumLength="8"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_caudal_ambiental_metodologia_2"
+                                        binding="#{ofertaDemanda.panelFormLayoutMetodologia2}"
+                                        labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderMetodologia2  and ofertaDemanda.renderOferta}">
+                      <af:inputText label="#{viewcontrollerBundle.CAUDAL_AMBIENTAL_INPUT_ANO_SECO}"
+                                    columns="10" required="true"
+                                    value="#{ofertaDemanda.ofertaDemanda.cau_amb_met2_ano_seco}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.CAUDAL_AMBIENTAL_INPUT_ANO_HUMEDO}"
+                                    columns="10" required="true"
+                                    value="#{ofertaDemanda.ofertaDemanda.cau_amb_met2_ano_hum}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.CAUDAL_AMBIENTAL_INPUT_ANO_NORMAL}"
+                                    columns="10" required="true"
+                                    value="#{ofertaDemanda.ofertaDemanda.cau_amb_met2_ano_nor}"
+                                    maximumLength="8"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_caudal_ambiental_metodologia_3"
+                                        binding="#{ofertaDemanda.panelFormLayoutMetodologia3}"
+                                        labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderMetodologia3 and ofertaDemanda.renderOferta}">
+                      <af:panelCollection id="pc1_1" inlineStyle="width:95%;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{ofertaDemanda.listaCaudalAmbientalMet3}"
+                                  var="row" rowBandingInterval="1"
+                                  binding="#{ofertaDemanda.richTableCaudalAmbiental}"
+                                  id="richTableCaudalAmbiental"
+                                  autoHeightRows="4" contentDelivery="immediate"
+                                  width="90%">
+                          <af:column sortable="false" align="start" id="c2"
+                                     showRequired="false" width="200">
+                            <af:outputText value="#{row.nombre}" id="ot3"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.ENERO}"
+                                     id="c3" width="60">
+                            <af:inputText label="Label 1" id="it13"
+                                          value="#{row.caudalAmbientalEnero}"
+                                          columns="8"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.FENRERO}"
+                                     id="c4" width="60">
+                            <af:inputText label="Label 1" id="inputText1"
+                                          value="#{row.caudalAmbientalFebrero}"
+                                          columns="8" autoSubmit="true"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.MARZO}"
+                                     id="c5" width="60">
+                            <af:inputText label="Label 1" id="inputText2"
+                                          value="#{row.caudalAmbientalMarzo}"
+                                          columns="8"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.ABRIL__}"
+                                     id="c6" width="60">
+                            <af:inputText label="Label 1" id="inputText3"
+                                          value="#{row.caudalAmbientalAbril}"
+                                          columns="8" autoSubmit="true"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.MAYO}"
+                                     id="c7" width="60">
+                            <af:inputText label="Label 1" id="inputText4"
+                                          value="#{row.caudalAmbientalMayo}"
+                                          columns="8"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.JUNIO}"
+                                     id="c8" width="60">
+                            <af:inputText label="Label 1" id="inputText5"
+                                          value="#{row.caudalAmbientalJunio}"
+                                          columns="8" autoSubmit="true"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.JULIO}"
+                                     id="c9" width="60">
+                            <af:inputText label="Label 1" id="inputText6"
+                                          value="#{row.caudalAmbientalJulio}"
+                                          columns="8"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.AGOSTO}"
+                                     id="c10" width="60">
+                            <af:inputText label="Label 1" id="inputText7"
+                                          value="#{row.caudalAmbientalAgosto}"
+                                          columns="8" autoSubmit="true"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.SEPTIEMBRE}"
+                                     id="c11" width="60">
+                            <af:inputText label="Label 1" id="inputText8"
+                                          value="#{row.caudalAmbientalSeptiembre}"
+                                          columns="8"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          immediate="true" autoSubmit="true"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.OCTUBRE}"
+                                     id="c12" width="60">
+                            <af:inputText label="Label 1" id="inputText9"
+                                          value="#{row.caudalAmbientalOctubre}"
+                                          columns="8" autoSubmit="true"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.NOVIEMBRE}"
+                                     id="c13" width="60">
+                            <af:inputText label="Label 1" id="inputText10"
+                                          value="#{row.caudalAmbientalNoviembre}"
+                                          columns="8" immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          autoSubmit="true" maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.DICIEMBRE}"
+                                     id="c14" width="60">
+                            <af:inputText label="Label 1" id="inputText11"
+                                          value="#{row.caudalAmbientalDiciembre}"
+                                          columns="8" autoSubmit="true"
+                                          immediate="true"
+                                          valueChangeListener="#{ofertaDemanda.valueChangeCaudalAmbiental}"
+                                          maximumLength="8"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.MEDIO_ANUAL}"
+                                     id="c_total" width="60">
+                            <af:inputText label="Label 1" id="inputText12"
+                                          binding="#{ofertaDemanda.caudalAmbientalTotal}"
+                                          value="#{row.promedio}" columns="8"
+                                          readOnly="true" maximumLength="8"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10"
+                                 binding="#{ofertaDemanda.s6}" id="s6"/>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10"
+                               visible="#{ofertaDemanda.renderOferta}"
+                               binding="#{ofertaDemanda.s4}" id="s4"/>
+                    <af:panelFormLayout id="pfl_l" labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderDemanda}">
+                      <af:outputText value="#{viewcontrollerBundle.DEMANDA__}"
+                                     binding="#{ofertaDemanda.ot5}" id="ot5"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_2" rows="3"
+                                        visible="#{ofertaDemanda.renderDemanda}">
+                      <af:inputText label="#{viewcontrollerBundle.DEMANDA_POTENCIAL}"
+                                    binding="#{ofertaDemanda.it4}" id="it4"
+                                    required="true" columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.demanda_potencial}"
+                                    rendered="false"/>
+                      <af:inputText label="#{viewcontrollerBundle.DEMANDA_CONCESIONADA}"
+                                    binding="#{ofertaDemanda.it5}" id="it5"
+                                    required="true" columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.demanda_concesionada}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.C_U00E1LCULO_DEL_RURH}"
+                                    binding="#{ofertaDemanda.it6}" id="it6"
+                                    columns="10"
+                                    value="#{ofertaDemanda.demandaCalculada}"
+                                    readOnly="true" maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.DEMANDA_ESTIMADA}"
+                                    binding="#{ofertaDemanda.it7}" id="it7"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.dem_estim_usu_ilegales}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.NUMERO_ESTIMADO_DE_USUARIOS}"
+                                    binding="#{ofertaDemanda.it8}" id="it8"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.num_est_usu_ilegales}"
+                                    maximumLength="8"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_7" labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderDemanda}">
+                      <af:outputText value="#{viewcontrollerBundle.PORH_OYD_PROYECCIONES_DEMANDA}"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_2_1" rows="3"
+                                        visible="#{ofertaDemanda.renderDemanda}">
+                      <af:inputText label="#{viewcontrollerBundle.PORH_OYD_PROYECCIONES_DEMANDA_CORTO}"
+                                    binding="#{ofertaDemanda.inputTextproyecciones_demanda_corto}"
+                                    id="inputTextproyecciones_demanda_corto"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.proy_demanda_corto}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.PORH_OYD_PROYECCIONES_DEMANDA_MEDIANO}"
+                                    binding="#{ofertaDemanda.inputTextproyecciones_demanda_mediano}"
+                                    id="inputTextproyecciones_demanda_mediano"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.proy_demanda_mediano}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.PORH_OYD_PROYECCIONES_DEMANDA_LARGO}"
+                                    binding="#{ofertaDemanda.inputTextproyecciones_demanda_largo}"
+                                    id="inputTextproyecciones_demanda_largo"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.proy_demanda_largo}"
+                                    maximumLength="8"/>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10"
+                               visible="#{ofertaDemanda.renderDemanda}"
+                               binding="#{ofertaDemanda.s2}" id="s2"/>
+                    <af:panelFormLayout id="pfl_7_1" labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderDemanda}">
+                      <af:outputText value="#{viewcontrollerBundle.CAPTACIONES_Y_VERTIMIENTOS}"
+                                     binding="#{ofertaDemanda.ot7}" id="ot7"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_8"
+                                        visible="#{ofertaDemanda.renderDemanda}">
+                      <af:table value="#{ofertaDemanda.listaCaptacionesVertimientos}"
+                                var="row" rowBandingInterval="1"
+                                binding="#{ofertaDemanda.t_capvert}"
+                                id="t_capvert" autoHeightRows="2"
+                                contentDelivery="immediate" width="100%">
+                        <af:column sortable="false" align="start" id="c2"
+                                   showRequired="false" width="200">
+                          <af:outputText value="#{row.nombre}" id="ot3"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.LEGALES}"
+                                   id="c16">
+                          <af:inputText label="Label 2" id="it16"
+                                        value="#{row.legales}"
+                                        maximumLength="8"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.DEMANDA_ESTIMADA_RESOLUCION}"
+                                   id="c16_1">
+                          <af:inputText label="Label 2" id="it16_1"
+                                        value="#{row.demandaEstimadaLegales}"
+                                        maximumLength="8"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.ILEGALES}"
+                                   id="c17">
+                          <af:inputText label="Label 3" id="it17"
+                                        value="#{row.ilegales}"
+                                        maximumLength="8"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.DEMANDA_ESTIMADA_SIN_RESOLUCION}"
+                                   id="c16_2">
+                          <af:inputText label="Label 2" id="it16_2"
+                                        value="#{row.demandaEstimadaIlegales}"
+                                        maximumLength="8"/>
+                        </af:column>
+                      </af:table>
+                      <af:spacer width="10" height="10" id="s6_1"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_5" labelWidth="200px"
+                                        visible="#{ofertaDemanda.renderIndices}">
+                      <af:outputText value="#{viewcontrollerBundle.INDICES_E_INDICDORES}"
+                                     binding="#{ofertaDemanda.ot6}" id="ot6"
+                                     styleClass="AFBrandingBarTitle"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_6" rows="2"
+                                        visible="#{ofertaDemanda.renderIndices}">
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_CALIDAD_DEL_AGUA}"
+                                    binding="#{ofertaDemanda.indiceCalidadAgua}"
+                                    id="indiceCalidadAgua" columns="10" required="true"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_de_calidad_del_agua}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_VALOR_DE_IMPORTACION_ECOLOGICA_DE_LA_ESPECIE}"
+                                    binding="#{ofertaDemanda.indiceValorImportacionEcologicaEspecie}"
+                                    id="indiceValorImportacionEcologicaEspecie"
+                                    columns="10" required="true"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_val_imp_eco_especie}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_REGULACION_HIDRICA}"
+                                    binding="#{ofertaDemanda.indiceRegulacionHidrica}"
+                                    id="indiceRegulacionHidrica" columns="10" required="true"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_regulacion_hidrica}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_USO_DEL_AGUA}"
+                                    binding="#{ofertaDemanda.it9}" id="it9"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_de_uso}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_ESCASES}"
+                                    binding="#{ofertaDemanda.it10}" id="it10"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_escases}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_VULNERABILIDAD_HIDRICA}"
+                                    binding="#{ofertaDemanda.indiceVulnerabilidadHidrica}"
+                                    id="indiceVulnerabilidadHidrica"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_vulnerabilidad_hidrica}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.MONITOREO_BIOLOGICO_GRUPO_DE_TRABAJO}"
+                                    binding="#{ofertaDemanda.monitoreoBiologicoGrupoTrabajo}"
+                                    id="monitoreoBiologicoGrupoTrabajo"
+                                    columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.monitoreo_biologico_grupo_trab}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_USO_DEL_AGUA}"
+                                    binding="#{ofertaDemanda.indiceUsoAgua}"
+                                    id="indiceUsoAgua" columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_de_uso_del_agua}"
+                                    maximumLength="8"/>
+                      <af:inputText label="#{viewcontrollerBundle.INDICE_DE_CALIDAD_ECOLOGICA}"
+                                    binding="#{ofertaDemanda.indiceCalidadEcologica}"
+                                    id="indiceCalidadEcologica" columns="10"
+                                    value="#{ofertaDemanda.ofertaDemanda.indice_de_calidad_ecologica}"/>
+                    </af:panelFormLayout>
+                    <af:spacer width="10" height="10"
+                               visible="#{ofertaDemanda.renderIndices}"
+                               binding="#{ofertaDemanda.s5}" id="s5"/>
+                    <af:panelFormLayout id="pfl_9" labelWidth="200px"
+                                        visible="false">
+                      <af:outputText value="#{viewcontrollerBundle.CONFLICTOS_Y_RIESGOS}"
+                                     binding="#{ofertaDemanda.ot8}" id="ot8"
+                                     styleClass="AFBrandingBarTitle"/>
+                      <af:inputText label="#{viewcontrollerBundle.DESCRIPCI_U00F3N_DE_CONFLICTOS}"
+                                    binding="#{ofertaDemanda.it11}" id="it11"
+                                    columns="80" rows="4"
+                                    value="#{ofertaDemanda.ofertaDemanda.desc_conflictos}"/>
+                      <af:inputText label="#{viewcontrollerBundle.DESCRIPCI_U00F3N_DE_RIESGOS_DE}"
+                                    binding="#{ofertaDemanda.it12}" id="it12"
+                                    columns="80" rows="4"
+                                    value="#{ofertaDemanda.ofertaDemanda.desc_riesgos}"/>
+                      <af:spacer width="10" height="20"
+                                 binding="#{ofertaDemanda.s10}" id="s10"/>
+                    </af:panelFormLayout>
+                    <af:panelFormLayout id="pfl_10" labelWidth="200px">
+                      <f:facet name="footer">
+                        <af:panelGroupLayout binding="#{ofertaDemanda.pgl1}"
+                                             id="pgl1" layout="horizontal"
+                                             halign="center">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{ofertaDemanda.cb_aceptar}"
+                                            id="cb_aceptar"
+                                            icon="/imgs/check_mark.png"
+                                            actionListener="#{ofertaDemanda.cb_aceptar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{ofertaDemanda.s1}" id="s1"/>
+                          <af:commandButton text="#{viewcontrollerBundle.menu_regresar}"
+                                            binding="#{ofertaDemanda.cb_regresar}"
+                                            id="cb_regresar"
+                                            icon="/imgs/back.png"
+                                            action="puntosMonitoreoTramo"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{ofertaDemanda.pgl3}" id="pgl3"
+                                     halign="left" layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{ofertaDemanda.s7}" id="s7"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{ofertaDemanda.cl1}" id="cl1"
+                                  action="fuentes"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{ofertaDemanda.s8}" id="s8"/>
+                  <af:commandLink binding="#{ofertaDemanda.cl2}" id="cl2"
+                                  action="priorizacion"
+                                  text="#{viewcontrollerBundle.PORH}:  #{ofertaDemanda.planOrdenamiento.numeroActo}"/>
+                  <af:spacer width="10" height="10" id="sf6"/>
+                  <af:commandLink text="Fuente:  #{ofertaDemanda.nombreFuente}"
+                                  id="clf3" action="puntosMonitoreoTramo"/>
+                  <af:spacer width="10" height="10" id="s6cc"/>
+                  <af:commandLink text="Tramo:  #{ofertaDemanda.nombreTramo}"
+                                  id="cl3" action="puntosMonitoreoTramo"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{ofertaDemanda.s9}" id="s9"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:ofertaDemanda-->
+</jsp:root>

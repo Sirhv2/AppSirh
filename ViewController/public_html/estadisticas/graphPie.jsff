@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+	<af:componentDef var="attrs">
+		<af:xmlContent>
+			<component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+				<facet>
+					<facet-name>BarGraph</facet-name>
+				</facet>
+				<attribute>
+					<attribute-name>GraphDataModel</attribute-name>
+				</attribute>
+				<attribute>
+					<attribute-name>PortletId</attribute-name>
+				</attribute>
+			</component>
+		</af:xmlContent>
+		<af:panelStretchLayout>
+			<f:facet name="bottom"/>
+			<f:facet name="center">
+				<dvt:pieGraph subType="PIE"
+                    value="#{attrs.GraphDataModel}" visualEffects="AUTO"
+                    animationOnDisplay="AUTO" threeDEffect="true"
+                    contentDelivery="immediate" dynamicResize="DYNAMIC_SIZE">
+
+                    <dvt:background fillTransparent="true">
+						<dvt:specialEffects/>
+					</dvt:background>
+					<dvt:graphPieFrame/>
+					<dvt:seriesSet>
+						<dvt:series pieSliceExplode="100"/>
+					</dvt:seriesSet>
+					<dvt:sliceLabel textType="LD_TEXT_PERCENT" rendered="true">
+						<dvt:numberFormat decimalDigit="0" thousandSeparator="."/>
+					</dvt:sliceLabel>
+					<dvt:pieLabel rendered="true" text="Grafica"/>
+					<dvt:legendArea automaticPlacement="AP_NEVER"/>
+				</dvt:pieGraph>
+			</f:facet>
+			<f:facet name="start"/>
+			<f:facet name="end"/>
+			<f:facet name="top"/>
+		</af:panelStretchLayout>
+	</af:componentDef> 
+
+</jsp:root>
+

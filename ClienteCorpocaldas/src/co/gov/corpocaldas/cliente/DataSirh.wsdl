@@ -1,0 +1,260 @@
+<wsdl:definitions
+    
+     targetNamespace="WebServiceCAR"
+     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+     xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+     xmlns:s="http://www.w3.org/2001/XMLSchema"
+     xmlns:tns="WebServiceCAR"
+     xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    >
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio Web que será consumindo por un host cliente</wsdl:documentation>
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="WebServiceCAR">
+            <s:element name="getAllFuentes">
+                <s:complexType/>
+            </s:element>
+            <s:element name="getAllFuentesResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="getAllFuentesResult" type="tns:ArrayOfFntvFuentesTramos"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ArrayOfFntvFuentesTramos">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="FntvFuentesTramos" nillable="true"
+                         type="tns:FntvFuentesTramos"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="FntvFuentesTramos">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="idfuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipofuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="nombrefuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="existebd" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numcarfuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="descripcionfuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numcartramo" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="nombretramo" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="descripciontramo" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="longitud" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipoflujo" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="area" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="zona" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="subzona" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="cuenca" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="codigocuenca" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="sistemareferenciapi" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslatpi" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslatpi" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundolatpi" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslonpi" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslonpi" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundolonpi" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="altitudpi" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="sistemareferenciapf" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslatpf" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslatpf" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundolatpf" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslonpf" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslonpf" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundolonpf" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="altitudpf" type="s:double"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="getAllUsuariosNaturalConcesion">
+                <s:complexType/>
+            </s:element>
+            <s:element name="getAllUsuariosNaturalConcesionResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="getAllUsuariosNaturalConcesionResult"
+                             type="tns:ArrayOfRegUserNaturalConcesion"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ArrayOfRegUserNaturalConcesion">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="RegUserNaturalConcesion" nillable="true"
+                         type="tns:RegUserNaturalConcesion"/>
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="RegUserNaturalConcesion">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipopersona" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipodocumento" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numdocumento" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="deptocorrespondencia" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="municipiocorrespondencia" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="direccioncorrespondencia" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="nombrepredio" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipotenencia" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="departamento" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="municipio" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipocentropoblado" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="centropoblado" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="cedulacatastral" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="matriculainmobiliaria" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="areatotal" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="direccionpredio" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="clasificacionsuelo" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="sistemarefpredio" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslatpredio" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslatpredio" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundoslatpredio" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslonpredio" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslonpredio" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundoslonpredio" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="altitudpredio" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="descripcionsitio" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numexpediente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numresolcaudal" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fechaexpedicion" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fechanotificacion" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudalconcesionado" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numresolplanos" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fechaexpresolplanos" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fechanotificacionplanos" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="numresolucionobra" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fechaexpedresolobra" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fechanotifobras" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="vigenciadesde" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="vigenciahasta" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipofuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="area" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="zona" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="subzona" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="fuente" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tramo" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="idpunto" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="provinciahidro" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="unidadhidro" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="aduccion" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="desarenador" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="ptap" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="reddistribucion" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tanque" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipocaptacion" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="ofertatotal" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="areacaptacion" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="ofertadisponible" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="macromedicion" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="estadocapacion" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudaldiseno" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="continuidadservicio" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tieneservidumbre" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="sistemarefcapt" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradoslatcapt" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutoslatcapt" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundoslatcapt" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="gradosloncapt" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="minutosloncapt" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="segundosloncapt" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="altitudcapt" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="obscaptacion" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudalabast" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="numpersonaspermanentes" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="numpersonastransitorias" type="s:int"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="aprovechamiento" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipoanimalabrev" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudalabrev" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="numanimalesabrev" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipoanimalpesca" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudalpesca" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="numanimalespesca" type="s:int"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipocultivo" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudalcultivo" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="produccion" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="eficienciacultivo" type="s:double"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="areacultivo" type="s:double"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="tipousootros" type="s:string"/>
+                    <s:element minOccurs="0" maxOccurs="1" name="decripcionotros" type="s:string"/>
+                    <s:element minOccurs="1" maxOccurs="1" name="caudalotros" type="s:double"/>
+                </s:sequence>
+            </s:complexType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="getAllFuentesSoapIn">
+        <wsdl:part name="parameters" element="tns:getAllFuentes"/>
+    </wsdl:message>
+    <wsdl:message name="getAllFuentesSoapOut">
+        <wsdl:part name="parameters" element="tns:getAllFuentesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAllUsuariosNaturalConcesionSoapIn">
+        <wsdl:part name="parameters" element="tns:getAllUsuariosNaturalConcesion"/>
+    </wsdl:message>
+    <wsdl:message name="getAllUsuariosNaturalConcesionSoapOut">
+        <wsdl:part name="parameters" element="tns:getAllUsuariosNaturalConcesionResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="DataSirhSoap">
+        <wsdl:operation name="getAllFuentes">
+            <wsdl:input message="tns:getAllFuentesSoapIn"/>
+            <wsdl:output message="tns:getAllFuentesSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUsuariosNaturalConcesion">
+            <wsdl:input message="tns:getAllUsuariosNaturalConcesionSoapIn"/>
+            <wsdl:output message="tns:getAllUsuariosNaturalConcesionSoapOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="DataSirhSoap" type="tns:DataSirhSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAllFuentes">
+            <soap:operation style="document" soapAction="WebServiceCAR/getAllFuentes"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUsuariosNaturalConcesion">
+            <soap:operation style="document" soapAction="WebServiceCAR/getAllUsuariosNaturalConcesion"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="DataSirhSoap12" type="tns:DataSirhSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAllFuentes">
+            <soap12:operation style="document" soapAction="WebServiceCAR/getAllFuentes" soapActionRequired="false"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllUsuariosNaturalConcesion">
+            <soap12:operation style="document" soapAction="WebServiceCAR/getAllUsuariosNaturalConcesion" soapActionRequired="false"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DataSirh">
+        <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio Web que será consumindo por un host cliente</wsdl:documentation>
+        <wsdl:port name="DataSirhSoap" binding="tns:DataSirhSoap">
+            <soap:address location="http://190.0.61.202:1780/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="DataSirhSoap12" binding="tns:DataSirhSoap12">
+            <soap12:address location="http://190.0.61.202:1780/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

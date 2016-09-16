@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">          
+          <af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="52px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">						   
+		 						   
+		<f:facet name="top">    
+     <af:panelGroupLayout>          
+              <af:panelBox inlineStyle="text-align: left;"  >
+<af:commandLink text="Observatorio"
+                                    action="observatorio"/>
+                    <af:spacer width="25" height="10" />
+                    
+                    <af:commandLink text="Observatorio Aguas Subterraneas "
+                                    action="observatorioSubterraneas"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="Observatorio Documentos Referencia "
+                                    action="documentosSubt"/>
+                    <af:spacer width="25" height="10"/>              
+                   
+</af:panelBox>
+                  <af:activeOutputText value="#{viewcontrollerBundle.publicacion_titulo}"
+                                       id="activeOutputText1"
+                                       styleClass="AFBrandingBarTitle"/>
+     
+ </af:panelGroupLayout>
+             </f:facet >
+
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			 <af:panelSplitter orientation="vertical"
+                                  splitterPosition="64" disabled="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout maxColumns="10" rows="1"
+                                        labelAlignment="top">
+                                        
+                            
+                         <af:selectOneChoice label="Sistema Acuifero "
+                              binding="#{publicaciones.sistemaAcuiferoBinding}"
+                              id="selectOneChoice3"
+                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                              autoSubmit="true" immediate="true"                              
+                              valueChangeListener="#{publicaciones.sistemaAcuifero_valueChangeListener}"
+                              >
+            <f:selectItems value="#{publicaciones.sistemaAcuiferoSelectItem}"
+                           id="selectItems3"/>
+          </af:selectOneChoice>
+          
+                      
+                         <af:selectOneChoice label="Area "
+                              binding="#{publicaciones.ahBinding}"
+                              id="selectOneChoice2"
+                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                              autoSubmit="true" immediate="true"                              
+                              valueChangeListener="#{publicaciones.ah_valueChangeListener}"
+                              >
+            <f:selectItems value="#{publicaciones.ahSelectItem}"
+                           id="selectItems2"/>
+          </af:selectOneChoice>
+                     
+                             <af:selectOneChoice label="Tipo Recurso"
+                              binding="#{publicaciones.tipoRecursoBinding}"
+                              id="selectOneChoice1"
+                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                              autoSubmit="true" immediate="true"                              
+                              valueChangeListener="#{publicaciones.tipoRecurso_valueChangeListener}"
+                              >
+            <f:selectItems value="#{publicaciones.tipoRecursoSelectItem}"
+                           id="selectItems1"/>
+          </af:selectOneChoice>
+          
+          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                            id="cmdBuscar"
+                            icon="/imgs/binoculars_24.png"
+                            actionListener="#{publicaciones.cmdBuscar_actionListener}"
+                            />
+                            
+                            
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                      <af:panelCollection>
+                        <!--<f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              icon="/imgs/add.png"
+                                              action="adicionarPublicacion"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              icon="/imgs/edit_24.png"
+                                              action="#{publicaciones.getAccion}"
+                                              actionListener="#{publicaciones.commandMenuItem2_actionListener}"
+                                              immediate="true"
+                                              partialSubmit="true"/>
+                        </af:menu>
+                      </f:facet>-->
+                      
+                   <af:table var="row" binding="#{publicaciones.t_publicaciones}"
+                                rowSelection="single"
+                                value="#{publicaciones.listaPublicaciones}"
+                                rowBandingInterval="1"
+                                selectionListener="#{publicaciones.t_publicaciones_selectionListener}"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                summary="Listado de publicaciones Actual"
+                                 >
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_nombrePublicacion}"
+                                   sortProperty="nombrePublicacion" width="126">
+                          <af:outputText value="#{row.nombrePublicacion}"/>
+                        </af:column>
+                 
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_autor}"
+                                   sortProperty="autor" width="126">
+                          <af:outputText value="#{row.autor}"/>
+                        </af:column> 
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_anio}"
+                                   sortProperty="anio" width="40">
+                          <af:outputText value="#{row.anio}"/>
+                        </af:column>
+                       <!-- <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_tipoRecurso}"
+                                   sortProperty="anio" width="126">
+                          <af:outputText value="#{row.tipoRecurso}"/>
+                        </af:column>-->
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_editor}"
+                                   sortProperty="editor" width="126">
+                          <af:outputText value="#{row.editor}"/>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_lugarPublicacion}"
+                                   sortProperty="lugarPublicacion" width="126">
+                          <af:outputText value="#{row.lugarPublicacion}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_numPaginas}"
+                                   sortProperty="paginas" width="45">
+                          <af:outputText value="#{row.paginas}"/>
+                          </af:column>
+                          <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_serie}"
+                                   sortProperty="serie" width="126">
+                          <af:outputText value="#{row.serie}"/>
+                          </af:column>
+                          <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.publicacion_lista_volumen}"
+                                   sortProperty="volumen" width="66">
+                          <af:outputText value="#{row.volumen}"/>
+                          </af:column>
+                             <af:column sortable="true"
+                                   headerText="Área Hidrográfica"
+                                   width="66">
+                          <af:outputText value="#{row.ah}"/>
+                          </af:column>
+                             <af:column sortable="true"
+                                   headerText="Provincia Hidrogeológica"
+                                    width="66">
+                          <af:outputText value="#{row.ph}"/>
+                          </af:column>
+                             <af:column sortable="true"
+                                   headerText="Código Sistema Acuífero"
+                                    width="66">
+                          <af:outputText value="#{row.sac}"/>
+                          </af:column>
+                             <af:column sortable="true"
+                                   headerText="Sistema Acuifero"
+                                   width="66">
+                          <af:outputText value="#{row.sistemaAcuifero}"/>
+                          </af:column>
+                             <af:column sortable="true"
+                                   headerText="Bibliografia"
+                                   width="66">
+                          <af:outputText value="#{row.bibliografia}"/>
+                          </af:column>
+                             <af:column sortable="true"
+                                   headerText="Anexos"
+                                    width="66">
+                          <af:outputText value="#{row.anexos}"/>
+                          </af:column>
+                               <af:column sortable="true"
+                                   headerText="Version"
+                                 width="66">
+                          <af:outputText value="#{row.version}"/>
+                          </af:column>
+                          
+                          <af:column sortable="true"
+                                   headerText="Descargar"
+                                   sortProperty="volumen" width="66"
+                                   
+                                   >
+                                 <h:commandLink value="Mostrar" disabled="#{row.idArchivo ==null}"
+                                                actionListener="#{documentos.descargarDocumento}">
+                                             <f:param name="nodoId"  value="#{row.idArchivo}"/>
+                                             <f:param name="displayInline" value="false" />
+                                       </h:commandLink>
+                          </af:column>
+                          
+                          
+                      </af:table>   
+                    </af:panelCollection>
+                  </f:facet>
+ </af:panelSplitter>
+		<!-- fin -->
+		
+</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+          </f:facet>          
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+ <managed-bean>
+    <managed-bean-name>auditorias</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.auditoria.view.AuditoriasBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1auditorias/auditorias.jspx-->
+  </managed-bean>
+  <!--
+  navigation-rule>
+    <from-view-id>/auditorias/auditorias.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>adicionarPublicacion</from-outcome>
+      <to-view-id>/publicaciones/detallePublicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePublicacion</from-outcome>
+      <to-view-id>/publicaciones/detallePublicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule
+  -->
+
+</faces-config>

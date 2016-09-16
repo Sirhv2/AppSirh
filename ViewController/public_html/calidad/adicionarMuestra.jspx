@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{adicionarMuestra.document1}" id="document1">
+      <af:form binding="#{adicionarMuestra.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarMuestra.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="21px"
+                                   startWidth="4px" bottomHeight="373px"
+                                   endWidth="5px">
+              <f:facet name="center">
+                                     <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout1}"
+                                     id="panelGroupLayout1">
+                  <af:panelBox text="#{viewcontrollerBundle.MST_TITULO_ADICIONAR_MUESTRA}"
+                               binding="#{adicionarMuestra.panelBox1}"
+                               id="panelBox1" inlineStyle="height:199px;"
+                               showDisclosure="false" visible="true">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarMuestra.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           topHeight="0px" startWidth="0px"
+                                           inlineStyle="width:1023px;"
+                                           bottomHeight="50px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout2}"
+                                             id="panelGroupLayout2"
+                                             layout="vertical" halign="right">
+                          <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout3}"
+                                               id="panelGroupLayout3"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:247px;">
+                            <af:spacer width="100" height="10"
+                                       binding="#{adicionarMuestra.spacer1}"
+                                       id="spacer1"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarMuestra.cb_next}"
+                                              id="cb_next"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarMuestra.cb_next_actionListener}"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             binding="#{adicionarMuestra.panelGroupLayout5}"
+                                             id="panelGroupLayout5">
+                          <af:panelGroupLayout binding="#{adicionarMuestra.pgdatosBasicos}"
+                                               id="pgdatosBasicos">
+                            <af:panelFormLayout binding="#{adicionarMuestra.formDatosBasicos}"
+                                                id="formDatosBasicos" rows="1"
+                                                maxColumns="1">
+                              <af:spacer width="10" height="10"
+                                       binding="#{adicionarMuestra.spacer2}"
+                                       id="spacer2"/>
+                            <af:activeOutputText value="#{viewcontrollerBundle.MST_TITULO_PANEL1}"
+                                                 binding="#{adicionarMuestra.tituloPanelMuestra}"
+                                                 id="tituloPanelMuestra"
+                                                 styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarMuestra.spacer5}"
+                                         id="spacer5"/>
+                              <em><af:inputText label="#{viewcontrollerBundle.MST_NRO_MUESTRA}"
+                                                binding="#{adicionarMuestra.it_nroMuestra}"
+                                                id="it_nroMuestra"
+                                                value="#{ adicionarMuestra.muestra.nro_muestra}"
+                                                helpTopicId="adicionarMuestra"/></em>
+                              <af:inputText label="#{viewcontrollerBundle.MST_TIPO}"
+                                            binding="#{adicionarMuestra.it_tipoMuestraVert}"
+                                            id="it_tipoMuestraVert"
+                                            disabled="true" immediate="true"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.MST_TIPO}"
+                                                binding="#{adicionarMuestra.sc_tipoMuestra}"
+                                                id="sc_tipoMuestra"
+                                                immediate="true"
+                                                valueChangeListener="#{adicionarMuestra.sc_tipoMuestra_valueChangeListener}"
+                                                showRequired="true"
+                                                autoSubmit="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                              <f:selectItems value="#{ adicionarMuestra.listaTipoMuestra}"
+                                             binding="#{adicionarMuestra.selectItems1}"
+                                             id="selectItems1"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.MST_LABORATORIO}"
+                                                binding="#{adicionarMuestra.sc_laboratorio}"
+                                                id="sc_laboratorio"
+                                                value="#{ adicionarMuestra.muestra.laboratorio}"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                showRequired="true"
+                                                valueChangeListener="#{adicionarMuestra.lab_valueChageListener}"
+                                                autoSubmit="true"
+                                                immediate="true">
+                              <f:selectItems value="#{ adicionarMuestra.listaLaboratorio}"
+                                             binding="#{adicionarMuestra.selectItems2}"
+                                             id="selectItems2"/>
+                            </af:selectOneChoice>
+                              <af:inputText label="Cual?"
+                                            binding="#{adicionarMuestra.it_otro_lab}"
+                                            id="it_otro_lab" visible="false"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          <af:panelGroupLayout binding="#{adicionarMuestra.panelGFecha}"
+                                               id="panelGFecha"
+                                               layout="vertical">
+                            <af:panelFormLayout binding="#{adicionarMuestra.formFecha}"
+                                                id="formFecha" rows="1"
+                                                maxColumns="1">
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarMuestra.spacer3}"
+                                         id="spacer3"/>
+                              <af:activeOutputText binding="#{adicionarMuestra.tituloMuestra}"
+                                                 id="tituloMuestra"
+                                                 styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarMuestra.spacer6}"
+                                         id="spacer6"/>
+                              <af:inputDate label="#{viewcontrollerBundle.MST_FECHA}"
+                                          binding="#{adicionarMuestra.id_fecha}"
+                                          id="id_fecha"
+                                          showRequired="true"
+                                            value="#{ adicionarMuestra.muestra.fechaMuestreo}"
+                                           />
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                            
+                      
+                          <af:panelGroupLayout binding="#{adicionarMuestra.panelGHora}"
+                                               id="panelGHora"
+                                               layout="horizontal"
+                                               inlineStyle="width:345px; height:45px;">
+                            <af:panelFormLayout binding="#{adicionarMuestra.formHora}"
+                                                id="formHora" rows="1"
+                                                maxColumns="1"
+                                                inlineStyle="width:169px;">
+                              <af:selectOneChoice binding="#{adicionarMuestra.sc_hora}"
+                                                    id="sc_hora"
+                                                   value="#{ adicionarMuestra.muestra.horaMuestreo}"
+                                                   unselectedLabel="--"
+                                                   showRequired="true" immediate="true"
+                                                   autoSubmit="true"
+                                                  label="#{viewcontrollerBundle.MST_HORA}">
+                                  <f:selectItems value="#{ adicionarMuestra.listaHora}"
+                                                 binding="#{adicionarMuestra.selectItems3}"
+                                                 id="selectItems3"/>
+                                </af:selectOneChoice>
+                             
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{adicionarMuestra.panelFormLayout3}"
+                                                id="panelFormLayout3"
+                                                maxColumns="2" rows="1"
+                                                inlineStyle="width:177px;">
+                                                   <af:selectOneChoice  binding="#{adicionarMuestra.sc_min}"
+                                                    id="sc_min" label=":"
+                                                    value="#{ adicionarMuestra.muestra.minMuestreo}"
+                                                    unselectedLabel="--"  immediate="true" 
+                                                    showRequired="true" 
+                                                     autoSubmit="true">
+                                  <f:selectItems value="#{ adicionarMuestra.listaMin}"
+                                                 binding="#{adicionarMuestra.selectItems4}"
+                                                 id="selectItems4"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice  binding="#{adicionarMuestra.sc_horario}"
+                                                    id="sc_horario" label=":"
+                                                    value="#{ adicionarMuestra.muestra.horario}"
+                                                     immediate="true" showRequired="true" 
+                                                     >
+                                  <f:selectItems value="#{ adicionarMuestra.listaHorario}"
+                                                 binding="#{adicionarMuestra.selectItems5}"
+                                                 id="selectItems5"/>
+                                </af:selectOneChoice>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          
+                          <af:panelGroupLayout binding="#{adicionarMuestra.panelGTipoMuestra}"
+                                               id="panelGTipoMuestra">
+                            <af:panelFormLayout binding="#{adicionarMuestra.formTipoMuestra}"
+                                                id="formTipoMuestra" rows="1"
+                                                maxColumns="1">
+                              <af:inputText label="#{viewcontrollerBundle.MST_INTERVALOTIEMPO}"
+                                          binding="#{adicionarMuestra.it_intervaloTiempo}"
+                                          id="it_intervaloTiempo"
+                                          visible="false" immediate="true"
+                                            value="#{ adicionarMuestra.muestra.intervaloTiempo}"
+                                            showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"/>
+                              </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.MST_DURACION}"
+                                          binding="#{adicionarMuestra.it_duracion}"
+                                          id="it_duracion" visible="false"
+                                          immediate="true"
+                                          value="#{ adicionarMuestra.muestra.duracion}"
+                                          showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"/>
+                              </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.MST_NRO_SUBMUESTRAS}"
+                                          binding="#{adicionarMuestra.it_submuestras}"
+                                          id="it_submuestras" visible="false"
+                                          immediate="true"
+                                          value="#{ adicionarMuestra.muestra.nroSubmuestras}"
+                                          showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"/>
+                              </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.MST_NRO_VERTICALES}"
+                                          binding="#{adicionarMuestra.it_verticales}"
+                                          id="it_verticales" visible="false"
+                                          immediate="true"
+                                          value="#{ adicionarMuestra.muestra.nroVerticales}"
+                                          showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"/>
+                              </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.MST_CAUDAL}"
+                                          binding="#{adicionarMuestra.it_caudal}"
+                                          id="it_caudal"
+                                          immediate="true"
+                                          value="#{ adicionarMuestra.muestra.caudal}"
+                                          showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.PAR_TITULO_FORMULARIO}"
+                               binding="#{adicionarMuestra.panelParametros}"
+                               id="panelParametros" visible="false"
+                               showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarMuestra.panelStretchLayout4}"
+                                           id="panelStretchLayout4"
+                                           startWidth="0px"
+                                           inlineStyle="width:1025px;"
+                                           endWidth="0px" bottomHeight="50px"
+                                           topHeight="44px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout11}"
+                                             id="panelGroupLayout11"
+                                             layout="vertical">
+                          <af:spacer width="10" height="10"
+                                     binding="#{adicionarMuestra.spacer11}"
+                                     id="spacer11"/>
+                          <af:commandButton text="#{viewcontrollerBundle.BTN_FINALIZAR}"
+                                            binding="#{adicionarMuestra.cb_finalizar}"
+                                            id="cb_finalizar"
+                                           actionListener="#{adicionarMuestra.cb_aceptar_actionListener}"
+                                            action="#{adicionarMuestra.getAceptarAction}"
+                                           
+                                            icon="/imgs/check_mark.png"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelSplitter binding="#{adicionarMuestra.panelSplitter1}"
+                                          id="panelSplitter1" disabled="true"
+                                          orientation="vertical"
+                                          splitterPosition="81">
+                          <f:facet name="first">
+                            <af:panelFormLayout binding="#{adicionarMuestra.panelFormLayout2}"
+                                                id="panelFormLayout2" rows="4"
+                                                maxColumns="5">
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                   binding="#{adicionarMuestra.ot_parametro}"
+                                                   id="ot_parametro"/>
+                              <af:selectOneChoice
+                                                  binding="#{adicionarMuestra.sc_parametros}"
+                                                  id="sc_parametros"
+                                                  value="#{ adicionarMuestra.medicion.parametro}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true">
+                                <f:selectItems value="#{ adicionarMuestra.listaParametro}"
+                                               binding="#{adicionarMuestra.selectItems6}"
+                                               id="selectItems6"/>
+                              </af:selectOneChoice>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_UNIDAD}"
+                                                   binding="#{adicionarMuestra.ot_unidad}"
+                                                   id="ot_unidad"/>
+                              <af:selectOneChoice
+                                                  binding="#{adicionarMuestra.sc_unidad}"
+                                                  id="sc_unidad"
+                                                  value="#{ adicionarMuestra.medicion.unidad}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true">
+                                <f:selectItems value="#{ adicionarMuestra.listaUnidad}"
+                                               binding="#{adicionarMuestra.selectItems7}"
+                                               id="selectItems7"/>
+                              </af:selectOneChoice>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_SIGNO}"
+                                                   binding="#{adicionarMuestra.ot_signo}"
+                                                   id="ot_signo"/>
+                              <af:selectOneChoice
+                                                  binding="#{adicionarMuestra.sc_signo}"
+                                                  id="sc_signo"
+                                                  value="#{ adicionarMuestra.medicion.signo}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  valueChangeListener="#{adicionarMuestra.signo_valueChangeListener}"
+                                                  autoSubmit="true">
+                                <f:selectItems value="#{ adicionarMuestra.listaSigno}"
+                                               binding="#{adicionarMuestra.selectItems8}"
+                                               id="selectItems8"/>
+                              </af:selectOneChoice>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_VALOR}"
+                                                   binding="#{adicionarMuestra.ot_valor}"
+                                                   id="ot_valor"/>
+                              <af:inputText
+                                            binding="#{adicionarMuestra.it_valor}"
+                                            id="it_valor"
+                                            value="#{ adicionarMuestra.medicion.valor}"
+                                            columns="4" immediate="true">
+                                <af:convertNumber type="number"
+                                                        integerOnly="false"
+                                                        
+                                                        minFractionDigits="0"
+                                                        maxFractionDigits="2"/>
+                              </af:inputText>
+                              <af:activeOutputText
+                                                   binding="#{adicionarMuestra.ot_valor2}"
+                                                   id="ot_valor2"
+                                                   value="#{viewcontrollerBundle.PAR_VALOR2}"
+                                                   visible="false"/>
+                              <af:inputText
+                                            binding="#{adicionarMuestra.it_valor2}"
+                                            id="it_valor2" columns="4"
+                                            visible="false" immediate="true">
+                                <af:convertNumber type="number"
+                                                        integerOnly="false"
+                                                        minIntegerDigits="1"
+                                                        maxIntegerDigits="3"
+                                                        minFractionDigits="0"
+                                                        maxFractionDigits="2"/>
+                              </af:inputText>
+                              <af:activeOutputText value="Valor Unico"
+                                                   binding="#{adicionarMuestra.ot_char}"
+                                                   id="ot_char"
+                                                   visible="false"/>
+                              <af:inputText
+                                            binding="#{adicionarMuestra.it_char}"
+                                            id="it_char" visible="false"
+                                            columns="7"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_METODO_DETERMINACION}"
+                                                   binding="#{adicionarMuestra.ot_metodo}"
+                                                   id="ot_metodo"/>
+                              <af:inputText
+                                            binding="#{adicionarMuestra.it_metodo}"
+                                            id="it_metodo"
+                                            value="#{ adicionarMuestra.medicion.metodoDeterminacion}"
+                                            columns="10" immediate="true"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_LIMITE}"
+                                                   binding="#{adicionarMuestra.ot_limite}"
+                                                   id="ot_limite"/>
+                              <af:inputText
+                                            binding="#{adicionarMuestra.it_limite}"
+                                            id="it_limite"
+                                            value="#{ adicionarMuestra.medicion.limiteDeteccion}"
+                                            columns="4" immediate="true">
+                                <af:convertNumber type="number"
+                                                        integerOnly="false"
+                                                        minIntegerDigits="1"
+                                                        maxIntegerDigits="3"
+                                                        minFractionDigits="0"
+                                                        maxFractionDigits="2"/>
+                              </af:inputText>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PAR_ACREDITADO}"
+                                                   binding="#{adicionarMuestra.ot_acreditado}"
+                                                   id="ot_acreditado"/>
+                              <af:selectBooleanCheckbox
+                                                        binding="#{adicionarMuestra.check_acreditado}"
+                                                        id="check_acreditado"/>
+                              <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout8}"
+                                                   id="panelGroupLayout8">
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarMuestra.spacer8}"
+                                           id="spacer8"/>
+                                <af:commandButton
+                                                  binding="#{adicionarMuestra.cb_agregar}"
+                                                  id="cb_agregar"
+                                                  text="#{viewcontrollerBundle.boton_Adicionar}"
+                                                  actionListener="#{adicionarMuestra.adicionarMuestra_actionListener}"/>
+                              </af:panelGroupLayout>
+                            </af:panelFormLayout>
+                          </f:facet>
+                          <f:facet name="second">
+                            <af:panelCollection binding="#{adicionarMuestra.panelCollection1}"
+                                                id="panelCollection1">
+                              <f:facet name="menus"/>
+                              <f:facet name="toolbar"/>
+                              <f:facet name="statusbar"/>
+                              <af:table var="row"
+                                        binding="#{adicionarMuestra.t_mediciones}"
+                                        id="t_mediciones"
+                                        value="#{adicionarMuestra.listaMediciones}">
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                           width="264">
+                                  <af:outputText value="#{row.parametro.valor}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PAR_UNIDAD}"
+                                           width="141">
+                                  <af:outputText value="#{row.unidad.valor}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PAR_VALOR}"
+                                           width="183">
+                                  <af:outputText value="#{row.valor_parametro}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PAR_METODO_DETERMINACION}"
+                                           width="180">
+                                  <af:outputText value="#{row.metodoDeterminacion}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PAR_LIMITE}"
+                                           width="125">
+                                  <af:outputText value="#{row.limiteDeteccion}"/>
+                                </af:column>
+                                <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.PAR_ACREDITADO}"
+                                   sortProperty="esAcreditado" width="82">
+                                  <af:image shortDesc="#{viewcontrollerBundle.PAR_ACREDITADO}"
+                                        source='#{row.acreditado ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                                </af:column>
+                        
+                              </af:table>
+                            </af:panelCollection>
+                          </f:facet>
+                        </af:panelSplitter>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top">
+                        <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout7}"
+                                             id="panelGroupLayout7"
+                                             layout="vertical">
+                          <af:spacer width="10" height="10"
+                                     binding="#{adicionarMuestra.spacer4}"
+                                     id="spacer4"/>
+                          <af:activeOutputText value="#{viewcontrollerBundle.PAR_TITULO_PANEL1}"
+                                               binding="#{adicionarMuestra.activeOutputText3}"
+                                               id="activeOutputText3"
+                                               styleClass="AFBrandingBarTitle"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{adicionarMuestra.spacer7}"
+                                     id="spacer7"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{adicionarMuestra.p_registro_med}"
+                            id="p_registro_med">
+                    <af:dialog binding="#{adicionarMuestra.d_registro_med}"
+                               id="d_registro_med" type="none"
+                               closeIconVisible="false"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}">
+                      <af:panelStretchLayout binding="#{adicionarMuestra.panelStretchLayout5}"
+                                             id="panelStretchLayout5"
+                                              topHeight="0px"
+                                             bottomHeight="117px"
+                                             inlineStyle="height:35px; width:331px;">
+                        <f:facet name="center">
+                          <af:activeOutputText value="#{viewcontrollerBundle.PAR_REGISTRO_EXITOSO}"
+                                               binding="#{adicionarMuestra.t_registro_med}"
+                                               id="t_registro_med"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image source="/imgs/info.png"
+                                    binding="#{adicionarMuestra.image2}"
+                                    id="image2"/>
+                        </f:facet>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout9}"
+                                             id="panelGroupLayout9">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{adicionarMuestra.cb_aceptar_medicion}"
+                                            id="cb_aceptar_medicion"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{adicionarMuestra.panelGroupLayout6}"
+                                     id="panelGroupLayout6" layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{adicionarMuestra.spacer9}"
+                             id="spacer9"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PTO_LISTADO}"
+                                  binding="#{adicionarMuestra.commandLink1}"
+                                  id="commandLink1" action="listarpuntos"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarMuestra.spacer10}"
+                             id="spacer10"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PTO_TEXT}: #{ adicionarMuestra.puntoM.nombre}"
+                                  binding="#{adicionarMuestra.commandLink2}"
+                                  id="commandLink2" action="detallepunto"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarMuestra-->
+</jsp:root>

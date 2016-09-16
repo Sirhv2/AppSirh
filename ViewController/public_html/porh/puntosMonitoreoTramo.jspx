@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{priorizacion.d2}">
+      <af:form id="f2" binding="#{priorizacion.f2}" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{priorizacion.psl_total}"
+                                   id="psl_total"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="90px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelBox text="#{viewcontrollerBundle.DETALLE_PLAN_DE_ODENAMIENTO}" binding="#{priorizacion.pb1}"
+                             id="pb1" showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelGroupLayout binding="#{priorizacion.pgl2}" id="pgl2"
+                                       layout="scroll">
+                    <af:panelFormLayout binding="#{priorizacion.pfl1}"
+                                        id="pfl1">
+                      
+   
+
+                   
+                      <af:spacer width="10" height="10"
+                                 binding="#{priorizacion.s6}" id="s6"/>
+                      <af:outputLabel value="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}"
+                                      binding="#{priorizacion.ol1}" id="ol1"
+                                      visible="#{priorizacion.planOrdenamiento.codigo!=null &amp;&amp;  priorizacion.planOrdenamiento.codigo>0}"/>
+                      <af:panelCollection binding="#{priorizacion.pc1}" id="pc1"
+                                          inlineStyle="width:90.0%;"
+                                          visible="#{priorizacion.planOrdenamiento.codigo!=null &amp;&amp;  priorizacion.planOrdenamiento.codigo>0}">
+                        <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                   binding="#{priorizacion.m_menu}" id="m_menu">
+                            <af:commandMenuItem text="#{viewcontrollerBundle.OFERTA_Y_DEMANDA}"
+                                                binding="#{priorizacion.cmi_porh}"
+                                                id="cmi_porh"
+                                                action="#{priorizacion.getAccion}"
+                                                actionListener="#{priorizacion.cmi_porh_actionListener}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.USOS_PERMITIDOS_PARA_EL_TRAMO}"
+                                                binding="#{priorizacion.cmi_usos}"
+                                                id="cmi_usos"
+                                                action="#{priorizacion.getAccion}"
+                                                actionListener="#{priorizacion.cmi_usos_actionListener}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.DEFINIR_RAZONES_DE_PROHIBICI_U}"
+                                                binding="#{priorizacion.cmi_razones_prohibicion}"
+                                                id="cmi_razones_prohibicion"
+                                                action="#{priorizacion.getAccion}"
+                                                actionListener="#{priorizacion.cmi_prohibicion_actionListener}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.METAS_DE_DESCONTAMINACION}"
+                                                binding="#{priorizacion.cmi2_adicionar_avance}"
+                                                id="cmi2_adicionar_avance"
+                                                action="#{priorizacion.getAccion}"
+                                                actionListener="#{priorizacion.cmi_metas_actionListener}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.INDICADORES}"
+                                                binding="#{priorizacion.cmi_indicadores}"
+                                                id="cmi_indicadores"
+                                                actionListener="#{priorizacion.cmi_indicadores_actionListener}"
+                                                action="#{priorizacion.getAccion}"/>
+                          </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{priorizacion.listaTramos}" var="row"
+                                  binding="#{priorizacion.t_tramos}"
+                                  id="t_tramos" width="100%"
+                                  emptyText="#{viewcontrollerBundle.NO_HAY_REGISTROS}"
+                                  rowSelection="single" autoHeightRows="10"
+                                  contentDelivery="immediate"
+                                  selectionListener="#{priorizacion.t_tramos_selectionListener}">
+                          <af:column sortable="false" headerText="Nombre"
+                                     align="start" id="c19" width="200">
+                            <af:outputText value="#{row.nombre}" id="ot14"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Descripcion"
+                                     align="start" id="c9" width="200">
+                            <af:outputText value="#{row.descripcion}"
+                                           id="ot16"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Longitud"
+                                     align="start" id="c7">
+                            <af:outputText value="#{row.longitud}" id="ot9"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Tipo Flujo"
+                                     align="start" id="c8">
+                            <af:outputText value="#{row.tipoFlujo.valor}"
+                                           id="ot13"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10"
+                                 binding="#{priorizacion.s7}" id="s7"/>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+             
+
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:priorizacion-->
+</jsp:root>

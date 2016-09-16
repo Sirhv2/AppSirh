@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{practica.d2}">
+      <af:form id="f2" binding="#{practica.f2}" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{practica.psl_total}"
+                                   id="psl_total"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="52px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelBox text="Buenas practicas registradas a la fuente" binding="#{practica.pb1}"
+                             id="pb1" showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection binding="#{practica.panelCollection1}"
+                                      id="panelCollection1"
+                                      inlineStyle="width:100%;">
+                    <f:facet name="menus">
+                      <af:menu text="Opciones"
+                               binding="#{practica.menu1}" id="menu1">
+                        <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                            binding="#{practica.commandMenuItem1}"
+                                            id="commandMenuItem1"
+                                            icon="/imgs/add.png"
+                                            visible="#{FuentesBean.visiblePerfil}"
+                                            action="adicionarBuenaPractica"/>
+                        <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                            binding="#{practica.commandMenuItem2}"
+                                            id="commandMenuItem2"
+                                            icon="/imgs/edit_24.png"
+                                            visible="#{ FuentesBean.visiblePerfil}"
+                                            immediate="true"
+                                            partialSubmit="true"
+                                            actionListener="#{practica.cmi_editar_actionListener}"
+                                            action="#{practica.getAccion}"/>
+                      </af:menu>
+                    </f:facet>
+                    <af:table var="row" binding="#{practica.t_practicas}"
+                              id="t_practicas" rowSelection="single"
+                              value="#{practica.listaBuenasPracticas}"
+                              rowBandingInterval="1"
+                              emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                              selectionListener="#{practica.t_practicas_selectionListener}">
+                      <af:column sortable="true"
+                                 headerText="Descripcion"
+                                 sortProperty="nombre" width="126">
+                        <af:outputText value="#{row.descripcion}"/>
+                      </af:column>
+                      <af:column sortable="false" headerText="Fecha Registro">
+                        <af:outputText value="#{row.fechadiligenciamiento}"/>
+                      </af:column>
+                      <af:column sortable="false"
+                                 headerText="Proyecto Educativo">
+                        <af:outputText value="#{row.fnttProyectosEducativos.descripcion}"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{practica.pgl3}"
+                                     id="pgl3"/>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelStretchLayout binding="#{practica.psl1}" id="psl1"
+                                       startWidth="0px" endWidth="0px"
+                                       topHeight="20px" bottomHeight="70px">
+                  <f:facet name="center">
+                    <af:panelFormLayout binding="#{practica.pfl2}" id="pfl2"
+                                        rows="1">
+                      <af:inputText label="Nombre Fuente"
+                                    binding="#{practica.it_nombre}"
+                                    id="it_nombre"
+                                    value="#{practica.fuente.nombre}"
+                                    readOnly="true"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top">
+                    <af:panelGroupLayout binding="#{practica.pgl4}"
+                                         id="pgl4"
+                                         layout="horizontal">
+                      <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                      binding="#{practica.cl4}" id="cl4"
+                                      action="fuentes"/>
+                      <af:spacer width="25" height="10"
+                                 binding="#{practica.spacer8}"
+                                 id="spacer8"/>
+                      <af:outputText value="#{viewcontrollerBundle.FNT_FUENTE} : #{practica.fuente.nombre}"
+                                     binding="#{practica.outputText1}"
+                                     id="outputText1"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:conflicto-->
+</jsp:root>

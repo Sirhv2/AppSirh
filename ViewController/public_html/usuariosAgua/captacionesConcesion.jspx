@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          >
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <f:view>
+    <af:document binding="#{captacionesConcesionBean.document1}" id="document1">
+      <af:form binding="#{captacionesConcesionBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{captacionesConcesionBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="21px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                  <af:panelSplitter binding="#{captacionesConcesionBean.panelSplitter1}"
+                                    id="panelSplitter1" orientation="vertical"
+                                    splitterPosition="64" disabled="true" >
+                    <f:facet name="first">
+                        <af:panelFormLayout binding="#{captacionesConcesionBean.panelFormLayout1}"
+                                            id="panelFormLayout1" rows="1"
+                                            maxColumns="8">
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{captacionesConcesionBean.socFiltroDepartamento}"
+                                              id="socFiltroDepartamento"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              autoSubmit="true" immediate="true"
+                                              valueChangeListener="#{captacionesConcesionBean.socFiltroDepartamento_valueChangeListener}"
+                                              >
+                            <f:selectItems value="#{captacionesConcesionBean.listaDepartamentos}"
+                                           binding="#{captacionesConcesionBean.siFiltroDep}"
+                                           id="siFiltroDep"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{captacionesConcesionBean.socFiltroMun}"
+                                              id="socFiltroMun"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              >
+                            <f:selectItems value="#{captacionesConcesionBean.listaMunicipios}"
+                                           binding="#{captacionesConcesionBean.siFiltroMun}"
+                                           id="siFiltroMun"/>
+                          </af:selectOneChoice>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                            binding="#{captacionesConcesionBean.cmdBuscar}"
+                                            id="cmdBuscar"
+                                            icon="/imgs/binoculars_24.png"
+                                            actionListener="#{captacionesConcesionBean.cmdBuscar_actionListener}"
+                                            />
+                        </af:panelFormLayout>
+                    </f:facet>
+                    <f:facet name="second">
+                        <af:panelCollection binding="#{captacionesConcesionBean.panelCollection1}"
+                                  id="panelCollection1"
+                                  inlineStyle="width:100%;" >
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                        binding="#{captacionesConcesionBean.menu1}"
+                                       id="menu1">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                                    binding="#{captacionesConcesionBean.addCaptacionMenuItem1}"
+                                                    id="addCaptacionMenuItem1"
+                                                    action="adicionarCaptacion"
+                                                    icon="/imgs/add.png"
+                                                    />
+                                <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                    binding="#{captacionesConcesionBean.editarCaptacionMenuItem2}"
+                                                    id="editarCaptacionMenuItem2"
+                                                    icon="/imgs/edit_24.png"
+                                                    action="#{captacionesConcesionBean.getDetalleCaptacion}"
+                                                    actionListener="#{captacionesConcesionBean.editarCaptacionMenuItem2_actionListener}"
+                                                    immediate="true"
+                                                    partialSubmit="true"
+                                                    />
+                              </af:menu>
+                            </f:facet>
+                            
+                            <af:table var="row" binding="#{captacionesConcesionBean.t_captaciones}"
+                                      id="t_captaciones" rowSelection="single"
+                                      value="#{captacionesConcesionBean.listaCaptaciones}"
+                                      rowBandingInterval="1"
+                                      selectionListener="#{captacionesConcesionBean.t_captaciones_selectionListener}"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      >
+                                      
+                              <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.CPT_TIPO_CPT}"
+                                           align="start" 
+                                           sortProperty="tipoFuenteCaptacion">
+                                        <af:outputText value="#{row.tipoFuenteCaptacion}"
+                                            converter="TipoFuenteCaptacion"
+                                            />
+                              </af:column>
+                              
+                              <af:column headerText="#{viewcontrollerBundle.PTO_LATITUD}" >
+                                <af:outputText value="#{row.gradosLatCapt}°  #{row.minutosLatCapt}' #{row.segundosLatCapt}&quot;"/>
+                              </af:column>
+                              <af:column headerText="#{viewcontrollerBundle.PTO_LONGITUD}">
+                                <af:outputText value="#{row.gradosLongCapt}°  #{row.minutosLongCapt}' #{row.segundosLongCapt}&quot;"/>
+                              </af:column>
+                              
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.ALTITUD}"
+                                         sortProperty="altitudPi">
+                                <af:outputText value="#{row.altitudCapt}"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.CPT_DESCRIPCION_ACCESO}">
+                                <af:outputText value="#{row.descripcionAccesoCapt}"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.MUNICIPIO}"
+                                           sortProperty="idMunicipio">
+                                  <af:outputText value="#{row.munCapt}"
+                                                converter="Divipola" />
+                                </af:column>
+                                <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                           sortProperty="idDepartamento">
+                                  <af:outputText value="#{row.deptoCapt}"
+                                                 converter="Divipola" />
+                                </af:column>
+                            </af:table>
+                        </af:panelCollection>
+                            
+                    </f:facet>
+                  </af:panelSplitter>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top">
+                    
+                    <af:panelGroupLayout binding="#{captacionesConcesionBean.panelGroupLayout1}"
+                                         id="panelGroupLayout1"
+                                         layout="horizontal">
+                          <af:spacer width="10" height="10"
+                                     binding="#{captacionesConcesionBean.spacer2}" id="spacer2"/>
+                          <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                          binding="#{captacionesConcesionBean.clTodos}"
+                                          id="clTodos" action="usuariosAgua"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{captacionesConcesionBean.spacer1}" id="spacer1"/>
+                          <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{captacionesConcesionBean.usuario.nombre}"
+                                          binding="#{captacionesConcesionBean.clUsuario}"
+                                          id="clUsuario"  action="detalleUsuario"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{captacionesConcesionBean.spacer3}" id="spacer3"/>
+                          <af:commandLink text="#{viewcontrollerBundle.PREDIO}  :  #{captacionesConcesionBean.predio.nombre}"
+                                          binding="#{captacionesConcesionBean.clPredio}"
+                                          id="clPredio" action="detallePredio"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{captacionesConcesionBean.spacer4}" id="spacer4"/>
+                          <af:commandLink text="#{viewcontrollerBundle.CONCESI_U00F3N__} : #{captacionesConcesionBean.concesion.numeroExpediente}"
+                                          binding="#{captacionesConcesionBean.clConcesion}"
+                                          id="clConcesion" action="detalleConcesion"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{captacionesConcesionBean.spacer6}" 
+                                     id="spacer6"/>
+                          <af:outputText value="#{viewcontrollerBundle.CPT_TODO}"
+                                          binding="#{captacionesConcesionBean.otCaptaciones}"
+                                          id="otCaptaciones" />
+                    </af:panelGroupLayout>
+                    
+                </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:captacionesConcesionBean-->
+</jsp:root>

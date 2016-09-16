@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{especialistas.d2}">
+      <af:form id="f2" binding="#{especialistas.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{especialistas.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="30px" bottomHeight="0px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{especialistas.pgl2}" id="pgl2">
+                  <af:popup binding="#{especialistas.p_deptos}" id="p_deptos">
+                    <af:dialog binding="#{especialistas.d_deptos}"
+                               id="d_deptos"
+                               title="Seleccione los Departamentos a Filtrar"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{especialistas.d_deptos_dialogListener}">
+                      <af:selectManyShuttle label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                            binding="#{especialistas.sms_deptos}"
+                                            id="sms_deptos" simple="true">
+                        <f:selectItems value="#{especialistas.listaDepartamentos}"
+                                       binding="#{especialistas.si1}" id="si1"/>
+                      </af:selectManyShuttle>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{especialistas.p_mun}" id="p_mun">
+                    <af:dialog binding="#{especialistas.d_mun}" id="d_mun"
+                               title="Seleccione los Municipios a Filtrar"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{especialistas.d_mun_dialogListener}">
+                      <af:selectManyShuttle label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                            binding="#{especialistas.sms_mun}"
+                                            id="sms_mun" simple="true">
+                        <f:selectItems value="#{especialistas.listaMunicipios}"
+                                       binding="#{especialistas.si2}"
+                                       id="si2"/>
+                      </af:selectManyShuttle>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{especialistas.p_gestion}" id="p_gestion">
+                    <af:dialog binding="#{especialistas.d_gestion}"
+                               id="d_gestion"
+                               title="Seleccione las Gestiones a Filtrar"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{especialistas.d_mun_dialogListener}">
+                      <af:selectManyShuttle
+                                            binding="#{especialistas.sms_gestion}"
+                                            id="sms_gestion">
+                        <f:selectItems value="#{especialistas.listaGestion}"
+                                       binding="#{especialistas.si3}"
+                                       id="si3"/>
+                      </af:selectManyShuttle>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{especialistas.p_inv}" id="p_inv">
+                    <af:dialog binding="#{especialistas.d_inv}" id="d_inv"
+                               title="Seleccione las Investigaciones a Filtrar"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{especialistas.d_mun_dialogListener}">
+                      <af:selectManyShuttle binding="#{especialistas.sms_inv}"
+                                            id="sms_inv">
+                        <f:selectItems value="#{especialistas.listaInvestigacion}"
+                                       binding="#{especialistas.si4}"
+                                       id="si4"/>
+                      </af:selectManyShuttle>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{especialistas.ps1}" id="ps1" orientation="vertical"
+                                  disabled="true" splitterPosition="60"
+                                  collapsed="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{especialistas.pfl_filtros}"
+                                        id="pfl_filtros" rows="1"
+                                        maxColumns="999999999"
+                                        labelAlignment="top">
+                      <af:inputText label="Nombre"
+                                    binding="#{especialistas.it_nombre}"
+                                    id="it_nombre"/>
+                      <af:panelGroupLayout binding="#{especialistas.pgl3}"
+                                           id="pgl3" layout="vertical">
+                        <af:outputText value="#{especialistas.textoFiltroDepto}"
+                                       binding="#{especialistas.ot_filtro_depto}"
+                                       id="ot_filtro_depto"/>
+                        <af:spacer width="10" height="5"
+                                   binding="#{especialistas.s1}" id="s1"/>
+                        <af:commandButton text="Seleccionar Departamentos"
+                                          binding="#{especialistas.cb_filtro_depto}"
+                                          id="cb_filtro_depto" immediate="true"
+                                          clientComponent="true">
+                          <af:showPopupBehavior popupId="p_deptos"
+                                                align="afterStart"
+                                                alignId="cb_filtro_depto"/>
+                        </af:commandButton>
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout binding="#{especialistas.pgl4}"
+                                           id="pgl4"
+                                           layout="vertical">
+                        <af:outputText value="#{especialistas.textofiltroMun}"
+                                       binding="#{especialistas.ot_filtro_munic}"
+                                       id="ot_filtro_munic"/>
+                        <af:spacer width="10" height="5"
+                                   binding="#{especialistas.s2}" id="s2"/>
+                        <af:commandButton text="Seleccionar Municipios"
+                                          binding="#{especialistas.cb_filtro_mun}"
+                                          id="cb_filtro_mun" immediate="true"
+                                          clientComponent="true">
+                          <af:showPopupBehavior popupId="p_mun"
+                                                align="afterStart"
+                                                alignId="cb_filtro_mun"/>
+                        </af:commandButton>
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout binding="#{especialistas.pgl5}"
+                                           id="pgl5"
+                                           layout="vertical">
+                        <af:outputText value="#{especialistas.textoFiltroGestion}"
+                                       binding="#{especialistas.ot11}"
+                                       id="ot11"/>
+                        <af:spacer width="10" height="5"
+                                   binding="#{especialistas.s3}" id="s3"/>
+                        <af:commandButton text="Seleccionar Gestión"
+                                          binding="#{especialistas.cb_filtro_gestion}"
+                                          id="cb_filtro_gestion" immediate="true"
+                                          clientComponent="true">
+                          <af:showPopupBehavior popupId="p_gestion"
+                                                align="afterStart"
+                                                alignId="cb_filtro_gestion"/>
+                        </af:commandButton>
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout binding="#{especialistas.pgl6}"
+                                           id="pgl6"
+                                           layout="vertical">
+                        <af:outputText value="#{especialistas.textoFiltroInvestigacion}"
+                                       binding="#{especialistas.ot12}"
+                                       id="ot12"/>
+                        <af:spacer width="10" height="5"
+                                   binding="#{especialistas.s4}" id="s4"/>
+                        <af:commandButton text="Seleccionar Investigacion"
+                                          binding="#{especialistas.cb_filtro_inv}"
+                                          id="cb_filtro_inv" immediate="true"
+                                          clientComponent="true">
+                          <af:showPopupBehavior popupId="p_inv"
+                                                align="afterStart"
+                                                alignId="cb_filtro_inv"/>
+                        </af:commandButton>
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout binding="#{especialistas.pgl7}"
+                                           id="pgl7" valign="middle"
+                                           layout="vertical">
+                        <af:spacer width="10" height="10"
+                                   binding="#{especialistas.s5}" id="s5"/>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                          binding="#{especialistas.cb_buscar}"
+                                          id="cb_buscar"
+                                          icon="/imgs/binoculars_24.png"
+                                          actionListener="#{especialistas.cb_buscar_actionListener}"/>
+                      </af:panelGroupLayout>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelCollection binding="#{especialistas.pc1}" id="pc1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{especialistas.m_arvchivo}"
+                                 id="m_arvchivo">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              binding="#{especialistas.cmi_adicionar}"
+                                              id="cmi_adicionar"
+                                              actionListener="#{especialistas.cmi_adicionar_actionListener}"
+                                              action="detalleEspecialista"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              binding="#{especialistas.cmi_consultar}"
+                                              id="cmi_consultar"
+                                              actionListener="#{especialistas.cmi_consultar_actionListener}"
+                                              action="#{especialistas.getAccion}"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{especialistas.listaEspecialistas}"
+                                var="row" rowBandingInterval="1"
+                                binding="#{especialistas.t_especialistas}"
+                                id="t_especialistas" rowSelection="single">
+                        <af:column sortable="false" headerText="Lista Tipo Id"
+                                   align="start" id="c5">
+                          <af:outputText value="#{row.listaTipoId.valor}" id="ot10"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Numero Id"
+                                   align="start" id="c3">
+                          <af:outputText value="#{row.numeroId}" id="ot7"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Nombre"
+                                   align="start" id="c6">
+                          <af:outputText value="#{row.nombre}" id="ot8"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Direccion"
+                                   align="start" id="c8">
+                          <af:outputText value="#{row.direccion}" id="ot4"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="Divipola Departamento"
+                                   align="start" id="c9">
+                          <af:outputText value="#{row.divipolaDepartamento.nombre}"
+                                         id="ot6"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="Divipola Municipio"
+                                   align="start" id="c7">
+                          <af:outputText value="#{row.divipolaMunicipio.nombre}"
+                                         id="ot9"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Email"
+                                   align="start" id="c4">
+                          <af:outputText value="#{row.email}" id="ot5"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Pagina Web"
+                                   align="start" id="c1">
+                          <af:outputText value="#{row.paginaWeb}" id="ot1"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Telefono"
+                                   align="start" id="c2">
+                          <af:outputText value="#{row.telefono}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout id="pgl1" binding="#{especialistas.pgl1}">
+                  <af:outputText value="Especialistas"
+                                 binding="#{especialistas.ot2}"
+                                 styleClass="AFBrandingBarTitle" id="ot2"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:especialistas-->
+</jsp:root>

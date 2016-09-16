@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+  
+  <managed-bean>
+    <managed-bean-name>standarDashBoard</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.view.StandarDashBoard</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorio.jspx-->
+  </managed-bean>
+  
+  
+  <managed-bean>
+    <managed-bean-name>observatorioBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioBacking</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorio.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>hojaPomca</from-outcome>
+      <to-view-id>/JSPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <!-- JHOSEPH 03-11-2015 -->
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>observatorioSuperficiales</from-outcome>
+      <to-view-id>/observatorioSuperficiales.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>observatorioSubterraneas</from-outcome>
+      <to-view-id>/observatorioSubterraneas.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>observatorioSubtZonificacion</from-outcome>
+      <to-view-id>/observatorioSubtZonificacion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <managed-bean>
+    <managed-bean-name>observatorioMainBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioMainBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioCalidad.jspx-->
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>observatorioSubterraneasBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioSubterraneasBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioCalidad.jspx-->
+  </managed-bean>
+  
+   <navigation-rule>
+    <navigation-case>
+      <from-outcome>zonificacionH</from-outcome>
+      <to-view-id>/JSAcuiferos.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>monitoreoSubt</from-outcome>
+      <to-view-id>/observatoriosubtMonitoreo.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+    <navigation-rule>
+    <navigation-case>
+      <from-outcome>monitoreoPiezometricoSubt</from-outcome>
+      <to-view-id>/JSMonitoreoPiezometrico.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>demandaSubt</from-outcome>
+      <to-view-id>/observatorioDemandaSubt.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  
+  
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>calidadSub</from-outcome>
+      <to-view-id>/dashBoardSubt.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>documentosSubt</from-outcome>
+      <to-view-id>/observatoriosubtDocumentos.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>monitoreoSpiez</from-outcome>
+      <to-view-id>/observatoriosubtMonPiezometrico.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>consultas</from-outcome>
+      <to-view-id>/directorio/consulta.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <!-- JHOSEPH 03-11-2015 -->
+  <managed-bean>  
+    <managed-bean-name>estacionesBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.oferta.view.EstacionesBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1oferta/estaciones.jspx-->
+  </managed-bean>
+   <managed-bean>  
+    <managed-bean-name>observatorioDemandaSubtBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioDemandaSubtBaking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>  
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioDemanda.jspx-->
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/oferta/estaciones.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleNiveles</from-outcome>
+      <to-view-id>/oferta/ListaNivelesMedMinMax.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>caudalesMedios</from-outcome>
+      <to-view-id>/oferta/listarCaudalesMedios.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>seriesEstacion</from-outcome>
+      <to-view-id>/oferta/detalle_estacion.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+ 
+  <managed-bean>
+    <managed-bean-name>detalleEstacionBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.oferta.view.DetalleEstacionBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1oferta/detalle_estacion.jspx-->
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>datosReferenciaBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.datos.referencia.view.DatosReferenciaBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1datosReferencia/cargarArchivo.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>cargarDatosReferencia</from-outcome>
+      <to-view-id>/datosReferencia/cargarArchivo.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <managed-bean>
+    <managed-bean-name>observatorioDemandaBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioDemandaBaking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioDemanda.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>demanda</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>observatorioCalidadBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioCalidadBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioCalidad.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>calidad</from-outcome>
+      <to-view-id>/observatorioCalidad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>calidadInicio</from-outcome>
+      <to-view-id>/observatorioCalidadInicio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/observatorioCalidadInicio.jspx</from-view-id>
+    <navigation-case>
+    <from-outcome>dashBoardCalidad</from-outcome>
+      <to-view-id>/dashBoardCalidad.jspx</to-view-id>
+     </navigation-case>
+     
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico2</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico2.jspx</to-view-id>
+    </navigation-case>
+    
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico3</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico3.jspx</to-view-id>
+    </navigation-case>
+    
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/observatorioGestion.jspx</from-view-id>
+     
+    <navigation-case>
+    <from-outcome>dashBoardPomcaGrafico1</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico1.jspx</to-view-id>
+     </navigation-case>
+     
+    <navigation-case>
+    <from-outcome>dashBoardPomcaGrafico3</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico3.jspx</to-view-id>
+    </navigation-case>
+    
+  </navigation-rule>
+  
+  <managed-bean>
+    <managed-bean-name>observatorioGestionBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioGestionBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioGestion.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>gestion</from-outcome>
+      <to-view-id>/observatorioGestion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>observatorioRiesgoBacking</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.observatorio.view.ObservatorioRiesgoBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1observatorioRiesgo.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>riesgo</from-outcome>
+      <to-view-id>/observatorioRiesgo.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>consultaEstratificadaBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.demanda.view.ConsultaEstratificadaBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1demanda/consultaEstratificada.jspx-->
+  </managed-bean>
+  
+  <navigation-rule>
+    <from-view-id>/observatorioDemanda.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>consulta_estratificada</from-outcome>
+      <to-view-id>/demanda/consultaEstratificada.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>caudalTipoUsuarioBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.demanda.view.CaudalTipoUsuarioBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1demanda/caudalTipoUsuario.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/observatorioDemanda.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>consulta_caudal_tipo_usuario</from-outcome>
+      <to-view-id>/demanda/caudalTipoUsuario.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>caudalEstadoUsuarioBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.demanda.view.CaudalEstadoUsuarioBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1demanda/caudalEstadoUsuario.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/observatorioDemanda.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>consulta_caudal_estado_usuario</from-outcome>
+      <to-view-id>/demanda/caudalEstadoUsuario.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+   <from-view-id>/dashBoard/alertDisp.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashboard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>alertaDisponibilidad</from-outcome>
+      <to-view-id>/dashBoard/alertDisp.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>alertaIca</from-outcome>
+      <to-view-id>/dashBoard/alertaCalidad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- HUGO 20150115-->
+    <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx?origen=riesgo</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>contaminacion</from-outcome>
+      <to-view-id>/dashBoard/alertCont.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+
+  </navigation-rule>
+   
+  <!-- HUGO 20150115-->
+	
+  <navigation-rule>
+   <from-view-id>/observatorioRiesgo.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx?origen=riesgo</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <!-- HUGO 20150115-->
+	
+  <navigation-rule>
+   <from-view-id>/observatorio.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx?origen=oferta</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <!-- HUGO 20150115-->
+	
+  <navigation-rule>
+   <from-view-id>/dashBoard.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx?origen=riesgo</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+   <from-view-id>/dashBoard/alertaCalidad.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashboard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>alertaDisponibilidad</from-outcome>
+      <to-view-id>/dashBoard/alertDisp.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>alertaIca</from-outcome>
+      <to-view-id>/dashBoard/alertaCalidad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- HUGO 20150115-->
+     <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx?origen=riesgo</to-view-id>
+      <redirect/>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>contaminacion</from-outcome>
+      <to-view-id>/dashBoard/alertDisp.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+    
+  <navigation-rule>
+   <from-view-id>/dashBoard/alertCont.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashboard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>alertaDisponibilidad</from-outcome>
+      <to-view-id>/dashBoard/alertDisp.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>alertaIca</from-outcome>
+      <to-view-id>/dashBoard/alertaCalidad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- HUGO 20150115-->
+     <navigation-case>
+      <from-outcome>oferta</from-outcome>
+      <to-view-id>/oferta/estaciones.jspx?origen=riesgo</to-view-id>
+      <redirect/>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>contaminacion</from-outcome>
+      <to-view-id>/dashBoard/alertDisp.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+</faces-config>
+

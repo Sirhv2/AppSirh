@@ -1,0 +1,1734 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>    
+  </application>
+  <managed-bean>
+    <managed-bean-name>predios</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.PrediosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/Permisos.jspx-->
+  </managed-bean>
+  
+    <managed-bean>
+    <managed-bean-name>documentos</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.documentos.view.DocumentosBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+   
+  </managed-bean>
+  
+  
+  
+  <managed-bean>
+    <managed-bean-name>login</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.LoginBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1login.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>principal</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.view.Principal</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1principal.jspx-->
+  </managed-bean>
+
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>principal</from-outcome>
+      <to-view-id>/principal.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>cambiarClave</from-outcome>
+      <to-view-id>/seguridad/cambiarClave.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>usuariosAgua</from-outcome>
+      <to-view-id>/usuariosAgua/usuarios.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>concesiones</from-outcome>
+      <to-view-id>/usuariosAgua/concesiones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+	<navigation-case>
+      <from-outcome>reporteAuditoria</from-outcome>
+      <to-view-id>/usuariosAgua/reporteAuditoria.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    	<navigation-case>
+      <from-outcome>reporteNodosAutoridad</from-outcome>
+      <to-view-id>/usuariosAgua/reporteNodosAutoridad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    
+    
+    
+    
+    <navigation-case>
+      <from-outcome>permisosVertimiento</from-outcome>
+      <to-view-id>/usuariosAgua/Permisos.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>cargarArchivo</from-outcome>
+      <to-view-id>/archivos/cargarArchivo.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>predios</from-outcome>
+      <to-view-id>/usuariosAgua/predios.jspx</to-view-id>
+      
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>completitud</from-outcome>
+      <to-view-id>/usuariosAgua/completitud.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      
+      <from-outcome>publicaciones</from-outcome>
+      <to-view-id>/publicaciones/publicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    
+    
+    
+    
+        <!-- HUGO ENTREGA 7 -->    
+    <navigation-case>
+    <from-outcome>dashBoardPomcaGrafico1</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico1.jspx</to-view-id>
+            <redirect/>
+     </navigation-case>
+    <navigation-case>
+    <from-outcome>dashBoardPomcaGrafico3</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico3.jspx</to-view-id>
+            <redirect/>
+     </navigation-case>
+
+    <navigation-case>
+      <from-outcome>alertaDisponibilidad</from-outcome>
+      <to-view-id>/dashBoard/alertDisp.jspx</to-view-id>
+    </navigation-case>
+
+<!-- FIN HUGO ENTREGA 7 -->
+ 
+    <navigation-case>
+      <from-outcome>alertaIca</from-outcome>
+      <to-view-id>/dashBoard/alertaCalidad.jspx</to-view-id>
+    </navigation-case>
+
+    <navigation-case>
+      <from-outcome>contaminacion</from-outcome>
+      <to-view-id>/dashBoard/alertCont.jspx</to-view-id>
+    </navigation-case>
+	
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/fuentes/*</from-view-id>
+    <navigation-case>
+      <from-outcome>listarConflictos</from-outcome>
+      <to-view-id>/fuentes/conflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>datosConflicto</from-outcome>
+      <to-view-id>/fuentes/editarConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>tipoConflicto</from-outcome>
+      <to-view-id>/fuentes/tipoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>actoresConflicto</from-outcome>
+      <to-view-id>/fuentes/actorConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>derechosConflicto</from-outcome>
+      <to-view-id>/fuentes/derechoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>gestionConflicto</from-outcome>
+      <to-view-id>/fuentes/gestionConflicto.jspx</to-view-id>
+    </navigation-case>
+
+<navigation-case>
+      <from-outcome>actividadLogroConflicto</from-outcome>
+      <to-view-id>/fuentes/actividadLogroConflicto.jspx</to-view-id>
+    </navigation-case>  </navigation-rule>  
+
+  <navigation-rule>
+    <from-view-id>/fuentes/tipoConflicto.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>listarConflictos</from-outcome>
+      <to-view-id>/fuentes/conflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>datosConflicto</from-outcome>
+      <to-view-id>/fuentes/editarConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>tipoConflicto</from-outcome>
+      <to-view-id>/fuentes/tipoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>actoresConflicto</from-outcome>
+      <to-view-id>/fuentes/actorConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>derechosConflicto</from-outcome>
+      <to-view-id>/fuentes/derechoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>gestionConflicto</from-outcome>
+      <to-view-id>/fuentes/gestionConflicto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>  
+  
+  <navigation-rule>
+    <from-view-id>/fuentes/actorConflicto.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>listarConflictos</from-outcome>
+      <to-view-id>/fuentes/conflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>datosConflicto</from-outcome>
+      <to-view-id>/fuentes/editarConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>tipoConflicto</from-outcome>
+      <to-view-id>/fuentes/tipoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>actoresConflicto</from-outcome>
+      <to-view-id>/fuentes/actorConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>derechosConflicto</from-outcome>
+      <to-view-id>/fuentes/derechoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>gestionConflicto</from-outcome>
+      <to-view-id>/fuentes/gestionConflicto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>  
+
+    <navigation-rule>
+    <from-view-id>/fuentes/derechoConflicto.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>listarConflictos</from-outcome>
+      <to-view-id>/fuentes/conflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>datosConflicto</from-outcome>
+      <to-view-id>/fuentes/editarConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>tipoConflicto</from-outcome>
+      <to-view-id>/fuentes/tipoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>actoresConflicto</from-outcome>
+      <to-view-id>/fuentes/actorConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>derechosConflicto</from-outcome>
+      <to-view-id>/fuentes/derechoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>gestionConflicto</from-outcome>
+      <to-view-id>/fuentes/gestionConflicto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>  
+
+    <navigation-rule>
+    <from-view-id>/fuentes/gestionConflicto.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>listarConflictos</from-outcome>
+      <to-view-id>/fuentes/conflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>datosConflicto</from-outcome>
+      <to-view-id>/fuentes/editarConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>tipoConflicto</from-outcome>
+      <to-view-id>/fuentes/tipoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>actoresConflicto</from-outcome>
+      <to-view-id>/fuentes/actorConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>derechosConflicto</from-outcome>
+      <to-view-id>/fuentes/derechoConflicto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>gestionConflicto</from-outcome>
+      <to-view-id>/fuentes/gestionConflicto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>  
+
+  <managed-bean>
+    <managed-bean-name>UsuarioConectado</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.model.UsuarioConectadoTO</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>usuarios</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.UsuariosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1seguridad/usuarios.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>usuarios</from-outcome>
+      <to-view-id>/seguridad/usuarios.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <validator>
+    <validator-id>custom.EmailValidator</validator-id>
+    <validator-class>co.gov.ideam.sirh.view.util.EmailValidator</validator-class>
+  </validator>
+  <managed-bean>
+    <managed-bean-name>generales</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.GeneralesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>logout</from-outcome>
+      <to-view-id>/login.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>login</from-outcome>
+      <to-view-id>/login.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>perfiles</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.PerfilesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1seguridad/perfiles.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>perfiles</from-outcome>
+      <to-view-id>/seguridad/perfiles.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>menu</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.MenuBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1seguridad/menu.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>LibraryTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.view.util.TreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{menu.libraryTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>menu</from-outcome>
+      <to-view-id>/seguridad/menu.jspx</to-view-id>
+    </navigation-case>
+
+  </navigation-rule>
+  
+   <navigation-rule>
+    <navigation-case>
+      <from-outcome>predios</from-outcome>
+      <to-view-id>/usuariosAgua/predios.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+<navigation-rule>
+    <navigation-case>
+      <from-outcome>publicaciones</from-outcome>
+      <to-view-id>/publicaciones/publicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <managed-bean>
+    <managed-bean-name>PerfilesTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.view.util.TreeHandlerPerfiles</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{perfiles.perfilesTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+  <validator>
+    <validator-id>custon.NombreApellido</validator-id>
+    <validator-class>co.gov.ideam.sirh.view.util.NombreValidator</validator-class>
+  </validator>
+  <managed-bean>
+    <managed-bean-name>showServerLog</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.ShowServerLogBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1seguridad/showServerLog.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>cambiarClave</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.seguridad.view.CambiarClave</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1seguridad/cambiarClave.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>usuariosAgua</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.UsuariosAguaBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/usuarios.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>autoridades</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.parametros.view.AutoridadesBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1parametros/autoridades.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>detalleUsuarioAgua</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.DetalleUsuarioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/detalleUsuario.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>adicionarUsuario</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.AdicionarUsuarioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/adicionarUsuario.jspx-->
+  </managed-bean>
+    <managed-bean>
+    <managed-bean-name>adicionarPredio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.AdicionarPredioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/adicionarPredio.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/usuarios.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>adicionarUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/adicionarUsuario.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>adicionarPredio</from-outcome>
+      <to-view-id>/usuariosAgua/adicionarPredio.jspx</to-view-id>
+    </navigation-case>
+    
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>UsuariosTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.UsuariosTreeHandler</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detalleUsuarioAgua.prediosTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>detallePredio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.DetallePredioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/detallePredio.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/detalleUsuario.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listarConcesiones</from-outcome>
+      <to-view-id>/usuariosAgua/concesionesPredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleConcesion</from-outcome>
+      <to-view-id>/usuariosAgua/detalleConcesion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listarPermisos</from-outcome>
+      <to-view-id>/usuariosAgua/permisosPredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePermiso</from-outcome>
+      <to-view-id>/usuariosAgua/detallePermiso.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>PrediosTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.PrediosTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detallePredio.concesionesTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+   
+  
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/detallePredio.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listarConcesiones</from-outcome>
+      <to-view-id>/usuariosAgua/concesionesPredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleConcesion</from-outcome>
+      <to-view-id>/usuariosAgua/detalleConcesion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listarPermisos</from-outcome>
+      <to-view-id>/usuariosAgua/permisosPredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePermiso</from-outcome>
+      <to-view-id>/usuariosAgua/detallePermiso.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case><!--Pilar-->
+        <from-outcome>adicionarCaptacion</from-outcome>
+        <to-view-id>/usuariosAgua/adicionarCaptacionDetalle.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>concesionesPredio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.ConcesionesPredioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/concesionesPredio.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/concesionesPredio.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleConcesion</from-outcome>
+      <to-view-id>/usuariosAgua/detalleConcesion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  
+  
+   <navigation-rule>
+    <from-view-id>/usuariosAgua/adicionarCaptacionDetalle.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleCaptacion</from-outcome>
+      <to-view-id>/usuariosAgua/detalleCaptacion.jspx</to-view-id>
+    </navigation-case>
+   
+  </navigation-rule>
+  
+    <navigation-rule>
+    <from-view-id>/usuariosAgua/detalleUsuario.jspx</from-view-id>
+    
+    <navigation-case>
+      <from-outcome>adicionarPredio</from-outcome>
+      <to-view-id>/usuariosAgua/adicionarPredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+ </navigation-rule>
+ 
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/adicionarPredio.jspx</from-view-id>
+    
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+ </navigation-rule>
+ 
+ 
+ 
+ 
+  <managed-bean>
+    <managed-bean-name>detalleConcesion</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.DetalleConcesionBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/detalleConcesion.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/detalleConcesion.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listarConcesiones</from-outcome>
+      <to-view-id>/usuariosAgua/concesionesPredio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listaPredios</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/adicionarUsuario.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>permisosPredio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.PermisosPredioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/permisosPredio.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/permisosPredio.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePermiso</from-outcome>
+      <to-view-id>/usuariosAgua/detallePermiso.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>detallePermiso</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.DetallePermisoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/detallePermiso.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/detallePermiso.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listaPredios</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listarPermisos</from-outcome>
+      <to-view-id>/usuariosAgua/permisosPredio.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>buscarCiiu</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.BuscarCiiuBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/buscarCiiu.jsff-->
+  </managed-bean>
+ 
+  <managed-bean>
+    <managed-bean-name>usuariosXDepto</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.UsuariosXDeptoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosXDepto.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>dashBoard</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashboard.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>naturalezaUsuarios</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.NaturalezaUsuariosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/naturalezaUsuarios.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>usoAguaXActividad</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.UsoAguaXActividadBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/usoAguaXActividad.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ubicacionUsuarios</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.UbicacionUsuarios</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/ubicacionUsuarios.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>vigenciaConcesiones</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.VigenciaConcesionesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/vigenciaConcesiones.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>vigenciaPermisosVertimiento</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.VigenciaPermisosVertimientoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/vigenciaPermisosVertimiento.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>aguaConcesionada</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.AguaConcesionadaBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/aguaConcesionada.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>aguaVertida</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.AguaVertidaBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/aguaVertida.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ConcesionTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.ConcesionTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>concesiones</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.ConcesionesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/concesiones.jspx-->
+  </managed-bean>
+  
+  
+  
+
+  <managed-bean>
+    <managed-bean-name>reporteAuditoria</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.ReporteAuditoriaBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/reporteAuditoria.jspx-->
+  </managed-bean>
+  
+  
+  
+  
+  
+    <managed-bean>
+    <managed-bean-name>reporteNodosAutoridad</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.ReporteNodosAutoridadBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/reporteNodosAutoridad.jspx-->
+  </managed-bean>
+  
+
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/concesiones.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleConcesion</from-outcome>
+      <to-view-id>/usuariosAgua/detalleConcesion.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>permisos</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.PermisosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/Permisos.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/Permisos.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePermiso</from-outcome>
+      <to-view-id>/usuariosAgua/detallePermiso.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  <managed-bean>
+    <managed-bean-name>puntosdeMonitoreo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.PuntosdeMonitoreoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/puntosdeMonitoreo.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>adicionarPuntosMonitoreo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.AdicionarPuntosMonitoreoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/puntosdeMonitoreo.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>adicionarpunto</from-outcome>
+      <to-view-id>/calidad/adicionarPuntosMonitoreo.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>listarpuntos</from-outcome>
+      <to-view-id>/calidad/puntosdeMonitoreo.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+    <navigation-rule>
+    <navigation-case>
+      <from-outcome>verPublicaciones</from-outcome>
+      <to-view-id>/publicaciones/publicaciones.jspx</to-view-id>
+    </navigation-case>
+    
+   
+  </navigation-rule>
+
+
+  <managed-bean>
+    <managed-bean-name>cargarArchivo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.archivos.view.CargarArchivoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1archivos/cargarArchivo.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>detallePuntoMonitoreo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.DetallePuntoMonitoreoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/detallePuntoMonitoreo.jspx-->
+  </managed-bean> 
+ 
+  
+  
+  
+  <navigation-rule>
+    <from-view-id>/dashBoard.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>String componenteSeleccionado = "";</from-outcome>
+      <to-view-id>/usuariosAgua/usuarios.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+   <managed-bean>
+    <managed-bean-name>muestras</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.MuestrasBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/muestras.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>adicionarMuestra</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.AdicionarMuestraBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/adicionarMuestra.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>detalleMuestra</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.DetalleMuestraBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/detalleMuestra.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/muestrasPunto.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>adicionarmuestra</from-outcome>
+      <to-view-id>/calidad/adicionarMuestra.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallemuestra</from-outcome>
+      <to-view-id>/calidad/detalleMuestra.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+    <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>listarMuestras</from-outcome>
+      <to-view-id>/calidad/muestras.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>muestrasPunto</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.MuestrasPuntoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/muestrasPunto.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/detallePuntoMonitoreo.jspx</from-view-id>
+    <navigation-case>
+     <from-outcome>listaMuestrasPunto</from-outcome>
+      <to-view-id>/calidad/muestrasPunto.jspx</to-view-id>
+     
+    </navigation-case>
+    <navigation-case>
+     <from-outcome>detalleMuestra</from-outcome>
+      <to-view-id>/calidad/detalleMuestra.jspx</to-view-id>
+     
+    </navigation-case>
+    <navigation-case>
+     <from-outcome>adicionarMuestra</from-outcome>
+      <to-view-id>/calidad/adicionarMuestra.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallevertimiento</from-outcome>
+      <to-view-id>/usuariosAgua/detalleVertimiento.jspx</to-view-id>
+     </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleCaptacion</from-outcome>
+      <to-view-id>/usuariosAgua/detalleCaptacion.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>MuestrasTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.MuestrasTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    
+     <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detallePuntoMonitoreo.muestraTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/adicionarMuestra.jspx</from-view-id>
+    <navigation-case>
+    <from-outcome>listarpuntos</from-outcome>
+      <to-view-id>/calidad/puntosdeMonitoreo.jspx</to-view-id>
+      
+    </navigation-case>
+    <navigation-case>
+     <from-outcome>detallepunto</from-outcome>
+     <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+   </navigation-case>
+    <navigation-case>
+      <from-outcome>listaMuestrasPunto</from-outcome>
+      <to-view-id>/calidad/muestrasPunto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/calidad/detalleMuestra.jspx</from-view-id>
+     <navigation-case>
+      <from-outcome>detalleMuestra</from-outcome>
+      <to-view-id>/calidad/detalleMuestra.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>listaMuestrasPunto</from-outcome>
+      <to-view-id>/calidad/muestrasPunto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+     <from-outcome>listarpuntos</from-outcome>
+      <to-view-id>/calidad/puntosdeMonitoreo.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+    <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+     </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>CaptacionesFuenteBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.CaptacionesFuenteBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>PuntosMonitoreoTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.PuntosMonitoreoTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    
+    <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detalleTramoBean.puntosMonitoreoTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>puntosMonitoreoTramo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.PuntosMonitoreoTramoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/puntosMonitoreoTramo.jspx</from-view-id>
+    <navigation-case>
+     <from-outcome>adicionarpunto</from-outcome>
+      <to-view-id>/calidad/adicionarPuntosMonitoreo.jspx</to-view-id>
+     </navigation-case>
+    <navigation-case>
+    <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+     </navigation-case>
+    <navigation-case>
+     <from-outcome>detalleTramo</from-outcome>
+      <to-view-id>/fuentes/detalleTramo.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleFuente</from-outcome>
+      <to-view-id>/fuentes/detalleFuente.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>fuentes</from-outcome>
+      <to-view-id>/fuentes/fuentes.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>puntosMonitoreoVert</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.PuntosMonitoreoVertBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/puntosMonitoreoVert.jspx</from-view-id>
+    <navigation-case>
+    <from-outcome>adicionarPuntoVert</from-outcome>
+      <to-view-id>/calidad/adicionarPuntosMonitoreoVert.jspx</to-view-id>
+      
+    </navigation-case>
+    <navigation-case>
+     <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+     
+    </navigation-case>
+    <navigation-case>
+    <from-outcome>detallevertimiento</from-outcome>
+      <to-view-id>/usuariosAgua/detalleVertimiento.jspx</to-view-id>
+      
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>PuntosMonitoreoVertTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.PuntosMonitoreoVertTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+     <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detalleVertimientoBean.puntosMonitoreoTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>PuntosMonitoreoCaptTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.PuntosMonitoreoCaptTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+     <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detalleCaptacionBean.puntosMonitoreoTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+    <managed-bean>
+    <managed-bean-name>adicionarPuntosMonitoreoCapt</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.AdicionarPuntosMonitoreoCaptBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+  
+  
+   <navigation-rule>
+    <from-view-id>/calidad/adicionarPuntosMonitoreoCapt.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+   <managed-bean>
+    <managed-bean-name>adicionarPuntosMonitoreoVert</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.AdicionarPuntosMonitoreoVertBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/adicionarPuntosMonitoreoVert.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+   <navigation-rule>
+    <from-view-id>/calidad/adicionarPuntosMonitoreo.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallepunto</from-outcome>
+      <to-view-id>/calidad/detallePuntoMonitoreo.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/calidad/muestras.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallemuestra</from-outcome>
+      <to-view-id>/calidad/detalleMuestra.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>muestrasPorAnio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.MuestrasPorAnioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/muestrasPorAnio.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ofertaDemanda</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.porh.view.OfertaDemandaBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1porh/ofertaDemanda.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>muestrasPorTipo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.MuestrasPorTipoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/muestrasPorTipo.jsff-->
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>conflictosPorTipo</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.ConflictosPorTipoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/conflictosPorTipo.jsff-->
+  </managed-bean>
+
+
+  <navigation-rule>
+    <from-view-id>/usuariosAgua/predios.jspx</from-view-id>
+    <navigation-case>
+        <from-outcome>detalleUsuario</from-outcome>
+      <to-view-id>/usuariosAgua/detalleUsuario.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+        <from-outcome>detallePredio</from-outcome>
+      <to-view-id>/usuariosAgua/detallePredio.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>UsosAguaBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.UsosAguaBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/usosAgua.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>enlacesParametros</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.EnlacesParametrosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>dashBoardCalidad</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCalidadBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoardCalidad.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>enlacesTramites</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.EnlacesTramitesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>dashBoardConcesionesAnio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardConcesionesAnioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoardConcesionesAnio.jspx-->
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>dashBoardPermisosAnio</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardPermisosAnioBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoardPermisosAnio.jspx-->
+  </managed-bean>
+  
+  
+  <navigation-rule>
+    <from-view-id>/dashBoard.jspx</from-view-id>
+    <navigation-case>
+    <from-outcome>dashBoardCalidad</from-outcome>
+      <to-view-id>/dashBoardCalidad.jspx</to-view-id>
+     </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico2</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico2.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico3</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico3.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCaudales</from-outcome>
+      <to-view-id>/dashBoardCaudales.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCaudalesAutoridad</from-outcome>
+      <to-view-id>/dashBoardCaudalesAutoridad.jspx</to-view-id>
+    </navigation-case>
+    
+    
+     <navigation-case>
+      <from-outcome>dashBoardCaudalesVert</from-outcome>
+      <to-view-id>/dashBoardCaudalesVert.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCaudalesAutoridadVert</from-outcome>
+      <to-view-id>/dashBoardCaudalesAutoridadVert.jspx</to-view-id>
+    </navigation-case>
+    
+    
+    
+    <navigation-case>
+      <from-outcome>dashBoardConcesionesAnio</from-outcome>
+      <to-view-id>/dashBoardConcesionesAnio.jspx</to-view-id>
+    </navigation-case>
+    
+    <navigation-case>
+      <from-outcome>dashBoardPermisosAnio</from-outcome>
+      <to-view-id>/dashBoardPermisosAnio.jspx</to-view-id>
+    </navigation-case>
+    
+    
+    
+    <!-- HUGO ENTREGA 7 -->    
+    <navigation-case>
+    <from-outcome>dashBoardPomcaGrafico1</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico1.jspx</to-view-id>
+     </navigation-case>
+    <navigation-case>
+    <from-outcome>dashBoardPomcaGrafico3</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico3.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>busqFuentesZonif</from-outcome>
+      <to-view-id>/busqFuentesZonif.jspx</to-view-id>
+    </navigation-case>
+    <!-- FIN HUGO ENTREGA 7 -->  
+    
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>dashBoardCalidadGrafico2</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCalidadGrafico2Bean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoardCalidadGrafico2.jspx-->
+  </managed-bean>
+  
+    <navigation-rule>
+    <from-view-id>/dashBoardCalidad.jspx</from-view-id>
+   <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioCalidadInicio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico2</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico2.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico3</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico3.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/dashBoardCalidadGrafico2.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioCalidadInicio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidad</from-outcome>
+      <to-view-id>/dashBoardCalidad.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico3</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico3.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+ <navigation-rule>
+    <from-view-id>/dashBoardCalidadGrafico3.jspx</from-view-id>
+   <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioCalidadInicio.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidad</from-outcome>
+      <to-view-id>/dashBoardCalidad.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardCalidadGrafico2</from-outcome>
+      <to-view-id>/dashBoardCalidadGrafico2.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>completitud</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.usuarios.agua.view.CompletitudBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1usuariosAgua/completitud.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>dashBoardCalidadGrafico3</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCalidadGrafico3Bean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+  
+ 
+  <managed-bean>
+    <managed-bean-name>caudalesConcesionados</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.CaudalesConcesionadosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>dashBoardCaudales</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCaudalesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>dashBoardCaudalesAutoridad</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCaudalesBeanAutoridad</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/dashBoardCaudales.jspx</from-view-id>
+     <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+    <from-view-id>/dashBoardCaudalesAutoridad.jspx</from-view-id>
+     <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>PrediosPorDepartamentoBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.PrediosPorDepartamentoBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/prediosPorDepartamento.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>CaptacionTipoFuenteBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.CaptacionTipoFuenteBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1estadisticas/CaptacionTipoFuente.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ComponentesSIRHBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.view.ComponentesSIRHBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1componentesSIRH.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>NormaUsos</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.NormaUsosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/normaUsos.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>graficoNormaLimites</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.GraficoNormaLimitesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1graficoNormaLimites.jspx-->
+  </managed-bean>
+  <navigation-rule>
+    <from-view-id>/calidad/normaUsos.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>graficarNorma</from-outcome>
+      <to-view-id>/graficoNormaLimites.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+<navigation-rule>
+    <navigation-case>
+      <from-outcome>dashboard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    
+  </navigation-rule>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>normaUsos</from-outcome>
+      <to-view-id>/calidad/normaUsos.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+    <from-view-id>/graficoNormaLimites.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>normaUsos</from-outcome>
+     <to-view-id>/calidad/normaUsos.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+
+  <managed-bean>
+    <managed-bean-name>cumplimientoPorPrograma</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.CumplimientoPorPrograma</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ejecucionPorPrograma</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.EjecucionPorPrograma</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+<!-- HUGO ENTREGA 7 -->    
+  
+  <navigation-rule>
+    <from-view-id>/dashBoard/DashBoardPomcaGrafico1.jspx</from-view-id>
+     <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioGestion.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardPomcaGrafico3</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico3.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/dashBoard/DashBoardPomcaGrafico3.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioGestion.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>dashBoardPomcaGrafico1</from-outcome>
+      <to-view-id>/dashBoard/DashBoardPomcaGrafico1.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <managed-bean>
+    <managed-bean-name>DashBoardPomcaGrafico1Bean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardPomcaGrafico1Bean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoard/DashBoardPomcaGrafico1.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>DashBoardPomcaGrafico3Bean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardPomcaGrafico3Bean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoard/DashBoardPomcaGrafico3.jspx-->
+  </managed-bean>
+<managed-bean>
+    <managed-bean-name>ListarCaudalesMedios</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.oferta.view.ListarCaudalesMedios</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1oferta/listarCaudalesMedios.jspx-->
+  </managed-bean>
+    <!-- FIN HUGO ENTREGA 7 --> 
+   <managed-bean>
+    <managed-bean-name>busqFuentesZonif</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.BusqFuentesZonifBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+  <navigation-rule>
+    <from-view-id>/busqFuentesZonif.jspx</from-view-id>
+   <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  <managed-bean>
+    <managed-bean-name>enlacesBusquedas</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.EnlacesBusquedasBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>VertimientosFuenteBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.VertimientosFuenteBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule/>
+   <managed-bean>
+    <managed-bean-name>VertimientosTipoBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.VertimientosTipoBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <navigation-rule/>
+  <managed-bean>
+    <managed-bean-name>caudalesVertidos</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.CaudalesVertidosBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>dashBoardCaudalesVert</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCaudalesVertBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>dashBoardCaudalesAutoridadVert</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.DashBoardCaudalesAutoridadVertBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>EnlacesAlertasBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.EnlacesAlertasBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoard/enlacesAlertas.jsff-->
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>AlertDispBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.AlertDispBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoard/alertDisp.jspx-->
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>AlertaCalidadBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.AlertaCalidadBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1alertaCalidad.jspx-->
+  </managed-bean>
+
+ 
+   <managed-bean>
+    <managed-bean-name>AlertContBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.AlertContBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1dashBoard/alertCont.jspx-->
+  </managed-bean>
+ 
+  <navigation-rule>
+    <from-view-id>/dashBoardCaudalesVert.jspx</from-view-id>
+   <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+    <from-view-id>/dashBoardCaudalesAutoridadVert.jspx</from-view-id>
+   <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  
+  
+  
+   <!--Esta regla permite que desde dashBoardConcesionesAnio se pueda volver al Observatorio o al Dashboard-->
+  <navigation-rule>
+    <from-view-id>/dashBoardConcesionesAnio.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashBoardPermisosAnio</from-outcome>
+      <to-view-id>/dashBoardPermisosAnio.jspx</to-view-id>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+    
+  </navigation-rule>
+ 
+  <!--Esta regla permite que desde dashBoardPermisosAnio se pueda volver al Observatorio o al Dashboard-->
+  <navigation-rule>
+    <from-view-id>/dashBoardPermisosAnio.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>dashBoardConcesionesAnio</from-outcome>
+      <to-view-id>/dashBoardConcesionesAnio.jspx</to-view-id>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>dashBoard</from-outcome>
+      <to-view-id>/dashBoard.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>observatorio</from-outcome>
+      <to-view-id>/observatorioDemanda.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/observatorioDemanda.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>busqFuentesZonif</from-outcome>
+      <to-view-id>/busqFuentesZonif.jspx</to-view-id>
+    </navigation-case>
+    
+  </navigation-rule>
+  
+  
+  
+  
+   <managed-bean>
+    <managed-bean-name>detalleCaptacionVista</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.visor.view.DetalleCaptacionVistaBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>detalleVertimientoVista</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.visor.view.DetalleVertimientoVistaBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+     <managed-bean>
+    <managed-bean-name>detallePuntoMonitoreoVista</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.visor.view.DetallePuntoMonitoreoVistaBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+   <managed-bean>
+    <managed-bean-name>detallePuntoIDEAM</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.visor.view.DetallePuntoIDEAMBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <navigation-rule>
+    <from-view-id>/observatorioDemanda.jspx</from-view-id>
+    
+    <navigation-case>
+      <from-outcome>dashBoardCaudales</from-outcome>
+      <to-view-id>/dashBoardCaudales.jspx</to-view-id>
+    </navigation-case>
+    
+    <navigation-case>
+      <from-outcome>dashBoardCaudalesAutoridad</from-outcome>
+      <to-view-id>/dashBoardCaudalesAutoridad.jspx</to-view-id>
+    </navigation-case>
+    
+     <navigation-case>
+      <from-outcome>dashBoardCaudalesVert</from-outcome>
+      <to-view-id>/dashBoardCaudalesVert.jspx</to-view-id>
+    </navigation-case>
+    
+    <navigation-case>
+      <from-outcome>dashBoardCaudalesAutoridadVert</from-outcome>
+      <to-view-id>/dashBoardCaudalesAutoridadVert.jspx</to-view-id>
+    </navigation-case>
+
+    <navigation-case>
+      <from-outcome>dashBoardConcesionesAnio</from-outcome>
+      <to-view-id>/dashBoardConcesionesAnio.jspx</to-view-id>
+    </navigation-case>
+    
+    <navigation-case>
+      <from-outcome>dashBoardPermisosAnio</from-outcome>
+      <to-view-id>/dashBoardPermisosAnio.jspx</to-view-id>
+    </navigation-case>
+     
+    <navigation-case>
+      <from-outcome>busqFuentesZonif</from-outcome>
+      <to-view-id>/busqFuentesZonif.jspx</to-view-id>
+    </navigation-case> 
+    
+  </navigation-rule>
+  
+  
+  <managed-bean>
+    <managed-bean-name>filtrosCalidad</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.view.FiltrosCalidad</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidad/filtrosCalidad.jsff-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>muestrasPorTipoIdeam</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.MuestrasPorTipoIdeamBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>muestrasPorAnioIdeam</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.estadisticas.view.MuestrasPorAnioIdeamBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>filtrosCalidadIdeam</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.red.ideam.view.FiltrosCalidadIdeam</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>filtrosAlertaCalidad</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.dashboard.view.FiltrosAlertaCalidad</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+</faces-config>

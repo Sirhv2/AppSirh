@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+<c:set var="viewcontrollerBundle"
+value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+<jsp:directive.page contentType="text/html;charset=windows-1252"/>
+<f:view>
+<af:document id="document1">
+<af:form id="form1">
+<af:pageTemplate viewId="/template/templateMenu.jspx">
+<f:facet name="center">
+	<af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+<af:panelBox inlineStyle="text-align: left;">
+<af:commandLink text="Observatorio"
+                                    action="observatorio"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="Observatorio Aguas Superficiales"
+                                    action="observatorioSuperficiales"/>
+                    <af:spacer width="25" height="10"/>                   
+                    
+                     <af:commandLink text="Componente Gestion "
+                                    action="gestion"/>
+                    <af:spacer width="25" height="10"/>                   
+                    
+
+</af:panelBox>
+		</f:facet>
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			
+      
+          <af:panelGroupLayout layout="scroll">
+<af:panelBox text="Tabla de Datos de Pomca">
+
+ <af:selectOneChoice label="Autoridad"
+                                          binding="#{PomcaBean.autoridad}"
+                                          id="selectOneChoice3"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{PomcaBean.autoridad_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{PomcaBean.autoridadSelectItems}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                      
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        id="cmdBuscar1"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{PomcaBean.cmdBuscar_actionListener}"
+                                        />
+<af:panelCollection binding="#{dashBoardCalidadGrafico3.panelCollection1}"
+                                                    id="panelCollection1"
+                                                    inlineStyle="width:98%;">
+                  <f:facet name="menus">
+                    <af:menu text="#{viewcontrollerBundle.menu_archivo}"                             
+                             id="menu1">
+                      <af:commandMenuItem text="#{viewcontrollerBundle.EXCEL}"                                
+                                          actionListener="#{PomcaBean.salidaExcel_actionListener}"/>
+                                    <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"                          
+                          id="cmi_imprimir"
+                          actionListener="#{PomcaBean.cmi_imprimir_actionListener}"/>
+                      
+                    </af:menu>
+                  </f:facet>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+
+<af:table var="row" value="#{PomcaBean.listaComponente}"
+binding="#{PomcaBean.tableDatosGrafico}"
+id="tableDatosGrafico" width="98%"  rowSelection="single">
+
+<af:column sortable="false" headerText="Numero Pomca" width="80">
+<af:outputText value="#{row.pomca_id}"/>
+</af:column>
+<af:column sortable="false" headerText="Corporacion" width="80">
+<af:outputText value="#{row.autor}"/>
+</af:column>
+
+<af:column sortable="false" headerText="Nombre Pomca"
+width="80">
+<af:outputText value="#{row.nombrePomca}"/>
+</af:column>
+
+<af:column sortable="false" headerText="Programa" width="80">
+<af:outputText value="#{row.programa}"/>
+</af:column>
+<af:column sortable="false" headerText="Proyecto " width="80">
+<af:outputText value="#{row.proyecto}"/>
+</af:column>
+<af:column sortable="false" headerText="Actividad" width="80">
+<af:outputText value="#{row.actividad}"/>
+</af:column>
+
+<af:column sortable="false" headerText="Porcentaje Cumplimiento" width="80">
+<af:outputText value="#{row.porcCumplimiento}"/>
+</af:column>
+<af:column sortable="false" headerText="Porcentaje Ejecutado" width="80">
+<af:outputText value="#{row.porcEjecucion}"/>
+</af:column>
+<af:column sortable="false" headerText="Presupuesto Asignado" width="80">
+<af:outputText value="#{row.presupuestoAsignado}"/>
+</af:column>
+<af:column sortable="false" headerText="Presupuesto Ejecutado" width="80">
+<af:outputText value="#{row.presupuestoeEjecutado}"/>
+</af:column>
+</af:table>
+</af:panelCollection>
+ </af:panelBox>
+</af:panelGroupLayout>
+		<!-- fin -->
+		
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+</f:facet>
+</af:pageTemplate>
+</af:form>
+</af:document>
+</f:view>
+</jsp:root>

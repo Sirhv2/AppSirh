@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{sircBacking.document1}" id="document1">
+      <af:form binding="#{sircBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{sircBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" >
+              <f:facet name="center">
+                <af:panelDashboard id="dashBoard"
+                                   binding="#{sircBacking.dashBoard}"
+                                   columns="2" rowHeight="170px">
+                  <af:panelBox text="SIRC" binding="#{sircBacking.panelBox1}" 
+                  id="panelBox1"
+                  showDisclosure="false" inlineStyle="height:165px;">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout binding="#{sircBacking.panelGroupLayout6}" id="panelGroupLayout6">
+                      <!--af:inputText binding="#{sircBacking.textoinicio}" id="textoinicio" 
+                      columns="80" rows="9" readOnly="true"
+                                    value="#{viewcontrollerBundle.OBSERVATORIO_INICIO}" inlineStyle="text-align:justify;"/-->
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Atlas"
+                               binding="#{sircBacking.pbOferta}"
+                               id="pbOferta" showDisclosure="false"
+                               type="stretch"
+                               inlineStyle="height:178px">
+                    <af:panelGroupLayout binding="#{sircBacking.panelGroupLayout1}"
+                                         id="panelGroupLayout1" halign="center"
+                                         layout="horizontal" >
+                        <!--af:image source="/imgs/oferta.png"
+                                  binding="#{sircBacking.image1}"
+                                  id="image1"
+                                  inlineStyle="width:112px; height:112px;"/>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_OFERTA}"
+                                    binding="#{sircBacking.it1}"
+                                    id="it1" label="" 
+                                    columns="60" rows="6" readOnly="true"/-->
+                    </af:panelGroupLayout>
+                  <a href=" http://atlas.ideam.gov.co/presentacion/" > Atlas </a>  
+                  </af:panelBox>
+                  <af:panelBox text="Visor"
+                               binding="#{sircBacking.pbDemanda}"
+                               id="pbDemanda" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                    <af:panelGroupLayout binding="#{sircBacking.panelGroupLayout2}"
+                                         id="panelGroupLayout2" halign="center"
+                                         layout="horizontal">
+                      <!--af:commandLink binding="#{sircBacking.commandLink2}"
+                                      id="commandLink2"
+                                      action="demanda">
+                        <af:image source="/imgs/demanda.png"
+                                  binding="#{sircBacking.image2}"
+                                  id="image2"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_DEMANDA}"
+                                    binding="#{sircBacking.it2}"
+                                    id="it2" label="" 
+                                    columns="60" rows="10" readOnly="true"/-->
+                                     <a href=" http://visor.ideam.gov.co:8530/geovisor/#!/profiles/4/no" > Visor </a>  
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Observatorio"
+                               binding="#{sircBacking.pbCalidad}"
+                               id="pbCalidad" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                    <af:panelGroupLayout binding="#{sircBacking.panelGroupLayout3}"
+                                         id="panelGroupLayout3" halign="center"
+                                         layout="horizontal">
+                      <af:commandLink binding="#{sircBacking.commandLink3}"
+                                      id="commandLink3"
+                                     action="#{estacionesBacking.preparaEstaciones(2)}">
+                        <af:image source="/imgs/oferta.png"
+                                  binding="#{sircBacking.image3}"
+                                  id="image3"/>
+                      </af:commandLink>
+                      <!--af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_CALIDAD}"
+                                    binding="#{sircBacking.it3}"
+                                    id="it3" label="" 
+                                    columns="60" rows="10" readOnly="true"/-->
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <!--af:panelBox text="Componente gestión"
+                               binding="#{sircBacking.pbGestion}"
+                               id="pbGestion" showDisclosure="false"
+                               type="stretch" >
+                    <af:panelGroupLayout binding="#{sircBacking.panelGroupLayout4}"
+                                         id="panelGroupLayout4" halign="center"
+                                         layout="horizontal">
+                      <af:commandLink binding="#{sircBacking.commandLink4}"
+                                      id="commandLink4"
+                                      action="gestion">
+                        <af:image source="/imgs/gastion.png"
+                                  binding="#{sircBacking.image4}"
+                                  id="image4"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_GESTION}"
+                                    binding="#{sircBacking.it4}"
+                                    id="it4" label="" 
+                                    columns="60" rows="10" readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Componente riesgo" binding="#{sircBacking.pbRiesgo}" 
+                  id="pbRiesgo" showDisclosure="false" 
+                  type="stretch" >
+                    <af:panelGroupLayout binding="#{sircBacking.panelGroupLayout5}" 
+                    id="panelGroupLayout5" halign="center" layout="horizontal">
+                      <af:commandLink binding="#{sircBacking.commandLink5}" id="commandLink5" action="riesgo">
+                        <af:image source="/imgs/riesgo.png" binding="#{sircBacking.image5}" id="image5"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_RIESGO}" binding="#{sircBacking.it5}" 
+                      id="it5" label="" columns="60" rows="10"
+                                    readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox-->
+                </af:panelDashboard>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:sircBacking-->
+</jsp:root>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document>
+      <af:form>
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+          
+            <af:panelStretchLayout startWidth="2px" endWidth="0px"
+                                   topHeight="39px" bottomHeight="0px">
+              <f:facet name="top">
+                <af:panelGroupLayout>
+                  <af:activeOutputText value="#{viewcontrollerBundle.auditoria_titulo}"
+                                       id="activeOutputText1"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              
+              <f:facet name="center">
+              
+                <af:panelSplitter orientation="vertical"
+                                  splitterPosition="64" disabled="true">
+                  <f:facet name="second">
+                      <af:panelCollection>
+                        <f:facet name="menus"/>
+                      
+                   <af:table var="row" binding="#{auditorias.t_auditorias}"
+                                rowSelection="single"
+                                value="#{auditorias.listaAuditorias}"
+                                rowBandingInterval="1"
+                                selectionListener="#{auditorias.t_auditorias_selectionListener}"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                summary="Listado de Auditorias Actual"
+                                width="987"  >
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_clase}"
+                                   sortProperty="clase" width="126">
+                          <af:outputText value="#{row.clase}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_idObjeto}"
+                                   sortProperty="autor" width="126">
+                          <af:outputText value="#{row.idObjeto}"/>
+                        </af:column> 
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_objeto}"
+                                   sortProperty="anio" width="40">
+                          <af:outputText value="#{row.objeto}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_idUsuario}"
+                                   sortProperty="anio" width="126">
+                          <af:outputText value="#{row.idUsuario}"/>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_fecha}"
+                                   sortProperty="editor" width="126">
+                          <af:outputText value="#{row.fecha}"/>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_operacion}"
+                                   sortProperty="lugarPublicacion" width="126">
+                          <af:outputText value="#{row.operacion}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="Desvincular"
+                                   width="90"
+                                   >
+                          <af:commandButton icon="/imgs/delete.png"
+                                            shortDesc="Eliminar Publicación"
+                                            actionListener="#{auditorias.eliminarAuditorias_actionListener}"
+                                            action="publicaciones"
+                                      />
+                         </af:column>
+                      </af:table>   
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              
+              <f:facet name="bottom"/>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:FuentesBean-->
+</jsp:root>

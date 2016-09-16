@@ -1,0 +1,124 @@
+4/09/2015 05:05:32 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Paso 00. Inicia sincronizacion novedades
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Paso 01. Carga configuracion
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Paso 02. Obtiene Autorizades a sincronizar
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Va a cargar driver BD
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: DriverNameBD:oracle.jdbc.driver.OracleDriver:
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: UrlBD:jdbc:oracle:thin:@172.16.1.8:1522:DBPRUEBA:
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: UsuarioBD:SIRHV2:
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: ClaveUsuarioBD:SIRHV2JUN19:
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Obtiene conexion a BD
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Va a consultar SQL:select id, nombre, sigla, endpointnovedades, nvl(to_char(fechaultimasincronizacion,'yyyymmdd'),'20140101') as fecUlt from autoridades a where not a.endpointnovedades is null 
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional del Alto Magdalena
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://190.121.132.194:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de Cundinamarca
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://200.21.21.54:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de Sucre
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://200.35.56.220:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional para el Desarrollo Sostenible del Chocó
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://190.254.17.220:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación para el Desarrollo Sostenible del Archipiélago de San Andrés Providencia y Santa Catalina
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://190.25.157.27:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de las cuencas de los ríos Rionegro y Nare
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://200.30.82.162:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional del Magdalena
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://186.1.182.34/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación para el Desarrollo Sostenible del Sur de la Amazonia
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://200.21.14.36:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de Boyacá
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://201.245.195.222:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de Chivor
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://186.118.169.20:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de Nariño
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://186.115.221.78:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Autoridad a procesar:Corporación Autónoma Regional de los Valles del Sinú y San Jorge
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: EndPoint:http://200.35.56.10:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Inicio:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar cargarAutoridades
+INFO: Fecha Fin:20150904
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Procesa novedades de la autoridad:Corporación Autónoma Regional del Alto Magdalena
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Url autoridad:http://190.121.132.194:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Fecha Inicio:20140101
+4/09/2015 05:05:33 PM co.gov.ideam.sirh.Sincronizar main
+INFO: Fecha Fin:20150904

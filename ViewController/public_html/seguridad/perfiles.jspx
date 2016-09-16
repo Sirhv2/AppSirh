@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view beforePhase="#{perfiles.cargarSeguridad}">    
+    <af:document id="d2" binding="#{perfiles.d2}">
+      <af:form id="f2" binding="#{perfiles.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{perfiles.psl3}" id="psl3"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="0px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+            <af:panelSplitter binding="#{perfiles.ps1}" id="ps1"
+                              splitterPosition="302">
+            <f:facet name="first">          
+                <af:panelCollection binding="#{perfiles.pc1}" id="pc1"
+                                    featuresOff="detach">
+              <f:facet name="menus">
+                <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                         binding="#{perfiles.m_archivo}" id="m_archivo">
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_adicionar}"
+                                      binding="#{perfiles.cmi_adicionar}"
+                                      id="cmi_adicionar" icon="/imgs/add.png"
+                                      actionListener="#{perfiles.cmi_adicionar_actionListener}"/>
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                      binding="#{perfiles.cmi_editar}"
+                                      id="cmi_editar" icon="/imgs/edit_24.png"
+                                      actionListener="#{perfiles.cmi_editar_actionListener}"/>
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_borrar}"
+                                      binding="#{perfiles.cmi_borrar}"
+                                      id="cmi_borrar"
+                                      icon="/imgs/cross_24.png"
+                                      actionListener="#{perfiles.cmi_borrar_actionListener}"/>
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                      binding="#{perfiles.cmi_imprimir}"
+                                      id="cmi_imprimir"
+                                      icon="/imgs/printer.png"
+                                      actionListener="#{perfiles.cmi_imprimir_actionListener}"/>
+                </af:menu>
+              </f:facet>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{perfiles.listaPerfiles}" var="row"
+                        rowBandingInterval="1" binding="#{perfiles.t_perfiles}"
+                        id="t_perfiles"
+                        emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                        rowSelection="single"
+                        columnStretching="column:c_nombre" varStatus="vs"
+                        selectionListener="#{perfiles.t_perfiles_selectionListener}">
+                <af:column sortable="true" headerText="Nombre" align="start"
+                           id="c_nombre">
+                  <af:outputText value="#{row.nombre}" id="ot2"/>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl2" layout="vertical">
+                      <af:outputText value="Nombre" id="ot1"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="true" headerText="Activo" id="c_activo"
+                           minimumWidth="150" width="150">
+                  <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                       halign="center">
+                    <af:image source="#{row.activo ? &quot;/imgs/activo.png&quot; : &quot;/imgs/inactivo.png&quot;}" shortDesc="Activo"
+                              id="i1"/>
+                  </af:panelGroupLayout>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl3" layout="vertical">
+                      <af:outputText value="Activo" id="ot3"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                    <af:column sortable="false"
+                               headerText="#{viewcontrollerBundle.EXCLUSIVO_IDEAM}" id="c6">
+                      <af:outputText value="#{row.ideam ? &quot;Si&quot; : &quot;No&quot;}" id="ot8"/>
+                    </af:column>
+                  </af:table>
+            </af:panelCollection>
+            </f:facet>
+            <f:facet name="second">
+                <af:panelStretchLayout binding="#{perfiles.psl2}" id="psl2"
+                                       startWidth="0" endWidth="0"
+                                       bottomHeight="0" topHeight="20px">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelCollection binding="#{perfiles.pc2}" id="pc2"
+                                        featuresOff="detach">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_acciones}" binding="#{perfiles.m2}"
+                                 id="m2">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_guardar}"
+                                              binding="#{perfiles.cmi_permisos_guardar}"
+                                              id="cmi_permisos_guardar"
+                                              icon="/imgs/diskette.png"
+                                              actionListener="#{perfiles.cmi_permisos_guardar_actionListener}"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="statusbar">
+                        <af:toolbar binding="#{perfiles.t1}" id="t1">
+                          <af:outputText value="#{viewcontrollerBundle.perfiles_titulo_permisos}"
+                                         binding="#{perfiles.ot_nombre_perfil}"
+                                         id="ot_nombre_perfil"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:treeTable value="#{PerfilesTreeHandler.treemodel}"
+                                    var="node"
+                                    rowBandingInterval="1"
+                                    binding="#{perfiles.tt_permisos}"
+                                    id="tt_permisos" rowSelection="single"
+                                    varStatus="noseStatus" verticalGridVisible="false"
+                                    emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                    contentDelivery="immediate"
+                                    visible="#{perfiles.perfilSeleccionado!=null}">
+                        <f:facet name="nodeStamp">
+                          <af:column sortable="false" headerText="Opciones"
+                                     align="left" id="c2" width="250">
+                            <af:outputText value="#{node.description}" id="ot5"/>
+                          </af:column>
+                        </f:facet>
+                        <af:column sortable="false" headerText="Tipo"
+                                   align="left" id="c1">
+                          <af:outputText value="#{node.nodeType}" id="ot6"/>
+                        </af:column>
+                        <af:column id="c4" headerText="Asignado">
+                          <af:selectBooleanCheckbox  id="sbc1" 
+                                                    visible="#{node.data.codigo >0}"
+                                                    selected="#{node.data.selected}"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Activo"
+                                   align="center" id="c3" visible="false">
+                          <af:image id="i3"
+                                    visible="#{node.data.codigo >0}"
+                                    source='#{node.data.activo ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                        </af:column>
+                        <f:facet name="pathStamp">
+                          <af:outputText value="#{node}"
+                                         binding="#{perfiles.ot7}" id="ot7"/>
+                        </f:facet>
+                        <af:column id="c5" headerText="Nombre Interno"
+                                   visible="false">
+                          <af:outputText value="#{node.internalName}" id="ot4"/>
+                        </af:column>
+                      </af:treeTable>
+                    </af:panelCollection>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top"/>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelSplitter>
+            </f:facet>
+              <f:facet name="start">
+<af:group binding="#{perfiles.g1}" id="g1">
+              <af:popup binding="#{perfiles.popup_borrar}" id="popup_borrar">
+                <af:dialog binding="#{perfiles.d_borrar}" id="d_borrar"
+                           title="#{viewcontrollerBundle.titulo_confirmacion}"
+                           type="okCancel"
+                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                           cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                           helpTopicId="borrar_perfil" modal="true"
+                           dialogListener="#{perfiles.d_borrar_dialogListener}">
+                  <af:outputText value="outputText1"
+                                 binding="#{perfiles.ot_confirmar_borrar}"
+                                 id="ot_confirmar_borrar"/>
+                </af:dialog>
+              </af:popup>
+              <af:popup binding="#{perfiles.popupPerfil}" id="popupPerfil">
+                <af:dialog binding="#{perfiles.d_perfil}" id="d_perfil"
+                           title="#{viewcontrollerBundle.perfiles_detalle}"
+                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                           cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                           dialogListener="#{perfiles.d_perfil_dialogListener}">
+                  <af:panelStretchLayout binding="#{perfiles.psl1}" id="psl1"
+                                         endWidth="0" topHeight="0"
+                                         bottomHeight="0"
+                                         inlineStyle="height:110px;">
+                    <f:facet name="bottom"/>
+                    <f:facet name="center">
+                      <af:panelGroupLayout layout="scroll"
+                                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                           binding="#{perfiles.pgl5}" id="pgl5">
+                        <af:panelFormLayout binding="#{perfiles.pfl1}"
+                                            id="pfl1">
+                          <af:inputText label="#{viewcontrollerBundle.perfiles_nombre}"
+                                        binding="#{perfiles.it_nombre}" id="it1"
+                                        showRequired="true"
+                                        helpTopicId="caracteres_validos"/>
+                          <af:selectBooleanRadio text="#{viewcontrollerBundle.estado_activo}"
+                                                 label="#{viewcontrollerBundle.perfiles_estado}"
+                                                 binding="#{perfiles.sbr_activo}"
+                                                 id="sbr1" showRequired="true"
+                                                 group="estado" value="1"/>
+                          <af:selectBooleanRadio text="#{viewcontrollerBundle.estado_inactivo}"
+                                                 binding="#{perfiles.sbr_inactivo}"
+                                                 id="sbr2" group="estado"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{perfiles.s2}" id="s2"/>
+                          <af:selectBooleanCheckbox
+                                                    label="#{viewcontrollerBundle.EXCLUSIVO_IDEAM}"
+                                                    binding="#{perfiles.sbc_core}"
+                                                    id="sbc_core"/>
+                        </af:panelFormLayout>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="start">
+                      <af:image source="/imgs/group_48.png"
+                                binding="#{perfiles.i2}" id="i2"/>
+                    </f:facet>
+                    <f:facet name="end">
+                      <af:spacer width="10" height="10" binding="#{perfiles.s1}"
+                                 id="s1"/>
+                    </f:facet>
+                    <f:facet name="top"/>
+                  </af:panelStretchLayout>
+                </af:dialog>
+              </af:popup>
+              <af:popup binding="#{perfiles.popup_borrar_2}"
+                        id="popup_borrar_2">
+                <af:dialog binding="#{perfiles.d_borrar_2}" id="d_borrar_2"
+                           title="#{viewcontrollerBundle.titulo_confirmacion}"
+                           type="okCancel"
+                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                           cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                           dialogListener="#{perfiles.d_borrar_2_dialogListener}">
+                  <af:outputText value="outputText2"
+                                 binding="#{perfiles.ot_segunda_confirmacion}"
+                                 id="ot_segunda_confirmacion" noWrap="true"/>
+                </af:dialog>
+              </af:popup>
+            </af:group>              
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>                      
+          </f:facet>
+          <f:facet name="menu">
+          </f:facet>
+          <f:facet name="toolbar">
+            
+          </f:facet>
+          <f:attribute name="title"
+                       value="#{viewcontrollerBundle.perfiles_titulo}"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:perfiles-->
+</jsp:root>

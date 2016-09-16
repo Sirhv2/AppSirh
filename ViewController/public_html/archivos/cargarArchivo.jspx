@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d2" binding="#{cargarArchivo.d2}">
+      <af:form id="f2" binding="#{cargarArchivo.f2}" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{cargarArchivo.psl1}" id="psl1"
+                                   topHeight="45px" endWidth="0px"
+                                   startWidth="0px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelCollection binding="#{cargarArchivo.pc1}" id="pc1">
+                  <f:facet name="menus">
+                    <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                             binding="#{cargarArchivo.m_archivo}"
+                             id="m_archivo">
+                      <af:commandMenuItem text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                          binding="#{cargarArchivo.cmi_borrar}"
+                                          id="cmi_borrar"
+                                          actionListener="#{cargarArchivo.cmi_borrar_actionListener}"/>
+                      <af:commandMenuItem text="#{viewcontrollerBundle.ERRORES_DE_VALIDACI_U00F3N}"
+                                          binding="#{cargarArchivo.cmi_errores}"
+                                          id="cmi_errores"
+                                          actionListener="#{cargarArchivo.cmi_errores_actionListener}"/>
+                    </af:menu>
+                  </f:facet>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table rowBandingInterval="1"
+                            binding="#{cargarArchivo.t_datos}"
+                            id="t_datos" value="#{cargarArchivo.listaDatos}"
+                            var="row"
+                            emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                            rendered="false" rowSelection="single">
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{cargarArchivo.pgl4}" id="pgl4">
+                  <af:popup binding="#{cargarArchivo.p_seleccion}"
+                            id="p_seleccion">
+                    <af:dialog binding="#{cargarArchivo.d_seleccion}"
+                               id="d_seleccion"
+                               title="#{viewcontrollerBundle.label_seleccione}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{cargarArchivo.d_seleccion_dialogListener}">
+                      <af:panelFormLayout binding="#{cargarArchivo.pfl1}"
+                                          id="pfl1">
+                        <af:outputText value="#{viewcontrollerBundle.SELECCIONE_LA_HOJA_QUE_DESEA_C}"
+                                       binding="#{cargarArchivo.ot1}" id="ot1"/>
+                        <af:selectOneRadio label="Label 1"
+                                           binding="#{cargarArchivo.sor_hojas}"
+                                           id="sor_hojas"
+                                           simple="true"
+                                           value="#{cargarArchivo.hojaSeleccionada}">
+                          <f:selectItems value="#{cargarArchivo.listaHojas}"
+                                         binding="#{cargarArchivo.si2}"
+                                         id="si2"/>
+                        </af:selectOneRadio>
+                      </af:panelFormLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{cargarArchivo.p_borrar_fila}"
+                            id="p_borrar_fila">
+                    <af:dialog binding="#{cargarArchivo.d_borrar_fila}"
+                               id="d_borrar_fila"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                               dialogListener="#{cargarArchivo.d_borrar_fila_dialogListener}">
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                     binding="#{cargarArchivo.ot2}" id="ot2"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{cargarArchivo.p_errores}" id="p_errores">
+                    <af:dialog binding="#{cargarArchivo.d_errores}"
+                               id="d_errores"
+                               title="#{viewcontrollerBundle.ERRORES_DE_VALIDACI_U00F3N}"
+                               type="ok"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}">
+                      <af:panelFormLayout binding="#{cargarArchivo.pfl2}"
+                                          id="pfl2">
+                        <af:inputText label="#{viewcontrollerBundle.FILA}"
+                                      binding="#{cargarArchivo.it_fila}"
+                                      id="it_fila" readOnly="true"/>
+                        <af:inputText label="#{viewcontrollerBundle.ERRORES_DE_VALIDACI_U00F3N}"
+                                      binding="#{cargarArchivo.it_errores}"
+                                      id="it_errores" rows="8" columns="60"
+                                      readOnly="true"/>
+                      </af:panelFormLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{cargarArchivo.pgl2}" id="pgl2"
+                                     layout="vertical">
+                  <af:panelGroupLayout binding="#{cargarArchivo.pgl3}"
+                                       id="pgl3" layout="horizontal">
+                    <af:message binding="#{cargarArchivo.m2}" id="m2"
+                                for="if_archivo"/>
+                    <af:inputFile label="#{viewcontrollerBundle.ARCHIVO}"
+                                  binding="#{cargarArchivo.if_archivo}"
+                                  id="if_archivo"
+                                  value="#{cargarArchivo.uploadedFile}"
+                                  valueChangeListener="#{cargarArchivo.if_archivo_valueChangeListener}"
+                                  autoSubmit="true" immediate="true"
+                                  showRequired="true"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{cargarArchivo.s2}" id="s2"/>
+                    <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_DE_ARCHIVO}"
+                                        binding="#{cargarArchivo.soc_tipo_archivo}"
+                                        id="soc_tipo_archivo"
+                                        value="#{cargarArchivo.tipoArchivoSeleccionado}"
+                                        showRequired="true"
+                                        unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                      <f:selectItems value="#{cargarArchivo.listaTiposArchivos}"
+                                     binding="#{cargarArchivo.si1}" id="si1"/>
+                    </af:selectOneChoice>
+                    <af:spacer width="10" height="10"
+                               binding="#{cargarArchivo.s3}" id="s3"/>
+                    <af:commandButton text="#{viewcontrollerBundle.CARGAR_Y_VALIDAR}"
+                                      binding="#{cargarArchivo.cb_cargar}"
+                                      id="cb_cargar" icon="/imgs/check_mark.png"
+                                      actionListener="#{cargarArchivo.cb_cargar_actionListener}"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{cargarArchivo.s1}" id="s1"/>
+                    <af:commandButton text="#{viewcontrollerBundle.REGISTRAR}"
+                                      binding="#{cargarArchivo.cb_cargar_data}"
+                                      id="cb_cargar_data"
+                                      icon="/imgs/refresh.png"
+                                      actionListener="#{cargarArchivo.cb_cargar_data_actionListener}"
+                                      disabled="#{!cargarArchivo.habilitarCarga}"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:cargarArchivo-->
+</jsp:root>

@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="ExportSirh.wsdl"/>
+      <url path="ObjectFactory.java"/>
+      <url path="GetOneRowResponse.java"/>
+      <url path="../../../../../../net/java/dev/jaxb/array/ObjectFactory.java"/>
+      <url path="types/SingleRowWebService.java"/>
+      <url path="GetSingleDataResponse.java"/>
+      <url path="ExportaDatosSirhPortClient.java"/>
+      <url path="ExportSirh.java"/>
+      <url path="types/ObjectFactory.java"/>
+      <url path="IdeamException.java"/>
+      <url path="types/DataWebService.java"/>
+      <url path="GetMultipleRowsResponse.java"/>
+      <url path="package-info.java"/>
+      <url path="ExportaDatosSirh.java"/>
+      <url path="GetMultipleRows.java"/>
+      <url path="GetSingleData.java"/>
+      <url path="types/package-info.java"/>
+      <url path="../../../../../../net/java/dev/jaxb/array/AnyTypeArray.java"/>
+      <url path="IdeamException_Exception.java"/>
+      <url path="GetOneRow.java"/>
+      <url path="../../../../../../net/java/dev/jaxb/array/package-info.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MTOM"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="forEnabled"/>
+      <list n="PROXY_CLIENTS">
+         <url path="ExportaDatosSirhPortClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <url n="PROXY_ORIGINAL_WSDL_URL" path="../../../../../../../../../../Tareas/Tarea 1/ExportaDatos.wsdl"/>
+      <hash n="PROXY_PORTS">
+         <hash n="ExportaDatosSirhPort">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="co.gov.ideam.sirh.webservices.businessl.ExportaDatosSirh"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="ExportaDatosSirhPort"/>
+            <hash n="OPERATIONS">
+               <hash n="getMultipleRows">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+               <hash n="getOneRow">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+               <hash n="getSingleData">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS"/>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="172.16.1.88" port="8230" path="/Ideam-Ejb/ExportSirh/ExportaDatosSirh" query="wsdl"/>
+            <url n="PROXY_PORT_ENDPOINT" protocol="http" host="127.0.0.1" port="7101" path="/Ideam-Ejb/ExportSirh/ExportaDatosSirh" query="wsdl"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="ExportSirh"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://businessl.webservices.sirh.ideam.gov.co/"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../sirh_sincronizar.jpr"/>
+      <url n="PROXY_WSDL_URL" path="ExportSirh.wsdl"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{http://businessl.webservices.sirh.ideam.gov.co/}ExportaDatosSirh"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://businessl.webservices.sirh.ideam.gov.co/}ExportaDatosSirhSoapHttp"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v=""/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="co.gov.ideam.sirh.webservices.businessl.types.DataWebService.getSingleData.long.java.util.List&lt;java.lang.Object>"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v=""/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="co.gov.ideam.sirh.webservices.businessl.types.SingleRowWebService.getOneRow.long.java.util.List&lt;java.lang.Object>"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v=""/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="java.util.List&lt;co.gov.ideam.sirh.webservices.businessl.types.SingleRowWebService>.getMultipleRows.long.java.util.List&lt;java.lang.Object>"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="6bf2a62c-0149-1000-8005-c0a8b40b248d"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="ExportaDatosSirhPort"/>
+               <value n="PORT_BINDING_NAME" v="{http://businessl.webservices.sirh.ideam.gov.co/}ExportaDatosSirhSoapHttp"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="co.gov.ideam.sirh.webservices.businessl.types.DataWebService.getSingleData.long.java.util.List&lt;java.lang.Object>"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="co.gov.ideam.sirh.webservices.businessl.types.SingleRowWebService.getOneRow.long.java.util.List&lt;java.lang.Object>"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="java.util.List&lt;co.gov.ideam.sirh.webservices.businessl.types.SingleRowWebService>.getMultipleRows.long.java.util.List&lt;java.lang.Object>"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="172.16.1.88" port="8230" path="/Ideam-Ejb/ExportSirh/ExportaDatosSirh" query="wsdl"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://businessl.webservices.sirh.ideam.gov.co/}ExportaDatosSirh"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="co.gov.ideam.sirh.webservices.businessl.ExportaDatosSirhImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="co.gov.ideam.sirh.webservices.businessl.ExportaDatosSirh"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../sirh_sincronizar.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://businessl.webservices.sirh.ideam.gov.co/"/>
+         <value n="WS_URI" v="ExportSirh"/>
+         <url n="WS_WSDL_FILE" path="../../../../../../../../../../Tareas/Tarea 1/ExportaDatos.wsdl"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="USE_WSDL_LOCATION" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

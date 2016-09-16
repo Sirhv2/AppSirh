@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">          
+         	<af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+<af:panelBox inlineStyle="text-align: left;">
+<af:commandLink text="Observatorio"
+                                    action="observatorio"
+                                      actionListener="#{DashBoardJSPueaEstBean.refreshPage}"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="Componente de Gestión"
+                                    action="gestion"
+                                     actionListener="#{DashBoardJSPueaEstBean.refreshPage}"/>
+                    <af:spacer width="25" height="10"/>
+
+</af:panelBox>
+		</f:facet>
+
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			
+            <af:panelGroupLayout  layout="scroll">
+           <af:panelBox text="Gráfica Estados PUEAA por Corporacion">
+           <af:selectOneChoice label="Autoridad Ambiental"
+                                          binding="#{DashBoardJSPueaEstBean.autoridad}"
+                                          id="selectOneChoice2"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{DashBoardJSPueaEstBean.autoridad_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{DashBoardJSPueaEstBean.autoridadItems}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        id="cmdBuscar1"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{DashBoardJSPueaEstBean.cmdBuscar1_actionListener}"
+                                        />
+                    
+                      
+                      
+           <dvt:barGraph id="lineJSGraph1"   binding="#{DashBoardJSPueaEstBean.lineJSGraph}"                                      
+                                               tabularData="#{DashBoardJSPueaEstBean.listaDatosGraf}"
+                                               imageFormat="FLASH"
+                                               inlineStyle="width:780px;height:290px;"
+                                               animationOnDisplay="AUTO"
+                           style="Default" seriesEffect="SE_AUTO_GRADIENT" visualEffects="AUTO"
+                           shortDesc="Gráfica IDEAM"
+                          animationOnDataChange="AUTO">
+                                  <dvt:background>
+                                    <dvt:specialEffects />
+                                  </dvt:background>
+                                  <dvt:barGraph/>
+                                  <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                                                 defaultAssignedToY2="DY2_TRUE"
+                                                 defaultLineWidth="3">
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#FF0000" lineWidth="1"/>
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#0000FF" lineWidth="1"/>
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#04B431" lineWidth="1"/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:barGraph>
+                                
+                        </af:panelBox>
+       
+         <af:panelBox text="Tabla Estados PUEAA por Corporacion">
+         
+           <af:panelCollection binding="#{dashBoardCalidadGrafico3.panelCollection1}"
+                                                    id="panelCollection1"
+                                                    inlineStyle="width:98%;">
+                  <f:facet name="menus">
+                    <af:menu text="#{viewcontrollerBundle.menu_archivo}"                             
+                             id="menu1">
+                      <af:commandMenuItem text="#{viewcontrollerBundle.EXCEL}"                                
+                                          actionListener="#{DashBoardJSPueaEstBean.salidaExcel_actionListener}"/>
+                     
+                    </af:menu>
+                  </f:facet>
+                  <f:facet name="toolbar" />
+                  <f:facet name="statusbar"/>
+                  
+         <af:table var="row" value="#{DashBoardJSPueaEstBean.listaComponente}"
+                      binding="#{DashBoardJSPueaEstBean.tableDatosGrafico}"
+                      id="tableDatosGrafico" width="98%">              
+                <af:column sortable="false" headerText="Estado" width="80">
+                <af:outputText value="#{row.descripcion}"/>
+              </af:column>
+              <af:column sortable="false" headerText="Cantidad" width="80">
+                <af:outputText value="#{row.cantidad}"/>
+              </af:column>
+            </af:table>
+             </af:panelCollection>
+        </af:panelBox>
+        
+            </af:panelGroupLayout>
+		
+		<!-- fin -->
+		
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+          </f:facet>          
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+xmlns:c="http://java.sun.com/jsp/jstl/core">
+<c:set var="viewcontrollerBundle"
+value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+<jsp:directive.page contentType="text/html;charset=windows-1252"/>
+<f:view>
+<af:document id="document1">
+<af:form id="form1">
+<af:pageTemplate viewId="/template/templateMenu.jspx">
+<f:facet name="center">
+	<af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+<af:panelBox inlineStyle="text-align: left;">
+<af:commandLink text="Observatorio"
+                                    action="observatorio"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="Observatorio Aguas Subterraneas "
+                                    action="observatorioSubterraneas"/>
+                    <af:spacer width="25" height="10"/>
+ <af:commandLink text="Demanda Aguas Subterráneas "
+                                    action="demandaSubt"/>
+                    <af:spacer width="25" height="10"/>
+</af:panelBox>
+		</f:facet>
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			
+           <af:panelGroupLayout layout="scroll">
+<af:panelBox text="Numero de captacion X Sistema acuifero ">
+<dvt:graph  id="lineJSGraph1" binding="#{DemandaAcuifero.lineJSGraph}"
+           graphType="BAR_VERT_CLUST" barShape="CYLINDER" threeDEffect="true" 
+tabularData="#{DemandaAcuifero.listaDatosGraf}"
+imageFormat="FLASH"
+inlineStyle="width:780px;height:290px;"
+animationOnDisplay="AUTO" 
+seriesEffect="SE_AUTO_GRADIENT"
+visualEffects="AUTO"
+animationOnDataChange="AUTO">
+<dvt:background>
+<dvt:specialEffects/>
+</dvt:background>
+<dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+defaultAssignedToY2="DY2_TRUE"
+defaultLineWidth="3">
+<dvt:series lineStyle="LS_DOTTED" color="#FF0000"
+lineWidth="1"/>
+<dvt:series lineStyle="LS_DOTTED" color="#0000FF"
+lineWidth="1"/>
+<dvt:series lineStyle="LS_DOTTED" color="#04B431"
+lineWidth="1"/>
+</dvt:seriesSet>
+<dvt:o1Axis/>
+<dvt:y1Axis/>
+<dvt:legendArea automaticPlacement="AP_NEVER"/>
+</dvt:graph>
+</af:panelBox>
+
+<af:panelBox text="Tabla de Datos de Numero de captaciones X Sistema acuifero">
+ <af:panelCollection binding="#{dashBoardCalidadGrafico3.panelCollection1}"
+                                                    id="panelCollection1"
+                                                    inlineStyle="width:98%;">
+                  <f:facet name="menus">
+                    <af:menu text="#{viewcontrollerBundle.menu_archivo}"                             
+                             id="menu1">
+                      <af:commandMenuItem text="#{viewcontrollerBundle.EXCEL}"                                
+                                          actionListener="#{DemandaAcuifero.salidaExcel_actionListener}"/>
+                      
+                    </af:menu>
+                  </f:facet>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+
+<af:table var="row" value="#{DemandaAcuifero.listaComponente}"
+binding="#{DemandaAcuifero.tableDatosGrafico}"
+id="tableDatosGrafico" width="98%">
+<af:column sortable="false" headerText="Acuifero" width="80">
+<af:outputText value="#{row.acuifero}"/>
+</af:column>
+<af:column sortable="false" headerText="Captaciones"
+width="80">
+<af:outputText value="#{row.captaciones}"/>
+</af:column>
+<af:column sortable="false" headerText="Corporacion" width="80">
+<af:outputText value="#{row.sigla}"/>
+</af:column>
+</af:table>
+
+ </af:panelCollection>
+ </af:panelBox>
+</af:panelGroupLayout>
+		
+		<!-- fin -->
+		
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+</f:facet>
+</af:pageTemplate>
+</af:form>
+</af:document>
+</f:view>
+</jsp:root>

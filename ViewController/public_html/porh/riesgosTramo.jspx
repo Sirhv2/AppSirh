@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{riesgosTramo.documentPuntosMonitoreo}">
+      <af:form id="f2" binding="#{riesgosTramo.formPuntosMonitoreo}"
+               usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{riesgosTramo.panelStretchLayoutPuntosMonitoreo}"
+                                   id="panelStretchLayoutPuntosMonitoreo"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="90px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelBox text="#{viewcontrollerBundle.RIESGOS}"
+                             binding="#{riesgosTramo.panelBoxPuntosMonitoreo}"
+                             id="panelBoxPuntosMonitoreo"
+                             showDisclosure="false">
+                  <af:panelGroupLayout binding="#{riesgosTramo.panelGroupLayoutPuntosMonitoreo}"
+                                       id="panelGroupLayoutPuntosMonitoreo"
+                                       layout="scroll">
+                    <af:panelFormLayout binding="#{riesgosTramo.panelFormLayoutPuntosMonitoreo}"
+                                        id="panelFormLayoutPuntosMonitoreo">
+                      <af:spacer width="10" height="10"
+                                 binding="#{riesgosTramo.spacerPuntosMonitoreo}"
+                                 id="spacerPuntosMonitoreo"/>
+                      <!--Cambio 1 - Formulario riesgos -->
+                      <af:spacer width="10" height="10" id="spacerRiesgos"/>
+                      <af:panelFormLayout id="pfl_9" labelWidth="200px">
+                        <af:outputText value="#{viewcontrollerBundle.CONFLICTOS_Y_RIESGOS}"
+                                       binding="#{riesgosTramo.ot8}" id="ot8"
+                                       styleClass="AFBrandingBarTitle"/>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout id="pfl2" rows="3">
+                        <af:selectOneChoice label="#{viewcontrollerBundle.RIESGOS_TRAMO_REDUCCION_OFERTA}"
+                                            binding="#{riesgosTramo.reduccionOferta}"
+                                            id="reduccionOferta"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            immediate="true"
+                                            value="#{riesgosTramo.tramoRiesgos.listarAsocReduccionOferta}"
+                                            showRequired="true">
+                          <f:selectItems binding="#{riesgosTramo.selectItemsreduccionOferta}"
+                                         id="selectItemsreduccionOferta"
+                                         value="#{riesgosTramo.listareduccionOferta}"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.RIESGOS_TRAMO_DISPONIBILIDAD}"
+                                            binding="#{riesgosTramo.disponibilidad}"
+                                            id="disponibilidad"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            immediate="true"
+                                            value="#{riesgosTramo.tramoRiesgos.listarAsocDisponibilidad}"
+                                            showRequired="true">
+                          <f:selectItems binding="#{riesgosTramo.selectItemsDisponibilidad}"
+                                         id="selectItemsDisponibilidad"
+                                         value="#{riesgosTramo.listaDisponibilidad}"/>
+                        </af:selectOneChoice>
+                        <af:spacer width="10" height="20" id="s10"/>
+                      </af:panelFormLayout>
+                      <af:spacer width="10" height="10"
+                                 id="spacerRiesgosFinal"/>
+                      <!--Fin Cambio 1 - Formulario de riesgos -->
+                      <af:spacer width="10" height="30" id="s1"/>
+                      <af:panelGroupLayout binding="#{riesgosTramo.pgl3}"
+                                           id="pgl3" layout="horizontal"
+                                           halign="center">
+                        <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                          binding="#{riesgosTramo.cbAceptar}"
+                                          id="cbAceptar"
+                                          icon="/imgs/check_mark.png"
+                                          actionListener="#{riesgosTramo.cbAceptar_actionListener}"/>
+                        <af:spacer width="10" height="10" id="s2"/>
+                        <af:commandButton text="#{viewcontrollerBundle.boton_regresar}"
+                                          id="cbRegresar"
+                                          icon="/imgs/check_mark.png"
+                                          action="priorizacion"/>
+                        <af:spacer width="10" height="10" id="s4"/>
+                      </af:panelGroupLayout>
+                      <af:spacer width="20" height="20" id="spacer8"/>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout layout="horizontal"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{riesgosTramo.pgl4}" id="pgl4">
+                  <af:spacer width="10" height="10" id="spacer7"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FNT_TODAS}"
+                                  binding="#{riesgosTramo.commandLink1}"
+                                  id="commandLink1" action="detalleFuente"/>
+                  <af:spacer width="10" height="10" id="spacer4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH_PORH} : #{riesgosTramo.tramo.nombre}"
+                                  binding="#{riesgosTramo.commandLink2}"
+                                  id="commandLink2" action="priorizacion"/>
+                  <af:spacer width="50" height="10" id="s3"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:priorizacion-->
+</jsp:root>

@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{DashBoardPorhGrafico2Bean.document1}"
+                 id="document1">
+      <af:form binding="#{DashBoardPorhGrafico2Bean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{DashBoardPorhGrafico2Bean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{DashBoardPorhGrafico2Bean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="350"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{DashBoardPorhGrafico2Bean.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{DashBoardPorhGrafico2Bean.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPorhGrafico2Bean.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Inicio"
+                                        binding="#{DashBoardPorhGrafico2Bean.clink_inicio}"
+                                        id="clink_inicio"
+                                        action="#{DashBoardPorhGrafico2Bean.getRedireccionar}"
+                                        actionListener="#{DashBoardPorhGrafico2Bean.redireccionarAOrigen}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPorhGrafico2Bean.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO1}"
+                                        binding="#{DashBoardPorhGrafico2Bean.clink_grafico1}"
+                                        id="clink_grafico1"
+                                        action="dashBoardPorhGrafico1"/>
+                        <af:spacer width="10" height="10"
+                                   id="spacerdashBoardPorhGrafico1"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO2}"
+                                        binding="#{DashBoardPorhGrafico2Bean.clink_grafico2}"
+                                        id="clink_grafico2"
+                                        action="dashBoardPorhGrafico2"/>
+                        <af:spacer width="10" height="10"
+                                   id="spacer5dashBoardPorhGrafico2"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO3}"
+                                        binding="#{DashBoardPorhGrafico2Bean.clink_grafico3}"
+                                        id="clink_grafico3"
+                                        action="dashBoardPorhGrafico3"/>
+                        <af:spacer width="10" height="10"
+                                   id="spacer5dashBoardPorhGrafico3"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO4}"
+                                        binding="#{DashBoardPorhGrafico2Bean.clink_grafico4}"
+                                        id="clink_grafico4"
+                                        action="dashBoardPorhGrafico4"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{DashBoardPorhGrafico2Bean.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelBox text="#{viewcontrollerBundle.PORH_GRAFICO1}"
+                                   binding="#{DashBoardPorhGrafico2Bean.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1"
+                                   showDisclosure="false" immediate="true"
+                                   inlineStyle="width:800px; height:600px;">
+                        <f:facet name="toolbar"/>
+                        <af:panelSplitter binding="#{DashBoardPorhGrafico2Bean.panelSplitter2}"
+                                          id="panelSplitter2"
+                                          orientation="vertical"
+                                          splitterPosition="90" disabled="true"
+                                          inlineStyle="width:100%;">
+                          <f:facet name="first">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{DashBoardPorhGrafico2Bean.panelGroupLayout4}"
+                                                 id="panelGroupLayout4">
+                              <af:panelFormLayout binding="#{DashBoardPorhGrafico2Bean.panelFormLayout12}"
+                                                  id="panelFormLayout12"
+                                                  rows="1" maxColumns="1">
+                                <af:selectOneChoice label="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                                    binding="#{DashBoardPorhGrafico2Bean.rsoc_autoridades}"
+                                                    id="rsoc_autoridades"
+                                                    autoSubmit="true"
+                                                    immediate="true"
+                                                    valueChangeListener="#{DashBoardPorhGrafico2Bean.rsoc_autoridades_valueChangeListener}"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico2Bean.listaAutoridades}"
+                                                 binding="#{DashBoardPorhGrafico2Bean.selectItemsListaAutoridades}"
+                                                 id="selectItems6"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                                    binding="#{DashBoardPorhGrafico2Bean.rsoc_fuentes}"
+                                                    id="fuentes"
+                                                    autoSubmit="true"
+                                                    immediate="true"
+                                                    valueChangeListener="#{DashBoardPorhGrafico2Bean.rsoc_fuentes_valueChangeListener}"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    inlineStyle="width:80px;"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico2Bean.listaFuentes}"
+                                                 binding="#{DashBoardPorhGrafico2Bean.selectItemsListaFuentes}"
+                                                 id="selectItemsListaFuentes"/>
+                                </af:selectOneChoice>
+                                
+                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}"
+                                                    binding="#{DashBoardPorhGrafico2Bean.rsoc_tramos}"
+                                                    id="rsoc_tramos"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico2Bean.listaTramos}"
+                                                 binding="#{DashBoardPorhGrafico2Bean.selectItemsListaTramos}"
+                                                 id="selectItemsListaTramos"/>
+                                </af:selectOneChoice>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <af:selectOneChoice label="#{viewcontrollerBundle.USO_DEL_TRAMO}"
+                                                    binding="#{DashBoardPorhGrafico2Bean.rsoc_usos}"
+                                                    id="soc_adicionar_uso"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico2Bean.listaUsos}"
+                                                 binding="#{DashBoardPorhGrafico2Bean.selectItemsListaUsos}"
+                                                 id="selectItemsListaUsos"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                    binding="#{DashBoardPorhGrafico2Bean.rsoc_parametros}"
+                                                    id="soc_parametro"
+                                                    showRequired="true"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                  <f:selectItems value="#{DashBoardPorhGrafico2Bean.listaParametros}"
+                                                 binding="#{DashBoardPorhGrafico2Bean.selectItemsParametros}"
+                                                 id="selectItemsParametros"/>
+                                </af:selectOneChoice>
+                                <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                  id="cb_aceptar"
+                                                  icon="/imgs/check_mark.png"
+                                                  actionListener="#{DashBoardPorhGrafico2Bean.cb_aceptar_actionListener}"/>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <f:facet name="second">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{DashBoardPorhGrafico2Bean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelFormLayout binding="#{DashBoardPorhGrafico2Bean.panelFormLayout1}"
+                                                  id="panelFormLayout1" rows="1"
+                                                  visible="false"
+                                                  maxColumns="1">
+                                <dvt:barGraph id="barGraphEjecucionCuencas"
+                                              subType="BAR_VERT_CLUST"
+                                              binding="#{DashBoardPorhGrafico2Bean.barGraphEjecucionCuencas}"
+                                              threeDEffect="true"
+                                              imageHeight="1000"
+                                              imageWidth="1000"
+                                              contentDelivery="immediate"
+                                              dynamicResize="DYNAMIC_SIZE"
+                                              drillingEnabled="true"
+                                              value="#{DashBoardPorhGrafico2Bean.graphData}"
+                                              inlineStyle="width:700px;height:260px;">
+                                  <dvt:background>
+                                    <dvt:specialEffects/>
+                                  </dvt:background>
+                                  <dvt:graphPlotArea/>
+                                  <dvt:seriesSet>
+                                    <dvt:series/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:barGraph>
+                                <f:facet name="footer"/>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelSplitter>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:DashBoardPomcaGrafico1Bean-->
+</jsp:root>

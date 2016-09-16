@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{conflictosXFuenteBean.document1}" id="document1">
+      <af:form binding="#{conflictosXFuenteBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{conflictosXFuenteBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="3px"
+                                   endWidth="2px" topHeight="32px"
+                                   bottomHeight="4px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{conflictosXFuenteBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="70"
+                                  disabled="true" orientation="vertical">
+                  <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{conflictosXFuenteBean.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout1}"
+                                          id="panelFormLayout1" maxColumns="8"
+                                          rows="1">
+                        <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                            binding="#{conflictosXFuenteBean.sc_fuentes}"
+                                            id="sc_fuentes" immediate="true"
+                                            showRequired="true"
+                                            autoSubmit="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            valueChangeListener="#{conflictosXFuenteBean.soc_Fuentes_valueChangeListener}">
+                          <f:selectItems value="#{conflictosXFuenteBean.listaFuentes}"
+                                         binding="#{conflictosXFuenteBean.selectFuentes}"
+                                         id="selectFuentes"/>
+                        </af:selectOneChoice>
+                        <af:spacer width="25" height="10"
+                                   binding="#{conflictosXFuenteBean.spacer5}"
+                                   id="spacer5"/>
+                        <af:selectOneChoice label="Conflictos"
+                                            binding="#{conflictosXFuenteBean.soc_conflicto}"
+                                            id="soc_conflicto"
+                                            immediate="true" showRequired="true"
+                                            autoSubmit="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            valueChangeListener="#{conflictosXFuenteBean.soc_Conflcitos_valueChangeListener}">
+                          <f:selectItems value="#{conflictosXFuenteBean.listaConflictos}"
+                                         binding="#{conflictosXFuenteBean.si_conflicto}"
+                                         id="si_conflicto"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout2}"
+                                          id="panelFormLayout2" maxColumns="1"
+                                          rows="1">
+                        <af:spacer width="10" height="10"
+                                   binding="#{conflictosXFuenteBean.spacer4}"
+                                   id="spacer4"/>
+                        <af:outputLabel value="Nota: Solo se listan las fuentes donde se tiene registrado al menos un conflicto"
+                                        binding="#{conflictosXFuenteBean.otNota}"
+                                        id="otNota"/>
+                        <af:activeOutputText value=""
+                                             binding="#{conflictosXFuenteBean.otNota2}"
+                                             id="otNota2"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox binding="#{conflictosXFuenteBean.pb1}" id="pb1"
+                                 showDisclosure="false" visible="true"
+                                 text="Datos conflicto">
+                      <af:panelFormLayout binding="#{conflictosXFuenteBean.pfl21}"
+                                          id="pfl21" rows="3">
+                        <af:inputText label="Nombre Fuente"
+                                      binding="#{conflictosXFuenteBean.it_nombre1}"
+                                      id="it_nombre1"
+                                      value="#{conflictosXFuenteBean.fuente.nombre}"
+                                      readOnly="true"/>
+                      </af:panelFormLayout>
+                      <af:panelStretchLayout binding="#{conflictosXFuenteBean.psl1}"
+                                             id="psl1"
+                                             inlineStyle="height:400.0px; width:100%;"
+                                             bottomHeight="51px">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelGroupLayout layout="scroll"
+                                               xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                               binding="#{conflictosXFuenteBean.panelGroupLayout3}"
+                                               id="panelGroupLayout3">
+                            <af:panelFormLayout binding="#{conflictosXFuenteBean.pfl1}"
+                                                id="pfl1">
+                              <af:selectOneChoice label="Tramo Asociado (opcional)"
+                                                  helpTopicId="adicionarFuente"
+                                                  binding="#{conflictosXFuenteBean.soc_Tramos1}"
+                                                  id="soc_Tramos1"
+                                                  showRequired="true"
+                                                  autoSubmit="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  
+                                                  value="#{conflictosXFuenteBean.tramoAct}"
+                                                  readOnly="true">
+                                <f:selectItems value="#{conflictosXFuenteBean.listaTramos}"
+                                               binding="#{conflictosXFuenteBean.selectItems71}"
+                                               id="selectItems71"/>
+                              </af:selectOneChoice>
+                              <af:inputText binding="#{conflictosXFuenteBean.it_nombre2}"
+                                            id="it_nombre2"
+                                            requiredMessageDetail="Nombre de conflicto requerido"
+                                            contentStyle="text-transform:uppercase"
+                                            label="Nombre conflicto"
+                                            value="#{conflictosXFuenteBean.conflicto.nombre}"
+                                            readOnly="true"/>
+                              <af:inputText binding="#{conflictosXFuenteBean.it_Radicado1}"
+                                            id="it_Radicado1"
+                                            contentStyle="text-transform:uppercase"
+                                            label="Número Radicado / Expediente"
+                                            value="#{conflictosXFuenteBean.conflicto.numeroRadicado}"
+                                            readOnly="true"/>
+                              <af:inputDate label="Fecha Registro"
+                                            binding="#{conflictosXFuenteBean.id_fecha_vigencia1}"
+                                            id="id_fecha_vigencia1"
+                                            showRequired="true" columns="10"
+                                            value="#{conflictosXFuenteBean.conflicto.fechaRegistro}"
+                                            readOnly="true"/>
+                              <af:inputText label="Descripcion"
+                                            binding="#{conflictosXFuenteBean.it_descripcion1}"
+                                            id="it_descripcion1" rows="3"
+                                            columns="60"
+                                            value="#{conflictosXFuenteBean.conflicto.descripcion}"
+                                            readOnly="true"/>
+                              <af:selectBooleanRadio text="Abierto"
+                                                     binding="#{conflictosXFuenteBean.sbrAbierto1}"
+                                                     id="sbrAbierto1"
+                                                     required="true"
+                                                     group="estado"
+                                                     requiredMessageDetail="#{viewcontrollerBundle.fuente_no_especifica}"
+                                                     value="#{conflictosXFuenteBean.estadoAbiertoAct}"
+                                                     label="Estado Conflicto"
+                                                     selected="true"
+                                                     autoSubmit="true"
+                                                     readOnly="true"/>
+                              <af:selectBooleanRadio binding="#{conflictosXFuenteBean.sbrCerrado1}"
+                                                     id="sbrCerrado1"
+                                                     group="estado"
+                                                     value="#{conflictosXFuenteBean.estadoCerradoAct}"
+                                                     text="Cerrado"
+                                                     autoSubmit="true"
+                                                     readOnly="true"/>
+                              <af:inputDate label="Fecha Cierre"
+                                            binding="#{conflictosXFuenteBean.id_fechaCierre1}"
+                                            id="id_fechaCierre1"
+                                            showRequired="true" columns="10"
+                                            visible="false"
+                                            value="#{conflictosXFuenteBean.conflicto.fechaCierre}"
+                                            readOnly="true"/>
+                            </af:panelFormLayout>
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{conflictosXFuenteBean.panelGroupLayout4}"
+                                                 id="panelGroupLayout4">
+                              <af:panelGroupLayout binding="#{conflictosXFuenteBean.panelGroupLayout5}"
+                                                   id="panelGroupLayout5">
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout3}"
+                                                    id="panelFormLayout3">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{conflictosXFuenteBean.spacer6}"
+                                             id="spacer6"/>
+                                  <af:activeOutputText value="Ubicacion Conflicto"
+                                                       binding="#{conflictosXFuenteBean.activeOutputText2}"
+                                                       id="activeOutputText2"
+                                                       styleClass="AFBrandingBarTitle"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{conflictosXFuenteBean.spacer10}"
+                                             id="spacer10"/>
+                                  <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SISTEMA}"
+                                                      binding="#{conflictosXFuenteBean.soc_sistema}"
+                                                      id="soc_sistema"
+                                                      showRequired="true"
+                                                      unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                      value="#{conflictosXFuenteBean.sistemaRefAct}"
+                                                      readOnly="true">
+                                    <f:selectItems value="#{conflictosXFuenteBean.sistemasReferencia}"
+                                                   binding="#{conflictosXFuenteBean.selectItems8}"
+                                                   id="selectItems8"/>
+                                  </af:selectOneChoice>
+                                </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                              <af:panelGroupLayout binding="#{conflictosXFuenteBean.panelGroupLayout6}"
+                                                   id="panelGroupLayout6"
+                                                   layout="vertical">
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout5}"
+                                                    id="panelFormLayout5"
+                                                    rows="1" maxColumns="1">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{conflictosXFuenteBean.spacer7}"
+                                             id="spacer7"/>
+                                  <af:outputLabel value="Datos Ubicacion"
+                                                  binding="#{conflictosXFuenteBean.outputLabel3}"
+                                                  id="outputLabel3"/>
+                                </af:panelFormLayout>
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout4}"
+                                                    id="panelFormLayout4"
+                                                    maxColumns="999999" rows="1"
+                                                    labelAlignment="top"
+                                                    visible="true">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{conflictosXFuenteBean.spacer8}"
+                                             id="spacer8"/>
+                                  <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                                  binding="#{conflictosXFuenteBean.outputLabel1}"
+                                                  id="outputLabel1"/>
+                                  <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                binding="#{conflictosXFuenteBean.it_grados_pi}"
+                                                id="it_grados_pi"
+                                                showRequired="true" columns="5"
+                                                immediate="true"
+                                                value="#{conflictosXFuenteBean.conflicto.latitudGrados}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="true"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"/>
+                                    <af:validateLongRange minimum="-4"
+                                                          maximum="15"/>
+                                  </af:inputText>
+                                  <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                                binding="#{conflictosXFuenteBean.it_minutos_pi}"
+                                                id="it_minutos_pi"
+                                                showRequired="true" columns="5"
+                                                immediate="true"
+                                                value="#{conflictosXFuenteBean.conflicto.latitudMinutos}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="true"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"/>
+                                    <af:validateLongRange minimum="0"
+                                                          maximum="59"/>
+                                  </af:inputText>
+                                  <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                                binding="#{conflictosXFuenteBean.it_segundos_pi}"
+                                                id="it_segundos_pi"
+                                                showRequired="true" columns="5"
+                                                immediate="true"
+                                                value="#{conflictosXFuenteBean.conflicto.latitudSegundos}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="5"
+                                                      pattern="##.#####"/>
+                                    <af:validateDoubleRange minimum="0.0"
+                                                            maximum="59.99999"/>
+                                  </af:inputText>
+                                </af:panelFormLayout>
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout6}"
+                                                    id="panelFormLayout6"
+                                                    rows="1" maxColumns="999999"
+                                                    labelAlignment="top">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{conflictosXFuenteBean.spacer9}"
+                                             id="spacer9"/>
+                                  <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                                  binding="#{conflictosXFuenteBean.outputLabel2}"
+                                                  id="outputLabel2"/>
+                                  <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                binding="#{conflictosXFuenteBean.it_grad_long_pi}"
+                                                id="it_grad_long_pi" columns="5"
+                                                immediate="true"
+                                                showRequired="true"
+                                                value="#{conflictosXFuenteBean.conflicto.longitudGrados}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="true"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"/>
+                                  </af:inputText>
+                                  <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                                binding="#{conflictosXFuenteBean.it_minutos_long_pi}"
+                                                id="it_minutos_long_pi"
+                                                columns="5" showRequired="true"
+                                                immediate="true"
+                                                value="#{conflictosXFuenteBean.conflicto.longitudMinutos}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="true"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"/>
+                                    <af:validateLongRange minimum="0"
+                                                          maximum="59"/>
+                                  </af:inputText>
+                                  <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                                binding="#{conflictosXFuenteBean.it_segundos_long_pi}"
+                                                id="it_segundos_long_pi"
+                                                columns="5" showRequired="true"
+                                                immediate="true"
+                                                value="#{conflictosXFuenteBean.conflicto.longitudSegundos}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="5"
+                                                      pattern="##.#####"/>
+                                    <af:validateDoubleRange minimum="0.0"
+                                                            maximum="59.9999"/>
+                                  </af:inputText>
+                                </af:panelFormLayout>
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout7}"
+                                                    id="panelFormLayout7"
+                                                    rows="1" maxColumns="2">
+                                  <af:inputText label="#{viewcontrollerBundle.TRM_ALTITUD}"
+                                                binding="#{conflictosXFuenteBean.it_altitud_pi}"
+                                                id="it_altitud_pi"
+                                                showRequired="true" columns="7"
+                                                immediate="true"
+                                                value="#{conflictosXFuenteBean.conflicto.altitud}"
+                                                readOnly="true">
+                                    <af:convertNumber type="number"
+                                                      integerOnly="false"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="5"
+                                                      minFractionDigits="0"
+                                                      maxFractionDigits="3"
+                                                      groupingUsed="false"/>
+                                    <af:validateDoubleRange minimum="0.0"
+                                                            maximum="5500.0"/>
+                                  </af:inputText>
+                                </af:panelFormLayout>
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout8}"
+                                                    id="panelFormLayout8"
+                                                    rows="1" maxColumns="1">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{conflictosXFuenteBean.spacer11}"
+                                             id="spacer11"/>
+                                  <af:activeOutputText value="Gestion Realizada"
+                                                       binding="#{conflictosXFuenteBean.activeOutputText1}"
+                                                       id="activeOutputText1"
+                                                       styleClass="AFBrandingBarTitle"/>
+                                </af:panelFormLayout>
+                                <af:panelFormLayout binding="#{conflictosXFuenteBean.panelFormLayout9}"
+                                                    id="panelFormLayout9"
+                                                    rows="1" maxColumns="1">
+                                  <af:panelGroupLayout layout="scroll"
+                                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                       binding="#{conflictosXFuenteBean.panelGroupLayout41}"
+                                                       id="panelGroupLayout41">
+                                    <af:table var="row" rowSelection="single"
+                                              value="#{conflictosXFuenteBean.listaGestionRealizada}"
+                                              rowBandingInterval="1"
+                                              selectionListener="#{gestionConflictoBean.t_gestion_selectionListener}"
+                                              emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                              summary="Conflictos registrados"
+                                              binding="#{conflictosXFuenteBean.tb_gestion}"
+                                              id="tb_gestion" width="540">
+                                      <af:column sortable="true"
+                                                 headerText="Fecha gestion"
+                                                 sortProperty="anio"
+                                                 width="126">
+                                        <af:outputText value="#{row.fechaGestion}"/>
+                                      </af:column>
+                                      <af:column sortable="true"
+                                                 headerText="Nombre"
+                                                 sortProperty="anio"
+                                                 width="126">
+                                        <af:outputText value="#{row.nombre}"/>
+                                      </af:column>
+                                      <af:column sortable="true"
+                                                 headerText="Tipo Gestion"
+                                                 sortProperty="anio"
+                                                 width="126">
+                                        <af:outputText value="#{row.tipoGestion.valor}"/>
+                                      </af:column>
+                                    </af:table>
+                                  </af:panelGroupLayout>
+                                </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:panelFormLayout binding="#{conflictosXFuenteBean.pfl22}"
+                                                id="pfl22" maxColumns="3"
+                                                rows="1">
+                              <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                  binding="#{conflictosXFuenteBean.soc_departamento}"
+                                                  id="soc_departamento"
+                                                  showRequired="false"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  autoSubmit="true"
+                                                  immediate="true"
+                                                  value="#{conflictosXFuenteBean.deptoAct}"
+                                                  readOnly="true">
+                                <f:selectItems value="#{conflictosXFuenteBean.listaDepartamentos}"
+                                               binding="#{conflictosXFuenteBean.selectItems4}"
+                                               id="selectItems4"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                  binding="#{conflictosXFuenteBean.soc_municipio}"
+                                                  id="soc_municipio"
+                                                  showRequired="false"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{conflictosXFuenteBean.municAct}"
+                                                  readOnly="true">
+                                <f:selectItems value="#{conflictosXFuenteBean.listaMunicipios}"
+                                               binding="#{conflictosXFuenteBean.selectItems5}"
+                                               id="selectItems5"/>
+                              </af:selectOneChoice>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{conflictosXFuenteBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal">
+                                    
+                  <af:spacer width="10" height="10"
+                             binding="#{conflictosXFuenteBean.spacer2}" id="spacer2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBSERVATORIO_OBSERVATORIO}"
+                                  binding="#{conflictosXFuenteBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="observatorio"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{conflictosXFuenteBean.spacer3}" id="spacer3"/>
+                  <af:commandLink text="Componente Gestion"
+                                  binding="#{conflictosXFuenteBean.commandLink2}"
+                                  id="commandLink2"
+                                  action="gestion"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{conflictosXFuenteBean.spacer1}" id="spacer1"/>
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:conflictosXFuenteBean-->
+</jsp:root>

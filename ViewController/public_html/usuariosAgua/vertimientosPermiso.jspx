@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          >
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <f:view>
+    <af:document binding="#{vertimientosPermisoBean.document1}" id="document1">
+      <af:form binding="#{vertimientosPermisoBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{vertimientosPermisoBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="25px"
+                                   
+                                   >
+              <f:facet name="center">
+                  <af:panelSplitter binding="#{vertimientosPermisoBean.panelSplitter1}"
+                                    id="panelSplitter1" orientation="vertical"
+                                    splitterPosition="50" disabled="true" >
+                    <f:facet name="first">
+                        <af:panelFormLayout binding="#{vertimientosPermisoBean.panelFormLayout1}"
+                                            id="panelFormLayout1" rows="1"
+                                            maxColumns="8">
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{vertimientosPermisoBean.socFiltroDepartamento}"
+                                              id="socFiltroDepartamento"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              autoSubmit="true" immediate="true"
+                                              valueChangeListener="#{vertimientosPermisoBean.socFiltroDepartamento_valueChangeListener}"
+                                              >
+                            <f:selectItems value="#{vertimientosPermisoBean.listaDepartamentos}"
+                                           binding="#{vertimientosPermisoBean.siFiltroDep}"
+                                           id="siFiltroDep"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{vertimientosPermisoBean.socFiltroMun}"
+                                              id="socFiltroMun"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              >
+                            <f:selectItems value="#{vertimientosPermisoBean.listaMunicipios}"
+                                           binding="#{vertimientosPermisoBean.siFiltroMun}"
+                                           id="siFiltroMun"/>
+                          </af:selectOneChoice>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                            binding="#{vertimientosPermisoBean.cmdBuscar}"
+                                            id="cmdBuscar"
+                                            icon="/imgs/binoculars_24.png"
+                                            actionListener="#{vertimientosPermisoBean.cmdBuscar_actionListener}"
+                                            />
+                        </af:panelFormLayout>
+                    </f:facet>
+                    <f:facet name="second">
+                        <af:panelCollection binding="#{vertimientosPermisoBean.panelCollection1}"
+                                  id="panelCollection1"
+                                  inlineStyle="width:100%;" >
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                        binding="#{vertimientosPermisoBean.menu1}"
+                                       id="menu1">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                                    binding="#{vertimientosPermisoBean.addVertimientoMenuItem1}"
+                                                    id="addVertimientoMenuItem1"
+                                                    action="adicionarVertimiento"
+                                                    icon="/imgs/add.png"
+                                                    />
+                                <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                    binding="#{vertimientosPermisoBean.editarVertimientoMenuItem2}"
+                                                    id="editarVertimientoMenuItem2"
+                                                    icon="/imgs/edit_24.png"
+                                                    action="#{vertimientosPermisoBean.getDetalleVertimiento}"
+                                                    actionListener="#{vertimientosPermisoBean.editarVertimientoMenuItem2_actionListener}"
+                                                    immediate="true"
+                                                    partialSubmit="true"
+                                                    />
+                              </af:menu>
+                            </f:facet>
+                            
+                            <af:table var="row" binding="#{vertimientosPermisoBean.t_vertimientos}"
+                                      id="t_vertimientos" rowSelection="single"
+                                      value="#{vertimientosPermisoBean.listaVertimientos}"
+                                      rowBandingInterval="1"
+                                      selectionListener="#{vertimientosPermisoBean.t_vertimientos_selectionListener}"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      >
+                                      
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.VRT_TIPO}"
+                                         sortProperty="tipoVertimiento"
+                                         width="110">
+                                <af:outputText value="#{row.tipoVertimiento}"
+                                        converter="TipoVertimiento"/>
+                              </af:column>       
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PTO_LATITUD}"
+                                         sortProperty="gradosPi" width="126">
+                                <af:outputText value="#{row.gradosLat}° #{row.minutosLat}' #{row.segundosLat}&quot;"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                         sortProperty="minutosPi" width="112">
+                                <af:outputText value="#{row.gradosLong}° #{row.minutosLong}' #{row.segundosLong}&quot;"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.ALTITUD}"
+                                         sortProperty="altitud" width="92">
+                                <af:outputText value="#{row.altitud}"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.MUNICIPIO}"
+                                           sortProperty="municipio" width="110">
+                                  <af:outputText value="#{row.municipio}"
+                                                converter="Divipola" />
+                                </af:column>
+                                <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                           sortProperty="departamento"
+                                           width="110">
+                                  <af:outputText value="#{row.departamento}"
+                                                 converter="Divipola" />
+                                </af:column>
+                            </af:table>
+                        </af:panelCollection>
+                            
+                    </f:facet>
+                  </af:panelSplitter>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top">
+                    
+                    <af:panelGroupLayout binding="#{vertimientosPermisoBean.panelGroupLayout1}"
+                                         id="panelGroupLayout1"
+                                         layout="horizontal">
+                      <af:spacer width="10" height="10"
+                                 binding="#{vertimientosPermisoBean.spacer2}" id="spacer2"/>
+                      <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                      binding="#{vertimientosPermisoBean.clTodos}"
+                                      id="clTodos" action="usuariosAgua"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{vertimientosPermisoBean.spacer1}" id="spacer1"/>
+                      <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{vertimientosPermisoBean.usuario.nombre}"
+                                      binding="#{vertimientosPermisoBean.clUsuario}"
+                                      id="clUsuario"  action="detalleUsuario"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{vertimientosPermisoBean.spacer3}" id="spacer3"/>
+                      <af:commandLink text="#{viewcontrollerBundle.PREDIO}  :  #{vertimientosPermisoBean.predio.nombre}"
+                                      binding="#{vertimientosPermisoBean.clPredio}"
+                                      id="clPredio" action="detallePredio"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{vertimientosPermisoBean.spacer4}" id="spacer4"/>
+                  
+                      <af:commandLink text="#{viewcontrollerBundle.PERMISO} : #{vertimientosPermisoBean.permiso.numeroExpediente}"
+                                      binding="#{vertimientosPermisoBean.commandLink1}"
+                                      id="commandLink1"
+                                      action="detallePermiso"/>
+                      <af:spacer width="10" height="10"
+                             binding="#{vertimientosPermisoBean.spacer5}"
+                             id="spacer5"/>
+                      <af:outputText value="#{viewcontrollerBundle.VRT_TODO}"
+                                          binding="#{vertimientosPermisoBean.otVertimientos}"
+                                          id="otVertimientos" />
+                    </af:panelGroupLayout>
+                    
+                </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:vertimientosPermisoBean-->
+</jsp:root>

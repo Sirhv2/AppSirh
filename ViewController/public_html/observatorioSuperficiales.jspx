@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{observatorioBacking.document1}" id="document1">
+      <af:form binding="#{observatorioBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="26px">
+              <f:facet name="top">
+                <af:panelBox inlineStyle="text-align: left;">
+                  <af:commandLink text="Observatorio" action="observatorio"/>
+                  <af:spacer width="10" height="10"/>
+                  <af:outputText value="Observatorio Aguas Superficiales"
+                                 id="outputText99"/>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelDashboard id="dashBoard"
+                                   binding="#{observatorioBacking.dashBoard}"
+                                   columns="2" rowHeight="170px">
+                  <af:panelBox text="Observatorio del agua"
+                               binding="#{observatorioBacking.panelBox1}"
+                               id="panelBox1" showDisclosure="false"
+                               inlineStyle="height:165px;">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout binding="#{observatorioBacking.panelGroupLayout6}"
+                                         id="panelGroupLayout6">
+                      <af:inputText binding="#{observatorioBacking.textoinicio}"
+                                    id="textoinicio" columns="80" rows="9"
+                                    readOnly="true"
+                                    value="#{viewcontrollerBundle.OBSERVATORIO_INICIO}"
+                                    inlineStyle="text-align:justify;"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Componente oferta"
+                               binding="#{observatorioBacking.pbOferta}"
+                               id="pbOferta" showDisclosure="false"
+                               type="stretch" inlineStyle="height:178px">
+                    <af:panelGroupLayout binding="#{observatorioBacking.panelGroupLayout1}"
+                                         id="panelGroupLayout1" halign="center"
+                                         layout="horizontal">
+                      <!--af:commandLink binding="#{observatorioBacking.commandLink1}"
+                                      id="commandLink1" action="oferta"-->
+                      <af:image source="/imgs/oferta.png"
+                                binding="#{observatorioBacking.image1}"
+                                id="image1"
+                                inlineStyle="width:112px; height:112px;"/>
+                      <!--/af:commandLink-->
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_OFERTA}"
+                                    binding="#{observatorioBacking.it1}"
+                                    id="it1" label="" columns="60" rows="6"
+                                    readOnly="true"/>
+                    </af:panelGroupLayout>
+                    <!--CDONCEL-->
+                    <af:panelGroupLayout>
+                      <af:commandLink text="#{viewcontrollerBundle.EST_HIDROLOGICAS}"
+                                      inlineStyle="color:#000080;font-weight:bold;padding-right:14px"
+                                      action="#{estacionesBacking.preparaEstaciones(1)}"/>
+                      <af:commandLink text="#{viewcontrollerBundle.EST_METEREOLOGICAS}"
+                                      inlineStyle="color:#6D6968; font-weight:bold; padding-left:14px;"
+                                      action="#{estacionesBacking.preparaEstaciones(2)}"/>
+                    </af:panelGroupLayout>
+                    <af:commandLink text="#{viewcontrollerBundle.CURVAS_IDF}"
+                                    inlineStyle="color:#0041C2; font-weight:bold"
+                                    action="#{estacionesBacking.preparaEstaciones(3)}"/>
+                    <!--FIN CDONCEL-->
+                  </af:panelBox>
+                  <af:panelBox text="Componente demanda"
+                               binding="#{observatorioBacking.pbDemanda}"
+                               id="pbDemanda" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                    <af:panelGroupLayout binding="#{observatorioBacking.panelGroupLayout2}"
+                                         id="panelGroupLayout2" halign="center"
+                                         layout="horizontal">
+                      <af:commandLink binding="#{observatorioBacking.commandLink2}"
+                                      id="commandLink2" action="demanda">
+                        <af:image source="/imgs/demanda.png"
+                                  binding="#{observatorioBacking.image2}"
+                                  id="image2"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_DEMANDA}"
+                                    binding="#{observatorioBacking.it2}"
+                                    id="it2" label="" columns="60" rows="10"
+                                    readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Componente calidad"
+                               binding="#{observatorioBacking.pbCalidad}"
+                               id="pbCalidad" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                    <af:panelGroupLayout binding="#{observatorioBacking.panelGroupLayout3}"
+                                         id="panelGroupLayout3" halign="center"
+                                         layout="horizontal">
+                      <af:commandLink binding="#{observatorioBacking.commandLink3}"
+                                      id="commandLink3" action="calidad">
+                        <af:image source="/imgs/calidad.png"
+                                  binding="#{observatorioBacking.image3}"
+                                  id="image3"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_CALIDAD}"
+                                    binding="#{observatorioBacking.it3}"
+                                    id="it3" label="" columns="60" rows="10"
+                                    readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Componente gestión"
+                               binding="#{observatorioBacking.pbGestion}"
+                               id="pbGestion" showDisclosure="false"
+                               type="stretch">
+                    <af:panelGroupLayout binding="#{observatorioBacking.panelGroupLayout4}"
+                                         id="panelGroupLayout4" halign="center"
+                                         layout="horizontal">
+                      <af:commandLink binding="#{observatorioBacking.commandLink4}"
+                                      id="commandLink4" action="gestion">
+                        <af:image source="/imgs/gastion.png"
+                                  binding="#{observatorioBacking.image4}"
+                                  id="image4"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_GESTION}"
+                                    binding="#{observatorioBacking.it4}"
+                                    id="it4" label="" columns="60" rows="10"
+                                    readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Componente riesgo"
+                               binding="#{observatorioBacking.pbRiesgo}"
+                               id="pbRiesgo" showDisclosure="false"
+                               type="stretch">
+                    <af:panelGroupLayout binding="#{observatorioBacking.panelGroupLayout5}"
+                                         id="panelGroupLayout5" halign="center"
+                                         layout="horizontal">
+                      <af:commandLink binding="#{observatorioBacking.commandLink5}"
+                                      id="commandLink5" action="riesgo">
+                        <af:image source="/imgs/riesgo.png"
+                                  binding="#{observatorioBacking.image5}"
+                                  id="image5"/>
+                      </af:commandLink>
+                      <!-- <af:image source="/imgs/riesgo.png" binding="#{observatorioBacking.image5}" id="image5"/>
+-->
+                      <af:inputText value="#{viewcontrollerBundle.OBSERVATORIO_RIESGO}"
+                                    binding="#{observatorioBacking.it5}"
+                                    id="it5" label="" columns="60" rows="10"
+                                    readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:panelDashboard>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioBacking-->
+</jsp:root>

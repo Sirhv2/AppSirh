@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{usosPermitidos.d2}">
+      <af:form id="f2" binding="#{usosPermitidos.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{usosPermitidos.psl10}" id="psl10"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{usosPermitidos.pgl1}" id="pgl1">
+                  <af:popup binding="#{usosPermitidos.p1}" id="p1">
+                    <af:dialog binding="#{usosPermitidos.d1}" id="d1" type="ok"
+                               title="Efectividad Sobre el Plan de Ordenamiento"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.boton_cerrar}">
+                      <f:subview id="s5" binding="#{usosPermitidos.s5}">
+                        <jsp:include page="/porh/graficoEfectividad.jsff"
+                                     flush="true"/>
+                      </f:subview>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{usosPermitidos.ps1}" id="ps1"
+                                  splitterPosition="514" disabled="true">
+                  <f:facet name="first">
+                    <af:panelBox text="#{viewcontrollerBundle.USOS_PERMITIDOS_PARA_EL_TRAMO}"
+                                 binding="#{usosPermitidos.pb_uso}" id="pb_uso"
+                                 showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{usosPermitidos.psl2}"
+                                             id="psl2" startWidth="0px"
+                                             endWidth="0px" topHeight="239px"
+                                             bottomHeight="0px"
+                                             inlineStyle="height:412px;">
+                        <f:facet name="bottom">
+                          <af:panelGroupLayout binding="#{usosPermitidos.pgl4}"
+                                               id="pgl4">
+                            <af:popup binding="#{usosPermitidos.p_borrar_calidad}"
+                                      id="p_borrar_calidad">
+                              <af:dialog binding="#{usosPermitidos.d_borrar_calidad}"
+                                         id="d_borrar_calidad"
+                                         title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                         affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                                         cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}"
+                                         dialogListener="#{usosPermitidos.d_borrar_calidad_dialogListener}">
+                                <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                               binding="#{usosPermitidos.ot7}"
+                                               id="ot7"/>
+                              </af:dialog>
+                            </af:popup>
+                            <af:popup binding="#{usosPermitidos.p_borrar_uso}"
+                                      id="p_borrar_uso">
+                              <af:dialog binding="#{usosPermitidos.d_borrar_uso}"
+                                         id="d_borrar_uso"
+                                         title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                         affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                                         cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}"
+                                         dialogListener="#{usosPermitidos.d_borrar_uso_dialogListener}">
+                                <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R} Se eliminan todos los registros de calidad Asociados al mismo."
+                                               binding="#{usosPermitidos.ot8}"
+                                               id="ot8"/>
+                              </af:dialog>
+                            </af:popup>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{usosPermitidos.pc1}"
+                                              id="pc1" featuresOff="detach ">
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{usosPermitidos.m_menu}"
+                                       id="m_menu" visible="false">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                    binding="#{usosPermitidos.cmi_editar_uso}"
+                                                    id="cmi_editar_uso"
+                                                    actionListener="#{usosPermitidos.cmi_editar_uso_actionListener}"/>
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{usosPermitidos.listaUsos}"
+                                      var="row" rowBandingInterval="1"
+                                      binding="#{usosPermitidos.t_usos}"
+                                      id="t_usos" rowSelection="single"
+                                      selectionListener="#{usosPermitidos.t_usos_selectionListener}"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.USO_USO}"
+                                         align="start" id="c1" width="300">
+                                <af:outputText value="#{row.usoPermitido.valor}"
+                                               id="ot1"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelGroupLayout binding="#{usosPermitidos.pgl5}"
+                                               id="pgl5" layout="vertical"
+                                               halign="left">
+                            <af:panelFormLayout binding="#{usosPermitidos.panelFormLayout1}"
+                                                id="panelFormLayout1">
+                              <af:inputText label="#{viewcontrollerBundle.NUMERO_ACTO}"
+                                            binding="#{usosPermitidos.tactAdm}"
+                                            id="tactAdm" maximumLength="10"
+                                            value="#{usosPermitidos.tramo.actoAdmU}"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICION_POLCA}"
+                                            binding="#{usosPermitidos.dfecExp}"
+                                            id="dfecExp"
+                                            value="#{usosPermitidos.tramo.fechaExpU}"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_VIGENCIA_INI}"
+                                            binding="#{usosPermitidos.dvigIni}"
+                                            id="dvigIni"
+                                            value="#{usosPermitidos.tramo.vigenciaIniU}"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_VIGENCIA_FIN}"
+                                            binding="#{usosPermitidos.dvigFin}"
+                                            id="dvigFin"
+                                            value="#{usosPermitidos.tramo.vigenciaFinU}"/>
+                              <af:commandButton text="Guardar"
+                                                binding="#{usosPermitidos.bsalvar}"
+                                                id="bsalvar"
+                                                actionListener="#{usosPermitidos.cb_adicionarAct_actionListener}"/>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{usosPermitidos.pfl1}"
+                                                id="pfl1" rows="2"
+                                                maxColumns="99999999"
+                                                labelAlignment="top">
+                              <af:selectOneChoice label="#{viewcontrollerBundle.USO_DEL_TRAMO}"
+                                                  binding="#{usosPermitidos.soc_adicionar_uso}"
+                                                  id="soc_adicionar_uso"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  showRequired="true">
+                                <f:selectItems value="#{usosPermitidos.listaUsosTotales}"
+                                               binding="#{usosPermitidos.si1}"
+                                               id="si1"/>
+                              </af:selectOneChoice>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{usosPermitidos.pfl6}"
+                                                id="pfl6" rows="1"
+                                                maxColumns="9999"
+                                                labelAlignment="top">
+                              <af:inputDate label="#{viewcontrollerBundle.CORTO_PLAZO}"
+                                            binding="#{usosPermitidos.id_fecha_cp}"
+                                            id="id_fecha_cp" columns="10"
+                                            showRequired="true"/>
+                              <af:inputDate label="#{viewcontrollerBundle.MEDIANO_PLAZO}"
+                                            binding="#{usosPermitidos.id_fecha_mp}"
+                                            id="id_fecha_mp" columns="10"
+                                            showRequired="true"/>
+                              <af:inputDate label="#{viewcontrollerBundle.LARGO_PLAZO}"
+                                            binding="#{usosPermitidos.id_fecha_lp}"
+                                            id="id_fecha_lp" columns="10"
+                                            showRequired="true"/>
+                            </af:panelFormLayout>
+                            <af:panelGroupLayout binding="#{usosPermitidos.pgl6}"
+                                                 id="pgl6" layout="horizontal">
+                              <af:spacer width="10" height="10"
+                                         binding="#{usosPermitidos.s7}"
+                                         id="s7"/>
+                              <af:commandButton text="#{viewcontrollerBundle.boton_Adicionar}"
+                                                binding="#{usosPermitidos.cb_uso}"
+                                                id="cb_uso"
+                                                actionListener="#{usosPermitidos.cb_adicionar_uso_actionListener}"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{usosPermitidos.s10}"
+                                         id="s10"/>
+                              <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}"
+                                                binding="#{usosPermitidos.cb_borrar_uso}"
+                                                id="cb_borrar_uso"
+                                                actionListener="#{usosPermitidos.cb_borrar_uso_actionListener}"
+                                                visible="#{usosPermitidos.usoSeleccionado!=null}"/>
+                            </af:panelGroupLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox text="#{viewcontrollerBundle.OBJETIVOS_DE_CALIDAD_TRAMO}"
+                                 binding="#{usosPermitidos.pb_objetivos}"
+                                 id="pb_objetivos" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{usosPermitidos.psl_derecho}"
+                                             id="psl_derecho" startWidth="0px"
+                                             endWidth="0px" topHeight="110px"
+                                             bottomHeight="0px"
+                                             visible="#{usosPermitidos.usoSeleccionado !=null}">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{usosPermitidos.pc2}"
+                                              id="pc2" featuresOff="detach ">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{usosPermitidos.listaParametrosUso}"
+                                      var="row" rowBandingInterval="1"
+                                      binding="#{usosPermitidos.t_parametros}"
+                                      id="t_parametros" rowSelection="single"
+                                      selectionListener="#{usosPermitidos.t_parametros_selectionListener}"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PLAZO}"
+                                         align="start" id="c2"
+                                         sortProperty="objetivo">
+                                <af:outputText value="#{row.objetivo}"
+                                               id="ot2"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.FECHA}"
+                                         id="c3" sortProperty="fecha">
+                                <af:outputText value="#{row.fecha}" id="ot3"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                         id="c4" sortProperty="parametro"
+                                         width="200">
+                                <af:outputText value="#{row.parametro}"
+                                               id="ot4"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.UNIDAD}"
+                                         id="c5" sortProperty="unidad">
+                                <af:outputText value="#{row.unidad}" id="ot5"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PAR_VALOR}"
+                                         id="c6" sortProperty="valor">
+                                <af:outputText value="#{row.valor}" id="ot6"/>
+                              </af:column>
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.PAR_OBJETIVOS_ECOLOGICOS}"
+                                         id="cObjetivoEcologico"
+                                         sortProperty="objetivoEcologico">
+                                <af:outputText value="#{row.objetivoEcologico}"
+                                               id="otObjetivoEcologico"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelGroupLayout binding="#{usosPermitidos.pgl_detalle_parametro}"
+                                               id="pgl_detalle_parametro">
+                            <af:panelFormLayout binding="#{usosPermitidos.pfl2}"
+                                                id="pfl2" rows="3">
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PLAZO}"
+                                                  binding="#{usosPermitidos.soc_plazo}"
+                                                  id="soc_plazo"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{usosPermitidos.listaPlazos}"
+                                               binding="#{usosPermitidos.si3}"
+                                               id="si3"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.UNIDAD}"
+                                                  binding="#{usosPermitidos.soc_unidad}"
+                                                  id="soc_unidad"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{usosPermitidos.listaUnidades}"
+                                               binding="#{usosPermitidos.si4}"
+                                               id="si4"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.OBJETIVOS_ECOLOGICOS}"
+                                                  binding="#{usosPermitidos.soc_objetivos_ecologicos}"
+                                                  id="obj_ecologicos"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{usosPermitidos.listaObjetivosEcologicos}"
+                                               binding="#{usosPermitidos.siObjetivosEcologicos}"
+                                               id="siObjetivosEcologicos"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                  binding="#{usosPermitidos.soc_parametro}"
+                                                  id="soc_parametro"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{usosPermitidos.listaParametros}"
+                                               binding="#{usosPermitidos.si2}"
+                                               id="si2"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.VALOR_ESPERADO}"
+                                            binding="#{usosPermitidos.it_valor}"
+                                            id="it_valor" columns="10">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"/>
+                              </af:inputText>
+                              <af:spacer width="10" height="10"
+                                         binding="#{usosPermitidos.s8}"
+                                         id="s8"/>
+                              <f:facet name="footer">
+                                <af:panelGroupLayout binding="#{usosPermitidos.pgl3}"
+                                                     id="pgl3"
+                                                     layout="horizontal">
+                                  <af:spacer width="20" height="10"
+                                             binding="#{usosPermitidos.s4}"
+                                             id="s4"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.boton_Adicionar}"
+                                                    binding="#{usosPermitidos.cb_adicionar_parametro}"
+                                                    id="cb_adicionar_parametro"
+                                                    disabled="#{usosPermitidos.usoSeleccionado ==null}"
+                                                    actionListener="#{usosPermitidos.cb_adicionar_parametro_actionListener}"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{usosPermitidos.s6}"
+                                             id="s6"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.VER_COMPORTAMIENTO}"
+                                                    binding="#{usosPermitidos.cb_grafico}"
+                                                    id="cb_grafico"
+                                                    actionListener="#{usosPermitidos.cb_grafico_actionListener}"
+                                                    visible="#{usosPermitidos.parametroSeleccionado !=null}"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{usosPermitidos.s9}"
+                                             id="s9"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}"
+                                                    binding="#{usosPermitidos.cb_borrar_calidad}"
+                                                    id="cb_borrar_calidad"
+                                                    actionListener="#{usosPermitidos.cb_borrar_calidad_actionListener}"
+                                                    visible="#{usosPermitidos.parametroSeleccionado !=null}"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{usosPermitidos.pgl2}" id="pgl2"
+                                     layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{usosPermitidos.s2a}" id="s2a"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{usosPermitidos.cl6}" id="cl6"
+                                  action="fuentes"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{usosPermitidos.s3}" id="s3"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH}:  #{usosPermitidos.planOrdenamiento.numeroActo}"
+                                  binding="#{usosPermitidos.cl5}" id="cl5"
+                                  visible="#{usosPermitidos.planOrdenamiento != null}"
+                                  action="priorizacion"/>
+                  <af:spacer width="10" height="10" id="sf6"/>
+                  <af:commandLink text="Fuente:  #{usosPermitidos.nombreFuente}"
+                                  id="clf3" action="detalleFuente"/>
+                  <af:spacer width="10" height="10" id="s6ccc"/>
+                  <af:commandLink text="Tramo:  #{usosPermitidos.nombreTramo}"
+                                  id="cl3" action="detalleTramo"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:usosPermitidos-->
+</jsp:root>

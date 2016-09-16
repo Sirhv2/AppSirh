@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{RegistrarGestionBean.document1}" id="document1">
+      <af:form binding="#{RegistrarGestionBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{RegistrarGestionBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="15px"
+                                   bottomHeight="50px" topHeight="99px">
+              <!--Pilar-->                     
+                <f:facet name="top">
+                <af:panelGroupLayout>
+                  <af:panelGroupLayout layout="horizontal">
+                    <af:commandLink text="#{viewcontrollerBundle.CNC_TODAS} "
+                                    action="cuencas"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="#{viewcontrollerBundle.plan_general} #{RegistrarGestionBean.cuenca.nombre}"
+                                    action="aprestamiento"/>
+                    <af:spacer width="25" height="10"/>
+    
+                    <af:outputText value="#{viewcontrollerBundle.CUENCA_NOMBRE}: #{RegistrarGestionBean.cuenca.nombre}" id="ot1"/>
+                 
+                  </af:panelGroupLayout>
+                  <af:spacer width="10" height="10"/>
+                  <af:panelGroupLayout layout="horizontal" inlineStyle="width:97%">
+                    <af:menuBar id="plan_menu" inlineStyle="width:100%;">
+                      <af:menu text="#{viewcontrollerBundle.plan_menu_fases}">
+                        <af:commandMenuItem id="plan_menu_fases_aprestam"
+                                            action="aprestamiento"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_aprestam}"/>
+                        <af:commandMenuItem id="plan_menu_fases_diagnost"
+                                            action="diagnostico"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_diagnost}"/>
+                        <af:commandMenuItem id="plan_menu_fases_zonif"
+                                            action="zonificacion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_zonif}"/>
+                       <af:commandMenuItem id="plan_menu_fase_determinante"
+                                            action="determinante"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_determinante}"/>
+                        
+					   <af:commandMenuItem id="plan_menu_fases_formulac"
+                                            action="formulacion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_formulac}"/>
+                        <af:commandMenuItem id="plan_menu_fases_ejecu"
+                                            action="ejecucion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_ejecu}"/>
+                        <af:commandMenuItem id="plan_menu_fases_seg"
+                                            action="seguimiento"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_seg}"/>
+                      </af:menu>
+                    </af:menuBar>
+                    </af:panelGroupLayout>
+                  <af:panelGroupLayout layout="horizontal">
+                    <af:activeOutputText value="Reportar avance" 
+                                         styleClass="AFBrandingBarTitle" inlineStyle="text-align:center;"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>            
+              <!--Fin Pilar-->            
+           
+              <f:facet name="center">
+                <af:panelSplitter binding="#{RegistrarGestionBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="599"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{RegistrarGestionBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           bottomHeight="22px" topHeight="13px"
+                                           startWidth="11px" endWidth="12px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{RegistrarGestionBean.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="scroll">
+                          <af:popup binding="#{RegistrarGestionBean.p_borrar}"
+                                    id="p_borrar">
+                            <af:dialog binding="#{RegistrarGestionBean.d_borrar}"
+                                       id="d_borrar" type="none"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                       title="#{viewcontrollerBundle.titulo_confirmacion}">
+                              <af:panelGroupLayout binding="#{RegistrarGestionBean.pgl18}"
+                                                   id="pgl18" layout="vertical">
+                                <af:outputText binding="#{RegistrarGestionBean.ot_borrar_1}"
+                                               id="ot_borrar_1"/>
+                              </af:panelGroupLayout>
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{RegistrarGestionBean.pgl19}"
+                                                     id="pgl19">
+                                  <af:commandButton text="#{viewcontrollerBundle.POMCA_SI}"
+                                                    binding="#{RegistrarGestionBean.cb_si_borrar}"
+                                                    id="cb_si_borrar"
+                                                    action="#{RegistrarGestionBean.cb_si_borrar_action}"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{RegistrarGestionBean.s16}"
+                                             id="s16"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.POMCA_NO}"
+                                                    binding="#{RegistrarGestionBean.cb_no_borrar}"
+                                                    id="cb_no_borrar"
+                                                    action="#{RegistrarGestionBean.cb_no_borrar_action}"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:dialog>
+                          </af:popup>
+                          <af:panelBox text=""
+                                       binding="#{RegistrarGestionBean.panelBox1}"
+                                       id="panelBox1"
+                                       inlineStyle="text-align:center;"
+                                       showDisclosure="false">
+                            <af:panelFormLayout binding="#{RegistrarGestionBean.panelFormLayout1}"
+                                                id="panelFormLayout1">
+                              <af:inputText label="#{viewcontrollerBundle.CUENCA_NOMBRE}"
+                                            binding="#{RegistrarGestionBean.it_nombrePomca}"
+                                            id="it_nombrePomca"
+                                            value="#{RegistrarGestionBean.cuenca.nombre}"
+                                            readOnly="true"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_REPORTE}" binding="#{RegistrarGestionBean.id_fechaReporte}" id="id_fechaReporte"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PROGRAMA}"
+                                                  binding="#{RegistrarGestionBean.lc_programas}"
+                                                  id="lc_programas"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  autoSubmit="true"
+                                                  value="#{RegistrarGestionBean.programa}"
+                                                  showRequired="true"
+                                                  valueChangeListener="#{RegistrarGestionBean.lc_programa_valueChangeListener}">
+                                <f:selectItems value="#{RegistrarGestionBean.listaProgramas}"
+                                               binding="#{RegistrarGestionBean.itemsProgramas}"
+                                               id="itemsProgramas"/>
+                              </af:selectOneChoice>
+                              
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PROYECTO}"
+                                                  binding="#{RegistrarGestionBean.cl_proyectos}"
+                                                  id="cl_proyectos"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  autoSubmit="true"
+                                                  value="#{RegistrarGestionBean.proyecto}"
+                                                  valueChangeListener="#{RegistrarGestionBean.lc_proyectos_valueChangeListener}"
+                                                  showRequired="true">
+                                <f:selectItems value="#{RegistrarGestionBean.listaProyectos}"
+                                               binding="#{RegistrarGestionBean.itemsProyectos}"
+                                               id="itemsProyectos"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.ACTIVIDAD}"
+                                                  binding="#{RegistrarGestionBean.cl_actividades}"
+                                                  id="cl_actividades"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  autoSubmit="true"
+                                                  value="{RegistrarGestionBean.actividad}"
+                                                  showRequired="true"
+                                                  valueChangeListener="#{RegistrarGestionBean.lc_actividades_valueChangeListener}">
+                                <f:selectItems value="#{RegistrarGestionBean.listaActividades}"
+                                               binding="#{RegistrarGestionBean.itemsActividades}"
+                                               id="itemsActividades"/>
+                              </af:selectOneChoice>
+                              <af:inputDate label="#{viewcontrollerBundle.PERIODO_INICIAL} de desarrollo de actividades"
+                                            binding="#{RegistrarGestionBean.id_periodoInicial}"
+                                            id="id_periodoInicial"/>
+                              <af:inputDate label="#{viewcontrollerBundle.PERIODO_FINAL}"
+                                            binding="#{RegistrarGestionBean.id_periodoFinal}"
+                                            id="id_periodoFinal"/>
+                              <af:inputText label="#{viewcontrollerBundle.LOGROS_OBSERVACIONES}"
+                                            binding="#{RegistrarGestionBean.it_observacion}"
+                                            id="it_observacion"
+                                            rows="3" columns="50"/>
+                              <af:inputText label="#{viewcontrollerBundle.PRESUPUESTO_EJECUTADO}"
+                                            binding="#{RegistrarGestionBean.it_presupuesto}"
+                                            id="it_presupuesto"/>
+                            </af:panelFormLayout>
+                          </af:panelBox>
+                          <af:panelBox text="#{viewcontrollerBundle.REGISTRO_INDICADORES}"
+                                       binding="#{RegistrarGestionBean.panelBox3}"
+                                       id="panelBox3" showDisclosure="false"
+                                       inlineStyle="height:323px;">
+                            <af:panelFormLayout binding="#{RegistrarGestionBean.panelFormLayout2}"
+                                                id="panelFormLayout2">
+                              <af:outputText value="Por favor indique el indicador al que responde el avance alcanzado" binding="#{RegistrarGestionBean.otInstrucc}" id="otInstrucc"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.INDICADOR}"
+                                                  binding="#{RegistrarGestionBean.cl_indicadores}"
+                                                  id="cl_indicadores"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  autoSubmit="true"
+                                                  value="{RegistrarGestionBean.indicador}"
+                                                  showRequired="true"
+                                                  valueChangeListener="#{RegistrarGestionBean.lc_indicadores_valueChangeListener}">
+                                <f:selectItems value="#{RegistrarGestionBean.listaIndicadores}"
+                                               binding="#{RegistrarGestionBean.itemsIndicadores}"
+                                               id="itemsIndicadores"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.META_CUMPLIDA}"
+                                            binding="#{RegistrarGestionBean.it_meta}"
+                                            id="it_meta"/>
+                              <af:commandButton text="#{viewcontrollerBundle.AGREGAR_INDICADOR}"
+                                                binding="#{RegistrarGestionBean.cb_agregarIndicador}"
+                                                id="cb_agregarIndicador"
+                                                icon="/imgs/add.png"
+                                                actionListener="#{RegistrarGestionBean.cb_agregarIndicador_actionListener}"
+                                                disabled="true"
+                                                partialSubmit="true"/>
+                            </af:panelFormLayout>
+                            <af:panelCollection binding="#{RegistrarGestionBean.panelCollection2}"
+                                                id="panelCollection2">
+                              <f:facet name="menus"/>
+                              <f:facet name="statusbar"/>
+                              <af:table var="row"
+                                        binding="#{RegistrarGestionBean.t_indicadores}"
+                                        id="t_indicadores"
+                                        rowSelection="single"
+                                        inlineStyle="height:220px;"
+                                        value="#{RegistrarGestionBean.listaGestion}">
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.NOMBRE_INDICADOR}">
+                                  <af:outputText value="#{row.indicador.nombre} "/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.META_CUMPLIDA}">
+                                  <af:outputText value="#{row.metaPeriodo} "/>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                            <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                              binding="#{RegistrarGestionBean.cb_actualizar}"
+                                              id="cb_actualizar"
+                                              icon="/imgs/check_mark.png"
+                                              actionListener="#{RegistrarGestionBean.cb_Actualizar_actionListener}"/>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                     
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:RegistrarGestionBean-->
+</jsp:root>

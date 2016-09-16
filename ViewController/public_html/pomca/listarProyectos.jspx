@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{ListarProyectosBean.document1}" id="document1">
+      <af:form binding="#{ListarProyectosBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{ListarProyectosBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="15px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{ListarProyectosBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="599"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{ListarProyectosBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           bottomHeight="22px" topHeight="13px"
+                                           startWidth="11px" endWidth="12px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{ListarProyectosBean.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="scroll">
+                          <af:popup binding="#{ListarProyectosBean.p_borrar}"
+                                    id="p_borrar">
+                            <af:dialog binding="#{ListarProyectosBean.d_borrar}"
+                                       id="d_borrar" type="none"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                       title="#{viewcontrollerBundle.titulo_confirmacion}">
+                              <af:panelGroupLayout binding="#{ListarProyectosBean.pgl18}"
+                                                   id="pgl18" layout="vertical">
+                                <af:outputText binding="#{ListarProyectosBean.ot_borrar_1}"
+                                               id="ot_borrar_1"/>
+                              </af:panelGroupLayout>
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{ListarProyectosBean.pgl19}"
+                                                     id="pgl19">
+                                  <af:commandButton text="#{viewcontrollerBundle.POMCA_SI}"
+                                                    binding="#{ListarProyectosBean.cb_si_borrar}"
+                                                    id="cb_si_borrar"
+                                                    action="#{ListarProyectosBean.cb_si_borrar_action}"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{ListarProyectosBean.s16}"
+                                             id="s16"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.POMCA_NO}"
+                                                    binding="#{ListarProyectosBean.cb_no_borrar}"
+                                                    id="cb_no_borrar"
+                                                    action="#{ListarProyectosBean.cb_no_borrar_action}"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:dialog>
+                          </af:popup>
+                          <af:panelBox text="#{viewcontrollerBundle.LISTA_PROYECTOS_PROGRAMA}"
+                                       binding="#{ListarProyectosBean.panelBox1}"
+                                       id="panelBox1"
+                                       inlineStyle="text-align:center;"
+                                       showDisclosure="false">
+                            <af:panelFormLayout binding="#{ListarProyectosBean.panelFormLayout1}"
+                                                id="panelFormLayout1">
+                              <af:activeOutputText value="#{viewcontrollerBundle.PROYECTOS_PROGRAMA}"
+                                                   binding="#{ListarProyectosBean.tituloPanelMuestra}"
+                                                   id="tituloPanelMuestra"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:inputText label="#{viewcontrollerBundle.CUENCA_NOMBRE}"
+                                            binding="#{ListarProyectosBean.it_nombrePomca}"
+                                            id="it_nombrePomca"
+                                            value="#{ListarProyectosBean.cuenca.nombre}"
+                                            readOnly="true"/>
+                              <af:inputText label="#{viewcontrollerBundle.NOMBRE_PROGRAMA}"
+                                            binding="#{ListarProyectosBean.inputText2}"
+                                            id="inputText2"
+                                            value="#{ListarProyectosBean.programa.nombre}"
+                                            readOnly="true"/>
+                            </af:panelFormLayout>
+                          </af:panelBox>
+                          <af:panelBox
+                                       binding="#{ListarProyectosBean.panelBox3}"
+                                       id="panelBox3" showDisclosure="false">
+                            <af:panelCollection binding="#{ListarProyectosBean.panelCollection2}"
+                                                id="panelCollection2">
+                              <f:facet name="menus">
+                                <af:menu text="#{viewcontrollerBundle.menu_acciones}"
+                                         binding="#{ListarProyectosBean.menu2}"
+                                         id="menu2">
+                                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_adicionar}"
+                                                      binding="#{ListarProyectosBean.cm_adicionar}"
+                                                      id="cm_adicionar"
+                                                      action="#{ListarProyectosBean.cm_adicionar_action}"/>
+                                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                      binding="#{ListarProyectosBean.cm_editar}"
+                                                      id="cm_editar"
+                                                      action="#{ListarProyectosBean.cm_editar_action}"/>
+                                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_borrar}"
+                                                      binding="#{ListarProyectosBean.cm_borrar}"
+                                                      id="cm_borrar"
+                                                      action="#{ListarProyectosBean.cm_borrar_action}"/>
+                                </af:menu>
+                              </f:facet>
+                              <f:facet name="statusbar"/>
+                              <af:table var="row"
+                                        binding="#{ListarProyectosBean.t_actividades}"
+                                        id="t_actividades"
+                                        value="#{ListarProyectosBean.listaProyectos}"
+                                        rowSelection="single"
+                                        selectionListener="#{ListarProyectosBean.t_actividades_selectionListener}">
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.NOMBRE_ACTIVIDAD}">
+                                  <af:outputText value="#{row.nombre}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PRESUPUESTO_ASIGNADO}">
+                                  <af:outputText value="#{row.presupuestoAsignado}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PORC_CUMPLIMIENTO}">
+                                  <af:outputText value="#{row.porcCumplimiento}"/>
+                                </af:column>
+                                <af:column sortable="false"
+                                           headerText="#{viewcontrollerBundle.PORC_EJECUCION}">
+                                  <af:outputText value="#{row.porcEjecucion}"/>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{ListarProyectosBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:panelGroupLayout binding="#{ListarProyectosBean.panelGroupLayout4}"
+                                       id="panelGroupLayout4"
+                                       layout="horizontal">
+                    <af:spacer width="10" height="10"
+                               binding="#{ListarProyectosBean.spacer1}"
+                               id="spacer1"/>
+                    <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_CUENCAS}"
+                                    binding="#{ListarProyectosBean.cl_todasFuentes}"
+                                    id="cl_todasFuentes"
+                                    action="#{ListarProyectosBean.cl_todasFuentes_action}"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{ListarProyectosBean.spacer2}"
+                               id="spacer2"/>
+                    <af:commandLink text="#{viewcontrollerBundle.plan_general} -> #{viewcontrollerBundle.plan_menu_fase_aprestam}"
+                                    action="aprestamiento"
+                                    binding="#{ListarProyectosBean.commandLink1}"
+                                    id="commandLink1"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{ListarProyectosBean.spacer4}"
+                               id="spacer4"/>
+                    <af:outputText value="#{viewcontrollerBundle.CUENCA_NOMBRE} : #{ListarProyectosBean.cuenca.nombre}"
+                                   binding="#{ListarProyectosBean.ot1}"
+                                   id="ot1"/>
+                  </af:panelGroupLayout>
+                  <af:spacer width="10" height="10"
+                             binding="#{ListarProyectosBean.spacer3}"
+                             id="spacer3"/>
+                  <af:panelGroupLayout layout="horizontal"
+                                       inlineStyle="width:99%"
+                                       binding="#{ListarProyectosBean.panelGroupLayout3}"
+                                       id="panelGroupLayout3">
+                    <af:menuBar id="plan_menu" inlineStyle="width:100%;"
+                                binding="#{ListarProyectosBean.plan_menu}">
+                      <af:menu text="#{viewcontrollerBundle.plan_menu_fases}"
+                               binding="#{ListarProyectosBean.menu5}" id="menu5"
+                               inlineStyle="text-align:left;">
+                        <af:commandMenuItem id="plan_menu_fases_aprestam"
+                                            action="aprestamiento"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_aprestam}"
+                                            binding="#{ListarProyectosBean.plan_menu_fases_aprestam}"/>
+                        <af:commandMenuItem id="plan_menu_fases_diagnost"
+                                            action="diagnostico"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_diagnost}"
+                                            binding="#{ListarProyectosBean.plan_menu_fases_diagnost}"/>
+                        <af:commandMenuItem id="plan_menu_fases_zonif"
+                                            action="zonificacion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_zonif}"
+                                            binding="#{ListarProyectosBean.plan_menu_fases_zonif}"/>
+											<af:commandMenuItem id="plan_menu_fase_determinante"
+                                            action="determinante"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_determinante}"/>
+                        
+                        <af:commandMenuItem id="plan_menu_fases_formulac"
+                                            action="formulacion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_formulac}"
+                                            binding="#{ListarProyectosBean.plan_menu_fases_formulac}"/>
+                        <af:commandMenuItem id="plan_menu_fases_ejecu"
+                                            action="registrarGestion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_ejecu}"
+                                            binding="#{ListarProyectosBean.plan_menu_fases_ejecu}"/>
+                        <af:commandMenuItem id="plan_menu_fases_seg"
+                                            action="seguimiento"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_seg}"
+                                            binding="#{ListarProyectosBean.plan_menu_fases_seg}"/>
+                      </af:menu>
+                    </af:menuBar>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:ListarProyectosBean-->
+</jsp:root>

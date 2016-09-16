@@ -1,0 +1,1201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{detalleTramoBean.documentAF1}" id="document1">
+      <af:form id="formF2" binding="#{detalleTramoBean.formAF1}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="ptf1">
+          <f:facet name="center">  
+            <af:panelStretchLayout binding="#{detalleTramoBean.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100.0%;">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detalleTramoBean.ps1}" id="ps1"
+                                  orientation="horizontal" disabled="true"
+                                  splitterPosition="697">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{detalleTramoBean.psl2}"
+                                           id="psl2" topHeight="0px"
+                                           startWidth="0px" endWidth="0px"
+                                           bottomHeight="0px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{detalleTramoBean.pgl1}"
+                                             id="pgl1" layout="scroll">
+                          <af:panelBox text="#{viewcontrollerBundle.TRM_DETALLE_TRAMO}"
+                                       binding="#{detalleTramoBean.pb1}"
+                                       id="pb1" showDisclosure="false" >
+                            <af:panelGroupLayout binding="#{detalleTramoBean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelGroupLayout binding="#{detalleTramoBean.panelGroupLayout2}"
+                                                   id="panelGroupLayout2">
+                        
+                                <af:decorativeBox binding="#{detalleTramoBean.decorativeBox2}"
+                                                  id="decorativeBox2"
+                                                  inlineStyle="width:100%; height:320px;"
+                                                  topHeight="50px;">
+                                  <f:facet name="center">
+                                    <af:panelFormLayout binding="#{detalleTramoBean.pfl1}" 
+                                                        id="pfl1">
+                                      <af:inputText label="#{viewcontrollerBundle.TRM_NOMBRE}"
+                                                    binding="#{detalleTramoBean.it_nombre}"
+                                                    id="it1" required="true"
+                                                    requiredMessageDetail="#{viewcontrollerBundle.fuente_no_nombre}"
+                                                    value="#{detalleTramoBean.tramo.nombre}"
+                                                    contentStyle="text-transform:uppercase"
+                                                    helpTopicId="detalleTramo"
+                                                    />
+                                      <af:inputText label="#{viewcontrollerBundle.TRM_DESCRIPCION}"
+                                                    binding="#{detalleTramoBean.it_descripcion}"
+                                                    id="it2" required="false"
+                                                    rows="3" columns="60"
+                                                    value="#{detalleTramoBean.tramo.descripcion}"/>
+                                      <af:inputText label="#{viewcontrollerBundle.TRM_LONGITUD}"
+                                                    binding="#{detalleTramoBean.it_longitud}"
+                                                    id="it_longitud" 
+                                                    showRequired="true"
+                                                    value="#{detalleTramoBean.tramo.longitud}"
+                                                    rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                    >
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="5"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="2"
+                                                              pattern="#####.##"/>
+                                      </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.TRM_OFERTA}"
+                                                    binding="#{detalleTramoBean.it_oferta}"
+                                                    id="it_oferta" showRequired="true"
+                                                    value="#{detalleTramoBean.tramo.ofertaHidricaTotal}"
+                                                    rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                    >
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="5"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="2"
+                                                              pattern="#####.##"/>  
+                                      </af:inputText> 
+                                       <!--CDONCEL campo observación-->
+                                                   <af:inputText label="#{viewcontrollerBundle.TRM_OBS}"
+                                                              binding="#{detalleTramoBean.itObservacion}"
+                                                              id="itObservacion" rows="3"
+                                                              columns="50" showRequired="true"
+                                                              value="#{detalleTramoBean.tramo.observacion}"
+                                                              rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                              />
+                                      <!--fin campo observación-->        
+                                                    
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_TIPO}"
+                                                          binding="#{detalleTramoBean.selectOneChoice4}"
+                                                          id="selectOneChoice4"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          value="#{detalleTramoBean.tramo.tipoFlujo}"
+                                                          rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                          >
+                                        <f:selectItems value="#{detalleTramoBean.tiposFlujo}"
+                                                       binding="#{detalleTramoBean.selectItems4}"
+                                                       id="selectItems4"/>
+                                      </af:selectOneChoice>
+                                      
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_AREA}"
+                                                          binding="#{detalleTramoBean.selectOneChoice1}"
+                                                          id="selectOneChoice1"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          valueChangeListener="#{detalleTramoBean.selectOneChoice1_valueChangeListener}"
+                                                          autoSubmit="true"
+                                                          immediate="true"
+                                                          value="#{detalleTramoBean.tramo.idArea}"
+                                                          rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                          >
+                                        <f:selectItems value="#{detalleTramoBean.listaArea}"
+                                                       binding="#{detalleTramoBean.selectItems1}"
+                                                       id="selectItems1"/>
+                                      </af:selectOneChoice>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_ZONA}"
+                                                          binding="#{detalleTramoBean.selectOneChoice2}"
+                                                          id="selectOneChoice2"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          valueChangeListener="#{detalleTramoBean.selectOneChoice2_valueChangeListener}"
+                                                          autoSubmit="true"
+                                                          immediate="true"
+                                                          value="#{detalleTramoBean.tramo.idZona}"
+                                                          rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                          >
+                                        <f:selectItems value="#{detalleTramoBean.listaZona}"
+                                                       binding="#{detalleTramoBean.selectItems2}"
+                                                       id="selectItems2"/>
+                                      </af:selectOneChoice>
+                                     
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                                          binding="#{detalleTramoBean.selectOneChoice3}"
+                                                          id="selectOneChoice3"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          value="#{detalleTramoBean.tramo.idSubzona}"
+                                                          rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                          >
+                                        <f:selectItems value="#{detalleTramoBean.listaSubzona}"
+                                                       binding="#{detalleTramoBean.selectItems3}"
+                                                       id="selectItems3"/>
+                                      </af:selectOneChoice>
+                                       <!-- CDONCEL BOTON AFORO -->
+                                            <af:commandButton text="Aforos"
+                                                                  id="commandButton1Aforo"
+                                                                  immediate="true"
+                                                                  icon="/imgs/addavailable_ena.png"
+                                                                  rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                                  action="#{detalleTramoBean.preparaAforo}"/>
+                                      <!-- FIN CDONCEL BOTON AFORO -->
+                                      <f:facet name="footer">
+                                      
+                                      </f:facet>
+                                   </af:panelFormLayout>
+                                  </f:facet>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleTramoBean.panelGroupLayout5}"
+                                                         id="panelGroupLayout5">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleTramoBean.spacer3}"
+                                                 id="spacer3"/>
+                                      <af:outputText value="#{viewcontrollerBundle.TRM_DATOS_BASICOS}"
+                                                     binding="#{detalleTramoBean.outputText3}"
+                                                     id="outputText3"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                    </af:panelGroupLayout>
+                                    
+                                    
+                                  </f:facet>
+                                </af:decorativeBox>
+                              
+                                <!--CDONCEL AFORO--> 
+                                
+                                <af:decorativeBox binding="#{detalleTramoBean.decorativeBoxAforo}"
+                                                  id="decorativeBoxAforo"
+                                                  inlineStyle="width:100%; height:450px;"
+                                                  rendered="#{detalleTramoBean.flagAforo}"
+                                                  >
+                                   <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"                                                         
+                                                         id="panelGroupLayoutaforo"
+                                                         binding="#{detalleTramoBean.panelGroupLayoutAforo}">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleTramoBean.spacerAforo}"
+                                                 id="spacerAforo"/>
+                                      <af:outputText value="Registro de Aforos"
+                                                     binding="#{detalleTramoBean.outputTextAforo}"
+                                                     id="outputTextAforo"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                    </af:panelGroupLayout>  
+                                  </f:facet>
+                                  <f:facet name="center">
+                                     <af:panelFormLayout        id="panelFormLayout17Aforo"
+                                                                maxColumns="1"
+                                                                rows="2"
+                                                                >
+                                          
+                                      <h:panelGroup>
+                                    <!--af:panelFormLayout binding="#{detalleTramoBean.panelFormLayoutAforo}"
+                                                            id="panelFormLayout1Aforo" 
+                                                            -->
+                                           <af:outputText value="Registrar nuevo Aforo"
+                                                         styleClass="AFBrandingBarTitle"/>
+                                       <h:panelGrid columns="2">
+                                          <af:inputDate label="Fecha de Realización"
+                                                    binding="#{detalleTramoBean.fechaAforo}"
+                                                    id="fechaAforo"
+                                                    value="#{detalleTramoBean.aforo.fecha}"
+                                                    columns="10" showRequired="true"/>  
+                                       <af:inputText  binding="#{detalleTramoBean.inputText7Aforo}"
+                                                      label="Caudal l/s"
+                                                      id="inputText7Aforo"
+                                                      columns="2" 
+                                                      showRequired="true"
+                                                       value="#{detalleTramoBean.aforo.caudal}">
+                                          <af:convertNumber type="number"
+                                                            integerOnly="false"
+                                                            minIntegerDigits="1"
+                                                            maxIntegerDigits="2"
+                                                            minFractionDigits="0"
+                                                            maxFractionDigits="3"
+                                                             pattern="##.##"/>
+                                       </af:inputText>
+                                       </h:panelGrid>
+                                          <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                                          binding="#{detalleTramoBean.outputLabelAforo}"
+                                                          id="outputLabelAforo"
+                                                          inlineStyle="font-weight:bold;"/>
+                                        <h:panelGrid columns="3" >
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                        binding="#{detalleTramoBean.inputTextAforo}"
+                                                        id="inputTextAforo"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.aforo.gradosLat}"
+                                                        columns="5">
+                                                <af:convertNumber type="number"
+                                                              integerOnly="true"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"/>
+                                                <af:validateLongRange minimum="-4"
+                                                                  maximum="15"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                                        binding="#{detalleTramoBean.inputText2Aforo}"
+                                                        id="inputText2Aforo"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.aforo.minutosLat}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="true"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"/>
+                                            <af:validateLongRange minimum="0"
+                                                                  maximum="59"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                                        binding="#{detalleTramoBean.inputText3Aforo}"
+                                                        id="inputText3Aforo"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.aforo.segundosLat}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="3" 
+                                                               pattern="##.#####"/>
+                                            <af:validateDoubleRange minimum="0.0"
+                                                                    maximum="59.99999"/>
+                                          </af:inputText>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                                          binding="#{detalleTramoBean.outputLabel2Aforo}"
+                                                          id="outputLabel2Aforo"
+                                                        inlineStyle="font-weight:bold;"/>
+                                    <h:panelGrid columns="3" >
+                                     
+                                            <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                    binding="#{detalleTramoBean.inputText4Aforo}"
+                                                    id="inputText4Aforo" 
+                                                    columns="5"
+                                                    value="#{detalleTramoBean.aforo.gradosLong}"
+                                                    showRequired="true">
+                                        <af:convertNumber type="number"
+                                                          integerOnly="true"
+                                                          minIntegerDigits="1"
+                                                          maxIntegerDigits="2"/>
+                                        <af:validateLongRange minimum="-82"
+                                                              maximum="-66"/>
+                                        </af:inputText>
+                                        <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                                      binding="#{detalleTramoBean.inputText5Aforo}"
+                                                      id="inputText5Aforo"
+                                                      columns="5" 
+                                                       value="#{detalleTramoBean.aforo.minutosLong}" 
+                                                       showRequired="true"
+                                                      >
+                                          <af:convertNumber type="number"
+                                                            integerOnly="true"
+                                                            minIntegerDigits="1"
+                                                            maxIntegerDigits="2"/>
+                                          <af:validateLongRange minimum="0" maximum="59"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                                        binding="#{detalleTramoBean.inputText6Aforo}"
+                                                        id="inputText6Aforo"
+                                                        columns="5" 
+                                                          value="#{detalleTramoBean.aforo.segundosLong}" 
+                                                          showRequired="true"
+                                                        >
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="3"
+                                                               pattern="##.#####"/>
+                                              <af:validateDoubleRange minimum="0.0"
+                                                                      maximum="59.99999"/>
+                                            </af:inputText>           
+                                        </h:panelGrid>
+                                        <h:panelGrid columns="2">
+                                        <af:commandButton text="Relacionar"
+                                                            id="commandButtonAforo"
+                                                            icon="/imgs/add.png"
+                                                            action="#{detalleTramoBean.adicionarAforo}"
+                                                            windowHeight="16"/>
+                                         <af:commandButton text="Cancelar"
+                                                            id="commandButton3Aforo"
+                                                            icon="/imgs/back.png"
+                                                            immediate="true"
+                                                            action="#{detalleTramoBean.finalizarAforo}"
+                                                            windowHeight="16"/>
+                                        </h:panelGrid>
+                                      </h:panelGroup> 
+                                      
+                                      <af:table var="row"
+                                                    binding="#{detalleTramoBean.tableAforo}"
+                                                    id="tAforo"
+                                                    value="#{detalleTramoBean.lsAforos}"
+                                                    emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                                     width="400px" 
+                                                    >
+                                                <af:column width="40px"  headerText="Caudal (l/s)">
+                                                  <af:outputText value="#{row.caudal}"/>
+                                                </af:column>
+                                                <af:column width="65px" headerText="Fecha">
+                                                  <af:outputText value="#{row.fecha}"/>
+                                                </af:column>
+                                                <af:column headerText="Coordenada" width="180px">
+                                                  <af:outputText value="Lat #{row.gradosLat}° #{row.minutosLat}' #{row.segundosLat}''
+                                                  - Long #{row.gradosLong}° #{row.minutosLong}' #{row.segundosLong}''"/>
+                                                </af:column>
+                                                
+                                                 <af:column align="center" headerText="Borrar "  width="50px">
+                                                 <h:commandLink 
+                                                            id="borrarAforo"
+                                                            immediate="true"
+                                                            action="#{detalleTramoBean.borrarAforo}"
+                                                            onclick="if(confirm('Esta seguro que desea eliminar este aforo?') == false){return false;}">
+                                                         <h:graphicImage  value="/imgs/delete.png"/>
+                                                         <f:param value="#{row.id}" name="caudalid"/>
+                                                  </h:commandLink >
+                                                 
+                                                  
+                                                  
+                                                 </af:column>
+                                      </af:table>
+                                      </af:panelFormLayout>
+                                  </f:facet>                                                        
+                                </af:decorativeBox>
+                                
+                            
+                                  <af:popup binding="#{detalleTramoBean.aforo_registro_exitoso}"
+                            id="aforo_registro_exitoso">
+                        <af:dialog binding="#{detalleTramoBean.d_aforo_registro_exitoso}"
+                                   id="d_aforo_registro_exitoso" type="none"
+                                   title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                   affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                   closeIconVisible="false">
+                          <f:facet name="buttonBar">
+                            <af:panelGroupLayout binding="#{detalleTramoBean.pgaforoPop}"
+                                                 id="pgaforoPop">
+                              <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                binding="#{detalleTramoBean.cbAceptarAforo}"
+                                                id="cbAceptarAforo"                                                 
+                                                actionListener="#{detalleTramoBean.cb_aceptar_actionListener}"
+                                                action="#{detalleTramoBean.getAceptarActionPop}"                                          
+                                                immediate="true" partialSubmit="true" />
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <af:panelStretchLayout binding="#{detalleTramoBean.psAforo}"
+                                                 id="psAforo" endWidth="0px"
+                                                 topHeight="0px" bottomHeight="2px"
+                                                 inlineStyle="height:41px; width:316px;">
+                            <f:facet name="bottom"/>
+                            <f:facet name="center">
+                              <af:outputText value="#{viewcontrollerBundle.aforo_registrado}"
+                                             binding="#{detalleTramoBean.otAforoPop}"
+                                             id="otAforoPop"/>
+                            </f:facet>
+                            <f:facet name="start">
+                              <af:image source="/imgs/info.png" shortDesc="info"
+                                        binding="#{detalleTramoBean.imAforoPop}" id="iAforoPop"/>
+                            </f:facet>
+                            <f:facet name="end"/>
+                            <f:facet name="top"/>
+                          </af:panelStretchLayout>
+                        </af:dialog>
+                    </af:popup>
+                                
+                                
+                                  <af:popup binding="#{detalleTramoBean.aforo_borrardo_exitoso}"
+                            id="aforo_borrardo_exitoso">
+                        <af:dialog binding="#{detalleTramoBean.d_aforo_borrado_exitoso}"
+                                   id="d_aforo_borrado_exitoso" type="none"
+                                   title="#{viewcontrollerBundle.BORRADO_EXITOSO}"
+                                   affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                   closeIconVisible="false">
+                          <f:facet name="buttonBar">
+                            <af:panelGroupLayout binding="#{detalleTramoBean.pgaforoPop2}"
+                                                 id="pgaforoPop2">
+                              <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                binding="#{detalleTramoBean.cbAceptarAforo2}"
+                                                id="cbAceptarAforo2"                                                 
+                                                actionListener="#{detalleTramoBean.cb_aceptar_actionListener}"
+                                                action="#{detalleTramoBean.getAceptarActionPop}"                                          
+                                                immediate="true" partialSubmit="true" />
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <af:panelStretchLayout binding="#{detalleTramoBean.psAforo2}"
+                                                 id="psAforo2" endWidth="0px"
+                                                 topHeight="0px" bottomHeight="2px"
+                                                 inlineStyle="height:41px; width:316px;">
+                            <f:facet name="bottom"/>
+                            <f:facet name="center">
+                              <af:outputText value="#{viewcontrollerBundle.AFORO_BORRADO}"
+                                             binding="#{detalleTramoBean.otAforoPop2}"
+                                             id="otAforoPop2"/>
+                            </f:facet>
+                            <f:facet name="start">
+                              <af:image source="/imgs/info.png" shortDesc="info"
+                                        binding="#{detalleTramoBean.imAforoPop2}" id="iAforoPop2"/>
+                            </f:facet>
+                            <f:facet name="end"/>
+                            <f:facet name="top"/>
+                          </af:panelStretchLayout>
+                        </af:dialog>
+                    </af:popup>
+                                
+                                
+                                
+                          <!--FIN_CDONCEL-->
+                                
+                                <af:decorativeBox binding="#{detalleTramoBean.decorativeBox1}"
+                                                  id="decorativeBox1"
+                                                  inlineStyle="width:100%; height:380px;"
+                                                  rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                  >                                                  
+                                  <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleTramoBean.panelGroupLayout6}"
+                                                         id="panelGroupLayout6">
+                                      <af:panelGroupLayout binding="#{detalleTramoBean.panelGroupLayout9}"
+                                                           id="panelGroupLayout9">
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout4}"
+                                                            id="panelFormLayout4">
+                                          <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SISTEMA}"
+                                                              binding="#{detalleTramoBean.selectOneChoice5}"
+                                                              showRequired="true"
+                                                              id="selectOneChoice5"
+                                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                              value="#{detalleTramoBean.tramo.sistemaReferencia}">
+                                            <f:selectItems value="#{detalleTramoBean.sistemasReferencia}"
+                                                           binding="#{detalleTramoBean.selectItems5}"
+                                                           id="selectItems5"/>
+                                          </af:selectOneChoice>
+                                        </af:panelFormLayout>
+                                      </af:panelGroupLayout>
+                                      <af:panelGroupLayout binding="#{detalleTramoBean.panelGroupLayout8}"
+                                                           id="panelGroupLayout8"
+                                                           layout="vertical">
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout5}"
+                                                            id="panelFormLayout5"
+                                                            maxColumns="1"
+                                                            rows="1">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleTramoBean.spacer5}"
+                                                     id="spacer5"/>
+                                          <af:outputLabel value="#{viewcontrollerBundle.TRM_DATOS_PI}"
+                                                          binding="#{detalleTramoBean.outputLabel1}"
+                                                          id="outputLabel1"/>
+                                        </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout1}"
+                                                            id="panelFormLayout1"
+                                                            maxColumns="999999"
+                                                            rows="1"
+                                                            labelAlignment="top">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleTramoBean.spacer9}"
+                                                     id="spacer9"/>
+                                          <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                                          binding="#{detalleTramoBean.outputLabel2}"
+                                                          id="outputLabel2"/>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                        binding="#{detalleTramoBean.inputText1}"
+                                                        id="it_lat_grados0"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.gradosPi}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="true"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"/>
+                                            <af:validateLongRange minimum="-4"
+                                                                  maximum="15"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                                        binding="#{detalleTramoBean.inputText2}"
+                                                        id="it_lat_min0"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.minutosPi}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="true"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"/>
+                                            <af:validateLongRange minimum="0"
+                                                                  maximum="59"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                                        binding="#{detalleTramoBean.inputText3}"
+                                                        id="it_lat_seg0"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.segundosPi}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="3" 
+                                                               pattern="##.#####"/>
+                                            <af:validateDoubleRange minimum="0.0"
+                                                                    maximum="59.99999"/>
+                                          </af:inputText>
+                                          
+                                          
+                                          
+                                        </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout2}"
+                                                            id="panelFormLayout2"
+                                                            maxColumns="999999"
+                                                            rows="1"
+                                                            labelAlignment="top">
+                                          <f:facet name="footer"/>
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleTramoBean.spacer1}"
+                                                     id="spacer1"/>
+                                          <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                                          binding="#{detalleTramoBean.outputLabel5}"
+                                                          id="it_text_grados0"/>
+                                            <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                            binding="#{detalleTramoBean.it_grad_long_pi}"
+                                            id="it_long_grados0" columns="5"
+                                            value="#{detalleTramoBean.tramo.gradosLongPi}"
+                                            immediate="true"
+                                            showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{detalleTramoBean.it_minutos_long_pi}"
+                                            id="it_long_min0"
+                                            columns="5" 
+                                             value="#{detalleTramoBean.tramo.minutosLongPi}" showRequired="true"
+                                            immediate="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{detalleTramoBean.it_segundos_long_pi}"
+                                            id="it_long_seg0"
+                                            columns="5" 
+                                              value="#{detalleTramoBean.tramo.segundosLongPi}" showRequired="true"
+                                            immediate="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="3"
+                                                   pattern="##.#####"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>         
+                                                          
+                                                          
+                                                          
+                                        </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout10}"
+                                                            id="panelFormLayout10"
+                                                            rows="1"
+                                                            maxColumns="1">
+
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_ALTITUD}"
+                                                        binding="#{detalleTramoBean.inputText4}"
+                                                        id="inputText4"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.altitudPi}"
+                                                        columns="7">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="5"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="3"
+                                                              groupingUsed="false"/>
+                                            <af:validateDoubleRange minimum="0.0"
+                                                                  maximum="5500.999"/>
+                                          </af:inputText>
+                                        </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout6}"
+                                                            id="panelFormLayout6"
+                                                            maxColumns="1"
+                                                            rows="1">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleTramoBean.spacer10}"
+                                                     id="spacer10"/>
+                                          <af:outputLabel value="#{viewcontrollerBundle.TRM_DATOS_PF}"
+                                                          binding="#{detalleTramoBean.outputLabel3}"
+                                                          id="outputLabel3"/>
+                                        </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout7}"
+                                                            id="panelFormLayout7"
+                                                            maxColumns="999999"
+                                                            rows="1"
+                                                            labelAlignment="top">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleTramoBean.spacer11}"
+                                                     id="spacer11"/>
+                                          <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                                          binding="#{detalleTramoBean.outputLabel4}"
+                                                          id="outputLabel4"/>
+                                                          
+                                                <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                        binding="#{detalleTramoBean.inputText5}"
+                                                        id="it_lat_grados1"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.gradosPf}"
+                                                        columns="5"   >
+                                            <af:convertNumber type="number"
+                                                              integerOnly="true"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"/>
+                                            <af:validateLongRange minimum="-4"
+                                                                  maximum="15"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                                        binding="#{detalleTramoBean.inputText6}"
+                                                        id="it_lat_min1"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.minutosPf}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="true"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"/>
+                                            <af:validateLongRange minimum="0"
+                                                                  maximum="59"/>
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                                        binding="#{detalleTramoBean.inputText7}"
+                                                        id="it_lat_seg1"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.segundosPf}"
+                                                        columns="5">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="2"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="5"
+                                                              pattern="##.#####"
+                                                             />
+                                            <af:validateDoubleRange minimum="0.0"
+                                                                    maximum="59.99999"/>
+                                          </af:inputText>
+                                         
+                                                          
+                                                          
+                                        </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout8}"
+                                                            id="panelFormLayout8"
+                                                            maxColumns="999999"
+                                                            rows="1"
+                                                            labelAlignment="top">
+                                          <f:facet name="footer"/>
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleTramoBean.spacer12}"
+                                                     id="spacer12"/>
+                                          <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                                          binding="#{detalleTramoBean.outputLabel6}"
+                                                          id="outputLabel6"/>
+                                                          
+                                            <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{detalleTramoBean.it_grados_long_pf}"
+                                            id="it_long_grados1" columns="5"
+                                             value="#{detalleTramoBean.tramo.gradosLongPf}"
+                                            immediate="true"
+                                            showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{detalleTramoBean.it_minutos_long_pf}"
+                                            id="it_long_min1"
+                                            columns="5" 
+                                             value="#{detalleTramoBean.tramo.minutosLongPf}" showRequired="true"
+                                            immediate="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{detalleTramoBean.it_segundos_long_pf}"
+                                            id="it_long_seg1"  columns="5"
+                                             value="#{detalleTramoBean.tramo.segundosLongPf}"
+                                            showRequired="true"
+                                            immediate="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5" 
+                                                  pattern="##.#####"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+                                                          
+                                                          
+                            </af:panelFormLayout>
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout9}"
+                                                            id="panelFormLayout9"
+                                                            maxColumns="1"
+                                                            rows="1">
+                                          <af:inputText label="#{viewcontrollerBundle.TRM_ALTITUD}"
+                                                        binding="#{detalleTramoBean.inputText8}"
+                                                        id="inputText8"
+                                                        showRequired="true"
+                                                        value="#{detalleTramoBean.tramo.altitudPf}"
+                                                        columns="7">
+                                            <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              minIntegerDigits="1"
+                                                              maxIntegerDigits="5"
+                                                              minFractionDigits="0"
+                                                              maxFractionDigits="3" 
+                                                              pattern="#####.###"
+                                                              />
+                                            <af:validateDoubleRange minimum="0.0"
+                                                                    maximum="5500.999"/>
+                                          </af:inputText>
+                                          
+                                        </af:panelFormLayout>
+                                        
+                                        
+                                      </af:panelGroupLayout>
+                                       <af:inlineFrame source="/utils/views/mapa_dos_punto.html"
+                                                clientComponent="true"
+                                            id="mapFrame"
+                                            inlineStyle="width:500px;height:300px;padding-top:50px;">
+                                        </af:inlineFrame>
+                                    </af:panelGroupLayout>
+                                     
+                                  </f:facet>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleTramoBean.panelGroupLayout4}"
+                                                         id="panelGroupLayout4">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleTramoBean.spacer2}"
+                                                 id="spacer2"/>
+                                      <af:outputText value="#{viewcontrollerBundle.TRM_UBICACION}"
+                                                     binding="#{detalleTramoBean.outputText1}"
+                                                     id="outputText1"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                </af:decorativeBox>
+                                
+                            
+                                <af:decorativeBox binding="#{detalleTramoBean.decorativeBox3}"
+                                                  id="decorativeBox3"
+                                                  inlineStyle="width:100%;"
+                                                  rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                                  >
+                                  <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleTramoBean.panelGroupLayout10}"
+                                                         id="panelGroupLayout10"
+                                                         valign="top"
+                                                         halign="left">
+                                      <af:panelGroupLayout binding="#{detalleTramoBean.panelGroupLayout11}"
+                                                           id="panelGroupLayout11">
+                                        <af:panelFormLayout binding="#{detalleTramoBean.panelFormLayout31}"
+                                                            id="panelFormLayout31"
+                                                            maxColumns="3"
+                                                            rows="1"
+                                                            inlineStyle="height:53px;">
+                                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                              binding="#{detalleTramoBean.selectOneChoice6}"
+                                                              id="selectOneChoice6"
+                                                              autoSubmit="true"
+                                                              immediate="true"
+                                                              valueChangeListener="#{detalleTramoBean.selectOneChoice6_valueChangeListener}"
+                                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                            <f:selectItems value="#{detalleTramoBean.listaDepartamentos}"
+                                                           binding="#{detalleTramoBean.selectItems6}"
+                                                           id="selectItems6"/>
+                                          </af:selectOneChoice>
+                                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                              binding="#{detalleTramoBean.selectOneChoice8}"
+                                                              id="selectOneChoice8"
+                                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                            <f:selectItems value="#{detalleTramoBean.listaMunicipios}"
+                                                           binding="#{detalleTramoBean.selectItems8}"
+                                                           id="selectItems8"/>
+                                          </af:selectOneChoice>
+                                          <af:commandButton text="#{viewcontrollerBundle.boton_relacionar}"
+                                                            binding="#{detalleTramoBean.commandButton1}"
+                                                            id="commandButton11"
+                                                            icon="/imgs/add.png"
+                                                            actionListener="#{detalleTramoBean.commandButton1_actionListener}"/>
+                                        </af:panelFormLayout>
+                                      </af:panelGroupLayout>
+                                      <af:panelGroupLayout binding="#{detalleTramoBean.panelGroupLayout12}"
+                                                           id="panelGroupLayout12">
+                                        <af:panelCollection binding="#{detalleTramoBean.panelCollection1}"
+                                                            id="panelCollection1"
+                                                            inlineStyle="width:639px; height:144px;">
+                                          <f:facet name="menus">
+                                            <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                                     binding="#{detalleTramoBean.menu1}"
+                                                     id="menu1">
+                                              <af:commandMenuItem text="#{viewcontrollerBundle.menu_borrar}"
+                                                                  binding="#{detalleTramoBean.commandMenuItem1}"
+                                                                  id="commandMenuItem1"
+                                                                  immediate="true"
+                                                                  partialSubmit="true"
+                                                                  actionListener="#{detalleTramoBean.commandMenuItem1_actionListener}"/>
+                                            </af:menu>
+                                          </f:facet>
+                                          <f:facet name="toolbar"/>
+                                          <f:facet name="statusbar"/>
+                                          <af:table var="row"
+                                                    binding="#{detalleTramoBean.t_relacion}"
+                                                    id="t_relacion"
+                                                    rowSelection="single"
+                                                    value="#{detalleTramoBean.municipiosRelacionados}"
+                                                    rowBandingInterval="1"
+                                                    selectionListener="#{detalleTramoBean.t_relacion_selectionListener}"
+                                                    emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                                            <af:column sortable="true"
+                                                       headerText="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                       sortProperty="padreId">
+                                              <af:outputText value="#{row.padreId}"
+                                                             converter="Divipola"/>
+                                            </af:column>
+                                           <af:column sortable="true"
+                                                       headerText="#{viewcontrollerBundle.MUNICIPIO}"
+                                                       sortProperty="nombre">
+                                              <af:outputText value="#{row.nombre}"/>
+                                            </af:column>
+                                           
+                                          </af:table>
+                                        </af:panelCollection>
+                                      </af:panelGroupLayout>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleTramoBean.panelGroupLayout3}"
+                                                         id="panelGroupLayout3">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleTramoBean.spacer6}"
+                                                 id="spacer6"/>
+                                      <af:outputText value="#{viewcontrollerBundle.TRM_MUNICIPIOS}"
+                                                     binding="#{detalleTramoBean.outputText6}"
+                                                     id="outputText6"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                </af:decorativeBox>
+                                
+                                     <af:panelGroupLayout binding="#{detalleTramoBean.pgl2}"
+                                                         id="pgl2"
+                                                         halign="right"
+                                                         layout="vertical">
+                                      <af:spacer width="10" height="30"
+                                                 binding="#{detalleTramoBean.s1}"
+                                                 id="s1"/>
+                                      <af:panelGroupLayout binding="#{detalleTramoBean.pgl3}"
+                                                           id="pgl3"
+                                                           layout="horizontal"
+                                                           halign="center">
+                                        <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                          binding="#{detalleTramoBean.cbAceptar}"
+                                                          id="cbAceptar"
+                                                          icon="/imgs/check_mark.png"
+                                                          actionListener="#{detalleTramoBean.cbAceptar_actionListener}"/>
+                                        <af:spacer width="10" height="10"
+                                                   binding="#{detalleTramoBean.s2}"
+                                                   id="s2"/>
+                                        <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                          binding="#{detalleTramoBean.cbBorrar}"
+                                                          id="cbBorrar"
+                                                          icon="/imgs/close.png"
+                                                          actionListener="#{detalleTramoBean.cbBorrar_actionListener}"/>
+                                      </af:panelGroupLayout>
+                                  <af:spacer width="20" height="20"
+                                             binding="#{detalleTramoBean.spacer8}"
+                                             id="spacer8"/>
+                                </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                          
+                          <af:popup binding="#{detalleTramoBean.popup1}"
+                                                  id="popup1">
+                                          <af:dialog binding="#{detalleTramoBean.dialog1}"
+                                                     id="dialog1"
+                                                     title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                                     type="okCancel"
+                                                     affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                     cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                                                     dialogListener="#{detalleTramoBean.dialog1_dialogListener}">
+                                            <af:outputText 
+                                                           binding="#{detalleTramoBean.outputText7}"
+                                                           id="outputText7"/>
+                                          </af:dialog>
+                                        </af:popup>
+                          <af:popup binding="#{detalleTramoBean.popup_borrar}"
+                                    id="popup_borrar">
+                            <af:dialog binding="#{detalleTramoBean.d_borrar}"
+                                       id="d_borrar" type="none"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                       title="#{viewcontrollerBundle.titulo_confirmacion}">
+                              <af:panelGroupLayout binding="#{detalleTramoBean.pgl18}"
+                                                   id="pgl18"
+                                                   layout="vertical">
+                                <af:outputText
+                                               binding="#{detalleTramoBean.ot_borrar_1}"
+                                               id="ot_borrar_1"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleTramoBean.s15}"
+                                           id="s15"/>
+                                <af:outputText
+                                               binding="#{detalleTramoBean.ot_borrar_2}"
+                                               id="ot_borrar_2"/>
+                              </af:panelGroupLayout>
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleTramoBean.pgl19}"
+                                                     id="pgl19">
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                                    binding="#{detalleTramoBean.cb_si_borrar}"
+                                                    id="cb_si_borrar"
+                                                    actionListener="#{detalleTramoBean.cb_si_borrar_actionListener}"
+                                                    action="listarTramos"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detalleTramoBean.s16}"
+                                             id="s16"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                                    binding="#{detalleTramoBean.cb_no_borrar}"
+                                                    id="cb_no_borrar"
+                                                    actionListener="#{detalleTramoBean.cb_no_borrar_actionListener}"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:dialog>
+                          </af:popup>
+                              
+                          
+                          <af:popup binding="#{detalleTramoBean.p_registro_exitoso}"
+                                    id="p_registro_exitoso">
+                            <af:dialog binding="#{detalleTramoBean.d_registro_exitoso}"
+                                       id="d_registro_exitoso" type="none"
+                                       title="#{viewcontrollerBundle.tramo_actualizado}"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                       closeIconVisible="false">
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleTramoBean.pgl14}"
+                                                     id="pgl14">
+                                  <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                    binding="#{detalleTramoBean.cbAceptarDi}"
+                                                    id="cbAceptarDi"
+                                                    action="listarTramos"
+                                                    immediate="true" partialSubmit="true" />
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <af:panelStretchLayout binding="#{detalleTramoBean.psl7}"
+                                                     id="psl7" endWidth="0px"
+                                                     topHeight="0px" bottomHeight="2px"
+                                                     inlineStyle="height:41px; width:316px;">
+                                <f:facet name="bottom"/>
+                                <f:facet name="center">
+                                  <af:outputText value="#{viewcontrollerBundle.tramo_actualizado}"
+                                                 binding="#{detalleTramoBean.ot8}"
+                                                 id="ot8"/>
+                                </f:facet>
+                                <f:facet name="start">
+                                  <af:image source="/imgs/info.png" shortDesc="info"
+                                            binding="#{detalleTramoBean.i1}" id="i1"/>
+                                </f:facet>
+                                <f:facet name="end"/>
+                                <f:facet name="top"/>
+                              </af:panelStretchLayout>
+                            </af:dialog>
+                          </af:popup>
+                          
+                          
+                        </af:panelGroupLayout>
+                        </f:facet>
+                        
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelStretchLayout binding="#{detalleTramoBean.panelStretchLayout1}"
+                                           id="panelStretchLayout1"
+                                           topHeight="3px" startWidth="3px"
+                                           bottomHeight="0px" endWidth="0px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelGroupLayout
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             binding="#{detalleTramoBean.panelGroupLayout13}"
+                                             id="panelGroupLayout13">
+                          <af:panelBox text="#{viewcontrollerBundle.PTO_RELACIONADOS}"
+                                       binding="#{detalleTramoBean.panelBox1}"
+                                       id="panelBox1" showDisclosure="false"
+                                        rendered="#{!detalleTramoBean.tramo.idFuente.esSubterranea}"
+                                       >
+                            <f:facet name="toolbar"/>
+                            <af:panelCollection binding="#{detalleTramoBean.panelCollection2}"
+                                                id="panelCollection2">
+                              <f:facet name="menus">
+                                <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                         binding="#{detalleTramoBean.menu2}"
+                                         id="menu2">
+                                  <af:commandMenuItem
+                                                      binding="#{detalleTramoBean.cmi_adicionar}"
+                                                      id="cmi_adicionar"
+                                                      text=" #{viewcontrollerBundle.menu_adicionar} #{viewcontrollerBundle.PTO_TEXT}"
+                                                      actionListener="#{detalleTramoBean.cmi_adicionar_puntoMonitoreo_actionListener}"
+                                                      action="#{detalleTramoBean.getAccionAdicionar}"
+                                                      immediate="true"/>
+                                                     
+                                  <af:commandMenuItem
+                                                      binding="#{detalleTramoBean.cmi_conflicto}"
+                                                      id="cmi_conflicto"
+                                                      text=" #{viewcontrollerBundle.menu_adicionar} #{viewcontrollerBundle.ADICIONAR_CONFLICTO}"
+                                                      actionListener="#{detalleTramoBean.cmi_conflicto_puntoMonitoreo_actionListener}"
+                                                      action="#{detalleTramoBean.getAccionAdicionar}"
+                                                      immediate="true"/>
+                                                      
+                                  <af:commandMenuItem
+                                                      binding="#{detalleTramoBean.cmi_objetivo_calidad}"
+                                                      id="cmi_objetivo_calidad"
+                                                      text=" #{viewcontrollerBundle.menu_adicionar} #{viewcontrollerBundle.USOS_PERMITIDOS_PARA_EL_TRAMO}"
+                                                      actionListener="#{detalleTramoBean.cmi_objetivo_calidad_actionListener}"
+                                                      action="#{detalleTramoBean.getAccionAdicionar}"
+                                                      immediate="true"/>                    
+
+								<af:commandMenuItem
+                                                      binding="#{detalleTramoBean.cmi_metas}"
+                                                      id="cmi_metas"
+                                                      text=" #{viewcontrollerBundle.menu_adicionar} #{viewcontrollerBundle.METAS_DE_DESCONTAMINACION}"
+                                                      actionListener="#{detalleTramoBean.cmi_metas_actionListener}"
+                                                      action="#{detalleTramoBean.getAccionAdicionar}"
+                                                      immediate="true"/> 
+                                   
+                                                      
+                                </af:menu>
+                              </f:facet>
+                              <f:facet name="toolbar"/>
+                              <f:facet name="statusbar"/>
+                              <af:tree binding="#{detalleTramoBean.tree1}"
+                                       id="tree1"
+                                       value="#{PuntosMonitoreoTreeHandler.treemodel}"
+                                       contentDelivery="immediate" var="node"
+                                       varStatus="nodeStatus"   >
+                                <f:facet name="nodeStamp">
+                                  <af:commandLink text="#{node.description} "
+                                                  binding="#{detalleTramoBean.clink}"
+                                                  id="clink"
+                                                  action="#{node.getAction}"
+                                                  actionListener="#{detalleTramoBean.clink_actionListener}">
+                                               
+                                                <f:attribute name="nombreParametro"
+                                               value="#{node.nombreParametro}"/>
+                                  <f:attribute name="valorParametro"
+                                               value="#{node.data}"/>
+                                  <f:attribute name="extraInfo"
+                                               value="#{node.extraData}"/>
+                                  <f:attribute name="extraInfo2"
+                                               value="#{node.extraData2}"/>    
+                                                  
+                                 </af:commandLink>                 
+                                </f:facet>
+                              </af:tree>
+                            </af:panelCollection>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+
+              <f:facet name="top">
+                <af:panelGroupLayout layout="horizontal"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{detalleTramoBean.pgl4}"
+                                     id="pgl4">
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleTramoBean.spacer7}"
+                             id="spacer7"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FNT_TODAS}"
+                                  binding="#{detalleTramoBean.commandLink1}"
+                                  id="commandLink1" action="fuentes"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleTramoBean.spacer4}"
+                             id="spacer4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FNT_FUENTE} : #{detalleTramoBean.tramo.idFuente.nombre}"
+                                  binding="#{detalleTramoBean.commandLink2}"
+                                  id="commandLink2" action="detalleFuente"/>
+                  <af:spacer width="50" height="10"
+                             binding="#{detalleTramoBean.s3}" id="s3"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TRM_TODOS}"
+                                  binding="#{detalleTramoBean.cl1}" id="cl1"
+                                  action="listarTramos"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleTramoBean.s4}" id="s4"/>
+                  <af:outputText value="#{viewcontrollerBundle.TRM_TRAMO} : #{detalleTramoBean.tramo.nombre}"
+                                 binding="#{detalleTramoBean.ot1}" id="ot1"/>
+                </af:panelGroupLayout>
+                  
+                  
+                  
+              </f:facet>
+            </af:panelStretchLayout>
+                
+                
+                
+                
+                
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleTramoBean-->
+</jsp:root>

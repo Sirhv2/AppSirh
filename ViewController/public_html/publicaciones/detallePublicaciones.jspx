@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"  value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form id="form1" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout topHeight="71px" startWidth="2px"
+                                   bottomHeight="0px" endWidth="0px"
+                                   inlineStyle="width:100%;height:100%;">
+              <f:facet name="top">
+                <af:panelGroupLayout>
+                
+                  <af:panelGroupLayout layout="horizontal">
+                    <af:commandLink text="#{viewcontrollerBundle.publicacion_enlace} "
+                                    action="verPublicaciones"/>
+                  </af:panelGroupLayout>
+                  <af:spacer width="10" height="10"/>
+                  <af:panelGroupLayout layout="horizontal">
+                    <af:activeOutputText value="#{viewcontrollerBundle.publicacion_titulo}."
+                                         styleClass="AFBrandingBarTitle"
+                                         inlineStyle="text-align:center;"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelGroupLayout layout="scroll" inlineStyle="text-align:left;">
+                  <af:panelBox text="#{detallePublicacion.publicacionSeleccionada.nombrePublicacion}"
+                               showDisclosure="false">
+                    <af:panelStretchLayout topHeight="20px" startWidth="2px"
+                                           inlineStyle="width:1000px; height:380px;"
+                                           bottomHeight="51px" endWidth="0px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout>
+                          <af:panelFormLayout rows="1" maxColumns="1">
+                            <af:spacer width="30" height="10"/>
+                            <af:spacer width="30" height="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_nombrePublicacion}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.nombrePublicacion}"/>
+                            <!--af:inputText label="#{viewcontrollerBundle.publicacion_detalle_fasePomca}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.fasePomca}"/-->
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_autor}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.autor}"/>
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_anio}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.anio}"/>
+                          
+                          
+                          
+                                                              
+                          
+                          
+                           <af:selectOneChoice label="#{viewcontrollerBundle.publicacion_detalle_tipoRecurso}"
+                                                binding="#{detallePublicacion.sc_tipoRecurso}"
+                                                id="soc_detallePublicacion"
+                                                showRequired="true"
+                                                immediate="true"
+                                                autoSubmit="true"
+                                                contentStyle="width:300px;"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                value="#{detallePublicacion.publicacionSeleccionada.LTipoRecurso}"
+                                                >
+                                                                
+                                  <f:selectItems value="#{detallePublicacion.tiposRecurso}"  
+                                  
+                                             binding="#{detallePublicacion.selectItems1}"
+                                             id="selectItems1"/>
+                                </af:selectOneChoice>
+                          
+                          
+                                          
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_editor}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.editor}"/>
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_numPaginas}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.paginas}"/>
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_lugarPublicacion}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.lugarPublicacion}"/>
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_serie}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.serie}"/>
+                            <af:inputText label="#{viewcontrollerBundle.publicacion_detalle_volumen}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.volumen}"/>
+                            
+                            
+                            <!--af:inputText label="#{viewcontrollerBundle.publicacion_detalle_link}"
+                                          value="#{detallePublicacion.publicacionSeleccionada.hipervinculo}"/-->
+                                          
+                             <af:panelGroupLayout visible="#{detallePublicacion.publicacionSeleccionada.id!=null}">                    
+                                 <af:panelGroupLayout visible="#{detallePublicacion.publicacionSeleccionada.idArchivo!=null}">
+                                       <h:commandLink value="Mostrar" actionListener="#{documentos.descargarDocumento}">
+                                             <f:param name="nodoId"  value="#{detallePublicacion.publicacionSeleccionada.idArchivo}"/>
+                                             <f:param name="displayInline" value="false" />
+                                       </h:commandLink> 
+                                  </af:panelGroupLayout> 
+                                  
+                                
+                                 <af:inputFile label="Documento"
+                                               binding="#{detallePublicacion.if_dcoumento}"
+                                               autoSubmit="true" immediate="true"
+                                               value="#{detallePublicacion.uploadedFile}"
+                                               valueChangeListener="#{detallePublicacion.if_archivo_valueChangeListener}"/>
+                                        
+                  
+                            </af:panelGroupLayout>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="bottom">
+                          <af:panelGroupLayout>
+                          
+    <af:popup  binding="#{detallePublicacion.popupExito}" id="popupExito">
+    <af:dialog type="none"
+               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+               closeIconVisible="true">
+        <f:facet name="buttonBar">
+            <af:panelGroupLayout>
+              <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                action="verPublicaciones"
+                                immediate="true" partialSubmit="true" />
+            </af:panelGroupLayout>
+          </f:facet>
+      <af:panelStretchLayout endWidth="0px" topHeight="0px" bottomHeight="2px"
+                             inlineStyle="height:41px; width:316px;">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:outputText value="#{viewcontrollerBundle.plan_registro_exitoso}" />
+        </f:facet>
+        <f:facet name="start">
+          <af:image source="/imgs/info.png" shortDesc="info" />
+        </f:facet>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+      </af:panelStretchLayout>
+    </af:dialog>
+  </af:popup>
+                          
+                          
+                            <af:commandButton text="#{viewcontrollerBundle.publicacion_btn_aceptar}"
+                                              actionListener="#{detallePublicacion.cb_aceptar_actionListener}"
+                                              action="#{detallePublicacion.getAccion}"
+                                              icon="/imgs/diskette.png"/>
+                                              
+                            <af:spacer width="10" height="10"/>
+                            
+                            
+                             <af:commandButton text="#{viewcontrollerBundle.publicacion_btn_borrar}"
+                                              actionListener="#{detallePublicacion.eliminarPublicaciones_actionListener}"
+                                              action="#{detallePublicacion.getAccion}"
+                                             />
+                                              
+                            <af:spacer width="10" height="10"/>
+                            
+                            <af:commandButton text="#{viewcontrollerBundle.publicacion_btn_cancelar}"
+                                              action="verdetallePublicacion"
+                                              icon="/imgs/close.png"/>
+                          </af:panelGroupLayout>
+                      </f:facet>
+                      
+                       
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:spacer width="30" height="10"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:planesBean-->
+</jsp:root>

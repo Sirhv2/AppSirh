@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document>
+      <af:form>
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{usosCaptacionBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                  <af:panelSplitter binding="#{usosCaptacionBean.panelSplitter1}"
+                                    id="panelSplitter1" orientation="vertical">
+                    <f:facet name="first"/>
+                    <f:facet name="second">
+                    <af:panelCollection binding="#{usosCaptacionBean.panelCollection1}"
+                                        id="panelCollection1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                 binding="#{usosCaptacionBean.menu1}"
+                                 id="menu1">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              binding="#{usosCaptacionBean.commandMenuItem1}"
+                                              id="commandMenuItem1"
+                                              icon="/imgs/add.png"
+                                              action="#{usosCaptacionBean.commandMenuItem1_action}"
+                                              />
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              binding="#{usosCaptacionBean.commandMenuItem2}"
+                                              id="commandMenuItem2"
+                                              icon="/imgs/edit_24.png"
+                                              action="#{usosCaptacionBean.getAccionAdicionar}"
+                                              actionListener="#{usosCaptacionBean.commandMenuItem2_actionListener}"
+                                              immediate="true"
+                                              partialSubmit="true"
+                                              />
+                        </af:menu>
+                      </f:facet>
+                      <af:table var="row" 
+                                binding="#{usosCaptacionBean.table1}"
+                                id="table1"
+                                rowSelection="single"
+                                value="#{usosCaptacionBean.listaUsos}"
+                                rowBandingInterval="1"
+                                selectionListener="#{usosCaptacionBean.table1_selectionListener}"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                >
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.USO_TIPO_USO}"
+                                   sortProperty="tipoUso">
+                          <af:outputText value="#{row.tipoUso}"
+                                        converter="TipoUsoConverter"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.USO_DETALLE}"
+                                   sortProperty="tipo" >
+                          <af:outputText value="#{row.tipo}" 
+                                        converter="OtroUsoConverter"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.USO_CAUDAL_ASIGNADO}"
+                                   sortProperty="caudalAsignado">
+                          <af:outputText value="#{row.caudalAsignado}"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                 </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{usosCaptacionBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal">
+                      <af:spacer width="10" height="10"
+                             binding="#{usosCaptacionBean.spacer10}"
+                             id="spacer10"/>
+                      <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                      binding="#{usosCaptacionBean.commandLink1}"
+                                      id="commandLink1"
+                                      action="usuariosAgua" />
+                      <af:spacer width="10" height="10"
+                                 binding="#{usosCaptacionBean.spacer11}"
+                                 id="spacer11"/>
+                      <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{usosCaptacionBean.usuario.nombre}"
+                                      binding="#{usosCaptacionBean.commandLink2}"
+                                      id="commandLink2" action="detalleUsuario"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{usosCaptacionBean.spacer12}"
+                                 id="spacer12"/>
+                      <af:commandLink text="#{viewcontrollerBundle.PREDIO} : #{usosCaptacionBean.predio.nombre}"
+                                      binding="#{usosCaptacionBean.commandLink3}"
+                                      id="commandLink3" action="detallePredio"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{usosCaptacionBean.spacer13}"
+                                 id="spacer13"/>
+                      <af:commandLink text="#{viewcontrollerBundle.CONCESI_U00F3N__} : #{usosCaptacionBean.concesion.numeroExpediente}"
+                                      binding="#{usosCaptacionBean.commandLink4}"
+                                      id="commandLink4"
+                                      action="detalleConcesion"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{usosCaptacionBean.spacer14}"
+                                 id="spacer14"/>
+                      <af:commandLink text="#{viewcontrollerBundle.CPT_CAPTACION} : #{usosCaptacionBean.captacion.objTipoFuenteCaptacion.valor}"
+                                      binding="#{usosCaptacionBean.commandLink5}"
+                                      id="commandLink5"
+                                      action="detalleCaptacion"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{usosCaptacionBean.spacer15}"
+                                 id="spacer15"/>
+                      <af:outputText value="#{viewcontrollerBundle.USO_MODULO}"
+                                     binding="#{usosCaptacionBean.outputText6}"
+                                     id="outputText6"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:usosCaptacionBean-->
+</jsp:root>

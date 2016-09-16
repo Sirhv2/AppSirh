@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{adicionarPueaa.d1}">
+      <af:form id="f1" binding="#{adicionarPueaa.f1}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout id="psl_total" startWidth="0px"
+                                   endWidth="0px" topHeight="20px"
+                                   bottomHeight="0px">
+              <f:facet name="center">
+                <af:group id="g1">
+                  <af:panelSplitter id="ps1" orientation="horizontal"
+                                    disabled="true" splitterPosition="700">
+                    <f:facet name="first">
+                      <af:panelStretchLayout binding="#{adicionarPueaa.psl12}"
+                                             id="psl12" startWidth="0px"
+                                             endWidth="0px" topHeight="0px"
+                                             bottomHeight="0px"
+                                             styleClass="AFStretchWidth">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelGroupLayout binding="#{adicionarPueaa.pgl115}"
+                                               id="pgl115">
+                            <af:panelBox text="#{viewcontrollerBundle.DETALLE_PUEAA}"
+                                         binding="#{adicionarPueaa.pb_paso_predio}"
+                                         id="pb_paso_pueaa" visible="true"
+                                         showDisclosure="false">
+                              <f:facet name="toolbar"/>
+                              <af:panelStretchLayout binding="#{adicionarPueaa.psl6}"
+                                                     id="psl6"
+                                                     inlineStyle="height:420px;"
+                                                     topHeight="28px"
+                                                     styleClass="AFStretchWidth">
+                                <f:facet name="bottom">
+                                  <af:panelGroupLayout binding="#{adicionarPueaa.pgl10}"
+                                                       id="pgl10"
+                                                       layout="vertical"
+                                                       halign="right">
+                                    <af:panelGroupLayout binding="#{adicionarPueaa.pgl11}"
+                                                         id="pgl11"
+                                                         layout="horizontal"
+                                                         halign="right">
+                                      <af:commandButton text="#{viewcontrollerBundle.boton_cancelar}"
+                                                        binding="#{adicionarPueaa.cb_cancelar_predio}"
+                                                        id="cb_cancelar_pueaa"
+                                                        action="regresarUsuarioAgua"
+                                                        actionListener="#{adicionarPueaa.cb_regresar_actionListener}"
+                                                        icon="/imgs/close.png"/>
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{adicionarPueaa.s20}"
+                                                 id="s20"/>
+                                      <af:commandButton text="#{viewcontrollerBundle.menu_guardar}"
+                                                        binding="#{adicionarPueaa.cb_terminar}"
+                                                        id="cb_terminar"
+                                                        actionListener="#{adicionarPueaa.cb_terminar_actionListener}"
+                                                        icon="/imgs/next.png"/>
+                                      <af:spacer width="50" height="10"
+                                                 binding="#{adicionarPueaa.s17}"
+                                                 id="s17"/>
+                                    </af:panelGroupLayout>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="center">
+                                  <af:panelGroupLayout id="group999"
+                                                       layout="scroll">
+                                    <af:panelFormLayout binding="#{adicionarPueaa.pfl5}"
+                                                        id="pfl5">
+                                      <af:inputText label="#{viewcontrollerBundle.NUM_EXPEDIENTE}"
+                                                    binding="#{adicionarPueaa.it_nombre_pueaa}"
+                                                    value="#{adicionarPueaa.pueaaSelected.numeroExpediente}"
+                                                    id="it_nombre_pueaa"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    maximumLength="25"/>
+                                      <af:inputDate label="#{viewcontrollerBundle.FECHA_PRESENTA_PUEAA}"
+                                                    binding="#{adicionarPueaa.fecha_presenta}"
+                                                    value="#{adicionarPueaa.pueaaSelected.fechaExpedicion}"
+                                                    id="fecha_presenta"
+                                                    columns="10"
+                                                    showRequired="true"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.ESTADO_PUEAA}"
+                                                          binding="#{adicionarPueaa.soc_estado_pueaa}"
+                                                          value="#{adicionarPueaa.estadoSelected}"
+                                                          id="soc_estado_pueaa"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{adicionarPueaa.listaClasificacionSuelo}"
+                                                       binding="#{adicionarPueaa.si11}"
+                                                       id="si11"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.NUM_RESOLUCION}"
+                                                    binding="#{adicionarPueaa.it_numero_resolucion}"
+                                                    value="#{adicionarPueaa.pueaaSelected.numResolucion}"
+                                                    id="it_numero_resolucion"
+                                                    showRequired="true"
+                                                    maximumLength="25"/>
+                                      <af:inputDate label="#{viewcontrollerBundle.FECHA_APRUEBA_PUEAA}"
+                                                    binding="#{adicionarPueaa.fecha_aprueba}"
+                                                    value="#{adicionarPueaa.pueaaSelected.fechaAprobacion}"
+                                                    id="id_fecha" columns="10"
+                                                    showRequired="true"/>
+                                      <af:inputDate label="#{viewcontrollerBundle.VIGENCIA_INI}"
+                                                    binding="#{adicionarPueaa.fecha_vigencia_ini}"
+                                                    value="#{adicionarPueaa.pueaaSelected.vigenciaInicial}"
+                                                    id="fecha_vigencia_ini"
+                                                    columns="10"
+                                                    showRequired="true"/>
+                                      <af:inputDate label="#{viewcontrollerBundle.VIGENCIA_FIN}"
+                                                    binding="#{adicionarPueaa.fecha_vigencia_fin}"
+                                                    value="#{adicionarPueaa.pueaaSelected.vigenciaFinal}"
+                                                    id="fecha_vigencia_fin"
+                                                    columns="10"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.OBSERVACIONES}"
+                                                    binding="#{adicionarPueaa.it_observaciones}"
+                                                    id="it_observaciones"
+                                                    value="#{adicionarPueaa.pueaaSelected.observaciones}"
+                                                    rows="3" columns="50"
+                                                    maximumLength="200"/>
+                                    </af:panelFormLayout>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                                <f:facet name="start">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{adicionarPueaa.s19}"
+                                             id="s19"/>
+                                </f:facet>
+                                <f:facet name="end">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{adicionarPueaa.s18}"
+                                             id="s18"/>
+                                </f:facet>
+                                <f:facet name="top">
+                                  <af:outputText binding="#{adicionarPueaa.ot5}"
+                                                 id="ot5"
+                                                 styleClass="AFBrandingBarTitle"
+                                                 value="#{viewcontrollerBundle.TITULO_DETALLE}"/>
+                                </f:facet>
+                              </af:panelStretchLayout>
+                            </af:panelBox>
+                            <af:popup binding="#{adicionarPueaa.p_registro_exitoso}"
+                                      id="p_registro_exitoso">
+                              <af:dialog binding="#{adicionarPueaa.d_registro_exitoso}"
+                                         id="d_registro_exitoso" type="none"
+                                         title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                         affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                         closeIconVisible="false">
+                                <f:facet name="buttonBar">
+                                  <af:panelGroupLayout binding="#{adicionarPueaa.pgl14}"
+                                                       id="pgl14">
+                                    <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                      binding="#{adicionarPueaa.cb_aceptar}"
+                                                      id="cb_aceptar"
+                                                      actionListener="#{adicionarPueaa.cb_aceptar_actionListener}"
+                                                      action="#{adicionarPueaa.getAceptarAction}"
+                                                      partialTriggers="t1"/>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                                <af:panelStretchLayout binding="#{adicionarPueaa.psl7}"
+                                                       id="psl7" endWidth="0px"
+                                                       topHeight="0px"
+                                                       bottomHeight="2px"
+                                                       inlineStyle="height:41px; width:316px;">
+                                  <f:facet name="bottom"/>
+                                  <f:facet name="center">
+                                    <af:outputText value="#{viewcontrollerBundle.REGISTRO_EXITOSO_PUEAA}"
+                                                   binding="#{adicionarPueaa.ot8}"
+                                                   id="ot8"/>
+                                  </f:facet>
+                                  <f:facet name="start">
+                                    <af:image source="/imgs/info.png"
+                                              shortDesc="info"
+                                              binding="#{adicionarPueaa.i1}"
+                                              id="i1"/>
+                                  </f:facet>
+                                  <f:facet name="end"/>
+                                  <f:facet name="top"/>
+                                </af:panelStretchLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </f:facet>
+                    <f:facet name="second">
+                      <af:panelStretchLayout binding="#{detalleUsuarioAgua.psl3}"
+                                             id="psl3" startWidth="0px"
+                                             endWidth="0px" topHeight="0px"
+                                             bottomHeight="0px">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelBox text="#{viewcontrollerBundle.PROGRAMA_PUEAA}"
+                                       binding="#{detalleUsuarioAgua.pb_predios}"
+                                       id="pb_predios" showDisclosure="false">
+                            <f:facet name="toolbar"/>
+                            <af:panelCollection binding="#{detalleUsuarioAgua.pc1}"
+                                                id="pc1">
+                              <f:facet name="menus">
+                                <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                         binding="#{detalleUsuarioAgua.m_archivo}"
+                                         id="m_archivo" visible="true">
+										 <af:group>
+                                  <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR_PROYECTO_PUEAA}"
+                                                      binding="#{adicionarPueaa.cmi_adicionar_proyecto_pueaa}"
+                                                      id="cmi_adicionar_proyecto_pueaa"
+                                                      disabled="#{adicionarPueaa.pueaaLoad}"
+                                                      actionListener="#{adicionarPueaa.cmi_adicionar_proyecto_actionListener}"
+                                                      action="#{adicionarPueaa.getAccionAdicionar}"
+                                                      immediate="true"/>
+									</af:group>				  
+                                </af:menu>
+                              </f:facet>
+                              <f:facet name="toolbar"/>
+                              <f:facet name="statusbar"/>
+                              <af:tree binding="#{adicionarPueaa.treepry}"
+                                       id="treepry"
+                                       value="#{PueaaPryTreeHandler.treemodel}"
+                                       contentDelivery="immediate" var="node"
+                                       varStatus="nodeStatus">
+                                <f:facet name="nodeStamp">
+                                  <af:commandLink text="#{node.description} "
+                                                  binding="#{adicionarPueaa.clPueaaPry}"
+                                                  id="clPueaaPry"
+                                                  action="#{node.getAction}"
+                                                  inlineStyle="#{node.inlineStyle}"
+                                                  actionListener="#{adicionarPueaa.clPueaaPry_actionListener}">
+                                    <f:attribute name="nombreParametro"
+                                                 value="#{node.nombreParametro}"/>
+                                    <f:attribute name="valorParametro"
+                                                 value="#{node.data}"/>
+                                    <f:attribute name="extraInfo"
+                                                 value="#{node.extraData}"/>
+                                    <f:attribute name="extraInfo2"
+                                                 value="#{node.extraData2}"/>
+                                  </af:commandLink>
+                                </f:facet>
+                                <f:facet name="pathStamp"/>
+                              </af:tree>
+                            </af:panelCollection>
+                          </af:panelBox>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </f:facet>
+                  </af:panelSplitter>
+                </af:group>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout id="pgl_miga01" layout="horizontal">
+                  <af:spacer width="50" height="10" id="s_miga01"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  id="cl_miga01"
+                                  action="regresarTodosUsuarios" actionListener="#{adicionarPueaa.cb_regresar_actionListener}"/>
+                  <af:spacer width="10" height="10" id="s_miga02"/>
+                  <af:commandLink text="Usuario:  #{detalleUsuarioAgua.usuarioAgua.nombre}"
+                                  id="cl_miga02" action="regresarUsuarioAgua" actionListener="#{adicionarPueaa.cb_regresar_actionListener}"/>
+                  <af:spacer width="10" height="10" id="s_miga03"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AdicionarPueaa-->
+</jsp:root>

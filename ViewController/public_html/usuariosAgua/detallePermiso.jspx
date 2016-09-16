@@ -1,0 +1,476 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{detallePermiso.d2}">
+      <af:form id="f2" binding="#{detallePermiso.f2}" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detallePermiso.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detallePermiso.ps1}" id="ps1"
+                                  splitterPosition="600" disabled="true">
+                  <f:facet name="first">
+                    <af:panelBox text="#{viewcontrollerBundle.DETALLE_DEL_PERMISO_DE_VERTIMI}"
+                                 binding="#{detallePermiso.pb_detalle}"
+                                 id="pb_detalle"
+                                 showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelGroupLayout binding="#{detallePermiso.pgl2}"
+                                           id="pgl2" layout="scroll">
+                        <af:panelFormLayout binding="#{detallePermiso.pfl1}"
+                                            id="pfl1">
+                          <f:facet name="footer">
+                            <af:panelGroupLayout binding="#{detallePermiso.pgl3}"
+                                                 id="pgl3" layout="horizontal"
+                                                 halign="center">
+                              <af:commandButton text="#{viewcontrollerBundle.menu_boton_actualizar}"
+                                                binding="#{detallePermiso.cb_aceptar}"
+                                                id="cb_aceptar"
+                                                icon="/imgs/check_mark.png"
+                                                actionListener="#{detallePermiso.cb_aceptar_actionListener}"
+                                                action="#{detallePermiso.getRetorno}"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{detallePermiso.s5}"
+                                         id="s5"/>
+                              <af:commandButton text="#{viewcontrollerBundle.CREAR_NOVEDAD}"
+                                                binding="#{detallePermiso.cb_novedad}"
+                                                id="cb_novedad"
+                                                visible="#{detallePermiso.permiso.codigo !=null &amp;&amp; detallePermiso.permiso.codigo >0}"
+                                                actionListener="#{detallePermiso.cb_novedad_actionListener}"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{detallePermiso.s3}"
+                                         id="s3"/>
+                              <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                binding="#{detallePermiso.cb_borrar}"
+                                                id="cb_borrar"
+                                                icon="/imgs/close.png"
+                                                visible="#{detallePermiso.permiso.codigo !=null &amp;&amp; detallePermiso.permiso.codigo >0}"
+                                                actionListener="#{detallePermiso.cb_borrar_actionListener}"/>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s4}" id="s4"/>
+                          <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_EXPEDIENTE}"
+                                        binding="#{detallePermiso.it_numero_expediente}"
+                                        id="it_numero_expediente" showRequired="true"
+                                        value="#{detallePermiso.permiso.numeroExpediente}"
+                                        contentStyle="text-transform:uppercase;"
+                                        valueChangeListener="#{detallePermiso.it_numero_expediente_valueChangeListener}"
+                                        autoSubmit="true" immediate="true"/>
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCION_INICIO_TRA}"
+                                        binding="#{detallePermiso.it_res_ini_tramite}"
+                                        id="it_res_ini_tramite"
+                                        value="#{detallePermiso.permiso.resolucionInicioTramite}"
+                                        contentStyle="text-transform:uppercase;"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_INICIO_T}"
+                                        binding="#{detallePermiso.id_ini_tra}"
+                                        id="id_ini_tra"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaExpedicionInicioTramite}"
+                                        showRequired="true"/>
+                          
+
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s10}" id="s10"/>
+                          <af:outputText value="#{viewcontrollerBundle.PLAN_DE_CUMPLIMIENTO}"
+                                         binding="#{detallePermiso.ot1}"
+                                         id="ot1"
+                                         visible="#{detallePermiso.mostrarPlanCumplimiento}"/>
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_PLAN_DE_CUMPLI}"
+                                        binding="#{detallePermiso.it_res_plan_cum}"
+                                        id="it_res_plan_cum"
+                                        value="#{detallePermiso.permiso.resolucionSolicitudPlanCumplimiento}"
+                                        contentStyle="text-transform:uppercase;"
+                                        visible="#{detallePermiso.mostrarPlanCumplimiento}"
+                                        
+                                        />
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_PLAN_DE_}"
+                                        binding="#{detallePermiso.id_exp_plan_cump}"
+                                        id="id_exp_plan_cump"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaExpedicionPlan}"
+                                        visible="#{detallePermiso.mostrarPlanCumplimiento}"
+                                        />
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00F3}"
+                                        binding="#{detallePermiso.it_res_aprob_plan}"
+                                        id="it_res_aprob_plan"
+                                        value="#{detallePermiso.permiso.resolucionAprobacionPlan}"
+                                        contentStyle="text-transform:uppercase;"
+                                        visible="#{detallePermiso.mostrarPlanCumplimiento}"
+                                        />
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_DE_EXPEDICI_U00F3N_APROB}"
+                                        binding="#{detallePermiso.id_exp_plan}"
+                                        id="id_exp_plan"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaExpedicionPlan}"
+                                        visible="#{detallePermiso.mostrarPlanCumplimiento}"
+                                        />
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_INICIO_VIGENCIA_PLAN}"
+                                        binding="#{detallePermiso.id_ini_vig_plan}"
+                                        id="id_ini_vig_plan"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaInicoPlan}"
+                                        visible="#{detallePermiso.mostrarPlanCumplimiento}"
+                                        />
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_FIN_VIGENCIA_PLAN}"
+                                        binding="#{detallePermiso.id_fin_vig_plan}"
+                                        id="id_fin_vig_plan"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaFinPlan}"
+                                        visible="#{detallePermiso.mostrarPlanCumplimiento}"
+                                        />
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s13}" id="s13"/>
+                          <af:outputText value="#{viewcontrollerBundle.PLAN_DE_SANEAMIENTO_Y_MANEJO_D}"
+                                         binding="#{detallePermiso.ot6}"
+                                         id="ot6"
+                                         visible="#{!detallePermiso.mostrarPlanCumplimiento}"/>
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_PSMV}"
+                                        binding="#{detallePermiso.it1}"
+                                        id="it1"
+                                        visible="#{!detallePermiso.mostrarPlanCumplimiento}"
+                                        value="#{detallePermiso.permiso.resolucionPsmv}"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_DE_EXPEDICI_U00F3N_DEL_A}"
+                                        binding="#{detallePermiso.id1}"
+                                        id="id1" columns="10"
+                                        visible="#{!detallePermiso.mostrarPlanCumplimiento}"
+                                        value="#{detallePermiso.permiso.fechaResolucionPsmv}"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_INICIAL_PSMV}"
+                                        binding="#{detallePermiso.id2}"
+                                        id="id2" columns="10"
+                                        visible="#{!detallePermiso.mostrarPlanCumplimiento}"
+                                        value="#{detallePermiso.permiso.fechaInicioPsmv}"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_FINAL_PSMV}"
+                                        binding="#{detallePermiso.id3}"
+                                        id="id3" columns="10"
+                                        visible="#{!detallePermiso.mostrarPlanCumplimiento}"
+                                        value="#{detallePermiso.permiso.fechaFinPsmv}"
+                                        showRequired="true"/>
+                          <af:inputText label="#{viewcontrollerBundle.OBSERVACIONES}"
+                                        binding="#{detallePermiso.it4}"
+                                        id="it4" columns="40" rows="4"
+                                        visible="#{!detallePermiso.mostrarPlanCumplimiento}"
+                                        value="#{detallePermiso.permiso.obervacionesPsmv}"
+                                        showRequired="true"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s15}" id="s15"/>
+                          <af:outputText value="#{viewcontrollerBundle.PERMISO_DE_VERTIMIENTO_}"
+                                         binding="#{detallePermiso.ot4}"
+                                         id="ot4"/>
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_PERMISO_VERTIM}"
+                                        binding="#{detallePermiso.it_res_permiso}"
+                                        id="it_res_permiso"
+                                        value="#{detallePermiso.permiso.resolucionPermisoVertimiento}"
+                                        contentStyle="text-transform:uppercase;"
+                                        showRequired="true"/>
+                                                    <af:inputText label="#{viewcontrollerBundle.CAUDAL_VERT2}"
+                                        binding="#{detallePermiso.it_caudal}"
+                                        id="it_caudal" showRequired="true"
+                                        value="#{detallePermiso.permiso.caudal}"
+                                        columns="10">
+                            <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              groupingUsed="false"
+                                              minFractionDigits="0"
+                                              maxFractionDigits="7"/>
+                          </af:inputText>
+                          <af:inputText label="#{viewcontrollerBundle.EVALUACI_U00F3N_AMBIENTAL}"
+                                        binding="#{detallePermiso.it_evaluacion_ambiental}"
+                                        id="it_evaluacion_ambiental"
+                                        rows="4"
+                                        value="#{detallePermiso.permiso.evaluacionAmbiental}"
+                                        contentStyle="text-transform:uppercase;"
+                                        columns="40" showRequired="true"/>              
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_PERMISO_}"
+                                        binding="#{detallePermiso.id_exp_permiso}"
+                                        id="id_exp_permiso"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaExpedicionPermiso}"
+                                        showRequired="true"/>
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00_0}"
+                                        binding="#{detallePermiso.it8}" id="it8"
+                                        value="#{detallePermiso.permiso.resolucionAprobacionPlanos}"
+                                        contentStyle="text-transform:uppercase;"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_APROBACI}"
+                                        binding="#{detallePermiso.id8}" id="id8"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaExpedicionPlanos}"
+                                        showRequired="true"/>
+                          <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00_1}"
+                                        binding="#{detallePermiso.it9}" id="it9"
+                                        value="#{detallePermiso.permiso.resolucionAprobacionObras}"
+                                        contentStyle="text-transform:uppercase;"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_APROBA_0}"
+                                        binding="#{detallePermiso.id9}" id="id9" columns="10"
+                                        value="#{detallePermiso.permiso.fechaExpedicionObras}"
+                                        showRequired="true"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s14}" id="s14"/>
+                          
+                          <af:inputDate label="#{viewcontrollerBundle.FECHA_INICIO}"
+                                        binding="#{detallePermiso.id_inicio}"
+                                        id="id_inicio" showRequired="true"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaInicio}"/>
+                          <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}"
+                                        binding="#{detallePermiso.id_fin}"
+                                        id="id_fin" showRequired="true"
+                                        columns="10"
+                                        value="#{detallePermiso.permiso.fechaFin}"/>
+                          <af:message binding="#{detallePermiso.m2}" id="m2"
+                                      for="if_archivo"/>
+                          <af:inputFile label="#{viewcontrollerBundle.ARCHIVO}"
+                                        binding="#{detallePermiso.if_archivo}"
+                                        id="if_archivo"
+                                        value="#{detallePermiso.uploadedFile}"
+                                        autoSubmit="true" immediate="true"
+                                        valueChangeListener="#{detallePermiso.if_archivo_valueChangeListener}"
+                                        visible="#{detallePermiso.permiso.archivo==null}"/>
+                          <af:panelGroupLayout binding="#{detallePermiso.pgl_archivo}"
+                                               id="pgl_archivo" layout="horizontal"
+                                               visible="#{detallePermiso.permiso.archivo!=null}">
+                            <af:commandLink text="#{viewcontrollerBundle.MOSTRAR}"
+                                            binding="#{detallePermiso.cl_documento}"
+                                            id="cl_documento"
+                                            actionListener="#{detallePermiso.cl_documento_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{detallePermiso.s8}" id="s8"/>
+                            <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                              binding="#{detallePermiso.cb_borrar_documento}"
+                                              id="cb_borrar_documento"
+                                              icon="/imgs/cross_24.png"
+                                              actionListener="#{detallePermiso.cb_borrar_documento_actionListener}"/>
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s7}" id="s7"/>
+                        </af:panelFormLayout>
+                      </af:panelGroupLayout>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                  
+                  <af:panelBox text="#{viewcontrollerBundle.VERTIMIENTOS}"
+                                   binding="#{detallePermiso.panelBox1}"
+                                   id="panelBox1" showDisclosure="false">
+                        <f:facet name="toolbar"/>
+                        <af:panelCollection binding="#{detallePermiso.panelCollection1}"
+                                            id="panelCollection1"
+                                            >
+                          <f:facet name="menus">
+                            <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                     binding="#{detallePermiso.menu1}"
+                                     id="menu1">
+                              <af:commandMenuItem text="#{viewcontrollerBundle.VRT_ADICIONAR}"
+                                                  binding="#{detallePermiso.commandMenuAddVertimiento}"
+                                                  id="commandMenuAddVertimiento"
+                                                  action="adicionarVertimiento"
+                                                  icon="/imgs/add.png"
+                                                  actionListener="#{detallePermiso.commandMenuAddVertimiento_actionListener}"/>
+                            </af:menu>
+                          </f:facet>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:tree value="#{detallePermiso.vertimientosTreeModel}"
+                                   var="node" varStatus="nodeStatus"
+                                   binding="#{detallePermiso.tree1}"
+                                   id="tree1" contentDelivery="immediate">
+                            <f:facet name="nodeStamp">
+                              
+                                <af:commandLink text="#{node.description}"
+                                                binding="#{detallePermiso.cml2}"
+                                                id="cml2"
+                                                actionListener="#{detallePermiso.cml2_actionListener}"
+                                                action="#{node.getAction}">
+                                                <f:attribute name="nombreParametro"
+                                               value="#{node.nombreParametro}"/>
+                                  <f:attribute name="valorParametro"
+                                               value="#{node.data}"/>
+                              </af:commandLink>
+                            </f:facet>
+                          </af:tree>
+                        </af:panelCollection>
+                      </af:panelBox>      
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{detallePermiso.pgl6}"
+                                     id="pgl6" valign="middle" halign="left">
+                  <af:popup binding="#{detallePermiso.p_borrar_archivo}"
+                            id="p_borrar_archivo">
+                    <af:dialog binding="#{detallePermiso.d_borrar_archivo}"
+                               id="d_borrar_archivo"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               type="okCancel"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                               dialogListener="#{detallePermiso.d_borrar_archivo_dialogListener}">
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_BORRAR_ARCHIVO} al Permiso de Vertimiento?"
+                                     binding="#{detallePermiso.ot_confirmacion}"
+                                     id="ot_confirmacion"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{detallePermiso.p_novedad}"
+                            id="p_novedad">
+                    <af:dialog binding="#{detallePermiso.d_novedad}"
+                               id="d_novedad"
+                               title="Datos del nuevo Acto Administrativo"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{detallePermiso.d_novedad_dialogListener}">
+                      <af:panelFormLayout binding="#{detallePermiso.pfl2}"
+                                          id="pfl2">
+                        <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_DE_MODIFICACI_U00F3N}"
+                                            binding="#{detallePermiso.soc_tipo_novedad}"
+                                            id="soc_tipo_novedad"
+                                            showRequired="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            valueChangeListener="#{detallePermiso.soc_tipo_novedad_valueChangeListener}"
+                                            autoSubmit="true" immediate="true">
+                          <f:selectItems value="#{detallePermiso.listaTiposModificacion}"
+                                         binding="#{detallePermiso.si1}"
+                                         id="si1"/>
+                        </af:selectOneChoice>
+                        <af:inputText label="Label 1"
+                                      binding="#{detallePermiso.it_desc_novedad}"
+                                      id="it_desc_novedad" columns="50" rows="2"
+                                      simple="true" readOnly="true"/>
+                        <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_ACTO_ADMINISTR}"
+                                      binding="#{detallePermiso.it_acto_adm}"
+                                      id="it_acto_adm"
+                                      shortDesc="Numero del acto administrativo que modifica, renueva, traspasa el permiso, o revoca"
+                                      showRequired="true"/>
+                        <af:inputDate label="#{viewcontrollerBundle.FECHA}"
+                                      binding="#{detallePermiso.id_fecha}"
+                                      id="id_fecha" columns="10"
+                                      showRequired="true"/>
+                        <af:inputText label="#{viewcontrollerBundle.OBSERVACIONES}"
+                                      binding="#{detallePermiso.it_observaciones}"
+                                      id="it_observaciones" columns="50"
+                                      rows="3" showRequired="true"/>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N} Usuario al cual se Traspasa"
+                                            binding="#{detallePermiso.soc_tipo_id_traspaso}"
+                                            id="soc_tipo_id_traspaso"
+                                            showRequired="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            shortDesc="#{viewcontrollerBundle.INDIQUE_EL_N_U00FAMERO_DE_IDEN}"
+                                            visible="false" autoSubmit="true"
+                                            immediate="true"
+                                            valueChangeListener="#{detallePermiso.soc_tipo_id_traspaso_valueChangeListener}">
+                          <f:selectItems value="#{detallePermiso.listaTiposIdentificacion}"
+                                         binding="#{detallePermiso.si2}"
+                                         id="si2"/>
+                        </af:selectOneChoice>
+                        <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00_0}"
+                                      binding="#{detallePermiso.it_id_usuario_traspasa}"
+                                      id="it_id_usuario_traspasa"
+                                      showRequired="true"
+                                      shortDesc="#{viewcontrollerBundle.INDIQUE_EL_N_U00FAMERO_DE_IDEN}"
+                                      visible="false" autoSubmit="true"
+                                      immediate="true"
+                                      valueChangeListener="#{detallePermiso.it_id_usuario_traspasa_valueChangeListener}"/>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.C_U00E9DULA_CATASTRAL_AL_CUAL_}"
+                                            binding="#{detallePermiso.soc_predio_traspaso}"
+                                            id="soc_predio_traspaso"
+                                            showRequired="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            shortDesc="#{viewcontrollerBundle.SELECCIONE_EL_N_U00FAMERO_DE_C}"
+                                            visible="false">
+                          <f:selectItems value="#{detallePermiso.listaPrediosTraspaso}"
+                                         binding="#{detallePermiso.si3}"
+                                         id="si3"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout layout="horizontal"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{detallePermiso.pgl1}"
+                                     id="pgl1">
+                  <af:spacer width="50" height="10"
+                             binding="#{detallePermiso.s1}" id="s1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  binding="#{detallePermiso.cl2}" id="cl2"
+                                  action="usuariosAgua"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detallePermiso.s2}" id="s2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{detallePermiso.usuarioAgua.nombre}"
+                                  binding="#{detallePermiso.cl3}" id="cl3"
+                                  action="detalleUsuario"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detallePermiso.s6}" id="s6"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PREDIO}  :  #{detallePermiso.predio.nombre}"
+                                  binding="#{detallePermiso.cl7}" id="cl7"
+                                  action="detallePredio"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detallePermiso.s9}" id="s9"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PERMISOS_VERTIMIENTO}"
+                                  binding="#{detallePermiso.cl8}" id="cl8"
+                                  action="listarPermisos"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detallePermiso.s11}" id="s11"/>
+                  <af:outputText binding="#{detallePermiso.ot2}"
+                                 id="ot2"
+                                 value="#{viewcontrollerBundle.PERMISO}  :#{detallePermiso.titulo}"/>
+                  <af:popup binding="#{detallePermiso.p_borrar}"
+                            id="p_borrar">
+                    <af:dialog binding="#{detallePermiso.d_borrar}"
+                               id="d_borrar"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                               type="none">
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                     binding="#{detallePermiso.ot3}"
+                                     id="ot3"/>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{detallePermiso.pgl4}"
+                                             id="pgl4">
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                            binding="#{detallePermiso.cb_borrar_si}"
+                                            id="cb_borrar_si"
+                                            actionListener="#{detallePermiso.cb_borrar_si_actionListener}"
+                                            action="#{detallePermiso.getRetorno}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detallePermiso.s12}"
+                                     id="s12"/>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                            binding="#{detallePermiso.cb_borrar_no}"
+                                            id="cb_borrar_no"
+                                            actionListener="#{detallePermiso.cb_borrar_no_actionListener}"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detallePermiso-->
+</jsp:root>

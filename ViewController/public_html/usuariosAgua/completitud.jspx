@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{completitud.d2}">
+      <af:form id="f2" binding="#{completitud.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{completitud.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="0px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{completitud.ps1}" id="ps1"
+                                  splitterPosition="600" disabled="true">
+                  <f:facet name="first">
+                    <af:panelBox text="Totales de Errores/requerimiento de ajuste"
+                                 binding="#{completitud.pb_totales}"
+                                 id="pb_totales" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:selectOneChoice label="Autoridades" 
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" 
+                                          valueChangeListener="#{completitud.soc_filtro_porAtoridad}" 
+                                          binding="#{completitud.soc_autoridad_id}"
+                                          visible="#{!completitud.visiblePerfil}"
+                                          id="soc_autoridad_id"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{ completitud.listaAutoridades}" binding="#{completitud.selectItems1}" id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:table value="#{completitud.listaCondiciones}"
+                                  var="row" rowBandingInterval="1" width="100%" 
+                                  binding="#{completitud.t_totales}"
+                                  id="t_totales" rowSelection="single"
+                                  emptyText="#{viewcontrollerBundle.tabla_vacia}" 
+                                  selectionListener="#{completitud.t_totales_selectionListener}"
+                                inlineStyle='height:480px'>
+                          <af:column sortable="false" headerText="Categoria" align="start" id="c4" width="94">
+                            <af:outputText value="#{row.categoria}" id="ot2"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Titulo"
+                                     align="start" id="c1" width="257">
+                            <af:outputText value="#{row.titulo}" id="ot4"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="Total Registros" align="right"
+                                     id="c2" width="59">
+                            <af:outputText value="#{row.totalRegistros}"
+                                           id="ot3"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="Registros Error" align="right"
+                                     id="c3" width="80">
+                            <af:outputText value="#{row.registrosError}"
+                                           id="ot1"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="Porcentaje Error" id="c5"
+                                     align="right" width="69">
+                            <af:outputText value="#{row.porcentajeError} %" id="ot5"/>
+                          </af:column>
+                        </af:table>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox text="Detalle Errores/requerimiento de ajuste"
+                                 binding="#{completitud.pb_detalle}"
+                                 id="pb_detalle" showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelCollection binding="#{completitud.pc2}" id="pc2"
+                                          featuresOff="detach">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{completitud.listaDetalle}" var="row"
+                                  rowBandingInterval="0"
+                                  binding="#{completitud.t_detalle}"
+                                  id="t_detalle" width="100%">
+                          <af:column sortable="false" headerText="col1" id="c6"
+                                     visible="false">
+                            <af:outputText value="#{row.celdas[1]}" id="ot6"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:completitud-->
+</jsp:root>

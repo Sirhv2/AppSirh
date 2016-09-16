@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="http://openlayers.org/en/v3.9.0/css/ol.css" type="text/css">
+	<link rel="stylesheet" href="/Sirh/utils/styles/skp.css" type="text/css">
+	
+    <script src="http://openlayers.org/en/v3.9.0/build/ol.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <title>Visor SIRH</title>
+  </head>
+  <body id="mapBody">
+  <div class="skpContainer">
+    <button class="skpButton"
+            onclick="loadParent()" title="Ubicar coordenadas"><img class="icon-gps" src="/Sirh/imgs/gps.png" alt=""/><p class="innerButton"> Ubicar punto</p></button>
+    <button class="skpButton"
+            onclick="deleteMarkers();emptyInputs();"
+            title="Borrar todos los puntos y vacía las cajas de texto de las coordenadas">
+      <span class="closeIcon">&times;</span>
+      <p class="innerButton"> Borrar información</p></button>
+  </div>
+    <div id="map" class="map"></div>
+  <button id="toggleButton">Abrir mapa</button>
+	<script type="text/javascript" src="/Sirh/utils/js/conf.js"></script>
+    <script type="text/javascript" src="/Sirh/utils/js/visorSIRH_inner2.js"></script>
+	<script type="text/javascript" src="/Sirh/utils/js/visorSIRH_ADF2.js"></script>
+  </body>
+</html>

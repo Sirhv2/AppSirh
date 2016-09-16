@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{detallePuntoMonitoreoVista.document1}" id="document1">
+      <af:form binding="#{detallePuntoMonitoreoVista.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detallePuntoMonitoreoVista.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="1px"
+                                   bottomHeight="3px" topHeight="25px"
+                                   endWidth="2px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detallePuntoMonitoreoVista.panelSplitter1}"
+                                  id="panelSplitter1" disabled="true" orientation="horizontal"
+                                  splitterPosition="635">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{detallePuntoMonitoreoVista.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           bottomHeight="1px" startWidth="2px"
+                                           topHeight="3px" endWidth="0px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{detallePuntoMonitoreoVista.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="scroll">
+                          <af:panelBox text="#{viewcontrollerBundle.TITULO_DETALLE_PUNTO}"
+                                       binding="#{detallePuntoMonitoreoVista.panelBox1}"
+                                       id="panelBox1" showDisclosure="false">
+                            <f:facet name="toolbar"/>
+                           <af:decorativeBox binding="#{detallePuntoMonitoreoVista.decorativeBox1}"
+                                              id="decorativeBox1"
+                                             topHeight="60px"
+                                             inlineStyle="width:100%;">
+                              <f:facet name="center">
+                            <af:panelFormLayout binding="#{detallePuntoMonitoreoVista.panelFormLayout1}"
+                                                id="panelFormLayout1"
+                                                maxColumns="1" rows="1">
+                              <f:facet name="footer"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detallePuntoMonitoreoVista.spacer14}"
+                                             id="spacer14"/>
+                                  <af:inputText label="#{viewcontrollerBundle.PTO_NOMBRE}"
+                                            binding="#{detallePuntoMonitoreoVista.tnombre}"
+                                            id="tnombre"
+                                            value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.nombre}"
+                                            immediate="true" readOnly="true"
+                                            showRequired="true"
+                                            contentStyle="text-transform:uppercase;"
+                                               />
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PTO_TIPO_PTO}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice1}"
+                                                  id="selectOneChoice1"
+                                                  immediate="true" readOnly="true"
+                                                  showRequired="true"
+                                                  labelAndAccessKey="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.tipoPunto}">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaTipoPuntos}"
+                                               binding="#{detallePuntoMonitoreoVista.selectItems1}"
+                                               id="selectItems1"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PTO_UBICACION}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice2}"
+                                                  id="selectOneChoice2" immediate="true"
+                                                  showRequired="true" readOnly="true"
+                                                  labelAndAccessKey="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.ubicacion}">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaUbicacion}"
+                                               binding="#{detallePuntoMonitoreoVista.selectItems2}"
+                                               id="selectItems2"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.TRM_AREA}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice5}"
+                                                  id="selectOneChoice5"  immediate="true"
+                                                  showRequired="true" readOnly="true"
+                                                  value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.idArea}"
+                                                  valueChangeListener="#{detallePuntoMonitoreoVista.selectOneChoice5_valueChangeListener}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  autoSubmit="true">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaArea}"
+                                               binding="#{detallePuntoMonitoreoVista.selectItems5}"
+                                               id="selectItems5"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.TRM_ZONA}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice6}"
+                                                  id="selectOneChoice6"  immediate="true"
+                                                  showRequired="true" readOnly="true"
+                                                  value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.idZona}"
+                                                  valueChangeListener="#{detallePuntoMonitoreoVista.selectOneChoice6_valueChangeListener}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  autoSubmit="true">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaZona}"
+                              
+                                               binding="#{detallePuntoMonitoreoVista.selectItems6}"
+                                               id="selectItems6"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice7}"
+                                                  id="selectOneChoice7"
+                                                   immediate="true"
+                                                  showRequired="true" readOnly="true"
+                                                  value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.idSubzona}"
+                                                  valueChangeListener="#{detallePuntoMonitoreoVista.selectOneChoice7_valueChangeListener}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  autoSubmit="true">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaSubzona}"
+                                               binding="#{detallePuntoMonitoreoVista.selectItems7}"
+                                               id="selectItems7"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice8}"
+                                                  id="selectOneChoice8" immediate="true"
+                                                  showRequired="true" readOnly="true"
+                                                  value="#{ detallePuntoMonitoreoVista.puntoMonitoreo.idFuente}"
+                                                  valueChangeListener="#{detallePuntoMonitoreoVista.selectOneChoice8_valueChangeListener}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  autoSubmit="true">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaFuentes}"
+                                               binding="#{detallePuntoMonitoreoVista.selectItems8}"
+                                               id="selectItems8"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.TRM_TRAMO}"
+                                                  binding="#{detallePuntoMonitoreoVista.selectOneChoice9}"
+                                                  id="selectOneChoice9" immediate="true"
+                                                  showRequired="true" readOnly="true"
+                                                  value="#{detallePuntoMonitoreoVista.puntoMonitoreo.idTramo}"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{ detallePuntoMonitoreoVista.listaTramos}"
+                                               binding="#{detallePuntoMonitoreoVista.selectItems9}"
+                                               id="selectItems9"/>
+                              </af:selectOneChoice>
+                                  
+                                </af:panelFormLayout>
+                              </f:facet>
+                              <f:facet name="top">
+                                <af:panelGroupLayout binding="#{detallePuntoMonitoreoVista.panelGroupLayout2}"
+                                                     id="panelGroupLayout2">
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detallePuntoMonitoreoVista.spacer3}"
+                                             id="spacer3"/>
+                                  <af:activeOutputText value="#{viewcontrollerBundle.TITULO_PANEL1_PTO}"
+                                                       binding="#{detallePuntoMonitoreoVista.activeOutputText2}"
+                                                       id="activeOutputText2"
+                                                       styleClass="AFBrandingBarTitle"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:decorativeBox>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="second"/>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detallePuntoMonitoreoVista-->
+</jsp:root>

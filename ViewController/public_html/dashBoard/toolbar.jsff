@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root
+  xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+ <af:componentDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description>Content to be rendered in the toolbar area of a panelBox.</description>
+        <attribute>
+          <description>The key for this dashboard item.</description>
+          <attribute-name>maximized</attribute-name>
+          <attribute-class>boolean</attribute-class>
+          <required>false</required>
+          <default-value>false</default-value>
+        </attribute>
+      </component>
+    </af:xmlContent>        
+  <af:toolbox id="t1">
+    <af:toolbar id="t2">
+      <af:separator id="s1"/>
+      <af:commandImageLink id="cil1" shortDesc="Minimizar"
+                           icon="/imgs/removeselected_ena.png"
+                           hoverIcon="/imgs/removeselected_ovr.png"
+                           depressedIcon="/imgs/removeselected_dwn.png"
+                           actionListener="#{standarDashBoard.minimize}"
+                           partialSubmit="true" immediate="true">
+          <af:panelDashboardBehavior for=":dashboard"
+                                     type="loading"/>
+        </af:commandImageLink>
+      <af:commandImageLink id="cil2" shortDesc="Mazimizar"
+                           icon="/imgs/max_ena.png"
+                           hoverIcon="/imgs/max_ovr.png"
+                           depressedIcon="/imgs/max_dwn.png"
+                           partialSubmit="true"
+                           rendered="#{!attrs.maximized}" immediate="true"
+                           actionListener="#{standarDashBoard.maximize}"/>
+      <af:commandImageLink id="cil3" shortDesc="Restaurar"
+                           icon="/imgs/restore_ena.png"
+                           hoverIcon="/imgs/restore_ovr.png"
+                           depressedIcon="/imgs/restore_dwn.png"
+                           partialSubmit="true"
+                           rendered="#{attrs.maximized}"/>
+    </af:toolbar>
+  </af:toolbox>
+  </af:componentDef>
+</jsp:root>

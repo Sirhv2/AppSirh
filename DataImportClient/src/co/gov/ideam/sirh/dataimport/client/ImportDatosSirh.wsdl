@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="ImportDatosSirh"
+     targetNamespace="http://servicio.sirh.ideam.gov.co/"
+     xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+     xmlns:tns="http://servicio.sirh.ideam.gov.co/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://servicio.sirh.ideam.gov.co/"
+             attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://servicio.sirh.ideam.gov.co/">
+            <xs:element name="fntvFuentesTramos" type="tns:fntvFuentesTramos"/>
+            <xs:element name="getAllFuentes" type="tns:getAllFuentes"/>
+            <xs:element name="getAllFuentesResponse" type="tns:getAllFuentesResponse"/>
+            <xs:complexType name="getAllFuentes">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getAllFuentesResponse">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:fntvFuentesTramos"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fntvFuentesTramos">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="altitudpf" type="xs:double"/>
+                    <xs:element minOccurs="0" name="altitudpi" type="xs:double"/>
+                    <xs:element minOccurs="0" name="area" type="xs:string"/>
+                    <xs:element minOccurs="0" name="codigocuenca" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cuenca" type="xs:string"/>
+                    <xs:element minOccurs="0" name="descripcionfuente" type="xs:string"/>
+                    <xs:element minOccurs="0" name="descripciontramo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="existebd" type="xs:string"/>
+                    <xs:element minOccurs="0" name="gradoslatpf" type="xs:int"/>
+                    <xs:element minOccurs="0" name="gradoslatpi" type="xs:int"/>
+                    <xs:element minOccurs="0" name="gradoslonpf" type="xs:int"/>
+                    <xs:element minOccurs="0" name="gradoslonpi" type="xs:int"/>
+                    <xs:element minOccurs="0" name="idfuente" type="xs:string"/>
+                    <xs:element minOccurs="0" name="longitud" type="xs:double"/>
+                    <xs:element minOccurs="0" name="minutoslatpf" type="xs:int"/>
+                    <xs:element minOccurs="0" name="minutoslatpi" type="xs:int"/>
+                    <xs:element minOccurs="0" name="minutoslonpf" type="xs:int"/>
+                    <xs:element minOccurs="0" name="minutoslonpi" type="xs:int"/>
+                    <xs:element minOccurs="0" name="nombrefuente" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nombretramo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="numcarfuente" type="xs:string"/>
+                    <xs:element minOccurs="0" name="numcartramo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="segundolatpf" type="xs:double"/>
+                    <xs:element minOccurs="0" name="segundolatpi" type="xs:double"/>
+                    <xs:element minOccurs="0" name="segundolonpf" type="xs:double"/>
+                    <xs:element minOccurs="0" name="segundolonpi" type="xs:double"/>
+                    <xs:element minOccurs="0" name="sistemareferenciapf" type="xs:string"/>
+                    <xs:element minOccurs="0" name="sistemareferenciapi" type="xs:string"/>
+                    <xs:element minOccurs="0" name="subzona" type="xs:string"/>
+                    <xs:element minOccurs="0" name="tipoflujo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="tipofuente" type="xs:string"/>
+                    <xs:element minOccurs="0" name="usos" type="xs:string"/>
+                    <xs:element minOccurs="0" name="zona" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Exception" type="tns:Exception"/>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getAllFuentes">
+        <wsdl:part name="parameters" element="tns:getAllFuentes"/>
+    </wsdl:message>
+    <wsdl:message name="getAllFuentesResponse">
+        <wsdl:part name="parameters" element="tns:getAllFuentesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Exception">
+        <wsdl:part name="Exception" element="tns:Exception"/>
+    </wsdl:message>
+    <wsdl:portType name="DataSirh">
+        <wsdl:operation name="getAllFuentes">
+            <wsdl:input name="getAllFuentes" message="tns:getAllFuentes"/>
+            <wsdl:output name="getAllFuentesResponse" message="tns:getAllFuentesResponse"/>
+            <wsdl:fault name="Exception" message="tns:Exception"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ImportDatosSirhSoapBinding" type="tns:DataSirh">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAllFuentes">
+            <soap:operation style="document" soapAction=""/>
+            <wsdl:input name="getAllFuentes">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllFuentesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ImportDatosSirh">
+        <wsdl:port name="DataSirhPort" binding="tns:ImportDatosSirhSoapBinding">
+            <soap:address location="http://localhost:28080/WebServiceCAR/ImportDatosSirh/DataSirh"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

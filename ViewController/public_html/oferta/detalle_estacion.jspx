@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          >
+          
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+         
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{detalleEstacionBacking.document1}" id="document1">
+      <af:form binding="#{detalleEstacionBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleEstacionBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="28px">
+              <f:facet name="center">
+                <af:panelBox text="Series de la estación"
+                             binding="#{detalleEstacionBacking.panelBox1}"
+                             id="panelBox1" showDisclosure="false"
+                             inlineStyle="width:100%; height:100%;"
+                             >
+                  <f:facet name="toolbar"/>
+                  
+                  <af:panelGroupLayout binding="#{detalleEstacionBacking.panelGroupLayout4}"
+                                       id="panelGroupLayout4"
+                                       inlineStyle="width:100%; height:20px;"
+                                       layout="horizontal">
+                    
+                    <af:selectOneChoice label="#{viewcontrollerBundle.OF_VARIABLE}"
+                                        binding="#{detalleEstacionBacking.socVariable}"
+                                        id="socVariable"
+                                        unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                        showRequired="true"
+                                        >
+                      <f:selectItems value="#{detalleEstacionBacking.listaVariables}"
+                                     binding="#{detalleEstacionBacking.siVariable}"
+                                     id="siVariable"/>
+                    </af:selectOneChoice>
+                    
+                    <af:inputText label="#{viewcontrollerBundle.LABEL_AGNO}"
+                                  binding="#{detalleEstacionBacking.itAgno}"
+                                  id="itAgno" columns="5"
+                                  value="#{detalleEstacionBacking.agnoSeleccionado}"
+                                  immediate="true" autoSubmit="true"
+                                  >
+                        <af:convertNumber type="number"
+                                          integerOnly="true"
+                                          minIntegerDigits="4"
+                                          maxIntegerDigits="4"
+                                          pattern="####"
+                                          />  
+                    </af:inputText>
+                    <af:selectOneChoice label="#{viewcontrollerBundle.LABEL_MES}"
+                                         binding="#{detalleEstacionBacking.soMes}"
+                                         id="soMes"
+                                         unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                         visible="false"
+                                        >
+                      <f:selectItems value="#{detalleEstacionBacking.listaMes}"
+                                     binding="#{detalleEstacionBacking.siMes}"
+                                     id="siMes"/>
+                    </af:selectOneChoice>
+                    <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                      binding="#{detalleEstacionBacking.cmdBuscar}"
+                                      id="cmdBuscar"
+                                      icon="/imgs/binoculars_24.png"
+                                      actionListener="#{detalleEstacionBacking.cmdBuscar_actionListener}"
+                                      />
+                  </af:panelGroupLayout>
+                                       
+                  <af:panelGroupLayout binding="#{detalleEstacionBacking.panelGroupLayout3}"
+                                       id="panelGroupLayout3"
+                                       inlineStyle="width:100%; height:100%;"
+                                       layout="vertical">
+                                       
+                    <jsp:include page="/oferta/detalle_serie.jsff" />
+                    
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{detalleEstacionBacking.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal"
+                                     >
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleEstacionBacking.spacer3}"
+                             id="spacer3"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBSERVATORIO_OBSERVATORIO}"
+                                  binding="#{detalleEstacionBacking.commandLink2}"
+                                  id="commandLink2"
+                                  action="observatorio"
+                                  immediate="true" partialSubmit="true"/>
+                  <af:spacer width="25" height="10" />
+                  <af:commandLink text="Observatorio Aguas Superficiales "
+                                  action="observatorioSuperficiales"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleEstacionBacking.spacer1}"
+                             id="spacer1"/>
+                  <af:outputText value="Estaciones Hidrológicas"
+                                  id="outputTexth"
+                                  rendered="#{detalleEstacionBacking.flagHidro}"/>
+                  <af:outputText value="Estaciones Meteorológicas"
+                                  id="outputTextm"
+                                  rendered="#{!detalleEstacionBacking.flagHidro}"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleEstacionBacking.spacer2}"
+                             id="spacer2"/>
+                  <af:outputText value="#{viewcontrollerBundle.OF_ESTACION_SERIES} : #{detalleEstacionBacking.estacionSeleccionada.nombreEs}"
+                                 binding="#{detalleEstacionBacking.outputText1}"
+                                 id="outputText1"/>
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleEstacionBacking-->
+</jsp:root>

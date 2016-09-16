@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d2" binding="#{pomtplan.d2}">
+      <af:form id="f2" binding="#{pomtplan.f2}" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{pomtplan.psl_total}"
+                                   id="psl_total"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="50px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{pomtplan.pgl2}" id="pgl2"
+                                     layout="scroll">
+                  <af:panelFormLayout binding="#{pomtplan.pfl1}" id="pfl1">
+                    <af:spacer width="10" height="10"
+                               binding="#{pomtplan.s1}" id="s1"/>
+                    <af:selectManyCheckbox label="#{viewcontrollerBundle.CRITERIOS_DE_PRIORIZACI_U00F3N}"
+                                           binding="#{pomtplan.smc_criterios}"
+                                           id="smc_criterios"
+                                           showRequired="true"
+                                           value="#{pomtplan.listaPrioridadesSeleccionadas}">
+                      <f:selectItems value="#{pomtplan.listaPrioridades}"
+                                     binding="#{pomtplan.si1}" id="si1"/>
+                    </af:selectManyCheckbox>
+                    <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_ACTO_ADMINISTR}"
+                                  binding="#{pomtplan.it_numero_acto}"
+                                  id="it_numero_acto" showRequired="true"
+                                  value="#{pomtplan.planOrdenamiento.numeroActo}"/>
+                    <af:inputDate label="#{viewcontrollerBundle.FECHA_DE_EXPEDICI_U00F3N__}"
+                                  binding="#{pomtplan.id_fecha_expedicion}"
+                                  id="id_fecha_expedicion" showRequired="true"
+                                  columns="10"
+                                  value="#{pomtplan.planOrdenamiento.fechaExpedicion}"/>
+                    <af:inputDate label="#{viewcontrollerBundle.FECHA_DE_VIGENCIA}"
+                                  binding="#{pomtplan.id_fecha_vigencia}"
+                                  id="id_fecha_vigencia" showRequired="true"
+                                  columns="10"
+                                  value="#{pomtplan.planOrdenamiento.fechaVigencia}"/>
+                    <af:inputText label="#{viewcontrollerBundle.FNT_DESCRIPCION}"
+                                  binding="#{pomtplan.it_desc_plan}"
+                                  id="it_desc_plan" rows="4" columns="50"
+                                  value="#{pomtplan.planOrdenamiento.descripcion}"/>
+                    <af:message binding="#{pomtplan.m2}" id="m2"
+                                for="if_dcoumento"/>
+                    <af:inputFile label="#{viewcontrollerBundle.DOCUMENTO}"
+                                  binding="#{pomtplan.if_dcoumento}"
+                                  id="if_dcoumento" autoSubmit="true"
+                                  immediate="true"
+                                  valueChangeListener="#{pomtplan.if_archivo_valueChangeListener}"
+                                  visible="#{pomtplan.planOrdenamiento.archivo==null}"/>
+                    <af:spacer width="10" height="10"
+                               binding="#{pomtplan.s3}" id="s3"/>
+                    <f:facet name="footer">
+                      <af:panelGroupLayout binding="#{pomtplan.pgl1}"
+                                           id="pgl1" halign="center"
+                                           layout="horizontal">
+                        <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                          binding="#{pomtplan.cb_aceptar}"
+                                          id="cb_aceptar"
+                                          icon="/imgs/check_mark.png"
+                                          actionListener="#{pomtplan.cb_aceptar_actionListener}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{pomtplan.s2}" id="s2"/>
+                        <af:commandButton text="#{viewcontrollerBundle.boton_cancelar}"
+                                          binding="#{pomtplan.cb_cancelar}"
+                                          id="cb_cancelar"
+                                          icon="/imgs/close.png"
+                                          action="fuentes"
+                                          visible="#{pomtplan.planOrdenamiento.codigo==null ||pomtplan.planOrdenamiento.codigo==0}"/>
+                        <af:commandButton text="#{viewcontrollerBundle.menu_regresar}"
+                                          binding="#{pomtplan.cb_regresar}"
+                                          id="cb_regresar"
+                                          visible="#{pomtplan.planOrdenamiento.codigo!=null &amp;&amp;  pomtplan.planOrdenamiento.codigo>0}"
+                                          action="fuentes"
+                                          icon="/imgs/back.png"/>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <af:panelGroupLayout binding="#{pomtplan.pgl_archivo}"
+                                         id="pgl_archivo"
+                                         visible="#{pomtplan.planOrdenamiento.archivo!=null}">
+                      <af:commandLink text="#{viewcontrollerBundle.MOSTRAR}"
+                                      binding="#{pomtplan.cl1}" id="cl1"
+                                      actionListener="#{pomtplan.cl_documento_actionListener}"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{pomtplan.s4}" id="s4"/>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                        binding="#{pomtplan.cb_borrar_docto}"
+                                        id="cb_borrar_docto"
+                                        icon="/imgs/cross_24.png"
+                                        actionListener="#{pomtplan.cb_borrar_docto_actionListener}"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{pomtplan.s6}" id="s6"/>
+                    <af:outputLabel value="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}"
+                                    binding="#{pomtplan.ol1}" id="ol1"
+                                    visible="#{pomtplan.planOrdenamiento.codigo!=null &amp;&amp;  pomtplan.planOrdenamiento.codigo>0}"/>
+                    <af:panelCollection binding="#{pomtplan.pc1}" id="pc1"
+                                        inlineStyle="width:90.0%;"
+                                        visible="#{pomtplan.planOrdenamiento.codigo!=null &amp;&amp;  pomtplan.planOrdenamiento.codigo>0}">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{pomtplan.m_menu}"
+                                 id="m_menu">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.OFERTA_Y_DEMANDA}"
+                                              binding="#{pomtplan.cmi_porh}"
+                                              id="cmi_porh"
+                                              action="#{pomtplan.getAccion}"
+                                              actionListener="#{pomtplan.cmi_porh_actionListener}"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{pomtplan.listaTramos}" var="row"
+                                binding="#{pomtplan.t_tramos}" id="t_tramos"
+                                width="100%"
+                                emptyText="#{viewcontrollerBundle.NO_HAY_REGISTROS}"
+                                rowSelection="single" autoHeightRows="10"
+                                contentDelivery="immediate"
+                                selectionListener="#{pomtplan.t_tramos_selectionListener}">
+                        <af:column sortable="false" headerText="Nombre"
+                                   align="start" id="c19" width="200">
+                          <af:outputText value="#{row.nombre}" id="ot14"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Descripcion"
+                                   align="start" id="c9" width="200">
+                          <af:outputText value="#{row.descripcion}" id="ot16"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Longitud"
+                                   align="start" id="c7">
+                          <af:outputText value="#{row.longitud}" id="ot9"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Tipo Flujo"
+                                   align="start" id="c8">
+                          <af:outputText value="#{row.tipoFlujo.valor}" id="ot13"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <af:spacer width="10" height="10"
+                               binding="#{pomtplan.s7}" id="s7"/>
+                  </af:panelFormLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{pomtplan.pgl3}"
+                                     id="pgl3">
+                  <af:popup binding="#{pomtplan.p1}"
+                            id="p1">
+                    <af:dialog binding="#{pomtplan.d1}"
+                               id="d1"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                               dialogListener="#{pomtplan.d_borrar_docto_dialogListener}">
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_BORRAR_ARCHIVO} al Plan de Ordenamiento?"
+                                     binding="#{pomtplan.ot1}"
+                                     id="ot1"/>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelFormLayout binding="#{pomtplan.pfl2}" id="pfl2"
+                                    rows="2">
+                  <f:facet name="footer"/>
+                  <af:inputText label="#{viewcontrollerBundle.FNT_NOMBRE}"
+                                binding="#{pomtplan.it_nombre}"
+                                id="it_nombre"
+                                value="#{pomtplan.fuente.nombre}"
+                                readOnly="true"/>
+                  <af:inputText label="#{viewcontrollerBundle.FNT_COMPARTIDA}"
+                                binding="#{pomtplan.it_compartida}"
+                                id="it_compartida"
+                                value="#{pomtplan.esCompartida}"
+                                readOnly="true"/>
+                  <af:inputText label="#{viewcontrollerBundle.FNT_DESCRIPCION}"
+                                binding="#{pomtplan.it_descripcion}"
+                                id="it_descripcion"
+                                value="#{pomtplan.fuente.descripcion}"
+                                readOnly="true"/>
+                  <af:inputText label="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}"
+                                binding="#{pomtplan.it_tiene_tramos}"
+                                id="it_tiene_tramos"
+                                value="#{pomtplan.tieneTramos}"
+                                readOnly="true"/>
+                  <af:inputText label="#{viewcontrollerBundle.CPT_TIPO_FUENTE}"
+                                binding="#{pomtplan.it_tipo}"
+                                id="it_tipo"
+                                value="#{pomtplan.fuente.idTipoFuente.valor}"
+                                readOnly="true"/>
+                </af:panelFormLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:pomtplan-->
+</jsp:root>

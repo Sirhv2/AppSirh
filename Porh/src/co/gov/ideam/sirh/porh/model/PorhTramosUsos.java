@@ -1,0 +1,144 @@
+package co.gov.ideam.sirh.porh.model;
+
+import co.gov.ideam.sirh.parametros.model.Lista;
+
+import java.io.Serializable;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.id.SequenceGenerator;
+
+@Entity
+@NamedQueries({
+  @NamedQuery(name = "PorhTramosUsos.findAllByPorhTramo", query = "select o from PorhTramosUsos o where o.porh_id = :codigoPorh and o.tramo_id = :codigoTramo"),
+  @NamedQuery(name = "PorhTramosUsos.findAllByTramo", query = "select o from PorhTramosUsos o where o.tramo_id = :codigoTramo"),
+  @NamedQuery(name = "PorhTramosUsos.find", query = "select o from PorhTramosUsos o where o.id = :codigo"),
+  @NamedQuery(name = "PorhTramosUsos.deleteByPlan", query = "delete from PorhTramosUsos o where o.porh_id = :codigoPlan")
+})
+@Table(name = "porh_tramos_usos")
+public class PorhTramosUsos implements Serializable {
+    @GenericGenerator(name = "porh_generator", 
+                      strategy = "co.gov.ideam.sirh.usuarios.agua.model.IdeamSirhGenerator",
+                      parameters = {@Parameter(name = "AutoridadAmbientalId", value = "codigoAutoridad"),
+                                    @Parameter(name = "Codigo", value = "id"),
+                                    @Parameter(name = SequenceGenerator.SEQUENCE,  value= "seq_porh")})    
+    @Id
+    //@GeneratedValue(generator = "porh_generator")        
+    @Column(name="id", nullable = false)
+    private Long id;
+    @Column(name="porh_id", nullable = false)
+    private Long porh_id;
+    @Column(name="tramo_id", nullable = false)
+    private Long tramo_id;
+    @JoinColumn(name = "uso_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Lista usoPermitido;
+    @Transient
+    private Long codigoAutoridad;    
+    /*
+    @Column(name="uso_id", nullable = false)
+    private Integer uso_id;
+    */
+    
+    @OneToMany(mappedBy = "porhTramosUsos", fetch = FetchType.EAGER)
+    private List<PorhTramosUsosPlazos> porhTramosUsosPlazosList;
+
+    public PorhTramosUsos() {
+    }
+
+    public PorhTramosUsos(Long id, Long porh_id, Long tramo_id,
+                          Long uso_id) {
+        this.id = id;
+        this.porh_id = porh_id;
+        this.tramo_id = tramo_id;        
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPorh_id() {
+        return porh_id;
+    }
+
+    public void setPorh_id(Long porh_id) {
+        this.porh_id = porh_id;
+    }
+
+    public Long getTramo_id() {
+        return tramo_id;
+    }
+
+    public void setTramo_id(Long tramo_id) {
+        this.tramo_id = tramo_id;
+    }
+
+    public List<PorhTramosUsosPlazos> getPorhTramosUsosPlazosList() {
+        return porhTramosUsosPlazosList;
+    }
+
+    public void setPorhTramosUsosPlazosList(List<PorhTramosUsosPlazos> porhTramosUsosPlazosList) {
+        this.porhTramosUsosPlazosList = porhTramosUsosPlazosList;
+    }
+
+    public PorhTramosUsosPlazos addPorhTramosUsosPlazos(PorhTramosUsosPlazos porhTramosUsosPlazos) {
+        getPorhTramosUsosPlazosList().add(porhTramosUsosPlazos);
+        porhTramosUsosPlazos.setPorhTramosUsos(this);
+        return porhTramosUsosPlazos;
+    }
+
+    public PorhTramosUsosPlazos removePorhTramosUsosPlazos(PorhTramosUsosPlazos porhTramosUsosPlazos) {
+        getPorhTramosUsosPlazosList().remove(porhTramosUsosPlazos);
+        porhTramosUsosPlazos.setPorhTramosUsos(null);
+        return porhTramosUsosPlazos;
+    }
+
+    public Lista getUsoPermitido() {
+        return usoPermitido;
+    }
+
+    public void setUsoPermitido(Lista usoPermitido) {
+        this.usoPermitido = usoPermitido;
+    }
+
+    public Long getCodigoAutoridad() {
+        return codigoAutoridad;
+    }
+
+    public void setCodigoAutoridad(Long codigoAutoridad) {
+        this.codigoAutoridad = codigoAutoridad;
+    }
+    
+    public PorhTramosUsosPlazos getPlazo(String tipoPlazo){
+        if(this.getPorhTramosUsosPlazosList()!=null){
+            Iterator<PorhTramosUsosPlazos> it = this.getPorhTramosUsosPlazosList().iterator();
+            while(it.hasNext()){
+                PorhTramosUsosPlazos plazo = it.next();
+                if(plazo.getObjetivo().equalsIgnoreCase(tipoPlazo)){
+                    return plazo;
+                }
+            }
+        }
+        return null;
+    }
+}

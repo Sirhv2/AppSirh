@@ -1,0 +1,33 @@
+<?xml version='1.0' ?>
+<map version="1.0">   
+    <mapID target="seguridad_login" url="login.html" />
+    <mapID target="usuarios" url="usuarios.html" />
+    <mapID target="detalleUsuario" url="detalleUsuario.html" />
+    <mapID target="adicionarUsuario" url="adicionarUsuario.html" />
+    <mapID target="antesDeEmpezar" url="antesDeEmpezar.html" />
+    <mapID target="detallePredio" url="detallePredio.html" />
+    <mapID target="detalleConcesion" url="detalleConcesion.html" />
+    <mapID target="concesiones" url="concesiones.html" />
+    <mapID target="Permisos" url="Permisos.html" /> 
+    <mapID target="fuentes" url="fuentes.html" />
+    <mapID target="detalleFuente" url="detalleFuente.html" />  
+    <mapID target="adicionarTramo" url="adicionarTramo.html" /> 
+    <mapID target="adicionarFuente" url="adicionarFuente.html" /> 
+
+
+     <mapID target="adicionarPuntosMonitoreo" url="adicionarPuntosMonitoreo.html" /> 
+     <mapID target="puntosdeMonitoreo" url="puntosdeMonitoreo.html" /> 
+     <mapID target="detallePuntoMonitoreo" url="detallePuntoMonitoreo.html" /> 
+
+     <mapID target="adicionarFuente" url="adicionarFuente.html" /> 
+     <mapID target="detalleMuestra" url="detalleMuestra.html" />
+     <mapID target="muestras" url="muestras.html" />
+     <mapID target="adicionarMuestra" url="adicionarMuestra.html" /> 
+     <mapID target="adicionarMedicion" url="adicionarMedicion.html" /> 
+
+     <mapID target="estadoConflicto" url="estadoConflicto.html" /> 
+     <mapID target="particularidadesConflicto" url="particularidadesConflicto.html" />
+     <mapID target="sectorProyecto" url="sectorProyecto.html" />
+     <mapID target="actoresIdentificados" url="actoresIdentificados.html" />
+    
+</map>

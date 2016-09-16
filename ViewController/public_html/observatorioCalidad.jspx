@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{observatorioCalidadBacking.document1}"
+                 id="document1">
+      <af:form binding="#{observatorioCalidadBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioCalidadBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="0px">
+              <f:facet name="center">
+                <af:switcher binding="#{observatorioCalidadBacking.centerSwitcher}"
+                             id="centerSwitcher" defaultFacet="restored">
+                  <f:facet name="restored">
+                    <af:panelStretchLayout binding="#{observatorioCalidadBacking.psl2}"
+                                           id="psl2" topHeight="50px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelDashboard binding="#{observatorioCalidadBacking.dashboard}"
+                                           id="dashboard" shortDesc="panel"
+                                           columns="2" rowHeight="175px">
+                          <af:dataFlavor flavorClass="javax.faces.component.UIComponent"
+                                         discriminant="fromDashboardSideBar"/>
+                          <af:panelBox text="Número de Muestras de Calidad - Autoridades Ambientales"
+                                       binding="#{observatorioCalidadBacking.muestrasTipo}"
+                                       rendered="false" id="muestrasTipo"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioCalidadBacking.dc28}"
+                                                       id="dc28"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc29"
+                                                     viewId="estadisticas/muestrasPorTipo.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc29}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Muestras de Calidad Por Año - Autoridades Ambientales"
+                                       binding="#{observatorioCalidadBacking.muestrasAnio}"
+                                       rendered="false" id="muestrasAnio"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioCalidadBacking.dc30}"
+                                                       id="dc30"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc31"
+                                                     viewId="estadisticas/muestrasPorAnio.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc31}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Número de Muestras de Calidad - IDEAM"
+                                       binding="#{observatorioCalidadBacking.muestrasTipoIdeam}"
+                                       id="muestrasTipoIdeam" rendered="false"
+                                       showDisclosure="false" visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioCalidadBacking.dc36}"
+                                                       id="dc36"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc37"
+                                                     viewId="estadisticas/muestrasPorTipoIdeam.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc37}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Muestras de Calidad Por Año - IDEAM"
+                                       binding="#{observatorioCalidadBacking.muestrasAnioIdeam}"
+                                       id="muestrasAnioIdeam" rendered="false"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioCalidadBacking.dc38}"
+                                                       id="dc38"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc39"
+                                                     viewId="estadisticas/muestrasPorAnioIdeam.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc39}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Estadisticas por parametros de calidad"
+                                       binding="#{observatorioCalidadBacking.boxParametros}"
+                                       id="boxParametros" showDisclosure="false"
+                                       type="stretch" visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioCalidadBacking.dc32}"
+                                                       id="dc32"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc33"
+                                                     viewId="estadisticas/enlacesParametros.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc33}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Red Monitoreo IDEAM"
+                                       binding="#{observatorioCalidadBacking.boxRedIdeam}"
+                                       id="boxRed" showDisclosure="false"
+                                       type="stretch" visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioCalidadBacking.dc34}"
+                                                       id="dc34"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc35"
+                                                     viewId="calidadIdeam/enlacesParametros.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc35}"/>
+                          </af:panelBox>
+                        </af:panelDashboard>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top">
+                        <af:panelGroupLayout binding="#{observatorioCalidadBacking.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="vertical">
+                          <af:panelGroupLayout layout="horizontal">
+                            <af:navigationPane binding="#{observatorioCalidadBacking.npItems}"
+                                               id="npItems" hint="bar">
+                              <af:commandNavigationItem text="Observatorio"
+                                                        binding="#{observatorioCalidadBacking.commandNavigationItem1}"
+                                                        id="commandNavigationItem1"
+                                                        action="observatorio"/>
+                              <af:spacer width="10" height="10"/>
+                              <af:commandNavigationItem text="Observatorio Aguas Superficiales "
+                                                        action="observatorioSuperficiales"/>
+                              <af:forEach var="item"
+                                          items="#{observatorioCalidadBacking.listaCategoriasCalidad}">
+                                <af:spacer width="10" height="10" id="s3"/>
+                                <af:commandNavigationItem text="#{item.nombre}"
+                                                          id="cni1"
+                                                          actionListener="#{observatorioCalidadBacking.showPresetItems}"
+                                                          partialSubmit="true"
+                                                          immediate="true">
+                                  <af:panelDashboardBehavior for="dashboard"
+                                                             index="#{observatorioCalidadBacking.indexIfRendered}"
+                                                             type="insert"/>
+                                </af:commandNavigationItem>
+                              </af:forEach>
+                              <af:commandNavigationItem text="Todo"
+                                                        binding="#{observatorioCalidadBacking.commandNavigationItem2}"
+                                                        id="commandNavigationItem2"
+                                                        actionListener="#{observatorioCalidadBacking.restaurarTodo}"
+                                                        partialSubmit="true"
+                                                        immediate="true"/>
+                            </af:navigationPane>
+                          </af:panelGroupLayout>
+                          <!-- <af:panelGroupLayout binding="#{observatorioCalidadBacking.panelGroupLayout2}"
+                                               id="panelGroupLayout2">
+                            <af:spacer width="5" height="10"
+                                       binding="#{observatorioCalidadBacking.spacer2}"
+                                       id="spacer2"/>
+                            <jsp:include page="/calidad/filtrosCalidad.jsff" />
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="10"
+                                     binding="#{observatorioCalidadBacking.spacer1}"
+                                     id="spacer1"/>
+                          <af:panelGroupLayout binding="#{observatorioCalidadBacking.panelGroupLayout3}"
+                                               id="panelGroupLayout3"
+                                               layout="vertical" halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                              binding="#{observatorioCalidadBacking.cb_buscar}"
+                                              id="cb_buscar"
+                                              icon="/imgs/binoculars_24.png"
+                                              actionListener="#{observatorioCalidadBacking.cb_buscar_actionListener}"/>
+                          </af:panelGroupLayout>-->
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="maximized">
+                    <af:panelStretchLayout binding="#{observatorioCalidadBacking.psl3}"
+                                           id="psl3">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{observatorioCalidadBacking.maximizedTitle}"
+                                     binding="#{observatorioCalidadBacking.pb_max}"
+                                     id="pb_max" showDisclosure="false">
+                          <f:facet name="toolbar">
+                            <af:declarativeComponent viewId="dashBoard/toolbarMaximized.jsff"
+                                                     binding="#{observatorioCalidadBacking.dc12}"
+                                                     id="dc12"/>
+                          </f:facet>
+                          <af:declarativeComponent id="dc11"
+                                                   viewId="#{observatorioCalidadBacking.maximizedPanelUrl}"
+                                                   binding="#{observatorioCalidadBacking.dc11}"/>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:switcher>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioCalidadBacking-->
+</jsp:root>

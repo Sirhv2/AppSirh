@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelStretchLayout binding="#{muestrasPorTipo.panelStretchLayout1}"
+                         id="panelStretchLayout1" topHeight="0px"
+                         bottomHeight="1px" startWidth="7px" endWidth="16px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+    
+              <dvt:barGraph id="barGraphMuestrasFuente"
+           subType="BAR_VERT_CLUST"
+                        binding="#{muestrasPorTipo.barGraphMuestrasFuente}"
+                        threeDEffect="true" imageHeight="1000"
+                              imageWidth="1000" contentDelivery="immediate"
+                              dynamicResize="DYNAMIC_SIZE"
+                              drillingEnabled="true"
+                                animationOnDisplay="AUTO"
+                                          
+                        value="#{muestrasPorTipo.graphData}"
+                        >
+            <dvt:background>
+              <dvt:specialEffects/>
+            </dvt:background>
+            <dvt:graphPlotArea/>
+            <dvt:seriesSet>
+              <dvt:series/>
+            </dvt:seriesSet>
+            <dvt:markerText>
+            <dvt:x1Format>
+            <dvt:numberFormat decimalDigit="0"/>
+            </dvt:x1Format>
+            <dvt:y1Format>
+                   <dvt:numberFormat decimalDigit="0" numberType="NUMTYPE_GENERAL" 
+                    scaleFactor="SCALEFACTOR_NONE"
+                    > 
+                     </dvt:numberFormat>  
+            </dvt:y1Format>
+        </dvt:markerText>
+            <dvt:o1Axis/>
+            <dvt:y1Axis/>
+            <dvt:legendArea automaticPlacement="AP_NEVER"/>
+          </dvt:barGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:muestrasPorTipo-->
+</jsp:root>

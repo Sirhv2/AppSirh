@@ -1,0 +1,37 @@
+package co.gov.ideam.sirh.porh.model;
+
+import java.io.Serializable;
+
+public class TotalCapVertTO implements Serializable{
+    private String nombre;
+    private Long legales;
+    private Long ilegales;
+        
+    public TotalCapVertTO() {
+        super();
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Long getLegales() {
+        return legales;
+    }
+
+    public void setLegales(Long legales) {
+        this.legales = legales;
+    }
+
+    public Long getIlegales() {
+        return ilegales;
+    }
+
+    public void setIlegales(Long ilegales) {
+        this.ilegales = ilegales;
+    }
+}

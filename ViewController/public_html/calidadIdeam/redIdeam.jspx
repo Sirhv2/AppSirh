@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{redIdeamBean.document1}" id="document1">
+      <af:form binding="#{redIdeamBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{redIdeamBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="3px"
+                                   endWidth="2px" topHeight="32px"
+                                   bottomHeight="4px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{redIdeamBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="210"
+                                  disabled="true" orientation="vertical">
+                  <f:facet name="first">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{redIdeamBean.panelGroupLayout3}"
+                                         id="panelGroupLayout3"
+                                         layout="default">
+                      <jsp:include flush="true"
+                                   page="/calidadIdeam/filtrosCalidadIdeam.jsff"/>
+                      <af:spacer width="10" height="10"
+                                 binding="#{redIdeamBean.spacer4}"
+                                 id="spacer4"/>
+                      <af:panelFormLayout binding="#{redIdeamBean.panelFormLayout1}"
+                                          id="panelFormLayout1" rows="1"
+                                          maxColumns="4">
+                        <f:facet name="footer"/>
+                        <af:spacer width="100" height="10"
+                                   binding="#{redIdeamBean.spacer5}"
+                                   id="spacer5"/>
+                        <af:panelGroupLayout binding="#{redIdeamBean.panelGroupLayout4}"
+                                             id="panelGroupLayout4"
+                                             layout="horizontal" halign="center"
+                                             inlineStyle="width:352px;">
+                          <af:activeOutputText value="Generando el reporte ICA 5, 6 y 7 variables"
+                                               binding="#{redIdeamBean.titRepIca}"
+                                               id="titRepIca"
+                                               inlineStyle="font-size:small; font-weight:bold; text-align:center; color:Blue;"
+                                               visible="false"/>
+                        </af:panelGroupLayout>
+                        <af:spacer width="10" height="10"
+                                   binding="#{redIdeamBean.spacer6}"
+                                   id="spacer6"/>
+                        <af:panelGroupLayout binding="#{redIdeamBean.panelGroupLayout2}"
+                                             id="panelGroupLayout2"
+                                             layout="vertical">
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                            binding="#{redIdeamBean.cb_buscar}"
+                                            id="cb_buscar"
+                                            icon="/imgs/binoculars_24.png"
+                                            immediate="true"
+                                            actionListener="#{redIdeamBean.cb_buscar_actionListener}"/>
+                        </af:panelGroupLayout>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelCollection binding="#{redIdeamBean.panelCollection1}"
+                                        id="panelCollection1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                  binding="#{redIdeamBean.menu1}"
+                                 id="menu1">
+                          <af:commandMenuItem text="Consultar"
+                                              binding="#{redIdeamBean.cmiConsultar}"
+                                              id="cmiConsultar"
+                                              immediate="true"
+                                              partialSubmit="true"
+                                              action="#{redIdeamBean.getAccion}"
+                                              actionListener="#{redIdeamBean.cmiConsultar_actionListener}"
+                                              />
+                          <af:commandMenuItem text="Generar Reporte ICA"
+                                              binding="#{redIdeamBean.reporteIca}"
+                                              id="reporteIca"
+                                              actionListener="#{redIdeamBean.reporteIca_actionListener}"
+                                              immediate="true"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table var="row" 
+                                binding="#{redIdeamBean.tresult}"
+                                value="#{redIdeamBean.datosList}"
+                                id="tresult"
+                                rowSelection="single"
+                                rowBandingInterval="1"
+                                emptyText="No hay datos para mostrar"
+                                contentDelivery="immediate"
+                                selectionListener="#{redIdeamBean.tresult_selectionListener}"
+                                >
+                        <af:column sortable="false" headerText="Num" width="35"
+                                   align="center">
+                          <af:outputText value="#{row.num}"
+                                         inlineStyle="text-align:right;"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                     headerText="#{viewcontrollerBundle.PTO_NOMBRE}"
+                                     width="350" sortProperty="punto"
+                                   align="left">
+                            <af:outputText value="#{row.punto}"
+                                           inlineStyle="text-align:left;"/>
+                          </af:column>
+                        <af:column headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   width="250" sortable="true"
+                                   sortProperty="fuente" align="left">
+                          <af:outputText value="#{row.fuente}"/>
+                        </af:column>
+                        <af:column headerText="#{viewcontrollerBundle.TRM_AREA}"
+                                     width="115" sortable="true"
+                                     sortProperty="area" align="left">
+                            <af:outputText value="#{row.area}"/>
+                        </af:column>
+                          <af:column headerText="#{viewcontrollerBundle.TRM_ZONA}"
+                                     width="150" sortProperty="zona"
+                                     sortable="true" align="left">
+                            <af:outputText value="#{row.zona}"/>
+                          </af:column>
+                        <af:column headerText="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                   width="230" sortable="true"
+                                   sortProperty="subzona" align="left">
+                          <af:outputText value="#{row.subzona}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                   width="150">
+                          <af:outputText value="#{row.departamento}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.MUNICIPIO}">
+                          <af:outputText value="#{row.municipio}"/>
+                        </af:column>
+                        <af:column headerText="Latitud" width="90"
+                                   align="left">
+                            <af:outputText value="#{row.latitud}"
+                                           inlineStyle="text-align:right;"/>
+                          </af:column>
+                        <af:column
+                                   headerText="Dirección Latitud"
+                                   width="50" sortProperty="codCatalogoEs"
+                                   align="center">
+                          <af:outputText value="#{row.direccionLatitud}"
+                                         inlineStyle="text-align:left;"/>
+                        </af:column>
+                        <af:column headerText="Longitud " width="90"
+                                   align="left">
+                          <af:outputText value="#{row.longitud}"
+                                         inlineStyle="text-align:right;"/>
+                        </af:column>
+                        <af:column
+                                   headerText="Dirección Longitud" width="50"
+                                   align="center">
+                          <af:outputText value="#{row.direccionLongitud}"/>
+                        </af:column>
+                        <af:column headerText="#{viewcontrollerBundle.PTO_ALTITUD}"
+                                     width="70" align="right">
+                            <af:outputText value="#{row.altitud}">
+                            <af:convertNumber type="number" integerOnly="false"
+                                              maxFractionDigits="5"/>
+                          </af:outputText>
+                          </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{redIdeamBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal">
+                                    
+                  <af:spacer width="10" height="10"
+                             binding="#{redIdeamBean.spacer2}" id="spacer2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBSERVATORIO_OBSERVATORIO}"
+                                  binding="#{redIdeamBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="observatorio"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{redIdeamBean.spacer3}" id="spacer3"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBS_CAL_COMPONENTE}"
+                                  binding="#{redIdeamBean.commandLink2}"
+                                  id="commandLink2"
+                                  action="calidadInicio"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{redIdeamBean.spacer1}" id="spacer1"/>
+                  <af:outputText value="#{viewcontrollerBundle.CAL_IDEAM}"
+                                 binding="#{redIdeamBean.outputText6}"
+                                 id="outputText6"/>
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:redIdeamBean-->
+</jsp:root>

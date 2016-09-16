@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright (c) 2008, 2009, Oracle and/or its affiliates.
+All rights reserved. -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:inlineFrame id="viewTopicFrame" 
+                  styleClass="ViewTopicInlineFrame"
+                  source="#{ohw.topicNavigator.currentTopicContentFile}"
+                  visible="#{ohw.topicNavigator.displayTopicContent}"
+                  clientComponent="true"
+                  binding="#{ohw.view.topicInlineFrame}"/>
+  <af:panelHeader id="aboutOHWPanelHeader"
+                  text="#{ohw.richResourceBundle['ohwabout.title']}"
+                  visible="#{ohw.topicNavigator.displayAboutOHW}" size="-1"
+                  clientComponent="true">
+    <af:panelGroupLayout layout="vertical" id="pgl1_vt">
+      <af:outputText value="#{ohw.richResourceBundle['ohwabout.line1']}" id="ot1_vt"/>
+      <af:outputText value="#{ohw.richResourceBundle['ohwabout.line2']}" id="ot2_vt"/>
+      <af:spacer width="0" height="20" id="s1_vt"/>
+      <af:outputText value="#{ohw.richResourceBundle['ohwabout.version']}" id="ot3_vt"/>
+      <af:outputText value="#{ohw.richResourceBundle['ohwabout.copyrights_info']}" id="ot4_vt"/>
+    </af:panelGroupLayout>
+  </af:panelHeader>
+</jsp:root>

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{conflicto.d2}">
+      <af:form id="f2" binding="#{conflicto.f2}" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{conflicto.psl_total}"
+                                   id="psl_total"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="52px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelBox text="Conflictos registrados a la fuente" binding="#{conflicto.pb1}"
+                             id="pb1" showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection binding="#{conflicto.panelCollection1}"
+                                      id="panelCollection1"
+                                      inlineStyle="width:100%;">
+                    <f:facet name="menus">
+                      <af:menu text="Opciones"
+                               binding="#{conflicto.menu1}" id="menu1">
+                        <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                            binding="#{conflicto.commandMenuItem1}"
+                                            id="commandMenuItem1"
+                                            icon="/imgs/add.png"
+                                            visible="#{ FuentesBean.visiblePerfil}"
+                                            action="adicionarConflicto"/>
+                        <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                            binding="#{conflicto.commandMenuItem2}"
+                                            id="commandMenuItem2"
+                                            icon="/imgs/edit_24.png"
+                                            visible="#{ FuentesBean.visiblePerfil}"
+                                            immediate="true"
+                                            partialSubmit="true"
+                                            actionListener="#{conflicto.cmi_editar_actionListener}"
+                                            action="#{conflicto.getAccion}"/>
+                      </af:menu>
+                    </f:facet>
+                    <af:table var="row" binding="#{conflicto.t_conflictos}"
+                              id="t_conflictos" rowSelection="single"
+                              value="#{conflicto.listaConflictos}"
+                              rowBandingInterval="1"
+                              emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                              selectionListener="#{conflicto.t_conflictos_selectionListener}">
+                      <af:column sortable="true"
+                                 headerText="Nombre conflicto"
+                                 sortProperty="nombre" width="126">
+                        <af:outputText value="#{row.nombre}"/>
+                      </af:column>
+                      <af:column sortable="false" headerText="Fecha Registro">
+                        <af:outputText value="#{row.fechaRegistro}"/>
+                      </af:column>
+                      <af:column sortable="false" headerText="Estado">
+                        <af:outputText value="#{row.nomEstado}"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{conflicto.pgl3}"
+                                     id="pgl3"/>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelStretchLayout binding="#{conflicto.psl1}" id="psl1"
+                                       startWidth="0px" endWidth="0px"
+                                       topHeight="20px" bottomHeight="70px">
+                  <f:facet name="center">
+                    <af:panelFormLayout binding="#{conflicto.pfl2}" id="pfl2"
+                                        rows="1">
+                      <af:inputText label="Nombre Fuente"
+                                    binding="#{conflicto.it_nombre}"
+                                    id="it_nombre"
+                                    value="#{conflicto.fuente.nombre}"
+                                    readOnly="true"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top">
+                    <af:panelGroupLayout binding="#{conflicto.pgl4}"
+                                         id="pgl4"
+                                         layout="horizontal">
+                      <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                      binding="#{conflicto.cl4}" id="cl4"
+                                      action="fuentes"/>
+                      <af:spacer width="10" height="10" id="sf6"/>
+                      <af:commandLink text="Fuente:  #{conflicto.fuente.nombre}"
+                                      id="clf3" action="detalleFuente"/>
+                      <af:spacer width="10" height="10" id="s6ccc"/>
+                      <af:commandLink text="Tramo:  #{conflicto.tramo.nombre}"
+                                      id="cl3" action="detalleTramo"/>
+                      <af:spacer width="25" height="10" id="spacerporh"/>
+                      <af:commandLink text="#{viewcontrollerBundle.PORH}"
+                                      id="clPorh"
+                                      visible="#{conflicto.planSeleccionadoPorh != null}"
+                                      action="priorizacion"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:conflicto-->
+</jsp:root>

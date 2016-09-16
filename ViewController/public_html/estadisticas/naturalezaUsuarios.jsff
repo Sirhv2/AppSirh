@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelStretchLayout binding="#{naturalezaUsuarios.psl1}" id="psl1"
+                         startWidth="0px" endWidth="0px" topHeight="0px"
+                         bottomHeight="0px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <dvt:pieGraph id="pg_naturaleza" subType="PIE" visualEffects="AUTO"
+                    binding="#{naturalezaUsuarios.pg_naturaleza}"
+                    value="#{naturalezaUsuarios.graphData}"
+                    threeDEffect="true"
+                    shortDesc="#{viewcontrollerBundle.NATURALEZA_DE_USUARIOS}"
+                    contentDelivery="immediate"  animationOnDisplay="AUTO"
+                    clickListener="#{naturalezaUsuarios.pg_naturaleza_clickListener}"
+                    dynamicResize="DYNAMIC_SIZE">
+        <dvt:background fillTransparent="true">
+          <dvt:specialEffects/>
+        </dvt:background>
+        <dvt:graphPieFrame/>
+        <dvt:seriesSet>
+          <dvt:series pieSliceExplode="100"/>
+        </dvt:seriesSet>
+        <dvt:sliceLabel textType="LD_TEXT_PERCENT" rendered="true">
+          <dvt:numberFormat decimalDigit="0" thousandSeparator="."/>
+        </dvt:sliceLabel>
+        <dvt:pieLabel rendered="true" text="Grafica"/>
+      </dvt:pieGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end">
+      <af:panelGroupLayout binding="#{naturalezaUsuarios.pgl1}" id="pgl1">
+        <af:popup binding="#{naturalezaUsuarios.p_detalle}" id="p_detalle">
+          <af:dialog binding="#{naturalezaUsuarios.d_detalle}" id="d_detalle"
+                     affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                     cancelTextAndAccessKey="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                     title="#{viewcontrollerBundle.VER_DETALLE}" type="none"
+                     modal="false" closeIconVisible="false">
+            <af:outputText value="#{viewcontrollerBundle.DESEA_VER_DETALLE}"
+                           binding="#{naturalezaUsuarios.ot_detalle}"
+                           id="ot_detalle"/>
+            <f:facet name="buttonBar">
+              <af:panelGroupLayout binding="#{naturalezaUsuarios.pgl2}"
+                                   id="pgl2">
+                <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                  binding="#{naturalezaUsuarios.cb_si_detalle}"
+                                  id="cb_si_detalle"
+                                  actionListener="#{naturalezaUsuarios.cb_si_detalle_actionListener}"
+                                  action="#{naturalezaUsuarios.getAction}"/>
+                <af:spacer width="10" height="10"
+                           binding="#{naturalezaUsuarios.s1}" id="s1"/>
+                <af:commandButton text="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                                  binding="#{naturalezaUsuarios.cb_no_detalle}"
+                                  id="cb_no_detalle"
+                                  actionListener="#{naturalezaUsuarios.cb_no_detalle_actionListener}"/>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:dialog>
+        </af:popup>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:naturalezaUsuarios-->
+</jsp:root>

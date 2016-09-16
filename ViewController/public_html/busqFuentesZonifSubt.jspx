@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{busqFuentesZonifSubt.documentF1}" id="documentF1">
+      <af:form binding="#{busqFuentesZonifSubt.formF1}" id="formF1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="ptf1">
+          <f:facet name="center">
+          
+           	<af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+    <af:panelBox inlineStyle="text-align: left;"  >
+                   <af:commandLink text="Observatorio Subterráneas "
+                                    action="observatorioSubterraneas"/>
+                    <af:spacer width="25" height="10" />
+                     <af:commandLink text="Demanda Aguas Subterráneas "
+                                    action="demandaSubt"/>
+                    <af:spacer width="25" height="10"/>
+		</af:panelBox>
+    </f:facet>
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			
+			 <af:panelStretchLayout binding="#{busqFuentesZonifSubt.pslf1}"
+                                   id="pslf1" startWidth="2px" endWidth="0px"
+                                   topHeight="26px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+              
+              
+              
+                <af:panelSplitter binding="#{busqFuentesZonifSubt.psf1}"
+                                  id="psf1" orientation="vertical"
+                                  splitterPosition="54" disabled="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{busqFuentesZonifSubt.pflf1}"
+                                        id="pflf1" maxColumns="10" rows="1"
+                                        labelAlignment="top">
+                      
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                                          binding="#{busqFuentesZonifSubt.selectOneChoice1}"
+                                          id="selectOneChoice1"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{busqFuentesZonifSubt.selectOneChoice1_valueChangeListener}"
+                                          autoSubmit="true" immediate="true"
+                                          helpTopicId="fuentes"
+                                          >
+                        <f:selectItems value="#{busqFuentesZonifSubt.listaArea}"
+                                       binding="#{busqFuentesZonifSubt.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_ZONA}"
+                                          binding="#{busqFuentesZonifSubt.selectOneChoice2}"
+                                          id="selectOneChoice2"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{busqFuentesZonifSubt.selectOneChoice2_valueChangeListener}"
+                                          autoSubmit="true" immediate="true"
+                                          >
+                        <f:selectItems value="#{busqFuentesZonifSubt.listaZona}"
+                                       binding="#{busqFuentesZonifSubt.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                          binding="#{busqFuentesZonifSubt.selectOneChoice3}"
+                                          id="selectOneChoice3"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          >
+                        <f:selectItems value="#{busqFuentesZonifSubt.listaSubzona}"
+                                       binding="#{busqFuentesZonifSubt.selectItems3}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                    binding="#{busqFuentesZonifSubt.it_fuente}"
+                                    id="it_fuente"
+                                    contentStyle="text-transform:uppercase"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                          binding="#{busqFuentesZonifSubt.selectAutoridad}"
+                                          id="selectAutoridad"  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                         >
+                        <f:selectItems  value="#{busqFuentesZonifSubt.listaAutoridades}"
+                                       binding="#{busqFuentesZonifSubt.selectItems4}"
+                                       id="selectItems4"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.PAR_SIGNO}"
+                                          binding="#{busqFuentesZonifSubt.selectSigno}"
+                                          id="selectSigno" unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems  value="#{busqFuentesZonifSubt.listaSignos}"
+                        binding="#{busqFuentesZonifSubt.selectItems5}"
+                                       id="selectItems5"/>
+                      </af:selectOneChoice>
+                      <af:inputText binding="#{busqFuentesZonifSubt.itCaudalCap}"
+                                    id="itCaudalCap" columns="5"
+                                    label="#{viewcontrollerBundle.CAUDAL_CONCESIONADO}"/>
+                      <af:inputText
+                                    binding="#{busqFuentesZonifSubt.itCaudalVert}"
+                                    id="itCaudalVert" columns="5"
+                                    label="#{viewcontrollerBundle.CAU_VERT}"/>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{busqFuentesZonifSubt.commandButton1}"
+                                        id="commandButton1"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{busqFuentesZonifSubt.commandButton1_actionListener}"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                      <af:panelCollection binding="#{busqFuentesZonifSubt.panelCollection1}"
+                                          id="panelCollection1"
+                                          inlineStyle="width:100%;">
+                        <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{busqFuentesZonifSubt.menu1}"
+                                 id="menu1">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.VER_DETALLE}"
+                                              binding="#{busqFuentesZonifSubt.cmi_imprimirDetalle}"
+                                              id="cmi_imprimirDetalle"
+                                               actionListener="#{busqFuentesZonifSubt.cmiImprimir_actionListener}"/>
+                        
+                        </af:menu>
+                      </f:facet>
+                      
+                      
+                      <af:table var="row" binding="#{busqFuentesZonifSubt.t_fuentes}"
+                                id="t_fuentes" rowSelection="single"
+                                value="#{busqFuentesZonifSubt.listaFuentes}"
+                                rowBandingInterval="1"
+                                selectionListener="#{busqFuentesZonifSubt.t_fuentes_selectionListener}"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                >
+                                
+                                  <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_TIPO}"
+                                   sortProperty="tipo_fuente" width="126">
+                          <af:outputText value="#{row.tipo_fuente}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_NOMBRE}"
+                                   sortProperty="fuente" width="126">
+                          <af:outputText value="#{row.fuente}"/>
+                        </af:column>
+                            <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_TRAMO}"
+                                   width="110">  
+                            <af:outputText value="#{row.tramo}"/>           
+                        </af:column>
+                        
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.TRM_AREA}"
+                                   width="110">
+                          <af:outputText value="#{row.area}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_ZONA}"
+                                   width="110">  
+                            <af:outputText value="#{row.zona}"/>           
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                   width="110">  
+                            <af:outputText value="#{row.subzona}"/>           
+                        </af:column>
+                        
+                          <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TIPOTRM}"
+                                   width="110">  
+                            <af:outputText value="#{row.tipo_tramite}"/>           
+                        </af:column>
+                           <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.NROTRM}"
+                                   width="110">  
+                            <af:outputText value="#{row.numero_tramites}"/>           
+                        </af:column>
+                           <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.CAUDAL}"
+                                   width="110">  
+                            <af:outputText value="#{row.caudal}"/>           
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                   width="244">
+                          <af:outputText value="#{row.autoridad}"/>
+                        </af:column>
+                       
+                        
+                      </af:table>
+                      
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+              
+                <af:panelGroupLayout binding="#{busqFuentesZonifSubt.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:panelFormLayout binding="#{busqFuentesZonifSubt.panelFormLayout1}"
+                                      id="panelFormLayout1" maxColumns="7"
+                                      rows="1">
+                    <af:commandLink text="&lt;&lt; Inicio"
+                                    binding="#{busqFuentesZonifSubt.link1}"
+                                    id="link1"
+                                    action="#{busqFuentesZonifSubt.getRedireccionar}"
+                                    actionListener="#{busqFuentesZonifSubt.redireccionarAOrigen}"/>
+                  </af:panelFormLayout>
+                      <af:spacer width="10" height="10"
+                             binding="#{busqFuentesZonifSubt.spacer2}"
+                             id="spacer2"/>
+                  <p>
+                     
+                  </p>
+                  <p>
+                      
+                  </p>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+             
+ 
+		<!-- fin -->
+		
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:busqFuentesZonifSubt-->
+</jsp:root>

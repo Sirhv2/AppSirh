@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{login.d2}" initialFocusId="pt1:itUsuario">
+      <af:form id="f2" binding="#{login.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:group binding="#{login.g1}" id="g1">
+              <af:panelStretchLayout binding="#{login.psl1}" id="psl1"
+                                     startWidth="30%" endWidth="30%"
+                                     topHeight="80px" bottomHeight="25%">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                  <af:panelFormLayout binding="#{login.pfl2}" id="pfl2">
+                    <f:facet name="footer">
+                      <af:group binding="#{login.g2}" id="g2">
+                        <af:panelGroupLayout binding="#{login.pgl2}" id="pgl2">
+                          <af:commandButton binding="#{login.cbAceptar}"
+                                            id="cbAceptar"
+                                            text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            actionListener="#{login.cbAceptar_actionListener}"
+                                            icon="/imgs/check_mark.png"
+                                            action="#{login.getForward}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{login.s5}" id="s5"/>
+                          <af:commandButton text="#{viewcontrollerBundle.RECORDAR_CLAVE}"
+                                            binding="#{login.cb_recordar_clave}"
+                                            id="cb_recordar_clave"
+                                            icon="/imgs/email.PNG"
+                                            actionListener="#{login.cb_recordar_clave_actionListener}"/>
+                        </af:panelGroupLayout>
+                        <af:popup binding="#{login.ppError}" id="ppError">
+                          <af:dialog binding="#{login.dialog}" id="dialog"
+                                     type="ok" title="Error"
+                                     closeIconVisible="true"
+                                     affirmativeTextAndAccessKey="Aceptar"
+                                     helpTopicId="seguridad_login">
+                            <af:outputText
+                                           binding="#{login.ot3}" id="ot3"
+                                           value="#{viewcontrollerBundle.login_error}"/>
+                          </af:dialog>
+                        </af:popup>
+                      </af:group>
+                    </f:facet>
+                    <af:inputText label="#{viewcontrollerBundle.login_campo_usuario}" binding="#{login.itUsuario}"
+                                  id="itUsuario" required="true"
+                                  helpTopicId="seguridad_login"/>
+                    <af:inputText label="#{viewcontrollerBundle.login_campo_clave}" binding="#{login.itClave}"
+                                  id="itClave" secret="true"
+                                  showRequired="true"/>
+                    <af:spacer width="10" height="10" binding="#{login.s4}"
+                               id="s4"/>
+                  </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="start">
+                  <af:spacer width="10" height="10" binding="#{login.s1}"
+                             id="s1"/>
+                </f:facet>
+                <f:facet name="end">
+                  <af:spacer width="10" height="10" binding="#{login.s2}"
+                             id="s2"/>
+                </f:facet>
+                <f:facet name="top">
+                  <af:panelGroupLayout layout="scroll"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       binding="#{login.pgl1}" id="pgl1"
+                                       halign="center">
+                    <af:spacer width="30" height="20" binding="#{login.s3}"
+                               id="s3"/>
+                    <af:outputText value="#{viewcontrollerBundle.login_titulo_1}" binding="#{login.ot1}"
+                                   id="ot1"
+                                   inlineStyle="color:rgb(30,124,171); font-family:Arial, Helvetica, sans-serif; font-size:x-large; align:center"/>
+                    <af:outputText value="#{viewcontrollerBundle.login_titulo_2}" binding="#{login.ot2}"
+                                   id="ot2"
+                                   inlineStyle="color:rgb(30,124,171); font-size:x-large; font-family:Arial, Helvetica, sans-serif;"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelStretchLayout>
+            </af:group>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+      <f:facet name="metaContainer">
+        <af:outputText value="&lt;link rel='SHORTCUT ICON' href='#{facesContext.externalContext.requestContextPath}/imgs/logoIdeam.jpg'/>" binding="#{login.ot4}" id="ot4"
+                       escape="false"/>
+      </f:facet>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:login-->
+</jsp:root>

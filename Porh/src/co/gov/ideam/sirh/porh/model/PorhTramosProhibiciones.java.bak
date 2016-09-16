@@ -1,0 +1,134 @@
+package co.gov.ideam.sirh.porh.model;
+
+import java.io.Serializable;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.id.SequenceGenerator;
+
+@Entity
+@NamedQueries({
+  @NamedQuery(name = "PorhTramosProhibiciones.findAllByPorhTramo", query = "select o from PorhTramosProhibiciones o where o.tramo_id = :codigoTramo"),
+  @NamedQuery(name = "PorhTramosProhibiciones.deleteByPlan", query = "delete from PorhTramosProhibiciones o where o.porhId = :codigoPlan"),
+  @NamedQuery(name = "PorhTramosProhibiciones.find", query = "select o from PorhTramosProhibiciones o where o.id = :codigo")
+})
+@Table(name = "porh_tramos_prohibiciones")
+public class PorhTramosProhibiciones implements Serializable {
+    @Column(name="fecha_final")
+    private Date fecha_final;
+    @Column(name="fecha_inicial", nullable = false)
+    private Date fecha_inicial;
+    
+    @GenericGenerator(name = "porh_generator", 
+                      strategy = "co.gov.ideam.sirh.usuarios.agua.model.IdeamSirhGenerator",
+                      parameters = {@Parameter(name = "AutoridadAmbientalId", value = "codigoAutoridad"),
+                                    @Parameter(name = "Codigo", value = "id"),
+                                    @Parameter(name = SequenceGenerator.SEQUENCE,  value= "seq_porh")})    
+    @Id
+   // @GeneratedValue(generator = "porh_generator")        
+    @Column(name="id", nullable = false)
+    private Long id;
+    @Column(name="justificacion", nullable = false)
+    private String justificacion;
+    @Column(name="sector", nullable = false)
+    private String sector;
+    @Column(name="tramo_id", nullable = false)
+    private Long tramo_id;
+    @Column(name="plan_id", nullable = false)
+    private Long porhId;    
+    @Transient
+    private Long codigoAutoridad;    
+
+    public PorhTramosProhibiciones() {
+    }
+
+    public PorhTramosProhibiciones(Date fecha_final,
+                                   Date fecha_inicial, Long id,
+                                   String justificacion, String sector,
+                                   Long tramo_id) {
+        this.fecha_final = fecha_final;
+        this.fecha_inicial = fecha_inicial;
+        this.id = id;
+        this.justificacion = justificacion;
+        this.sector = sector;
+        this.setTramo_id(tramo_id);
+    }
+
+    public Date getFecha_final() {
+        return fecha_final;
+    }
+
+    public void setFecha_final(Date fecha_final) {
+        this.fecha_final = fecha_final;
+    }
+
+    public Date getFecha_inicial() {
+        return fecha_inicial;
+    }
+
+    public void setFecha_inicial(Date fecha_inicial) {
+        this.fecha_inicial = fecha_inicial;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getJustificacion() {
+        return justificacion;
+    }
+
+    public void setJustificacion(String justificacion) {
+        this.justificacion = justificacion;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
+ 
+
+    public Long getCodigoAutoridad() {
+        return codigoAutoridad;
+    }
+
+    public void setCodigoAutoridad(Long codigoAutoridad) {
+        this.codigoAutoridad = codigoAutoridad;
+    }
+
+    public Long getPorhId() {
+        return porhId;
+    }
+
+    public void setPorhId(Long porhId) {
+        this.porhId = porhId;
+    }
+
+    public void setTramo_id(Long tramo_id) {
+        this.tramo_id = tramo_id;
+    }
+
+    public Long getTramo_id() {
+        return tramo_id;
+    }
+}

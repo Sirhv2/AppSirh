@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{metas.d2}">
+      <af:form id="f2" binding="#{metas.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{metas.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{metas.ps1}" id="ps1"
+                                  splitterPosition="636" disabled="true">
+                  <f:facet name="first">
+                    <af:panelBox text="#{viewcontrollerBundle.METAS_DE_DESCONTAMINACION}"
+                                 binding="#{metas.pb_metas}" id="pb_metas"
+                                 showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{metas.psl2}" id="psl2"
+                                             startWidth="0px" endWidth="0px"
+                                             topHeight="227px"
+                                             bottomHeight="0px"
+                                             inlineStyle="height:407px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{metas.pc1}" id="pc1"
+                                              featuresOff="detach">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{metas.listaMetas}" var="row"
+                                      rowBandingInterval="1"
+                                      binding="#{metas.t_metas}" id="t_metas"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      rowSelection="single"
+                                      selectionListener="#{metas.t_metas_selectionListener}">
+                              <af:column sortable="false" headerText="Parametro"
+                                         align="start" id="c4" width="200">
+                                <af:outputText value="#{row.parametro}"
+                                               id="ot2"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="Valor Actual" align="start"
+                                         id="c1">
+                                <af:outputText value="#{row.valorActual} #{row.unidad}"
+                                               id="ot3"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="Valor Meta" align="start"
+                                         id="c3">
+                                <af:outputText value="#{row.valorMeta} #{row.unidad}"
+                                               id="ot4"/>
+                              </af:column>
+                              <af:column sortable="false" headerText="Fecha"
+                                         align="start" id="c2">
+                                <af:outputText value="#{row.fecha}" id="ot1"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelGroupLayout layout="scroll"
+                                               xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                               binding="#{metas.panelGroupLayout1}"
+                                               id="panelGroupLayout1">
+                            <af:panelFormLayout binding="#{metas.panelFormLayout1}"
+                                                id="panelFormLayout1">
+                              <af:inputText label="#{viewcontrollerBundle.NUMERO_ACTO}"
+                                            binding="#{metas.tactAdm}"
+                                            id="tactAdm" maximumLength="10"
+                                            value="#{metas.tramo.actoAdm}"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_EXPEDICION_POLCA}"
+                                            binding="#{metas.dfecExp}"
+                                            id="dfecExp"
+                                            value="#{metas.tramo.fechaExp}"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_VIGENCIA_INI}"
+                                            binding="#{metas.dvigIni}"
+                                            id="dvigIni"
+                                            value="#{metas.tramo.vigenciaIni}"/>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA_VIGENCIA_FIN}"
+                                            binding="#{metas.dvigFin}"
+                                            id="dvigFin"
+                                            value="#{metas.tramo.vigenciaFin}"/>
+                              <af:commandButton text="Guardar"
+                                                binding="#{metas.bsalvar}"
+                                                id="bsalvar"
+                                                actionListener="#{metas.cb_adicionarAct_actionListener}"/>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{metas.pfl1}"
+                                                id="pfl1" maxColumns="2"
+                                                rows="2">
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                  binding="#{metas.soc_parametro1}"
+                                                  id="soc_parametro1"
+                                                  showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{metas.listaParametros}"
+                                               binding="#{metas.si11}"
+                                               id="si11"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.VALOR_ACTUAL_DE_CARGA}"
+                                            binding="#{metas.it_valor_actual1}"
+                                            id="it_valor_actual1"
+                                            showRequired="true" columns="10">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"
+                                                  groupingUsed="true"/>
+                              </af:inputText>
+                              <af:inputDate label="#{viewcontrollerBundle.FECHA}"
+                                            binding="#{metas.id_fecha1}"
+                                            id="id_fecha1" columns="10"
+                                            showRequired="true"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.UNIDAD}"
+                                                  binding="#{metas.soc_unidad1}"
+                                                  id="soc_unidad1"
+                                                  showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                <f:selectItems value="#{metas.listaUnidades}"
+                                               binding="#{metas.si21}"
+                                               id="si21"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.META_}"
+                                            binding="#{metas.it_valor_meta1}"
+                                            id="it_valor_meta1"
+                                            showRequired="true" columns="10">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"
+                                                  groupingUsed="true"/>
+                              </af:inputText>
+                              <af:spacer width="10" height="10"
+                                         binding="#{metas.s51}" id="s51"/>
+                              <f:facet name="footer">
+                                <af:panelGroupLayout binding="#{metas.pgl11}"
+                                                     id="pgl11"
+                                                     layout="vertical">
+                                  <af:panelGroupLayout binding="#{metas.pgl31}"
+                                                       id="pgl31"
+                                                       layout="horizontal">
+                                    <af:commandButton text="#{viewcontrollerBundle.boton_Adicionar}"
+                                                      binding="#{metas.cb_adicionar1}"
+                                                      id="cb_adicionar1"
+                                                      actionListener="#{metas.cb_adicionar_actionListener}"/>
+                                    <af:spacer width="10" height="10"
+                                               binding="#{metas.s71}" id="s71"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}"
+                                                      binding="#{metas.cb_borrar_meta1}"
+                                                      id="cb_borrar_meta1"
+                                                      actionListener="#{metas.cb_borrar_meta_actionListener}"
+                                                      visible="#{metas.meta!=null}"/>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox text="#{viewcontrollerBundle.AVANCE_EN_METAS_DEL_PAR_U00E1M}"
+                                 binding="#{metas.pb_avance}" id="pb_avance"
+                                 showDisclosure="false">
+                      <f:facet name="toolbar"/>
+                      <af:panelStretchLayout binding="#{metas.psl_derecho}"
+                                             id="psl_derecho" startWidth="0px"
+                                             endWidth="0px" topHeight="120px"
+                                             bottomHeight="0px"
+                                             visible="#{metas.meta !=null}">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelCollection binding="#{metas.pc2}" id="pc2"
+                                              featuresOff="detach">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{metas.listaAvances}" var="row"
+                                      rowBandingInterval="0"
+                                      binding="#{metas.t_avance}" id="t_avance"
+                                      rowSelection="single"
+                                      selectionListener="#{metas.t_avance_selectionListener}">
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.FECHA_MUESTRA}"
+                                         align="start" id="c5">
+                                <af:outputText value="#{row.fecha_muestra}"
+                                               id="ot7"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.FECHA_REGISTRO}"
+                                         align="start" id="c7">
+                                <af:outputText value="#{row.fecha_registro}"
+                                               id="ot5"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.VALOR}"
+                                         align="start" id="c6">
+                                <af:outputText value="#{row.valor}" id="ot6"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                          <af:panelFormLayout binding="#{metas.pfl_avance}"
+                                              id="pfl_avance" rows="2">
+                            <f:facet name="footer">
+                              <af:panelGroupLayout binding="#{metas.pgl4}"
+                                                   id="pgl4" layout="vertical">
+                                <af:spacer width="10" height="10"
+                                           binding="#{metas.s6}" id="s6"/>
+                                <af:panelGroupLayout binding="#{metas.pgl5}"
+                                                     id="pgl5">
+                                  <af:commandButton text="#{viewcontrollerBundle.boton_Adicionar}"
+                                                    binding="#{metas.cb_adiconar_avance}"
+                                                    id="cb_adiconar_avance"
+                                                    actionListener="#{metas.cb_adiconar_avance_actionListener}"
+                                                    disabled="#{metas.meta == null}"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{metas.s3}" id="s3"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}"
+                                                    binding="#{metas.cb_borrar_avance}"
+                                                    id="cb_borrar_avance"
+                                                    visible="#{metas.avanceSeleccionado != null}"
+                                                    actionListener="#{metas.cb_borrar_avance_actionListener}"/>
+                                </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                            </f:facet>
+                            <af:inputDate label="#{viewcontrollerBundle.FECHA_MUESTRA}"
+                                          binding="#{metas.id_fecha_avance}"
+                                          id="id_fecha_avance"
+                                          showRequired="true" columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.VALOR}"
+                                          binding="#{metas.it_valor_avance}"
+                                          id="it_valor_avance" columns="10"
+                                          showRequired="true">
+                              <af:convertNumber type="number"
+                                                integerOnly="false"
+                                                minFractionDigits="0"
+                                                maxFractionDigits="5"
+                                                groupingUsed="true"/>
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{metas.s4}" id="s4"/>
+                            <af:outputText value="unidad"
+                                           binding="#{metas.ot_unidad_avance}"
+                                           id="ot_unidad_avance"/>
+                          </af:panelFormLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start">
+                <af:panelGroupLayout binding="#{metas.pgl6}" id="pgl6">
+                  <af:popup binding="#{metas.p_borrar_avance}"
+                            id="p_borrar_avance">
+                    <af:dialog binding="#{metas.d_borrar_avance}"
+                               id="d_borrar_avance"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                               type="okCancel"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               dialogListener="#{metas.d_borrar_avance_dialogListener}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}">
+                      <af:outputText value="Confirma que desea borrar el avance de meta seleccionado?"
+                                     binding="#{metas.ot8}" id="ot8"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{metas.p_borrar_meta}" id="p_borrar_meta">
+                    <af:dialog binding="#{metas.d_borrar_meta}"
+                               id="d_borrar_meta" type="okCancel"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                               dialogListener="#{metas.d_borrar_meta_dialogListener}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}">
+                      <af:outputText value="Confirma que desea borrar la meta y todos los registro de avance asociados?"
+                                     binding="#{metas.ot9}" id="ot9"/>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{metas.pgl2}" id="pgl2"
+                                     layout="horizontal">
+                  <af:spacer width="50" height="10" binding="#{metas.s1}"
+                             id="s1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{metas.cl4}" id="cl4"
+                                  action="fuentes"/>
+                  <af:spacer width="10" height="10" binding="#{metas.s2}"
+                             id="s2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH}:  #{metas.planOrdenamiento.numeroActo}"
+                                  binding="#{metas.cl5}"
+                                  visible="#{metas.planOrdenamiento != null}"
+                                  id="cl5" action="priorizacion"/>
+                  <af:spacer width="10" height="10" id="sf6"/>
+                  <af:commandLink text="Fuente:  #{usosPermitidos.nombreFuente}"
+                                  id="clf3" action="detalleFuente"/>
+                  <af:spacer width="10" height="10" id="s6ccc"/>
+                  <af:commandLink text="Tramo:  #{usosPermitidos.nombreTramo}"
+                                  id="cl3" action="detalleTramo"></af:commandLink>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:metas-->
+</jsp:root>

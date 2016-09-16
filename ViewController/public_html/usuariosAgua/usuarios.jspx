@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{usuariosAgua.d2}">
+      <af:form id="f2" binding="#{usuariosAgua.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{usuariosAgua.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="30px" bottomHeight="0px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{usuariosAgua.pgl2}" id="pgl2">
+                  <af:popup binding="#{usuariosAgua.p_errores}" id="p_errores">
+                    <af:dialog binding="#{usuariosAgua.d_errores}"
+                               id="d_errores" type="ok"
+                               title="Errores de validación"
+                               closeIconVisible="false"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.boton_cerrar}">
+                      <af:panelFormLayout binding="#{usuariosAgua.pfl2}"
+                                          id="pfl2">
+                        <af:outputText value="Erroes de validacion para el usuario"
+                                       binding="#{usuariosAgua.ot_errores}"
+                                       id="ot_errores"/>
+                        <af:inputText label="Label 1"
+                                      binding="#{usuariosAgua.it_errores}"
+                                      id="it_errores" columns="50" rows="5"
+                                      simple="true" readOnly="true"/>
+                      </af:panelFormLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{usuariosAgua.ps1}" id="ps1"
+                                  orientation="vertical" splitterPosition="73"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{usuariosAgua.pfl1}"
+                                        id="pfl1" rows="2"
+                                        labelAlignment="start"
+                                        maxColumns="5" >
+                      
+                                     
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                          binding="#{usuariosAgua.soc_filtro_tipo_id}"
+                                          id="soc_filtro_tipo_id"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" helpTopicId="usuarios">
+                        <f:selectItems value="#{usuariosAgua.listaTiposIdentificacion}"
+                                       binding="#{usuariosAgua.si1}" id="si1"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.IDENTIFICACI_U00F3N}"
+                                    binding="#{usuariosAgua.it_filtro_id}"
+                                    id="it_filtro_id" columns="10"/>
+                      <af:inputText binding="#{usuariosAgua.it_filtro_nombres}"
+                                    id="it_filtro_nombres"
+                                    label="#{viewcontrollerBundle.usuarios_nombres}"
+                                    columns="10"/>
+                      <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                    binding="#{usuariosAgua.it_filtro_apellidos}"
+                                    id="it_filtro_apellidos" columns="10"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{usuariosAgua.soc_filtro_depto}"
+                                          id="soc_filtro_depto"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{usuariosAgua.soc_filtro_depto_valueChangeListener}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{usuariosAgua.listaDepartamentos}"
+                                       binding="#{usuariosAgua.si2}" id="si2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{usuariosAgua.soc_filtro_mun}"
+                                          id="soc_filtro_mun"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{usuariosAgua.listaMunicipios}"
+                                       binding="#{usuariosAgua.si3}" id="si3"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_DE_USUARIO}"
+                                          binding="#{usuariosAgua.soc_tipo_usuario}"
+                                          id="soc_tipo_usuario"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          value="#{usuariosAgua.naturalezaSeleccionada}">
+                        <f:selectItems value="#{usuariosAgua.listaNaturalezaUsuarios}"
+                                       binding="#{usuariosAgua.si4}" id="si4"/>
+                      </af:selectOneChoice>
+                       <af:selectOneChoice label="Autoridad"
+                                          binding="#{usuariosAgua.soc_autoridad_id}"
+                                          id="soc_autoridad_id"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" 
+                                          valueChangeListener="#{usuariosAgua.soc_filtro_porAtoridad}"
+                                          visible="#{ !usuariosAgua.visiblePerfil}" >
+                        <f:selectItems value="#{usuariosAgua.listaAutoridades}"
+                                       binding="#{usuariosAgua.si1Autoridad}" id="si1a"/>
+                                       
+                      </af:selectOneChoice>  
+                      <af:spacer width="10" height="10"
+                                 binding="#{usuariosAgua.s2}" id="s2"/>
+                      <af:panelGroupLayout binding="#{usuariosAgua.pgl1}"
+                                           id="pgl1" layout="vertical"
+                                           valign="middle"
+                                           inlineStyle="height:9%;">
+                        <af:spacer width="10" height="10"
+                                   binding="#{usuariosAgua.s1}" id="s1"/>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                          binding="#{usuariosAgua.cb_filtrar}"
+                                          id="cb_filtrar"
+                                          icon="/imgs/binoculars_24.png"
+                                          actionListener="#{usuariosAgua.cb_filtrar_actionListener}"/>
+                      </af:panelGroupLayout>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelCollection binding="#{usuariosAgua.pc1}" id="pc1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{usuariosAgua.m_archivo}"
+                                 id="m_archivo">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              binding="#{usuariosAgua.cmi_adicionar}"
+                                              id="cmi_adicionar"
+                                              icon="/imgs/add.png"
+                                              visible="#{ usuariosAgua.visiblePerfil}"
+                                              action="#{usuariosAgua.getAccionAdicionar}"
+                                              actionListener="#{usuariosAgua.cmi_adicionar_actionListener}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              binding="#{usuariosAgua.cmi_editar}"
+                                              id="cmi_editar"
+                                              icon="/imgs/edit_24.png"
+                                              visible="#{ usuariosAgua.visiblePerfil}"
+                                              actionListener="#{usuariosAgua.cmi_editar_actionListener}"
+                                              action="#{usuariosAgua.getAccionAdicionar}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                              binding="#{usuariosAgua.cmi_imprimir}"
+                                              id="cmi_imprimir"
+                                              actionListener="#{usuariosAgua.cmi_imprimir_actionListener}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_puea}"
+                                              id="cmi_puea"
+                                              actionListener="#{usuariosAgua.cmi_puea_actionListener}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.VER_ERRORES}"
+                                              binding="#{usuariosAgua.cmi_errores}"
+                                              id="cmi_errores"
+                                              actionListener="#{usuariosAgua.cmi_errores_actionListener}"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{usuariosAgua.listaUsuarios}" var="row"
+                                rowBandingInterval="1"
+                                binding="#{usuariosAgua.t_usuarios}"
+                                id="t_usuarios" rowSelection="single"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                                
+  <!--                      Carlos Abril Mar 04 2015 -->
+                        <af:column 
+                                   headerText="#{viewcontrollerBundle.FNT_NUMERO}" id="c1"
+                                   width="50"
+                                  >
+                          <af:outputText value="#{row.num}" id="ot111"/>
+                        </af:column>
+                        
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.usuarios_nombres}" id="c2"
+                                   sortProperty="nombre" width="125"
+                                   inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                          <af:outputText value="#{row.nombre}" id="ot2"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.usuarios_apellidos}" id="c3"
+                                   sortProperty="apellido" width="125"
+                                   inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                          <af:outputText value="#{row.apellido}" id="ot3"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.IDENTIFICACI_U00F3N}"
+                                   align="start" id="column1" width="152"
+                                   inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                          <af:outputText value="#{row.tipoDocumento}"
+                                         id="ot1"/>
+                        </af:column>
+                        <af:column id="numi"
+                                   headerText="#{viewcontrollerBundle.IDENTIFICACI_U00F3N}"
+                                   width="158"
+                                   inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                          <af:outputText value="#{row.numeroDocumento}"
+                                         id="ndoc"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.DIRECCI_U00F3N}" id="c4"
+                                   sortProperty="direccion" width="195"
+                                   >
+                          <af:outputText value="#{row.direccion}" id="ot4"/>
+                        </af:column>
+                        <!--
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.DEPARTAMENTO}" id="c5"
+                                   sortProperty="departamento.nombre"
+                                   width="105"
+                                   >
+                          <af:outputText value="#{row.departamento.nombre}" id="ot5"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.MUNICIPIO}" id="c6"
+                                   sortProperty="municipio.nombre" width="105"
+                                   >
+                          <af:outputText value="#{row.municipio.nombre}" id="ot6"/>
+                        </af:column>
+                        -->
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TELEFONO}" id="c7"
+                                   sortProperty="email" width="80"
+                                   >
+                          <af:outputText value="#{row.telefono}" id="ot7"/>
+                        </af:column>
+                        <!--<af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TIPO_DE_USUARIO}"
+                                   id="c10" sortProperty="tipoUsuario.valor"
+                                  >
+                          <af:outputText value="#{row.tipoUsuario.valor}"
+                                         id="ot10"/>
+                        </af:column>
+                        -->
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.usuarios_email}" id="c8"
+                                   width="150">
+                          <af:outputText value="#{row.email}" id="ot8"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.ACTIVIDAD_CIIU}" id="c11"
+                                   >
+                          <af:outputText value="#{row.codigoActividadCiiu} " id="ot11"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}" id="c9"
+                                   sortProperty="nombre"
+                                   width="300" visible="false"
+                                   >
+                          <af:outputText value="#{row.nombre}" id="ot9"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{usuariosAgua.panelGroupLayout1}" id="panelGroupLayout1">
+                  <af:outputText value="Busquedas de usuarios del agua" 
+                  binding="#{usuariosAgua.outputText1titulo}" 
+                  styleClass="AFBrandingBarTitle"
+                  id="outputText1titulo"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:usuariosAgua-->
+</jsp:root>

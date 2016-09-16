@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="ExportSirh"
+     targetNamespace="http://businessl.webservices.sirh.ideam.gov.co/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://businessl.webservices.sirh.ideam.gov.co/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    >
+    <wsdl:types>
+        <xs:schema version="1.0" targetNamespace="http://jaxb.dev.java.net/array" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="anyTypeArray" final="#all">
+                <xs:sequence>
+                    <xs:element name="item" type="xs:anyType" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema version="1.0" targetNamespace="http://businessl.webservices.sirh.ideam.gov.co/types"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="singleRowWebService">
+                <xs:sequence>
+                    <xs:element name="fields" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="dataWebService">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0"/>
+                    <xs:element name="value" type="xs:anyType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessl.webservices.sirh.ideam.gov.co/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://businessl.webservices.sirh.ideam.gov.co/"
+             xmlns:ns1="http://businessl.webservices.sirh.ideam.gov.co/types">
+            <import namespace="http://businessl.webservices.sirh.ideam.gov.co/types"/>
+            <xsd:complexType name="getSingleData">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="xsd:long"/>
+                    <xsd:element name="arg1" minOccurs="0" maxOccurs="unbounded" type="xsd:anyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getSingleData" type="tns:getSingleData"/>
+            <xsd:complexType name="getSingleDataResponse">
+                <xsd:sequence>
+                    <xsd:element name="singleData" type="ns1:dataWebService"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getSingleDataResponse" type="tns:getSingleDataResponse"/>
+            <xsd:complexType name="getOneRow">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="xsd:long"/>
+                    <xsd:element name="arg1" minOccurs="0" maxOccurs="unbounded" type="xsd:anyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOneRow" type="tns:getOneRow"/>
+            <xsd:complexType name="getOneRowResponse">
+                <xsd:sequence>
+                    <xsd:element name="singleRow" type="ns1:singleRowWebService"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOneRowResponse" type="tns:getOneRowResponse"/>
+            <xsd:complexType name="getMultipleRows">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="xsd:long"/>
+                    <xsd:element name="arg1" minOccurs="0" maxOccurs="unbounded" type="xsd:anyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getMultipleRows" type="tns:getMultipleRows"/>
+            <xsd:complexType name="getMultipleRowsResponse">
+                <xsd:sequence>
+                    <xsd:element name="multipleRows" minOccurs="0" maxOccurs="unbounded" type="ns1:singleRowWebService"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getMultipleRowsResponse" type="tns:getMultipleRowsResponse"/>
+            <xsd:complexType name="IdeamException">
+                <xsd:sequence>
+                    <xsd:element name="Message" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="IdeamException" type="tns:IdeamException"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="getSingleDataInput">
+        <wsdl:part name="parameters" element="tns:getSingleData"/>
+    </wsdl:message>
+    <wsdl:message name="getSingleDataOutput">
+        <wsdl:part name="parameters" element="tns:getSingleDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IdeamException">
+        <wsdl:part name="IdeamException" element="tns:IdeamException"/>
+    </wsdl:message>
+    <wsdl:message name="getOneRowInput">
+        <wsdl:part name="parameters" element="tns:getOneRow"/>
+    </wsdl:message>
+    <wsdl:message name="getOneRowOutput">
+        <wsdl:part name="parameters" element="tns:getOneRowResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getMultipleRowsInput">
+        <wsdl:part name="parameters" element="tns:getMultipleRows"/>
+    </wsdl:message>
+    <wsdl:message name="getMultipleRowsOutput">
+        <wsdl:part name="parameters" element="tns:getMultipleRowsResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ExportaDatosSirh">
+        <wsdl:operation name="getSingleData">
+            <wsdl:input message="tns:getSingleDataInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:getSingleDataOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:fault name="IdeamException" message="tns:IdeamException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOneRow">
+            <wsdl:input message="tns:getOneRowInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:getOneRowOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:fault name="IdeamException" message="tns:IdeamException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMultipleRows">
+            <wsdl:input message="tns:getMultipleRowsInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:getMultipleRowsOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:fault name="IdeamException" message="tns:IdeamException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ExportaDatosSirhSoapHttp" type="tns:ExportaDatosSirh">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getSingleData">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IdeamException">
+                <soap:fault name="IdeamException" use="literal" encodingStyle=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOneRow">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IdeamException">
+                <soap:fault name="IdeamException" use="literal" encodingStyle=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getMultipleRows">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IdeamException">
+                <soap:fault name="IdeamException" use="literal" encodingStyle=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ExportSirh">
+        <wsdl:port name="ExportaDatosSirhPort" binding="tns:ExportaDatosSirhSoapHttp">
+            <soap:address location="http://172.16.1.30:8230/Ideam-Ejb/ExportSirh/ExportaDatosSirh?wsdl"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

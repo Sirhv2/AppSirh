@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{dashBoardCaudalesAutoridad.document1}" id="document1">
+      <af:form binding="#{dashBoardCaudalesAutoridad.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{dashBoardCaudalesAutoridad.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{dashBoardCaudalesAutoridad.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="199"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{dashBoardCaudalesAutoridad.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{dashBoardCaudalesAutoridad.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesAutoridad.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Inicio"
+                                  binding="#{dashBoardCaudalesAutoridad.clink_inicio}"
+                                  id="clink_inicio"  action="#{dashBoardCaudalesAutoridad.getRedireccionar}"
+                                  actionListener="#{dashBoardCaudalesAutoridad.redireccionarAOrigen}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesAutoridad.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="#{viewcontrollerBundle.CAUDALES_CONCESIONADOS}"
+                                        binding="#{dashBoardCaudalesAutoridad.clink_grafico1}"
+                                        id="clink_grafico1"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{dashBoardCaudalesAutoridad.panelGroupLayout3}"
+                                         id="panelGroupLayout3" layout="scroll">
+                      <af:panelBox text="#{viewcontrollerBundle.CAUDALES_CONCESIONADOS}"
+                                   binding="#{dashBoardCaudalesAutoridad.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1" showDisclosure="false" immediate="true"
+                                   inlineStyle="width:100%; height:300px;">
+                        <f:facet name="toolbar"/>
+                        <af:activeOutputText value="#{viewcontrollerBundle.CAUDALES_CONCESIONADOS}"
+                                             binding="#{dashBoardCaudalesAutoridad.activeOutputText1}"
+                                             id="activeOutputText1"
+                                             styleClass="AFBrandingBarTitle"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesAutoridad.spacer1}"
+                                   id="spacer1"/>
+                        <af:panelCollection binding="#{dashBoardCaudalesAutoridad.panelCollection1}"
+                                            id="panelCollection1"
+                                            inlineStyle="width:802px; height:152px;"
+                                           >
+                          <f:facet name="statusbar"/>
+                          <af:table var="row"
+                                    binding="#{dashBoardCaudalesAutoridad.t_caudales}"
+                                    id="t_caudales" rowSelection="single"
+                                value="#{dashBoardCaudalesAutoridad.listaCaudales}"
+                                rowBandingInterval="1"
+                               
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                width="808" >
+                           
+                          
+                             <af:column sortable="true"
+                                   headerText="Id Subzona"
+                                   width="58" sortProperty="id_subzona">
+                          <af:outputText value="#{row.id_subzona}"/>
+                         
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                   width="100" sortProperty="subzona">
+                          <af:outputText value="#{row.subzona}"/>
+                         
+                        </af:column>
+                          
+                          
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   width="113" sortProperty="fuente">
+                         
+                          <af:commandLink text="#{row.fuente}"
+                                          id="cc"
+                                           actionListener="#{dashBoardCaudalesAutoridad.detalle_actionListener}"
+                                          immediate="true">
+                            <f:attribute value="#{row.id}"
+                                     name="codigo"/>
+                                <f:attribute value="#{row.tramo_id}"
+                                     name="codigoTramo"/>
+                          </af:commandLink>
+                        </af:column>
+                        
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_TRAMO}"
+                                   sortProperty="tramo" width="100">
+                          <af:outputText value="#{row.tramo}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.NRO_CONCESIONES}"
+                                   width="70">
+                          <af:outputText value="#{row.numero_concesiones}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.CAUDAL_CONCESIONADO}"
+                                   width="100">
+                          <af:outputText value="#{row.caudal_concesionado}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.OFERTA_DISP_CAPT}"
+                                   width="70">
+                          <af:outputText value="#{row.oferta_disponible}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.DATO_IUA}"
+                                   width="80">
+                          <af:outputText value="#{row.IUA}"/>
+                        </af:column>
+                        
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.CATEGORIA_IUA}"
+                                   width="70">
+                                     <af:outputText value="#{row.categoria_IAU}"/>
+                         </af:column>
+                          <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.CATEGORIA_IUA}"
+                                   width="74">
+                                    <af:image id="image1" source='#{row.imgcateg_IAU}'/>
+                        </af:column>
+                           
+                       <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                   width="100" sortProperty="autoridad">
+                          <af:outputText value="#{row.autoridad}"/>
+                        </af:column>
+                       </af:table>
+                        </af:panelCollection>
+                        <af:spacer width="10" height="20"
+                                   binding="#{dashBoardCaudalesAutoridad.spacer2}"
+                                   id="spacer2"/>
+                        <af:activeOutputText value="#{viewcontrollerBundle.CAUDALES_CONCESIONADOS_DETALLE}"
+                                             binding="#{dashBoardCaudalesAutoridad.activeOutputText2}"
+                                             id="activeOutputText2"
+                                             styleClass="AFBrandingBarTitle"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesAutoridad.spacer3}"
+                                   id="spacer3"/>
+                        <af:panelCollection binding="#{dashBoardCaudalesAutoridad.panelCollection2}"
+                                            id="panelCollection2"
+                                            inlineStyle="width:802px; height:152px;">
+                          <f:facet name="statusbar"/>
+                          <af:table var="row2"
+                     
+                                    binding="#{dashBoardCaudalesAutoridad.t_caudales_detalle}"
+                                    id="t_caudales_detalle" rowSelection="single"
+                                value="#{dashBoardCaudalesAutoridad.listaCaudalesDetalle}"
+                                rowBandingInterval="1"
+                               immediate="true"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                width="808">
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   sortProperty="fuente" width="140">
+                          <af:outputText value="#{row2.fuente}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_TRAMO}"
+                                   sortProperty="tramo" width="140">
+                          <af:outputText value="#{row2.tramo}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="Número de expediente"
+                                   width="115">
+                          <af:outputText value="#{row2.num_expediente}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="Número de resolución"
+                                   width="115">
+                          <af:outputText value="#{row2.num_res_caudal}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.CAUDAL_CONCESIONADO}"
+                                   width="125">
+                          <af:outputText value="#{row2.caudal_concesionado}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.OFERTA_DISP_CAPT}"
+                                   width="125">
+                          <af:outputText value="#{row2.oferta_disponible}"/>
+                        </af:column>
+                        
+                        
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                   width="150">
+                          <af:outputText value="#{row2.autoridad}"/>
+                        </af:column>
+                       </af:table>
+                            
+                        </af:panelCollection>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:dashBoardCaudalesAutoridad-->
+</jsp:root>

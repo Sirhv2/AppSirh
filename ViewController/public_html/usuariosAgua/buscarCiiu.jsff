@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:buscarCiiu-->
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelStretchLayout binding="#{buscarCiiu.psl1}" id="psl1"
+                         endWidth="0px" startWidth="0px" topHeight="70px"
+                         bottomHeight="0px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelGroupLayout binding="#{buscarCiiu.pgl1}" id="pgl1"
+                           layout="vertical">
+        <af:outputText value="#{viewcontrollerBundle.SELECCIONE_UNA_ACTIVIDAD_Y_PUL}"
+                       binding="#{buscarCiiu.ot1}" id="ot1"/>
+        <af:spacer width="10" height="10" binding="#{buscarCiiu.s1}"
+                   id="s1"/>
+        <af:panelGroupLayout binding="#{buscarCiiu.pgl4}" id="pgl4"
+                             layout="vertical">
+          <af:panelGroupLayout binding="#{buscarCiiu.pgl3}" id="pgl3"
+                               layout="scroll">
+            <af:panelCollection binding="#{buscarCiiu.pc1}" id="pc1"
+                                featuresOff="detach" inlineStyle="width:90.0%;">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:table value="#{buscarCiiu.listaActividadesCiiu}" var="row"
+                        rowBandingInterval="1" binding="#{buscarCiiu.t_ciiu}"
+                        id="t_ciiu" rowSelection="single"
+                        emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                <af:column sortable="true"
+                           headerText="#{viewcontrollerBundle.REVISI_U00F3N}"
+                           align="start" id="c1" width="60"
+                           sortProperty="revision">
+                  <af:outputText value="#{row.revision}" id="ot13"/>
+                </af:column>
+                <af:column sortable="true"
+                           headerText="#{viewcontrollerBundle.C_U00F3DIGO}"
+                           id="c3" width="60" sortProperty="codigo">
+                  <af:outputText value="#{row.codigo}" id="ot14"/>
+                </af:column>
+                <af:column sortable="true"
+                           headerText="#{viewcontrollerBundle.auditoria_modulo_descripcion}"
+                           id="c2" sortProperty="descripcion" width="400">
+                  <af:inputText label="Label 1" id="it1" value="#{row.descripcion}" readOnly="true" rows="3"
+                                columns="80"/>                  
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelStretchLayout binding="#{buscarCiiu.psl2}" id="psl2"
+                             startWidth="50px" endWidth="0px" topHeight="20px"
+                             bottomHeight="0px">
+        <f:facet name="bottom">
+          <af:panelGroupLayout binding="#{buscarCiiu.pgl2}" id="pgl2"
+                               halign="right" layout="vertical"/>
+        </f:facet>
+        <f:facet name="center">
+          <af:panelFormLayout binding="#{buscarCiiu.pfl1}" id="pfl1"
+                              labelAlignment="top" rows="1">
+            <af:inputText label="#{viewcontrollerBundle.C_U00F3DIGO}"
+                          binding="#{buscarCiiu.it_codigo}" id="it_codigo"
+                          columns="10"/>
+            <af:inputText label="#{viewcontrollerBundle.auditoria_metodos_descripcion}"
+                          binding="#{buscarCiiu.it_nombre}" id="it_nombre"/>
+          </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="start">
+          <af:spacer width="10" height="10" binding="#{buscarCiiu.s2}"
+                     id="s2"/>
+        </f:facet>
+        <f:facet name="end"/>
+        <f:facet name="top">
+          <af:outputText value="#{viewcontrollerBundle.INGRESE_EL_C_U00F3DIGO_CIIU}"
+                         binding="#{buscarCiiu.ot2}" id="ot2"/>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

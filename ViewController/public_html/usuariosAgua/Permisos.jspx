@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>          
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{permisos.d2}" title="Permisos de Vertimiento">
+      <af:form id="f2" binding="#{permisos.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+              
+              <af:panelStretchLayout binding="#{permisos.panelStretchLayout1}" id="panelStretchLayout1" 
+                                     topHeight="27px"
+                                     startWidth="0px" endWidth="0px"
+                                     bottomHeight="0px">
+                <f:facet name="bottom">
+                  <af:panelGroupLayout binding="#{permisos.pgl1}" id="pgl1">
+                    <af:popup binding="#{permisos.p_errores}" id="p_errores">
+                      <af:dialog binding="#{permisos.d_errores}" id="d_errores"
+                                 type="ok" title="Errores de Validación"
+                                 affirmativeTextAndAccessKey="#{viewcontrollerBundle.boton_cerrar}">
+                        <af:panelFormLayout binding="#{permisos.pfl1}"
+                                            id="pfl1">
+                          <af:outputText value="Errores de Validación del Permiso de Vertimiento"
+                                         binding="#{permisos.ot_errores}"
+                                         id="ot_errores"/>
+                          <af:inputText label="Label 1"
+                                        binding="#{permisos.it_errores}"
+                                        id="it_errores" columns="50" rows="5"
+                                        simple="true" readOnly="true"/>
+                        </af:panelFormLayout>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                                    <af:panelSplitter binding="#{permisos.ps1}" id="ps1" orientation="vertical"
+                                                      splitterPosition="48" disabled="true">
+                                    <f:facet name="first">
+                                      <af:panelFormLayout binding="#{permisos.pfl21}" id="pfl21" rows="1" labelAlignment="top"
+                                                          maxColumns="999999">
+                                        <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_EXPEDIENTE}" binding="#{permisos.it11}" id="it11" value="#{permisos.criterioBusqueda}"
+                                                      helpTopicId="Permisos"/>
+                      <af:inputText label="#{viewcontrollerBundle.RESOLUCI_U00F3N_PERMISO_VERTIM}"
+                                    binding="#{permisos.inputText1}"
+                                    id="inputText1" columns="10"
+                                    value="#{permisos.nroResol}"/>
+                      <af:inputDate label="#{viewcontrollerBundle.FECHA_INICIO} (>)"
+                                    binding="#{permisos.inputDate4}"
+                                    id="inputDate4" columns="10"
+                                    value="#{permisos.FInicio}"/>
+                      <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final} (>)"
+                                    binding="#{permisos.inputDate3}" columns="10"
+                                    id="inputDate3" value="#{permisos.FFin}"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.perfiles_estado}"
+                                            binding="#{permisos.soc_estado}"
+                                            id="soc_estado"
+                                            value="#{permisos.estadoSeleccionado}"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                          <af:selectItem label="#{viewcontrollerBundle.VIGENTES}" value="Vigentes"
+                                         binding="#{permisos.si1}" id="si1"/>
+                          <af:selectItem label="Vencidos" value="Vencidos"
+                                         binding="#{permisos.si2}" id="si2"/>
+                          <af:selectItem label="No Especificado"
+                                         value="No Especificado"
+                                         binding="#{permisos.si3}" id="si3"/>
+                        </af:selectOneChoice>
+                         <af:selectOneChoice label="Autoridad"
+                                          binding="#{permisos.soc_autoridad_id}"
+                                          id="soc_autoridad_id"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" 
+                                          valueChangeListener="#{permisos.soc_filtro_porAtoridad}"
+                                          visible="#{!permisos.visiblePerfil}" >
+                        <f:selectItems value="#{permisos.listaAutoridades}"
+                                       binding="#{permisos.si1Autoridad}" id="si1a"/>
+                                       
+                      </af:selectOneChoice>  
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}" binding="#{permisos.cb11}" id="cb11" icon="/imgs/binoculars_24.png"
+                                                          actionListener="#{permisos.cb_buscar_actionListener}"/>
+                                      </af:panelFormLayout>
+                                    </f:facet>
+                                    <f:facet name="second">
+                                      <af:panelCollection binding="#{permisos.pc11}" id="pc11">
+                                        <f:facet name="menus">
+                                          <af:menu text="#{viewcontrollerBundle.menu_archivo}" binding="#{permisos.m21}" id="m21">
+                                            <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}" 
+                                                                binding="#{permisos.cmi_imprimir1}" 
+                                                                id="cmi_imprimir1"
+                                                                actionListener="#{permisos.cmi_imprimir_actionListener}"/>
+                          <!--DL -->
+                                            <af:commandMenuItem text="#{viewcontrollerBundle.PERMISOS_VERTIMIENTO_DETALLE}" 
+                                                                binding="#{permisos.cmi_imprimirDetalle}" 
+                                                                id="cmi_imprimirDetalle"
+                                                                actionListener="#{permisos.cmi_ImprimirDetalle_actionListener}"/>
+
+                          <!--DL -->                                                                
+                                            <af:commandMenuItem text="#{viewcontrollerBundle.VER_ERRORES}"
+                                                                binding="#{permisos.cmi_errores}"
+                                                                id="cmi_errores"
+                                                                actionListener="#{permisos.cmi_errores_actionListener}"/>
+                                          </af:menu>
+                                        </f:facet>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{permisos.listaPermisos}" var="row" rowBandingInterval="1"
+                                                  binding="#{permisos.t_permisos}"
+                                                  id="t_permisos" rowSelection="single"
+                                                  emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                                                  
+                                                  <!--Carlos Abril Mar 04 2015 -->
+                                            <af:column 
+                                                       headerText="#{viewcontrollerBundle.FNT_NUMERO}" id="c111"
+                                                       width="50"
+                                                      >
+                                              <af:outputText value="#{row.num}" id="ot111"/>
+                                            </af:column>
+                                                                      
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.login_campo_usuario}" id="column1" sortProperty="nombreUsuario"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:commandLink visible="#{permisos.visiblePerfil}" text="#{row.nombreUsuario}" id="cl1" action="detalleUsuario" actionListener="#{permisos.usuario_actionListener}">
+                                              <f:attribute value="#{row.codigoUsuario}" name="codigoUsuario"/>
+                                            </af:commandLink>
+                                              <af:outputText visible="#{!permisos.visiblePerfil}" value="#{row.nombreUsuario}" id="usuSinLink"/>
+                                          </af:column>
+                                          <af:column id="column2" sortable="true" headerText="#{viewcontrollerBundle.PREDIO}" sortProperty="nombrePredio"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:commandLink visible="#{permisos.visiblePerfil}" text="#{row.nombrePredio}" id="cl_predio" action="detallePredio" actionListener="#{permisos.predio_actionListener}">
+                                              <f:attribute value="#{row.codigoPredio}" name="codigoPredio"/>
+                                              <f:attribute value="#{row.codigoUsuario}" name="codigoUsuario"/>
+                                            </af:commandLink>
+                                            <af:outputText visible="#{!permisos.visiblePerfil}" value="#{row.nombrePredio}" id="predSinLink"/>
+                                          </af:column>
+                                          
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.N_U00FAMERO_EXPEDIENTE}" id="c3" sortProperty="numeroExpediente"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:commandLink visible="#{permisos.visiblePerfil}" text="#{row.numeroExpediente}" id="cl2" actionListener="#{permisos.permiso_actionListener}" action="detallePermiso">
+                                              <f:attribute value="#{row.codigoPredio}" name="codigoPredio"/>
+                                              <f:attribute value="#{row.codigoUsuario}" name="codigoUsuario"/>
+                                              <f:attribute value="#{row.codigo}" name="codigo"/>
+                                            </af:commandLink>
+                                            <af:outputText visible="#{!permisos.visiblePerfil}" value="#{row.numeroExpediente}" id="conSinLink"/>
+                                          </af:column>
+                                          
+                                           <af:column sortable="true" headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_PERMISO_VERTIM}" id="c11" sortProperty="resolucionPermisoVertimiento"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.resolucionPermisoVertimiento}" id="ot13"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_PERMISO_}" id="c12" sortProperty="fechaExpedicionPermiso"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaExpedicionPermiso}" id="ot14"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.CAUDAL_AUTORIZADO}" id="c4" sortProperty="caudal"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.caudal}" id="ot6"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_inicial}" id="c13" sortProperty="fechaInicio"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaInicio}" id="ot15"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}" id="c14" sortProperty="fechaFin"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaFin}" id="ot16"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.RESOLUCION_INICIO_TRA}" align="start" id="c1" sortProperty="resolucionInicioTramite"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.resolucionInicioTramite}" id="ot3"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_INICIO_T}" id="c2" sortProperty="fechaExpedicionInicioTramite"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaExpedicionInicioTramite}" id="ot4"/>
+                                          </af:column>
+                                          
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_PLAN_DE_CUMPLI}" id="c5" sortProperty="resolucionSolicitudPlanCumplimiento"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.resolucionSolicitudPlanCumplimiento}" id="ot7"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_PLAN_DE_}" id="c6" sortProperty="fechaExpedicionPlan"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaExpedicionPlan}" id="ot8"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00F3}" id="c7" sortProperty="resolucionAprobacionPlan"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.resolucionAprobacionPlan}" id="ot9"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_DE_EXPEDICI_U00F3N_APROB}" id="c8" sortProperty="fechaExpedicionAprobacionPlan"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaExpedicionAprobacionPlan}" id="ot10"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_INICIO_VIGENCIA_PLAN}" id="c9" sortProperty="fechaInicoPlan"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaInicoPlan}" id="ot11"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_FIN_VIGENCIA_PLAN}" id="c10" sortProperty="fechaFinPlan"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaFinPlan}" id="ot12"/>
+                                          </af:column>
+                                         
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00_0}" id="c15" sortProperty="resolucionAprobacionPlanos"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.resolucionAprobacionPlanos}" id="ot17"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_APROBACI}" id="c16" sortProperty="fechaExpedicionPlanos"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaExpedicionPlanos}" id="ot18"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00_1}" id="c17" sortProperty="resolucionAprobacionObras"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.resolucionAprobacionObras}" id="ot19"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_APROBA_0}" id="c18" sortProperty="fechaExpedicionObras"
+                                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                                            <af:outputText value="#{row.fechaExpedicionObras}" id="ot20"/>
+                                          </af:column>
+                                          <af:column sortable="true" headerText="#{viewcontrollerBundle.NOVEDADES}" id="c19"
+                                                     >
+                                            <af:outputText value="#{row.detalleNovedad}" id="ot21"/>
+                                          </af:column>
+                       <!--   <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.NOVEDADES}"
+                                     id="c19"
+                                     inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                            <af:commandLink text="#{row.detalleNovedad}" id="cl3"
+                                            action="detallePermiso"
+                                            actionListener="#{permisos.permiso_novedad_actionListener}">
+                              <f:attribute value="#{row.numeroExpedienteNovedad}"
+                                           name="numeroExpediente"/>
+                            </af:commandLink>
+                          </af:column>-->
+                        </af:table>
+                                      </af:panelCollection>
+                                    </f:facet>
+                                  </af:panelSplitter>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+              
+                <f:facet name="top">
+                  <af:panelGroupLayout binding="#{permisos.panelGroupLayout2}" id="panelGroupLayout2">
+                    <af:outputText value="Busquedas de permisos de vertimiento" binding="#{permisos.outputText2titulo}" 
+                    styleClass="AFBrandingBarTitle"
+                    id="outputText2titulo"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+         
+              
+              
+              </af:panelStretchLayout>
+           
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:permisos-->
+</jsp:root>

@@ -1,0 +1,214 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="DataSirh.wsdl"/>
+      <url path="../generated/GetAllUsuariosNaturalConcesionResponse.java"/>
+      <url path="../generated/FntvFuentesTramos.java"/>
+      <url path="../generated/ObjectFactory.java"/>
+      <url path="DataSirhSoapClient.java"/>
+      <url path="DataSirh.java"/>
+      <url path="../generated/GetAllFuentesResponse.java"/>
+      <url path="DataSirhSoap12Client.java"/>
+      <url path="../generated/GetAllUsuariosNaturalConcesion.java"/>
+      <url path="../generated/RegUserNaturalConcesion.java"/>
+      <url path="../generated/package-info.java"/>
+      <url path="DataSirhSoap.java"/>
+      <url path="../generated/GetAllFuentes.java"/>
+      <url path="../generated/ArrayOfRegUserNaturalConcesion.java"/>
+      <url path="../generated/ArrayOfFntvFuentesTramos.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MTOM"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="co.gov.corpocaldas.cliente"/>
+            <value n="WSDL2JAVA_ROOT_VALUE_PACKAGE" v="co.gov.corpocaldas.generated"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="forEnabled"/>
+      <list n="PROXY_CLIENTS">
+         <url path="DataSirhSoapClient.java"/>
+         <url path="DataSirhSoap12Client.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <url n="PROXY_ORIGINAL_WSDL_URL" protocol="http" host="190.0.61.202" port="1780" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx" query="WSDL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="DataSirhSoap">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="co.gov.corpocaldas.cliente.DataSirhSoap"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="DataSirhSoap"/>
+            <hash n="OPERATIONS">
+               <hash n="getAllFuentes">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+               <hash n="getAllUsuariosNaturalConcesion">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS"/>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="190.0.61.202" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+            <url n="PROXY_PORT_ENDPOINT" protocol="http" host="190.0.61.202" port="1780" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+         </hash>
+         <hash n="DataSirhSoap12">
+            <value n="ACCESSES_DOC_WRAPPPED" v="true"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="co.gov.corpocaldas.cliente.DataSirhSoap"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="DataSirhSoap12"/>
+            <hash n="OPERATIONS">
+               <hash n="getAllFuentes">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+               <hash n="getAllUsuariosNaturalConcesion">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS"/>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="190.0.61.202" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+            <url n="PROXY_PORT_ENDPOINT" protocol="http" host="190.0.61.202" port="1780" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="DataSirh"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="WebServiceCAR"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../ClienteCorpocaldas.jpr"/>
+      <url n="PROXY_WSDL_URL" path="DataSirh.wsdl"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BOUND_PORT_TYPE" v="{WebServiceCAR}DataSirhSoap"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{WebServiceCAR}DataSirhSoap"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v="WebServiceCAR/getAllFuentes"/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfFntvFuentesTramos.getAllFuentes"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v="WebServiceCAR/getAllUsuariosNaturalConcesion"/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfRegUserNaturalConcesion.getAllUsuariosNaturalConcesion"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+            <hash>
+               <value n="BD_SOAP_VERSION" v="1.2"/>
+               <value n="BOUND_PORT_TYPE" v="{WebServiceCAR}DataSirhSoap"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{WebServiceCAR}DataSirhSoap12"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v="WebServiceCAR/getAllFuentes"/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfFntvFuentesTramos.getAllFuentes"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v="WebServiceCAR/getAllUsuariosNaturalConcesion"/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_OUTPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfRegUserNaturalConcesion.getAllUsuariosNaturalConcesion"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="13438440-0152-1000-8004-c0a8000fdc4b"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="DataSirhSoap"/>
+               <value n="PORT_BINDING_NAME" v="{WebServiceCAR}DataSirhSoap"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfFntvFuentesTramos.getAllFuentes"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfRegUserNaturalConcesion.getAllUsuariosNaturalConcesion"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="190.0.61.202" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+            </hash>
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="DataSirhSoap12"/>
+               <value n="PORT_BINDING_NAME" v="{WebServiceCAR}DataSirhSoap12"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfFntvFuentesTramos.getAllFuentes"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="co.gov.corpocaldas.generated.ArrayOfRegUserNaturalConcesion.getAllUsuariosNaturalConcesion"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="190.0.61.202" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="co.gov.corpocaldas.cliente"/>
+               <value n="WSDL2JAVA_ROOT_VALUE_PACKAGE" v="co.gov.corpocaldas.generated"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{WebServiceCAR}DataSirhSoap"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="co.gov.corpocaldas.cliente.DataSirhSoapImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="co.gov.corpocaldas.cliente.DataSirhSoap"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../ClienteCorpocaldas.jpr"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="WebServiceCAR"/>
+         <value n="WS_URI" v="DataSirh"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="190.0.61.202" port="1780" path="/WebServiceCAR/ImportDatosSirh/DataSirh.asmx" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="USE_WSDL_LOCATION" v="true"/>
+   </hash>
+</jdevws:WebServiceProxy>

@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+         
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{adicionarConflictoBean.documentAF1}" id="document1">
+      <af:form binding="#{adicionarConflictoBean.formAF1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">     
+                <af:panelStretchLayout binding="#{adicionarConflictoBean.psl2}" id="psl2"
+                                 bottomHeight="0" topHeight="20px"
+                                 endWidth="0px" startWidth="0px">
+                    <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarConflictoBean.pgl1}"
+                                     id="pgl1" layout="scroll">
+                            
+                            <af:panelBox
+                               binding="#{adicionarConflictoBean.pb1}" id="pb1"
+                               showDisclosure="false" visible="true"
+                                         text="Adicionar conflicto"
+                                         inlineStyle="height:600px; width:1011px;">
+                    <af:panelFormLayout binding="#{adicionarConflictoBean.pfl21}"
+                                        id="pfl21" rows="3">
+                      <af:inputText label="Nombre Fuente"
+                                    binding="#{adicionarConflictoBean.it_nombre1}"
+                                    id="it_nombre1"
+                                    value="#{adicionarConflictoBean.fuente.nombre}"
+                                    readOnly="true"/>
+                    </af:panelFormLayout>
+                    <af:panelStretchLayout binding="#{adicionarConflictoBean.psl1}"
+                                           id="psl1"
+                                           inlineStyle="height:538px; width:102%;"
+                                                      bottomHeight="28px">
+                                      <f:facet name="bottom">
+                                        <af:panelGroupLayout binding="#{adicionarConflictoBean.pgl2}"
+                                                             id="pgl2"
+                                                             halign="right" layout="vertical">
+                                          <af:panelGroupLayout binding="#{adicionarConflictoBean.pgl3}"
+                                                               id="pgl3" layout="horizontal"
+                                                               halign="right">
+                                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                                              binding="#{adicionarConflictoBean.cbNext1}"
+                                                              id="cbNext1"
+                                                              icon="/imgs/next.png"
+                                                              actionListener="#{adicionarConflictoBean.cbNext1_actionListener}"/>
+                                            <af:spacer width="50" height="10"
+                                                       binding="#{adicionarConflictoBean.s1}"
+                                                       id="s1"/>
+                                          </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                      </f:facet>
+                                      <f:facet name="center">
+                        <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             binding="#{adicionarConflictoBean.panelGroupLayout3}"
+                                             id="panelGroupLayout3">
+                          <af:panelFormLayout binding="#{adicionarConflictoBean.pfl1}"
+                                              id="pfl1">
+                            <af:selectOneChoice label="Tramo Asociado (opcional)"
+                                                helpTopicId="adicionarFuente"
+                                                binding="#{adicionarConflictoBean.soc_Tramos1}"
+                                                id="soc_Tramos1"
+                                                showRequired="true"
+                                                autoSubmit="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                valueChangeListener="#{adicionarConflictoBean.soc_Tramos_valueChangeListener}">
+                              <f:selectItems value="#{adicionarConflictoBean.listaTramos}"
+                                             binding="#{adicionarConflictoBean.selectItems71}"
+                                             id="selectItems71"/>
+                            </af:selectOneChoice>
+                            <af:inputText binding="#{adicionarConflictoBean.it_nombre2}"
+                                          id="it_nombre2"
+                                          requiredMessageDetail="Nombre de conflicto requerido"
+                                          contentStyle="text-transform:uppercase"
+                                          label="Nombre conflicto"
+                                          value="#{adicionarConflictoBean.conflicto.nombre}"/>
+                            <af:inputText binding="#{adicionarConflictoBean.it_Radicado1}"
+                                          id="it_Radicado1"
+                                          contentStyle="text-transform:uppercase"
+                                          label="Número Radicado / Expediente"
+                                          value="#{adicionarConflictoBean.conflicto.numeroRadicado}"/>
+                            <af:inputDate label="Fecha Registro"
+                                          binding="#{adicionarConflictoBean.id_fecha_vigencia1}"
+                                          id="id_fecha_vigencia1"
+                                          showRequired="true" columns="10"
+                                          value="#{adicionarConflictoBean.conflicto.fechaRegistro}"/>
+                            <af:inputText label="Descripcion del conflicto"
+                                          binding="#{adicionarConflictoBean.it_descripcion1}"
+                                          id="it_descripcion1" rows="3"
+                                          columns="60"
+                                          value="#{adicionarConflictoBean.conflicto.descripcion}"/>
+                            <af:selectBooleanRadio text="Abierto"
+                                                   binding="#{adicionarConflictoBean.sbrAbierto1}"
+                                                   id="sbrAbierto1"
+                                                   required="true"
+                                                   helpTopicId="estadoConflicto"
+                                                   group="estado"
+                                                   requiredMessageDetail="#{viewcontrollerBundle.fuente_no_especifica}"
+                                                   value="0"
+                                                   label="Estado Conflicto"
+                                                   selected="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{adicionarConflictoBean.soc_Estado_valueChangeListener}"/>
+                            <af:selectBooleanRadio binding="#{adicionarConflictoBean.sbrCerrado1}"
+                                                   id="sbrCerrado1"
+                                                   group="estado" value="1"
+                                                   text="Cerrado"
+                                                   valueChangeListener="#{adicionarConflictoBean.soc_Estado_valueChangeListener}"
+                                                   autoSubmit="true"/>
+                            <af:inputDate label="Fecha Cierre"
+                                          binding="#{adicionarConflictoBean.id_fechaCierre1}"
+                                          id="id_fechaCierre1"
+                                          showRequired="true" columns="10"
+                                          visible="false"
+                                          value="#{adicionarConflictoBean.conflicto.fechaCierre}"/>
+                          </af:panelFormLayout>
+                          <af:panelGroupLayout layout="scroll"
+                                               xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                               binding="#{adicionarConflictoBean.panelGroupLayout2}"
+                                               id="panelGroupLayout2">
+                            <af:panelGroupLayout binding="#{adicionarConflictoBean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelFormLayout binding="#{adicionarConflictoBean.panelFormLayout2}"
+                                                  id="panelFormLayout2">
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarConflictoBean.spacer1}"
+                                           id="spacer1"/>
+                                <af:activeOutputText value="Ubicacion Conflicto"
+                                                     binding="#{adicionarConflictoBean.activeOutputText2}"
+                                                     id="activeOutputText2"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarConflictoBean.spacer10}"
+                                           id="spacer10"/>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SISTEMA}"
+                                                    binding="#{adicionarConflictoBean.soc_sistema}"
+                                                    id="soc_sistema"
+                                                    showRequired="true"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                  <f:selectItems value="#{adicionarConflictoBean.sistemasReferencia}"
+                                                 binding="#{adicionarConflictoBean.selectItems8}"
+                                                 id="selectItems8"/>
+                                </af:selectOneChoice>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout binding="#{adicionarConflictoBean.panelGroupLayout5}"
+                                                 id="panelGroupLayout5"
+                                                 layout="vertical">
+                              <af:panelFormLayout binding="#{adicionarConflictoBean.panelFormLayout5}"
+                                                  id="panelFormLayout5" rows="1"
+                                                  maxColumns="1">
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarConflictoBean.spacer7}"
+                                           id="spacer7"/>
+                                <af:outputLabel value="Datos Ubicacion"
+                                                binding="#{adicionarConflictoBean.outputLabel3}"
+                                                id="outputLabel3"/>
+                              </af:panelFormLayout>
+                              <af:panelFormLayout binding="#{adicionarConflictoBean.panelFormLayout3}"
+                                                  id="panelFormLayout3"
+                                                  maxColumns="999999" rows="1"
+                                                  labelAlignment="top"
+                                                  visible="true">
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarConflictoBean.spacer3}"
+                                           id="spacer3"/>
+                                <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                                binding="#{adicionarConflictoBean.outputLabel1}"
+                                                id="outputLabel1"/>
+                                <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                              binding="#{adicionarConflictoBean.it_grados_pi}"
+                                              id="it_grados_pi"
+                                              showRequired="true" columns="5"
+                                              immediate="true"
+                                              value="#{adicionarConflictoBean.conflicto.latitudGrados}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="true"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="2"/>
+                                  <af:validateLongRange minimum="-4"
+                                                        maximum="15"/>
+                                </af:inputText>
+                                <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                              binding="#{adicionarConflictoBean.it_minutos_pi}"
+                                              id="it_minutos_pi"
+                                              showRequired="true" columns="5"
+                                              immediate="true"
+                                              value="#{adicionarConflictoBean.conflicto.latitudMinutos}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="true"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="2"/>
+                                  <af:validateLongRange minimum="0"
+                                                        maximum="59"/>
+                                </af:inputText>
+                                <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                              binding="#{adicionarConflictoBean.it_segundos_pi}"
+                                              id="it_segundos_pi"
+                                              showRequired="true" columns="5"
+                                              immediate="true"
+                                              value="#{adicionarConflictoBean.conflicto.latitudSegundos}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="false"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="2"
+                                                    minFractionDigits="0"
+                                                    maxFractionDigits="5"
+                                                    pattern="##.#####"/>
+                                  <af:validateDoubleRange minimum="0.0"
+                                                          maximum="59.99999"/>
+                                </af:inputText>
+                              </af:panelFormLayout>
+                              <af:panelFormLayout binding="#{adicionarConflictoBean.panelFormLayout4}"
+                                                  id="panelFormLayout4" rows="1"
+                                                  maxColumns="999999"
+                                                  labelAlignment="top">
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarConflictoBean.spacer6}"
+                                           id="spacer6"/>
+                                <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                                binding="#{adicionarConflictoBean.outputLabel2}"
+                                                id="outputLabel2"/>
+                                <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                              binding="#{adicionarConflictoBean.it_grad_long_pi}"
+                                              id="it_grad_long_pi" columns="5"
+                                              immediate="true"
+                                              showRequired="true"
+                                              value="#{adicionarConflictoBean.conflicto.longitudGrados}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="true"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="2"/>
+                                </af:inputText>
+                                <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                              binding="#{adicionarConflictoBean.it_minutos_long_pi}"
+                                              id="it_minutos_long_pi"
+                                              columns="5" showRequired="true"
+                                              immediate="true"
+                                              value="#{adicionarConflictoBean.conflicto.longitudMinutos}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="true"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="2"/>
+                                  <af:validateLongRange minimum="0"
+                                                        maximum="59"/>
+                                </af:inputText>
+                                <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                              binding="#{adicionarConflictoBean.it_segundos_long_pi}"
+                                              id="it_segundos_long_pi"
+                                              columns="5" showRequired="true"
+                                              immediate="true"
+                                              value="#{adicionarConflictoBean.conflicto.longitudSegundos}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="false"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="2"
+                                                    minFractionDigits="0"
+                                                    maxFractionDigits="5"
+                                                    pattern="##.#####"/>
+                                  <af:validateDoubleRange minimum="0.0"
+                                                          maximum="59.9999"/>
+                                </af:inputText>
+                              </af:panelFormLayout>
+                              <af:panelFormLayout binding="#{adicionarConflictoBean.panelFormLayout6}"
+                                                  id="panelFormLayout6" rows="1"
+                                                  maxColumns="2">
+                                <af:inputText label="#{viewcontrollerBundle.TRM_ALTITUD}"
+                                              binding="#{adicionarConflictoBean.it_altitud_pi}"
+                                              id="it_altitud_pi"
+                                              showRequired="true" columns="7"
+                                              immediate="true"
+                                              value="#{adicionarConflictoBean.conflicto.altitud}">
+                                  <af:convertNumber type="number"
+                                                    integerOnly="false"
+                                                    minIntegerDigits="1"
+                                                    maxIntegerDigits="5"
+                                                    minFractionDigits="0"
+                                                    maxFractionDigits="3"
+                                                    groupingUsed="false"/>
+                                  <af:validateDoubleRange minimum="0.0"
+                                                          maximum="5500.0"/>
+                                </af:inputText>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </af:panelGroupLayout>
+                          <af:panelFormLayout binding="#{adicionarConflictoBean.pfl22}"
+                                              id="pfl22" maxColumns="3" rows="1">
+                            <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                binding="#{adicionarConflictoBean.soc_departamento}"
+                                                id="soc_departamento"
+                                                showRequired="false"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                valueChangeListener="#{adicionarConflictoBean.soc_Departamentos_valueChangeListener}"
+                                                autoSubmit="true"
+                                                immediate="true">
+                              <f:selectItems value="#{adicionarConflictoBean.listaDepartamentos}"
+                                             binding="#{adicionarConflictoBean.selectItems4}"
+                                             id="selectItems4"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                binding="#{adicionarConflictoBean.soc_municipio}"
+                                                id="soc_municipio"
+                                                showRequired="false"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                              <f:selectItems value="#{adicionarConflictoBean.listaMunicipios}"
+                                             binding="#{adicionarConflictoBean.selectItems5}"
+                                             id="selectItems5"/>
+                            </af:selectOneChoice>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                            
+                            
+                            <af:popup binding="#{adicionarConflictoBean.p_registro_exitoso}"
+                                    id="p_registro_exitoso">
+                                <af:dialog binding="#{adicionarConflictoBean.d_registro_exitoso}"
+                                           id="d_registro_exitoso" type="none"
+                                           title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                           closeIconVisible="false">
+                                  <f:facet name="buttonBar">
+                                    <af:panelGroupLayout binding="#{adicionarConflictoBean.pgl14}"
+                                                         id="pgl14">
+                                      <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                        binding="#{adicionarConflictoBean.cbAceptar}"
+                                                        id="cbAceptar"
+                                                        actionListener="#{adicionarConflictoBean.cb_aceptar_actionListener}"
+                                           
+                                                        immediate="true" partialSubmit="true"
+                                                        action="#{adicionarConflictoBean.getAceptarAction}"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                  <af:panelStretchLayout binding="#{adicionarConflictoBean.psl7}"
+                                                         id="psl7" endWidth="0px"
+                                                         topHeight="0px" bottomHeight="2px"
+                                                         inlineStyle="height:41px; width:316px;">
+                                    <f:facet name="bottom"/>
+                                    <f:facet name="center">
+                                      <af:outputText value="Conflicto registrado exitosamente"
+                                                     binding="#{adicionarConflictoBean.ot8}"
+                                                     id="ot8"/>
+                                    </f:facet>
+                                    <f:facet name="start">
+                                      <af:image source="/imgs/info.png" shortDesc="info"
+                                                binding="#{adicionarConflictoBean.i1}" id="i1"/>
+                                    </f:facet>
+                                    <f:facet name="end"/>
+                                    <f:facet name="top"/>
+                                  </af:panelStretchLayout>
+                                </af:dialog>
+                            </af:popup>
+                </af:panelGroupLayout>
+                    </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{adicionarConflictoBean.pgl4}" id="pgl4"
+                                     layout="horizontal">
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{adicionarConflictoBean.cl4}" id="cl4"
+                                  action="fuentes"/>
+                  <af:spacer width="25" height="10"
+                             binding="#{adicionarConflictoBean.spacer8}"
+                             id="spacer8"/>
+                  <af:outputText value="#{viewcontrollerBundle.FNT_FUENTE} : #{adicionarConflictoBean.fuente.nombre}"
+                                 binding="#{adicionarConflictoBean.outputText1}"
+                                 id="outputText1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarConflictoBean-->
+</jsp:root>

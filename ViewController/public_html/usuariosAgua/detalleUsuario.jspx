@@ -1,0 +1,784 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{detalleUsuarioAgua.d2}">
+      <af:form id="f2" binding="#{detalleUsuarioAgua.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleUsuarioAgua.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100.0%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detalleUsuarioAgua.ps1}" id="ps1"
+                                  orientation="horizontal" disabled="true"
+                                  splitterPosition="700">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{detalleUsuarioAgua.psl2}"
+                                           id="psl2" topHeight="0px"
+                                           startWidth="0px" endWidth="0px"
+                                           bottomHeight="0px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl256}"
+                                             id="pgl256" layout="scroll">
+                          <af:panelBox text="#{viewcontrollerBundle.usuarios_detalle}"
+                                       binding="#{detalleUsuarioAgua.pb_natural}"
+                                       id="pb_natural" showDisclosure="false"
+                                       visible="#{detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==5}">
+                            <f:facet name="toolbar"/>
+                            <af:panelFormLayout binding="#{detalleUsuarioAgua.pfl1}"
+                                                id="pfl1">
+                              <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                                  binding="#{detalleUsuarioAgua.soc_nat_tipo_id}"
+                                                  id="soc_nat_tipo_id"
+                                                  showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{detalleUsuarioAgua.usuarioAgua.tipoDocumento}">
+                                <f:selectItems value="#{detalleUsuarioAgua.listaTiposDocumento}"
+                                               binding="#{detalleUsuarioAgua.si1}"
+                                               id="si1"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                            binding="#{detalleUsuarioAgua.it_nat_numero_id}"
+                                            id="it_nat_numero_id"
+                                            showRequired="true"
+                                            contentStyle="text-transform:uppercase;"
+                                            value="#{detalleUsuarioAgua.usuarioAgua.numeroDocumento}"/>
+                              <af:inputText label="#{viewcontrollerBundle.usuarios_nombres}"
+                                            binding="#{detalleUsuarioAgua.it_nat_nombres}"
+                                            id="it_nat_nombres"
+                                            contentStyle="text-transform:uppercase;"
+                                            showRequired="true"
+                                            value="#{detalleUsuarioAgua.usuarioAgua.nombre}"/>
+                              <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                            binding="#{detalleUsuarioAgua.it_nat_apellidos}"
+                                            id="it_nat_apellidos"
+                                            contentStyle="text-transform:uppercase;"
+                                            showRequired="true"
+                                            value="#{detalleUsuarioAgua.usuarioAgua.apellido}"/>
+                              <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                            binding="#{detalleUsuarioAgua.it_nat_direccion}"
+                                            id="it_nat_direccion"
+                                            contentStyle="text-transform:uppercase;"
+                                            showRequired="true"
+                                            value="#{detalleUsuarioAgua.usuarioAgua.direccion}"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                  binding="#{detalleUsuarioAgua.soc_nat_depto}"
+                                                  id="soc_nat_depto"
+                                                  showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{detalleUsuarioAgua.deptoSeleccionado}"
+                                                  valueChangeListener="#{detalleUsuarioAgua.soc_nat_depto_valueChangeListener}"
+                                                  autoSubmit="true"
+                                                  immediate="true">
+                                <f:selectItems value="#{detalleUsuarioAgua.listaDepartamentos}"
+                                               binding="#{detalleUsuarioAgua.si2}"
+                                               id="si2"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                  binding="#{detalleUsuarioAgua.soc_nat_municipio}"
+                                                  id="soc_nat_municipio"
+                                                  showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{detalleUsuarioAgua.municipioSeleccionado}">
+                                <f:selectItems value="#{detalleUsuarioAgua.listaMunicipios}"
+                                               binding="#{detalleUsuarioAgua.si3}"
+                                               id="si3"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                            binding="#{detalleUsuarioAgua.it_nat_telefono}"
+                                            id="it_nat_telefono"
+                                            contentStyle="text-transform:uppercase;"
+                                            value="#{detalleUsuarioAgua.usuarioAgua.telefono}"/>
+                              <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                            binding="#{detalleUsuarioAgua.it_nat_email}"
+                                            id="it_nat_email"
+                                            value="#{detalleUsuarioAgua.usuarioAgua.email}"/>
+                              <f:facet name="footer">
+                                <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl3}"
+                                                     id="pgl3" halign="right"
+                                                     layout="vertical">
+                                  <af:spacer width="10" height="30"
+                                             binding="#{detalleUsuarioAgua.s3}"
+                                             id="s3"/>
+                                  <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl4}"
+                                                       id="pgl4"
+                                                       layout="horizontal"
+                                                       halign="center">
+                                    <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                      binding="#{detalleUsuarioAgua.cb_nat_aceptar}"
+                                                      id="cb_nat_aceptar"
+                                                      icon="/imgs/check_mark.png"
+                                                      actionListener="#{detalleUsuarioAgua.cb_aceptar_actionListener}"/>
+                                    <af:spacer width="10" height="10"
+                                               binding="#{detalleUsuarioAgua.s5}"
+                                               id="s5"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                      binding="#{detalleUsuarioAgua.cb_nat_borrar}"
+                                                      id="cb_nat_borrar"
+                                                      icon="/imgs/close.png"
+                                                      actionListener="#{detalleUsuarioAgua.cb_nat_borrar_actionListener}"/>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:panelFormLayout>
+                          </af:panelBox>
+                          <af:panelBox text="#{viewcontrollerBundle.usuarios_detalle}"
+                                       binding="#{detalleUsuarioAgua.pb_juridico}"
+                                       id="pb_juridico" showDisclosure="false"
+                                       visible="#{detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==1 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo == 3 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==4}"
+                                       type="flow">
+                            <af:panelGroupLayout layout="vertical"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{detalleUsuarioAgua.pgl9}"
+                                                 id="pgl9">
+                              <af:outputText value="#{viewcontrollerBundle.auditoria_consulta_usuario}"
+                                             binding="#{detalleUsuarioAgua.ot3}"
+                                             id="ot3"
+                                             styleClass="AFBrandingBarTitle"/>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl11}"
+                                                 id="pgl11" layout="vertical">
+                              <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl5}"
+                                                   id="pgl5">
+                                <af:decorativeBox binding="#{detalleUsuarioAgua.db1}"
+                                                  id="db1" topHeight="37px"
+                                                  inlineStyle="width:100.0%;">
+                                  <f:facet name="center">
+                                    <af:panelFormLayout binding="#{detalleUsuarioAgua.pfl2}"
+                                                        id="pfl2">
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                                          binding="#{detalleUsuarioAgua.soc_jur_tipo_id}"
+                                                          id="soc_jur_tipo_id"
+                                                          value="#{detalleUsuarioAgua.usuarioAgua.tipoDocumento}"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaTiposDocumento}"
+                                                       binding="#{detalleUsuarioAgua.si4}"
+                                                       id="si4"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                                    binding="#{detalleUsuarioAgua.it1_jur_id}"
+                                                    id="it1_jur_id"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.numeroDocumento}"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.RAZ_U00F3N_SOCIAL}"
+                                                    binding="#{detalleUsuarioAgua.it1_jur_nombre}"
+                                                    id="it1_jur_nombre"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.nombre}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                                    binding="#{detalleUsuarioAgua.it_jur_direccion}"
+                                                    id="it_jur_direccion"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.direccion}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                          binding="#{detalleUsuarioAgua.soc_jur_depto}"
+                                                          id="soc_jur_depto"
+                                                          showRequired="true"
+                                                          value="#{detalleUsuarioAgua.deptoJuridicaSeleccionado}"
+                                                          valueChangeListener="#{detalleUsuarioAgua.soc_nat_depto_valueChangeListener}"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          autoSubmit="true"
+                                                          immediate="true">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaDepartamentos}"
+                                                       binding="#{detalleUsuarioAgua.si5}"
+                                                       id="si5"/>
+                                      </af:selectOneChoice>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                          binding="#{detalleUsuarioAgua.soc_jur_mun}"
+                                                          id="soc_jur_mun"
+                                                          showRequired="true"
+                                                          value="#{detalleUsuarioAgua.municipioJuridicaSeleccionado}"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaMunicipios}"
+                                                       binding="#{detalleUsuarioAgua.si6}"
+                                                       id="si6"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                                    binding="#{detalleUsuarioAgua.it_jur_telefono}"
+                                                    id="it_jur_telefono"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.telefono}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                                    binding="#{detalleUsuarioAgua.it_jur_email}"
+                                                    id="it_jur_email"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.email}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.ACTIVIDAD_CIIU}"
+                                                    binding="#{detalleUsuarioAgua.it_jur_ciiu}"
+                                                    id="it_jur_ciiu"
+                                                    value="#{detalleUsuarioAgua.codigoCiiu}"
+                                                    readOnly="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:message binding="#{detalleUsuarioAgua.m2}"
+                                                  id="m2" for="it_jur_ciiu"/>
+                                      <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl6}"
+                                                           id="pgl6"
+                                                           layout="horizontal">
+                                        <af:inputText label="Label 1"
+                                                      binding="#{detalleUsuarioAgua.it_jur_ciiu_desc}"
+                                                      id="it_jur_ciiu_desc"
+                                                      simple="true" rows="2"
+                                                      value="#{detalleUsuarioAgua.descripcionCiiu}"
+                                                      columns="60"
+                                                      disabled="true"/>
+                                        <af:spacer width="10" height="10"
+                                                   binding="#{detalleUsuarioAgua.s7}"
+                                                   id="s7"/>
+                                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                                          binding="#{detalleUsuarioAgua.cb_jur_buscar_ciiu}"
+                                                          id="cb_jur_buscar_ciiu"
+                                                          icon="/imgs/binoculars_24.png"
+                                                          actionListener="#{detalleUsuarioAgua.cb_jur_buscar_ciiu_actionListener}"/>
+                                      </af:panelGroupLayout>
+                                    </af:panelFormLayout>
+                                  </f:facet>
+                                </af:decorativeBox>
+                                <af:decorativeBox binding="#{detalleUsuarioAgua.db2}"
+                                                  id="db2" topHeight="37px"
+                                                  inlineStyle="width:100.0%;">
+                                  <f:facet name="center">
+                                    <af:panelFormLayout binding="#{detalleUsuarioAgua.pfl3}"
+                                                        id="pfl3"
+                                                        rendered="#{detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==1 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo == 3 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==4}">
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                                          binding="#{detalleUsuarioAgua.soc_rep_tipo_id}"
+                                                          id="soc_rep_tipo_id"
+                                                          value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.tipoDocumento}"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaTiposDocumento}"
+                                                       binding="#{detalleUsuarioAgua.si7}"
+                                                       id="si7"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                                    binding="#{detalleUsuarioAgua.it_rep_id}"
+                                                    id="it_rep_id"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.numeroDocumento}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_nombres}"
+                                                    binding="#{detalleUsuarioAgua.it_rep_nombre}"
+                                                    id="it_rep_nombre"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.nombres}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                                    binding="#{detalleUsuarioAgua.it_rep_apellidos}"
+                                                    id="it_rep_apellidos"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.apellidos}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                                    binding="#{detalleUsuarioAgua.it_rep_direccion}"
+                                                    id="it_rep_direccion"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.direccion}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                          binding="#{detalleUsuarioAgua.soc_rep_depto}"
+                                                          id="soc_rep_depto"
+                                                          value="#{detalleUsuarioAgua.deptoRespresentnate}"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          showRequired="true"
+                                                          valueChangeListener="#{detalleUsuarioAgua.soc_rep_depto_valueChangeListener}"
+                                                          autoSubmit="true"
+                                                          immediate="true">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaDeptosRepresentante}"
+                                                       binding="#{detalleUsuarioAgua.si8}"
+                                                       id="si8"/>
+                                      </af:selectOneChoice>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                          binding="#{detalleUsuarioAgua.soc_rep_mun}"
+                                                          id="soc_rep_mun"
+                                                          value="#{detalleUsuarioAgua.municipioRepresentante}"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          showRequired="true">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaMunicipiosRespresentante}"
+                                                       binding="#{detalleUsuarioAgua.si9}"
+                                                       id="si9"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                                    binding="#{detalleUsuarioAgua.it_rep_telefono}"
+                                                    id="it_rep_telefono"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.telefono}"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                                    binding="#{detalleUsuarioAgua.it_rep_email}"
+                                                    id="it_rep_email"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.email}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                    </af:panelFormLayout>
+                                  </f:facet>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout layout="vertical"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleUsuarioAgua.pgl10}"
+                                                         id="pgl10">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleUsuarioAgua.s11}"
+                                                 id="s11"/>
+                                      <af:outputText value="#{viewcontrollerBundle.REPRESENTANTE_LEGAL_}"
+                                                     binding="#{detalleUsuarioAgua.ot4}"
+                                                     id="ot4"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleUsuarioAgua.s18}"
+                                                 id="s10repleg"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                </af:decorativeBox>
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleUsuarioAgua.s12}"
+                                           id="s12"/>
+                                <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl7}"
+                                                     id="pgl7" layout="vertical"
+                                                     halign="right">
+                                  <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl8}"
+                                                       id="pgl8"
+                                                       layout="horizontal"
+                                                       halign="center">
+                                    <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                      binding="#{detalleUsuarioAgua.cb_jur_aceptar}"
+                                                      id="cb_jur_aceptar"
+                                                      icon="/imgs/check_mark.png"
+                                                      actionListener="#{detalleUsuarioAgua.cb_jur_aceptar_actionListener}"/>
+                                    <af:spacer width="10" height="10"
+                                               binding="#{detalleUsuarioAgua.s9}"
+                                               id="s9"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                      binding="#{detalleUsuarioAgua.cb_jur_borrar}"
+                                                      id="cb_jur_borrar"
+                                                      icon="/imgs/close.png"
+                                                      actionListener="#{detalleUsuarioAgua.cb_nat_borrar_actionListener}"/>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                          <af:panelBox text="#{viewcontrollerBundle.usuarios_detalle}"
+                                       binding="#{detalleUsuarioAgua.pb_municipio}"
+                                       id="pb_municipio"
+                                       visible="#{detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==2 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo == 136 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo == 956}"
+                                       showDisclosure="false">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl12}"
+                                                 id="pgl12" layout="vertical">
+                              <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl13}"
+                                                   id="pgl13">
+                                <af:decorativeBox binding="#{detalleUsuarioAgua.db4}"
+                                                  id="db4" topHeight="37px"
+                                                  inlineStyle="width:100.0%; heigth:200px;">
+                                  <f:facet name="center">
+                                    <af:panelFormLayout binding="#{detalleUsuarioAgua.pfl5}"
+                                                        id="pfl5">
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                                          binding="#{detalleUsuarioAgua.soc_mun_tipo_id}"
+                                                          id="soc_mun_tipo_id"
+                                                          value="#{detalleUsuarioAgua.usuarioAgua.tipoDocumento}"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaTiposDocumento}"
+                                                       binding="#{detalleUsuarioAgua.si10}"
+                                                       id="si10"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_id}"
+                                                    id="it_mun_id"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.numeroDocumento}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.menu_nombre}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_nombre}"
+                                                    id="it_mun_nombre"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.nombre}"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_direccion}"
+                                                    id="it_mun_direccion"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.direccion}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                          binding="#{detalleUsuarioAgua.soc_mun_depto}"
+                                                          id="soc_mun_depto"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          value="#{detalleUsuarioAgua.deptoMunicipioSeleccionado}"
+                                                          showRequired="true"
+                                                          autoSubmit="true"
+                                                          immediate="true"
+                                                          valueChangeListener="#{detalleUsuarioAgua.soc_nat_depto_valueChangeListener}">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaDepartamentos}"
+                                                       binding="#{detalleUsuarioAgua.si11}"
+                                                       id="si11"/>
+                                      </af:selectOneChoice>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                          binding="#{detalleUsuarioAgua.soc_mun_municipio}"
+                                                          id="soc_mun_municipio"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          value="#{detalleUsuarioAgua.municipioMunicipioSeleccionado}"
+                                                          showRequired="true">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaMunicipios}"
+                                                       binding="#{detalleUsuarioAgua.si12}"
+                                                       id="si12"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_telefono}"
+                                                    id="it_mun_telefono"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.telefono}"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_email}"
+                                                    id="it_mun_email"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.email}"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                    </af:panelFormLayout>
+                                  </f:facet>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl14}"
+                                                         id="pgl14"
+                                                         layout="vertical">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleUsuarioAgua.s6}"
+                                                 id="s6"/>
+                                      <af:outputText value="#{viewcontrollerBundle.INFORMACI_U00F3N_DE_LA_ESP}"
+                                                     binding="#{detalleUsuarioAgua.ot5}"
+                                                     id="ot5"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                      <af:spacer width="10" height="10"
+                                                 id="s10emp"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                </af:decorativeBox>
+                                <af:decorativeBox binding="#{detalleUsuarioAgua.db5}"
+                                                  id="db5"
+                                                  inlineStyle="width:100.0%;"
+                                                  topHeight="37px">
+                                  <f:facet name="center">
+                                    <af:panelFormLayout binding="#{detalleUsuarioAgua.pfl6}"
+                                                        id="pfl6"
+                                                        rendered="#{detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==2 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo == 136 || detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo == 956}">
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                                          binding="#{detalleUsuarioAgua.soc_mun_rep_tipo_id}"
+                                                          id="soc_mun_rep_tipo_id"
+                                                          value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.tipoDocumento}"
+                                                          showRequired="true"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaTiposDocumento}"
+                                                       binding="#{detalleUsuarioAgua.si13}"
+                                                       id="si13"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_rep_id}"
+                                                    id="it_mun_rep_id"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.numeroDocumento}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_nombres}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_rep_nombre}"
+                                                    id="it_mun_rep_nombre"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.nombres}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_rep_apellido}"
+                                                    id="it_mun_rep_apellido"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.apellidos}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_rep_direccion}"
+                                                    id="it_mun_rep_direccion"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.direccion}"
+                                                    contentStyle="text-transform:uppercase;"
+                                                    showRequired="true"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                          binding="#{detalleUsuarioAgua.soc_mun_rep_depto}"
+                                                          id="soc_mun_rep_depto"
+                                                          value="#{detalleUsuarioAgua.deptoRespresentnate}"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          showRequired="true"
+                                                          valueChangeListener="#{detalleUsuarioAgua.soc_rep_depto_valueChangeListener}"
+                                                          autoSubmit="true"
+                                                          immediate="true">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaDeptosRepresentante}"
+                                                       binding="#{detalleUsuarioAgua.si14}"
+                                                       id="si14"/>
+                                      </af:selectOneChoice>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                          binding="#{detalleUsuarioAgua.soc_mun_rep_municipio}"
+                                                          id="soc_mun_rep_municipio"
+                                                          value="#{detalleUsuarioAgua.municipioRepresentante}"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                          showRequired="true">
+                                        <f:selectItems value="#{detalleUsuarioAgua.listaMunicipiosRespresentante}"
+                                                       binding="#{detalleUsuarioAgua.si15}"
+                                                       id="si15"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_rep_telefono}"
+                                                    id="it_mun_rep_telefono"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.telefono}"
+                                                    showRequired="true"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                      <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                                    binding="#{detalleUsuarioAgua.it_mun_rep_email}"
+                                                    id="it_mun_rep_email"
+                                                    showRequired="true"
+                                                    value="#{detalleUsuarioAgua.usuarioAgua.representanteLegal.email}"
+                                                    contentStyle="text-transform:uppercase;"/>
+                                    </af:panelFormLayout>
+                                  </f:facet>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout layout="vertical"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{detalleUsuarioAgua.pgl17}"
+                                                         id="pgl17">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleUsuarioAgua.s14}"
+                                                 id="s14"/>
+                                      <af:outputText value="#{viewcontrollerBundle.REPRESENTANTE_LEGAL_}"
+                                                     binding="#{detalleUsuarioAgua.ot6}"
+                                                     id="ot6"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleUsuarioAgua.s17}"
+                                                 id="s10rep2"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                </af:decorativeBox>
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleUsuarioAgua.s20}"
+                                           id="s10rep21"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleUsuarioAgua.s8}"
+                                           id="s8"/>
+                                <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl15}"
+                                                     id="pgl15"
+                                                     layout="vertical"
+                                                     halign="right">
+                                  <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl16}"
+                                                       id="pgl16"
+                                                       layout="horizontal"
+                                                       halign="center">
+                                    <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                      binding="#{detalleUsuarioAgua.cb_mun_guardar}"
+                                                      id="cb_mun_guardar"
+                                                      icon="/imgs/check_mark.png"
+                                                      actionListener="#{detalleUsuarioAgua.cb_mun_guardar_actionListener}"/>
+                                    <af:spacer width="10" height="10"
+                                               binding="#{detalleUsuarioAgua.s13}"
+                                               id="s13"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                      binding="#{detalleUsuarioAgua.cb_mun_borrar}"
+                                                      id="cb_mun_borrar"
+                                                      icon="/imgs/close.png"
+                                                      actionListener="#{detalleUsuarioAgua.cb_nat_borrar_actionListener}"/>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                          <af:popup binding="#{detalleUsuarioAgua.p_ciiu}"
+                                    id="p_ciiu">
+                            <af:dialog binding="#{detalleUsuarioAgua.d_ciiu}"
+                                       id="d_ciiu" type="yesNoCancel"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                       cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.SELECCIONAR}"
+                                       title="#{viewcontrollerBundle.SELECCIONAR_ACTIVIDAD_CIIU}"
+                                       dialogListener="#{detalleUsuarioAgua.d_ciiu_dialogListener}">
+                              <af:panelStretchLayout binding="#{detalleUsuarioAgua.psl4}"
+                                                     id="psl4" startWidth="0px"
+                                                     endWidth="0px"
+                                                     topHeight="40px"
+                                                     inlineStyle="width:691px; height:411px;"
+                                                     bottomHeight="0px">
+                                <f:facet name="bottom"/>
+                                <f:facet name="center">
+                                  <f:subview id="s4"
+                                             binding="#{detalleUsuarioAgua.s4}">
+                                    <jsp:include page="/usuariosAgua/buscarCiiu.jsff"
+                                                 flush="true"/>
+                                  </f:subview>
+                                </f:facet>
+                                <f:facet name="start"/>
+                                <f:facet name="end"/>
+                                <f:facet name="top">
+                                  <af:panelFormLayout binding="#{detalleUsuarioAgua.pfl4}"
+                                                      id="pfl4">
+                                    <af:message binding="#{detalleUsuarioAgua.m3}"
+                                                id="m3" for="ol_mensaje"/>
+                                    <af:outputLabel binding="#{detalleUsuarioAgua.ol_invisible}"
+                                                    id="ol_invisible"/>
+                                    <af:outputLabel binding="#{detalleUsuarioAgua.ol_mensaje}"
+                                                    id="ol_mensaje"/>
+                                  </af:panelFormLayout>
+                                </f:facet>
+                              </af:panelStretchLayout>
+                            </af:dialog>
+                          </af:popup>
+                          <af:popup binding="#{detalleUsuarioAgua.p_borrar}"
+                                    id="p_borrar">
+                            <af:dialog binding="#{detalleUsuarioAgua.d_borrar}"
+                                       id="d_borrar" type="none"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                       title="#{viewcontrollerBundle.titulo_confirmacion}">
+                              <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl18}"
+                                                   id="pgl18" layout="vertical">
+                                <af:outputText binding="#{detalleUsuarioAgua.ot_borrar_1}"
+                                               id="ot_borrar_1"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleUsuarioAgua.s15}"
+                                           id="s15"/>
+                                <af:outputText binding="#{detalleUsuarioAgua.ot_borrar_2}"
+                                               id="ot_borrar_2"/>
+                              </af:panelGroupLayout>
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleUsuarioAgua.pgl19}"
+                                                     id="pgl19">
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                                    binding="#{detalleUsuarioAgua.cb_si_borrar}"
+                                                    id="cb_si_borrar"
+                                                    actionListener="#{detalleUsuarioAgua.cb_si_borrar_actionListener}"
+                                                    action="#{detalleUsuarioAgua.getAccionBorrar}"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detalleUsuarioAgua.s16}"
+                                             id="s16"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                                    binding="#{detalleUsuarioAgua.cb_no_borrar}"
+                                                    id="cb_no_borrar"
+                                                    actionListener="#{detalleUsuarioAgua.cb_no_borrar_actionListener}"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:dialog>
+                          </af:popup>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelStretchLayout binding="#{detalleUsuarioAgua.psl3}"
+                                           id="psl3" startWidth="0px"
+                                           endWidth="0px" topHeight="0px"
+                                           bottomHeight="0px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{viewcontrollerBundle.PREDIOS_RELACIONADOS}"
+                                     binding="#{detalleUsuarioAgua.pb_predios}"
+                                     id="pb_predios" showDisclosure="false">
+                          <f:facet name="toolbar"/>
+                          <af:panelCollection binding="#{detalleUsuarioAgua.pc1}"
+                                              id="pc1">
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{detalleUsuarioAgua.m_archivo}"
+                                       id="m_archivo" visible="true">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR_PREDIO}"
+                                                    binding="#{detalleUsuarioAgua.cmi_adicionar_predio}"
+                                                    id="cmi_adicionar_predio"
+                                                    actionListener="#{detalleUsuarioAgua.cmi_adicionar_predio_actionListener}"
+                                                    action="#{detalleUsuarioAgua.getAccionAdicionar}"
+                                                    immediate="true"/>
+                                <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR_PUEAA}"
+                                                    binding="#{detalleUsuarioAgua.cmi_adicionar_pueaa}"
+                                                    id="cmi_adicionar_pueaa"
+                                                    actionListener="#{detalleUsuarioAgua.cmi_adicionar_pueaa_actionListener}"
+                                                    action="#{detalleUsuarioAgua.getAccionAdicionar}"
+                                                    immediate="true"/>
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:tree binding="#{detalleUsuarioAgua.t2}" id="t2"
+                                     value="#{PueaaTreeHandler.treemodel}"
+                                     contentDelivery="immediate" var="node"
+                                     varStatus="nodeStatus">
+                              <f:facet name="nodeStamp">
+                                <af:commandLink text="#{node.description} "
+                                                binding="#{detalleUsuarioAgua.clPueaa}"
+                                                id="clPueaa"
+                                                action="#{node.getAction}"
+                                                inlineStyle="#{node.inlineStyle}"
+                                                actionListener="#{detalleUsuarioAgua.clPueaa_actionListener}">
+                                  <f:attribute name="nombreParametro"
+                                               value="#{node.nombreParametro}"/>
+                                  <f:attribute name="valorParametro"
+                                               value="#{node.data}"/>
+                                  <f:attribute name="extraInfo"
+                                               value="#{node.extraData}"/>
+                                  <f:attribute name="extraInfo2"
+                                               value="#{node.extraData2}"/>
+                                </af:commandLink>
+                              </f:facet>
+                              <f:facet name="pathStamp"/>
+                            </af:tree>
+                          </af:panelCollection>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <!-- MIGA DE PAN-->
+                <af:panelGroupLayout layout="horizontal"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{detalleUsuarioAgua.pgl1}"
+                                     id="pgl1">
+                  <af:spacer width="50" height="10"
+                             binding="#{detalleUsuarioAgua.s2}" id="s2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  binding="#{detalleUsuarioAgua.cl1}" id="cl1"
+                                  action="usuariosAgua"
+                                  actionListener="#{detalleUsuarioAgua.cl1_actionListener2}"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleUsuarioAgua.s1}" id="s1"/>
+                  <af:outputText value="#{viewcontrollerBundle.login_campo_usuario}: #{detalleUsuarioAgua.usuarioAgua.nombre}"
+                                 binding="#{detalleUsuarioAgua.ot1}" id="ot1"/>
+                  <af:spacer width="5" height="10" id="sapell"/>
+                  <af:outputText value="#{detalleUsuarioAgua.usuarioAgua.apellido}"
+                                 visible="#{detalleUsuarioAgua.usuarioAgua.tipoUsuario.codigo ==5}"
+                                 binding="#{detalleUsuarioAgua.otapellido}"
+                                 id="otapellido"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleUsuarioAgua-->
+</jsp:root>

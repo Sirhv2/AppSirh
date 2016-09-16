@@ -1,0 +1,29 @@
+package co.gov.ideam.sirh.webservices.model.autenticar;
+
+
+public class OS_Autenticar{
+    public OS_Autenticar() {
+    }
+    
+    private String codigoError;
+    private String mensajeError;
+   
+
+    public void setCodigoError(String codigoError) {
+        this.codigoError = codigoError;
+    }
+
+    public String getCodigoError() {
+        return codigoError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+ 
+}

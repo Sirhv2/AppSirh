@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{AlertaCalidadBean.document1}" id="document1">
+      <af:form binding="#{AlertaCalidadBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{AlertaCalidadBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{AlertaCalidadBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="199"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{AlertaCalidadBean.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{AlertaCalidadBean.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertaCalidadBean.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Inicio"
+                                        binding="#{AlertaCalidadBean.clink_inicio}"
+                                        id="clink_inicio" action="dashboard"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertaCalidadBean.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="Observatorio"
+                                        binding="#{AlertaCalidadBean.commandLink1}"
+                                        id="commandLink1"
+                                        action="observatorio"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertaCalidadBean.spacer1}"
+                                   id="spacer1"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA1}"
+                                        binding="#{AlertaCalidadBean.clink_grafico1}"
+                                        id="clink_grafico1"
+                                        action="alertaDisponibilidad"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertaCalidadBean.spacer6}"
+                                   id="spacer6"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA_ICA}"
+                                        binding="#{AlertaCalidadBean.commandLink2}"
+                                        id="commandLink2"
+                                        action="alertaIca"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertaCalidadBean.spacer2}"
+                                   id="spacer2"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA3}"
+                                        binding="#{AlertaCalidadBean.commandLink3}"
+                                        id="commandLink3" action="oferta"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{AlertaCalidadBean.spacer3}"
+                                   id="spacer3"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO_ALERTA4}"
+                                        binding="#{AlertaCalidadBean.commandLink4}"
+                                        id="commandLink4"
+                                        action="contaminacion"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{AlertaCalidadBean.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelBox text="#{viewcontrollerBundle.GRAFICO_ALERTA_ICA}"
+                                   binding="#{AlertaCalidadBean.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1"
+                                   showDisclosure="false" immediate="true"
+                                   inlineStyle="width:800px; height:600px;">
+                        <f:facet name="toolbar"/>
+                        <af:panelSplitter binding="#{AlertaCalidadBean.panelSplitter2}"
+                                          id="panelSplitter2"
+                                          orientation="vertical"
+                                          splitterPosition="60" disabled="true"
+                                          inlineStyle="width:100%;">
+                          <f:facet name="first">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{AlertaCalidadBean.panelGroupLayout4}"
+                                                 id="panelGroupLayout4">
+                              <af:panelFormLayout binding="#{AlertaCalidadBean.panelFormLayout12}"
+                                                  id="panelFormLayout12"
+                                                  rows="1" maxColumns="1">
+                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                                    binding="#{AlertaCalidadBean.selectOneChoice1}"
+                                                    id="selectOneChoice1"
+                                                    immediate="true"
+                                                    valueChangeListener="#{AlertaCalidadBean.sc_fuenteIca_valueChangeListener}"
+                                                    showRequired="true"
+                                                    autoSubmit="true"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                  <f:selectItems value="#{AlertaCalidadBean.listaFuentesIca}"
+                                                 binding="#{AlertaCalidadBean.selectFuentes}"
+                                                 id="selectFuentes"/>
+                                </af:selectOneChoice>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <f:facet name="second">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{AlertaCalidadBean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelFormLayout binding="#{AlertaCalidadBean.panelFormGrafico}"
+                                                  id="panelFormGrafico"
+                                                  visible="false" rows="1"
+                                                  maxColumns="1">
+                                <af:activeOutputText binding="#{AlertaCalidadBean.datos1}"
+                                                     id="datos1"
+                                                     value="#{viewcontrollerBundle.ALERTA2_NOMBRE_TABLA1}"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:activeOutputText binding="#{AlertaCalidadBean.aot_area}"
+                                                     id="aot_area"/>
+                                <af:table var="row"
+                                          value="#{AlertaCalidadBean.listaAlertas}"
+                                          binding="#{AlertaCalidadBean.tableAl}"
+                                          id="tableAl" rowSelection="single"
+                                          emptyText="No hay informacion registrada"
+                                          fetchSize="25" first="0"
+                                          filterVisible="true" width="96%"
+                                          inlineStyle="border-style:none; height:120px;">
+                                  <af:column sortable="true"
+                                             headerText="#{viewcontrollerBundle.TRAMO_PUNTO}"
+                                             width="198" sortProperty="fuente">
+                                    <af:commandLink text="#{row.nomTramo}  -  #{row.nomPunto}"
+                                                    id="cc" immediate="true"
+                                                    actionListener="#{AlertaCalidadBean.detalle_actionListener}">
+                                      <f:attribute value="#{row.idMuestra}"
+                                                   name="idMuestra"/>
+                                      <f:attribute value="#{row.nomPunto}"
+                                                   name="nomPunto"/>
+                                      <f:attribute value="#{row.tramo}"
+                                                   name="tramo"/>
+                                      <f:attribute value="#{row.nomFuente}"
+                                                   name="nomFuente"/>
+                                      <f:attribute value="#{row.nomTramo}"
+                                                   name="nomTramo"/>
+                                      <f:attribute value="#{row.fuente}"
+                                                   name="fuente"/>
+                                    </af:commandLink>
+                                  </af:column>
+                                  <af:column sortable="false" width="146"
+                                             headerText="#{viewcontrollerBundle.ALERTA2_ICA}">
+                                    <af:outputText value="#{row.ica}"/>
+                                  </af:column>
+                                  <af:column sortable="false" width="100"
+                                             headerText="#{viewcontrollerBundle.ALERTA2_CALIFICACION}">
+                                    <af:outputText value="#{row.nivel}"/>         
+                                    <f:attribute value="#{row.nivel}"
+                                                 name="nivel"/>
+                                  </af:column>
+                                  <af:column sortable="false" width="100"
+                                             headerText="#{viewcontrollerBundle.ALERTA2_FECHA_MUESTRA}">
+                                    <af:outputText value="#{row.fechaMuestra}"/>         
+                                    <f:attribute value="#{row.fechaMuestra}"
+                                                 name="fechaMuestra"/>
+                                  </af:column>
+                                </af:table>
+                                <af:activeOutputText binding="#{AlertaCalidadBean.aot_adv1}"
+                                                     id="aot_adv1"
+                                                     value="#{viewcontrollerBundle.ALERTA2_ADV1}"/>
+                                <af:activeOutputText binding="#{AlertaCalidadBean.activeOutputText2}"
+                                                     id="activeOutputText2"
+                                                     value="#{viewcontrollerBundle.ALERTA2_NOMBRE_GRAFICO1}"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:activeOutputText binding="#{AlertaCalidadBean.aot_nomFuenteGrafico}"
+                                                     id="aot_nomFuenteGrafico"/>
+                                <dvt:lineGraph id="grafico"
+                                               subType="LINE_VERT_ABS"
+                                               binding="#{AlertaCalidadBean.grafico}"
+                                               tabularData="#{AlertaCalidadBean.listObjectGrafico}"
+                                               imageFormat="FLASH"
+                                               inlineStyle="width:780px;height:290px;"
+                                               animationOnDisplay="AUTO">
+                                  <dvt:background>
+                                    <dvt:specialEffects/>
+                                  </dvt:background>
+                                  <dvt:graphPlotArea/>
+                                  <dvt:seriesSet>
+                                    <dvt:series/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:lineGraph>
+                                <af:activeOutputText binding="#{AlertaCalidadBean.activeOutputText1}"
+                                                     id="activeOutputText1"
+                                                     value="#{viewcontrollerBundle.ALERTA2_NOMBRE_TABLA2}"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:activeOutputText binding="#{AlertaCalidadBean.aot_nomFuente}"
+                                                     id="aot_nomFuente"/>
+                                <af:table var="row"
+                                          value="#{AlertaCalidadBean.listaAlertasDet}"
+                                          binding="#{AlertaCalidadBean.tableDe}"
+                                          id="tableDe" width="96%"
+                                          inlineStyle="border-style:none; height:120px;">
+                                  <af:column sortable="false" width="246"
+                                             headerText="#{viewcontrollerBundle.ALERTA2_FECHA_MUESTRA}">
+                                    <af:outputText value="#{row.fechaMuestra}"/>
+                                  </af:column>
+                                  <af:column sortable="false" width="146"
+                                             headerText="#{viewcontrollerBundle.ALERTA2_ICA}">
+                                    <af:outputText value="#{row.ica}"/>
+                                  </af:column>
+                                  <af:column sortable="false" width="100"
+                                             headerText="#{viewcontrollerBundle.ALERTA2_CALIFICACION}">
+                                    <af:outputText value="#{row.nivel}"/>
+                                  </af:column>
+                                </af:table>
+                                <af:panelStretchLayout binding="#{AlertaCalidadBean.panelStretchLayout2}"
+                                                       id="panelStretchLayout2">
+                                  <f:facet name="bottom">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{AlertaCalidadBean.panelGroupLayout10}"
+                                                         id="panelGroupLayout10"/>
+                                  </f:facet>
+                                  <f:facet name="center">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{AlertaCalidadBean.panelGroupLayout9}"
+                                                         id="panelGroupLayout9"/>
+                                  </f:facet>
+                                  <f:facet name="start"/>
+                                  <f:facet name="end"/>
+                                  <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                         binding="#{AlertaCalidadBean.panelGroupLayout8}"
+                                                         id="panelGroupLayout8"/>
+                                  </f:facet>
+                                </af:panelStretchLayout>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelSplitter>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AlertaCalidadBean-->
+</jsp:root>

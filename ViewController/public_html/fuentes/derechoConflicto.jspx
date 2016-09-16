@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+         
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{derechoConflictoBean.documentAF1}" id="document1">
+      <af:form binding="#{derechoConflictoBean.formAF1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">     
+                <af:panelStretchLayout binding="#{derechoConflictoBean.psl2}" id="psl2"
+                                 bottomHeight="0" topHeight="81px"
+                                 endWidth="0px" startWidth="0px">
+                    <f:facet name="center">
+                        <af:panelGroupLayout binding="#{derechoConflictoBean.pgl1}"
+                                     id="pgl1">
+                            
+                            <af:panelBox
+                               binding="#{derechoConflictoBean.pb1}" id="pb1"
+                               showDisclosure="false" visible="true"
+                                         text="Derechos involucrados">
+                    <af:panelFormLayout binding="#{derechoConflictoBean.pfl21}"
+                                        id="pfl21" rows="10">
+                      <af:inputText label="Nombre Fuente"
+                                    binding="#{derechoConflictoBean.it_nombre1}"
+                                    id="it_nombre1"
+                                    value="#{derechoConflictoBean.fuente.nombre}"
+                                    readOnly="true"/>
+                      <af:inputText binding="#{derechoConflictoBean.it_nombre2}"
+                                    id="it_nombre2"
+                                    requiredMessageDetail="Nombre de conflicto requerido"
+                                    contentStyle="text-transform:uppercase"
+                                    label="Nombre conflicto"
+                                    value="#{derechoConflictoBean.conflicto.nombre}"
+                                    readOnly="true"/>
+                      <af:selectManyListbox label="Derechos involucrados"
+                                            binding="#{derechoConflictoBean.smlbDerechoConflicto}"
+                                            id="smlbDerechoConflicto"
+                                            value="#{derechoConflictoBean.listaDerechoConflictoAsociado}">
+                        <f:selectItems value="#{derechoConflictoBean.listaDerechoConflicto}"
+                                       binding="#{derechoConflictoBean.siDerechoConflicto}"
+                                       id="siDerechoConflicto"/>
+                      </af:selectManyListbox>
+                      <af:inputText binding="#{derechoConflictoBean.inputText1}"
+                                    id="inputText1"
+                                    requiredMessageDetail="Nombre de conflicto requerido"
+                                    contentStyle="text-transform:uppercase"
+                                    label="Otro derecho involucrado. Cual ?"
+                                    value="#{derechoConflictoBean.conflicto.derechoOtro}"/>
+                      <af:commandButton text="Actualizar"
+                                        binding="#{derechoConflictoBean.cbNext1}"
+                                        id="cbNext1" icon="/imgs/next.png"
+                                        actionListener="#{derechoConflictoBean.cbNext1_actionListener}"/>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                            
+                            
+                            <af:popup binding="#{derechoConflictoBean.p_registro_exitoso}"
+                                    id="p_registro_exitoso">
+                                <af:dialog binding="#{derechoConflictoBean.d_registro_exitoso}"
+                                           id="d_registro_exitoso" type="none"
+                                           title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                           closeIconVisible="false">
+                                  <f:facet name="buttonBar">
+                                    <af:panelGroupLayout binding="#{derechoConflictoBean.pgl14}"
+                                                         id="pgl14">
+                                      <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                        binding="#{derechoConflictoBean.cbAceptar}"
+                                                        id="cbAceptar"
+                                                        actionListener="#{derechoConflictoBean.cb_aceptar_actionListener}"
+                                           
+                                                        immediate="true" partialSubmit="true"
+                                                        action="#{derechoConflictoBean.getAceptarAction}"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                  <af:panelStretchLayout binding="#{derechoConflictoBean.psl7}"
+                                                         id="psl7" endWidth="0px"
+                                                         topHeight="0px" bottomHeight="2px"
+                                                         inlineStyle="height:41px; width:316px;">
+                                    <f:facet name="bottom"/>
+                                    <f:facet name="center">
+                                      <af:outputText value="Conflicto actualizado exitosamente"
+                                                     binding="#{derechoConflictoBean.ot8}"
+                                                     id="ot8"/>
+                                    </f:facet>
+                                    <f:facet name="start">
+                                      <af:image source="/imgs/info.png" shortDesc="info"
+                                                binding="#{derechoConflictoBean.i1}" id="i1"/>
+                                    </f:facet>
+                                    <f:facet name="end"/>
+                                    <f:facet name="top"/>
+                                  </af:panelStretchLayout>
+                                </af:dialog>
+                            </af:popup>
+                </af:panelGroupLayout>
+                    </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{derechoConflictoBean.pgl4}" id="pgl4"
+                                     layout="vertical">
+                  <af:panelGroupLayout binding="#{derechoConflictoBean.panelGroupLayout6}"
+                                       id="panelGroupLayout6">
+                    <af:panelGroupLayout layout="horizontal"
+                                         binding="#{derechoConflictoBean.panelGroupLayout7}"
+                                         id="panelGroupLayout7">
+                      <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                      binding="#{derechoConflictoBean.cl4}"
+                                      id="cl4" action="fuentes"/>
+                      <af:spacer width="25" height="10"
+                                 binding="#{derechoConflictoBean.spacer5}"
+                                 id="spacer5"/>
+                      <af:commandLink text="Todos los conflictos"
+                                      binding="#{derechoConflictoBean.commandLink1}"
+                                      id="commandLink1"
+                                      action="#{derechoConflictoBean.getAceptarAction}"
+                                      actionListener="#{derechoConflictoBean.lk_todosConflictos_actionListener}"/>
+                      <af:spacer width="25" height="10"
+                                 binding="#{derechoConflictoBean.spacer8}"
+                                 id="spacer8"/>
+                      <af:outputText value="#{viewcontrollerBundle.FNT_FUENTE} : #{derechoConflictoBean.fuente.nombre}"
+                                     binding="#{derechoConflictoBean.outputText1}"
+                                     id="outputText1"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{derechoConflictoBean.spacer9}"
+                               id="spacer9"/>
+                    <af:panelGroupLayout layout="horizontal"
+                                         inlineStyle="width:97%"
+                                         binding="#{derechoConflictoBean.panelGroupLayout8}"
+                                         id="panelGroupLayout8">
+                      <af:menuBar id="menuBar1" inlineStyle="width:99%;"
+                                  binding="#{derechoConflictoBean.menuBar1}">
+                        <af:menu text="Detalles Conflicto"
+                                 binding="#{derechoConflictoBean.menu3}"
+                                 id="menu3">
+                          <af:commandMenuItem id="commandMenuItem11"
+                                              action="datosConflicto"
+                                              text="Datos Basicos"
+                                              binding="#{derechoConflictoBean.commandMenuItem11}"/>
+                          <af:commandMenuItem id="commandMenuItem2"
+                                              action="tipoConflicto"
+                                              text="Tipo y Origen"
+                                              binding="#{derechoConflictoBean.commandMenuItem2}"/>
+                          <af:commandMenuItem id="commandMenuItem3"
+                                              action="actoresConflicto"
+                                              text="Actores y Poblacion afectada"
+                                              binding="#{derechoConflictoBean.commandMenuItem3}"/>
+                          <af:commandMenuItem id="commandMenuItem4"
+                                              action="derechosConflicto"
+                                              text="Derechos Afectados"
+                                              binding="#{derechoConflictoBean.commandMenuItem4}"/>
+                          <af:commandMenuItem   action="actividadLogroConflicto"
+                                              text="Actividades economicas y Logros"
+                                              />                    
+                          <af:commandMenuItem id="commandMenuItem5"
+                                              action="gestionConflicto"
+                                              text="Gestion Realizada"
+                                              binding="#{derechoConflictoBean.commandMenuItem5}"/>
+                        </af:menu>
+                      </af:menuBar>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:derechoConflictoBean-->
+</jsp:root>

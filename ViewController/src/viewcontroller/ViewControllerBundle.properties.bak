@@ -1,0 +1,1726 @@
+
+# Logo y nombre de la empresa
+nombre_empresa=Instituto de Hidrologia, Meteorologia y Estudios Ambientales
+nombre_empresa_corto=IDEAM
+login_titulo_1=Sistema de Informaci\u00f3n del Recurso H\u00EDdrico
+login_titulo_2=SIRH
+numero_version=Versión 1.0
+fecha_version=Diciembre 18 de 2014
+direccion=Calle 25 D No. 96 B - 70 Bogotá D.C.
+identificacion=NIT. 830.000.602-5
+telefono=Tel.  (571)3527160 
+web=www.ideam.gov.co
+
+#Pantalla Login
+login_campo_usuario=Usuario
+login_campo_clave=Clave
+login_error=Usuario o Clave Incorrecto
+
+# Pantalla principal
+principal_menu_inicio=Consulta de cifras
+principal_menu_salir=Salir
+
+# Pantalla Menu
+menu_boton_actualizar=Actualizar
+menu_titulo=Men\u00FA del sistema y opciones
+menu_titulo_opciones=Opciones asociadas al men\u00fa 
+menu_detalle=Detalle men\u00fa 
+menu_nuevo=Nueva Opci\u00f3n de Men\u00fa
+menu_nombre=Nombre
+menu_padre=Men\u00fa Padre
+menu_estado=Estado
+menu_imagen=Im\u00E1gen
+menu_orden=Orden
+menu_clase=Nombre Clase
+menu_accion=Acci\u00f3n
+menu_pagina=P\u00E1gina
+menu_existe_pagina=Ya existe un men\u00fa asociado a esta p\u00E1gina, debe asignar otra
+menu_existe_accion=Ya existe un men\u00fa asociado a esta acci\u00f3n, debe asignar otra
+menu_existe_clase=Ya existe un men\u00fa asociado a este nombre de clase, debe asignar otra
+menu_self_padre=Un men\u00fa no puede ser padre de si mismo
+menu_actualizar_sin_pagina=Debe seleccionar un men\u00fa que tenga relacionado una p\u00E1gina
+menu_pagina_inicio=La p\u00E1gina no debe iniciar con /
+menu_falta_clase=Debe ingresar el nombre de la clase para esta p\u00E1gina
+
+# Pantalla perfiles
+perfiles_titulo=Grupos y Permisos
+perfiles_detalle=Detalle Perfil
+perfiles_nombre=Nombre
+perfiles_estado=Estado
+perfiles_adicionar=Adicionar Nuevo Perfil
+perfiles_titulo_permisos=Permisos Asociados al perfil
+perfiles_sin_opciones=Debe asignar por lo menos un permiso antes de guardar el perfil
+perfiles_info_guardada=Se actualiz\u00f3 la informaci\u00f3n del perfil 
+perfiles_confirma_borrar=Confirma que desea borrar el perfil  
+perfiles_segunda_confirmacion_con_usuarios=Existen %% usuarios que tienen este perfil asociado,\nal eliminarlo se ver\u00E1n afectados los permisos de todos ellos,\nconfirma que desea continuar con la eliminacion del perfil?
+perfiles_segunda_confirmacion_sin_usuarios=Existen %% usuarios que tienen este perfil asociado,\nconfirma que desea continuar con la eliminacion del perfil?
+
+# Pantalla Usuarios
+usuarios_titulo=Usuarios
+usuarios_detalle=Detalle del Usuario
+usuarios_adicionar=Crear Nuevo Usuario
+usuarios_login=Login
+usuarios_nombres=Nombres
+usuarios_apellidos=Apellidos
+usuarios_email=Email
+usuarios_estado=Estado
+usuarios_perfiles=Perfiles
+usuarios_no_login=Debe ingresar el login del usuario
+usuarios_no_nombres=Debe ingresar los nombres del usuario
+usuarios_no_apellidos=Debe ingresar los apellidos del usuario
+usuarios_no_email=Debe ingresar el email del usuario
+usuarios_no_estado=Debe seleccionar el estado del usuario
+usaurios_no_perfiles=Debe asociar por lo menos un perfil activo al usuario
+usuarios_borrar=Realmente desea borrar el usuario 
+usuarios_login_existe=Este login ya se encuentra asociado a otro usuario, debe asignar uno diferente
+usuarios_email_existe=Este email ya se encuentra asociado a otro usuario, debe asignar uno diferente
+
+# Pantalla Auditoria
+auditoria_modulo_titulo=Definir Auditor\u00EDa
+auditoria_modulo_nombre=Nombre
+auditoria_modulo_descripcion=Descripci\u00f3n
+auditoria_metodos_nombre=Nombre
+auditoria_metodos_auditar=Auditar
+auditoria_metodos_descripcion=Descripci\u00f3n
+auditoria_modulo_seleccionado=Funcionalidad del m\u00f3dulo 
+auditoria_info_guardada=Se actualiz\u00f3 la informaci\u00f3n de Auditor\u00EDa 
+
+# Pantalla Consulta de Auditoria
+auditoria_consulta_titulo=Consultar Eventos de Auditor\u00EDa 
+auditoria_consulta_rango_fechas=Rango de Fechas
+auditoria_consulta_fecha_inicial=Inicial
+auditoria_consulta_fecha_final=Final
+auditoria_consulta_evento=Evento
+auditoria_consulta_modulo=M\u00f3dulo
+auditoria_consulta_metodo=M\u00E9todo
+auditoria_consulta_ip_usuario=Direcci\u00f3n IP y Usuario
+auditoria_consulta_objeto=Objeto
+auditoria_consulta_propiedad=Atributo
+auditoria_consulta_valor=Valor Atributo
+auditoria_consulta_ip=IP
+auditoria_consulta_usuario=Usuario
+auditoria_consulta_boton_buscar=Buscar
+auditoria_consulta_resultados=Resultados
+auditoria_consulta_ip_error=Direcci\u00f3n IP incorrecta. Ejemplo: 172.16.1.2
+auditoria_consulta_registros_encontrados=%% Registros encontrados
+auditoria_consulta_todos=Todos
+auditoria_consulta_tabla_fecha=Fecha y Hora
+auditoria_consulta_tabla_modulo=M\u00f3dulo
+auditoria_consulta_tabla_metodo=Evento
+auditoria_consulta_tabla_ip=IP
+auditoria_consulta_tabla_usuario=Usuario
+auditoria_consulta_demasiados_registros=Existen mas de %% registros con estos criterios, debe ingresar m\u00E1s criterios de b\u00fasqueda para filtrar la consulta o realizar un mantenimiento de la tabla de auditor\u00EDa
+auditoria_consulta_titulo_detalle=Detalle del Evento de Auditor\u00EDa
+auditoria_consulta_log=Log
+auditoria_consulta_tipo_reporte=Tipo de Reporte
+auditoria_consulta_reporte=Desea imprimir el log de cada registro?
+auditoria_consulta_reporte_log_si=Si
+auditoria_consulta_reporte_log_no=No
+auditoria_consulta_falta_propiedad=Debe seleccionar una propiedad
+auditoria_consulta_falta_valor=Debe ingresar un valor para la propiedad seleccionada
+
+# Pantalla borrar Auditoria
+auditoria_borrar_titulo=Depurar Registros de Auditor\u00EDa
+auditoria_borrar_tabla_semana=Semana
+auditoria_borrar_tabla_fecha_inicial=Fecha Inicial
+auditoria_borrar_tabla_fecha_final=Fecha Final
+auditoria_borrar_tabla_registros=N\u00famero de Registros
+auditoria_borrar_tabla_borrar=Borrar
+auditoria_borrar_confirmacion=Confirma que desea borrar los eventos de auditor\u00EDa para la semana seleccionada?
+auditoria_borrar_borrando=Borrando Eventos de Auditor\u00EDa semana %%. Pendientes %% registros
+auditoria_borrar_semana_actual=No se permite borrar los Eventos de Auditor\u00EDa correspondientes a la semana actual
+
+# Textos de los botones
+boton_Adicionar=Adicionar
+boton_cancelar=Cancelar
+boton_cerrar=Cerrar
+boton_guardar=Guardar
+boton_actualizar=Actualizar
+boton_regresar=Regresar
+login_boton_aceptar=Aceptar
+
+# Validaciones de campos
+obligatorio=Campo obligatorio
+fecha_errada=Fecha errada
+fecha_errada_ant=Fecha cumplimiento debe ser superior a la del a\u00F1o anterior
+fecha_ini_errada=Fecha inicial debe ser superior a la de aprobaci\u00f3n
+fecha_fin_errada=Fecha final debe ser superior a la inicial
+longitud_errada=Descripci\u00f3n demasiado extensa. M\u00E1ximo 200 caracteres
+longitud_errada_30=Descripci\u00f3n demasiado extensa. M\u00E1ximo 30 caracteres
+email_incorrecto=La direcci\u00f3n de correo ingresada no es v\u00E1lida
+seleccionar_registro=Debe seleccionar un registro
+nombre_incorrecto=Valor Incorrecto 
+error=Error
+
+# Tablas de datos
+tabla_vacia=No existen datos para mostrar
+
+# Opciones de Menu estandar
+menu_archivo=Opciones
+menu_acciones=Acciones
+menu_adicionar=Adicionar
+menu_editar=Consultar / Editar
+menu_borrar=Borrar
+menu_limpiar=Limpiar 
+menu_filtrar=Filtrar
+menu_filtrar_mostrar=Mostrar Filtros
+menu_filtrar_ocultar=Ocultar Filtros
+menu_filtrar_ejecutar=Ejecutar Filtros
+menu_filtrar_limpiar=Limpiar Filtros
+menu_imprimir=Imprimir / Exportar
+menu_imprimirPDF=Detalle / PDF
+menu_guardar=Guardar
+menu_regresar=Regresar
+menu_ver=Mostrar Detalle
+menu_puea=Ver PUEAA
+
+#daln
+menu_imprimirFT=Imprimir Tramos Fuentes
+#menu_imprimirDCapT=Imprimir Detalle Captacion
+#daln
+
+# Filtros
+filtrar=Filtrar
+estado_activo=Activo
+estado_inactivo=Inactivo
+fecha_desde=Desde
+fecha_hasta=Hasta
+criterios_busqueda=Criterios de B\u00fasqueda
+no_existen_criterios=Debe ingresar por lo menos un criterio de b\u00fasqueda
+
+# Ventanas y Reportes Estandar
+titulo_confirmacion=Confirmaci\u00f3n
+mostrando_filtro=Mostrando contenido filtrado
+error_rango_fechas=Las fechas ingresadas no establecen un rango
+error_rango_numerico=Los valores ingresados no establecen un rango
+reporte_no_columnas=Debe seleccionar por lo menos una columna
+reporte_vacio=No existen datos para imprimir
+
+
+label_seleccione=Seleccione
+mensaje_registro_exitoso=Se actualiz\u00f3 la informaci\u00f3n %% en forma exitosa
+faltan_caracteres=Debe ingresar por lo menos %% caracteres
+FECHA_CARGA=Fecha Carga
+COMENTARIO=Comentario
+MOSTRAR=Mostrar
+IMAGEN=Im\u00E1gen
+tipo_archivo_incorrecto=No es posible cargar el archivo %%, solo se permite archivos de tipo %%
+VER=Ver
+ANTERIOR=Anterior
+SIGUIENTE=Siguiente
+imagenes_confirma_borrar=Confirma que desea borrar la siguiente Im\u00E1gen  
+ADICIONAR=Adicionar
+PRIORIDAD=Prioridad
+ESTACIONES_ASOCIADAS_A_LA_RED=Estaciones Asociadas a la Red
+REPORTA=Reporta
+FECHA_INICIO=Fecha Inicio
+CONFIRMA_QUE_DESEA_BORRAR_EL_R=Confirma que desea borrar el registro seleccionado?
+HA_APLICACI_U00F3N__=Fecha Aplicaci\u00F3n  
+CREAR_NUEVA_FAMILIA_DE_REDES=Crear Nueva Familia de Redes
+RED_CUBIERTA=Red Cubierta
+FECHA_DE_REGISTRO=Fecha de Registro
+PISO=Piso
+TECHO=Techo
+C_U00F3DIGO=C\u00F3digo
+FECHA_DE_CREACI_U00F3N=Fecha de Creaci\u00F3n
+FECHA_DE_MODIFICACI_U00F3N=Fecha de Modificaci\u00F3n
+DETALLE__=Detalle  
+BORRAR_DOMINIO=Confirma que desea borrar el dominio con Nombre "%%" y Descripci\u00F3n "%%"?
+CONFIRMAR_CONSULTA=Esta consulta genera aproximadamente %% registros y puede demorar %% min. Confirma que desea ejecutarla?
+BUSCANDO=Buscando
+GRADOS=\u00B0
+TERMINADO=Terminado
+EXCEL=Excel
+PDF=Pdf
+SELECCIONE_TIPO_REPORTE=Seleccione el Tipo de reporte a generar
+TIPO_REPORTE=Tipo Reporte
+PATH=Path
+PADRE=Padre
+ASIGNAR=Asignar
+L_U00EDMITE_SUPERIOR=L\u00EDmite Superior
+L_U00EDMITE_INFERIOR=L\u00EDmite Inferior
+
+FECHA_INSTALACI_U00F3N=Fecha Instalaci\u00F3n
+CUATRO_CARACTERES=Debe ingresar por lo menos cuatro caracteres
+
+2013_SOFTWARE_F_U00E9NIX=2013 Software F\u00E9nix
+CAMBIAR_CLAVE=Cambiar Clave
+CONFIRMAR_CLAVE=Confirmar Clave
+CLAVE_NO_COINCIDE=La clave y su confirmci\u00F3n deben ser iguales
+CLAVE_MINIMO_8=La clave debe contener por lo menos 8 caracteres
+CLAVE_ACTUAL=Clave Actual
+CLAVE_INCORRECTA=Clave Incorrecta
+CLAVE_MODIFICADA=La clave de acceso fue modificada
+RECORDAR_CLAVE=Olvido de clave
+MAIL_CLAVE_ENVIADO=Se envi\u00F3 la nueva clave a la direcci\u00F3n de correo registrada para el usuario
+OBLIGA_CAMBIO_CLAVE=Cambie su clave e ingrese de nuevo al sistema para tener acceso a todas las opciones del men\u00FA.
+IDENTIFICACI_U00F3N=Identificaci\u00F3n
+RAZ_U00F3N_SOCIAL=Raz\u00F3n Social
+DIRECCI_U00F3N=Direcci\u00F3n
+TEL_U00E9FONO_1=Tel\u00E9fono 1
+TEL_U00E9FONO_2=Tel\u00E9fono 2
+DETALLE_EMPRESA=Detalle Empresa
+TIPO_IDENTIFICACI_U00F3N=Tipo Identificaci\u00F3n
+CREAR_EMPRESA_PASO_1=Crear Empresa (Paso 1)
+EMPRESA=Empresa
+INFORMACI_U00F3N_GENERAL=Informaci\u00F3n general
+INFORMACI_U00F3N_DETALLADA_DE_=Informaci\u00F3n detallada de la empresa
+SELECCIONAR_EMPRESA=Debe seleccionar una empresa
+HACE_PARTE_DEL_CORE=Hace Parte del Core
+LOGO_EMPRESA=Logo Empresa
+COLOR_DE_FONDO=Color de Fondo
+EXCLUSIVO_IDEAM=Exclusivo Ideam
+AUTORIDAD_AMBIENTAL=Autoridad Ambiental
+DEPARTAMENTO=Departamento
+MUNICIPIO=Municipio
+TELEFONO=Tel\u00E9fono
+DETALLE_PERSONA_JUR_U00EDDICA=Detalle Persona Jur\u00EDdica
+DETALLE_DEL_PREDIO=Detalle del Predio
+TIPO_DE_USUARIO=Tipo de Usuario
+N_U00FAMERO_IDENTIFICACI_U00F3=N\u00FAmero de identificaci\u00F3n
+ADICIONAR_USUARIO_DEL_AGUA=Adicionar Usuario Del Agua
+PASO_1__TIPO_DE_USUARIO=Paso 1 - Tipo de Usuario
+SELECCIONE_EL_TIPO_DE_USUARIO_=Seleccione el tipo de usuario e ingrese el tipo y n\u00FAmero de identificaci\u00F3n del Usuario
+PASO_2__INFORMACI_U00F3N_DEL_U=Paso 2 - Informaci\u00F3n del Usuario
+PASO_2__INFORMACI_U00F3N_DEL_M=Paso 2 - Informaci\u00F3n del Municipio
+NO_EXISTE_AUTORIDAD_AMBIENTAL=El usuario conectado al sistema debe estar asociado a una Autoridad Ambiental 
+C_EDULA_CATASTRAL=C\u00E9dula catastral
+CLASIFICACION_DEL_SUELO=Clasificaci\u00F3n del suelo
+PASO___DETALLE_DEL_PREDIO=Paso %% - Detalle del predio
+SISTEMA_DE_REFERENCIA=Sistema de referencia
+GRADOS_0=Grados
+MINUTOS=Minutos
+SEGUNDOS=Segundos
+ALTITUD=Altitud
+CONFRIMA_CANCELACION=Confrima que desea cancelar la acci\u00F3n?
+UBICACION=Ubicaci\u00F3n
+REGISTRO_USUARIO_PREDIO_OK=Se registró el usuario y predio en forma exitosa
+REGISTRO_EXITOSO=Registro Exitoso
+BORRADO_EXITOSO=Registro Eliminado
+ACTIVIDAD_CIIU=Actividad CIIU
+REPRESENTANTE_LEGAL=Paso %% - Representante Legal
+NOMBRE_DE_LA_EMPRESA=Nombre de la Empresa
+CENTRO_POBLADO=Centro Poblado
+PREDIOS_RELACIONADOS=Predios Relacionados
+PREDIO=Predio
+CAPTACION=Captacion
+CAPTACIONES=Captaciones
+CONCESIONES=Concesiones
+PERMISOS_VERTIMIENTO=Permisos de vertimiento
+
+PERMISOS_VERTIMIENTO_DETALLE= Reporte Detalle de vertimiento
+
+VERTIMIENTOS=Vertimientos
+VERTIMIENTO=Vertimiento
+ADICIONAR_VERT=Adicionar Vertimiento
+NO_HAY_REGISTROS=No hay Registros
+DETALLE_PREDIO=Detalle Predio
+MATRICULA_CATASTRAL=Matr\u00EDcula inmobiliaria
+TODOS_LOS_USUARIOS=Todos los usuarios
+NUMERO_DE_EXPEDIENTE=N\u00FAmero de expediente
+RESOLUCION_CAUDAL=Resoluci\u00F3n aprob. caudal
+F_NOTIFICACI_U00F3N_CAUDAL=F. Notificaci\u00F3n caudal
+F_EXPEDICI_U00F3N_CAUDAL=F. Expedici\u00F3n caudal
+RESOLUCI_U00F3N_PLANOS=Resoluci\u00F3n aprob. planos
+F_NOTIFICACI_U00F3N_PLANOS=F. Notificaci\u00F3n aprob. planos
+F_EXPEDICI_U00F3N_PLANOS=F. Expedici\u00F3n aprob. planos
+RESOLUCI_U00F3N_OBRAS=Resoluci\u00F3n aprob. obras
+F_NOTIFICACI_U00F3N_OBRAS=F. Notificaci\u00F3n aprob. obras
+F_EXPEDICI_U00F3N_OBRAS=F. Expedici\u00F3n aprob. obras
+CONCESI_U00F3N__=Concesi\u00F3n
+DETALLE_DE_LA_CONCESION=Detalle de la concesion
+FECHA_NOTIFICACI_U00F3N_CAUDAL=Fecha notificaci\u00F3n aprob. caudal
+FECHA_EXPEDICI_U00F3N_CAUDAL=Fecha expedici\u00F3n aprob. caudal
+FECHA_NOTIFICACI_U00F3N_PLANOS=Fecha notificaci\u00F3n aprob. planos
+FECHA_EXPEDICI_U00F3N_PLANOS=Fecha expedici\u00F3n aprob. planos
+FECHA_NOTIFICACI_U00F3N_OBRAS=Fecha notificaci\u00F3n aprob. obras
+FECHA_EXPEDICI_U00F3N_OBRAS=Fecha expedici\u00F3n obras
+ADICIONAR_PREDIO=Adicionar Predio
+MENSAJE_BORRAR_PREDIO=Confirma que desea borrar el predio %%?.
+MENSAJE_BORRAR_PREDIO_DETALLE_CONCESIONES=Este predio tiene asociadas %% Concesiones
+MENSAJE_BORRAR_PREDIO_DETALLE_PERMISOS=Este predio tiene asociados %% Permisos de Vertimiento
+MENSAJE_BORRAR_PREDIO_DETALLE_TOTAL=Este predio tiene asociadas %% Concesiones y %% Permisos de Vertimiento
+MENSAJE_BORRAR_PREDIO_EXITOSO=Se borró el predio en forma erxitosa
+EXISTE_USUARIO=Ya existe un usuario registrado con este Tipo y Número de Identificación
+RESOLUCION_INICIO_TRA=Acto Adm. Inicio Tr\u00E1mite
+FECHA_EXPEDICI_U00F3N_INICIO_T=Fecha Expedici\u00F3n Inicio Tr\u00E1mite
+N_U00FAMERO_EXPEDIENTE=N\u00FAmero Expediente
+CAUDAL=Caudal (l/s)
+CAUDAL_AUTORIZADO=Caudal Autorizado (l/s)
+RESOLUCI_U00F3N_PLAN_DE_CUMPLI=Resoluci\u00F3n solicita presentac. Plan de Cumplimiento
+FECHA_EXPEDICI_U00F3N_PLAN_DE_=Fecha Expedici\u00F3n
+RESOLUCI_U00F3N_APROBACI_U00F3=Resoluci\u00F3n Aprobaci\u00F3n Plan de Cumplimiento
+FECHA_DE_EXPEDICI_U00F3N_APROB=Fecha de Expedici\u00F3n Aprobaci\u00F3n Plan
+FECHA_INICIO_VIGENCIA_PLAN=Fecha Inicio Vigencia Plan
+FECHA_FIN_VIGENCIA_PLAN=Fecha Fin Vigencia Plan
+RESOLUCI_U00F3N_PERMISO_VERTIM=Resoluci\u00F3n Permiso Vertimiento
+FECHA_EXPEDICI_U00F3N_PERMISO_=Fecha Expedici\u00F3n Permiso Vertimiento
+RESOLUCI_U00F3N_APROBACI_U00_0=Resoluci\u00F3n Aprobaci\u00F3n Planos
+FECHA_EXPEDICI_U00F3N_APROBACI=Fecha Expedici\u00F3n Aprobaci\u00F3n Planos
+RESOLUCI_U00F3N_APROBACI_U00_1=Resoluci\u00F3n Aprobaci\u00F3n Obras
+FECHA_EXPEDICI_U00F3N_APROBA_0=Fecha Expedici\u00F3n Aprobaci\u00F3n Obras
+DETALLE_DEL_PERMISO_DE_VERTIMI=Detalle del Permiso de Vertimiento
+PERMISO=Permiso
+EVALUACI_U00F3N_AMBIENTAL=Evaluaci\u00F3n Ambiental
+REVISI_U00F3N=Revisi\u00F3n
+SELECCIONAR_ACTIVIDAD_CIIU=Seleccionar actividad CIIU
+SELECCIONE_UNA_ACTIVIDAD_Y_PUL=Seleccione una actividad y pulse el Bot\u00F3n Seleccionar
+INGRESE_EL_C_U00F3DIGO_CIIU=Ingrese el C\u00F3digo o Nombre de la actividad CIIU que desea buscar
+SOLO_UN_CRITERIO=Debe ingresar solo un criterio de B\u00FAsqueda
+SELECCIONAR=Seleccionar
+OBSERVACIONES=Observaciones
+REPRESENTANTE_LEGAL_=Representante Legal 
+INFORMACI_U00F3N_DE_LA_ESP=Informaci\u00F3n de la Empresa.
+MENSAJE_BORRAR_USUARIO=Confirma que desea borrar el usuario %%?.
+MENSAJE_BORRAR_USUARIO_DETALLE_PREDIO=Este usuario tiene asociados %% Predios
+MENSAJE_BORRAR_USUARIO_EXITOSO=Se borró el usuario en forma erxitosa
+CEDULA_EXISTE=Ya existe un predio registrado con este N\u00famero  de C\u00E9dula Catastral
+ESTADISTICAS_GENERALES=Estad\u00EDsticas generales
+ESTADISTICAS_PORH=Estad\u00EDsticas PORH
+USUARIOS_POR_DEPARTAMENTO=Usuarios por departamento
+MENSAJE_BORRAR_CONCESION=Confirma que desea borrar la concesión %%?.
+MENSAJE_BORRAR_PERMISO=Confirma que desea borrar el permiso %%?.
+MENSAJE_BORRAR_CONCESION_DETALLE_CAPTACIONES=Esta concesión tiene asociadas %% Captaciones
+MENSAJE_BORRAR_PERMISO_DETALLE_VERTIMIENTOS=Este permiso tiene asociados %% Puntos de Vertimiento
+MENSAJE_BORRAR_CONCESION_EXITOSO=Se borró la concesión en forma erxitosa
+MENSAJE_BORRAR_PERMISO_EXITOSO=Se borró el permiso en forma erxitosa
+
+
+#Pantalla fuentes
+MODULO_FUENTES=Fuentes
+FNT_ADICIONAR_FUENTE=Nueva fuente
+FNT_DETALLE_FUENTE=Datos de la fuente
+FNT_DATOS_BASICOS=Datos básicos
+FNT_DATOS_ZONIFICACION=Zonificación
+FNT_MUNICIPIOS=Municipios relacionados
+FNT_FUENTE=Fuente
+FNT_AREA=Área
+FNT_ZONA=Zona
+FNT_SUBZONA=Subzona
+FNT_NUMERO=Número
+FNT_NOMBRE=Nombre
+FNT_TIPO=Tipo
+FNT_DESCRIPCION=Descripción
+FNT_COMPARTIDA=Fuente compartida?
+FNT_COMPART_OPCION_SI=Si
+FNT_COMPART_OPCION_NO=No
+FNT_RELACIONAR_MUNICIPIO=Relacionar
+FNT_TRAMOS_RELACIONADOS=Tramos relacionados
+FNT_SECTORES_RELACIONADOS=Sectores relacionados
+FNT_ADICIONAR_TRAMO=Adicionar tramo
+FNT_ADICIONAR_SECTOR=Adicionar sector
+FNT_TODAS=Mostrar todas las fuentes
+CNC_TODAS=Mostrar todas las cuencas
+FNT_TITULO=Fuentes
+FNT_SI_TRAMOS=La fuente no se puede borrar porque tiene tramos|sectores relacionados
+FNT_SI_CAPTACIONES=La fuente no se puede borrar porque tiene captaciones relacionadas
+FNT_SI_VERTIMIENTOS=La fuente no se puede borrar porque tiene puntos de vertimiento relacionados
+FNT_CODCUENCA_AA=Código de la cuenca
+#Carlos Abril
+FNT_CODFUENTE_AA=Código de la fuente  
+
+#Mensajes módulo
+fuente_no_nombre=Debe ingresar el nombre de la fuente
+fuente_repetida=Ya existe el nombre de la fuente
+fuente_no_especifica=Debe especificar si es compartida
+municipio_relacion_borrar=Borrar municipio 
+boton_relacionar=Relacionar
+fuente_registrada=Se registró éxitosamente la fuente
+fuente_actualizada=Se actualizó éxitosamente la fuente
+fuente_eliminada=Se eliminó éxitosamente la fuente
+borrar_fuente=Realmente desea borrar la fuente? 
+fuente_tramos_relacionados=La fuente tiene tramos|sectores relacionados: 
+
+#Tramos
+MODULO_TRAMOS=Listar tramos|sectores
+TRM_ADICIONAR_TRAMO=Nuevo tramo|sector
+TRM_DETALLE_TRAMO=Datos del tramo|sector
+TRM_DATOS_BASICOS=Datos básicos
+TRM_DATOS_PI=Datos punto inicial
+TRM_DATOS_PF=Datos punto final   
+TRM_DATOS_ZONIFICACION=Zonificación
+TRM_MUNICIPIOS=Municipios relacionados
+TRM_TRAMO=Tramo|Sector
+TRM_AREA=Área
+TRM_ZONA=Zona
+TRM_SUBZONA=Subzona
+TRM_NOMBRE=Nombre
+TRM_TIPO=Tipo flujo
+TRM_SISTEMA=Sistema de referencia
+TRM_DESCRIPCION=Descripción
+TRM_LONGITUD=Longitud (Kmts)
+TRM_OFERTA=Oferta hídrica año medio(m3/s)
+TRM_OBS=Observación
+TRM_GRADOS=Grados
+TRM_MINUTOS=Minutos
+TRM_SEGUNDOS=Segundos
+TRM_ALTITUD=Altitud
+TRM_COMPART_OPCION_SI=Si
+TRM_COMPART_OPCION_NO=No
+TRM_RELACIONAR_MUNICIPIO=Relacionar
+TRM_TODOS=Mostrar todos los tramos|sectores
+TRM_UBICACION=Ubicación del tramo|Sector
+TRM_PTOS_RELACIONADOS= El Tramo|Sector no se puede borrar porque tiene Puntos de Monitoreo asociados
+TRM_SI_CAPTACIONES=El Tramo|Sector no se puede borrar porque tiene captaciones relacionadas.
+TRM_SI_VERTIMIENTOS=El Tramo|Sector no se puede borrar porque tiene puntos de vertimiento relacionados.
+TRM_FUENTES_RELACIONADAS=Fuentes relacionadas
+TRM_FUENTES_DISPONIBLES=Fuentes disponibles
+
+tramo_no_nombre=Debe ingresar el nombre del tramo|sector
+borrar_tramo=Realmente desea borrar el tramo|sector?
+tramo_eliminado=Se eliminó éxitosamente el tramo|sector
+tramo_repetido=Ya existe el nombre del tramo|sector
+tramo_registrado=Se registró éxitosamente el tramo|sector
+tramo_actualizado=Se actualizó éxitosamente el tramo|sector
+ESTADO_DE_VIGENCIA_DE_CONCESIO=Estado de Vigencia de Concesiones
+ARCHIVO=Archivo
+DOCUMENTO=Documento
+CONFIRMA_BORRAR_ARCHIVO=Confirma que desea borrar el documento asociado
+
+
+
+#Pantalla PuntosMonitoreo
+MODULO_PUNTOS=Puntos de Monitoreo
+TITULO_FORMULARIO_PTO=Información del Punto de monitoreo
+TITULO_PANEL1_PTO=Datos del Punto de monitoreo
+TITULO_PANEL2_PTO=Localización del Punto de monitoreo
+TITULO_PANEL3_PTO=Georreferenciación del Punto
+PTO_NOMBRE=Nombre del punto
+PTO_TIPO_PTO=Tipo de punto
+PTO_UBICACION=Ubicación del punto
+PTO_IDENTICICACION= Nro de identificación
+PTO_LATITUD=Latitud
+PTO_LONGITUD=Longitud
+PTO_ALTITUD= Altitud (msmm)
+PTO_DESCRIPCION=Descripción de acceso al sitio
+PTO_REGISTRO_EXITOSO=Se registró éxitosamente el Punto de monitoreo
+TITULO_DETALLE_PUNTO= Detalle del Punto de monitoreo
+TITULO_ADICIONAR_PUNTO= Adicionar Punto de monitoreo
+PTO_ACTUALIZAR_EXITOSO=Se actualizó éxitosamente el Punto de monitoreo
+PTO_ELIMINAR=Realmente desea borrar el Punto de Monitoreo?
+PTO_ELIMINADO=Se eliminó éxitosamente el Punto de Monitoreo
+PTO_EXISTE=La autoridad ambiental ya registró un punto de monitoreo con el mismo nombre en la fuente.
+PTO_MUESTRAS_ASOCIADAS=El punto de monitoreo no se puede borrar porque tiene muestras asociadas
+PTO_LISTADO=Todos los Puntos de Monitoreo
+PTO_TEXT= Punto Monitoreo
+ADICIONAR_USOS_CALIDAD=Objetivos de calidad
+ADICIONAR_CONFLICTO=conflicto
+ADICIONAR_AFLUENTES=afluentes
+PTO_RELACIONADOS= Puntos de Monitoreo Relacionados
+PTO_TITDESCRIPCION=Descripción de acceso 
+PTO_ERROR_SEG=El número decimal no debe contener (.). Formato ##,###
+
+
+
+FNT_EXISTE=La autoridad ambiental ya registró una fuente con el mismo nombre.
+TRM_EXISTE=La autoridad ambiental ya registró un tramo con ese nombre en la fuente.
+
+DATOS_BASICOS=Datos básgeoricos
+DATOS_GEO=Datos georreferenciación
+DATOS_DESCRIPCION=Descripción
+
+#Captaciones
+CPT_NOMBRE_CP=Nombre centro poblado
+CPT_TIPO_CP=Tipo Centro poblado
+CPT_ADICIONAR=Adicionar captación
+CPT_TIPO_FUENTE=Tipo de fuente
+CPT_TIPO_PUNTO=Tipo punto
+CPT_IDENT_PUNTO=Identificador del punto
+CPT_TIPO_CPT=Tipo captación
+CPT_OFERTA_ESTIMADA=Oferta estimada
+CPT_OFERTA=Oferta
+CPT_CAUDAL=Caudal (l/s)
+CPT_AREA_CPT=Area captación (m2)
+CPT_DESCRIPCION_ACCESO=Descripción de acceso al punto
+CPT_MACRO=Tiene sistema medición
+CPT_ESTADO_CAPTACION=Estado de la captación
+CPT_CAUDAL_DISEGNO=Caudal de diseño (l/s)
+CPT_RES_CAUDAL= Resolución del caudal
+CPT_OFER_TOTAL_CAP= Oferta total de la captación
+CPT_OFER_DISP_CAP= Oferta disponible de la captación
+CPT_NUMERO_USOS= Numero de Usos
+
+CPT_CONTINUIDAD=Tiene continuidad en el servicio?
+CPT_SERVIDUMBRE=Tiene servidumbre?
+CPT_METODO_EXTRACCION=Método de extracción
+CPT_COMPONENTES_SA=Componentes del sistema de abastecimiento
+CPT_OFERTA_HDRICA_TOTAL=Oferta Hídrica de la Fuente en el Punto de Captación Año Medio (m3/s)
+CPT_OFERTA_HIDRCA_DISPONIBLE=Oferta Hídrica Disponible de la Fuente en el Punto de Captación Año Medio (m3/s)
+CPT_OBSERVACION=Observación
+CPT_SUPERFICIAL=Captación fuente superficial...
+CPT_SUBTERRANEA=Captación fuente subterránea...
+CPT_LLUVIAS=Captación aguas lluvias...
+CPT_MINERALES=Captación aguas minerales...
+CPT_SERVIDAS=Captación aguas servidas...
+
+CPT_DATOS=Datos básicos
+CPT_PROVINCIA=Provincia hidrogeológica
+CPT_UNIDAD=Unidad hidrogeológica
+CPT_UBICACION=Ubicación
+CPT_DESCRIPCION=Descripción
+CPT_GEOREFERENCIACION=Georreferenciación
+
+CPT_DETALLE=Datos de la captación
+
+AFORO_BORRADO=Se eliminó el aforo de manera exitosa
+aforo_registrado=Se registró éxitosamente el aforo
+captacion_registrada=Se registró éxitosamente la captación
+CPT_BORRAR=Realmente desea borrar la captación?
+CPT_ACTUALIZADA=Se actualizó éxitosamente la captación
+CPT_ELIMINADA=Se eliminó correctamente la captación
+CPT_TODO=Todas las captaciones
+CPT_SI_USOS=La captación tiene usos asociados
+
+
+CARGAR_Y_VALIDAR=Cargar y Validar
+FILA=Fila
+ERRORES_DE_VALIDACI_U00F3N=Errores de Validaci\u00F3n
+REGISTRAR=Registrar
+SIN_REGISTROS_VALIDOS=No Existen registros v\u00E1lidos para registrar en el Sistema
+TIPO_DE_ARCHIVO=Tipo de Archivo
+ESTABLECER_PORH=Establecer Plan de Ordenamiento
+CRITERIOS_DE_PRIORIZACI_U00F3N=Criterios de Priorizaci\u00F3n
+PROHIBICION_PARA=Prohibici\u00F3n para los siguientes puntos de monitoreo
+TIPO_PROHIBICION=Tipo prohibici\u00F3n
+TIPO_PROHIBICION_DE=Tipo de 
+OTROS_CRITERIOS_DE_PRIORIZACION=Otros
+N_U00FAMERO_ACTO_ADMINISTR=N\u00FAmero del Acto Administrativo
+FECHA_DE_VIGENCIA=Fecha de Vigencia
+FECHA_DE_EXPEDICI_U00F3N__=Fecha de Expedici\u00F3n  
+VER_DETALLE=Ver Detalle
+DESEA_VER_DETALLE=Desea ver el detalle de %% correspondientes a la categor\u00EDa %%?
+PLAN_DE_CUMPLIMIENTO=Plan de Cumplimiento
+PERMISO_DE_VERTIMIENTO_=Permiso de Vertimiento 
+VIGENCIA_DEL_PERMISO_DE_VERTIM=Vigencia del Permiso de Vertimiento
+PLAN_DE_SANEAMIENTO_Y_MANEJO_D=Plan de Saneamiento y Manejo de Vertimientos (PSMV)
+RESOLUCI_U00F3N_PSMV=Resoluci\u00F3n Aprobaci\u00F3n del PSMV
+FECHA_DE_EXPEDICI_U00F3N_DEL_A=Fecha de Expedici\u00F3n del Acto Administrativo
+FECHA_INICIAL_PSMV=Fecha Inicial PSMV
+FECHA_FINAL_PSMV=Fecha Final PSMV
+TIPO_DE_CENTRO_POBLADO=Tipo de Centro Poblado
+
+
+#Pantalla Muestras
+MODULO_MUESTRAS= Muestras
+MST_TITULO_FORMULARIO=Información de la Muestra
+MST_TITULO_PANEL1=Datos de la Muestra
+MST_TIPO=Tipo de Muestra
+MST_LABORATORIO=Nombre del Laboratorio
+MST_NRO_MUESTRA= Identificador de la Muestra
+MST_FECHA=Fecha de la Muestra
+MST_HORA=Hora de la Muestra
+MST_CAUDAL=Caudal (l/s)
+MST_DURACION=Duración (h)
+MST_INTERVALOTIEMPO=Intervalo de Tiempo (min)
+MST_NRO_VERTICALES=Nro. de Verticales
+MST_NRO_SUBMUESTRAS=Nro. de Submuestras
+MST_REGISTRO_EXITOSO=Se registró éxitosamente la Muestra
+MST_TITULO_DETALLE_MUESTRA= Detalle de la Muestra
+MST_TITULO_ADICIONAR_MUESTRA= Adicionar Muestra
+MST_ACTUALIZAR_EXITOSO=Se actualizó éxitosamente la Muestra
+MST_ELIMINAR=Realmente desea borrar la Muestra?
+MST_ELIMINADO=Se eliminó éxitosamente la Muestra
+MST_EXISTE=La autoridad ambiental ya registró una  Muestra en el mismo Punto de Monitoreo
+MST_LISTADO=Todas las Muestras
+MST_TEXT= Muestra
+MST_RELACIONADAS= Muestras Relacionadas
+MST_ANO= Año
+
+
+
+#Pantalla Parametros Fisicoquimicos
+MODULO_PARAMETROS= Parametros Fisicoquimicos
+PAR_TITULO_FORMULARIO=Adicionar Parámetros Fisicoquímicos
+PAR_TITULO_PANEL1=Parámetros Fisicoquímicos
+PAR_NOMBRE= Parámetro
+PAR_UNIDAD= Unidad
+PAR_SIGNO= Signo
+PAR_VALOR= Valor
+PAR_VALOR2= Valor2
+PAR_METODO_DETERMINACION= Método de determinación
+PAR_LIMITE=Limite de detección
+PAR_ACREDITADO=Acreditado
+PAR_REGISTRO_EXITOSO=Se registró éxitosamente el parámetro
+PAR_ACTUALIZAR_EXITOSO=Se actualizó éxitosamente el parámetro
+PAR_ELIMINAR=Realmente desea borrar el parámetro?
+PAR_ELIMINADO=Se eliminó éxitosamente el parámetro
+PAR_OBJETIVOS_ECOLOGICOS=Objetivos ecol\u00F3gicos
+
+
+BTN_FINALIZAR=Finalizar
+
+VRT_ADICIONAR=Adicionar vertimiento
+VRT_TIPO=Tipo de vertimiento
+VRT_TIPO_FLUJO=Tipo de flujo
+VRT_TIEMPO_DESCARGA=Tiempo de descarga (h/d)
+VRT_FRECUENCIA=Frecuencia (d/m)
+VRT_CAUDAL=Caudal de diseño del sistema de tratamiento (l/s)
+CAUDAL_VERT2=Caudal autorizado
+VRT_PRETRATAMIENTO=Pretratamiento
+VRT_PRIMARIO=Primario
+VRT_SECUNDARIO=Secundario
+VRT_TERCIARIO=Terciario
+VRT_OTRO=Otro
+VRT_TODO=Todos los vertimientos
+
+
+
+
+VRT_DATOS=Datos básicos
+VRT_UBICACION=Ubicación
+VRT_CARACTERISTICAS=Características
+VRT_TRATAMIENTO=Sistema de tratamiento
+VRT_GEOREFERENCIACION=Georreferenciación
+VRT_DETALLE=Datos del punto de vertimiento
+VRT_REGISTRADA=Se registró éxitosamente el punto de vertimiento
+VRT_BORRAR=Realmente desea borrar el punto de vertimiento?
+VRT_ACTUALIZADA=Se actualizó éxitosamente el punto de vertimiento
+VRT_ELIMINADA=Se eliminó correctamente el punto de vertimiento
+VRT_VERTIMIENTOS=Vertimientos
+VRT_VERTIMIENTO=Vertimiento
+
+VRT_SI_PUNTOS=El vertimiento no se puede borrar porque tiene puntos de monitoreo asociados
+
+CPT_CAPTACIONES=Captaciones
+CPT_CAPTACION=Captación
+
+DETALLE_CAUDAL=Detalle Caudal
+A_U00F1O_SECO=Condici\u00F3n a\u00F1o seco
+A_U00F1O_MEDIO=Condici\u00F3n a\u00F1o medio
+A_U00F1O_HUMEDO=Condici\u00F3n a\u00F1o h\u00FAmedo
+DETALLE_MUNICIPIO=Detalle Municipio
+INGRESAR=Ingresar
+
+TIENE_PORH=Tiene Porh
+PORH_PORH=Porh
+OFERTA_TOTAL=Oferta Total
+OFERTA_NETA=Oferta Neta
+OFERTA_DISPONIBLE=Oferta disponible a\u00F1o medio (m3/s)
+DEMANDA_POTENCIAL=Demanda potencial
+DEMANDA_CONCESIONADA=Demanda concesionada (l/s)
+C_U00E1LCULO_DEL_RURH=C\u00E1lculo del RURH
+DEMANDA_ESTIMADA=Demanda estimada de usuarios identificados sin concesi\u00F3n de aguas
+NUMERO_ESTIMADO_DE_USUARIOS=Numero estimado de usuarios identificados sin concesi\u00F3n de aguas
+PORH_OYD_PROYECCIONES_DEMANDA=Proyecciones de demanda
+PORH_OYD_PROYECCIONES_DEMANDA_CORTO=Corto plazo
+PORH_OYD_PROYECCIONES_DEMANDA_MEDIANO=Mediano plazo
+PORH_OYD_PROYECCIONES_DEMANDA_LARGO=Largo plazo
+
+PORH_OYD_METODO_EMPLEADO=Método empleado
+
+COMENTARIO_USO=Registre el datos que tenga disponible
+INDICE_DE_ESCASES=Indice de escasez
+
+INDICE_DE_VULNERABILIDAD_HIDRICA=Indice de vulnerabilidad hidrica (IVH)
+INDICE_DE_CALIDAD_DEL_AGUA=Indice de calidad del agua (ICA)
+MONITOREO_BIOLOGICO_GRUPO_DE_TRABAJO=monitoreo biol\u00F3gico grupo de trabajo (BMWP)
+INDICE_DE_USO_DEL_AGUA=Indice de uso del agua (IUA)
+INDICE_DE_VALOR_DE_IMPORTACION_ECOLOGICA_DE_LA_ESPECIE=Indice de valor de importaci\u00F3n ecológica de la especie (IVI)
+INDICE_DE_CALIDAD_ECOLOGICA=Indice de calidad ecol\u00F3gica (ICE)
+INDICE_DE_REGULACION_HIDRICA=Indice de regulación hidrica (IRH).
+
+DESCRIPCI_U00F3N_DE_CONFLICTOS=Descripci\u00F3n de conflictos del agua
+DESCRIPCI_U00F3N_DE_RIESGOS_DE=Descripci\u00F3n de riesgos del agua
+
+ADICIONAR_RIESGOS=Riesgos asociados al recurso hidric\u00F3
+RIESGOS_TRAMO_REDUCCION_OFERTA=Riesgo asociado a la reducción de la oferta
+RIESGOS_TRAMO_DISPONIBILIDAD=Riesgo asociado a la disponibilidad
+
+ENERO=Enero
+FENRERO=Fenrero
+MARZO=Marzo
+MAYO=Mayo
+JUNIO=Junio
+JULIO=Julio
+AGOSTO=Agosto
+SEPTIEMBRE=Septiembre
+OCTUBRE=Octubre
+NOVIEMBRE=Noviembre
+DICIEMBRE=Diciembre
+MEDIO_ANUAL=Medio Anual
+ABRIL__=Abril  
+DEMANDA__=Demanda hidrica 
+CAUDAL__=Caudales medios mensuales multianuales (m3/s) 
+CAUDAL_AMBIENTAL=Caudal ambiental
+CAUDAL_AMBIENTAL_INPUT=Caudal ambiental (m3/s)
+CAUDAL_AMBIENTAL_INPUT_ANO_SECO=Caudal ambiental (m3/s) año seco
+CAUDAL_AMBIENTAL_INPUT_ANO_HUMEDO=Caudal ambiental (m3/s) año humedo
+CAUDAL_AMBIENTAL_INPUT_ANO_NORMAL=Caudal ambiental (m3/s) año medio
+
+
+
+
+
+
+USO_Y_ESCASES=Uso y Escasez
+INDICES_E_INDICDORES=Indices e Indicadores
+CAPTACIONES_Y_VERTIMIENTOS=Captaciones y Vertimientos
+CONFLICTOS_Y_RIESGOS=Conflictos y Riesgos
+RIESGOS=Riesgos
+TODAS_LAS_FUENTES=Todas las Fuentes
+DETALLE_PLAN_DE_ODENAMIENTO=Detalle Plan de Odenamiento
+
+PUNTOS_MONITOREO_TRAMO=Puntos de monitoreo
+PUNTOS_MONITOREO_RELACIONADOS=Puntos de monitoreo relacionados
+
+
+
+
+USO_RELACIONADOS=Usos relacionados
+USO_RELACIONAR=Adicionar uso
+USO_MODULO=Usos
+USO_USO=Uso
+USO_DOMESTICO= Doméstico
+USO_AGRICOLA=Agricola
+USO_PECUARIO=Pecuario
+USO_ACUICOLA=Acuicola
+USO_OTRO=Otro
+USO_CAUDAL_ASIGNADO=Caudal asignado (l/s)
+USO_PERSONAS_PERMANENTES=Número de personas permanentes
+USO_PERSONAS_TRANSITORIAS=Número de de personas transitorias
+USO_APROVECHAMIENTO=Aprovechamiento (día/mes)
+USO_TIPO_ANIMAL=Tipo de animales
+USO_NUMERO_ANIMAL=Número de animales
+USO_TIPO_CULTIVO=Tipo de cultivo
+USO_PRODUCCION=Producción (Toneladas/año)
+USO_EFICIENCIA=Eficiencia sistema de riego (%)
+USO_AREA=Area  (Ha)
+USO_DESCRIPCION=Descripción
+USO_TIPO_USO=Tipo uso
+USO_TIPO_USO_OTRO=Otro tipo de uso
+USO_DETALLE=Detalle uso
+
+USO_REGISTRADO=Uso registrado éxitosamente
+USO_ACTUALIZADO=Uso actualizado éxitosamente
+USO_BORRAR=Está seguro que desea borrar el uso 
+USO_ELIMINADO=Se borró éxitosamente el uso
+LEGALES=Legales
+ILEGALES=Sin resolución
+DEMANDA_ESTIMADA_RESOLUCION=Demanda estimada (I/s) con resoluci\u00F3n 
+DEMANDA_ESTIMADA_SIN_RESOLUCION=Demanda estimada (I/s) con resoluci\u00F3n 
+OFERTA_Y_DEMANDA=Oferta y Demanda
+OFERTA_HIDRICA=Oferta hidrica
+DEMANDA_HIDRICA=Demanda hidrica
+INDICES_CALIDAD_CANTIDAD_HIDRICA=Indicadores de estado y presi\u00F3n
+USOS_PERMITIDOS_PARA_EL_TRAMO=Usos potenciales y criterios de calidad para la destinaci\u00F3n del recurso
+OBJETIVOS_DE_CALIDAD_TRAMO=Criterios de calidad definidos para los usos del agua en el Tramo 
+SELECCIONE_EL_USO_=Seleccione el Uso que desea relacionar al Tramo
+USO_YA_ESTA_RELACIONADO=Este uso ya se encuentra relacionado con el tramo
+CORTO_PLAZO=Corto Plazo
+VALORES_ESPERADOS=Valores Esperados
+MEDIANO_PLAZO=Mediano Plazo
+LARGO_PLAZO=Largo Plazo
+FECHA=Fecha
+PLAZOS=Plazos
+USO_DEL_TRAMO=Uso del Tramo
+PLAZO=Plazo
+UNIDAD=Unidad
+VALOR_ESPERADO=Valor Esperado
+DEFINIR_RAZONES_DE_PROHIBICI_U=Zonas de prohibici\u00F3n y/o condicionamiento
+OBJETIVOS_ECOLOGICOS=Objetivos ecol\u00F3gicos
+
+SECTOR=Sector/Tramo/Unidad espacial
+JUSTIFICACI_U00F3N=Justificaci\u00F3n
+LONGITUD_PROHIBICION=Longitud de la prohibici\u00F3n (Km)
+LISTAR_PUNTOS_MONITOREO=Listar Puntos Monitoreo
+GEOREFERENCIACION_PUNTO_INICIAL=Georreferenciación del Punto inicial
+GEOREFERENCIACION_PUNTO_FINAL=Georreferenciación del Punto final
+
+
+#ReportesCalidad 
+
+GRAFICO1=Número de muestras en el año sobre una fuente hídrica
+GRAFICO2=Comportamiento cronológico de un parámetro en un Punto de Monitoreo
+GRAFICO3=Comportamiento cronológico de un parámetro en los Puntos de Monitoreo de una fuente hídrica
+CAUDALES_CONCESIONADOS=Caudales concesionados por fuente hídrica
+CAUDALES_CONCESIONADOS_DETALLE= Detalle de Caudales concesionados por fuente hídrica
+CAUDALES_VERTIDOS=Caudales vertidos por fuente hídrica
+CAUDALES_VERTIDOS_DETALLE= Detalle de Caudales vertidos por fuente hídrica
+
+CAUDAL_CONCESIONADO=Caudal concesionado (l/s)
+NRO_CONCESIONES=Número de Concesiones 
+#Funias
+FUNIAS_LISTA=Todos los Funias
+FUNIAS_MODULO=Datos técnicos del punto
+SUB_MENU_FUNIAS=Opciones funias
+SUB_MENU_ADICIONAR=Adicionar información técnica
+SUB_MENU_LISTA=Ver funias relacionados
+SUB_MENU_PUNTO_MONITOREO=Crear punto de monitoreo
+#geologia
+FUN_TIPO=Tipo de información
+FUN_DATOS=Datos básicos
+FUN_CAR_GEOMORFO=Características geomorfológicas
+FUN_REGISTRO=Registro o columna litológica
+#construccion
+FUN_CONSTRUCCION=Construcción
+FUN_PROFUNDIDAD=Profundidad
+FUN_EMPAQUE=Empaque de gravilla
+FUN_OTRAS_CONSTRUCCIONES=Construcciones adicionales
+FUN_DISENO=Diseño del pozo
+#geofisica
+FUN_CAPAS=Registro geofisico (Capas acuiferas)
+#explotacion
+FUN_TUBERIA=Tubería descarga
+FUN_BOMBEO=Grafica de tiempo vs. abatimiento (Pruebas de bombeo)
+#Diagnostico
+FUN_CONDICION=Condición del punto
+FUN_FUENTES_CONTAMINA=Fuentes de contaminación
+FUN_RESIDUOS=Residuos solidos
+FUN_DISPOSICION=Disposición
+
+#etiquetas formularios
+FUN_LOCALIZACION_TOPO=Localización topográfica
+FUN_UNIDAD_GEOLOGICA=Unidad geológica
+FUN_LITOLOGIA_SUPERFICIAL=Descripción de litología
+FUN_GEOFORMA=Geoforma
+FUN_ESTRUCTURA=Estructura
+FUN_NOMBRE_ESTRUCTURA=Nombre de la estructura
+FUN_DOCUMENTO=Documento
+
+
+FUN_FECHA_CONSTRUCCION=Fecha de construcción
+FUN_DIAMETRO_INTERIOR=Diámetro interior (Pul)
+FUN_DIAMETRO_EXTERIOR=Diámetro exterior (Pul)
+FUN_DIAMETRO_PERFORACION=Diámetro de la perforación (Pul)
+FUN_MATERIAL_CONSTRUCCION=Material de revestimiento
+FUN_METODO_CONSTRUCCION=Método de construcción
+FUN_TRATAMIENTO_ESPECIAL=Tratamiento Especial
+FUN_FLUIDO_USADO=Fluído Utilizado
+FUN_COMPANIA_PERFORADORA=Compañía perforadora
+FUN_COLMATADO=¿Esta colmatado?
+FUN_COLAPSADO=¿Esta colapsado?
+FUN_PROFUNDIDAD_ENTUBADO=Profundidad del entubado (m)
+FUN_PROFUNDIDAD_PERFORA=Profundidad de perforación(m)
+FUN_CANTIDAD_GRAVILLA=Cantidad (m3)
+FUN_NIVEL_ENGRAVILLADO=Nivel Engravillado
+FUN_DIAMETRO_PROMEDIO=Diámetro Promedio (mm)
+FUN_EMBALSE=Embalse
+FUN_CAPACIDAD_EMBALSE=Capacidad embalse (m3)
+FUN_TANQUE=Tanque
+FUN_CAPACIDAD_TANQUE=Capacidad tanque (m3)
+FUN_ALBERCA=Alberca
+FUN_CAPACIDAD_ALBERCA=Capacidad alberca (m3)
+FUN_OTRO=Otro
+FUN_CAPACIDAD_OTRO=Capacidad otro (m3)
+
+FUN_FECHA_MEDIDA=Fecha de la medida
+FUN_EQUIPO_USADO=Equipo utilizado
+FUN_TIPO_REGISTRO=Tipo registro
+FUN_COMPANIA_EJECUTORA=Compañia ejecutora
+FUN_RESISTIVIDAD_LODO=Resistividad al lodo (Ohm/m)
+FUN_TEMPERATURA_LODO=Temperatura Lodo (°C)
+FUN_PROFUNDIDAD_REGISTRO=Profundidad del Registro (m)
+FUN_CALIDAD_REGISTRO=Calidad del Registro
+
+FUN_METODO_EXPLOTACION=Método de explotación
+FUN_TIPO_ENERGIA=Tipo de energía
+FUN_TIPO_ACABADO=Tipo de acabado
+FUN_DIAMETRO=Diámetro (pulg)
+FUN_LONGITUD=Longitud (m)
+FUN_MATERIAL=Material
+
+OPCION_SI=Si
+OPCION_NO=No
+
+
+FUN_LETRINA=¿Existe una letrina cercana al punto?
+FUN_DISTANCIA=Distancia(m)
+FUN_CHARCO=¿Existe un charco de agua estancada?
+FUN_CRIADEROS=¿Hay basura, criaderos o estiercol de ganado a su alrededor?
+FUN_FILTRACION=¿Hay un borde o grieta que permita el ingreso de agua superficial al mismo?
+FUN_CUBIERTA=¿Tiene cubierta adecuada?
+FUN_PISO_CEMENTO=¿Tiene piso de cemento alrededor de la captación?
+FUN_SELLO_SANITARIO=¿Tiene sello sanitario?
+FUN_CERCO=¿Tiene cerco adecuado en la instalación?
+FUN_CAMPO_INFILTRACION=Campo de infiltración
+#Distancia
+FUN_CEMENTERIO=Cementerio
+#Distancia
+FUN_ESTACION_SERVICIO=Estación de servicio
+#Distancia
+FUN_LAGUNAS_OXIDACION=Lagunas de oxidación
+#Distancia
+FUN_LAVADERO_VEHICULOS=Lavadero de carros y motos
+#Distancia
+FUN_PLANTAS_SACRIFICIO=Plantas de sacrificio
+#Distancia
+FUN_POZO=Pozo abandonado
+#Distancia
+FUN_RESIDUOS_AGRICOLAS=Agrícola
+FUN_RESIDUOS_DOMESTICO=Doméstico
+FUN_RESIDUOS_GANADERIA=Ganadería
+FUN_RESIDUOS_HOSPITALARIO=Hospitalario
+FUN_RESIDUOS_INDUSTRIAL=Industrial
+FUN_RESIDUOS_MINERO=Minero
+FUN_BOTADERO=Botadero cielo abierto
+FUN_COMPOSTAJE=Compostaje
+FUN_INCINERACION=Incineración
+FUN_RECICLAJE=Reciclaje
+
+
+
+
+FUN_REGISTRADA=Información técnica registrada éxitosamente
+FUN_ACTUALIZADO=Funias actualizado correctamente
+FUN_BORRAR=Está seguro que desea eliminar la información técnica %%?
+FUN_ELIMINADO=Información técnica eliminada correctamente
+
+ADICIONAR_AVANCE_METAS_DESC=Adicionar Avance en Metas de Descontaminaci\u00F3n
+FECHA_MUESTRA=Fecha Muestra
+FECHA_REGISTRO=Fecha Registro
+VALOR=Valor
+METAS_USO=Metas Uso\: %% Par\u00E1metro %%
+FECHA_MENOR_HOY=La fecha debe ser menor o igual a la fecha del sistema
+VENCIDAS=Vencidas
+VIGENTES=Vigentes
+NO_ESPECIFICADO=No especificado
+
+CREAR_NOVEDAD=Crear novedad
+TIPO_DE_MODIFICACI_U00F3N=Tipo de modificaci\u00F3n
+NO_EXISTE_USUARIO=No existe un usuario del agua registrado con esta identificaci\u00F3n
+USUSARIO_SIN_PREDIOS=El usuario seleccionado no tiene predios asociados
+NOVEDADES=Novedades
+VER_ERRORES=Ver errores
+
+
+# POMCA
+MNU_ESTABLECER_POMCA=Establecer POMCA
+NOMBRE_POMCA=Nombre 
+DESCRIPCION_POMCA=Descripcion
+FECHA_EXPEDICION_POLCA=Fecha Expedicion
+NUMERO_ACTO=Numero Acto Administrativo
+PRESUPUESTO_ASIGNADO=Presupuesto asignado
+PORC_CUMPLIMIENTO=% Cumplimiento metas
+PORC_EJECUCION=% Ejecucion presupuestal
+DEFINICION_POMCA=Definicion del Marco logico
+DATOS_BASICOS_POMCA=Datos básicos
+PROGRAMAS_POMCA=Programas
+NOMBRE_PROGRAMA=Nombre programa
+NUEVO_PROGRAMA=Nuevo Programa - Datos Basicos
+PROGRAMA_REGISTRADO=Se registró éxitosamente el programa
+DESCRIPCION_PROGRAMA=Descripcion
+FECHA_INICIO_PROGRAMA=Fecha inicio
+FECHA_VIGENCIA_PROGRAMA=Fecha vigencia
+BTN_CANCELAR=Cancelar
+DATOS_PROGRAMA=Datos del Programa
+BTN_BORRAR=Borrar
+PROGRAMA_ACTUALIZADO=Se actuaizo éxitosamente el programa
+POMCA_SI=Si
+POMCA_NO=No
+MENSAJE_BORRAR_PROGRAMA=Confirma que desea borrar el programa: %%?.
+MENSAJE_BORRAR_PROGRAMA_EXITOSO=Se borró el programa en forma exitosa
+PROYECTOS_RELACIONADOS=Proyectos relacionados
+AGREGAR_PROYECTO=Agregar Proyecto
+MODULO_PROYECTOS=Proyectos del programa: %%
+SELECCIONE_PROGRAMA=Seleccione Programa...
+NUEVO_PROYECTO=Nuevo Proyecto Datos Basicos
+NOMBRE_PROYECTO=Nombre Proyecto
+PROYECTO_REGISTRADO=Se registró éxitosamente el proyecto
+DESCRIPCION_PROYECTO=Descripcion
+FECHA_INICIO_PROYECTO=Fecha inicio
+FECHA_VIGENCIA_PROYECTO=Fecha vigencia
+NOMBRE_FUENTE=Nombre Fuente
+FECHA_ERRADA=Fecha Errada
+METAS_DE_DESCONTAMINACION=Metas globales de carga contaminante
+VALOR_ACTUAL_DE_CARGA=Carga de línea base (kg/año)
+META_=Carga esperada en el quinquenio (Kg/año)
+PARAMETRO_YA_ESTA_RELACIONADO=Este Par\u00E1metro ya se encuentra relacionado con el tramo
+AVANCE_EN_METAS_DEL_PAR_U00E1M=Avance en Metas del Par\u00E1metro
+COMPORTAMIENTO_PARAMETRO=Comportamiento Par\u00E1metro %%
+VER_COMPORTAMIENTO=Ver Comportamiento
+INDICADORES=Indicadores del componente program\u00E1tico
+FECHA_0=Fecha proyectada
+NOMBRE_INDICADOR=Nombre Indicador
+META=Meta
+META_LOGRADA=Meta Lograda
+
+SELECCIONE_ACTIVIDAD=Seleccione actividad...
+MODULO_INDICADORES=Indicadores de la Actividad: %%
+DEFINICION_PROYECTO=Definicion del proyecto
+DATOS_BASICOS_PROYECTO=Datos del proyecto
+ACTIVIDADES_PROYECTO=Actividades del Proyecto
+NOMBRE_ACTIVIDAD=Nombre
+INDICADORES_RELACIONADOS=Indicadores Relacionados
+AGREGAR_INDICADOR=Agregar Indicador
+NUEVA_ACTIVIDAD=Nueva Actividad
+DESCRIPCION_ACTIVIDAD=Descripcion Actividad
+FECHA_INICIO_ACTIVIDAD=Fecha Inicio
+FECHA_VIGENCIA_ACTIVIDAD=Fecha Vigencia
+DATOS_ACTIVIDAD=Datos Actividad
+MENSAJE_BORRAR_ACTIVIDAD=Confirma que desea borrar la actividada: %%?.
+MENSAJE_BORRAR_ACTIVIDAD_EXITOSO=Se borró la actividad en forma exitosa
+SELECCIONE_INDICADOR=Seleccione Indicador...
+ESTABLECER_POMCA=Establecer POMCA
+ACTIVIDAD_REGISTRADO=Se registró éxitosamente la actividad
+NOMBRE_META=Nombre Meta
+VALOR_META=Valor Meta
+DEFINICION_INDICADOR=Definicion del indicador
+NUEVO_INDICADOR=Nuevo Indicador
+INDICADOR_REGISTRADO=Se registró éxitosamente el Indicador
+REGISTRO_GESTION=Registro de gestion POMCA
+MNU_REGISTRAR_GESTION=Registrar Gestion
+PROGRAMA=Programa
+PROYECTO=Proyecto
+ACTIVIDAD=Actividad
+FECHA_REPORTE=Fecha de Reporte
+PERIODO_INICIAL=Periodo Inicial
+PERIODO_FINAL=Periodo Final
+PRESUPUESTO_EJECUTADO=Presupuesto Ejecutado
+LOGROS_OBSERVACIONES=Logro u observaciones del periodo
+INDICADOR=Indicador
+META_CUMPLIDA=Meta cumplida en el periodo
+REGISTRO_INDICADORES=Registro Indicadores
+
+
+
+
+# MENU GENERAL
+Gestion_datos=Gestión de datos
+
+#Pantalla Planes
+
+plan_general              = Información del plan
+plan_general2             = Diagnóstico
+plan_general3             = Zonificación
+
+plan_menu                 = Información:
+plan_menu_comisiones      = Comisiones conjuntas
+plan_menu_jurisdicciones  = Jurisdicciones del POMCA
+plan_menu_instrumentos    = Instrumentos del POMCA
+plan_menu_comunidades_et  = Comunidades Étnicas del POMCA
+
+plan_modulo               = Establecer POMCA
+plan_menu_fases           = Fases POMCA:
+plan_menu_fase_aprestam   = Aprestamiento
+plan_menu_fase_diagnost   = Diagnóstico
+#ZSDG IN
+plan_menu_fase_determinante   = Determinante Ambiental
+plan_nombre_determinante      = Nombre Determinante
+plan_descripcion_determinante = Descripcion
+plan_archivo_determinante = Archivo
+plan_indiciadorda_determinante = Indicador DA
+plan_componenteAfectado_determinante = Componente Afectado 
+plan_recursoAfectado_determinante = Recurso Afectado
+#ZSDG
+plan_menu_fase_zonif      = Zonificación
+plan_menu_fase_formulac   = Formulación
+plan_menu_fase_ejecu      = Ejecución
+plan_menu_fase_seg        = Seguimiento
+
+plan_1_titulo             = 1. Información de Declaratoria
+plan_num_res_declaratoria = Acto administrativo por medio del cual se declara
+plan_fecha_declaratoria   = Fecha del acto administrativo
+
+plan_2_titulo             = 2. Información General
+plan_2_subtitulo          = Municipios de la Jurisdicción de la Cuenca
+plan_departamento         = Departamento
+plan_municipio            = Municipios
+
+plan_comision_conjunta    = Comisión Conjunta
+plan_autoridad_ambiental  = Autoridad Ambiental
+plan_num_acto_admin       = Número Acto Administrativo
+plan_fecha_exp_act_adm    = Fecha de Exp
+
+plan_2_subtitulo_1        = Fase de elaboración del POMCA
+
+plan_consejo_cuenca       = Consejo de Cuenca
+plan_acta_conformacion    = Acta de Conformación
+plan_fecha_exp_conf       = Fecha de Exp
+plan_observaciones        = Observaciones
+
+plan_2_subtitulo_2        = Información de Aprobación
+plan_num_res_aprobacion   = Acto administrativo por medio del cual se aprueba la ordenación
+plan_fecha_num_res_aprob  = Fecha del acto administrativo
+
+
+plan_diagnostico_1_titulo   = DIAGNÓSTICO GENERAL: PARTE I LINEA BASE (La cual debe actualizarce cada 5 años)
+plan_comp_soci_cultural     = COMPONENTE SOCIO CULTURAL
+plan_comp_economico         = COMPONENTE ECONÓMICO
+plan_comp_biofisico         = COMPONENTE BIOFÍSICO
+plan_comp_amenaza_riesgo    = COMPONENTE AMENAZA-RIESGO
+plan_comp_conflic_soc_amb   = COMPONENTE CONFLICTOS SOCIO CULTURALES
+
+plan_diagnostico_2_titulo      = DIAGNÓSTICO GENERAL: PARTE II
+plan_diagnostico_2_subtit      = COMPONENTE HÍDRICO
+plan_comp_hid_of_total         = Oferta total (m3/seg)
+plan_comp_hid_caud_amb_med     = Caudal ambiental medio
+plan_comp_hid_of_dispo         = Oferta disponible (m3/seg)
+plan_comp_hid_demanda_pot      = Demanda potencial (m3/seg)
+plan_comp_hid_of_neta          = Oferta neta (m3/seg)
+plan_comp_hid_rendim_hid       = Rendimiento hídrico (L/seg-Km2)
+plan_comp_hid_ind_aridez       = Índice de aridez
+plan_comp_hid_ind_ari_ob       = Obervación
+plan_comp_hid_ind_uso_agua     = Índice de uso del agua
+plan_comp_hid_ind_uso_agua_ib  = Observaciones
+plan_com_hid_indice_ret_reg_hid		= Indice de retención y regulación hídrica (IRH)
+plan_com_hid_indice_vulne_desab		= Índice de vulnerabilidad hídrica por desabastecimiento (IVH)
+plan_com_hid_indice_calidad_agua	= índice de calidad de agua (ICA), 
+plan_com_hid_iacal			= IACAL
+
+plan_disgnostico_2_1           = Armonización de los instrumentos de planificación
+plan_recurso_identif           = Recurso Natural Identificado
+plan_instrumento_planif        = Instrumento de planificación
+plan_articulo                  = Articulo 28 Dec 1640/12,
+
+plan_comunidades_etnicas       = Comunidades étnicas
+plan_nombre_comunidad          = Nombre de la comunidad
+plan_comunidad_preconsulta     = Ya se inició el proceso de preconsulta previa?
+plan_comunidad_consulta        = Ya se inició el proceso de consulta previa?
+
+plan_info_zonificacion_titulo  = Información de la Zonificación
+plan_mapa_resultante           = Mapa resultante de la Zonificación
+plan_informe_proceso_zonif     = Informe del proceso de Zonificación
+plan_fecha_zonif               = Fecha
+
+
+
+plan_zn_1                       =       Conservación 
+plan_zn_2                       =       Restauración
+plan_zn_3                       =       Desarrollo Multiple        
+
+plan_zn_area_prio_consrv_num	=	Áreas prioritarias de conservacion - [Km2]
+plan_zn_area_prio_preser_num	=	Áreas prioritarias de preservación - [Km2]
+plan_zn_area_proteg_num     	=	Áreas protegidas - [Km2]
+plan_zn_area_recup_num      	=	Áreas de recuperación - [Km2]
+plan_zn_area_rehab_num	        =	Áreas de reahbilitación - [Km2]
+plan_zn_area_restau_num	        =	Áreas de restauración - [Km2]
+plan_zn_area_manej_agri_num	=	Áreas de manejo agricola - [Km2]
+plan_zn_area_manej_fores_num	=	Áreas de manejo forestal - [Km2]
+plan_zn_area_manej_pecu_num	=	Áreas de manejo pecuario - [Km2]
+plan_zn_area_manej_miner_num	=	Áreas de manejo minero - [Km2]
+plan_zn_estable_indus_num	=	Establecimiento industrial - [Km2]
+plan_zn_zonas_urbanas_num	=	Zonas urbanas - [Km2]
+
+
+plan_zn_area_prio_consrv_prctj	=	[%]
+plan_zn_area_prio_preser_prctj	=	[%]
+plan_zn_area_proteg_prctj     	=	[%]
+plan_zn_area_recup_prctj      	=	[%]
+plan_zn_area_rehab_prctj	=	[%]
+plan_zn_area_restau_prctj	=	[%]
+plan_zn_area_manej_agri_prctj	=	[%]
+plan_zn_area_manej_fores_prctj	=	[%]
+plan_zn_area_manej_pecu_prctj	=	[%]
+plan_zn_area_manej_miner_prctj	=	[%]
+plan_zn_estable_indus_prctj	=	[%]
+plan_zn_zonas_urbanas_prctj	=	[%]
+
+
+
+#Norma 
+PANEL1_TITULO_NORMA= Norma Decreto 1594
+PANEL2_TITULO_PARAMETROS= Límites de calidad para los usos del recurso hídrico
+NOMBRE_NORMA=Nombre
+USO_NORMA= Uso
+NORMA_EDITAR=Editar
+NORMA_ELIMINAR=Realmente desea borrar la Norma?
+NORMA_ELIMINADA=Se eliminó éxitosamente la norma
+LIMITES_ASOCIADOS=La norma tiene Limites de calidad asociados
+LIMITE_ELIMINAR=Realmente desea borrar el limite?
+LIMITE_ELIMINADO=Se eliminó éxitosamente el limite
+NORMA_GRAFICO= Ver Gráfico
+NORMA_TITULO_GRAFICO= Norma de un Parámetro con respecto a las Mediciones de Calidad en un Punto de Monitoreo
+NORMA_DATOS=Datos Gráfico
+#Pantalla Publicaciones
+
+publicacion_titulo                    = Publicaciones
+publicacion_enlace                    = Ver más Publicaciones
+publicacion_detalle_nombrePublicacion = Nombre de la Publicación
+publicacion_detalle_adjuntarArchivo   = Adjuntar Archivo
+publicacion_detalle_fasePomca         = Fase del POMCA
+publicacion_detalle_autor             = Autor(es)
+publicacion_detalle_anio              = Año
+publicacion_detalle_tipoRecurso       = Tipo de Recurso
+publicacion_detalle_editor            = Editor
+publicacion_detalle_numPaginas        = Núm, Paginas del libro
+publicacion_detalle_lugarPublicacion  = Lugar de publicación
+publicacion_detalle_serie             = Serie
+publicacion_detalle_volumen           = Volumen
+publicacion_detalle_link              = Hypervinculo
+
+publicacion_lista_nombrePublicacion = Nombre
+publicacion_lista_fasePomca         = Fase POMCA
+publicacion_lista_autor             = Autor(es)
+publicacion_lista_anio              = Año
+publicacion_lista_tipoRecurso       = Tipo de Recurso
+publicacion_lista_editor            = Editor
+publicacion_lista_numPaginas        = Pags
+publicacion_lista_lugarPublicacion  = Lugar
+publicacion_lista_serie             = Serie
+publicacion_lista_volumen           = Volumen
+publicacion_lista_hipervinculo      = Hipervinculo
+
+publicacion_btn_aceptar             = Aceptar
+publicacion_btn_cancelar            = Cancelar
+publicacion_btn_borrar              = Borrar
+
+plan_btn_guardar                    = Guardar
+plan_btn_cancelar                   = Cancelar
+plan_btn_borrar                     = Borrar
+plan_btn_atras                      = Atrás
+plan_btn_siguiente                  = Siguiente
+plan_btn_relacionar                 = Relacionar
+PORH=PORH
+PORH_OFERTA=Oferta hidrica
+EXISTE_PORH=Ya existe un plan de ordenamiento asociado con este numero de Acto Administrativo
+
+plan_confirmar_guardar              = Desea guardar los nuevos datos del plan?
+plan_confirmar_borrar               = Desea BORRAR el plan y todo su contenido asociado?
+plan_confirmar_acepto               = Aceptar
+plan_confirmar_cancelo              = Cancelar
+plan_confirmar_titulo               = Advertencia
+plan_registro_exitoso               = Su transacción ha sido realizada exitosamente!!!
+plan_registro_existe_en_db          = Ya existe una relación a uno de los documentos relacionados en otro POMCA, revise por favor los datos ingresados
+
+
+
+
+P_U00E1GIA_WEB=P\u00E1gia Web
+NATURALEZA=Naturaleza
+TIPO_DE_ORGANIZACI_U00F3N=Tipo de Organizaci\u00F3n
+INVESTIGACI_U00F3N=Investigaci\u00F3n
+OTRO_C_U00FAAL=Otro C\u00FAal?
+P_U00E1GINA_WEB=P\u00E1gina Web
+ORGANIZACI_U00F3N_=Organizaci\u00F3n 
+T_U00EDTULO_OBTENIDO=T\u00EDtulo Obtenido
+GESTI_U00F3N__=Gesti\u00F3n  
+
+CAPTACIONESSINCONC=Captaciones sin resoluci\u00F3n/Puntos identificados
+CAPTACIONSINCONC=Captacion sin resoluci\u00F3n
+VERTIMIENTOSINCONC=Vertimientos sin resoluci\u00F3n
+
+PERTENECEREDSUBTERRANEA=Pertenece a la Red nacional de monitoreo
+
+# entrega 3 pomca Hugo C
+LISTA_PROYECTOS_PROGRAMA=Lista de Proyectos del Programa
+PROYECTOS_PROGRAMA=PROYECTOS DEL PROGRAMA
+MENSAJE_BORRAR_PROYECTO_EXITOSO=Se borró el proyecto en forma exitosa
+MENSAJE_BORRAR_PROYECTO=Confirma que desea borrar el proyecto: %%?.
+DATOS_INDICADOR=Datos del Indicador
+LISTA_INDICADORES_ACTIVIDAD=Lista de Indicadores de la Actividad
+INDICADORES_ACTIVIDAD=INDICADORES DE LA ACTIVIDAD
+MENSAJE_BORRAR_INDICADOR_EXITOSO=Se borró el indicador en forma exitosa
+MENSAJE_BORRAR_INDICADOR=Confirma que desea borrar el Indicador: %%?.
+EDITAR_PROYECTO=Editar Proyecto
+SEGUIMIENTO_POMCA=Seguimiento a POMCA
+DATOS_CONSULTAR=Datos a Consultar
+BOTON_IMPRIMIR=Generar Reporte
+CONSOLIDAR=Consolidar
+SELECCIONE_CRITERIOS=Seleccione los criterios de consulta y pulse el bot\u00F3n "Buscar"
+PERTENECE_A_UNA_ORGANIZACI_U00=Pertenece a una organizaci\u00F3n o red
+FORMACI_U00F3N=Formaci\u00F3n
+NIVEL_DE_FORMACI_U00F3N=Nivel de Formaci\u00F3n
+DESCRIPCI_U00F3N_DEL_TRABAJO_E=Descripci\u00F3n del Trabajo en Relaci\u00F3n al Agua
+POR__U00C1REAS_DE_TRABAJO=Por \u00C1reas de Trabajo
+TIPO_DE_FUENTE_H_U00EDDRICA=Tipo de Fuente H\u00EDdrica
+FORMACI_U00F3N_DE_ESPECIALISTA=Formaci\u00F3n de Especialistas
+INVESTIGACI_U00F3N_DE_ESPECIAL=Investigaci\u00F3n de Especialistas
+GESTI_U00F3N_DE_ESPECIALISTAS=Gesti\u00F3n de Especialistas
+DETALLE_ORGANIZACI_U00F3N=Detalle Organizaci\u00F3n
+EXISTE_ESPECIALISTA=Ya existe un especialista con este tipo y N\u00famero de Identificaci\u00F3n
+
+INGRESE_LA_INFORMACI_U00F3N_DE=Ingrese la Informaci\u00F3n de la Persona Natural
+INGRESE_LA_INFORMACI_U00F3N__0=Ingrese la Informaci\u00F3n de la Persona Jur\u00EDdica
+INGRESE_LA_INFORMACI_U00F3N__1=Ingrese la Informaci\u00F3n de la Empresa.
+INGRESE_LOS_DATOS_DEL_PREDIO=Ingrese Los Datos del Predio
+INGRESE_LA_INFORMACI_U00F3N__2=Ingrese la Informaci\u00F3n del Representante legal
+INDIQUE_EL_N_U00FAMERO_DE_IDEN=Indique el n\u00FAmero de identificaci\u00F3n del  usuario a quien se le hace el traspaso
+N_U00FAMERO_IDENTIFICACI_U00_0=N\u00FAmero Identificaci\u00F3n Usuario al cual se Traspasa
+C_U00E9DULA_CATASTRAL_AL_CUAL_=C\u00E9dula Catastral al cual se traspasa
+N_U00FAMERO_DEL_ACTO_ADMINISTR=N\u00FAmero del acto administrativo que modifica, renueva, traspasa la concesi\u00F3n, o revoca
+SELECCIONE_EL_N_U00FAMERO_DE_C=Seleccione el n\u00FAmero de cedula catastral del  predio a quien se le hace el traspaso
+
+
+
+
+
+
+auditoria_titulo                =   Auditorias
+auditoria_clase                 =   Clase
+auditoria_metodo                =   Metodo
+auditoria_idObjeto              =   Id Objeto
+auditoria_objeto                =   Objeto
+auditoria_idUsuario             =   Id Usuario
+auditoria_fecha                 =   Fecha
+auditoria_operacion             =   Operación
+
+# INI DETERMINANTE AMBIENTAL POMCAs Jhosept
+
+plan_menu_fase_determinante   = Determinante Ambiental
+plan_nombre_determinante      = Nombre Determinante
+plan_descripcion_determinante = Descripción
+plan_archivo_determinante = Archivo
+plan_indiciadorda_determinante = Indicador DA
+plan_componenteAfectado_determinante = Componente Afectado 
+plan_recursoAfectado_determinante = Recurso Afectado
+
+
+
+
+# entrega 6 Hugo Cendales
+CUENTA_TITULO=Cuencas
+CUENCA_NOMBRE=Nombre Cuenca
+CODIGO_ZNF=Codigo ZNF
+AREA_JURISD_AUTORIDAD=Area Jurisdiccion
+TODAS_LAS_CUENCAS=Todas las Cuencas
+RANGO_FECHA_ERRADO_PROG=Rango de fechas no corresponde al programa
+RANGO_FECHA_ERRADO_PROY=Rango de fechas no corresponde al proyecto
+RANGO_FECHA_ERRADO_ACT=Rango de fechas no corresponde a la actividad
+POMCA_GRAFICO1=Ejecucion presupuestal por Cuenca
+POMCA_GRAFICO2=Cumplimiento metas por Cuenca
+
+# reportes porh
+PORH_GRAFICO1=Reporte 1
+PORH_GRAFICO2=Reporte 2
+PORH_GRAFICO3=Reporte 3
+PORH_GRAFICO4=Reporte 4
+
+NIV_RELACIONADOS=Niveles relacionados
+NIV_RELACIONAR=Adicionar nivel
+NIV_MODULO=Niveles
+NIV_USO=Nivel
+NIV_FECHA=Fecha de medición
+NIV_HORA=Hora
+NIV_MINUTO=Minuto
+NIV_PERIODO=Periodo
+NIV_TIPO_NIVEL=Tipo de nivel
+NIV_PROFUNDIDAD=Profundidad
+NIV_PIEZOMETRIA=Nivel piezometrico
+NIV_MEDIA=Nivel medido
+NIV_METODO=Método
+NIV_INSTRUMENTO=Instrumento
+NIV_OSERVACION=Observación
+NIV_REGISTRADO=Nivel registrado éxitosamente
+NIV_ACTUALIZADO=Nivel actualizado éxitosamente
+NIV_BORRAR=Está seguro que desea borrar el nivel 
+NIV_ELIMINADO=Se borró éxitosamente el nivel
+
+#Modulo importación de datos a través de servicios web.
+IMP_CORPORACION=Corporación 
+
+#Consultas Externas
+TITULO_BUSC=Búsquedas Fuentes
+CONSULTA1= Fuentes por Zonificación
+CONSULTA2= Fuentes por Nombre
+CONSULTA3= Fuentes por Autoridad
+CONSULTA4= Fuentes por Caudal Concesionado
+CONSULTA5= Fuentes por Caudal Vertido
+CAU_VERT= Caudal Vertido (l/s)
+TIPOTRM= Tipo de tramite
+NROTRM= Nro. de tramites
+
+
+#Enlaces Tramites
+CONSULTA_TRAMITE1= Concesiones por año
+CONSULTA_TRAMITE2= Permisos de Vertimiento por año
+
+#Modulo de oferta
+OF_ESTACIONES= Estaciones
+OF_ESTACION=Estación
+OF_TODAS=Mostar todas las estaciones
+OF_CAUDAL_LISTA=Caudales
+OF_NIVEL_LISTA=Niveles
+OF_CAUDAL=Caudales
+OF_NIVEL=Niveles
+OF_SEDIMENTO=Sedimentos
+OF_MEDIO=Medio
+OF_MAXIMO=Maximo
+OF_MINIMO=Minimo
+
+
+CONSULTA_TRAMITE1=Concesiones por año
+CONSULTA_TRAMITE2= Permisos de vertimiento por año
+
+OF_GRAF_TABLA=Tablas de datos
+
+OF_GRAF_CURVA=Curva duración
+OF_GRAF_HISTOGRAMA=Histograma
+OF_GRAF_ANUAL=Valores mensuales
+OF_GRAF_HISTORICA=Serie histórica
+OF_GRAF_RESUMEN_NUMERICO=Resumen numérico
+OF_GRAF_FRECUENCIA_DATOS=Serie anual
+OF_DATOS_ESTACION=Datos estación
+OF_GRAF_MULTIANUAL=Gráfica multianuales
+OF_TAB_MULTIANUAL=Datos multianuales
+
+
+
+OF_ESTACION_SERIES=Series de Estación
+OF_ESTACION_DETALLE=Ver series
+OF_SERIES=Series
+OF_SERIE_DIARIA=Diarias
+OF_SERIE_MENSUAL=Mensuales
+
+LABEL_AGNO=Año
+LABEL_MES=Mes
+oferta_no_agno=Debe ingresar el año a consultar
+
+LABEL_MES1= Enero
+LABEL_MES2= Febrero
+LABEL_MES3= Marzo
+LABEL_MES4= Abril
+LABEL_MES5= Mayo
+LABEL_MES6= Junio
+LABEL_MES7= Julio
+LABEL_MES8= Agosto
+LABEL_MES9= Septiembre
+LABEL_MES10= Octubre
+LABEL_MES11= Noviembre
+LABEL_MES12= Diciembre
+
+LABEL_DIA1= Dia 1
+LABEL_DIA2= Dia 2
+LABEL_DIA3= Dia 3
+LABEL_DIA4= Dia 4
+LABEL_DIA5= Dia 5
+LABEL_DIA6= Dia 6
+LABEL_DIA7= Dia 7
+LABEL_DIA8= Dia 8
+LABEL_DIA9= Dia 9
+LABEL_DIA10= Dia 10
+LABEL_DIA11= Dia 11
+LABEL_DIA12= Dia 12
+LABEL_DIA13= Dia 13
+LABEL_DIA14= Dia 14
+LABEL_DIA15= Dia 15
+LABEL_DIA16= Dia 16
+LABEL_DIA17= Dia 17
+LABEL_DIA18= Dia 18
+LABEL_DIA19= Dia 19
+LABEL_DIA20= Dia 20
+LABEL_DIA21= Dia 21
+LABEL_DIA22= Dia 22
+LABEL_DIA23= Dia 23
+LABEL_DIA24= Dia 24
+LABEL_DIA25= Dia 25
+LABEL_DIA26= Dia 26
+LABEL_DIA27= Dia 27
+LABEL_DIA28= Dia 28
+LABEL_DIA29= Dia 29
+LABEL_DIA30= Dia 30
+LABEL_DIA31= Dia 31
+LABEL_TIPO= Tipo
+
+OFERTA_MEDIA=Oferta media (Mmc)
+OFERTA_SECA=Oferta seca (Mmc)
+OFERTA_ALERTA=Oferta hidrica (Mmc)
+OFERTA_DEMANDA=Demanda (Mmc)
+OFERTA_IUA_MEDIO=IUA Año medio
+OFERTA_IUA_SECO=IUA Año seco
+OFERTA_IACAL_MEDIO=IACAL Año medio
+OFERTA_IACAL_SECO=IACAL Año seco
+OFERTA_VULNERA_MEDIO=Vulnerabilidad Año medio
+OFERTA_VULNERA_SECO=Vulnerabilidad Año seco
+OFERTA_INDICE_REGULACION=Indice de regulación
+
+OFERTA_INSUFICIENTE_DATOS=La serie de datos seleccionada no cuenta con suficiente información para el análisis de histograma.
+
+OF_VARIABLE=Serie de datos
+
+OBSERVATORIO_INICIO= En esta secci\u00F3n se presentan cifras sobre el estado de los datos que se gestionan en el SIRH relacionados con estadisticas hidrológicas, usuarios del agua, resultados de monitoreo de calidad e instrumentos de gestión. \n\nEste Observatorio del agua se constituye como una plataforma tecnológica que promueve el uso de información hidrológica, facilita el establecimiento de mecanismos de intercambio y cooperación, y genera información de interés a tomadores de decisiones.
+OBSERVATORIO_OFERTA= La fuente oficial de los datos de las Redes hidrológicas y Meteorológicas es el IDEAM. \n\nLa red hidrologica La componen 735 estaciones activas, donde se hace la medición de caudales a partir de registros continuos (423 limnígrafos) o por lectura una vez al día (312 limnímetros). \n\nRevision Nov-2014
+OBSERVATORIO_DEMANDA= La demanda del recurso hídrico está asociada a la identificación de la cantidad de agua por unidad de tiempo que está siendo aprovechada por los diferentes usuarios del recurso hídrico, de acuerdo a las actividades que desarrollan. \n\nEl SIRH apoya la gestión de dicha información a traves del Registro de Usuarios del Recurso Hídrico, RURH. \n\n Nota: La información usuarios del agua se encuentra en proceso de consolidación (Decreto 303 de 2012)
+OBSERVATORIO_CALIDAD= Conocer la calidad del agua en un punto específico de una fuente hídrica significa identificar su disposición para ser aprovechada. \n\nEl SIRH cuenta con un módulo de calidad que permite consolidar los resultados de las mediciones de calidad realizadas en Puntos de monitoreo.
+OBSERVATORIO_GESTION= Consolidada la información de oferta, demanda y calidad, es posible soportar el diseño de instrumentos de planificación. \n\nDentro del SIRH se ofrecen herramientas para registrar las disposiciones definidas en los PORH y POMCAS.\n\nPor otra parte se contempla el analisis de las capacidades humanas para hacer gestión e investigación asociada al agua.
+OBSERVATORIO_RIESGO= Para el análisis del riesgo, el IDEAM ha determinado que se debe contar con datos sobre:\n i) la fragilidad de los ecosistemas, \nii) áreas donde exista alta demanda y que generen agotamiento, \niii) eventos que disminuyen el caudal superficial, u afectan la recarga de los acuíferos, así como \niv) eventos que amplían o reducen la dinámica de las aguas superficiales. 
+
+
+OBSERVATORIO_OBSERVATORIO=Observatorio
+OF_DESC_IRH= Mide la capacidad de retención de humedad de las cuencas con base en la distribución de las series de frecuencias acumuladas de los caudales diarios. Este índice se mueve en el rango entre 0 y 1, siendo los valores más bajos los que se interpretan como de menor regulación.
+OF_DESCR_DATOS_ESTACION=Presenta los datos básicos de la estaci\u00F3n analizada.
+OF_DESCR_TABLA_DATOS=Presenta la información de la serie histórica para la estación seleccionada.
+OF_DESCR_SERIE_ANUAL=Presenta la variación de los valores medios anuales, este tipo de grafica permite identificar de manera preliminar tendencia en la serie histórica o cambios en el comportamiento de la variable en un largo periodo de tiempo.
+OF_DESCR_RESUMEN_NUMERICO=El resumen numérico de una serie histórica identifica los valores de tendencia central, dispersión y asimetría de los datos, esta información preliminar de la serie permite caracterizar los valores medios de la serie y la dispersión de los datos respecto a estos valores.
+OF_DESCR_SERIE_HISTORICA=La representación gráfica de una serie de tiempo puede mostrar la variabilidad, aumento en los valores medios, disminución en los valores medios, el rango de los datos y los valores máximos y mínimos de un conjunto de datos.
+OF_DESC_CURVA_DURACION=La curva de duración de caudales es una curva de frecuencias acumuladas que expresa el porcentaje de tiempo durante el cual un caudal determinado puede ser igualado o excedido. Esta curva tiene formas típicas que dependen de las características de las cuencas. En cuencas de montaña, la pendiente pronunciada en el tramo inicial de la curva indica que los caudales altos se presentan durante períodos cortos, mientras que en los ríos de llanura no existen diferencias muy notables en las pendientes de los diferentes tramos de la curva. (IDEAM, 2013).
+OF_DESC_ANUAL=Presenta la grafica de distribucion de medios, maximos y minimos.
+OF_DESC_DATOS_MULTIANUALES=Resume a nivel mensual la serie histórica, es decir se obtienen los valores mínimos, medios y máximos de todos los meses en un periodo de tiempo. Esta información permite caracterizar la serie con los valores típicos de un año medio.
+OF_DESC_GRAF_MULTIANUALES=Presenta los datos multianuales en una gráfica de líneas.
+OF_DESC_HISTOGRAMA=El histograma es un gráfico de barras en donde cada barra es proporcional al número de datos o frecuencia de los valores del intervalo de cada barra, con este grafico se puede observar de forma preliminar la distribución de la población así como el rango de valores más frecuentes.
+OF_DESC_PvsE=Presenta la gráfica de comparación entre niveles de evaporación y precipitación
+
+#Graficos de Alertas
+GRAFICO_ALERTA1=Alertas de disponibilidad de agua
+GRAFICO_ALERTA2=Alertas por calidad del agua
+GRAFICO_ALERTA3=Consulta de de pronóstico hidrológico - FEWS
+ALERTA1_AREA=Area
+ALERTA1_ZONA=Zona
+ALERTA1_SUBZONA=Subzona
+NOMBRE_ALERTA=Alerta
+ALERTA1_NOMBRE_TABLA1=Fuentes y Tramos con su oferta y demanda
+ALERTA1_NOMBRE_TABLA2=Captacion registrada por fuente y tramo
+ALERTA1_NOMBRE_GRAFICO1=Oferta y demanda para la fuente
+ALERTA1_TIENE_OFERTA=Oferta Registrada
+ALERTA1_ALERTA_DEMANDA=Sobredemanda
+ALERTA1_DEMANDA=Demanda hídrica (m3/s)
+ALERTA1_ADV1=Seleccione la fuente - tramo a analizar
+GRAFICO_ALERTA_ICA=Alerta de Calidad del Agua
+ALERTA1_FUENTE=Fuente
+ALERTA1_NIVEL=Nivel de Calidad
+ALERTA2_ICA=Valor del ICA
+ALERTA2_CALIFICACION=Calificacion
+TRAMO_PUNTO=Tramo - Punto
+ALERTA2_NOMBRE_TABLA1= Puntos de Monitoreo por nivel de ICA (ultima muestra)
+ALERTA2_FECHA_MUESTRA=Fecha muestra
+ALERTA2_ADV1=Seleccione la tramo - punto a analizar
+ALERTA2_NOMBRE_GRAFICO1=Nivel de ICA por punto de monitoreo
+ALERTA2_NOMBRE_TABLA2=Nivel de ICA en punto monitoreo
+
+
+OBS_DEMANDA_ESTRATOS=Consulta por estratos
+OBS_DEMANDA_ESTADO_USUARIO=Consulta caudales por estado usuario 
+OBS_DEMANDA_TIPO_USUARIO=Consulta caudales por tipo de usuario
+OBS_DEM_VARIABLE=Variable
+OBS_DEM_COMPLEJIDAD=Complejidad
+OBS_DEM_COMPONENTE=Componente demanda
+OBS_MENU_DESCARGAR=Descargar
+OBS_MENU_GRAFICAR=Ver gráfica
+
+OBS_DEM_DEPTO=Departamento
+OBS_DEM_MUN=Municipio
+OBS_DEM_CLASE=Ubicación
+OBS_DEM_ESTRATO1=Estrato 1
+OBS_DEM_ESTRATO2=Estrato 2
+OBS_DEM_ESTRATO3=Estrato 3
+OBS_DEM_ESTRATO4=Estrato 4
+OBS_DEM_ESTRATO5=Estrato 5
+OBS_DEM_ESTRATO6=Estrato 6
+OBS_DEM_ESTRATO10=Estrato 10
+OBS_DEM_ESTRATO11=Estrato 11
+OBS_DEM_ESTRATO12=Estrato 12
+OBS_DEM_FINI=Fecha inicio
+OBS_DEM_FFIN=Fecha final
+
+CAL_IDEAM=Red monitoreo Ideam
+CAL_PTO_IDEAM=Punto Ideam
+CAL_PTO_IDEAM_COD=Código
+
+CAL_MTR_IDEAM_ALICUOTAS=Número de alicuotas
+CAL_MTR_IDEAM_LAB=Laboratorio
+CAL_MTR_IDEAM_SUB=Submuestra
+CAL_MTR_IDEAM_SUB_FECHA=Fecha muestreo
+CAL_MTR_IDEAM_ANALISIS=Fecha análisis
+OBS_CAL_COMPONENTE=Componente Calidad
+
+CNC_CUENCAS=Cuencas
+CNC_DETALLE_CNC=Detalle cuenca
+CNC_DATOS_BASICOS= Datos básicos
+CNC_FUENTES= Fuentes relacionadas
+CNC_NOMBRE=Nombre
+CNC_CODIGO=Código
+CNC_FUENTE_PPAL=Fuente principal
+CNC_FUENTES_AA=Fuentes disponibles
+
+SBT_FUN_BOMBA=Datos de la bomba
+SBT_FUN_BOMBA_CLS=Clase
+SBT_FUN_BOMBA_MDL=Modelo
+SBT_FUN_BOMBA_PTN=Potencia (HP)
+SBT_FUN_BOMBA_PRF=Profundida succión (mt)
+SBT_FUN_DOCUMENTOS=Documentos
+SBT_FUN_DOC_BOMBEO=Prueba bombeo
+SBT_FUN_DOC_FILTRO=Filtros 
+SBT_FUN_DOC_FOTO=Foto del pozo
+
+SBT_FUN_DOCUMENTOS_RELACIONADOS=Relacionados
+SBT_FUN_DOC_MEN_VER=Ver
+SBT_FUN_DOC_MEN_BORRAR=Borrar
+
+SBT_FUN_EXP_MOD=Explotación
+SBT_FUN_ACC_MOD=Acceso
+SBT_FUN_AFO_MOD=Aforo
+SBT_FUN_MAN_MOD=Manatial
+
+SBT_FUN_MNT_TIPO=Tipo
+SBT_FUN_MNT_PERMANENCIA=Permanencia
+SBT_FUN_MNT_SURGENCIA=Medio de surgencia
+SBT_FUN_MNT_OBS=Observaciones
+
+SBT_FUN_AFO_METODO=Método medida caudal
+SBT_FUN_AFO_VOLUMEN=Volumen sistema de almacenamiento (m3)
+SBT_FUN_AFO_TIEMPO=Tiempo de llenado (min)
+SBT_FUN_AFO_CAUDAL=Caudal estimado (l/s)
+SBT_FUN_AFO_DOC=Aforo
+
+SBT_FUN_ACC_ACCESO=Acceso al predio
+SBT_FUN_ACC_DOC=Croquis acceso
+
+#JHOSEPH SILVA
+plan_informe_determinante     = Informe del Determinante
+AGUAS_SUBTERRANEAS=Aguas Subterraneas (según decreto 1640 de 2012).Las subálveas y las ocultas debajo de la superficie del suelo o del fondo marino que brotan en forma natural, como las fuentes y manantiales captados en el sitio de afloramiento o las que requieren para su alumbramiento obras como pozos, galerías filtrantes y otras similares
+AGUAS_SUPERFICIALES=Aguas superficiales: son aquellas que se encuentran sobre la superficie del suelo. Esta se produce por la escorrentía generada a partir de las precipitaciones o por el afloramiento de aguas subterráneas. Pueden presentarse en forma correntosa, como en el caso de corrientes, ríos y arroyos, o quietas si se trata de lagos, reservorios, embalses, lagunas, humedales, estuarios, océanos y mares
+ZONIFICACION_HIDROGEO = Acceda a la información descriptiva de los pricipales provincias hidrogeológicas y una síntesis de información hidrogeológica de los sistemas acuíferos identificados en el año 2014 por el IDEAM.
+COMPONENTE_MONITOREO= Permite realizar consultas de los resultados obtenidos en el monitoreo piezométrico, monitoreo de calidad y la Red Básica Nacional de Monitoreo de Aguas Subterráneas, operada por el IDEAM y por las Autoridades Ambientales a nivel regional.
+SUB_DEMANDA=  Contiene información de las captaciones a puntos de agua subterránea, tales como aljibes, manantiales y pozos registrados en el SIRH.
+SUB_CALIDAD=  Presenta las cifras estadísticas referente a las mediciones puntuales, periódicas u ocasionales, realizadas en cada punto de monitoreo de la red regional por parte de la autoridad ambiental.
+SUB_RBASUB= Presenta información descriptiva del monitoreo nacional, relacionado con la calidad y niveles de aguas subterráneas, dando a conocer las generalidades, esquema metodológico, objetivo, definición de criterios, identificación de zonas priorizadas y actividades realizadas y proyectadas para la implementación de la Red Nacional de Monitoreo de Aguas Subterráneas – RBASUB.
+SUB_RELACION= El trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de "de Finibus Bonorum et Malorum" por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.
+SUB_GUIAS= Accede a información normativa asociada a aguas subterráneas, así como a los protocolos, guías y demás lineamientos técnicos y estándares que permiten orientar el monitoreo y la gestión del conocimiento subterráneo.
+SUB_GRUPOS= Relaciona la información de asociaciones correspondientes a la temática de hidrogeología de orden regional, nacional e internacional y permite la consulta de grupos de investigación, detallando entidad asociada, líneas de trabajo, número de contacto y sus responsables.
+SUB_VISOR= "Lorem Ipsum" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).
+SUB_DOCUMENTOS= Presenta información relacionada con estudios hidrogeológicos, asociaciones y grupos de investigación y documentos de referencia como guías, protocolos y normativa asociada a aguas subterráneas.
+SUB_MONPEIZO = Presenta la información referente al nivel o  altura de la superficie de agua sobre el nivel del mar en una unidad hidrogeológica libre, o  la altura que alcanzaría el agua en un pozo de agua subterránea teniendo en cuenta la presión atmosférica.
+SUB_ESTUDIOS= Permite la consulta del banco de estudios hidrogeológicos constituida por diferentes tipos de publicaciones como artículos, documentos técnicos, estudios de consultoría local, regional y nacional, tesis, bases de datos, presentaciones, mapas, proyectos de investigación en convenios, asociaciones de Corporaciones Autónomas, entre otros.
+#JHOSEPH SILVA
+
+
+
+
+
+
+GRAFICO_ALERTA4=Alerta de contaminacion de acuerdo a límites permisibles
+
+
+OFERTA_DISP_CAPT=Oferta disponible (l/s)
+DATO_IUA=Indice de uso del agua (IUA)
+CATEGORIA_IUA=Categoria uso del agua (IUA)
+
+EST_METEREOLOGICAS=Estaciones Meteorológicas
+EST_HIDROLOGICAS=Estaciones hidrológicas
+CURVAS_IDF=Curvas Intensidad Duración Frecuencia - IDF
+
+
+# UI PUEAA
+PUEAA=Pueaa
+ADICIONAR_PUEAA=Adicionar PUEAA
+DETALLE_PUEAA=Detalle PUEAA
+TITULO_DETALLE=Ingrese Los Datos del PUEAA
+NUM_EXPEDIENTE=Número del Expediente
+FECHA_PRESENTA_PUEAA=Fecha de Presentación
+ESTADO_PUEAA=Estado
+NUM_RESOLUCION=Número de Resolución de Aprobación
+FECHA_APRUEBA_PUEAA=Fecha de aprobación
+VIGENCIA_INI=Fecha Inicial
+VIGENCIA_FIN=Fecha Final
+ADICIONAR_PROYECTO_PUEAA=Adicionar Proyecto
+REGISTRO_EXITOSO_PUEAA=Se registró PUEAA con exito
+REGISTRO_EXITOSO_PRY=Se registró proyecto con exito
+REGISTRO_EXITOSO_SEGUIMIENTO=Se registró seguimiento con exito
+SEGUIMIENTO_PROYECTO_PUEAA=Seguimiento a proyectos
+SEGUIMIENTO_PUEAA=Seguimiento de metas
+PROYECTOS=Proyectos
+PROGRAMA_PUEAA=Programa de Uso Eficiente Ahorro de Agua
+TITULO_DETALLE_PROYECTO=Ingrese los datos del proyecto
+PUEAA_SEGUIMIENTO_CONSUMO=Valor
+PUEAA_SEGUIMIENTO_NOMBRE=Nombre personal que realiza el seguimiento
+PUEAA_SEGUIMIENTO_DESCRIPCION=Descripcion
+PUEAA_SEGUIMIENTO_FECHA_VISITA=Fecha visita
+
+PUEAA_SEGUIMIENTO_LABEL_VALOR_META_1=Valor meta año 1
+PUEAA_SEGUIMIENTO_LABEL_VALOR_META_2=Valor meta añ0 2
+PUEAA_SEGUIMIENTO_LABEL_VALOR_META_3=Valor meta año 3 
+PUEAA_SEGUIMIENTO_LABEL_VALOR_META_4=Valor meta añ0 4
+PUEAA_SEGUIMIENTO_LABEL_VALOR_META_5=Valor meta año 5
+PUEAA_SEGUIMIENTO_LABEL_FECHA=Fecha de cumplimiento
+PUEAA_SEGUIMIENTO_LABEL_CUMPLE=Estado
+PUEAA_SEGUIMIENTO_LABEL_AL_DIA=Al dia
+
+# UI Administracion Puea
+PREGUNTA1=Cuenta con términos de referencia para la formulación de los PUEAA
+PREGUNTA2=Dentro de su plan de acción contemplo la implementación de los PUEAA
+PREGUNTA3=Cuenta con indicadores de implementación de PUEAA
+PREGUNTA4=Cuenta metas de consumo de agua por sectores
+PREGUNTA5=Cuenta con metas de uso eficiente y ahorro del agua
+PREGUNTA6=Cuenta con estudios hidrogeológicos (sistema acuífero)e información de bienes y servicios ambientales
+
+FECHA_VIGENCIA_INI=Vigencia Inicial
+FECHA_VIGENCIA_FIN=Vigencia Final

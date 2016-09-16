@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="Receiver"
+     targetNamespace="http://sirh.ideam.gov.co/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://sirh.ideam.gov.co/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    >
+    <wsdl:types>
+        <xs:schema version="1.0" targetNamespace="http://sirh.ideam.gov.co/types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="eventoEntrada">
+                <xs:sequence>
+                    <xs:element name="data">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="key" minOccurs="0" type="xs:anyType"/>
+                                            <xs:element name="value" minOccurs="0" type="xs:anyType"/>
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="methodName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="serviceName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sirh.ideam.gov.co/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sirh.ideam.gov.co/"
+             xmlns:ns1="http://sirh.ideam.gov.co/types">
+            <import namespace="http://sirh.ideam.gov.co/types"/>
+            <xsd:complexType name="recibirEvento">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="ns1:eventoEntrada"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="recibirEvento" type="tns:recibirEvento"/>
+            <xsd:complexType name="recibirEventoResponse">
+                <xsd:sequence/>
+            </xsd:complexType>
+            <xsd:element name="recibirEventoResponse" type="tns:recibirEventoResponse"/>
+            <xsd:complexType name="IdeamException">
+                <xsd:sequence>
+                    <xsd:element name="Message" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="IdeamException" type="tns:IdeamException"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="recibirEventoInput">
+        <wsdl:part name="parameters" element="tns:recibirEvento"/>
+    </wsdl:message>
+    <wsdl:message name="recibirEventoOutput">
+        <wsdl:part name="parameters" element="tns:recibirEventoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IdeamException">
+        <wsdl:part name="IdeamException" element="tns:IdeamException"/>
+    </wsdl:message>
+    <wsdl:portType name="RegistroRemotoSirh">
+        <wsdl:operation name="recibirEvento">
+            <wsdl:input message="tns:recibirEventoInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:recibirEventoOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:fault name="IdeamException" message="tns:IdeamException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="RegistroRemotoSirhSoapHttp" type="tns:RegistroRemotoSirh">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="recibirEvento">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IdeamException">
+                <soap:fault name="IdeamException" use="literal" encodingStyle=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Receiver">
+        <wsdl:port name="RegistroRemotoSirhPort" binding="tns:RegistroRemotoSirhSoapHttp">
+            <soap:address location="http://172.16.1.88:8230/Ideam-Ejb/Receiver/RegistroRemotoSirh?wsdl"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+  
+  
+  
+  <managed-bean>
+    <managed-bean-name>redIdeamBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.red.ideam.view.RedIdeamBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidadIdeam/redIdeam.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>detallePuntoBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.red.ideam.view.DetallePuntoBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidadIdeam/detallePunto.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>detalleMuestraBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.red.ideam.view.DetalleMuestraBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidadIdeam/detalleMuestra.jspx-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>muestrasBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.red.ideam.view.MuestrasBacking</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1calidadIdeam/muestras.jspx-->
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>MuestrasIdeamTreeHandler</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.calidad.red.ideam.view.MuestrasTreeHandler</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    
+     <managed-property>
+      <property-name>treemodel</property-name>
+      <value>#{detallePuntoBean.muestraTreeModel}</value>
+    </managed-property>
+  </managed-bean>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>listaPuntosIdeam</from-outcome>
+      <to-view-id>/calidadIdeam/redIdeam.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>listaFuentesConflicto</from-outcome>
+      <to-view-id>/fuentes/conflictosXFuente.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>listarMuestrasIdeam</from-outcome>
+      <to-view-id>/calidadIdeam/muestras.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  
+  <navigation-rule>
+    <from-view-id>/calidadIdeam/redIdeam.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallePunto</from-outcome>
+      <to-view-id>/calidadIdeam/detallePunto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/calidadIdeam/detallePunto.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>listaMuestrasIdeam</from-outcome>
+      <to-view-id>/calidadIdeam/muestras.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleMuestraIdeam</from-outcome>
+      <to-view-id>/calidadIdeam/detalleMuestra.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/calidadIdeam/detalleMuestra.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallePunto</from-outcome>
+      <to-view-id>/calidadIdeam/detallePunto.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/calidadIdeam/muestras.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallePunto</from-outcome>
+      <to-view-id>/calidadIdeam/detallePunto.jspx</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detalleMuestraIdeam</from-outcome>
+      <to-view-id>/calidadIdeam/detalleMuestra.jspx</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  
+</faces-config>
+

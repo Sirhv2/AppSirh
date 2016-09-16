@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{adicionarPueaa.d1}">
+      <af:form id="f1" binding="#{adicionarPueaa.f1}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:group id="g1">
+              
+              <af:panelSplitter id="ps1" orientation="horizontal" disabled="true"
+                                  splitterPosition="700">
+                <f:facet name="first">
+				 <af:panelStretchLayout binding="#{adicionarPueaa.psl12}"
+                                     id="psl12" startWidth="0px" endWidth="0px"
+                                     topHeight="0px" bottomHeight="0px"
+                                     styleClass="AFStretchWidth">
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+				     <af:panelGroupLayout layout="scroll" 
+                                     halign="center">                    
+                     <af:outputText binding="#{adicionarPueaa.ot5}"
+                                         id="ot5"
+                                         styleClass="AFBrandingBarTitle"
+                                         value="#{viewcontrollerBundle.TITULO_DETALLE_PROYECTO}"/>
+										 
+    <af:panelFormLayout id="pfl15m1" rows="3"  labelWidth="140" fieldWidth="450px" labelAlignment="start"
+                    inlineStyle="text-align:center;">
+                       <af:selectManyChoice label="Predios Asociados" id="smcPredios"
+                                                                 autoSubmit="true" 
+                                                                 partialTriggers="socProyecto"
+                                                                 binding="#{back_adicionarProyecto.smcPredios}">
+                                                                                                                 
+                       </af:selectManyChoice>                                   
+                       <af:selectManyChoice label="Concesiones Asociados" id="smcConcesiones"
+                                                                 autoSubmit="true" 
+                                                                 partialTriggers="smcPredios"
+                                                                 binding="#{back_adicionarProyecto.smcConcesiones}">
+                                                                                                                 
+                       </af:selectManyChoice>                                  
+                       
+                            <af:commandButton id="cbAgregarProyecto" text="Agregar"
+                                              partialSubmit="true"                                              
+                                              binding="#{back_adicionarProyecto.cbAgregarProyecto}"/>
+                 									
+   </af:panelFormLayout>
+
+                    <af:table id="tblPred" summary="Listado Concesiones" var="predCon"
+                              width="500px" emptyText="No hay informacion para mostrar"
+                              rowSelection="single" 
+                              partialTriggers="::cbAgregarProyecto cbEliPred cbModPred"
+                              binding="#{back_adicionarProyecto.tblPred}" columnStretching="column:c3m1">
+                        <af:column rowHeader="unstyled" styleClass="filaNumeroSedeTablaClass"
+                                   sortable="true" headerText="Predio" id="c1m1" width="109">
+                            <af:outputText id="otPred" />
+                        </af:column>
+                        <af:column rowHeader="unstyled" styleClass="filaNombreSedeTablaClass"
+                                   sortable="false" headerText="Concesión" id="c2m1" width="109">
+                            <af:outputText id="otCons" />
+                        </af:column>                        
+                        <af:column rowHeader="unstyled" styleClass="filaBotonActualizarTablaClass"
+                                   sortable="false" headerText="Operación" id="c4m1" width="175"
+                                   align="center">
+                            <af:panelGroupLayout id="pgl3m11" layout="horizontal">
+                                <af:commandButton text="Modificar" id="cbModPred" partialSubmit="true"                                          
+                                          binding="#{back_adicionarProyecto.cbModificarPred}">
+                                    
+                                </af:commandButton>
+                                <af:commandButton text="Eliminar" id="cbEliPred" partialSubmit="true"                                          
+                                          binding="#{back_adicionarProyecto.cbEliminarPred}">
+                                    
+                                </af:commandButton>
+                            </af:panelGroupLayout>
+                        </af:column>
+                    </af:table>
+																 
+                    <af:panelFormLayout id="pfl1" labelWidth="140px"  fieldWidth="450px"
+                                        rows="3" labelAlignment="start" inlineStyle="text-align:center;"
+                                        binding="#{back_adicionarProyecto.pfl1}">
+						<af:inputDate id="idFechaInicio"                                                                                                
+                                                      label="Fecha Presentacion"                                                      
+                                                      binding="#{back_adicionarProyecto.idFechaInicio}">
+                                            <af:convertDateTime pattern="d/M/yyyy"/>
+                                        </af:inputDate>                                
+        				
+                                
+                        <af:selectOneChoice label="Nombre del Proyecto" id="socProyecto" autoSubmit="true"
+                                            contentStyle="width: 177px;"
+                                            binding="#{back_adicionarProyecto.socProyecto}">  
+											<f:selectItems value="#{back_adicionarProyecto.listaProyecto}"
+                                               binding="#{back_adicionarProyecto.sipry}"
+                                               id="sipry"/>
+                        </af:selectOneChoice>  
+                        <af:inputText id="itDescripcion" label="Descripción del Proyecto" rows="3" columns="116"
+                                                          contentStyle="width: 250px;"
+                                                          binding="#{back_adicionarProyecto.itDescripcion}"
+                                                          autoSubmit="true"/>       
+						<af:inputText id="itPresupuesto" label="Presupuesto" rows="1" columns="20"
+                                                          contentStyle="width: 175px;"
+                                                          binding="#{back_adicionarProyecto.itPresupuesto}"
+                                                          autoSubmit="true"/>                         								  
+                       <af:inputText id="itLineaBase" label="Línea Base del Proyecto" rows="1" columns="20"
+                                                          contentStyle="width: 175px;"
+                                                          binding="#{back_adicionarProyecto.itLineaBase}"
+                                                          autoSubmit="true"/>  
+						<af:inputText id="itIndicador" label="Indicador(Unidad de Medida)" rows="1" columns="20"
+                                                          contentStyle="width: 175px;"
+                                                          binding="#{back_adicionarProyecto.itIndicador}"
+                                                          autoSubmit="true"/>			 
+                       
+                        
+                    </af:panelFormLayout>
+               
+                    <af:panelFormLayout id="pfl2" rows="1" labelWidth="140px"  
+                     labelAlignment="start" inlineStyle="text-align:center;">
+                        
+                        
+                            <af:inputText id="itCortoPlazo" label="Meta Año 1" rows="1" 
+                                                            contentStyle="width: 175px;" 
+                                                            binding="#{back_adicionarProyecto.itCortoPlazo}"
+                                                            autoSubmit="true"/>  
+                            <af:inputDate id="idFechaCorto"                                                                                                
+                                                      label="Fecha Vigencia"                                                      
+                                                      binding="#{back_adicionarProyecto.idFechaCorto}">
+                                            <af:convertDateTime pattern="d/M/yyyy"/>
+                                        </af:inputDate>                                
+                    </af:panelFormLayout>
+                   
+                    <af:panelFormLayout id="pfl5" rows="1" labelWidth="140"
+                        labelAlignment="start" inlineStyle="text-align:center;">
+                       
+        
+                            <af:inputText id="itMedioPlazo" label="Meta Año 2" rows="1" 
+                                                            contentStyle="width: 175px;" 
+                                                            binding="#{back_adicionarProyecto.itMedioPlazo}"
+                                                            autoSubmit="true"/>  
+                            <af:inputDate id="idFechaMedio"                                                                                                
+                                                      label="Fecha Vigencia"                                                      
+                                                      binding="#{back_adicionarProyecto.idFechaMedio}">
+                                            <af:convertDateTime pattern="d/M/yyyy"/>
+                                        </af:inputDate>                                
+        
+                    </af:panelFormLayout>
+                
+                    <af:panelFormLayout id="pfl6" rows="1" labelWidth="140"
+                    labelAlignment="start" inlineStyle="text-align:center;">
+                            <af:inputText id="itLargoPlazo" label="Meta Año 3" rows="1" 
+                                                            contentStyle="width: 175px;" 
+                                                            binding="#{back_adicionarProyecto.itLargoPlazo}"
+                                                            autoSubmit="true"/>  
+                            <af:inputDate id="idFechaLargo"                                                                                              
+                                                      label="Fecha Vigencia"                                                      
+                                                      binding="#{back_adicionarProyecto.idFechaLargo}">
+                                            <af:convertDateTime pattern="d/M/yyyy"/>
+                                        </af:inputDate>                                
+					</af:panelFormLayout>  
+					
+					
+                    <af:panelFormLayout id="pfformecha" rows="1" labelWidth="140"
+                    labelAlignment="start" inlineStyle="text-align:center;">
+                       <af:inputDate id="idFechaFin"                                                                                                
+                                                      label="Fecha Notificacion"                                                      
+                                                      binding="#{back_adicionarProyecto.idFechaFin}">
+                                            <af:convertDateTime pattern="d/M/yyyy"/>
+                                        </af:inputDate>                                
+        									
+					   <af:commandButton text="Guardar Proyecto" id="cbGuardar"                                   
+                                   binding="#{back_adicionarProyecto.cbGuardar}" 
+								    actionListener="#{back_adicionarProyecto.cb_guardar_pry_actionListener}"
+                                   partialSubmit="true"/> 
+                						
+                    </af:panelFormLayout>  
+                
+                </af:panelGroupLayout>
+				</f:facet>
+				   <f:facet name="start">
+                          <af:spacer width="10" height="10"
+                                     binding="#{adicionarPueaa.s19}" id="s19"/>
+                        </f:facet>
+                        <f:facet name="end">
+                          <af:spacer width="10" height="10"
+                                     binding="#{adicionarPueaa.s18}" id="s18"/>
+                        </f:facet>
+                        <f:facet name="top">
+                         
+                        </f:facet>
+				</af:panelStretchLayout> 
+				</f:facet>
+				<f:facet name="second">
+				    <af:panelStretchLayout binding="#{detalleUsuarioAgua.psl3}"
+                                           id="psl3" startWidth="0px"
+                                           endWidth="0px" topHeight="0px"
+                                           bottomHeight="0px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{viewcontrollerBundle.SEGUIMIENTO_PROYECTO_PUEAA}"
+                                     binding="#{detalleUsuarioAgua.pb_predios}"
+                                     id="pb_predios" showDisclosure="false">
+                          <f:facet name="toolbar"/>
+                          <af:panelCollection binding="#{detalleUsuarioAgua.pc1}"
+                                              id="pc1">
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{adicionarPueaa.archivo}"
+                                       id="archivo" visible="true">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.SEGUIMIENTO_PUEAA}"
+                                                    binding="#{back_adicionarProyecto.cmi_adicionar_seguimiento}"
+                                                    id="cmi_adicionar_seguimiento"
+                                                    actionListener="#{back_adicionarProyecto.cmi_adicionar_seguimiento_actionListener}"
+                                                    action="adicionarSeguimiento"
+                                                    immediate="true"/>                                                        
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:tree binding="#{detalleUsuarioAgua.t1}"
+                                     id="t1"
+                                     value="#{UsuariosTreeHandler.treemodel}"
+                                     contentDelivery="immediate" var="node"
+                                     varStatus="nodeStatus">
+                              <f:facet name="nodeStamp">
+                                <af:commandLink text="#{node.description} "
+                                                binding="#{detalleUsuarioAgua.cl2}"
+                                                id="cl2"
+                                                action="#{node.getAction}"
+                                                inlineStyle="#{node.inlineStyle}"
+                                                actionListener="#{detalleUsuarioAgua.cl1_actionListener}">
+                                  <f:attribute name="nombreParametro"
+                                               value="#{node.nombreParametro}"/>
+                                  <f:attribute name="valorParametro"
+                                               value="#{node.data}"/>
+                                  <f:attribute name="extraInfo"
+                                               value="#{node.extraData}"/>
+                                  <f:attribute name="extraInfo2"
+                                               value="#{node.extraData2}"/>
+                                </af:commandLink>
+                              </f:facet>
+                              <f:facet name="pathStamp"/>
+                            </af:tree>
+                          </af:panelCollection>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+				</f:facet>
+              </af:panelSplitter>
+            </af:group>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AdicionarPueaa-->
+</jsp:root>

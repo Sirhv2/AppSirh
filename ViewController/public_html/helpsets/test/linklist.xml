@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<link version="1.0">
+	<linkitem topic="seguridad">
+		<linkentry title="Seguridad Login" target="seguridad_login" text="Seguridad Login"/>
+                <linkentry title="Perfiles" target="borrar_perfil" text="Perfiles"/>
+                <linkentry title="Validaciones" target="caracteres_validos" text="Validaciones"/>
+                <linkentry title="Usuarios" target="usuarioIngresoExitoso" text="Usuarios"/>
+	</linkitem>
+	<linkitem topic="auditoria">		
+                <linkentry title="Borrar Eventos de Auditoria" target="auditoriaBorrarSemana" text="Borrar Eventos de Auditoria" />
+                <linkentry title="Consultar Auditoria" target="auditoriaConsultarIP" text="Consultar Auditoria" />
+                <linkentry title="Consultar Auditoria" target="auditoriaConsultarMetodo" text="Consultar Auditoria" />
+                <linkentry title="Consultar Auditoria" target="auditoriaConsultarObjeto" text="Consultar Auditoria" />
+                <linkentry title="Consultar Auditoria" target="auditoriaConsultarUsuario" url="Consultar Auditoria" />
+                <linkentry title="Consultar Auditoria" target="auditoriaConsultarRangoFechas" text="Consultar Auditoria" />
+                <linkentry title="Generar Reporte Auditoria" target="auditoriaConsultarReporte" text="Generar Reporte Auditoria" />
+                <linkentry title="Definir Auditoria" target="auditoriaDefinirMetodosNombre" text="Definir Auditoria" />
+                <linkentry title="Definir Auditoria" target="auditoriaDefinirModulosNombre" text="Definir Auditoria" />
+                <linkentry title="Consultar Auditoria" target="auditoriaDetalleLog" text="Consultar Auditoria" />
+        </linkitem>        
+</link>

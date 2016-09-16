@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{puntosMonitoreo.documentPuntosMonitoreo}">
+      <af:form id="f2" binding="#{puntosMonitoreo.formPuntosMonitoreo}"
+               usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{puntosMonitoreo.panelStretchLayoutPuntosMonitoreo}"
+                                   id="panelStretchLayoutPuntosMonitoreo"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="18px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelBox text="#{viewcontrollerBundle.PUNTOS_MONITOREO_TRAMO}"
+                             binding="#{puntosMonitoreo.panelBoxPuntosMonitoreo}"
+                             id="panelBoxPuntosMonitoreo"
+                             showDisclosure="false">
+                  <af:panelGroupLayout binding="#{puntosMonitoreo.panelGroupLayoutPuntosMonitoreo}"
+                                       id="panelGroupLayoutPuntosMonitoreo"
+                                       layout="scroll">
+                    <af:panelFormLayout binding="#{puntosMonitoreo.panelFormLayoutPuntosMonitoreo}"
+                                        id="panelFormLayoutPuntosMonitoreo">
+                      <af:spacer width="10" height="10"
+                                 binding="#{puntosMonitoreo.spacerPuntosMonitoreo}"
+                                 id="spacerPuntosMonitoreo"/>
+                      <af:outputLabel value="#{viewcontrollerBundle.PUNTOS_MONITOREO_RELACIONADOS}"
+                                      binding="#{puntosMonitoreo.outputLabelPuntosMonitoreo}"
+                                      id="outputLabelPuntosMonitoreo"/>
+                      <af:panelCollection binding="#{puntosMonitoreo.panelCollectionPuntosMonitoreo}"
+                                          id="panelCollectionPuntosMonitoreo"
+                                          inlineStyle="width:90.0%;">
+                        <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                   binding="#{puntosMonitoreo.menuPuntosMonitoreo}"
+                                   id="menuPuntosMonitoreo">
+                                   
+                            <af:commandMenuItem text="#{viewcontrollerBundle.OFERTA_HIDRICA}"
+                                                binding="#{puntosMonitoreo.cmi_oferta}"
+                                                id="cmi_oferta"
+                                                action="#{puntosMonitoreo.getAccion}"
+                                                actionListener="#{puntosMonitoreo.cmi_oferta_actionListener}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.DEMANDA_HIDRICA}"
+                                                binding="#{puntosMonitoreo.cmi_demanda}"
+                                                id="cmi_demanda"
+                                                action="#{puntosMonitoreo.getAccion}"
+                                                actionListener="#{puntosMonitoreo.cmi_demanda_actionListener}"/>
+                                                
+                            <af:commandMenuItem text="#{viewcontrollerBundle.INDICES_CALIDAD_CANTIDAD_HIDRICA}"
+                                                binding="#{puntosMonitoreo.cmi_indices_calidad_cantidad_hidrica}"
+                                                id="cmi_indices_calidad_cantidad_hidrica"
+                                                action="#{puntosMonitoreo.getAccion}"
+                                                actionListener="#{puntosMonitoreo.cmi_indices_actionListener}"/>
+                                                
+                            <af:commandMenuItem text="#{viewcontrollerBundle.INDICADORES}"
+                                                binding="#{puntosMonitoreo.cmi_indicadores}"
+                                                id="cmi_indicadores"
+                                                actionListener="#{puntosMonitoreo.cmi_indicadores_actionListener}"
+                                                action="#{puntosMonitoreo.getAccion}"/>
+                          </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        
+                        <af:table value="#{puntosMonitoreo.listaPuntosMonitoreo}" var="row"
+                                  binding="#{puntosMonitoreo.tablePuntosMonitoreo}"
+                                  id="tablePuntosMonitoreo" width="50%"
+                                  emptyText="#{viewcontrollerBundle.NO_HAY_REGISTROS}"
+                                  rowSelection="single" autoHeightRows="10"
+                                  contentDelivery="immediate"
+                                  selectionListener="#{puntosMonitoreo.tablePuntosMonitoreoSelectionListener}">
+                          <af:column sortable="false" headerText="Nombre"
+                                      id="c19" width="177">
+                            <af:outputText value="#{row.nombre}" id="ot14"/>
+                          </af:column>
+                         
+                          <af:column sortable="false" headerText="Descripcion"
+                                      id="c9" width="150">
+                            <af:outputText value="#{row.descripcion_acceso}"
+                                           id="ot16"/>
+                          </af:column>
+                          
+                        </af:table>
+                       
+                        
+                      </af:panelCollection>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+              
+               <f:facet name="top">
+                <af:panelGroupLayout id="pgl3" layout="horizontal">
+                  <af:spacer width="50" height="10" id="s4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}" id="cl1"
+                                  action="fuentes"/>
+             
+                  <af:spacer width="10" height="10" id="s6"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH} :  #{razonesProhibicion.planOrdenamiento.numeroActo}"  id="cl2"
+                                  action="priorizacion"/> 
+                </af:panelGroupLayout>
+              </f:facet>
+              
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:priorizacion-->
+</jsp:root>

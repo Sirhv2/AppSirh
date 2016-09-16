@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{tramosBean.documentF1}" id="documentF1">
+      <af:form binding="#{tramosBean.formF1}" id="formF1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="ptf1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{tramosBean.pslf1}"
+                                   id="pslf1" startWidth="2px" endWidth="0px"
+                                   topHeight="30px" bottomHeight="0px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{tramosBean.psf1}"
+                                  id="psf1" orientation="vertical"
+                                  splitterPosition="64" disabled="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{tramosBean.pflf1}"
+                                        id="pflf1" maxColumns="8" rows="1"
+                                        labelAlignment="top">
+                      <f:facet name="footer"/>
+                      
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_AREA}"
+                                          binding="#{tramosBean.selectOneChoice1}"
+                                          id="selectOneChoice1"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{tramosBean.selectOneChoice1_valueChangeListener}"
+                                          autoSubmit="true" immediate="true"
+                                          helpTopicId="tramos"
+                                          >
+                        <f:selectItems value="#{tramosBean.listaArea}"
+                                       binding="#{tramosBean.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_ZONA}"
+                                          binding="#{tramosBean.selectOneChoice2}"
+                                          id="selectOneChoice2"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{tramosBean.selectOneChoice2_valueChangeListener}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{tramosBean.listaZona}"
+                                       binding="#{tramosBean.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                          binding="#{tramosBean.selectOneChoice3}"
+                                          id="selectOneChoice3"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{tramosBean.listaSubzona}"
+                                       binding="#{tramosBean.selectItems3}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                      
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{tramosBean.selectOneChoice4}"
+                                          id="selectOneChoice4"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{tramosBean.selectOneChoice4_valueChangeListener}">
+                        <f:selectItems value="#{tramosBean.listaDepartamentos}"
+                                       binding="#{tramosBean.selectItems4}"
+                                       id="selectItems4"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{tramosBean.selectOneChoice5}"
+                                          id="selectOneChoice5"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          >
+                        <f:selectItems value="#{tramosBean.listaMunicipios}"
+                                       binding="#{tramosBean.selectItems5}"
+                                       id="selectItems5"/>
+                      </af:selectOneChoice>
+                      
+                      <af:inputText label="#{viewcontrollerBundle.TRM_TRAMO}"
+                                    binding="#{tramosBean.it_tramo}"
+                                    id="it_tramo"
+                                    contentStyle="text-transform:uppercase"
+                                    />
+                                    
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{tramosBean.commandButton1}"
+                                        id="commandButton1"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{tramosBean.commandButton1_actionListener}"/>
+                      
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                      <af:panelCollection binding="#{tramosBean.panelCollection1}"
+                                          id="panelCollection1">
+                        <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                    binding="#{tramosBean.menu1}"
+                                    id="menu1">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              binding="#{tramosBean.commandMenuItem1}"
+                                              id="commandMenuItem1"
+                                              icon="/imgs/add.png"
+                                              action="#{tramosBean.commandMenuItem1_action}"
+                                              rendered="#{!tramosBean.fuente.esSubterranea}"
+                                              />
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              binding="#{tramosBean.commandMenuItem2}"
+                                              id="commandMenuItem2"
+                                              icon="/imgs/edit_24.png"
+                                              action="#{tramosBean.getAccionAdicionar}"
+                                              actionListener="#{tramosBean.commandMenuItem2_actionListener}"
+                                              immediate="true"
+                                              partialSubmit="true"/>
+                        </af:menu>
+                      </f:facet>
+                      
+                      
+                      <af:table var="row" binding="#{tramosBean.t_tramos}"
+                                id="t_tramos" rowSelection="single"
+                                value="#{tramosBean.listaTramos}"
+                                rowBandingInterval="1"
+                                selectionListener="#{tramosBean.t_fuentes_selectionListener}"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_NOMBRE}"
+                                   sortProperty="nombre">
+                          <af:outputText value="#{row.nombre}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.TRM_DESCRIPCION}">
+                          <af:outputText value="#{row.descripcion}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.TRM_AREA}">
+                          <af:outputText value="#{row.idArea.valor}"/>
+                        </af:column>
+                        <af:column sortable="false" 
+                                    headerText="#{viewcontrollerBundle.TRM_ZONA}">
+                          <af:outputText value="#{row.idZona.valor}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                    headerText="#{viewcontrollerBundle.TRM_SUBZONA}">
+                          <af:outputText value="#{row.idSubzona.valor}"/>
+                        </af:column>
+                       
+                      </af:table>
+                      
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{tramosBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2" layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{tramosBean.spacer1}" id="spacer1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FNT_TODAS}"
+                                  binding="#{tramosBean.commandLink1}"
+                                  id="commandLink1" action="fuentes"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{tramosBean.spacer2}" id="spacer2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FNT_FUENTE} : #{tramosBean.fuente.nombre}"
+                                  binding="#{tramosBean.commandLink2}"
+                                  id="commandLink2" action="detalleFuente"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{tramosBean.spacer3}" id="spacer3"/>
+                  <af:outputText value="#{viewcontrollerBundle.TRM_TODOS}"
+                                 binding="#{tramosBean.outputText1}"
+                                 id="outputText1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:tramosBean-->
+</jsp:root>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673260</millis>
+  <sequence>0</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Paso 00. Inicia proceso actualizar</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673602</millis>
+  <sequence>1</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Argumento 0:actualizarMorfo</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673603</millis>
+  <sequence>2</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Paso 01. Carga configuracion</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673609</millis>
+  <sequence>3</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Paso 02. Obtener conexion BD</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673611</millis>
+  <sequence>4</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>obtenerConexionBD</method>
+  <thread>10</thread>
+  <message>Va a cargar driver BD</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673612</millis>
+  <sequence>5</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>obtenerConexionBD</method>
+  <thread>10</thread>
+  <message>DriverNameBD:oracle.jdbc.driver.OracleDriver:</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673614</millis>
+  <sequence>6</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>obtenerConexionBD</method>
+  <thread>10</thread>
+  <message>UrlBD:jdbc:oracle:thin:@172.16.1.8:1522:DBPRUEBA:</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673640</millis>
+  <sequence>7</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>obtenerConexionBD</method>
+  <thread>10</thread>
+  <message>UsuarioBD:SIRHV2:</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:33</date>
+  <millis>1428365673642</millis>
+  <sequence>8</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>obtenerConexionBD</method>
+  <thread>10</thread>
+  <message>ClaveUsuarioBD:SIRHV2JUN19:</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:34</date>
+  <millis>1428365674990</millis>
+  <sequence>9</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>obtenerConexionBD</method>
+  <thread>10</thread>
+  <message>Obtiene conexion a BD</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:38</date>
+  <millis>1428365678221</millis>
+  <sequence>10</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>actualizarMorfo</method>
+  <thread>10</thread>
+  <message>Va a procesar archivoC:\Hugo\Proyectos\Ideam\SIRHsvnIDEAM\AppSIRH\sirh_actualizador\actualizarMorfo.txt</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:38</date>
+  <millis>1428365678223</millis>
+  <sequence>11</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Error General en sincronizar :C:\Hugo\Proyectos\Ideam\SIRHsvnIDEAM\AppSIRH\sirh_actualizador\actualizarMorfo.txt (El sistema no puede encontrar la ruta especificada):</message>
+</record>
+<record>
+  <date>2015-04-06T19:14:38</date>
+  <millis>1428365678241</millis>
+  <sequence>12</sequence>
+  <logger>SirhActualizar</logger>
+  <level>INFO</level>
+  <class>co.gov.ideam.sirh.Actualizar</class>
+  <method>main</method>
+  <thread>10</thread>
+  <message>Trace:java.io.FileNotFoundException: C:\Hugo\Proyectos\Ideam\SIRHsvnIDEAM\AppSIRH\sirh_actualizador\actualizarMorfo.txt (El sistema no puede encontrar la ruta especificada)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.&lt;init&gt;(Unknown Source)
+	at java.io.FileInputStream.&lt;init&gt;(Unknown Source)
+	at co.gov.ideam.sirh.Actualizar.actualizarMorfo(Actualizar.java:370)
+	at co.gov.ideam.sirh.Actualizar.main(Actualizar.java:61)
+:</message>
+</record>
+</log>

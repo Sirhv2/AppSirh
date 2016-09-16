@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{dashBoardCaudalesVert.document1}" id="document1">
+      <af:form binding="#{dashBoardCaudalesVert.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{dashBoardCaudalesVert.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{dashBoardCaudalesVert.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="199"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{dashBoardCaudalesVert.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{dashBoardCaudalesVert.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesVert.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Inicio"
+                                  binding="#{dashBoardCaudalesVert.clink_inicio}"
+                                  id="clink_inicio" action="#{dashBoardCaudalesVert.getRedireccionar}"
+                                  actionListener="#{dashBoardCaudalesVert.redireccionarAOrigen}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesVert.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="#{viewcontrollerBundle.CAUDALES_VERTIDOS}"
+                                        binding="#{dashBoardCaudalesVert.clink_grafico1}"
+                                        id="clink_grafico1"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{dashBoardCaudalesVert.panelGroupLayout3}"
+                                         id="panelGroupLayout3" layout="scroll">
+                      <af:panelBox text="#{viewcontrollerBundle.CAUDALES_VERTIDOS}"
+                                   binding="#{dashBoardCaudalesVert.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1" showDisclosure="false" immediate="true"
+                                   inlineStyle="width:100%; height:480px;">
+                        <f:facet name="toolbar"/>
+                        <af:activeOutputText value="#{viewcontrollerBundle.CAUDALES_VERTIDOS}"
+                                             binding="#{dashBoardCaudalesVert.activeOutputText1}"
+                                             id="activeOutputText1"
+                                             styleClass="AFBrandingBarTitle"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCaudalesVert.spacer1}"
+                                   id="spacer1"/>
+                        <af:panelCollection binding="#{dashBoardCaudalesVert.panelCollection1}"
+                                            id="panelCollection1"
+                                            inlineStyle="width:802px; height:480px;">
+                          <af:table var="row"
+                                    binding="#{dashBoardCaudalesVert.t_caudales}"
+                                    id="t_caudales" rowSelection="single"
+                                value="#{dashBoardCaudalesVert.listaCaudales}"
+                                rowBandingInterval="1"
+                               
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                width="808" inlineStyle="height:470px;">
+                          
+                          <af:column sortable="true"
+                                   headerText="Id Subzona"
+                                   width="58" sortProperty="id_subzona">
+                          <af:outputText value="#{row.id_subzona}"/>
+                         
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                   width="100" sortProperty="subzona">
+                          <af:outputText value="#{row.subzona}"/>
+                         
+                        </af:column>
+                          
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   width="198" sortProperty="fuente">
+                          <af:outputText value="#{row.fuente}"/>
+                         
+                        </af:column>
+                        
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.TRM_TRAMO}"
+                                   sortProperty="tramo" width="90">
+                          <af:outputText value="#{row.tramo}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="Numero de Permiso"
+                                   width="80">
+                          <af:outputText value="#{row.numero_permisos}"/>
+                        </af:column>
+                         <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.CAU_VERT}"
+                                   width="80">
+                          <af:outputText value="#{row.caudal}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                   width="150" sortProperty="autoridad">
+                          <af:outputText value="#{row.autoridad}"/>
+                        </af:column>
+                       </af:table>
+                        </af:panelCollection>
+                        
+                       
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:dashBoardCaudalesVert-->
+</jsp:root>

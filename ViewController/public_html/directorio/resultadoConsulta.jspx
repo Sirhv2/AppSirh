@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{resultadoConsulta.d2}">
+      <af:form id="f2" binding="#{resultadoConsulta.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{resultadoConsulta.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="30px" bottomHeight="30px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{resultadoConsulta.pgl3}"
+                                     id="pgl3" layout="vertical">
+                  <af:panelGroupLayout binding="#{resultadoConsulta.pgl2}"
+                                       id="pgl2" layout="horizontal"
+                                       halign="center">
+                    <af:commandButton text="#{viewcontrollerBundle.menu_regresar}"
+                                      binding="#{resultadoConsulta.cb2}"
+                                      id="cb2" icon="/imgs/back.png"
+                                      action="consulta"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelCollection binding="#{resultadoConsulta.pc2}" id="pc2">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{resultadoConsulta.listaEspecialistas}"
+                            var="row" rowBandingInterval="1"
+                            binding="#{resultadoConsulta.t1}"
+                            id="t1" rowSelection="single">
+                     <af:column sortable="true" headerText="Nombre"
+                               align="start" id="c6" sortProperty="nombre">
+                      <af:outputText value="#{row.nombre}" id="ot8"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Tipo Documento"
+                               align="start" id="c5"
+                               sortProperty="listaTipoId.valor">
+                      <af:outputText value="#{row.listaTipoId.valor}"
+                                     id="ot10"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Numero Documento"
+                               align="start" id="c3" sortProperty="numeroId">
+                      <af:outputText value="#{row.numeroId}" id="ot7"/>
+                    </af:column>
+                  
+                    <af:column sortable="true" headerText="Direccion"
+                               align="start" id="c8" sortProperty="direccion">
+                      <af:outputText value="#{row.direccion}" id="ot4"/>
+                    </af:column>
+                    <af:column sortable="true"
+                               headerText="Divipola Departamento" align="start"
+                               id="c9"
+                               sortProperty="divipolaDepartamento.nombre">
+                      <af:outputText value="#{row.divipolaDepartamento.nombre}"
+                                     id="ot6"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Divipola Municipio"
+                               align="start" id="c7"
+                               sortProperty="divipolaMunicipio.nombre">
+                      <af:outputText value="#{row.divipolaMunicipio.nombre}"
+                                     id="ot9"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Email" align="start"
+                               id="c4" sortProperty="email">
+                      <af:outputText value="#{row.email}" id="ot5"/>
+                    </af:column>
+                   
+                    <af:column sortable="true" headerText="Telefono"
+                               align="start" id="c2" sortProperty="telefono">
+                      <af:outputText value="#{row.telefono}" id="ot3"/>
+                    </af:column>
+                    <af:column sortable="true"
+                               headerText="#{viewcontrollerBundle.ORGANIZACI_U00F3N_}" id="c10"
+                               sortProperty="organizacion.nombre">
+                      <af:outputText value="#{row.organizacion.nombre}" id="ot11"/>
+                    </af:column>
+                    
+                          <af:column sortable="true"
+                                   headerText="Detalle"
+                                   width="198" >
+                         
+                          <af:commandLink text="Ver Detalle"
+                                          id="cc"
+                                          action="detalleEspecialistaExterno"
+                                          actionListener="#{resultadoConsulta.detalleautor_actionListener}"
+                                          immediate="true">
+                            <f:attribute value="#{row.id}"
+                                     name="codigo"/>
+                           
+                                
+                          </af:commandLink>
+                        </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{resultadoConsulta.pgl1}"
+                                     id="pgl1" layout="vertical"
+                                     halign="center">
+                  <af:outputText value="Consulta de Actores"
+                                 binding="#{resultadoConsulta.ot2}"
+                                 styleClass="AFBrandingBarTitle" id="ot2"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:resultadoConsulta-->
+</jsp:root>

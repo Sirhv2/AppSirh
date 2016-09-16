@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+ value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelGroupLayout binding="#{filtrosCalidadIdeam.fc_panelGroupLayout1}"
+                       id="fc_panelGroupLayout1" layout="vertical"
+                       inlineStyle="width:100%;">
+    <af:panelBox text="Seleccione los criterios de consulta - "
+                 binding="#{filtrosCalidadIdeam.panelFiltros}" id="panelFiltros"
+                 showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelFormLayout binding="#{filtrosCalidadIdeam.pnl_filtros}"
+                          id="pnl_filtros" rows="3" maxColumns="4"
+                          labelAlignment="top" fieldWidth="25%">
+        <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                            binding="#{filtrosCalidadIdeam.area}" id="area"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidadIdeam.area_valueChangeListener}"
+                            autoSubmit="true" immediate="true"
+                            requiredMessageDetail="Seleccione la Fecha inicial para la consulta del reporte">
+          <f:selectItems value="#{ filtrosCalidadIdeam.listaArea}"
+                         binding="#{filtrosCalidadIdeam.selectItems1}"
+                         id="selectItems1"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                            binding="#{filtrosCalidadIdeam.departamentos}"
+                            id="departamentos" autoSubmit="true"
+                            immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidadIdeam.departamentos_valueChangeListener}">
+          <f:selectItems value="#{filtrosCalidadIdeam.listaDepartamentos}"
+                         binding="#{filtrosCalidadIdeam.selectItems4}"
+                         id="selectItems4"/>
+        </af:selectOneChoice>
+        <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_inicial}"
+                      binding="#{filtrosCalidadIdeam.fechaInicial}" id="fechaInicial"
+                      columns="10" autoSubmit="true" immediate="true" visible="false"/>
+        <af:selectOneChoice label="#{viewcontrollerBundle.TRM_ZONA}"
+                            binding="#{filtrosCalidadIdeam.zona}" id="zona"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidadIdeam.zona_valueChangeListener}"
+                            autoSubmit="true" immediate="true"
+                            requiredMessageDetail="Seleccione la Fecha final para la consulta del reporte">
+          <f:selectItems value="#{filtrosCalidadIdeam.listaZona}"
+                         binding="#{filtrosCalidadIdeam.selectItems2}"
+                         id="selectItems2"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                            binding="#{filtrosCalidadIdeam.municipios}"
+                            id="municipios" autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+          <f:selectItems value="#{ filtrosCalidadIdeam.listaMunicipios}"
+                         binding="#{filtrosCalidadIdeam.selectItems5}"
+                         id="selectItems5"/>
+        </af:selectOneChoice>
+        <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}"
+                      binding="#{filtrosCalidadIdeam.fechaFinal}" id="fechaFinal"
+                      columns="10" immediate="true" autoSubmit="true" visible="false"/>
+        <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                            binding="#{filtrosCalidadIdeam.subZona}"
+                            id="subZona"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidadIdeam.subZona_valueChangeListener}"
+                            autoSubmit="true" immediate="true">
+          <f:selectItems value="#{ filtrosCalidadIdeam.listaSubZona}"
+                         binding="#{filtrosCalidadIdeam.selectItems3}"
+                         id="selectItems3"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                            binding="#{filtrosCalidadIdeam.fuentes}" id="fuentes"
+                            autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidadIdeam.fuente_valueChangeListener}"
+                            inlineStyle="width:80px;"
+                            requiredMessageDetail="Seleccione una Fuente">
+          <f:selectItems value="#{filtrosCalidadIdeam.listaFuentes}"
+                         binding="#{filtrosCalidadIdeam.selectItems7}"
+                         id="selectItems7"/>
+        </af:selectOneChoice>
+        <af:spacer width="10" height="10"
+                   binding="#{filtrosCalidadIdeam.spacer101}" id="spacer101"/>
+      </af:panelFormLayout>
+    </af:panelBox>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:filtrosCalidadIdeam-->
+</jsp:root>

@@ -1,0 +1,1107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{detalleCaptacionBean.document1}" id="document1">
+      <af:form binding="#{detalleCaptacionBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleCaptacionBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100.0%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detalleCaptacionBean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="697"
+                                  orientation="horizontal" disabled="true">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{detalleCaptacionBean.panelStretchLayout3}"
+                                           id="panelStretchLayout3">
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="scroll">                
+                          <af:panelBox text="#{viewcontrollerBundle.CPT_DETALLE}"
+                                       binding="#{detalleCaptacionBean.panelBox1}"
+                                       id="panelBox1" showDisclosure="false">
+                            <f:facet name="toolbar"/>
+                                <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout2}"
+                                                     id="panelGroupLayout2">
+                                  <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout3}"
+                                                       id="panelGroupLayout3">        
+                                    <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBox2}"
+                                                      id="decorativeBox2"
+                                                      inlineStyle="width:100%;height:250px;"
+                                                      topHeight="80px">
+                                      <f:facet name="center">
+                                        <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout2}"
+                                                            id="panelFormLayout2">
+                                          <f:facet name="footer"/>
+                                                     
+                                              <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                                                                    binding="#{detalleCaptacionBean.soc_area}"
+                                                                    id="soc_area" showRequired="true"
+                                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                  autoSubmit="true" immediate="true"
+                                                                  valueChangeListener="#{detalleCaptacionBean.soc_area_valueChangeListener}"
+                                                                  value="#{detalleCaptacionBean.captacion.idArea}"
+                                                                  helpTopicId="detalleCaptacion"
+                                                                  >
+                                                  <f:selectItems value="#{detalleCaptacionBean.listaArea}"
+                                                                 binding="#{detalleCaptacionBean.siArea}"
+                                                                 id="siArea"/>
+                                                </af:selectOneChoice>
+                                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_ZONA}"
+                                                                    binding="#{detalleCaptacionBean.soc_zona}"
+                                                                    id="soc_zona" showRequired="true"
+                                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                  autoSubmit="true" immediate="true"
+                                                                  valueChangeListener="#{detalleCaptacionBean.soc_zona_valueChangeListener}"
+                                                                  value="#{detalleCaptacionBean.captacion.idZona}"
+                                                                  >
+                                                  <f:selectItems value="#{detalleCaptacionBean.listaZona}"
+                                                                 binding="#{detalleCaptacionBean.siZona}"
+                                                                 id="siZona"/>
+                                                </af:selectOneChoice>
+                                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                                                     binding="#{detalleCaptacionBean.soc_subzona}"
+                                                                     id="soc_subzona" showRequired="true"
+                                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                  autoSubmit="true" immediate="true"
+                                                                  value="#{detalleCaptacionBean.captacion.idSubzona}"
+                                                                  valueChangeListener="#{detalleCaptacionBean.soc_subzona_valueChangeListener}"
+                                                                  >
+                                                  <f:selectItems value="#{detalleCaptacionBean.listaSubzona}"
+                                                                 binding="#{detalleCaptacionBean.siSubzona}"
+                                                                 id="siSubzona"/>
+                                                </af:selectOneChoice>
+                                                
+                                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_TIPO}"
+                                                                  binding="#{detalleCaptacionBean.socTipoFuente}"
+                                                                  id="socTipoFuente"
+                                                                  showRequired="true"
+                                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                  rendered="#{detalleCaptacionBean.superficial}"
+                                                                  autoSubmit="true" immediate="true"
+                                                                  value="#{detalleCaptacionBean.captacion.idFuente.idTipoFuente}"
+                                                                  valueChangeListener="#{detalleCaptacionBean.socTipoFuente_valueChangeListener}"
+                                                                  >
+                                                    <f:selectItems value="#{detalleCaptacionBean.listaTiposFuente}"
+                                                                   binding="#{detalleCaptacionBean.siTipoFuente}"
+                                                                   id="siTipoFuente"/>
+                                                </af:selectOneChoice>
+                                                
+                                                <af:selectOneChoice label="#{detalleCaptacionBean.etiquetaFuenteSupSub}"
+                                                                    binding="#{detalleCaptacionBean.socFuente}"
+                                                                    id="socFuente" showRequired="true"
+                                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                    rendered="#{detalleCaptacionBean.superficial or detalleCaptacionBean.subterranea}"
+                                                                    valueChangeListener="#{detalleCaptacionBean.socFuente_valueChangeListener}"
+                                                                    autoSubmit="true" immediate="true"
+                                                                    value="#{detalleCaptacionBean.captacion.idFuente}"
+                                                                    >
+                                                  <f:selectItems value="#{detalleCaptacionBean.listaFuentes}"
+                                                                 binding="#{detalleCaptacionBean.siFuentes}"
+                                                                 id="siFuentes"/>
+                                                </af:selectOneChoice>
+                                                <!--Pilar Dic 2014 se quita  or detalleCaptacionBean.subterranea porque los tramos solo deben aparecer para fuentes superficiales-->
+                                                <af:selectOneChoice label="#{viewcontrollerBundle.TRM_TRAMO}"
+                                                                    binding="#{detalleCaptacionBean.socTramo}"
+                                                                    id="socTramo" showRequired="true"
+                                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                    rendered="#{detalleCaptacionBean.superficial}"
+                                                                    autoSubmit="true" immediate="true"
+                                                                    value="#{detalleCaptacionBean.captacion.idTramo}"
+                                                                    >
+                                                  <f:selectItems value="#{detalleCaptacionBean.listaTramos}"
+                                                                 binding="#{detalleCaptacionBean.siTramos}"
+                                                                 id="siTramos"/>
+                                                </af:selectOneChoice>
+                                                
+                                      
+                                    </af:panelFormLayout>
+                                      </f:facet>
+                                      <f:facet name="top">
+                                        <af:panelGroupLayout layout="vertical"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             binding="#{detalleCaptacionBean.panelGroupLayout5}"
+                                                             id="panelGroupLayout5"
+                                                             inlineStyle="width:100%;height:100px;">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleCaptacionBean.spacer2}"
+                                                     id="spacer2"/>
+                                          <af:outputText value="#{viewcontrollerBundle.CPT_DATOS}"
+                                                         binding="#{detalleCaptacionBean.outputText2}"
+                                                         id="outputText2"
+                                                         styleClass="AFBrandingBarTitle"/>
+                                      <af:spacer width="10" height="10"
+                                                     binding="#{detalleCaptacionBean.spacer11}"
+                                                     id="spacer11"/>
+                                    
+                                          <af:outputText styleClass="AFBrandingBarTitle"
+                                                     binding="#{detalleCaptacionBean.otTipoFuente}"
+                                                     id="otTipoFuente"
+                                                     />
+                                    </af:panelGroupLayout>
+                                      </f:facet>
+                                    </af:decorativeBox>
+                                    <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBox3}"
+                                                      id="decorativeBox3"
+                                                      inlineStyle="width:100%; height:230px;"
+                                                      topHeight="30px">
+                                      <f:facet name="center">
+                                        <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout3}"
+                                                            id="panelFormLayout3">
+                                          <f:facet name="footer"/>
+                                          
+                                          
+                                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                                binding="#{detalleCaptacionBean.socDepartamento}"
+                                                                id="socDepartamento"
+                                                                showRequired="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                autoSubmit="true" immediate="true"
+                                                                valueChangeListener="#{detalleCaptacionBean.socDepartamento_valueChangeListener}"
+                                                                value="#{detalleCaptacionBean.captacion.objDepartamento}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaDepartamentos}"
+                                                             binding="#{detalleCaptacionBean.siDepartamento}"
+                                                             id="siDepartamento"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                                binding="#{detalleCaptacionBean.socMunicipio}"
+                                                                id="socMunicipio"
+                                                                showRequired="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                value="#{detalleCaptacionBean.captacion.objMunicipio}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaMunicipios}"
+                                                             binding="#{detalleCaptacionBean.siMunicipio}"
+                                                             id="siMunicipio"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_CP}"
+                                                                binding="#{detalleCaptacionBean.socTipoCP}"
+                                                                id="socTipoCP"
+                                                                showRequired="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                value="#{detalleCaptacionBean.captacion.objTipoCentroPoblado}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaTipoCentroPoblado}"
+                                                             binding="#{detalleCaptacionBean.siTipoCP}"
+                                                             id="siTipoCP"/>
+                                            </af:selectOneChoice>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_NOMBRE_CP}"
+                                                          binding="#{detalleCaptacionBean.itNombreCentroPoblado}"
+                                                          id="itNombreCentroPoblado"
+                                                          value="#{detalleCaptacionBean.captacion.nombreCentroPoblado}"
+                                                          />
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_PUNTO}"
+                                                                binding="#{detalleCaptacionBean.socTipoPunto}"
+                                                                id="socTipoPunto"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                rendered="#{detalleCaptacionBean.subterranea}"
+                                                                value="#{detalleCaptacionBean.captacion.objTipoPunto}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaTipoPunto}"
+                                                             binding="#{detalleCaptacionBean.siTipoPunto}"
+                                                             id="siTipoPunto"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_CPT}"
+                                                                binding="#{detalleCaptacionBean.socTipoCaptacion}"
+                                                                id="socTipoCaptacion"
+                                                                showRequired="false"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                rendered="#{detalleCaptacionBean.lluvia}"
+                                                                value="#{detalleCaptacionBean.captacion.objTipoCaptacion}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaTipoCaptacion}"
+                                                             binding="#{detalleCaptacionBean.siTipoCaptacion}"
+                                                             id="siTipoCaptacion"/>
+                                            </af:selectOneChoice>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_AREA_CPT}"
+                                                          binding="#{detalleCaptacionBean.itAreaCaptacion}"
+                                                          id="itAreaCaptacion" 
+                                                          rendered="#{detalleCaptacionBean.lluvia}"
+                                                          value="#{detalleCaptacionBean.captacion.areaCaptacion}"
+                                                          columns="10"
+                                                          >
+                                                <af:convertNumber type="number"
+                                                              integerOnly="false" 
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA}"
+                                                          binding="#{detalleCaptacionBean.itOferta}"
+                                                          id="itOferta" 
+                                                          value="#{detalleCaptacionBean.captacion.ofertaHidricaTotal}"
+                                                          columns="10"
+                                                          rendered="#{detalleCaptacionBean.mineral or detalleCaptacionBean.lluvia}"
+                                                          >
+                                                   <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText> 
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA_ESTIMADA}"
+                                                          binding="#{detalleCaptacionBean.itOfertaEstimada}"
+                                                          id="itOfertaEstimada"
+                                                          rendered="#{detalleCaptacionBean.mineral or detalleCaptacionBean.lluvia}"
+                                                          value="#{detalleCaptacionBean.captacion.ofertaDisponible}"
+                                                          columns="10"
+                                                          
+                                                          >
+                                                <af:convertNumber type="number"
+                                                              integerOnly="false" 
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText>
+                                            
+                                            
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_CAUDAL}"
+                                                          binding="#{detalleCaptacionBean.itCaudalVer}"
+                                                          id="itCaudalVer" 
+                                                          rendered="#{detalleCaptacionBean.servida}"
+                                                          value="#{detalleCaptacionBean.captacion.caudalVertimiento}"
+                                                          columns="10"
+                                                          >
+                                                <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.CPT_IDENT_PUNTO}"
+                                                    binding="#{detalleCaptacionBean.itIdentificadorPuntoSubt}"
+                                                    id="itIdentificadorPuntoSubt"
+                                                      showRequired="true"
+                                                      rendered="#{detalleCaptacionBean.subterranea}"
+                                                      value="#{detalleCaptacionBean.captacion.identificadorPunto}"
+                                                      />
+                                                      <!--Pilar-->
+                                        <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_SI}"
+                                                               label="#{viewcontrollerBundle.PERTENECEREDSUBTERRANEA}"
+                                                               binding="#{detalleCaptacionBean.sbrPerteneceRed1}"
+                                                               id="sbrPerteneceRed1"
+                                                               group="prRed"  rendered="#{detalleCaptacionBean.subterranea}"
+                                                               />
+                                        <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                                                               binding="#{detalleCaptacionBean.sbrPerteneceRed2}"
+                                                               id="sbrPerteneceRed12"
+                                                               group="prRed" rendered="#{detalleCaptacionBean.subterranea}"
+                                                               />
+                                                      
+                                    </af:panelFormLayout>
+                                      </f:facet>
+                                      <f:facet name="top">
+                                        <af:panelGroupLayout layout="scroll"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             binding="#{detalleCaptacionBean.panelGroupLayout6}"
+                                                             id="panelGroupLayout6">
+                                          <af:outputText value="#{viewcontrollerBundle.CPT_UBICACION}"
+                                                         binding="#{detalleCaptacionBean.outputText3}"
+                                                         id="outputText3" 
+                                                         styleClass="AFBrandingBarTitle"/>
+                                    </af:panelGroupLayout>
+                                      </f:facet>
+                                    </af:decorativeBox>
+                                    <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBox4}"
+                                                      id="decorativeBox4"
+                                                      inlineStyle="width:100%; height:320px;"
+                                                      rendered="#{detalleCaptacionBean.superficial or detalleCaptacionBean.subterranea}"
+                                                      >
+                                      <f:facet name="center">
+                                        <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout4}"
+                                                            id="panelFormLayout4">
+                                          <f:facet name="footer"/>
+                                          
+                                          
+                                          <af:selectManyCheckbox label="#{viewcontrollerBundle.CPT_COMPONENTES_SA}"
+                                                                   binding="#{detalleCaptacionBean.smcComponentes}"
+                                                                   id="smcComponentes"
+                                                                   value="#{detalleCaptacionBean.listaComponentesAsociados}"
+                                                                   >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaComponentes}"
+                                                             binding="#{detalleCaptacionBean.siComponentes}"
+                                                             id="siComponentes"/>
+                                            </af:selectManyCheckbox>
+                                            
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA_HDRICA_TOTAL}"
+                                                          binding="#{detalleCaptacionBean.itOfertaTotal}"
+                                                          id="itOfertaTotal" 
+                                                          rendered="#{detalleCaptacionBean.superficial}"
+                                                          value="#{detalleCaptacionBean.captacion.ofertaHidricaTotal}"
+                                                          columns="10"
+                                                          >
+                                                          
+                                                <af:convertNumber type="number"
+                                                              integerOnly="false" 
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA_HIDRCA_DISPONIBLE}"
+                                                          binding="#{detalleCaptacionBean.itOfertaDisponible}"
+                                                          id="itOfertaDisponible" 
+                                                          rendered="#{detalleCaptacionBean.superficial}"
+                                                          value="#{detalleCaptacionBean.captacion.ofertaDisponible}"
+                                                          columns="10"
+                                                          >
+                                                <af:convertNumber type="number"
+                                                              integerOnly="false" 
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText>
+                                             <!--CDONCEL campo observación-->
+                                                   <af:inputText label="#{viewcontrollerBundle.CPT_OBSERVACION}"
+                                                              binding="#{detalleCaptacionBean.itObservacion}"
+                                                              id="itObservacion" rows="3"
+                                                              columns="50" showRequired="true"
+                                                              value="#{detalleCaptacionBean.captacion.observacion}"
+                                                              rendered="#{detalleCaptacionBean.superficial}"
+                                                              />
+                                                               <!--fin campo observación-->              
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_METODO_EXTRACCION}"
+                                                                binding="#{detalleCaptacionBean.socMetodoExtraccion}"
+                                                                id="socMetodoExtraccion"
+                                                             rendered="#{detalleCaptacionBean.subterranea}"
+                                                             value="#{detalleCaptacionBean.captacion.objMetodoExtraccion}"
+                                                             >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaMetodoExtraccion}"
+                                                             binding="#{detalleCaptacionBean.siMetodoExtraccion}"
+                                                             id="siMetodoExtraccion" />
+                                            </af:selectOneChoice>
+                                          
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_CPT}"
+                                                binding="#{detalleCaptacionBean.select_capt}"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                visible="#{detalleCaptacionBean.superficial}"
+                                                 value="#{detalleCaptacionBean.captacion.objTipoCaptacion}"
+                                                id="select_capt">
+                              <f:selectItems value="#{detalleCaptacionBean.listaTipoCapta}"
+                                             binding="#{detalleCaptacionBean.selectItemscapt}"
+                                             id="selectItemscapt"/>
+                            </af:selectOneChoice>
+                                                            
+                                       <!-- CDONCEL BOTON AFORO -->
+                                            <af:commandButton text="Aforos"
+                                                                  id="commandButtonAforo"
+                                                                  immediate="true"
+                                                                  icon="/imgs/addavailable_ena.png"
+                                                                   rendered="#{detalleCaptacionBean.superficial}"
+                                                                  action="#{detalleCaptacionBean.prepareAforo}"/>
+                                      <!-- FIN CDONCEL BOTON AFORO -->
+                                                        
+                                        </af:panelFormLayout>
+                                      </f:facet>
+                                      <f:facet name="top">
+                                        <af:panelGroupLayout layout="scroll"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             binding="#{detalleCaptacionBean.panelGroupLayout7}"
+                                                             id="panelGroupLayout7">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleCaptacionBean.spacer4}"
+                                                     id="spacer4"/>
+                                          <af:outputText value="#{viewcontrollerBundle.CPT_COMPONENTES_SA}"
+                                                         binding="#{detalleCaptacionBean.outputText4}"
+                                                         id="outputText4"
+                                                         styleClass="AFBrandingBarTitle"/>
+                                        </af:panelGroupLayout>
+                                      </f:facet>
+                                    </af:decorativeBox>
+                                    
+                                    
+                                <!--CDONCEL AFORO--> 
+                                
+                                <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBoxAforo}"
+                                                  id="decorativeBoxAforo"
+                                                  inlineStyle="width:100%; height:300px;"
+                                                  rendered="#{detalleCaptacionBean.flagAforo}"
+                                                  >
+                                   <f:facet name="top">
+                                    <af:panelGroupLayout layout="scroll"
+                                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"                                                         
+                                                         id="panelGroupLayoutaforo"
+                                                         binding="#{detalleCaptacionBean.panelGroupLayoutAforo}">
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{detalleCaptacionBean.spacerAforo}"
+                                                 id="spacerAforo"/>
+                                      <af:outputText value="Registro de Aforos"
+                                                     binding="#{detalleCaptacionBean.outputTextAforo}"
+                                                     id="outputTextAforo"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                    </af:panelGroupLayout>  
+                                  </f:facet>
+                                    <f:facet name="center">
+                                    <af:panelFormLayout        id="panelFormLayout17Aforo"
+                                                                maxColumns="99999"
+                                                                rows="1"
+                                                                >
+                                              <af:table var="row"
+                                                        binding="#{detalleCaptacionBean.tableAforo}"
+                                                        id="tAforo"
+                                                        value="#{detalleCaptacionBean.lsAforo}"
+                                                        emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                                         width="330px" 
+                                                         fetchSize="8"
+                                                         autoHeightRows="10"                                                         
+                                                        >
+                                                    <af:column  headerText="Caudal (l/s)">
+                                                      <af:outputText value="#{row.caudal}"/>
+                                                    </af:column>
+                                                    <af:column headerText="Fecha">
+                                                      <af:outputText value="#{row.fecha}"/>
+                                                    </af:column>
+                                                    <af:column headerText="Metodo">
+                                                      <af:outputText value="#{row.observacion}"/>
+                                                    </af:column>
+                                          </af:table>
+                                     
+                                       <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout1Aforo}"
+                                                            id="panelFormLayout1Aforo" 
+                                                            >
+                                           <af:outputText value="Registrar nuevo Aforo"
+                                                         styleClass="AFBrandingBarTitle"/>
+                                          <af:inputDate label="Fecha de Realización"
+                                                    id="fechaAforo"
+                                                    value="#{detalleCaptacionBean.aforo.fecha}"
+                                                    columns="10" showRequired="true"/>  
+                                       <af:inputText    value="#{detalleCaptacionBean.aforo.caudal}"
+                                                      label="Caudal"
+                                                      id="caudalAforo"
+                                                      showRequired="true"
+                                                      immediate="true">
+                                          <!--af:convertNumber type="number"
+                                                            integerOnly="false"
+                                                            minIntegerDigits="1"
+                                                            maxIntegerDigits="2"
+                                                            minFractionDigits="0"
+                                                            maxFractionDigits="3"
+                                                             pattern="###.##"/-->
+                                       </af:inputText>
+                                       <af:inputText  value="#{detalleCaptacionBean.aforo.observacion}"
+                                                      label="Método"
+                                                      id="metodoAforo"
+                                                      showRequired="true"
+                                                      immediate="true"/>
+                                        <af:commandButton text="Aceptar"
+                                                            id="commandButton2Aforo"
+                                                            icon="/imgs/add.png"
+                                                            action="#{detalleCaptacionBean.adicionarAforo}"/>
+                                         <af:commandButton text="Cancelar"
+                                                            id="commandButton3Aforo"
+                                                            icon="/imgs/close.png"
+                                                            immediate="true"
+                                                            action="#{detalleCaptacionBean.finalizarAforo}"/>
+                                       </af:panelFormLayout>
+                                       
+                                      </af:panelFormLayout>
+                                                                         
+                                  </f:facet>                                                        
+                                </af:decorativeBox>
+                          <!--FIN_CDONCEL-->
+                                
+                                
+                                    
+                                    
+                                    <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBox5}"
+                                                      id="decorativeBox5"
+                                                      inlineStyle="width:100%;height:240px;">
+                                      <f:facet name="center">
+                                        <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout5}"
+                                                            id="panelFormLayout5">
+                                          <f:facet name="footer"/>
+                                          
+                                          
+                                          
+                                          <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_SI}"
+                                                                   label="#{viewcontrollerBundle.CPT_MACRO}"
+                                                                 binding="#{detalleCaptacionBean.sbrMacroMedicion1}"
+                                                                 id="sbrMacroMedicion1"
+                                                                   group="prMacroMedicion"
+                                                                   />
+                                            <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                                                                   binding="#{detalleCaptacionBean.sbrMacroMedicion2}"
+                                                                   id="sbrMacroMedicion2"
+                                                                   group="prMacroMedicion"
+                                                                   />
+                                                                   
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_ESTADO_CAPTACION}"
+                                                                binding="#{detalleCaptacionBean.socEstadoCaptacion}"
+                                                                id="socEstadoCaptacion"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                value="#{detalleCaptacionBean.captacion.objEstadoCaptacion}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaEstadoCaptacion}"
+                                                             binding="#{detalleCaptacionBean.siEstadoCaptacion}"
+                                                             id="siEstadoCaptacion"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_CONTINUIDAD}"
+                                                                binding="#{detalleCaptacionBean.socContinuidad}"
+                                                                id="socContinuidad"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                value="#{detalleCaptacionBean.captacion.continuidad}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionBean.listaContinuidad}"
+                                                             binding="#{detalleCaptacionBean.siContinuidad}"
+                                                             id="siContinuidad"/>
+                                            </af:selectOneChoice>
+                                            
+                                            <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_SI}"
+                                                                   label="#{viewcontrollerBundle.CPT_SERVIDUMBRE}"
+                                                                   binding="#{detalleCaptacionBean.sbrServidumbre1}"
+                                                                   id="sbrServidumbre1"
+                                                                   group="Servidumbre"
+                                                                   />
+                                            <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                                                                   binding="#{detalleCaptacionBean.sbrServidumbre2}"
+                                                                   id="sbrServidumbre2"
+                                                                   group="Servidumbre"
+                                                                   />
+                                            
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_CAUDAL_DISEGNO}"
+                                                          binding="#{detalleCaptacionBean.itCaudalDisegno}"
+                                                          id="itCaudalDisegno"
+                                                          value="#{detalleCaptacionBean.captacion.caudalDisegno}"
+                                                          columns="10"
+                                                           >
+                                                <af:convertNumber type="number"
+                                                              integerOnly="false"
+                                                              maxIntegerDigits="5"
+                                                              minIntegerDigits="1"
+                                                              maxFractionDigits="3"
+                                                              minFractionDigits="0"
+                                                              pattern="#####.###"
+                                                              />
+                                            </af:inputText>
+                                          
+                                          
+                                        </af:panelFormLayout>
+                                      </f:facet>
+                                      <f:facet name="top">
+                                        <af:panelGroupLayout layout="scroll"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             binding="#{detalleCaptacionBean.panelGroupLayout8}"
+                                                             id="panelGroupLayout8">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleCaptacionBean.spacer5}"
+                                                     id="spacer5"/>
+                                          <af:outputText value="#{viewcontrollerBundle.CPT_DESCRIPCION}"
+                                                         binding="#{detalleCaptacionBean.outputText5}"
+                                                         id="outputText5"
+                                                         styleClass="AFBrandingBarTitle"/>
+                                        </af:panelGroupLayout>
+                                      </f:facet>
+                                    </af:decorativeBox>
+                                    <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBox6}"
+                                                      id="decorativeBox6"
+                                                      inlineStyle="width:100%;height:320px;">
+                                      <f:facet name="center">
+                                        
+                                        
+                                        <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout19}"
+                                                 id="panelGroupLayout19"
+                                                 layout="scroll">
+                                          <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout20}"
+                                                               id="panelGroupLayout20">
+                                            <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout16}"
+                                                                id="panelFormLayout16">
+                                              <f:facet name="footer"/>
+                                              <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SISTEMA}"
+                                                                  binding="#{detalleCaptacionBean.socSistemaReferencia}"
+                                                                  id="socSistemaReferencia"
+                                                                  showRequired="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                value="#{detalleCaptacionBean.captacion.objSistemaReferencia}"
+                                                                  >
+                                                <f:selectItems value="#{detalleCaptacionBean.listaSistemasReferencia}"
+                                                               binding="#{detalleCaptacionBean.siSistemaReferencia}"
+                                                               id="siSistemaReferencia"/>
+                                              </af:selectOneChoice>
+                                              <af:spacer width="10" height="10"
+                                                         binding="#{detalleCaptacionBean.spacer15}"
+                                                         id="spacer15"/>
+                                            </af:panelFormLayout>
+                                          </af:panelGroupLayout>
+                                          <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout21}"
+                                                               id="panelGroupLayout21"
+                                                               layout="vertical">
+                                            <af:spacer width="10" height="10"
+                                                       binding="#{detalleCaptacionBean.spacer13}"
+                                                       id="spacer13"/>
+                                            <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout17}"
+                                                                id="panelFormLayout17"
+                                                                maxColumns="99999"
+                                                                rows="1"
+                                                                >
+                                              <f:facet name="footer"/>
+                                              <af:spacer width="10" height="10"
+                                                         binding="#{detalleCaptacionBean.spacer10}"
+                                                         id="spacer10"/>
+                                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                                              binding="#{detalleCaptacionBean.outputLabel2}"
+                                                              id="outputLabel2"/>
+                                              <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                            binding="#{detalleCaptacionBean.itGradosLat}"
+                                                            id="it_lat_grados0"
+                                                            showRequired="true"
+                                                            columns="5"
+                                                            value="#{detalleCaptacionBean.captacion.gradosLat}"
+                                                            >
+                                                    <af:convertNumber type="number"
+                                                                      integerOnly="true"
+                                                                      minIntegerDigits="1"
+                                                                      maxIntegerDigits="2"
+                                                                      />
+                                                    <af:validateLongRange minimum="-4"
+                                                                      maximum="15"/>
+                                              </af:inputText>  
+                                              <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                                            binding="#{detalleCaptacionBean.itMinutosLat}"
+                                                            id="it_lat_min0"
+                                                            showRequired="true"
+                                                            columns="5"
+                                                            value="#{detalleCaptacionBean.captacion.minutosLat}"
+                                                            >
+                                                    <af:convertNumber type="number"
+                                                                  integerOnly="true"
+                                                                  minIntegerDigits="1"
+                                                                  maxIntegerDigits="2"/>
+                                                <af:validateLongRange minimum="0"
+                                                                      maximum="59"/>
+                                              </af:inputText>
+                                              <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                                            binding="#{detalleCaptacionBean.itSegundosLat}"
+                                                            id="it_lat_seg0"
+                                                            showRequired="true"
+                                                            columns="5"
+                                                            value="#{detalleCaptacionBean.captacion.segundosLat}"
+                                                            >
+                                                    <af:convertNumber type="number"
+                                                                  integerOnly="false"
+                                                                  minIntegerDigits="1"
+                                                                  maxIntegerDigits="2"
+                                                                  minFractionDigits="0"
+                                                                  maxFractionDigits="5"
+                                                                  pattern="##.#####"/>
+                                                <af:validateDoubleRange minimum="0.0"
+                                                                        maximum="59.99999"/>
+                                              </af:inputText>
+                                              
+                                            </af:panelFormLayout>
+                                            <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout1}"
+                                                                id="panelFormLayout1"
+                                                                rows="1"
+                                                                maxColumns="999999">
+                                              <f:facet name="footer"/>
+                                              <af:spacer width="10" height="10"
+                                                         binding="#{detalleCaptacionBean.spacer9}"
+                                                         id="spacer9"/>
+                                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                                              binding="#{detalleCaptacionBean.outputLabel1}"
+                                                              id="outputLabel1"/>
+                                              <af:inputText label="#{viewcontrollerBundle.TRM_GRADOS}"
+                                                            binding="#{detalleCaptacionBean.itGradosLong}"
+                                                            id="it_long_grados0"
+                                                            showRequired="true"
+                                                            columns="5"
+                                                            value="#{detalleCaptacionBean.captacion.gradosLong}"
+                                                            >
+                                                    <af:convertNumber type="number"
+                                                                      integerOnly="true"
+                                                                      minIntegerDigits="1"
+                                                                      maxIntegerDigits="2"/>
+                                                    <af:validateLongRange minimum="-82"
+                                                                      maximum="-66"/>
+                                              </af:inputText>  
+                                              <af:inputText label="#{viewcontrollerBundle.TRM_MINUTOS}"
+                                                            binding="#{detalleCaptacionBean.itMinutosLong}"
+                                                            id="it_long_min0"
+                                                            showRequired="true"
+                                                            columns="5"
+                                                            value="#{detalleCaptacionBean.captacion.minutosLong}"
+                                                            >
+                                                    <af:convertNumber type="number"
+                                                                  integerOnly="true"
+                                                                  minIntegerDigits="1"
+                                                                  maxIntegerDigits="2"/>
+                                                <af:validateLongRange minimum="0"
+                                                                      maximum="59"/>
+                                              </af:inputText>
+                                              <af:inputText label="#{viewcontrollerBundle.TRM_SEGUNDOS}"
+                                                            binding="#{detalleCaptacionBean.itSegundosLong}"
+                                                            id="it_long_seg0"
+                                                            showRequired="true"
+                                                            columns="5"
+                                                            value="#{detalleCaptacionBean.captacion.segundosLong}"
+                                                            >
+                                                    <af:convertNumber type="number"
+                                                                  integerOnly="false"
+                                                                  minIntegerDigits="1"
+                                                                  maxIntegerDigits="2"
+                                                                  minFractionDigits="0"
+                                                                  maxFractionDigits="5"
+                                                                  pattern="##.#####"/>
+                                                <af:validateDoubleRange minimum="0.0"
+                                                                        maximum="59.99999"/>
+                                              </af:inputText>
+                                            </af:panelFormLayout>
+                                            <af:panelFormLayout binding="#{detalleCaptacionBean.panelFormLayout6}"
+                                                                id="panelFormLayout6"
+                                                                rows="1"
+                                                                maxColumns="1">
+                                              <f:facet name="footer"/>
+                                              <af:spacer width="10" height="10"
+                                                           binding="#{detalleCaptacionBean.spacer16}"
+                                                           id="spacer16"/>
+                                              <af:activeOutputText value="#{viewcontrollerBundle.CPT_DESCRIPCION_ACCESO}"
+                                                                   binding="#{detalleCaptacionBean.activeOutputText1}"
+                                                                   id="activeOutputText1"
+                                                                   styleClass="AFBrandingBarTitle"/>
+                                              <af:spacer width="10" height="10"
+                                                         binding="#{detalleCaptacionBean.spacer1}"
+                                                         id="spacer1"/>
+                                                <af:inputText label="#{viewcontrollerBundle.TRM_ALTITUD}"
+                                                            binding="#{detalleCaptacionBean.itAltitud}"
+                                                            id="itAltitud"
+                                                            showRequired="true"
+                                                            columns="7"
+                                                            value="#{detalleCaptacionBean.captacion.altitud}"
+                                                            >
+                                                <af:convertNumber type="number"
+                                                                  integerOnly="false"
+                                                                  minIntegerDigits="1"
+                                                                  maxIntegerDigits="5"
+                                                                  minFractionDigits="0"
+                                                                  maxFractionDigits="3"
+                                                                  groupingUsed="false"
+                                                                  />
+                                                <af:validateDoubleRange minimum="0"
+                                                                      maximum="5500.999"/>
+                                              </af:inputText>
+                                              <af:inputText label="#{viewcontrollerBundle.DATOS_DESCRIPCION}"
+                                                              binding="#{detalleCaptacionBean.itDescripcionAcceso}"
+                                                              id="itDescripcionAcceso" rows="3"
+                                                              columns="50" showRequired="true"
+                                                              value="#{detalleCaptacionBean.captacion.descripcionAcceso}"
+                                                              />
+                                              
+                                            </af:panelFormLayout>
+                                            <af:inlineFrame source="/utils/views/mapa_un_punto.html"
+                                                    clientComponent="true"
+                                                id="mapFrame"
+                                                inlineStyle="width:500px;height:300px;padding-top:50px;">
+                                            </af:inlineFrame>
+                                          </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                        
+                                      </f:facet>
+                                      <f:facet name="top">
+                                        <af:panelGroupLayout layout="scroll"
+                                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                             binding="#{detalleCaptacionBean.panelGroupLayout9}"
+                                                             id="panelGroupLayout9">
+                                          <af:spacer width="10" height="10"
+                                                     binding="#{detalleCaptacionBean.spacer6}"
+                                                     id="spacer6"/>
+                                          <af:outputText value="#{viewcontrollerBundle.CPT_GEOREFERENCIACION}"
+                                                         binding="#{detalleCaptacionBean.outputText6}"
+                                                         id="outputText6"
+                                                         styleClass="AFBrandingBarTitle"/>
+                                        </af:panelGroupLayout>
+                                      </f:facet>
+                                    </af:decorativeBox>
+                                    <af:decorativeBox binding="#{detalleCaptacionBean.decorativeBox7}"
+                                                      id="decorativeBox7"
+                                                      inlineStyle="text-align:center; width:100%;height:60px;"
+                                                      topHeight="20px">
+                                      <f:facet name="center">
+                                        <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout10}"
+                                                             id="panelGroupLayout10"
+                                                             layout="vertical">
+                                            <af:spacer width="10" height="10"
+                                                     binding="#{detalleCaptacionBean.spacer7}"
+                                                     id="spacer7"/>
+                                          <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout11}"
+                                                               id="panelGroupLayout11"
+                                                               layout="horizontal"
+                                                               halign="center"
+                                                               inlineStyle="width:auto; height:auto;">
+                                            <af:commandButton
+                                                              binding="#{detalleCaptacionBean.cbAceptar}"
+                                                              id="cbAceptar"
+                                                              icon="/imgs/check_mark.png"
+                                                              text="#{viewcontrollerBundle.boton_actualizar}"
+                                                              actionListener="#{detalleCaptacionBean.cbAceptar_actionListener}"
+                                                              />
+                                            <af:spacer width="10" height="10"
+                                                       binding="#{detalleCaptacionBean.spacer8}"
+                                                       id="spacer8"/>
+                                            <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                              binding="#{detalleCaptacionBean.cbBorrar}"
+                                                              id="cbBorrar"
+                                                              icon="/imgs/close.png"
+                                                              actionListener="#{detalleCaptacionBean.cbBorrar_actionListener}"
+                                                              />
+                                          </af:panelGroupLayout>
+                                          
+                                        </af:panelGroupLayout>
+                                      </f:facet>
+                                      <f:facet name="top"/>
+                                    </af:decorativeBox>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                          </af:panelBox>
+
+                          
+                          <af:popup binding="#{detalleCaptacionBean.popup_borrar}"
+                                    id="popup_borrar">
+                            <af:dialog binding="#{detalleCaptacionBean.d_borrar}"
+                                       id="d_borrar" type="none"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                       title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                       >
+                              <af:panelGroupLayout binding="#{detalleCaptacionBean.pgl18}"
+                                                   id="pgl18"
+                                                   layout="vertical"
+                                                   >
+                                <af:outputText
+                                               binding="#{detalleCaptacionBean.ot_borrar_1}"
+                                               id="ot_borrar_1"
+                                               />
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleCaptacionBean.s15}"
+                                           id="s15"/>
+                                <af:outputText
+                                               binding="#{detalleCaptacionBean.ot_borrar_2}"
+                                               id="ot_borrar_2"
+                                               />
+                              </af:panelGroupLayout>
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleCaptacionBean.pgl19}"
+                                                     id="pgl19"
+                                                     >
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                                    binding="#{detalleCaptacionBean.cb_si_borrar}"
+                                                    id="cb_si_borrar"
+                                                    actionListener="#{detalleCaptacionBean.cb_si_borrar_actionListener}"
+                                                    action="listarCaptaciones"/>
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detalleCaptacionBean.s16}"
+                                             id="s16"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                                    binding="#{detalleCaptacionBean.cb_no_borrar}"
+                                                    id="cb_no_borrar"
+                                                    actionListener="#{detalleCaptacionBean.cb_no_borrar_actionListener}"/>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:dialog>
+                          </af:popup>
+                          
+                          
+                          <af:popup binding="#{detalleCaptacionBean.p_registro_exitoso}"
+                                    id="p_registro_exitoso">
+                            <af:dialog binding="#{detalleCaptacionBean.d_registro_exitoso}"
+                                       id="d_registro_exitoso" type="none"
+                                       title="#{viewcontrollerBundle.CPT_ACTUALIZADA}"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                       closeIconVisible="false">
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleCaptacionBean.pgl14}"
+                                                     id="pgl14">
+                                  <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                    binding="#{detalleCaptacionBean.cbAceptarDi}"
+                                                    id="cbAceptarDi"
+                                                   
+                                                    immediate="true" 
+                                                    partialSubmit="true" 
+                                                    
+                                                    actionListener="#{detalleCaptacionBean.cb_guardarAceptar_actionListener}"
+                                                    />
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <af:panelStretchLayout binding="#{detalleCaptacionBean.psl7}"
+                                                     id="psl7" endWidth="0px"
+                                                     topHeight="0px" bottomHeight="2px"
+                                                     inlineStyle="height:41px; width:316px;">
+                                <f:facet name="bottom"/>
+                                <f:facet name="center">
+                                  <af:outputText value="#{viewcontrollerBundle.CPT_ACTUALIZADA}"
+                                                 binding="#{detalleCaptacionBean.ot8}"
+                                                 id="ot8"
+                                                 />
+                                </f:facet>
+                                <f:facet name="start">
+                                  <af:image source="/imgs/info.png" shortDesc="info"
+                                            binding="#{detalleCaptacionBean.i1}" 
+                                            id="i1"
+                                            />
+                                </f:facet>
+                                <f:facet name="end"/>
+                                <f:facet name="top"/>
+                              </af:panelStretchLayout>
+                            </af:dialog>
+                          </af:popup>
+                          
+                          
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="end"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                      <af:panelStretchLayout binding="#{detalleCaptacionBean.panelStretchLayout2}"
+                                             id="panelStretchLayout2">
+                        <f:facet name="center">
+                                        <af:panelBox text="#{viewcontrollerBundle.USO_RELACIONADOS}"
+                                   binding="#{detalleCaptacionBean.pbUsos}"
+                                   id="pbUsos" showDisclosure="false">
+                        <f:facet name="toolbar"/>
+                        <af:panelCollection binding="#{detalleCaptacionBean.pnlCol1}"
+                                            id="pnlCol1">
+                          <f:facet name="menus">
+                            <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                     binding="#{detalleCaptacionBean.menu11}"
+                                     id="menu11">
+                              <af:commandMenuItem text="#{viewcontrollerBundle.USO_RELACIONAR}"
+                                                  binding="#{detalleCaptacionBean.cmiAddUso1}"
+                                                  id="cmiAddUso1"
+                                                  action="adicionarUso"/>
+                              <af:commandMenuItem text="#{viewcontrollerBundle.SUB_MENU_ADICIONAR}"
+                                                  binding="#{detalleCaptacionBean.cmiAddFunias1}"
+                                                  id="cmiAddFunias1"
+                                                  action="adicionarFunias"
+                                                  rendered="#{detalleCaptacionBean.subterranea}"/>
+                              <af:commandMenuItem text="#{viewcontrollerBundle.SUB_MENU_LISTA}"
+                                                  binding="#{detalleCaptacionBean.cmiListFunias1}"
+                                                  id="cmiListFunias1"
+                                                  action="listarFunias"
+                                                  rendered="#{detalleCaptacionBean.subterranea}"/>
+                             <af:commandMenuItem text="Adicionar Calidad"
+                                              binding="#{detalleCaptacionBean.cmi_puntoCalidad}"
+                                              id="cmi_puntoCalidad"  visible="#{ detalleCaptacionBean.visibleMenu}"   
+                                              action="adicionarPuntoCapt"/>
+                            </af:menu>
+                          </f:facet>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:tree binding="#{detalleCaptacionBean.tree11}"
+                                   id="tree11" contentDelivery="immediate"
+                                   var="node" varStatus="nodeStatus"
+                                   value="#{UsosTreeHandler.treemodel}">
+                            <f:facet name="nodeStamp">
+                              <af:commandLink text="#{node.description} "
+                                              binding="#{detalleCaptacionBean.cl21}"
+                                              id="cl21"
+                                              action="#{node.getAction}"
+                                              inlineStyle="#{node.inlineStyle}"
+                                              actionListener="#{detalleCaptacionBean.cl2_actionListener}">
+                                <f:attribute name="nombreParametro"
+                                             value="#{node.nombreParametro}"/>
+                                <f:attribute name="valorParametro"
+                                             value="#{node.data}"/>
+                                <f:attribute name="extraInfo"
+                                             value="#{node.extraData}"/>
+                                <f:attribute name="extraInfo2"
+                                             value="#{node.extraData2}"/>
+                              </af:commandLink>
+                            </f:facet>
+                            <f:facet name="pathStamp"/>
+                          </af:tree>
+                        </af:panelCollection>
+                          
+                        </af:panelBox>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+              
+                <af:panelGroupLayout binding="#{detalleCaptacionBean.panelGroupLayout29}"
+                                     id="panelGroupLayout29" 
+                                     layout="horizontal">
+                    <af:spacer width="10" height="10"
+                                 binding="#{detalleCaptacionBean.spacer20}" 
+                                 id="spacer20"/>
+                    <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                      binding="#{detalleCaptacionBean.clTodos}"
+                                      id="clTodos" action="usuariosAgua"/>
+                    <af:spacer width="10" height="10"
+                                 binding="#{detalleCaptacionBean.spacer21}" 
+                                 id="spacer21"/>
+                    <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{detalleCaptacionBean.usuario.nombre}"
+                                      binding="#{detalleCaptacionBean.clUsuario}"
+                                      id="clUsuario"  action="detalleUsuario"/>
+                    <af:spacer width="10" height="10"
+                                 binding="#{detalleCaptacionBean.spacer22}" 
+                                 id="spacer22"/>
+                    <af:commandLink text="#{viewcontrollerBundle.PREDIO}  :  #{detalleCaptacionBean.predio.nombre}"
+                                      binding="#{detalleCaptacionBean.clPredio}"
+                                      id="clPredio" action="detallePredio"/>
+                    <af:spacer width="10" height="10"
+                                 binding="#{detalleCaptacionBean.spacer23}" 
+                                 id="spacer23"/>
+                    <af:commandLink text="#{viewcontrollerBundle.CONCESI_U00F3N__} : #{detalleCaptacionBean.concesion.numeroExpediente}"
+                                      binding="#{detalleCaptacionBean.clConcesion}"
+                                      id="clConcesion"
+                                      action="detalleConcesion"/>
+                    <af:spacer width="10" height="10"
+                             binding="#{detalleCaptacionBean.spacer24}"
+                             id="spacer24"/>
+                    <af:commandLink text="#{viewcontrollerBundle.CPT_CAPTACIONES}"
+                                      binding="#{detalleCaptacionBean.clCaptaciones}"
+                                      id="clCaptaciones"
+                                      action="listarCaptaciones"/>
+                    <af:spacer width="10" height="10"
+                             binding="#{detalleCaptacionBean.spacer25}"
+                             id="spacer25"/>
+                    <af:outputText value="#{viewcontrollerBundle.CPT_CAPTACION} : #{detalleCaptacionBean.captacion.objTipoFuenteCaptacion.valor}"
+                                 binding="#{detalleCaptacionBean.ot11}" id="ot11"/>
+                             
+                </af:panelGroupLayout>
+                
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleCaptacionBean-->
+</jsp:root>

@@ -1,0 +1,28 @@
+
+/* Rastro de las publicaciones */
+.pubRastro{ font-size: 0.909em; margin-top: 5px; font-weight: normal; }
+.pubRastro a{ color: #0000FF; }
+.pubRastro a:hover{ color: #888888; }
+
+/* Lista para los archivos y mapa del sitio */
+
+.pubLista ul{ margin-top: 0; }
+.pubLista h2{ margin: 0; }
+
+/* Utilidades */
+.pubUtilidades{ clear: both;}
+.pubUtilidades h2{ padding-top: 5px; margin-bottom: 0px; border: none; border-top: 1px solid #CCCCCC; font-size: 1.273em; color: #555555; }
+.pubUtilidades ul{ list-style: none; padding: 0px; margin: 0px 0px 12px 0px; height: 30px; }
+.pubUtilidades li{ float: left; margin: 0px 13px 10px 3px; }
+.pubUtilidades a{ text-decoration: none; padding-top: 5px; height: 30px;}
+.pubUtilidades a:hover{ text-decoration: underline; }
+
+.pubUtilidades a.imprimir{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/imprimir.gif) no-repeat 0px 5px; }
+.pubUtilidades a.enviar{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/enviar.gif) no-repeat 0px 6px; }
+.pubUtilidades a.comentar{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/comentar.gif) no-repeat 0px 3px; }
+.pubUtilidades a.valorar{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/valorar.gif) no-repeat 0px 5px; }
+.pubUtilidades a.estadisticas{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/estadisticas.gif) no-repeat 0px 6px; }
+.pubUtilidades a.editar{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/editar.gif) no-repeat 0px 5px; }
+.pubUtilidades a.foros{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/foros.gif) no-repeat 0px 3px; }
+.pubUtilidades a.delicious{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/delicious.gif) no-repeat 0px 3px; }
+.pubUtilidades a.windows{ padding-left: 20px; background: url(../../../modulos/Publicaciones/img/WindowsLiveIcon.gif) no-repeat 0px 3px; }

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">          
+         	<af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+<af:panelBox inlineStyle="text-align: left;">
+<af:commandLink text="Observatorio"
+                                    action="observatorio"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="Observatorio Aguas Subterráneas "
+                                    action="observatorioSubterraneas"/>
+                    <af:spacer width="25" height="10"/>
+                    
+ <af:commandLink text="Demanda Aguas Subterráneas "
+                                    action="demandaSubt"/>
+                    <af:spacer width="25" height="10"/>
+</af:panelBox>
+		</f:facet>
+
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			
+            <af:panelGroupLayout  layout="scroll">
+           <af:panelBox text="Gráfica Demanda por Tipo de Punto">
+           <af:selectOneChoice label="Autoridad Ambiental"
+                                          binding="#{DashBoardJSDemanda3Bean.autoridad}"
+                                          id="selectOneChoice2"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{DashBoardJSDemanda3Bean.autoridad_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{DashBoardJSDemanda3Bean.autoridadItems}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        id="cmdBuscar1"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{DashBoardJSDemanda3Bean.cmdBuscar1_actionListener}"
+                                        />
+                      
+                      <af:selectOneChoice label="Provincia"
+                                          binding="#{DashBoardJSDemanda3Bean.provincia}"
+                                          id="selectOneChoice3"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{DashBoardJSDemanda3Bean.provincia_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{DashBoardJSDemanda3Bean.provinciaItems}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                    
+                      
+                      
+           <dvt:barGraph id="lineJSGraph1"          binding="#{DashBoardJSDemanda3Bean.lineJSGraph}"                                      
+                                               tabularData="#{DashBoardJSDemanda3Bean.listaDatosGraf}"
+                                               imageFormat="FLASH"
+                                               inlineStyle="width:780px;height:290px;"
+                                               animationOnDisplay="AUTO"
+                           style="Default" seriesEffect="SE_AUTO_GRADIENT" visualEffects="AUTO"
+                           shortDesc="Gráfica IDEAM"
+                          animationOnDataChange="AUTO">
+                                  <dvt:background>
+                                    <dvt:specialEffects />
+                                  </dvt:background>
+                                  <dvt:barGraph/>
+                                  <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                                                 defaultAssignedToY2="DY2_TRUE"
+                                                 defaultLineWidth="3">
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#FF0000" lineWidth="1"/>
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#0000FF" lineWidth="1"/>
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#04B431" lineWidth="1"/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:barGraph>
+                                
+                        </af:panelBox>
+       
+         <af:panelBox text="Tabla Demanda por Tipo Punto">
+         <af:table var="row" value="#{DashBoardJSDemanda3Bean.listaComponente}"
+                      binding="#{DashBoardJSDemanda3Bean.tableDatosGrafico}"
+                      id="tableDatosGrafico" width="98%">              
+                <af:column sortable="false" headerText="Tipo Punto" width="80">
+                <af:outputText value="#{row.valor}"/>
+              </af:column>
+              <af:column sortable="false" headerText="Captaciones" width="80">
+                <af:outputText value="#{row.captaciones}"/>
+              </af:column>
+            </af:table>
+        </af:panelBox>
+            </af:panelGroupLayout>
+		
+		<!-- fin -->
+		
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+          </f:facet>          
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
+  

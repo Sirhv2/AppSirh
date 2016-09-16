@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{permisosPredio.d2}">
+      <af:form id="f2" binding="#{permisosPredio.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{permisosPredio.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelStretchLayout binding="#{permisosPredio.psl2}"
+                                       id="psl2" startWidth="0px"
+                                       endWidth="0px" topHeight="40px"
+                                       bottomHeight="0px">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelCollection binding="#{permisosPredio.pc1}"
+                                        id="pc1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{permisosPredio.m_archivo}"
+                                 id="m_archivo">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              binding="#{permisosPredio.cmi_adicionar}"
+                                              id="cmi_adicionar"
+                                              icon="/imgs/add.png"
+                                              actionListener="#{permisosPredio.cmi_adicionar_actionListener}"
+                                              action="detallePermiso"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              binding="#{permisosPredio.cmi_editar}"
+                                              id="cmi_editar"
+                                              icon="/imgs/edit_24.png"
+                                              actionListener="#{permisosPredio.cmi_editar_actionListener}"
+                                              action="detallePermiso"/>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{permisosPredio.listaPermisos}"
+                                var="row" rowBandingInterval="1"
+                                binding="#{permisosPredio.t_permisos}"
+                                id="t_permisos" rowSelection="single">
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCION_INICIO_TRA}"
+                                   align="start" id="c1"
+                                   sortProperty="resolucionInicioTramite">
+                          <af:outputText value="#{row.resolucionInicioTramite}" id="ot3"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_INICIO_T}" id="c2"
+                                   sortProperty="fechaExpedicionInicioTramite">
+                          <af:outputText value="#{row.fechaExpedicionInicioTramite}" id="ot4"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.N_U00FAMERO_EXPEDIENTE}" id="c3"
+                                   sortProperty="numeroExpediente">
+                          <af:outputText value="#{row.numeroExpediente}" id="ot5"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.CAUDAL}" id="c4"
+                                   sortProperty="caudal">
+                          <af:outputText value="#{row.caudal}" id="ot6"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_PLAN_DE_CUMPLI}" id="c5"
+                                   sortProperty="resolucionSolicitudPlanCumplimiento">
+                          <af:outputText value="#{row.resolucionSolicitudPlanCumplimiento}" id="ot7"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_PLAN_DE_}" id="c6"
+                                   sortProperty="fechaExpedicionPlan">
+                          <af:outputText value="#{row.fechaExpedicionPlan}" id="ot8"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00F3}" id="c7"
+                                   sortProperty="resolucionAprobacionPlan">
+                          <af:outputText value="#{row.resolucionAprobacionPlan}" id="ot9"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_DE_EXPEDICI_U00F3N_APROB}" id="c8"
+                                   sortProperty="fechaExpedicionAprobacionPlan">
+                          <af:outputText value="#{row.fechaExpedicionAprobacionPlan}" id="ot10"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_INICIO_VIGENCIA_PLAN}" id="c9"
+                                   sortProperty="fechaInicoPlan">
+                          <af:outputText value="#{row.fechaInicoPlan}" id="ot11"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_FIN_VIGENCIA_PLAN}" id="c10"
+                                   sortProperty="fechaFinPlan">
+                          <af:outputText value="#{row.fechaFinPlan}" id="ot12"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_PERMISO_VERTIM}" id="c11"
+                                   sortProperty="resolucionPermisoVertimiento">
+                          <af:outputText value="#{row.resolucionPermisoVertimiento}" id="ot13"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_PERMISO_}" id="c12"
+                                   sortProperty="fechaExpedicionPermiso">
+                          <af:outputText value="#{row.fechaExpedicionPermiso}" id="ot14"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_inicial}" id="c13"
+                                   sortProperty="fechaInicio">
+                          <af:outputText value="#{row.fechaInicio}" id="ot15"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}" id="c14"
+                                   sortProperty="fechaFin">
+                          <af:outputText value="#{row.fechaFin}" id="ot16"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00_0}" id="c15"
+                                   sortProperty="resolucionAprobacionPlanos">
+                          <af:outputText value="#{row.resolucionAprobacionPlanos}" id="ot17"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_APROBACI}" id="c16"
+                                   sortProperty="fechaExpedicionPlanos">
+                          <af:outputText value="#{row.fechaExpedicionPlanos}" id="ot18"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.RESOLUCI_U00F3N_APROBACI_U00_1}" id="c17"
+                                   sortProperty="resolucionAprobacionObras">
+                          <af:outputText value="#{row.resolucionAprobacionObras}" id="ot19"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FECHA_EXPEDICI_U00F3N_APROBA_0}" id="c18"
+                                   sortProperty="fechaExpedicionObras">
+                          <af:outputText value="#{row.fechaExpedicionObras}" id="ot20"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top">
+                    <af:panelGroupLayout binding="#{permisosPredio.pgl1}"
+                                         id="pgl1"
+                                         layout="vertical">
+                      <af:outputText value="#{viewcontrollerBundle.PERMISOS_VERTIMIENTO}"
+                                     binding="#{permisosPredio.ot1}"
+                                     id="ot1" styleClass="AFBrandingBarTitle"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout layout="horizontal"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{permisosPredio.pgl2}"
+                                     id="pgl2">
+                  <af:spacer width="50" height="10"
+                             binding="#{permisosPredio.s3}" id="s3"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  binding="#{permisosPredio.cl4}" id="cl4"
+                                  action="usuariosAgua"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{permisosPredio.s4}" id="s4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{detallePredio.usuario.nombre}"
+                                  binding="#{permisosPredio.cl5}" id="cl5"
+                                  action="detalleUsuario"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{permisosPredio.s7}" id="s7"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PREDIO}  :  #{detallePredio.predio.nombre}"
+                                  binding="#{permisosPredio.cl6}" id="cl6"
+                                  action="detallePredio"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{permisosPredio.s8}" id="s8"/>
+                  <af:outputText value="#{viewcontrollerBundle.PERMISOS_VERTIMIENTO}"
+                                 binding="#{permisosPredio.ot2}" id="ot2"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:permisosPredio-->
+</jsp:root>

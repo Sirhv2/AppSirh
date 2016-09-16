@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:panelStretchLayout binding="#{vigenciaConcesionesSubt.panelStretchLayout1}" id="panelStretchLayout1">
+    <f:facet name="center">
+      <dvt:pieGraph id="pieGraph1" subType="PIE" visualEffects="AUTO" 
+      binding="#{vigenciaConcesionesSubt.pieGraph1}" contentDelivery="immediate" 
+      drillingEnabled="true"
+                 value="#{vigenciaConcesionesSubt.graphData}"
+                    dynamicResize="DYNAMIC_SIZE" animationOnDisplay="AUTO" threeDEffect="true">
+        <dvt:background fillTransparent="true">
+          <dvt:pieLabel rendered="true" text="Grafica"/>
+          <dvt:background fillTransparent="true">
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPieFrame/>
+          <dvt:seriesSet>
+            <dvt:series pieSliceExplode="100"/>
+          </dvt:seriesSet>
+             <dvt:sliceLabel textType="LD_TEXT_PERCENT" rendered="true">
+              <dvt:numberFormat decimalDigit="0" thousandSeparator="."/>
+            </dvt:sliceLabel>
+          <dvt:pieLabel rendered="true" text="Grafica"/>
+        </dvt:background>
+      </dvt:pieGraph>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:vigenciaConcesionesSubt-->
+</jsp:root>

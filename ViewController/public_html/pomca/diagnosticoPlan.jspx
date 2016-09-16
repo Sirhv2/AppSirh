@@ -1,0 +1,455 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+  
+  <af:document id="document1" title=":: PORH - Diagnostico ::">
+      <af:form id="form1" usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="center">
+            <af:panelStretchLayout topHeight="90px" startWidth="2px"
+                                   bottomHeight="0px" endWidth="0px"
+                                   inlineStyle="width:1005px;height:100%;text-align:left;">
+              <f:facet name="top">
+                <af:panelGroupLayout>
+                  <af:panelGroupLayout layout="horizontal">
+                    <af:commandLink text="#{viewcontrollerBundle.CNC_TODAS} "
+                                    action="cuencas"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="#{viewcontrollerBundle.plan_general} "
+                                    action="diagnostico"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:outputText value="#{viewcontrollerBundle.CUENCA_NOMBRE}: #{AdicionarPomcaBean.cuenca.nombre}" id="ot1"/>
+                  </af:panelGroupLayout>
+                  <af:spacer width="10" height="10"/>
+                  <af:panelGroupLayout layout="horizontal" inlineStyle="width:97%">
+                    <af:menuBar id="plan_menu" inlineStyle="width:99%;">
+                      <af:menu text="#{viewcontrollerBundle.plan_menu_fases}">
+                        <af:commandMenuItem id="plan_menu_fases_aprestam"
+                                            action="aprestamiento"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_aprestam}"/>
+                        <af:commandMenuItem id="plan_menu_fases_diagnost"
+                                            action="diagnostico"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_diagnost}"/>
+                        <af:commandMenuItem id="plan_menu_fases_zonif"
+                                            action="zonificacion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_zonif}"/>
+                       <af:commandMenuItem id="plan_menu_fase_determinante"
+                                            action="determinante"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_determinante}"/>
+                        
+					   <af:commandMenuItem id="plan_menu_fases_formulac"
+                                            action="formulacion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_formulac}"/>
+                        <af:commandMenuItem id="plan_menu_fases_ejecu"
+                                            action="ejecucion"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_ejecu}"/>
+                        <af:commandMenuItem id="plan_menu_fases_seg"
+                                            action="seguimiento"
+                                            text="#{viewcontrollerBundle.plan_menu_fase_seg}"/>
+                      </af:menu>
+                    </af:menuBar>
+                    </af:panelGroupLayout>
+                  <af:panelGroupLayout layout="horizontal">
+                    <af:activeOutputText value="#{viewcontrollerBundle.plan_general2}"
+                                         styleClass="AFBrandingBarTitle" inlineStyle="text-align:center;"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelGroupLayout layout="scroll">
+                  <af:spacer width="30" height="10"/>
+                  <af:panelBox text="#{viewcontrollerBundle.plan_diagnostico_1_titulo}"
+                               showDisclosure="true">
+                    <af:panelStretchLayout topHeight="20px" startWidth="2px"
+                                           inlineStyle="width:99%; height:280px;"
+                                           bottomHeight="51px" endWidth="0px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout>
+                          <af:spacer width="10" height="20"/>
+                          <af:panelFormLayout rows="1" maxColumns="1">
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_soci_cultural}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.compSocioEconomico}"
+                                          columns="100" maximumLength="1000"
+                                          rows="3"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_economico}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.compEconomico}"
+                                          columns="100" maximumLength="1000"
+                                          rows="3"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_biofisico}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.compBiofisico}"
+                                          columns="100" maximumLength="1000"
+                                          rows="3"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_amenaza_riesgo}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.compAmenazaRiesgo}"
+                                          columns="100" maximumLength="1000"
+                                          rows="3"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_conflic_soc_amb}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.compConflictosSociAmb}"
+                                          columns="100" maximumLength="1000"
+                                          rows="3"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="bottom"/>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:spacer width="30" height="10"/>
+                  <af:panelBox text="#{viewcontrollerBundle.plan_diagnostico_2_titulo}"
+                               showDisclosure="true">
+                    <af:panelStretchLayout topHeight="20px" startWidth="2px"
+                                           inlineStyle="width:900px; height:230px;"
+                                           bottomHeight="51px" endWidth="0px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout>
+                        
+                          <af:spacer width="10" height="10"/>
+                          <af:activeOutputText styleClass="AFBrandingBarTitle"
+                                                 inlineStyle="font-size:11px"
+                                                 visible="true"
+                                                 value="#{viewcontrollerBundle.plan_diagnostico_2_subtit}"/>
+                          <af:panelFormLayout rows="1" maxColumns="2">
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_of_total}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidOfertaTotal}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_caud_amb_med}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidCaudAmbMedio}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_of_dispo}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidOfertaDisponible}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_demanda_pot}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidDemandaPotencial}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_of_neta}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidOfertaNeta}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_rendim_hid}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidRendimHidric}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_com_hid_indice_vulne_desab}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidIndiceVulneDesab}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_com_hid_indice_calidad_agua}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidIndiceCalidadAgua}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_ind_aridez}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidAridezIndice}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_ind_uso_agua_ib}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidAridezObserv}"
+                                          columns="50" rows="4"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_ind_uso_agua}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidUsoAguaIndice}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_comp_hid_ind_uso_agua_ib}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidUsoAguaObsv}"
+                                          columns="50" rows="4"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_com_hid_indice_ret_reg_hid}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidIndiceRetRegHid}"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.plan_com_hid_iacal}"
+                                          showRequired="true"
+                                          value="#{planesBean.plan.comHidIacal}"
+                                          columns="10"/>
+                            <af:spacer width="10" height="20"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="bottom"/>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  
+                  <af:spacer width="30" height="10"/>
+                  <af:panelBox text="#{viewcontrollerBundle.plan_disgnostico_2_1}"
+                               showDisclosure="true"
+                               showHeader="always"
+                               visible="#{planesBean.plan.id!=null}"
+                               >
+                    <af:panelStretchLayout topHeight="20px" startWidth="2px"
+                                           inlineStyle="width:100%; height:300px;"
+                                           bottomHeight="51px" endWidth="0px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout>
+                          <af:panelGroupLayout layout="vertical">
+                            <af:panelFormLayout rows="1" maxColumns="1">
+                                                   
+                              <af:spacer width="10" height="10"/>
+                              <af:panelStretchLayout startWidth="40%"
+                                                     endWidth="55%"
+                                                     topHeight="0"
+                                                     bottomHeight="0px"
+                                                     inlineStyle="width: 900px;height:200px;"
+                                                     >
+                                <f:facet name="start">
+                                  <af:panelFormLayout rows="1" maxColumns="2"  inlineStyle="border:1px solid #BFC6C9; margin:0px; padding:0px;">
+                                    <af:inputText label="#{viewcontrollerBundle.plan_recurso_identif}"
+                                                  value="#{planesBean.instrumentosSelected.recursoNaturalIdent}"
+                                                  columns="50"/>
+                                    <af:inputText label="#{viewcontrollerBundle.plan_instrumento_planif}"
+                                                  value="#{planesBean.instrumentosSelected.instrumentoPlanificacion}"
+                                                  columns="50"/>
+                                    <af:spacer width="30" height="10"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.plan_btn_relacionar}"
+                                                  action="diagnostico"
+                                                  actionListener="#{planesBean.agregarInstrumento_actionListener}"
+                                                  visible="#{planesBean.plan.id!=null}"
+                                                  icon="/imgs/add.png"/>
+                                  </af:panelFormLayout>
+                                  </f:facet>
+                                <f:facet name="end">
+                                  <af:table var="row" rowSelection="single"
+                                            value="#{planesBean.plan.pomtInstrumentosPlanificacionList}"
+                                            rowBandingInterval="1"
+                                            selectionListener="#{planesBean.t_instrumentos_selectionListener}"
+                                            emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                            summary="Armonización de los Instrumentos de planificación">
+                                   
+                                    <af:column sortable="true"
+                                               headerText="#{viewcontrollerBundle.plan_recurso_identif}"
+                                               sortProperty="anio" width="186">
+                                      <af:outputText value="#{row.recursoNaturalIdent}"/>
+                                    </af:column>
+                                    <af:column sortable="true"
+                                               headerText="#{viewcontrollerBundle.plan_instrumento_planif}"
+                                               sortProperty="anio" width="156">
+                                      <af:outputText value="#{row.instrumentoPlanificacion}"/>
+                                    </af:column>
+                                    <af:column sortable="true"
+                                               headerText="Desvincular"
+                                               width="90"
+                                               
+                                               >
+                                      <af:commandButton icon="/imgs/delete.png"
+                                                        shortDesc="Eliminar Comision Asociada"
+                                                        actionListener="#{planesBean.eliminarInstrumentos_actionListener}"
+                                                        action="diagnostico"
+                                                  />
+                                      </af:column>
+                                  </af:table>
+                                </f:facet>
+                              </af:panelStretchLayout>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="bottom"/>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                
+                  
+                  
+                  
+                  
+                  
+                  <af:spacer width="30" height="10"/>
+                  <af:panelBox text="#{viewcontrollerBundle.plan_comunidades_etnicas}"
+                               showDisclosure="true"
+                               showHeader="always"
+                               >
+                    <af:panelStretchLayout topHeight="20px" startWidth="2px"
+                                           inlineStyle="width:99%; height:380px;"
+                                           bottomHeight="51px" endWidth="0px">
+                      <f:facet name="center">
+                        <af:panelGroupLayout>
+                          <af:panelGroupLayout layout="vertical">
+                            <af:panelFormLayout rows="1" maxColumns="1">
+                                                   
+                              <af:spacer width="10" height="10"/>
+                              <af:panelStretchLayout startWidth="40%"
+                                                     endWidth="55%"
+                                                     topHeight="0"
+                                                     bottomHeight="0px"
+                                                     inlineStyle="width:900px;height:200px;"
+                                                     >
+                                <f:facet name="start">
+                                  <af:panelFormLayout rows="1" maxColumns="2"
+                                                      visible="#{planesBean.plan.id!=null}"
+                               
+                                                       inlineStyle="border:1px solid #BFC6C9; margin:0px; padding:0px;">
+                                    <af:inputText label="#{viewcontrollerBundle.plan_nombre_comunidad}"
+                                                  value="#{planesBean.comunidadesSelected.nombreComunidad}"
+                                                  columns="50"/>
+                                    
+                                     <af:selectBooleanCheckbox label="#{viewcontrollerBundle.plan_comunidad_preconsulta}"
+                                                        value="#{planesBean.comunidadesSelected.procPreConsulta}"
+                                                        binding="#{planesBean.procPreConsultaChk}"
+                                                        />
+                                                        
+                                     <af:selectBooleanCheckbox label="#{viewcontrollerBundle.plan_comunidad_consulta}"
+                                                        value="#{planesBean.comunidadesSelected.procConsulta}"
+                                                        binding="#{planesBean.procConsultaChk}"
+                                                        />
+                                    
+                                    <!--af:inputText label="#{viewcontrollerBundle.plan_comunidad_preconsulta}"
+                                                  value="#{planesBean.comunidadesSelected.procPreConsulta}"
+                                                  columns="50"/>
+                                    <af:inputText label="#{viewcontrollerBundle.plan_comunidad_consulta}"
+                                                  value="#{planesBean.comunidadesSelected.procConsulta}"
+                                                  columns="50"/-->
+                                    <af:spacer width="30" height="10"/>              
+                                    <af:commandButton text="#{viewcontrollerBundle.plan_btn_relacionar}"
+                                                  action="diagnostico"
+                                                  visible="#{planesBean.plan.id!=null}"
+                                                  actionListener="#{planesBean.agregarComunidad_actionListener}"
+                                                  icon="/imgs/add.png"/>
+                                  </af:panelFormLayout>
+                                  </f:facet>
+                                <f:facet name="end">
+                                  <af:table var="row" rowSelection="single"
+                                            value="#{planesBean.plan.pomtComunidadesEtnicasList}"
+                                            rowBandingInterval="1"
+                                            selectionListener="#{planesBean.t_comunidades_selectionListener}"
+                                            emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                            summary="Comunidades Étnicas"
+                                            visible="#{planesBean.plan.id!=null}"
+                               
+                                            >
+                                   
+                                    <af:column sortable="true"
+                                               headerText="#{viewcontrollerBundle.plan_nombre_comunidad}"
+                                               sortProperty="anio" width="126">
+                                      <af:outputText value="#{row.nombreComunidad}"/>
+                                    </af:column>
+                                    <af:column sortable="true"
+                                               headerText="#{viewcontrollerBundle.plan_comunidad_preconsulta}"
+                                               sortProperty="anio" width="126">
+                                      <af:outputText value="#{row.procPreConsulta}"/>
+                                    </af:column>
+                                    <af:column sortable="true"
+                                               headerText="#{viewcontrollerBundle.plan_comunidad_consulta}"
+                                               sortProperty="anio" width="126">
+                                      <af:outputText value="#{row.procConsulta}"/>
+                                    </af:column>
+                                    <af:column sortable="true"
+                                               headerText="Desvincular"
+                                               width="90"
+                                               
+                                               >
+                                      <af:commandButton icon="/imgs/delete.png"
+                                                        shortDesc="Eliminar Comision Asociada"
+                                                        actionListener="#{planesBean.eliminarComunidades_actionListener}"
+                                                        action="diagnostico"
+                                                  />
+                                    </af:column>
+                                  </af:table>
+                                </f:facet>
+                              </af:panelStretchLayout>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="bottom">
+                    
+                        <af:panelGroupLayout inlineStyle="text-align:rigth">
+                        
+   <af:popup binding="#{planesBean.popup1}" id="popup1">
+    <af:dialog id="d1" type="none"
+               closeIconVisible="true"
+               cancelTextAndAccessKey="#{viewcontrollerBundle.plan_confirmar_cancelo}"
+               title="#{viewcontrollerBundle.titulo_confirmacion}">
+      <af:panelGroupLayout layout="vertical">
+        <af:activeOutputText />
+        <af:spacer width="10" height="10"/>
+        <af:activeOutputText value="#{viewcontrollerBundle.plan_confirmar_borrar}"  />
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar">
+        <af:panelGroupLayout >
+          <af:commandButton text="#{viewcontrollerBundle.plan_confirmar_acepto}"
+                            action="fuentes"
+                            actionListener="#{planesBean.borrar_actionListener}"/>
+          <af:commandButton text="#{viewcontrollerBundle.plan_btn_cancelar}"
+                                action="diagnostico"
+                                immediate="true" partialSubmit="true" />
+         </af:panelGroupLayout>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+
+  
+    <af:popup  binding="#{planesBean.popupExito}" id="popupExito">
+    <af:dialog type="none"
+               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+               closeIconVisible="true">
+       <f:facet name="buttonBar">
+            <af:panelGroupLayout>
+              <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                action="aprestamiento"
+                                immediate="true" partialSubmit="true" />
+            </af:panelGroupLayout>
+          </f:facet>
+      <af:panelStretchLayout endWidth="0px" topHeight="0px" bottomHeight="2px"
+                             inlineStyle="height:41px; width:316px;">
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+          <af:outputText value="#{viewcontrollerBundle.plan_registro_exitoso}" />
+        </f:facet>
+        <f:facet name="start">
+          <af:image source="/imgs/info.png" shortDesc="info" />
+        </f:facet>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+      </af:panelStretchLayout>
+    </af:dialog>
+  </af:popup>
+                        
+                                              
+                           
+                            
+                            <af:spacer width="10" height="10"/>
+                            <af:commandButton text="#{viewcontrollerBundle.plan_btn_siguiente}"
+                                              icon="/imgs/next.png"
+
+                                              actionListener="#{planesBean.cb_aceptar_actionListener}"
+                                              />
+                                              
+                            
+                            
+                           
+                            <af:spacer width="10" height="10"/>
+                            <af:commandButton text="#{viewcontrollerBundle.plan_btn_cancelar}"
+                                              action="fuentes"
+                                              icon="/imgs/close.png"/>                  
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  
+                  
+                  <af:spacer width="30" height="10"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:planesBean-->
+</jsp:root>

@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{detalleCaptacionVista.document1}" id="document1">
+      <af:form binding="#{detalleCaptacionVista.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleCaptacionVista.panelStretchLayout1}"
+                                   id="panelStretchLayout1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="44px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detalleCaptacionVista.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="600"
+                                  orientation="horizontal" disabled="true">
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{detalleCaptacionVista.panelStretchLayout3}"
+                                           id="panelStretchLayout3">
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{detalleCaptacionVista.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="scroll">                
+                          <af:panelBox text="#{viewcontrollerBundle.CPT_DETALLE}"
+                                       binding="#{detalleCaptacionVista.panelBox1}"
+                                       id="panelBox1" showDisclosure="false"
+                                       inlineStyle="width:597px; height:430px;">
+                            <f:facet name="toolbar"/>
+                                <af:panelGroupLayout binding="#{detalleCaptacionVista.panelGroupLayout2}"
+                                                     id="panelGroupLayout2">
+                                  <af:panelGroupLayout binding="#{detalleCaptacionVista.panelGroupLayout3}"
+                                                       id="panelGroupLayout3">
+                                <af:activeOutputText binding="#{detalleCaptacionVista.otTipoFuente}"
+                                                     id="otTipoFuente"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:panelFormLayout binding="#{detalleCaptacionVista.panelFormLayout2}"
+                                                            id="panelFormLayout2">
+                                          <f:facet name="footer"/>
+                                      <af:inputText label="#{viewcontrollerBundle.FNT_AREA}"
+                                                    binding="#{detalleCaptacionVista.itArea}"
+                                                    id="itArea" readOnly="true"
+                                                    value="#{detalleCaptacionVista.captacion.idArea.valor}"/>
+                                      <af:inputText label="#{viewcontrollerBundle.FNT_ZONA}"
+                                                    binding="#{detalleCaptacionVista.itZona}"
+                                                    id="itZona"  readOnly="true"
+                                                    value="#{detalleCaptacionVista.captacion.idZona.valor}"/>
+                                      <af:inputText label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                                    binding="#{detalleCaptacionVista.itSubzona}"
+                                                    id="itSubzona"  readOnly="true"
+                                                    value="#{detalleCaptacionVista.captacion.idSubzona.valor}"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_TIPO}"
+                                                                  binding="#{detalleCaptacionVista.socTipoFuente}"
+                                                                  id="socTipoFuente"
+                                                                  showRequired="true" readOnly="true"
+                                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                  rendered="#{detalleCaptacionVista.superficial}"
+                                                                  autoSubmit="true" immediate="true"
+                                                                  value="#{detalleCaptacionVista.captacion.idFuente.idTipoFuente}"
+                                                                
+                                                                  >
+                                                    <f:selectItems value="#{detalleCaptacionVista.listaTiposFuente}"
+                                                                   binding="#{detalleCaptacionVista.siTipoFuente}"
+                                                                   id="siTipoFuente"/>
+                                                </af:selectOneChoice>
+                                                
+                                                <af:selectOneChoice label="#{viewcontrollerBundle.CPT_PROVINCIA}"
+                                                                    binding="#{detalleCaptacionVista.socProvinciaHidro}"
+                                                                    id="socProvinciaHidro" showRequired="true" 
+                                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                  autoSubmit="true" immediate="true" readOnly="true"
+                                                                  rendered="#{detalleCaptacionVista.subterranea}"
+                                                                  value="#{detalleCaptacionVista.captacion.objProvinciaHidrogeologica}"
+                                                                  >
+                                                  <f:selectItems value="#{detalleCaptacionVista.listaProvincias}"
+                                                                 binding="#{detalleCaptacionVista.siProvinciaHidro}"
+                                                                 id="siProvinciaHidro"/>
+                                                </af:selectOneChoice>
+                                                
+                                                <af:inputText label="#{viewcontrollerBundle.CPT_UNIDAD}"
+                                                              binding="#{detalleCaptacionVista.itUnidadHidrogeologica}"
+                                                              id="itUnidadHidrogeologica" readOnly="true"
+                                                              rendered="#{detalleCaptacionVista.subterranea}"
+                                                              value="#{detalleCaptacionVista.captacion.unidadHidrogeologica}"
+                                                              />
+                                      <af:inputText
+                                                    binding="#{detalleCaptacionVista.it_fuente}"
+                                                    id="it_fuente" readOnly="true"
+                                                    value="#{detalleCaptacionVista.captacion.idFuente.nombre}"
+                                                    label="#{viewcontrollerBundle.FNT_FUENTE}"/>
+                                      <af:inputText label="#{viewcontrollerBundle.TRM_TRAMO}"
+                                                    binding="#{detalleCaptacionVista.itTramo}"
+                                                    id="itTramo" readOnly="true"
+                                                    value="#{detalleCaptacionVista.captacion.idTramo.nombre}"/>
+                                          <af:inputText label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                    binding="#{detalleCaptacionVista.itDpto}"  readOnly="true"
+                                                     value="#{detalleCaptacionVista.captacion.nombreDpto}"
+                                                    id="itDpto"/>
+                                      <af:inputText label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                    binding="#{detalleCaptacionVista.itMcpo}" readOnly="true"
+                                                      value="#{detalleCaptacionVista.captacion.nombreMcpo}"
+                                                    id="itMcpo"/>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_CP}"
+                                                                binding="#{detalleCaptacionVista.socTipoCP}"
+                                                                id="socTipoCP" readOnly="true"
+                                                                showRequired="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                value="#{detalleCaptacionVista.captacion.objTipoCentroPoblado}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionVista.listaTipoCentroPoblado}"
+                                                             binding="#{detalleCaptacionVista.siTipoCP}"
+                                                             id="siTipoCP"/>
+                                            </af:selectOneChoice>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_NOMBRE_CP}"
+                                                          binding="#{detalleCaptacionVista.itNombreCentroPoblado}"
+                                                          id="itNombreCentroPoblado" readOnly="true"
+                                                          value="#{detalleCaptacionVista.captacion.nombreCentroPoblado}"
+                                                          />
+                                                             <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA_HDRICA_TOTAL}"
+                                                          binding="#{detalleCaptacionVista.itOfertaTotal}"
+                                                          id="itOfertaTotal"  readOnly="true"
+                                                          rendered="#{detalleCaptacionVista.superficial}"
+                                                          value="#{detalleCaptacionVista.captacion.ofertaHidricaTotal}"
+                                                          columns="10"
+                                                          >
+                                               
+                                            </af:inputText>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA_HIDRCA_DISPONIBLE}"
+                                                          binding="#{detalleCaptacionVista.itOfertaDisponible}"
+                                                          id="itOfertaDisponible"  readOnly="true"
+                                                          rendered="#{detalleCaptacionVista.superficial}"
+                                                          value="#{detalleCaptacionVista.captacion.ofertaDisponible}"
+                                                          columns="10"
+                                                          >
+                                               
+                                            </af:inputText>
+                                            
+                                            
+                                              <af:inputText label="#{viewcontrollerBundle.CPT_CAUDAL_DISEGNO}"
+                                                          binding="#{detalleCaptacionVista.itCaudalDisegno}"
+                                                          id="itCaudalDisegno" readOnly="true"
+                                                          value="#{detalleCaptacionVista.captacion.caudalDisegno}"
+                                                          columns="10"
+                                                           >
+                                               
+                                            </af:inputText>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_PUNTO}"
+                                                                binding="#{detalleCaptacionVista.socTipoPunto}"
+                                                                id="socTipoPunto" readOnly="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                rendered="#{detalleCaptacionVista.subterranea}"
+                                                                value="#{detalleCaptacionVista.captacion.objTipoPunto}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionVista.listaTipoPunto}"
+                                                             binding="#{detalleCaptacionVista.siTipoPunto}"
+                                                             id="siTipoPunto"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_CPT}"
+                                                                binding="#{detalleCaptacionVista.socTipoCaptacion}"
+                                                                id="socTipoCaptacion"
+                                                                showRequired="false" readOnly="true"
+                                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                                rendered="#{detalleCaptacionVista.lluvia}"
+                                                                value="#{detalleCaptacionVista.captacion.objTipoCaptacion}"
+                                                                >
+                                              <f:selectItems value="#{detalleCaptacionVista.listaTipoCaptacion}"
+                                                             binding="#{detalleCaptacionVista.siTipoCaptacion}"
+                                                             id="siTipoCaptacion"/>
+                                            </af:selectOneChoice>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_AREA_CPT}"
+                                                          binding="#{detalleCaptacionVista.itAreaCaptacion}"
+                                                          id="itAreaCaptacion"  readOnly="true"
+                                                          rendered="#{detalleCaptacionVista.lluvia}"
+                                                          value="#{detalleCaptacionVista.captacion.areaCaptacion}"
+                                                          columns="10"
+                                                          >
+                                                
+                                            </af:inputText>
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA}"
+                                                          binding="#{detalleCaptacionVista.itOferta}"
+                                                          id="itOferta"  readOnly="true"
+                                                          value="#{detalleCaptacionVista.captacion.ofertaHidricaTotal}"
+                                                          columns="10"
+                                                          rendered="#{detalleCaptacionVista.mineral or detalleCaptacionVista.lluvia}"
+                                                          >
+                                                  
+                                            </af:inputText> 
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_OFERTA_ESTIMADA}"
+                                                          binding="#{detalleCaptacionVista.itOfertaEstimada}"
+                                                          id="itOfertaEstimada" readOnly="true"
+                                                          rendered="#{detalleCaptacionVista.mineral or detalleCaptacionVista.lluvia}"
+                                                          value="#{detalleCaptacionVista.captacion.ofertaDisponible}"
+                                                          columns="10"
+                                                          
+                                                          >
+                                               
+                                            </af:inputText>
+                                            
+                                            
+                                            <af:inputText label="#{viewcontrollerBundle.CPT_CAUDAL}"
+                                                          binding="#{detalleCaptacionVista.itCaudalVer}"
+                                                          id="itCaudalVer"  readOnly="true"
+                                                          rendered="#{detalleCaptacionVista.servida}"
+                                                          value="#{detalleCaptacionVista.captacion.caudalVertimiento}"
+                                                          columns="10"
+                                                          >
+                                                
+                                            </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.CPT_IDENT_PUNTO}"
+                                                    binding="#{detalleCaptacionVista.itIdentificadorPuntoSubt}"
+                                                    id="itIdentificadorPuntoSubt"
+                                                      showRequired="true" readOnly="true"
+                                                      rendered="#{detalleCaptacionVista.subterranea}"
+                                                      value="#{detalleCaptacionVista.captacion.identificadorPunto}"
+                                                      />
+                                                      <!--Pilar-->
+                                        <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_SI}"
+                                                               label="#{viewcontrollerBundle.PERTENECEREDSUBTERRANEA}"
+                                                               binding="#{detalleCaptacionVista.sbrPerteneceRed1}"
+                                                               id="sbrPerteneceRed1" readOnly="true"
+                                                               group="prRed"  rendered="#{detalleCaptacionVista.subterranea}"
+                                                               />
+                                        <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                                                               binding="#{detalleCaptacionVista.sbrPerteneceRed2}"
+                                                               id="sbrPerteneceRed12" readOnly="true"
+                                                               group="prRed" rendered="#{detalleCaptacionVista.subterranea}"/>
+                                                      
+                                    </af:panelFormLayout>
+                              </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                          </af:panelBox>
+                          
+                          
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                       <af:panelGroupLayout binding="#{detalleCaptacionVista.panelGroupLayout4}"
+                                                         id="panelGroupLayout4">
+                      <af:panelBox text="#{viewcontrollerBundle.USO_RELACIONADOS}"
+                                   binding="#{detalleCaptacionVista.panelBox2}"
+                                   id="panelBox2" showDisclosure="false" inlineStyle="height:430px;">
+                        <f:facet name="toolbar"/>
+                        <af:activeOutputText value="#{viewcontrollerBundle.USO_RELACIONADOS}" binding="#{detalleCaptacionVista.activeOutputText2}" id="activeOutputText2"
+                                             styleClass="AFBrandingBarTitle"/>
+                        <af:table value="#{detalleCaptacionVista.listaUsos}" var="row" binding="#{detalleCaptacionVista.table1}" width="100%" id="table1"
+                                  inlineStyle="border-style:none;">
+                          <af:column sortable="false" headerText="Tipo de Uso" width="190">
+                            <af:outputText value="#{row.nombreUso.valor}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Caudal Asignado" width="190">
+                            <af:outputText value="#{row.caudalAsignado}"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                                    </af:panelGroupLayout>
+                               
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout layout="scroll"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{detalleCaptacionVista.panelGroupLayout5}"
+                                     id="panelGroupLayout5">
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleCaptacionVista.spacer3}"
+                             id="spacer3"/>
+                  <af:activeOutputText value="#{viewcontrollerBundle.CPT_DETALLE}"
+                                       binding="#{detalleCaptacionVista.activeOutputText1}"
+                                       id="activeOutputText1"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleCaptacionVista.spacer6}"
+                             id="spacer6"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleCaptacionVista-->
+</jsp:root>

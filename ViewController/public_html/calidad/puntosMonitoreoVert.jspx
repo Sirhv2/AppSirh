@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{puntosMonitoreoVert.document1}" id="document1">
+      <af:form binding="#{puntosMonitoreoVert.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{puntosMonitoreoVert.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="49px"
+                                   startWidth="3px" bottomHeight="4px"
+                                   endWidth="2px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                
+                  <af:panelSplitter orientation="vertical" disabled="true"
+                                    splitterPosition="42">
+                    <f:facet name="first">
+                      <af:panelFormLayout maxColumns="4" rows="1">
+                      <af:inputText label="#{viewcontrollerBundle.PTO_NOMBRE}"
+                       binding="#{puntosMonitoreoVert.filtro_nombre}"
+                                          id="filtro_nombre"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.PTO_TIPO_PTO}"
+                         binding="#{puntosMonitoreoVert.tipo_punto}"
+                                            id="tipo_punto"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                          <f:selectItems value="#{puntosMonitoreoVert.listaTipoPuntos}"/>
+                        </af:selectOneChoice>
+                      <af:panelGroupLayout>
+                        <af:spacer width="10" height="10"/>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                         binding="#{puntosMonitoreoVert.cb_filtrar}"
+                                          id="cb_filtrar"
+                                          icon="/imgs/binoculars_24.png"
+                                          actionListener="#{puntosMonitoreoVert.cb_filtrar_actionListener}"/>
+                      </af:panelGroupLayout>
+                    </af:panelFormLayout>
+                    </f:facet>
+                    <f:facet name="second">
+                      <af:panelCollection binding="#{puntosMonitoreoVert.panelCollection1}"
+                                          id="panelCollection1"
+                                          inlineStyle="width:100%px;">
+                        <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                   id="m_archivo">
+                            <af:commandMenuItem text="#{viewcontrollerBundle.menu_adicionar}"
+                                                id="cmi_adicionar"
+                                                actionListener="#{puntosMonitoreoVert.cmi_adicionar_actionListener}"
+                                                action="#{puntosMonitoreoVert.getAccionAdicionar}"
+                                                icon="/imgs/add.png"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                id="cmi_editar"
+                                                actionListener="#{puntosMonitoreoVert.cmi_editar_actionListener}"
+                                                action="#{puntosMonitoreoVert.getAccionAdicionar}"
+                                                icon="/imgs/edit_24.png"/>
+                          </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{puntosMonitoreoVert.listaPuntosMonitoreo}"
+                        var="row"     rowBandingInterval="1"
+                                binding="#{puntosMonitoreoVert.t_puntosMonitoreo}"
+                                id="t_puntosMonitoreo" rowSelection="single"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                 width="100%" inlineStyle="width:100%px;">
+                          <af:column sortable="true"
+                                     headerText="#{viewcontrollerBundle.PTO_NOMBRE}"
+                                     width="150" sortProperty="nombre">
+                            <af:outputText value="#{row.nombre}"
+                                           styleClass="text-transform:uppercase;"/>
+                          </af:column>
+                          <af:column width="110"
+                                     headerText="#{viewcontrollerBundle.PTO_TIPO_PTO}"
+                                     sortable="true"
+                                     sortProperty="tipoPunto.valor">
+                          <af:outputText value="#{row.tipoPunto.valor}"/>
+                        </af:column>
+                         <af:column width="146"
+                                    headerText="#{viewcontrollerBundle.PTO_UBICACION}"
+                                    sortable="true"
+                                    sortProperty="ubicacion.valor">
+                          <af:outputText value="#{row.ubicacion.valor}"/>
+                        </af:column>
+                          <af:column headerText="#{viewcontrollerBundle.TRM_AREA}"
+                                     width="107" sortable="true"
+                                     sortProperty="idArea.valor">
+                            <af:outputText value="#{row.idArea.valor}"/>
+                          </af:column>
+                          <af:column headerText="#{viewcontrollerBundle.TRM_ZONA}"
+                                     width="107" sortProperty="idZona.valor"
+                                     sortable="true">
+                            <af:outputText value="#{row.idZona.valor}"/>
+                          </af:column>
+                        <af:column headerText="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                   width="107" sortable="true"
+                                   sortProperty="idSubzona.valor">
+                          <af:outputText value="#{row.idSubzona.valor}"/>
+                        </af:column>
+                          <af:column headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   width="107" sortable="true"
+                                   sortProperty="idFuente.nombre">
+                          <af:outputText value="#{row.idFuente.nombre}"/>
+                        </af:column>
+                        <af:column
+                                   headerText="#{viewcontrollerBundle.SISTEMA_DE_REFERENCIA}"
+                                     width="130">
+                            <af:outputText value="#{row.sistemaRef.valor}"/>
+                          </af:column>
+                          <af:column headerText="Latitud" width="90">
+                            <af:outputText value="#{row.latitud_grados}°  #{row.latitud_minutos}' #{row.latitud_segundos}&quot;"/>
+                          </af:column>
+                        
+                          <af:column headerText="Longitud " width="90">
+                            <af:outputText value="#{row.longitud_grados}° #{row.longitud_minutos}' #{row.longitud_segundos}&quot;"/>
+                          </af:column>
+                       
+                          <af:column headerText="#{viewcontrollerBundle.PTO_ALTITUD}"
+                                     width="60">
+                            <af:outputText value="#{row.altitud}"/>
+                          </af:column>
+                       
+                      </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelSplitter>
+                
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{puntosMonitoreoVert.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:panelGroupLayout binding="#{puntosMonitoreoVert.panelGroupLayout3}"
+                                       id="panelGroupLayout3"
+                                       layout="horizontal">
+                    <af:spacer width="10" height="10"
+                               binding="#{puntosMonitoreoVert.spacer3}"
+                               id="spacer3"/>
+                    <af:commandLink text="#{viewcontrollerBundle.VERTIMIENTO}: #{viewcontrollerBundle.VERTIMIENTO}_ #{puntosMonitoreoVert.vertimiento.id} "
+                                    binding="#{puntosMonitoreoVert.clinkVert}"
+                                    id="clinkVert" action="detallevertimiento"/>
+                  </af:panelGroupLayout>
+                  <af:activeOutputText value="#{viewcontrollerBundle.MODULO_PUNTOS} de un #{viewcontrollerBundle.VERTIMIENTO}"
+                                       binding="#{puntosMonitoreoVert.titulo}"
+                                       id="titulo"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{puntosMonitoreoVert.spacer1}"
+                             id="spacer1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:puntosMonitoreoVert-->
+ 
+</jsp:root>

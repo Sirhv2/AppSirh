@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{observatorioDemandaBacking.document1}"
+                 id="document1">
+      <af:form binding="#{observatorioDemandaBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioDemandaBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="17px">
+              <f:facet name="center">
+                <af:switcher binding="#{observatorioDemandaBacking.centerSwitcher}"
+                             id="centerSwitcher" defaultFacet="restored">
+                  <f:facet name="restored">
+                    <af:panelStretchLayout binding="#{observatorioDemandaBacking.psl2}"
+                                           id="psl2">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelDashboard binding="#{observatorioDemandaBacking.dashboard}"
+                                           id="dashboard" shortDesc="panel"
+                                           columns="2" rowHeight="175px">
+                          <af:dataFlavor flavorClass="javax.faces.component.UIComponent"
+                                         discriminant="fromDashboardSideBar"/>
+                          <af:panelBox text="Naturaleza de los Usuarios"
+                                       binding="#{observatorioDemandaBacking.pbnaturaleza}"
+                                       id="pbnaturaleza" showDisclosure="false"
+                                       type="stretch" visible="true">
+                            <af:declarativeComponent id="dc2"
+                                                     viewId="estadisticas/naturalezaUsuarios.jsff"/>
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc1}"
+                                                       id="dc1"/>
+                            </f:facet>
+                          </af:panelBox>
+                          <af:panelBox text="Predios por departamentos"
+                                       binding="#{observatorioDemandaBacking.pbPrediosPorDpto}"
+                                       id="pbPrediosPorDpto"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc36}"
+                                                       id="dc36"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc37"
+                                                     viewId="estadisticas/prediosPorDepartamento.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc37}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Tipo de fuentes con aprovechamiento"
+                                       binding="#{observatorioDemandaBacking.pbCapFuentes}"
+                                       id="pbCapTipoFuente"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc40}"
+                                                       id="dc40"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc41"
+                                                     viewId="estadisticas/CaptacionTipoFuente.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc41}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Ubicación de Usuarios"
+                                       binding="#{observatorioDemandaBacking.pb3}"
+                                       id="pb3" showDisclosure="false"
+                                       type="stretch">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc6}"
+                                                       id="dc6"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc5"
+                                                     viewId="estadisticas/ubicacionUsuarios.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc5}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Vigencia de Concesiones"
+                                       binding="#{observatorioDemandaBacking.pb4}"
+                                       id="pb4" showDisclosure="false"
+                                       visible="true" type="stretch">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc8}"
+                                                       id="dc8"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc7"
+                                                     viewId="estadisticas/vigenciaConcesiones.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc7}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Vigencia Permisos Vert."
+                                       binding="#{observatorioDemandaBacking.pb5}"
+                                       id="pb5" showDisclosure="false"
+                                       rendered="true" type="stretch">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc10}"
+                                                       id="dc10"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc9"
+                                                     viewId="estadisticas/vigenciaPermisosVertimiento.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc9}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Captaciones por fuentes"
+                                       binding="#{observatorioDemandaBacking.panelBoxCaptaciones}"
+                                       id="panelBoxCaptaciones"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc14}"
+                                                       id="dc14"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc13"
+                                                     viewId="estadisticas/captacionesfuente.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc13}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Vertimientos por fuentes"
+                                       binding="#{observatorioDemandaBacking.panelBoxVertimientos}"
+                                       id="panelBoxVertimientos"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc56}"
+                                                       id="dc56"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc57"
+                                                     viewId="estadisticas/vertimientosfuente.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc57}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Vertimientos por Tipo"
+                                       binding="#{observatorioDemandaBacking.panelBoxVert}"
+                                       id="panelBoxVert" showDisclosure="false"
+                                       type="stretch" visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc58}"
+                                                       id="dc58"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc59"
+                                                     viewId="estadisticas/vertimientostipo.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc59}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Usos de captaciones"
+                                       binding="#{observatorioDemandaBacking.usosCaptaciones}"
+                                       id="usosCaptaciones"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc26}"
+                                                       id="dc26"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc27"
+                                                     viewId="estadisticas/usosAgua.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc27}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Busquedas FUENTES"
+                                       binding="#{observatorioDemandaBacking.boxBusquedas}"
+                                       id="boxBusquedas" showDisclosure="false"
+                                       type="stretch" rendered="false">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc68}"
+                                                       id="dc54"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc55"
+                                                     viewId="estadisticas/enlacesBusquedas.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc69}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Caudales vertidos por Fuente Hidrica"
+                                       binding="#{observatorioDemandaBacking.boxCaudalesVert}"
+                                       id="boxCaudalesVert"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc60}"
+                                                       id="dc60"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc61"
+                                                     viewId="estadisticas/caudalesVertidos.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc61}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Estadisticas por Tramites"
+                                       binding="#{observatorioDemandaBacking.enlacesTramites}"
+                                       id="enlacesTramites"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc62}"
+                                                       id="dc62"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc63"
+                                                     viewId="estadisticas/enlacesTramites.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc63}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Caudales Concesionados"
+                                       binding="#{observatorioDemandaBacking.boxCaudales}"
+                                       id="caudalesConcesionados"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc34}"
+                                                       id="dc34"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc35"
+                                                     viewId="estadisticas/caudalesConcesionados.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc35}"/>
+                          </af:panelBox>
+                          <!-- Se publicará en 2015
+                          <af:panelBox text="Datos de referencia"
+                                         binding="#{observatorioDemandaBacking.boxDemanda}" 
+                                         id="boxDemanda"
+                                         showDisclosure="false" type="stretch"
+                                         visible="true">
+                                         
+                                <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{observatorioDemandaBacking.dc66}"
+                                                         id="dc66"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc67"
+                                                       viewId="demanda/enlacesDemanda.jsff"
+                                                       binding="#{observatorioDemandaBacking.dc67}"/>
+                              
+                            </af:panelBox>-->
+                        </af:panelDashboard>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top">
+                        <af:panelGroupLayout binding="#{observatorioDemandaBacking.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="horizontal">
+                          <af:navigationPane binding="#{observatorioDemandaBacking.npItems}"
+                                             id="npItems" hint="bar">
+                            <af:commandNavigationItem text="Observatorio"
+                                                      binding="#{observatorioDemandaBacking.commandNavigationItem1}"
+                                                      id="commandNavigationItem1"
+                                                      action="observatorio"/>
+                              <af:spacer width="10" height="10"/>
+                            <af:commandNavigationItem text="Observatorio Aguas Superficiales "
+                                            action="observatorioSuperficiales"/>
+                            <af:forEach var="item"
+                                        items="#{observatorioDemandaBacking.listaCategoriasDemanda}">
+                              <af:spacer width="10" height="10" id="s3"/>
+                              <af:commandNavigationItem text="#{item.nombre}"
+                                                        id="cni1"
+                                                        actionListener="#{observatorioDemandaBacking.showPresetItems}"
+                                                        partialSubmit="true"
+                                                        immediate="true">
+                                <af:panelDashboardBehavior for="dashboard"
+                                                           index="#{observatorioDemandaBacking.indexIfRendered}"
+                                                           type="insert"/>
+                              </af:commandNavigationItem>
+                            </af:forEach>
+                            <af:commandNavigationItem text="Todo"
+                                                      binding="#{observatorioDemandaBacking.cni2}"
+                                                      id="cni2"
+                                                      actionListener="#{observatorioDemandaBacking.restaurarTodo}"
+                                                      partialSubmit="true"
+                                                      immediate="true"/>
+                          </af:navigationPane>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="maximized">
+                    <af:panelStretchLayout binding="#{observatorioDemandaBacking.psl3}"
+                                           id="psl3">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{observatorioDemandaBacking.maximizedTitle}"
+                                     binding="#{observatorioDemandaBacking.pb_max}"
+                                     id="pb_max" showDisclosure="false">
+                          <f:facet name="toolbar">
+                            <af:declarativeComponent viewId="dashBoard/toolbarMaximized.jsff"
+                                                     binding="#{observatorioDemandaBacking.dc12}"
+                                                     id="dc12"/>
+                          </f:facet>
+                          <af:declarativeComponent id="dc11"
+                                                   viewId="#{observatorioDemandaBacking.maximizedPanelUrl}"
+                                                   binding="#{observatorioDemandaBacking.dc11}"/>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:switcher>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:outputText value="Nota: La información usuarios del agua se encuentra en proceso de consolidación (Decreto 303 de 2012)"
+                               binding="#{observatorioDemandaBacking.outputTextNota}"
+                               id="outputTextNota"/>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioDemandaBacking-->
+</jsp:root>

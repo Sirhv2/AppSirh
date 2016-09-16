@@ -1,0 +1,1116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{adicionarFuniasBean.document1}" id="document1">
+      <af:form binding="#{adicionarFuniasBean.form1}" id="form1"
+               usesUpload="true">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarFuniasBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1" layout="scroll">
+                  <af:panelBox text="#{viewcontrollerBundle.FUNIAS_MODULO}"
+                               binding="#{adicionarFuniasBean.pnlTipoFunias}"
+                               id="pnlTipoFunias">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarFuniasBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           inlineStyle="width:100%;">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout2}"
+                                             id="panelGroupLayout2"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout3}"
+                                               id="panelGroupLayout3"
+                                               layout="horizontal"
+                                                halign="right"
+                                                inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarFuniasBean.cmbNextTipoFunias}"
+                                              id="cmbNextTipoFunias"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarFuniasBean.cmbNextTipoFunias_actionListener}"
+                                              action="#{adicionarFuniasBean.getActionView}" />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer1}"
+                                       id="spacer1"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout4}"
+                                             id="panelGroupLayout4">
+                          <af:panelFormLayout binding="#{adicionarFuniasBean.panelFormLayout1}"
+                                              id="panelFormLayout1">
+                            <f:facet name="footer"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_TIPO}"
+                                                binding="#{adicionarFuniasBean.socTipoFunias}"
+                                                id="socTipoFunias"
+                                                showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              helpTopicId="adicionarFunias" 
+                                              
+                                              >
+                              <f:selectItems value="#{adicionarFuniasBean.listaTiposFunias}"
+                                             binding="#{adicionarFuniasBean.siTipoFunias}"
+                                             id="siTipoFunias"/>
+                            </af:selectOneChoice>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{adicionarFuniasBean.tipoFunias}"
+                               binding="#{adicionarFuniasBean.pnlGeologia}"
+                               id="pnlGeologia" visible="false">
+                    <f:facet name="toolbar"/>
+
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout31}"
+                                             id="panelGroupLayout31"
+                                             layout="scroll"
+                                             inlineStyle="width:100%;">
+                          <af:panelFormLayout binding="#{adicionarFuniasBean.panelFormLayout2}"
+                                              id="panelFormLayout2">
+                            <f:facet name="footer"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer16}"
+                                       id="spacer16"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_DATOS}"
+                                           binding="#{adicionarFuniasBean.otDatosBasicosGeologia}"
+                                           id="otDatosBasicosGeologia"/>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_LOCALIZACION_TOPO}"
+                                                binding="#{adicionarFuniasBean.socLocTopografica}"
+                                                id="socLocTopografica"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasBean.listaLocalizacionTopo}"
+                                             binding="#{adicionarFuniasBean.siLocTopografica}"
+                                             id="siLocTopografica"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_UNIDAD_GEOLOGICA}"
+                                          binding="#{adicionarFuniasBean.itUnidadGeo}"
+                                          id="itUnidadGeo"/>
+                            
+                             
+                             <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer17}"
+                                       id="spacer17"/>
+                             <af:outputText value="#{viewcontrollerBundle.FUN_CAR_GEOMORFO}"
+                                           binding="#{adicionarFuniasBean.otCarGeomorfoGeologia}"
+                                           id="otCarGeomorfoGeologia"/>
+                                          
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_GEOFORMA}"
+                                                binding="#{adicionarFuniasBean.socGeoforma}"
+                                                id="socGeoforma"
+                                                showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasBean.listaGeoforma}"
+                                             binding="#{adicionarFuniasBean.siGeoforma}"
+                                             id="siGeoforma"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_ESTRUCTURA}"
+                                                binding="#{adicionarFuniasBean.socEstructura}"
+                                                id="socEstructura"
+                                                showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              rendered = "false"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasBean.listaEstructura}"
+                                             binding="#{adicionarFuniasBean.siEstructura}"
+                                             id="siEstructura"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_NOMBRE_ESTRUCTURA}"
+                                          binding="#{adicionarFuniasBean.itNombreEstructura}"
+                                          id="itNombreEstructura"
+                                          rendered = "false"
+                                          />
+                            
+                            
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer18}"
+                                       id="spacer18"/>
+                            
+                            
+                            <af:inputText label="#{viewcontrollerBundle.FUN_LITOLOGIA_SUPERFICIAL}"
+                                          binding="#{adicionarFuniasBean.itLitologiaSuperficial}"
+                                          id="itLitologiaSuperficial"
+                                          columns="50" rows="4"
+                                          />
+                           <af:outputText value="#{viewcontrollerBundle.FUN_REGISTRO}"
+                               binding="#{adicionarFuniasBean.otRegistroGeologia}"
+                               id="otRegistroGeologia"/>
+                               
+                            <af:inputFile label="#{viewcontrollerBundle.FUN_DOCUMENTO}"
+                                          binding="#{adicionarFuniasBean.ifGeologia}"
+                                          id="ifGeologia"
+                                          value="#{adicionarFuniasBean.uploadedFile}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{adicionarFuniasBean.ifGeologia_valueChangeListener}"
+                                          />
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout5}"
+                                             id="panelGroupLayout5"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout6}"
+                                               id="panelGroupLayout6"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarFuniasBean.cmbNextGeologia}"
+                                              id="cmbNextGeologia"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarFuniasBean.cmbNextGeologia_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer5}"
+                                       id="spacer5"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{adicionarFuniasBean.tipoFunias}"
+                               binding="#{adicionarFuniasBean.pnlDatosConstruccion}"
+                               id="pnlDatosConstruccion" visible="false">
+                    <f:facet name="toolbar"/>
+
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout34}"
+                                             id="panelGroupLayout34"
+                                             layout="scroll">
+                          <af:panelFormLayout binding="#{adicionarFuniasBean.panelFormLayout5}"
+                                              id="panelFormLayout5">
+                            <f:facet name="footer"/>
+                            <af:inputDate label="#{viewcontrollerBundle.FUN_FECHA_CONSTRUCCION}"
+                                          binding="#{adicionarFuniasBean.idFechaConstruccion}"
+                                          id="idFechaConstruccion"
+                                          showRequired="true"
+                                        columns="10"
+                            />
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DIAMETRO_INTERIOR}"
+                                          binding="#{adicionarFuniasBean.itDiaIntConstruccion}"
+                                          id="itDiaIntConstruccion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DIAMETRO_EXTERIOR}"
+                                          binding="#{adicionarFuniasBean.itDiaExtConstruccion}"
+                                          id="itDiaExtConstruccion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DIAMETRO_PERFORACION}"
+                                          binding="#{adicionarFuniasBean.itDiaPerfCostruccion}"
+                                          id="itDiaPerfCostruccion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" />
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer21}"
+                                       id="spacer21"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_CONSTRUCCION}"
+                                           binding="#{adicionarFuniasBean.outputText1}"
+                                           id="outputText1"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_MATERIAL_CONSTRUCCION}"
+                                                binding="#{adicionarFuniasBean.socMaterialConstruccion}"
+                                                id="socMaterialConstruccion"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarFuniasBean.listaMaterial}"
+                                             binding="#{adicionarFuniasBean.siMaterialConstruccion}"
+                                             id="siMaterialConstruccion"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_METODO_CONSTRUCCION}"
+                                                binding="#{adicionarFuniasBean.socMetodoConstruccion}"
+                                                id="socMetodoConstruccion"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                              <f:selectItems value="#{adicionarFuniasBean.listaMetodoConstruccion}"
+                                             binding="#{adicionarFuniasBean.siMetodoConstruccion}"
+                                             id="siMetodoConstruccion"/>
+                            </af:selectOneChoice>
+                            <!--<af:selectOneChoice label="#{viewcontrollerBundle.FUN_TRATAMIENTO_ESPECIAL}"
+                                                binding="#{adicionarFuniasBean.socTratamientoConstruccion}"
+                                                id="socTratamientoConstruccion"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                              <f:selectItems value="#{adicionarFuniasBean.listaTratamiento}"
+                                             binding="#{adicionarFuniasBean.siTratamientoConstruccion}"
+                                             id="siTratamientoConstruccion"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_FLUIDO_USADO}"
+                                                binding="#{adicionarFuniasBean.socFluidoConstruccion}"
+                                                id="socFluidoConstruccion"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                              <f:selectItems value="#{adicionarFuniasBean.listaFluidoConstruccion}"
+                                             binding="#{adicionarFuniasBean.siFluidoConstruccion}"
+                                             id="siFluidoConstruccion"/>
+                            </af:selectOneChoice>
+                            -->
+                            <af:inputText label="#{viewcontrollerBundle.FUN_COMPANIA_PERFORADORA}"
+                                          binding="#{adicionarFuniasBean.itCompaniaPerforadora}"
+                                          id="itCompaniaPerforadora"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_COLMATADO}"
+                                                   binding="#{adicionarFuniasBean.sbrColmatadaSi}"
+                                                   id="sbrColmatadaSi"
+                                                   group="colmatada" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrColmatadaNo}"
+                                                   id="sbrColmatadaNo"
+                                                   group="colmatada" value="2"
+                                                   selected="true"/>
+                                                   
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_COLAPSADO}"
+                                                   binding="#{adicionarFuniasBean.sbrColapsadaSi}"
+                                                   id="sbrColapsadaSi"
+                                                   group="colapsado" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrColapsadaNo}"
+                                                   id="sbrColapsadaNo"
+                                                   group="colapsado" value="1"
+                                                   selected="true"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer22}"
+                                       id="spacer22"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_PROFUNDIDAD}"
+                                           binding="#{adicionarFuniasBean.outputText2}"
+                                           id="outputText2"
+                                           />
+                            <af:inputText label="#{viewcontrollerBundle.FUN_PROFUNDIDAD_ENTUBADO}"
+                                          binding="#{adicionarFuniasBean.itProfEntubado}"
+                                          id="itProfEntubado"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_PROFUNDIDAD_PERFORA}"
+                                          binding="#{adicionarFuniasBean.itProfPerforacion}"
+                                          id="itProfPerforacion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer23}"
+                                       id="spacer23"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_EMPAQUE}"
+                                           binding="#{adicionarFuniasBean.outputText3}"
+                                           id="outputText3"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_CANTIDAD_GRAVILLA}"
+                                          binding="#{adicionarFuniasBean.itCantidadGravilla}"
+                                          id="itCantidadGravilla"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_NIVEL_ENGRAVILLADO}"
+                                          binding="#{adicionarFuniasBean.itNivelGravilla}"
+                                          id="itNivelGravilla"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DIAMETRO_PROMEDIO}"
+                                          binding="#{adicionarFuniasBean.itDiametroPromedio}"
+                                          id="itDiametroPromedio"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer24}"
+                                       id="spacer24"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_OTRAS_CONSTRUCCIONES}"
+                                           binding="#{adicionarFuniasBean.outputText4}"
+                                           id="outputText4"/>
+                                           
+                            <af:selectBooleanCheckbox label="#{viewcontrollerBundle.FUN_EMBALSE}"
+                                                      binding="#{adicionarFuniasBean.sbcEmbalse}"
+                                                      id="sbcEmbalse"
+                                                      value="1"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_CAPACIDAD_EMBALSE}"
+                                          binding="#{adicionarFuniasBean.itCapacidadEmbalse}"
+                                          id="itCapacidadEmbalse"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanCheckbox label="#{viewcontrollerBundle.FUN_TANQUE}"
+                                                      binding="#{adicionarFuniasBean.sbcTanque}"
+                                                      id="sbcTanque" value="1"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_CAPACIDAD_TANQUE}"
+                                          binding="#{adicionarFuniasBean.itCapacidadTanque}"
+                                          id="itCapacidadTanque"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanCheckbox label="#{viewcontrollerBundle.FUN_ALBERCA}"
+                                                      binding="#{adicionarFuniasBean.sbcAlberca}"
+                                                      id="sbcAlberca"
+                                                      value="1"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_CAPACIDAD_ALBERCA}"
+                                          binding="#{adicionarFuniasBean.itCapacidadAlberca}"
+                                          id="itCapacidadAlberca"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanCheckbox label="#{viewcontrollerBundle.FUN_OTRO}"
+                                                      binding="#{adicionarFuniasBean.sbcOtro}"
+                                                      id="sbcOtro"
+                                                      value="1"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_CAPACIDAD_OTRO}"
+                                          binding="#{adicionarFuniasBean.itCapacidadOtro}"
+                                          id="itCapacidadOtro"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer25}"
+                                       id="spacer25"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_DISENO}"
+                                           binding="#{adicionarFuniasBean.outputText5}"
+                                           id="outputText5"/>
+                            
+                            <af:inputFile label="#{viewcontrollerBundle.FUN_DOCUMENTO}"
+                                          binding="#{adicionarFuniasBean.ifDocumentoConstruccion}"
+                                          id="ifDocumentoConstruccion"
+                                          value="#{adicionarFuniasBean.uploadedFile}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{adicionarFuniasBean.ifDocumentoConstruccion_valueChangeListener}"
+                                          />
+                            
+                            
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout11}"
+                                             id="panelGroupLayout11"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout12}"
+                                               id="panelGroupLayout12"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarFuniasBean.cmbDatosConstruccion}"
+                                              id="cmbDatosConstruccion"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarFuniasBean.cmbDatosConstruccion_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer2}"
+                                       id="spacer2"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                  </af:panelBox>
+                  <af:panelBox text="#{adicionarFuniasBean.tipoFunias}"
+                               binding="#{adicionarFuniasBean.pnlGeofisica}"
+                               id="pnlGeofisica" visible="false">
+                    <f:facet name="toolbar"/>
+                    
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout40}"
+                                             id="panelGroupLayout40"
+                                             layout="scroll">
+                          <af:panelFormLayout binding="#{adicionarFuniasBean.panelFormLayout11}"
+                                              id="panelFormLayout11">
+                            <f:facet name="footer"/>
+                            
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer19}"
+                                       id="spacer19"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_DATOS}"
+                                           binding="#{adicionarFuniasBean.otDatosGeofisica}"
+                                           id="otDatosGeofisica"/>
+                            <af:inputDate label="#{viewcontrollerBundle.FUN_FECHA_MEDIDA}"
+                                          binding="#{adicionarFuniasBean.idMedidaGeofisica}"
+                                          id="idMedidaGeofisica"
+                                          showRequired="true"
+                                          columns="10"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_EQUIPO_USADO}"
+                                          binding="#{adicionarFuniasBean.itEquipoGeofisica}"
+                                          id="itEquipoGeofisica" rows="4"
+                                          columns="80"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FUN_TIPO_REGISTRO}"
+                                                binding="#{adicionarFuniasBean.socTipoRegistroGeofisica}"
+                                                id="socTipoRegistroGeofisica"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                              <f:selectItems value="#{adicionarFuniasBean.listaTipoRegistro}"
+                                             binding="#{adicionarFuniasBean.siTipoRegistroGeofisica}"
+                                             id="siTipoRegistroGeofisica"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_COMPANIA_EJECUTORA}"
+                                          binding="#{adicionarFuniasBean.itCompaniaEjeGeofisica}"
+                                          id="itCompaniaEjeGeofisica"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_RESISTIVIDAD_LODO}"
+                                          binding="#{adicionarFuniasBean.itResistLodoGeofisica}"
+                                          id="itResistLodoGeofisica"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_TEMPERATURA_LODO}"
+                                          binding="#{adicionarFuniasBean.itTemperaturaLodo}"
+                                          id="itTemperaturaLodo"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_PROFUNDIDAD_REGISTRO}"
+                                          binding="#{adicionarFuniasBean.itProfundidadRegGeofisica}"
+                                          id="itProfundidadRegGeofisica"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_CALIDAD_REGISTRO}"
+                                          binding="#{adicionarFuniasBean.itCalidadRegistroGeofisica}"
+                                          id="itCalidadRegistroGeofisica"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="true"
+                                              />
+                            </af:inputText>
+                            
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer20}"
+                                       id="spacer20"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_CAPAS}"
+                                           binding="#{adicionarFuniasBean.otCapasGeofisica}"
+                                           id="otCapasGeofisica"/>
+                            <af:inputFile label="#{viewcontrollerBundle.FUN_DOCUMENTO}"
+                                          binding="#{adicionarFuniasBean.ifDocumentoGeofisica}"
+                                          id="ifDocumentoGeofisica"
+                                          value="#{adicionarFuniasBean.uploadedFile}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{adicionarFuniasBean.ifDocumentoGeofisica_valueChangeListener}"
+                                          />
+                            
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout23}"
+                                             id="panelGroupLayout23"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout24}"
+                                               id="panelGroupLayout24"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarFuniasBean.cmbGeofisica}"
+                                              id="cmbGeofisica"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarFuniasBean.cmbGeofisica_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer11}"
+                                       id="spacer11"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{adicionarFuniasBean.tipoFunias}"
+                               binding="#{adicionarFuniasBean.pnlDatosDiagnostico}"
+                               id="pnlDatosDiagnostico" visible="false">
+                    <f:facet name="toolbar"/>
+
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout42}"
+                                             id="panelGroupLayout42"
+                                             layout="scroll">
+                          <af:panelFormLayout binding="#{adicionarFuniasBean.panelFormLayout13}"
+                                              id="panelFormLayout13">
+                            <f:facet name="footer"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_LETRINA}"
+                                                   binding="#{adicionarFuniasBean.sbrLetrinaSi}"
+                                                   id="sbrLetrinaSi"
+                                                   group="letrina" value="1"
+                                                   />
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrLetrinaNo}"
+                                                   id="sbrLetrinaNo"
+                                                   group="letrina" value="2"
+                                                   selected="true"
+                                                   />
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaLetrina}"
+                                          id="itDistanciaLetrina"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_CHARCO}"
+                                                   binding="#{adicionarFuniasBean.sbrCharcoSi}"
+                                                   id="sbrCharcoSi" value="1"
+                                                   group="charco"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCharcoNo}"
+                                                   id="sbrCharcoNo" value="2"
+                                                   group="charco"
+                                                   selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaCharco}"
+                                          id="itDistanciaCharco"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_CRIADEROS}"
+                                                   binding="#{adicionarFuniasBean.sbrCriaderoSi}"
+                                                   id="sbrCriaderoSi"
+                                                   value="1" group="criadero"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCriaderoNo}"
+                                                   id="sbrCriaderoNo"
+                                                   group="criadero" value="2"
+                                                   selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaCriadero}"
+                                          id="itDistanciaCriadero"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_FILTRACION}"
+                                                   binding="#{adicionarFuniasBean.sbrFiltracionSi}"
+                                                   id="sbrFiltracionSi"
+                                                   group="filtracion"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrFiltracionNo}"
+                                                   id="sbrFiltracionNo"
+                                                   group="filtracion"
+                                                   value="2" selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaFiltracion}"
+                                          id="itDistanciaFiltracion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer26}"
+                                       id="spacer26"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_CONDICION}"
+                                           binding="#{adicionarFuniasBean.outputText6}"
+                                           id="outputText6"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_CUBIERTA}"
+                                                   binding="#{adicionarFuniasBean.sbrCubiertaSi}"
+                                                   id="sbrCubiertaSi"
+                                                   group="cubierta" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCubiertaNo}"
+                                                   id="sbrCubiertaNo"
+                                                   group="cubierta" value="2"
+                                                   selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_PISO_CEMENTO}"
+                                                   binding="#{adicionarFuniasBean.sbrCementoSi}"
+                                                   id="sbrCementoSi"
+                                                   group="cemento" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCementoNo}"
+                                                   id="sbrCementoNo"
+                                                   group="cemento" value="2"
+                                                   selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_SELLO_SANITARIO}"
+                                                   binding="#{adicionarFuniasBean.sbrSelloSi}"
+                                                   id="sbrSelloSi"
+                                                   group="sello" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrSelloNo}"
+                                                   id="sbrSelloNo"
+                                                   group="sello" value="2"
+                                                   selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_CERCO}"
+                                                   binding="#{adicionarFuniasBean.sbrCercoSi}"
+                                                   id="sbrCercoSi"
+                                                   group="cerco" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCercoNo}"
+                                                   id="sbrCercoNo"
+                                                   group="cerco" value="2"
+                                                   selected="true"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer27}"
+                                       id="spacer27"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_FUENTES_CONTAMINA}"
+                                           binding="#{adicionarFuniasBean.outputText7}"
+                                           id="outputText7"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_CAMPO_INFILTRACION}"
+                                                   binding="#{adicionarFuniasBean.sbrCampoInfiltracionSi}"
+                                                   id="sbrCampoInfiltracionSi"
+                                                   group="campoInfiltracion"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCampoInfiltracionNo}"
+                                                   id="sbrCampoInfiltracionNo"
+                                                   group="campoInfiltracion"
+                                                   value="2" selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaCampoInfiltracion}"
+                                          id="itDistanciaCampoInfiltracion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false"
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   label="#{viewcontrollerBundle.FUN_CEMENTERIO}"
+                                                   binding="#{adicionarFuniasBean.sbrCementerioSi}"
+                                                   id="sbrCementerioSi"
+                                                   group="cementerio"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCementerioNo}"
+                                                   id="sbrCementerioNo"
+                                                   group="cementerio"
+                                                   value="2" selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaCementerio}"
+                                          id="itDistanciaCementerio"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_ESTACION_SERVICIO}"
+                                                   binding="#{adicionarFuniasBean.sbrEstacionServicioSi}"
+                                                   id="sbrEstacionServicioSi"
+                                                   group="estacionServicio"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrEstacionServicioNo}"
+                                                   id="sbrEstacionServicioNo"
+                                                   group="estacionServicio"
+                                                   value="2" selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaEstacion}"
+                                          id="itDistanciaEstacion"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_LAGUNAS_OXIDACION}"
+                                                   binding="#{adicionarFuniasBean.sbrLagunasOxidacionSi}"
+                                                   id="sbrLagunasOxidacionSi"
+                                                   group="lagunas" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrLagunaOxidacionNo}"
+                                                   id="sbrLagunaOxidacionNo"
+                                                   group="lagunas" value="2"
+                                                   selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaLaguna}"
+                                          id="itDistanciaLaguna"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_LAVADERO_VEHICULOS}"
+                                                   binding="#{adicionarFuniasBean.sbrLavaderosSi}"
+                                                   id="sbrLavaderosSi"
+                                                   group="lavaderos" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrLavaderosNo}"
+                                                   id="sbrLavaderosNo"
+                                                   group="lavaderos" value="2"
+                                                   selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itDistanciaLavaderos}"
+                                          id="itDistanciaLavaderos"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_PLANTAS_SACRIFICIO}"
+                                                   binding="#{adicionarFuniasBean.sbrSacrificioSi}"
+                                                   id="sbrSacrificioSi"
+                                                   group="sacrificio"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrSacrificioNo}"
+                                                   id="sbrSacrificioNo"
+                                                   group="sacrificio"
+                                                   value="2" selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itSacrificioDistancia}"
+                                          id="itSacrificioDistancia"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_POZO}"
+                                                   binding="#{adicionarFuniasBean.sbrPozoSi}"
+                                                   id="sbrPozoSi"
+                                                   group="pozoAbandonado"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrPozoNo}"
+                                                   id="sbrPozoNo"
+                                                   group="pozoAbandonado"
+                                                   value="2" selected="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.FUN_DISTANCIA}"
+                                          binding="#{adicionarFuniasBean.itPozoDistancia}"
+                                          id="itPozoDistancia"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer28}"
+                                       id="spacer28"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_RESIDUOS}"
+                                           binding="#{adicionarFuniasBean.outputText8}"
+                                           id="outputText8"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RESIDUOS_AGRICOLAS}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoAgricolaSi}"
+                                                   id="sbrResiduoAgricolaSi"
+                                                   group="residuoAgricola"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoAgricolaNo}"
+                                                   id="sbrResiduoAgricolaNo"
+                                                   group="residuoAgricola"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RESIDUOS_DOMESTICO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoDomesticoSi}"
+                                                   id="sbrResiduoDomesticoSi"
+                                                   group="residuoDomestico"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoDomesticoNo}"
+                                                   id="sbrResiduoDomesticoNo"
+                                                   group="residuoDomestico"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RESIDUOS_GANADERIA}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoGanaderiaSi}"
+                                                   id="sbrResiduoGanaderiaSi"
+                                                   group="residuoGanaderia"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoGanaderiaNo}"
+                                                   id="sbrResiduoGanaderiaNo"
+                                                   group="residuoGanaderia"
+                                                   selected="true" value="2"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RESIDUOS_HOSPITALARIO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoHospitalarioSi}"
+                                                   id="sbrResiduoHospitalarioSi"
+                                                   group="residuoHospitalario"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoHospitalarioNo}"
+                                                   id="sbrResiduoHospitalarioNo"
+                                                   group="residuoHospitalario"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RESIDUOS_INDUSTRIAL}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoIndustrialSi}"
+                                                   id="sbrResiduoIndustrialSi"
+                                                   group="residuoIndustrial"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoIndustrialNo}"
+                                                   id="sbrResiduoIndustrialNo"
+                                                   group="residuoIndustrial"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RESIDUOS_MINERO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoMineroSi}"
+                                                   id="sbrResiduoMineroSi"
+                                                   group="residuoMinero"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrResiduoMineroNo}"
+                                                   id="sbrResiduoMineroNo"
+                                                   group="residuoMinero"
+                                                   value="2" selected="true"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer29}"
+                                       id="spacer29"/>
+                            <af:outputText value="#{viewcontrollerBundle.FUN_DISPOSICION}"
+                                           binding="#{adicionarFuniasBean.outputText9}"
+                                           id="outputText9"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_BOTADERO}"
+                                                   binding="#{adicionarFuniasBean.sbrBotaderoCieloAbiertoSi}"
+                                                   id="sbrBotaderoCieloAbiertoSi"
+                                                   group="botaderoCieloAbierto"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrBotaderoCieloAbiertoNo}"
+                                                   id="sbrBotaderoCieloAbiertoNo"
+                                                   group="botaderoCieloAbierto"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_COMPOSTAJE}"
+                                                   binding="#{adicionarFuniasBean.sbrCompostajeSi}"
+                                                   id="sbrCompostajeSi"
+                                                   group="compostaje"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrCompostajeNo}"
+                                                   id="sbrCompostajeNo"
+                                                   group="compostaje"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_INCINERACION}"
+                                                   binding="#{adicionarFuniasBean.sbrIncineracionSi}"
+                                                   id="sbrIncineracionSi"
+                                                   group="incineracion"
+                                                   value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrIncineracionNo}"
+                                                   id="sbrIncineracionNo"
+                                                   group="incineracion"
+                                                   value="2" selected="true"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_SI}"
+                                                   label="#{viewcontrollerBundle.FUN_RECICLAJE}"
+                                                   binding="#{adicionarFuniasBean.sbrReciclajeSi}"
+                                                   id="sbrReciclajeSi"
+                                                   group="reciclaje" value="1"/>
+                            <af:selectBooleanRadio text="#{viewcontrollerBundle.OPCION_NO}"
+                                                   binding="#{adicionarFuniasBean.sbrReciclajeNo}"
+                                                   id="sbrReciclajeNo"
+                                                   group="reciclaje" value="2"
+                                                   selected="true"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout27}"
+                                             id="panelGroupLayout27"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout28}"
+                                               id="panelGroupLayout28"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarFuniasBean.cmbDatosDiagnostico}"
+                                              id="cmbDatosDiagnostico"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarFuniasBean.cmbDatosDiagnostico_actionListener}"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarFuniasBean.spacer13}"
+                                       id="spacer13"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                  </af:panelBox>
+                  
+                  <af:popup binding="#{adicionarFuniasBean.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{adicionarFuniasBean.d_registro_exitoso}"
+                               id="d_registro_exitoso" type="none"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                   closeIconVisible="false"
+                               >
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{adicionarFuniasBean.panelGroupLayout44}"
+                                             id="panelGroupLayout44">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{adicionarFuniasBean.cbAceptar}"
+                                            id="cbAceptar"
+                                            action="listarFunias"
+                                            immediate="true" partialSubmit="true" 
+                                                />
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:panelStretchLayout binding="#{adicionarFuniasBean.panelStretchLayout16}"
+                                             id="panelStretchLayout16"
+                                             endWidth="0px"
+                                             topHeight="0px" bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="#{viewcontrollerBundle.FUN_REGISTRADA}"
+                                         binding="#{adicionarFuniasBean.ot8}"
+                                         id="ot8"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image binding="#{adicionarFuniasBean.image1}"
+                                    id="image1"
+                                    source="/imgs/info.png" 
+                                    shortDesc="info"/>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarFuniasBean-->
+</jsp:root>

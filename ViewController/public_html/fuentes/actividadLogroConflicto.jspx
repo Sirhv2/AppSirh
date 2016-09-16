@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document>
+      <af:form>
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout bottomHeight="0" topHeight="55px"
+                                   endWidth="0px" startWidth="0px">
+              <f:facet name="center">
+                <af:panelGroupLayout layout="scroll">
+                  <af:panelBox showDisclosure="false" visible="true"
+                               text="Poblacion afectada">
+                    <af:panelFormLayout rows="10">
+                      
+                      <af:inputText label="Nombre Fuente"
+                                    value="#{actividadLogroConflictoBean.fuente.nombre}"
+                                    readOnly="true"/>
+                      <af:inputText requiredMessageDetail="Nombre de conflicto requerido"
+                                    contentStyle="text-transform:uppercase"
+                                    label="Nombre conflicto"
+                                    value="#{actividadLogroConflictoBean.conflicto.nombre}"
+                                    readOnly="true"/>
+                      <af:selectManyListbox label="Actividades economicas involucradas"
+                                            value="#{actividadLogroConflictoBean.selectedActividadesEconomicasList}">
+                        <f:selectItems value="#{actividadLogroConflictoBean.actividadesEconomicasSelectedItemList}"/>
+                      </af:selectManyListbox>
+                      <af:inputText contentStyle="text-transform:uppercase"
+                                    label="Otro. Cual ?"
+                                    value="#{actividadLogroConflictoBean.conflicto.actividadEconomicaOtro}"/>
+                                    
+                       <af:selectManyListbox label="Logros alcanzados"
+                                            value="#{actividadLogroConflictoBean.selectedLogrosList}">
+                        <f:selectItems value="#{actividadLogroConflictoBean.logrosSelectedItemList}"/>
+                      </af:selectManyListbox>
+                      <af:inputText contentStyle="text-transform:uppercase"
+                                    label="Otro. Cual ?"
+                                    value="#{actividadLogroConflictoBean.conflicto.logroOtro}"/>             
+                      <!-- -->
+                      <af:commandButton inlineStyle="margin-top:10px" text="Actualizar"
+                                        icon="/imgs/next.png"
+                                        actionListener="#{actividadLogroConflictoBean.cbNext1_actionListener}"/>
+                      <!-- -->              
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{actividadLogroConflictoBean.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{actividadLogroConflictoBean.d_registro_exitoso}"
+                               id="d_registro_exitoso" type="none"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               closeIconVisible="false">
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout>
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            actionListener="#{actividadLogroConflictoBean.cb_aceptar_actionListener}"
+                                            immediate="true"
+                                            partialSubmit="true"
+                                            action="#{actividadLogroConflictoBean.getAceptarAction}"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:panelStretchLayout endWidth="0px" topHeight="0px"
+                                             bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="Conflicto actualizado exitosamente"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image source="/imgs/info.png" shortDesc="info"/>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout layout="horizontal">
+                  <af:panelGroupLayout>
+                    <af:panelGroupLayout layout="horizontal">
+                      <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                      action="fuentes"/>
+                      <af:spacer width="25" height="10"/>
+                      <af:commandLink text="Todos los conflictos"
+                                      action="#{actividadLogroConflictoBean.getAceptarAction}"
+                                      actionListener="#{actividadLogroConflictoBean.lk_todosConflictos_actionListener}"/>
+                      <af:spacer width="25" height="10"/>
+                      <af:outputText value="#{viewcontrollerBundle.FNT_FUENTE} : #{actividadLogroConflictoBean.fuente.nombre}"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"/>
+                    <af:panelGroupLayout layout="horizontal"
+                                         inlineStyle="width:97%">
+                      <af:menuBar id="menuBar1" inlineStyle="width:99%;">
+                        <af:menu text="Detalles Conflicto">
+                          <af:commandMenuItem action="datosConflicto"
+                                              text="Datos Basicos"/>
+                          <af:commandMenuItem action="tipoConflicto"
+                                              text="Tipo y Origen"/>
+                          <af:commandMenuItem action="actoresConflicto"
+                                              text="Actores y Poblacion afectada"/>
+                          <af:commandMenuItem action="derechosConflicto"
+                                              text="Derechos Afectados"/>
+                          <af:commandMenuItem action="gestionConflicto"
+                                              text="Gestion Realizada"/>
+                        </af:menu>
+                      </af:menuBar>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:actividadLogroConflictoBean-->
+</jsp:root>

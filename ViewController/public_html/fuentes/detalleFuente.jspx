@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document title="Title 1" binding="#{detalleFuenteBean.document1}"
+                 id="document1">
+      <af:form binding="#{detalleFuenteBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="ptf1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleFuenteBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" 
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100.0%;"
+                                   >
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{detalleFuenteBean.panelSplitter1}"
+                                  id="panelSplitter1" 
+                                  orientation="horizontal" 
+                                  disabled="true"
+                                  splitterPosition="700"
+                                  >
+                  <f:facet name="first">
+                    <af:panelStretchLayout binding="#{detalleFuenteBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           topHeight="0px" startWidth="0px"
+                                           endWidth="0px" bottomHeight="0px"
+                                           >
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="scroll"
+                                             >
+                          <af:panelBox text="#{viewcontrollerBundle.FNT_DETALLE_FUENTE}"
+                                       binding="#{detalleFuenteBean.panelBox1}"
+                                       id="panelBox1"
+                                       showDisclosure="false"
+                                       inlineStyle="height:329px;"
+                                       >
+                            <af:panelFormLayout binding="#{detalleFuenteBean.panelFormLayout1}"
+                                                id="panelFormLayout1">
+                              <af:selectOneChoice label="#{viewcontrollerBundle.FNT_TIPO}"
+                                                  binding="#{detalleFuenteBean.selectOneChoice7}"
+                                                  id="selectOneChoice7"
+                                                  showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  value="#{detalleFuenteBean.fuente.idTipoFuente}"
+                                                  valueChangeListener="#{detalleFuenteBean.selectOneChoice7_valueChangeListener}">
+                                <f:selectItems value="#{detalleFuenteBean.listaTipos}"
+                                               binding="#{detalleFuenteBean.selectItems7}"
+                                               id="selectItems7"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{viewcontrollerBundle.FNT_NOMBRE}"
+                                            binding="#{detalleFuenteBean.it_nombre}"
+                                            id="it_nombre" required="true"
+                                            requiredMessageDetail="#{viewcontrollerBundle.fuente_no_nombre}"
+                                            value="#{detalleFuenteBean.fuente.nombre}"
+                                            contentStyle="text-transform:uppercase"
+                                            helpTopicId="detalleFuente"
+                                            />
+                              <af:inputText label="#{viewcontrollerBundle.FNT_DESCRIPCION}"
+                                            binding="#{detalleFuenteBean.it_descripcion}"
+                                            id="it_descripcion"
+                                            required="false" rows="3"
+                                            columns="60"
+                                            value="#{detalleFuenteBean.fuente.descripcion}"
+                                            />
+                              <af:selectBooleanRadio text="#{viewcontrollerBundle.FNT_COMPART_OPCION_SI}"
+                                                     label="#{viewcontrollerBundle.FNT_COMPARTIDA}"
+                                                     binding="#{detalleFuenteBean.sbr_si}"
+                                                     id="sbr_si"
+                                                     required="true" group="compartida"
+                                                     requiredMessageDetail="#{viewcontrollerBundle.fuente_no_especifica}"
+                                                     />
+                              <af:selectBooleanRadio binding="#{detalleFuenteBean.sbr_no}"
+                                                     id="sbr_no"
+                                                     group="compartida" 
+                                                     text="#{viewcontrollerBundle.FNT_COMPART_OPCION_NO}"
+                                                     />
+                              <af:inputText label="#{viewcontrollerBundle.FNT_CODCUENCA_AA}"
+                                            binding="#{detalleFuenteBean.itcodCuenca}"
+                                            id="itcodCuenca"
+                                            value="#{ detalleFuenteBean.fuente.codigoCuencaAA}"
+                                            />
+                              <af:inputText label="Fuente CAR"
+                                            visible="#{detalleFuenteBean.esCar}"
+                                            binding="#{detalleFuenteBean.it_fuenteCAR}"
+                                            id="it_fuenteCAR"
+                                            value="#{detalleFuenteBean.fuente.fuente_car}"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.CPT_PROVINCIA}"
+                                                binding="#{detalleFuenteBean.socProvinciaHidro}"
+                                                id="socProvinciaHidro" showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                value="#{detalleFuenteBean.fuente.id_provinciahidro}"
+                                              autoSubmit="true" immediate="true"
+                                              
+                                              >
+                              <f:selectItems value="#{detalleFuenteBean.listaProvincias}"
+                                             binding="#{detalleFuenteBean.siProvinciaHidro}"
+                                             id="siProvinciaHidro"/>
+                            </af:selectOneChoice>
+                            
+                            <af:inputText label="#{viewcontrollerBundle.CPT_UNIDAD}"
+                                          binding="#{detalleFuenteBean.itUnidadHidrogeologica}"
+                                          id="itUnidadHidrogeologica"
+                                           value="#{ detalleFuenteBean.fuente.unidadhidro}"
+                                     
+                                          />
+                                        
+                                            
+                              <f:facet name="footer">
+                                <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout2}"
+                                                     id="panelGroupLayout2"
+                                                     halign="right"
+                                                     layout="vertical"
+                                                     inlineStyle="height:139px;"
+                                                     >
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detalleFuenteBean.spacer1}"
+                                             id="spacer1"/>
+                                  <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout3}"
+                                                       id="panelGroupLayout3"
+                                                       layout="horizontal"
+                                                       halign="center"
+                                                       inlineStyle="height:80px;"
+                                                       >
+                                    <af:commandButton text="#{viewcontrollerBundle.boton_actualizar}"
+                                                      binding="#{detalleFuenteBean.cbAceptar}"
+                                                      id="cbAceptar"
+                                                      icon="/imgs/check_mark.png"
+                                                      actionListener="#{detalleFuenteBean.cbAceptar_actionListener}"
+                                                      />
+                                    <af:spacer width="10" height="10"
+                                               binding="#{detalleFuenteBean.spacer2}"
+                                               id="spacer2"/>
+                                    <af:commandButton text="#{viewcontrollerBundle.auditoria_borrar_tabla_borrar}"
+                                                      binding="#{detalleFuenteBean.cbBorrar}"
+                                                      id="cbBorrar"
+                                                      icon="/imgs/close.png"
+                                                      actionListener="#{detalleFuenteBean.cbBorrar_actionListener}"
+                                                      />
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:panelFormLayout>
+                          </af:panelBox>
+                          <af:popup binding="#{detalleFuenteBean.popup_borrar}"
+                                    id="popup_borrar">
+                            <af:dialog binding="#{detalleFuenteBean.d_borrar}"
+                                       id="d_borrar" type="none"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                       noTextAndAccessKey="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                       title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                       >
+                              <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout4}"
+                                                   id="panelGroupLayout4">
+                                <af:outputText
+                                               binding="#{detalleFuenteBean.otBorrar1}"
+                                               id="otBorrar1"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{detalleFuenteBean.spacer3}"
+                                           id="spacer3"/>
+                                <af:outputText
+                                               binding="#{detalleFuenteBean.otBorrar2}"
+                                               id="otBorrar2"/>
+                              </af:panelGroupLayout>
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout5}"
+                                                     id="panelGroupLayout5">
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                                    binding="#{detalleFuenteBean.cb_si_borrar}"
+                                                    id="cb_si_borrar"
+                                                    actionListener="#{detalleFuenteBean.cb_si_borrar_actionListener}"
+                                                    action="fuentes"
+                                                    />
+                                  <af:spacer width="10" height="10"
+                                             binding="#{detalleFuenteBean.spacer4}"
+                                             id="spacer4"/>
+                                  <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                                    binding="#{detalleFuenteBean.cb_no_borrar}"
+                                                    id="cb_no_borrar"
+                                                    actionListener="#{detalleFuenteBean.cb_no_borrar_actionListener}"
+                                                    />
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:dialog>
+                          </af:popup>
+                          <af:popup binding="#{detalleFuenteBean.p_registro_exitoso}"
+                                    id="p_registro_exitoso">
+                            <af:dialog binding="#{detalleFuenteBean.d_registro_exitoso}"
+                                       id="d_registro_exitoso"
+                                       type="none"
+                                       title="#{viewcontrollerBundle.fuente_actualizada}"
+                                       affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                       closeIconVisible="false"
+                                       >
+                              <f:facet name="buttonBar">
+                                <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout6}"
+                                                     id="panelGroupLayout6">
+                                  <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                    binding="#{detalleFuenteBean.cbAceptarDi}"
+                                                    id="cbAceptarDi"
+                                                    action="fuentes"
+                                                    immediate="true" 
+                                                    partialSubmit="true"
+                                                    />
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <af:panelStretchLayout binding="#{detalleFuenteBean.panelStretchLayout3}"
+                                                     id="panelStretchLayout3"
+                                                     endWidth="0px" 
+                                                     topHeight="0px"
+                                                     bottomHeight="2px"
+                                                     inlineStyle="height:41px; width:316px;"
+                                                     >
+                                <f:facet name="bottom"/>
+                                <f:facet name="center">
+                                  <af:outputText value="#{viewcontrollerBundle.fuente_actualizada}"
+                                                 binding="#{detalleFuenteBean.ot8}"
+                                                 id="ot8"/>
+                                </f:facet>
+                                <f:facet name="start">
+                                  <af:image binding="#{detalleFuenteBean.i1}"
+                                            id="i1"
+                                            source="/imgs/info.png" shortDesc="info"
+                                            />
+                                </f:facet>
+                                <f:facet name="end"/>
+                                <f:facet name="top"/>
+                              </af:panelStretchLayout>
+                            </af:dialog>
+                          </af:popup>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelStretchLayout binding="#{detalleFuenteBean.panelStretchLayout4}"
+                                           id="panelStretchLayout4"
+                                           topHeight="0px" startWidth="2px"
+                                           bottomHeight="6px"
+                                           >
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}"
+                                     binding="#{detalleFuenteBean.pb_tramos}"
+                                     id="pb_tramos"
+                                     showDisclosure="false"
+                                     >
+                          <f:facet name="toolbar"/>
+                          <af:panelCollection binding="#{detalleFuenteBean.pc1}"
+                                              id="pc1">
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{detalleFuenteBean.marchivo}"
+                                       id="marchivo">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.FNT_ADICIONAR_TRAMO}"
+                                                    binding="#{detalleFuenteBean.cmiAddTramo}"
+                                                    id="cmiAddTramo"
+                                                    action="adicionarTramo"
+                                                    icon="/imgs/add.png"
+                                                    rendered="#{!detalleFuenteBean.fuente.esSubterranea}"
+                                                    />
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:tree binding="#{detalleFuenteBean.t1}"
+                                     id="t1"
+                                     value="#{TramosTreeHandler.treemodel}"
+                                     contentDelivery="immediate" var="node"
+                                     varStatus="nodeStatus"
+                                     >
+                              <f:facet name="nodeStamp">
+                                <af:commandLink text="#{node.description}"
+                                                binding="#{detalleFuenteBean.cl2}"
+                                                id="cl2"
+                                                action="#{node.getAction}"
+                                                inlineStyle="#{node.inlineStyle}"
+                                                actionListener="#{detalleFuenteBean.cl2_actionListener}"
+                                                >
+                                      <f:attribute name="nombreParametro"
+                                                   value="#{node.nombreParametro}"/>
+                                      <f:attribute name="valorParametro"
+                                                   value="#{node.data}"/>
+                                      <f:attribute name="extraInfo"
+                                                   value="#{node.extraData}"/>
+                                      <f:attribute name="extraInfo2"
+                                                   value="#{node.extraData2}"/>
+                                </af:commandLink>
+                              </f:facet>
+                            </af:tree>
+                          </af:panelCollection>
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{detalleFuenteBean.panelGroupLayout7}"
+                                     id="panelGroupLayout7"
+                                     layout="horizontal"
+                                     >
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuenteBean.spacer5}"
+                             id="spacer5"/>
+                  <af:commandLink text="#{viewcontrollerBundle.FNT_TODAS}"
+                                  binding="#{detalleFuenteBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="fuentes"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleFuenteBean.spacer6}"
+                             id="spacer6"/>
+                  <af:outputText value="#{viewcontrollerBundle.FNT_FUENTE} : #{detalleFuenteBean.fuente.nombre}"
+                                 binding="#{detalleFuenteBean.outputText1}"
+                                 id="outputText1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleFuenteBean-->
+</jsp:root>

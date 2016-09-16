@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{DashBoardPomcaGrafico1Bean.document1}"
+                 id="document1">
+      <af:form binding="#{DashBoardPomcaGrafico1Bean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{DashBoardPomcaGrafico1Bean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{DashBoardPomcaGrafico1Bean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="199"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{DashBoardPomcaGrafico1Bean.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{DashBoardPomcaGrafico1Bean.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPomcaGrafico1Bean.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Inicio"
+                                        binding="#{DashBoardPomcaGrafico1Bean.clink_inicio}"
+                                        id="clink_inicio" action="#{DashBoardPomcaGrafico1Bean.getRedireccionar}"
+                                  actionListener="#{DashBoardPomcaGrafico1Bean.redireccionarAOrigen}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPomcaGrafico1Bean.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="#{viewcontrollerBundle.POMCA_GRAFICO1}"
+                                        binding="#{DashBoardPomcaGrafico1Bean.clink_grafico1}"
+                                        id="clink_grafico1"
+                                        action="dashBoardPomcaGrafico1"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPomcaGrafico1Bean.spacer6}"
+                                   id="spacer6"/>
+                        <af:commandLink text="#{viewcontrollerBundle.POMCA_GRAFICO2}"
+                                        binding="#{DashBoardPomcaGrafico1Bean.clink_grafico2}"
+                                        id="clink_grafico2"
+                                        action="dashBoardPomcaGrafico3"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{DashBoardPomcaGrafico1Bean.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelBox text="#{viewcontrollerBundle.POMCA_GRAFICO1}"
+                                   binding="#{DashBoardPomcaGrafico1Bean.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1"
+                                   showDisclosure="false" immediate="true"
+                                   inlineStyle="width:800px; height:600px;">
+                        <f:facet name="toolbar"/>
+                        <af:panelSplitter binding="#{DashBoardPomcaGrafico1Bean.panelSplitter2}"
+                                          id="panelSplitter2"
+                                          orientation="vertical"
+                                          splitterPosition="90" disabled="true"
+                                          inlineStyle="width:100%;">
+                          <f:facet name="first">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{DashBoardPomcaGrafico1Bean.panelGroupLayout4}"
+                                                 id="panelGroupLayout4">
+                              <af:panelFormLayout binding="#{DashBoardPomcaGrafico1Bean.panelFormLayout12}"
+                                                  id="panelFormLayout12"
+                                                  rows="1" maxColumns="2">
+                                
+                                <af:selectOneChoice label="#{viewcontrollerBundle.CUENTA_TITULO}"
+                                                    binding="#{DashBoardPomcaGrafico1Bean.sc_fuentes}"
+                                                    id="sc_fuentes"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    autoSubmit="true"
+                                                    immediate="true"
+                                                    showRequired="true"
+                                                    valueChangeListener="#{DashBoardPomcaGrafico1Bean.sc_cuenca_valueChangeListener}">
+                                  <f:selectItems value="#{DashBoardPomcaGrafico1Bean.listaCuencas}"
+                                                 binding="#{DashBoardPomcaGrafico1Bean.selectItems11}"
+                                                 id="selectItems11"/>
+                                </af:selectOneChoice>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <f:facet name="second">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{DashBoardPomcaGrafico1Bean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelFormLayout binding="#{DashBoardPomcaGrafico1Bean.panelFormLayout1}"
+                                                  id="panelFormLayout1"
+                                                  visible="false" rows="1"
+                                                  maxColumns="1">
+                                <dvt:barGraph id="barGraphEjecucionCuencas"
+                                              subType="BAR_VERT_CLUST"
+                                              binding="#{DashBoardPomcaGrafico1Bean.barGraphEjecucionCuencas}"
+                                              threeDEffect="true"
+                                              imageHeight="1000"
+                                              imageWidth="1000"
+                                              contentDelivery="immediate"
+                                              dynamicResize="DYNAMIC_SIZE"
+                                              drillingEnabled="true"
+                                              value="#{DashBoardPomcaGrafico1Bean.graphData}"
+                                              inlineStyle="width:700px;height:260px;">
+                                  <dvt:background>
+                                    <dvt:specialEffects/>
+                                  </dvt:background>
+                                  <dvt:graphPlotArea/>
+                                  <dvt:seriesSet>
+                                    <dvt:series/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:barGraph>
+                                <f:facet name="footer"/>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelSplitter>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:DashBoardPomcaGrafico1Bean-->
+</jsp:root>

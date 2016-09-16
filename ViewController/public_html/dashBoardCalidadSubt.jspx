@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{dashBoardCalidad.document1}" id="document1">
+      <af:form binding="#{dashBoardCalidad.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{dashBoardCalidad.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="195px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{dashBoardCalidad.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="199"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{dashBoardCalidad.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{dashBoardCalidad.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCalidad.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Observatorio"
+                                  binding="#{dashBoardCalidad.clink_inicio}"
+                                  id="clink_inicio" action="#{dashBoardCalidad.getRedireccionar}"
+                                  actionListener="#{dashBoardCalidad.redireccionarAOrigen}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCalidad.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO1}"
+                                        binding="#{dashBoardCalidad.clink_grafico1}"
+                                        id="clink_grafico1"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCalidad.spacer6}"
+                                   id="spacer6"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO2}"
+                                        binding="#{dashBoardCalidad.clink_grafico2}"
+                                        id="clink_grafico2"
+                                        action="dashBoardCalidadGrafico2"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoardCalidad.spacer7}"
+                                   id="spacer7"/>
+                        <af:commandLink text="#{viewcontrollerBundle.GRAFICO3}"
+                                        binding="#{dashBoardCalidad.cink3}"
+                                        id="cink3"
+                                        action="dashBoardCalidadGrafico3"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{dashBoardCalidad.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelBox text="#{viewcontrollerBundle.GRAFICO1}"
+                                   binding="#{dashBoardCalidad.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1"
+                                   showDisclosure="false" immediate="true"
+                                   inlineStyle="width:800px; height:600px;">
+                        <f:facet name="toolbar"/>
+                        <af:panelSplitter binding="#{dashBoardCalidad.panelSplitter3}"
+                                          id="panelSplitter3"
+                                          orientation="vertical"
+                                          splitterPosition="500"
+                                          inlineStyle="width:100%;">
+                          <f:facet name="first">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{dashBoardCalidad.graficaTabla}"
+                                                 id="graficaTabla">
+                              <af:panelFormLayout binding="#{dashBoardCalidad.panelFormGrafico}"
+                                                  id="panelFormGrafico"
+                                                  visible="false" rows="1"
+                                                  maxColumns="1">
+                                <af:activeOutputText binding="#{dashBoardCalidad.datos}"
+                                                     id="datos"
+                                                     value="#{viewcontrollerBundle.NORMA_DATOS}"
+                                                     styleClass="AFBrandingBarTitle"/>
+                                <af:activeOutputText binding="#{dashBoardCalidad.ot_fuente}"
+                                                     id="ot_fuente"/>
+                                <af:spacer width="20" height="20"
+                                           binding="#{dashBoardCalidad.spacer2}"
+                                           id="spacer2"/>
+                                <dvt:barGraph id="barGraphMuestrasFuente"
+                                              subType="BAR_VERT_CLUST"
+                                              binding="#{dashBoardCalidad.barGraphMuestrasFuente}"
+                                              threeDEffect="true"
+                                              imageHeight="1000"
+                                              imageWidth="1000"
+                                              contentDelivery="immediate"
+                                              dynamicResize="DYNAMIC_SIZE"
+                                              animationOnDisplay="AUTO"
+                                              drillingEnabled="true"
+                                              value="#{ dashBoardCalidad.graphData}"
+                                              inlineStyle="width:790px;height:320px;">
+                                  <dvt:background>
+                                    <dvt:specialEffects/>
+                                  </dvt:background>
+                                  <dvt:graphPlotArea/>
+                                  <dvt:seriesSet>
+                                    <dvt:series/>
+                                  </dvt:seriesSet>
+                                  <dvt:markerText>
+                                    <dvt:x1Format>
+                                      <dvt:numberFormat decimalDigit="0"/>
+                                    </dvt:x1Format>
+                                    <dvt:y1Format>
+                                      <dvt:numberFormat decimalDigit="0"/>
+                                    </dvt:y1Format>
+                                  </dvt:markerText>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:barGraph>
+                                <af:spacer width="20" height="20"
+                                           binding="#{dashBoardCalidad.spacer10}"
+                                           id="spacer10"/>
+                                <af:outputLabel value="Nota: Para graficar estos datos el Sistema asumió que la unidad de medida es la misma."
+                                                binding="#{dashBoardCalidad.outputLabel2}"
+                                                id="outputLabel2"/>
+                                <af:spacer width="20" height="20"
+                                           binding="#{dashBoardCalidad.spacer11}"
+                                           id="spacer11"/>
+                                <af:panelGroupLayout binding="#{dashBoardCalidad.panelGroupLayout7}"
+                                                     id="panelGroupLayout7"
+                                                     layout="scroll"
+                                                     inlineStyle="width:100%;">
+                                  <af:panelCollection binding="#{dashBoardCalidad.panelCollection1}"
+                                                      id="panelCollection1"
+                                                      featuresOff="wrapMenuItem showAsTopMenuItem"
+                                                      inlineStyle="width:98%;">
+                                    <f:facet name="menus">
+                                      <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                               binding="#{dashBoardCalidad.menu1}"
+                                               id="menu1">
+                                        <af:commandMenuItem text="#{viewcontrollerBundle.EXCEL}"
+                                                            binding="#{dashBoardCalidad.salidaExcel}"
+                                                            id="salidaExcel"
+                                                            actionListener="#{dashBoardCalidad.salidaExcel_actionListener}"/>
+                                      </af:menu>
+                                    </f:facet>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{dashBoardCalidad.listaDatos}"
+                                              var="row"
+                                              binding="#{dashBoardCalidad.tableDatosGrafico1}"
+                                              id="tableDatosGrafico1"
+                                              width="98%">
+                                      <af:column sortable="false"
+                                                 headerText="Num" align="start"
+                                                 width="30">
+                                        <af:outputText value="#{row.num}"/>
+                                      </af:column>
+                                      <af:column sortable="false"
+                                                 headerText="Fecha Muestra"
+                                                 align="start" width="150">
+                                        <af:outputText value="#{row.fechaMuestreo}"/>
+                                      </af:column>
+                                      <af:column sortable="false"
+                                                 headerText="Fuente"
+                                                 align="start" width="200">
+                                        <af:outputText value="#{row.fuente}"/>
+                                      </af:column>
+                                      <af:column sortable="false"
+                                                 headerText="Punto Monitoreo"
+                                                 align="start" width="250">
+                                        <af:outputText value="#{row.puntoMonitoreo}"/>
+                                      </af:column>
+                                      <af:column sortable="false"
+                                                 headerText="Numero Muestra"
+                                                 align="start" width="100">
+                                        <af:outputText value="#{row.nroMuestra}"/>
+                                      </af:column>
+                                    </af:table>
+                                  </af:panelCollection>
+                                </af:panelGroupLayout>
+                                <f:facet name="footer"/>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <f:facet name="second"/>
+                        </af:panelSplitter>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{dashBoardCalidad.panelGroupLayout6}"
+                                     id="panelGroupLayout6">
+                  <jsp:include page="/calidad/filtrosCalidadSubt.jsff"
+                               flush="true"/>
+                  <af:spacer width="20" height="10"
+                             binding="#{dashBoardCalidad.spacer8}"
+                             id="spacer8"/>
+                  <af:panelGroupLayout binding="#{dashBoardCalidad.panelGroupLayout1}"
+                                       id="panelGroupLayout1" halign="right"
+                                       layout="vertical">
+                    <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                      binding="#{dashBoardCalidad.cb_buscar}"
+                                      id="cb_buscar"
+                                      icon="/imgs/binoculars_24.png"
+                                      immediate="true"
+                                      actionListener="#{dashBoardCalidad.cb_buscar_actionListener}"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:dashBoardCalidad-->
+</jsp:root>

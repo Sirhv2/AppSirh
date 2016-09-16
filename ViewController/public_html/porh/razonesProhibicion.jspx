@@ -1,0 +1,538 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{razonesProhibicion.d2}">
+      <af:form id="f2" binding="#{razonesProhibicion.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout id="psl_total" startWidth="0px"
+                                   endWidth="0px" topHeight="20px"
+                                   bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelBox text="#{viewcontrollerBundle.DEFINIR_RAZONES_DE_PROHIBICI_U}"
+                             binding="#{razonesProhibicion.pb1}" id="pb1"
+                             showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelGroupLayout binding="#{razonesProhibicion.panelGroupLayout1}"
+                                       id="pgl2_1" layout="scroll">
+                    <af:panelGroupLayout binding="#{razonesProhibicion.pgl4}"
+                                         layout="scroll" id="pgl4">
+                      <af:popup binding="#{razonesProhibicion.p_borrar}"
+                                id="p_borrar">
+                        <af:dialog binding="#{razonesProhibicion.d_borrar}"
+                                   id="d_borrar"
+                                   title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                   affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                                   cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}"
+                                   dialogListener="#{razonesProhibicion.d_borrar_dialogListener}">
+                          <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                         binding="#{razonesProhibicion.ot5}"
+                                         id="ot5"/>
+                        </af:dialog>
+                      </af:popup>
+                    </af:panelGroupLayout>
+                    <!--Inicio panel de datos de ingreso ****************************************************************-->
+                    
+                      <af:panelSplitter binding="#{razonesProhibicion.panelSplitter0}"
+                                        id="panelSplitter0"
+                                        splitterPosition="500" 
+                                        inlineStyle="width:100%; height:250px;">
+                        <f:facet name="first">
+                        <af:panelFormLayout id="pfl2_3" 
+                                              inlineStyle="width:100%;">
+                          <af:selectManyCheckbox label="#{viewcontrollerBundle.PROHIBICION_PARA}"
+                                                 binding="#{razonesProhibicion.smc_puntosMonitoreo}"
+                                                 id="smc_puntosMonitoreo"
+                                                 showRequired="true"
+                                                 value="#{razonesProhibicion.listaPuntosMonitoreoSeleccionadas}">
+                            <f:selectItems value="#{razonesProhibicion.listaPuntosMonitoreo}"
+                                           binding="#{razonesProhibicion.si1}"
+                                           id="si1"/>
+                          </af:selectManyCheckbox>
+                          </af:panelFormLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                        <af:panelFormLayout id="panelFormLayoutProhibicion" binding="#{razonesProhibicion.panelFormLayoutProhibicion}"
+                                            inlineStyle="width:100%;">
+                          <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_PROHIBICION}"
+                                              binding="#{razonesProhibicion.selectOneChoiceProhibicion}"
+                                              id="selectOneChoiceProhibicion"
+                                              showRequired="true"
+                                              valueChangeListener="#{razonesProhibicion.valueChangeListenerProhibicion}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              value="#{razonesProhibicion.prohibicionSeleccionada.prohibicion}"
+                                              autoSubmit="true">
+                            <f:selectItems value="#{razonesProhibicion.listaProhibicion}"
+                                           binding="#{razonesProhibicion.selectItemsProhibicion}"
+                                           id="selectItemsProhibicion"/>
+                          </af:selectOneChoice>
+                          
+                          <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_PROHIBICION_DE}"
+                                              binding="#{razonesProhibicion.selectOneChoiceProhibicionTipo}"
+                                              id="selectOneChoiceProhibicionTipo"
+                                              showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              autoSubmit="true">
+                            <f:selectItems value="#{razonesProhibicion.listaProhibicionTipo}"
+                                           binding="#{razonesProhibicion.selectItemsProhibicionTipo}"
+                                           id="selectItemsProhibicionTipo"/>
+                          </af:selectOneChoice>
+
+
+                          
+                          <af:inputText label="#{viewcontrollerBundle.SECTOR}"
+                                        binding="#{razonesProhibicion.it_sector}"
+                                        id="it_sector" showRequired="true"/>
+                          <af:inputText label="#{viewcontrollerBundle.JUSTIFICACI_U00F3N}"
+                                        binding="#{razonesProhibicion.it_justificacion}"
+                                        id="it_justificacion" rows="3"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_inicial}"
+                                        binding="#{razonesProhibicion.id_fecha_inicial}"
+                                        id="id_fecha_inicial" columns="10"
+                                        showRequired="true"/>
+                          <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}"
+                                        binding="#{razonesProhibicion.id_fecha_final}"
+                                        id="id_fecha_final" columns="10"
+                                        showRequired="true"/>
+                                        
+                          <af:inputText label="#{viewcontrollerBundle.LONGITUD_PROHIBICION}"
+                                        binding="#{razonesProhibicion.it_longitud_prohibicion}"
+                                        id="it_longitud_prohibicion" 
+                                        showRequired="true"/>
+                        </af:panelFormLayout>
+                      </f:facet>
+                      </af:panelSplitter>
+                 
+                    <af:panelSplitter binding="#{razonesProhibicion.panelSplitter1}"
+                                      id="panelSplitter1" splitterPosition="500"
+                                      inlineStyle="width:100%;">
+                      <f:facet name="first">
+                        <!-- Inicio Componentes coordenas iniciales *******************************************************-->
+                        <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             id="panelGroupLayout8">
+                          <af:panelGroupLayout id="panelGroupLayout9">
+                            <af:panelFormLayout id="panelFormLayout3"
+                                                rows="2147483647">
+                              <af:spacer width="10" height="10" id="spacer3"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.GEOREFERENCIACION_PUNTO_INICIAL}"
+                                                   id="ot_titulo3"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10" id="spacer8"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.SISTEMA_DE_REFERENCIA}"
+                                                  binding="#{razonesProhibicion.sist_referencia_inicio}"
+                                                  id="sist_referencia"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  value="#{ razonesProhibicion.prohibicionSeleccionada.listaSistemaRef_inicio}"
+                                                  showRequired="true">
+                                <f:selectItems binding="#{razonesProhibicion.selectItems13_inicio}"
+                                               id="selectItems13"
+                                               value="#{razonesProhibicion.listaSistRef_inicio}"/>
+                              </af:selectOneChoice>
+                              <af:spacer width="10" height="10" id="spacer11"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          <af:panelGroupLayout id="panelGroupLayout13"
+                                               layout="vertical">
+                            <af:panelFormLayout id="panelFormLayout6"
+                                                inlineStyle="width:572px;"
+                                                rows="1" maxColumns="999999"
+                                                labelAlignment="top">
+                              <af:spacer width="10" height="10" id="spacer9"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                              id="outputLabel1"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{razonesProhibicion.gra_lat_inicio}"
+                                            id="gra_lat" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.latitud_grados_inicio}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-4"
+                                                      maximum="15"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{razonesProhibicion.min_lat_inicio}"
+                                            id="min_lat" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.latitud_minutos_inicio}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{razonesProhibicion.seg_lat_inicio}"
+                                            id="seg_lat" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.latitud_segundos_inicio}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  maxFractionDigits="5"
+                                                  minFractionDigits="0"
+                                                  maxIntegerDigits="2"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="false"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout id="panelFormLayout4"
+                                                maxColumns="999999" rows="1"
+                                                labelAlignment="top">
+                              <f:facet name="footer"/>
+                              <af:spacer width="10" height="10" id="spacer10"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                              id="outputLabel2"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{razonesProhibicion.gra_long_inicio}"
+                                            id="gra_long1" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.longitud_grados_inicio}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{razonesProhibicion.min_long_inicio}"
+                                            id="min_long1" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.longitud_minutos_inicio}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  maxIntegerDigits="2"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="true"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{razonesProhibicion.seg_long_inicio}"
+                                            id="seg_long1" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.longitud_segundos_inicio}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  maxIntegerDigits="2"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          <af:panelGroupLayout id="panelGroupLayout12">
+                            <af:panelFormLayout id="panelFormLayout2" rows="2"
+                                                maxColumns="1">
+                              <f:facet name="footer"/>
+                              <af:spacer width="10" height="10" id="spacer4"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PTO_TITDESCRIPCION}"
+                                                   id="activeOutputText6"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10" id="spacer5"/>
+                              <af:inputText label="#{viewcontrollerBundle.PTO_ALTITUD}"
+                                            binding="#{razonesProhibicion.t_altitud_inicio}"
+                                            id="t_altitud" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.altitud_inicio}"
+                                            columns="7">
+                                <af:convertNumber type="number"
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  groupingUsed="false"
+                                                  integerOnly="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="3"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="5500.0"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.PTO_DESCRIPCION}"
+                                            binding="#{razonesProhibicion.t_descripcion_inicio}"
+                                            id="t_descripcion"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.descripcion_acceso_inicio}"
+                                            columns="40" rows="3"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <!-- Fin componentes coordenanas iniciales *******************************************************-->
+                      </f:facet>
+                      <f:facet name="second">
+                        <!-- Inicio Componentes coordenas finales *******************************************************-->
+                        <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             id="panelGroupLayout8_fin">
+                          <af:panelGroupLayout id="panelGroupLayout9_fin">
+                            <af:panelFormLayout id="panelFormLayout3_fin"
+                                                rows="2147483647">
+                              <af:spacer width="10" height="10"
+                                         id="spacer3_fin"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.GEOREFERENCIACION_PUNTO_FINAL}"
+                                                   id="ot_titulo3_fin"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10"
+                                         id="spacer8_fin"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.SISTEMA_DE_REFERENCIA}"
+                                                  binding="#{razonesProhibicion.sist_referencia_fin}"
+                                                  id="sist_referencia_fin"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  immediate="true"
+                                                  value="#{ razonesProhibicion.prohibicionSeleccionada.listaSistemaRef_fin}"
+                                                  showRequired="true">
+                                <f:selectItems binding="#{razonesProhibicion.selectItems13_fin}"
+                                               id="selectItems13_fin"
+                                               value="#{razonesProhibicion.listaSistRef_fin}"/>
+                              </af:selectOneChoice>
+                              <af:spacer width="10" height="10"
+                                         id="spacer11_fin"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          <af:panelGroupLayout id="panelGroupLayout13_fin"
+                                               layout="vertical">
+                            <af:panelFormLayout id="panelFormLayout6_fin"
+                                                inlineStyle="width:572px;"
+                                                rows="1" maxColumns="999999"
+                                                labelAlignment="top">
+                              <af:spacer width="10" height="10"
+                                         id="spacer9_fin"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                              id="outputLabel1_fin"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{razonesProhibicion.gra_lat_fin}"
+                                            id="gra_lat_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.latitud_grados_fin}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-4"
+                                                      maximum="15"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{razonesProhibicion.min_lat_fin}"
+                                            id="min_lat_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.latitud_minutos_fin}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{razonesProhibicion.seg_lat_fin}"
+                                            id="seg_lat_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.latitud_segundos_fin}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  maxFractionDigits="5"
+                                                  minFractionDigits="0"
+                                                  maxIntegerDigits="2"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="false"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout id="panelFormLayout4_fin"
+                                                maxColumns="999999" rows="1"
+                                                labelAlignment="top">
+                              <f:facet name="footer"/>
+                              <af:spacer width="10" height="10"
+                                         id="spacer10_fin"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                              id="outputLabel2_fin"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{razonesProhibicion.gra_long_fin}"
+                                            id="gra_long1_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.longitud_grados_fin}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{razonesProhibicion.min_long_fin}"
+                                            id="min_long1_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.longitud_minutos_fin}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  maxIntegerDigits="2"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="true"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{razonesProhibicion.seg_long_fin}"
+                                            id="seg_long1_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.longitud_segundos_fin}"
+                                            columns="5">
+                                <af:convertNumber type="number"
+                                                  maxIntegerDigits="2"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          <af:panelGroupLayout id="panelGroupLayout12_fin">
+                            <af:panelFormLayout id="panelFormLayout2_fin"
+                                                rows="2" maxColumns="1">
+                              <f:facet name="footer"/>
+                              <af:spacer width="10" height="10"
+                                         id="spacer4_fin"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.PTO_TITDESCRIPCION}"
+                                                   id="activeOutputText6_fin"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10"
+                                         id="spacer5_fin"/>
+                              <af:inputText label="#{viewcontrollerBundle.PTO_ALTITUD}"
+                                            binding="#{razonesProhibicion.t_altitud_fin}"
+                                            id="t_altitud_fin" immediate="true"
+                                            showRequired="true"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.altitud_fin}"
+                                            columns="7">
+                                <af:convertNumber type="number"
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  groupingUsed="false"
+                                                  integerOnly="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="3"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="5500.0"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.PTO_DESCRIPCION}"
+                                            binding="#{razonesProhibicion.t_descripcion_fin}"
+                                            id="t_descripcion_fin"
+                                            value="#{razonesProhibicion.prohibicionSeleccionada.descripcion_acceso_fin}"
+                                            columns="40" rows="3"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        <!-- Fin componentes coordenanas finales *******************************************************-->
+                      </f:facet>
+                    </af:panelSplitter>
+                    <af:panelFormLayout id="pfl2_2" rows="1" labelWidth="200px">
+                      <f:facet name="footer">
+                        <af:panelGroupLayout binding="#{razonesProhibicion.pgl1}"
+                                             id="pgl1" layout="horizontal"
+                                             halign="center">
+                          <af:spacer width="10" height="10"
+                                     binding="#{razonesProhibicion.s1}"
+                                     id="s1"/>
+                          <af:commandButton text="#{viewcontrollerBundle.boton_Adicionar}"
+                                            binding="#{razonesProhibicion.cb_actualizar}"
+                                            id="cb_actualizar"
+                                            actionListener="#{razonesProhibicion.cb_actualizar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{razonesProhibicion.s3}"
+                                     id="s3"/>
+                          <af:commandButton text="#{viewcontrollerBundle.menu_borrar}"
+                                            binding="#{razonesProhibicion.cb_borrar}"
+                                            id="cb_borrar"
+                                            actionListener="#{razonesProhibicion.cb_borrar_actionListener}"
+                                            visible="#{razonesProhibicion.prohibicionSeleccionada !=null}"/>
+                          <af:spacer width="10" height="10" id="s3_1"/>
+                          <af:commandButton text="#{viewcontrollerBundle.menu_limpiar}"
+                                            binding="#{razonesProhibicion.cb_limpiar}"
+                                            id="cb_limpiar"
+                                            actionListener="#{razonesProhibicion.cb_limpiar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{razonesProhibicion.s2}"
+                                     id="s2"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelFormLayout>
+                    <!--Fin panel de datos de ingreso ****************************************************************-->
+                    <af:table value="#{razonesProhibicion.listaProhibiciones}"
+                              var="row" rowBandingInterval="1"
+                              binding="#{razonesProhibicion.t_prohibiciones}"
+                              id="t_prohibiciones" rowSelection="single"
+                              columnStretching="column:c2"
+                              emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                              selectionListener="#{razonesProhibicion.t_prohibiciones_selectionListener}"
+                              width="100%">
+                      <af:column sortable="false" width="200px"
+                                 headerText="#{viewcontrollerBundle.SECTOR}"
+                                 align="start" id="c4">
+                        <af:outputText value="#{row.sector}" id="ot1"/>
+                      </af:column>
+                      <af:column sortable="false" width="200px"
+                                 headerText="#{viewcontrollerBundle.JUSTIFICACI_U00F3N}"
+                                 id="c2">
+                        <af:outputText value="#{row.justificacion}" id="ot4"/>
+                      </af:column>
+                      <af:column sortable="false"
+                                 headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_inicial}"
+                                 id="c1">
+                        <af:outputText value="#{row.fecha_inicial}" id="ot3"/>
+                      </af:column>
+                      <af:column sortable="false"
+                                 headerText="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}"
+                                 id="c3">
+                        <af:outputText value="#{row.fecha_final}" id="ot2"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{razonesProhibicion.pgl3}"
+                                     id="pgl3" layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{razonesProhibicion.s4}" id="s4"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                  binding="#{razonesProhibicion.cl1}" id="cl1"
+                                  action="fuentes"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{razonesProhibicion.s5}" id="s5"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PORH}:  #{razonesProhibicion.planOrdenamiento.numeroActo}"
+                                  binding="#{razonesProhibicion.cl2}" id="cl2"
+                                  action="priorizacion"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{razonesProhibicion.s6}" id="s6"/>
+                  <af:commandLink text="Tramo:  #{razonesProhibicion.tramo.nombre}"
+                                  id="cl3"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:razonesProhibicion-->
+</jsp:root>

@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{detalleOrganizacion.d2}">
+      <af:form id="f2" binding="#{detalleOrganizacion.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleOrganizacion.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{detalleOrganizacion.pgl4}"
+                                     id="pgl4">
+                  <af:popup binding="#{detalleOrganizacion.p_borrar}"
+                            id="p_borrar">
+                    <af:dialog binding="#{detalleOrganizacion.d_borrar}"
+                               id="d_borrar"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}"
+                               type="none">
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                     binding="#{detalleOrganizacion.ot2}"
+                                     id="ot2"/>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{detalleOrganizacion.pgl5}"
+                                             id="pgl5" halign="right"
+                                             layout="horizontal">
+                          <af:commandButton text="#{viewcontrollerBundle.OPCION_SI}"
+                                            binding="#{detalleOrganizacion.cb_si_borrar}"
+                                            id="cb_si_borrar"
+                                            actionListener="#{detalleOrganizacion.cb_si_borrar_actionListener}"
+                                            action="#{detalleOrganizacion.getAccion}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleOrganizacion.s9}"
+                                     id="s9"/>
+                          <af:commandButton text="#{viewcontrollerBundle.OPCION_NO}"
+                                            binding="#{detalleOrganizacion.cb_no_borrar}"
+                                            id="cb_no_borrar"
+                                            actionListener="#{detalleOrganizacion.cb_no_borrar_actionListener}"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelBox text="#{viewcontrollerBundle.DETALLE_ORGANIZACI_U00F3N}"
+                             binding="#{detalleOrganizacion.pb_detalle}"
+                             id="pb_detalle"
+                             showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelGroupLayout binding="#{detalleOrganizacion.pgl2}"
+                                       id="pgl2" layout="scroll">
+                    <af:panelFormLayout binding="#{detalleOrganizacion.pfl1}"
+                                        id="pfl1">
+                      <af:spacer width="10" height="10"
+                                 binding="#{detalleOrganizacion.s2}" id="s2"/>
+                      <af:inputText label="#{viewcontrollerBundle.perfiles_nombre}"
+                                    binding="#{detalleOrganizacion.it_nombre}"
+                                    id="it_nombre" columns="60"
+                                    showRequired="true"
+                                    value="#{detalleOrganizacion.organizacion.nombre}"/>
+                      <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                    binding="#{detalleOrganizacion.it_direccion}"
+                                    id="it_direccion" showRequired="true"
+                                    columns="30"
+                                    value="#{detalleOrganizacion.organizacion.direccion}"/>
+                      <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                    binding="#{detalleOrganizacion.it_telefono}"
+                                    id="it_telefono" showRequired="true"
+                                    columns="30"
+                                    value="#{detalleOrganizacion.organizacion.telefono}"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{detalleOrganizacion.soc_depto}"
+                                          id="soc_depto"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          showRequired="true"
+                                          value="#{detalleOrganizacion.organizacion.divipolaDepto}"
+                                          valueChangeListener="#{detalleOrganizacion.soc_depto_valueChangeListener}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{detalleOrganizacion.listaDepartamentos}"
+                                       binding="#{detalleOrganizacion.si1}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{detalleOrganizacion.soc_municipio}"
+                                          id="soc_municipio"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          showRequired="true"
+                                          value="#{detalleOrganizacion.organizacion.divipolaMunicipio}">
+                        <f:selectItems value="#{detalleOrganizacion.listaMunicipios}"
+                                       binding="#{detalleOrganizacion.si2}"
+                                       id="si2"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.P_U00E1GINA_WEB}"
+                                    binding="#{detalleOrganizacion.it_pagina_web}"
+                                    id="it_pagina_web"
+                                    value="#{detalleOrganizacion.organizacion.paginaWeb}"/>
+                      <af:spacer width="10" height="5"
+                                 binding="#{detalleOrganizacion.s3}" id="s3"/>
+                      <af:selectOneRadio label="#{viewcontrollerBundle.NATURALEZA}"
+                                         binding="#{detalleOrganizacion.sor_naturaleza}"
+                                         id="sor_naturaleza" layout="horizontal"
+                                         showRequired="true"
+                                         value="#{detalleOrganizacion.organizacion.listaNAturaleza}">
+                        <f:selectItems value="#{detalleOrganizacion.listaNaturaleza}"
+                                       binding="#{detalleOrganizacion.si3}"
+                                       id="si3"/>
+                      </af:selectOneRadio>
+                      <af:spacer width="10" height="5"
+                                 binding="#{detalleOrganizacion.s4}" id="s4"/>
+                      <af:selectOneRadio label="#{viewcontrollerBundle.TIPO_DE_ORGANIZACI_U00F3N}"
+                                         binding="#{detalleOrganizacion.sor_tipo_org}"
+                                         id="sor_tipo_org" showRequired="true"
+                                         value="#{detalleOrganizacion.organizacion.listaTipoOrganizacion}">
+                        <f:selectItems value="#{detalleOrganizacion.listaTipoOrganizacion}"
+                                       binding="#{detalleOrganizacion.si4}"
+                                       id="si4"/>
+                      </af:selectOneRadio>
+                      <af:spacer width="10" height="10"
+                                 binding="#{detalleOrganizacion.s5}" id="s5"/>
+                      <af:outputText value="#{viewcontrollerBundle.DESCRIPCI_U00F3N_DEL_TRABAJO_E}"
+                                     binding="#{detalleOrganizacion.ot1}"
+                                     id="ot1" styleClass="AFBrandingBarTitle"/>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.GESTI_U00F3N__}"
+                                             binding="#{detalleOrganizacion.smc_gestion}"
+                                             id="smc_gestion" showRequired="true"
+                                             value="#{detalleOrganizacion.listaGestionSeleccionadas}">
+                        <f:selectItems value="#{detalleOrganizacion.listaGestion}"
+                                       binding="#{detalleOrganizacion.si5}"
+                                       id="si5"/>
+                      </af:selectManyCheckbox>
+                      <af:inputText label="#{viewcontrollerBundle.OTRO_C_U00FAAL}"
+                                    binding="#{detalleOrganizacion.it_otro}"
+                                    id="it_otro"
+                                    value="#{detalleOrganizacion.organizacion.detalleGestionOtro}"/>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.INVESTIGACI_U00F3N}"
+                                             binding="#{detalleOrganizacion.smc_investigacion}"
+                                             id="smc_investigacion" showRequired="true"
+                                             value="#{detalleOrganizacion.listaInvestigacionSeleccionadas}">
+                        <f:selectItems value="#{detalleOrganizacion.listaInvestigacion}"
+                                       binding="#{detalleOrganizacion.si6}"
+                                       id="si6"/>
+                      </af:selectManyCheckbox>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.POR__U00C1REAS_DE_TRABAJO}"
+                                             binding="#{detalleOrganizacion.smc_areas}"
+                                             id="smc_areas" showRequired="true"
+                                             value="#{detalleOrganizacion.listaAreasSeleccionadas}">
+                        <f:selectItems value="#{detalleOrganizacion.listaAreas}"
+                                       binding="#{detalleOrganizacion.si7}"
+                                       id="si7"/>
+                      </af:selectManyCheckbox>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.TIPO_DE_FUENTE_H_U00EDDRICA}"
+                                             binding="#{detalleOrganizacion.smc_tipo_fuente}"
+                                             id="smc_tipo_fuente" showRequired="true"
+                                             value="#{detalleOrganizacion.listaFuentesSeleccionadas}">
+                        <f:selectItems value="#{detalleOrganizacion.listaTipoFuente}"
+                                       binding="#{detalleOrganizacion.si8}"
+                                       id="si8"/>
+                      </af:selectManyCheckbox>
+                      <af:spacer width="10" height="10"
+                                 binding="#{detalleOrganizacion.s7}" id="s7"/>
+                      <f:facet name="footer">
+                        <af:panelGroupLayout binding="#{detalleOrganizacion.pgl3}"
+                                             id="pgl3" layout="horizontal"
+                                             halign="center">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{detalleOrganizacion.cb_aceptar}"
+                                            id="cb_aceptar"
+                                            icon="/imgs/check_mark.png"
+                                            actionListener="#{detalleOrganizacion.cb_aceptar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleOrganizacion.s6}"
+                                     id="s6"/>
+                          <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}"
+                                            binding="#{detalleOrganizacion.cb_borrar}"
+                                            id="cb_borrar"
+                                            icon="/imgs/close.png"
+                                            actionListener="#{detalleOrganizacion.cb_borrar_actionListener}"
+                                            action="#{detalleOrganizacion.getAccion}"
+                                            visible="#{detalleOrganizacion.organizacion.id >0}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleOrganizacion.s8}"
+                                     id="s8"/>
+                          <af:commandButton text="#{viewcontrollerBundle.boton_cancelar}"
+                                            binding="#{detalleOrganizacion.cb_cancelar}"
+                                            id="cb_cancelar"
+                                            icon="/imgs/close.png"
+                                            action="organizaciones"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{detalleOrganizacion.pgl1}"
+                                     id="pgl1" layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{detalleOrganizacion.s1}" id="s1"/>
+                  <af:commandLink text="Todas las Organizaciones"
+                                  binding="#{detalleOrganizacion.cl1}"
+                                  id="cl1" action="organizaciones"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleOrganizacion-->
+</jsp:root>

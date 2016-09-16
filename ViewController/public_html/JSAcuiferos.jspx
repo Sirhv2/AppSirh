@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+         	<f:facet name="center">
+          <af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+    
+<af:panelBox inlineStyle="text-align: left;"  >
+<af:commandLink text="Observatorio"
+                                    action="observatorio"
+                                     actionListener="#{JSAcuiferos.refreshPage}"/>
+                    <af:spacer width="25" height="10" />
+                    <af:commandLink text="Observatorio Aguas Subterraneas "
+                                    action="observatorioSubterraneas"
+                                     actionListener="#{JSAcuiferos.refreshPage}"/>
+                    <af:spacer width="25" height="10"/>
+
+</af:panelBox>
+		</f:facet>
+
+		<f:facet name="center">
+			
+			
+            <af:panelGroupLayout layout="scroll">
+             
+              <af:panelBox text="Tabla de Datos de Fichas de Acuiferos">
+              
+                 <af:selectOneChoice label="Provincia"
+                                          binding="#{JSAcuiferos.provincia}"
+                                          id="selectOneChoice1"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                         
+                                          valueChangeListener="#{JSAcuiferos.provincia_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{JSAcuiferos.provincias}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      
+                      
+                                  
+                      <af:selectOneChoice label="Area"
+                                          binding="#{JSAcuiferos.area}"
+                                          id="selectOneChoice2"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          
+                                          valueChangeListener="#{JSAcuiferos.area_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{JSAcuiferos.areas}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        id="cmdBuscar2"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{JSAcuiferos.cmdBuscar_actionListener}"
+                                        />
+                                  
+                 <af:panelCollection binding="#{dashBoardCalidadGrafico3.panelCollection1}"
+                                                    id="panelCollection1"
+                                                    inlineStyle="width:98%;">
+                  <f:facet name="menus">
+                    <af:menu text="#{viewcontrollerBundle.menu_archivo}"                             
+                             id="menu1">
+                      <af:commandMenuItem text="#{viewcontrollerBundle.EXCEL}"                                
+                                          actionListener="#{JSAcuiferos.salidaExcel_actionListener}"/>
+                      <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"                          
+                          id="cmi_imprimir"
+                          actionListener="#{JSAcuiferos.cmi_imprimir_actionListener}"/>
+                    </af:menu>
+                  </f:facet>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                <af:table var="row" value="#{JSAcuiferos.listaComponente}"
+                          binding="#{JSAcuiferos.tableDatosGrafico}"
+                          rowSelection="single"
+                          id="tableDatosGrafico" >                      
+
+  
+                      <af:column sortable="false" headerText="Número" width="80" >
+                      <af:outputText value="#{row.plantillaID}"/>
+                      </af:column>                      
+                      <af:column sortable="false" headerText="Área Hidrográfica" width="80">
+                      <af:outputText value="#{row.area_hidrografica}"/>
+                      </af:column>	                      
+                       <af:column sortable="false" headerText="Zona Hidrográfica" width="80">
+                       <af:outputText value="#{row.zona_hidrografica}"/>
+                        </af:column>
+                      <af:column sortable="false" headerText="Provincia Hidrogeológica" width="80">
+                      <af:outputText value="#{row.provinciaHidroge}"/>
+                      </af:column> 
+                       <af:column sortable="false" headerText="Sistema Acuífero " width="80">
+                      <af:outputText value="#{row.nombrePlantilla}"/>
+                      </af:column>
+                     <af:column sortable="false" headerText="Car Gestiona" width="80">
+                      <af:outputText value="#{row.carGestiona}"/>
+                      </af:column>
+                      <af:column sortable="false" headerText="Recarga Estimada (mm/año)" width="80">
+                      <af:outputText value="#{row.recargaEstimada}"/>
+                      </af:column>
+                                <af:column sortable="false" headerText="Num Pozo Inventariados" width="80">
+                      <af:outputText value="#{row.numPozoInventariados}"/>
+                      </af:column>
+                         <af:column sortable="false" headerText="Num Aljibes Inventariados" width="80">
+                      <af:outputText value="#{row.numAlijibesInventariados}"/>
+                      </af:column>
+                          <af:column sortable="false" headerText="Num Manantiales Inventariados" width="80">
+                      <af:outputText value="#{row.numManantialesInventariados}"/>
+                      </af:column>
+                          <af:column sortable="false" headerText="Demanda Calculada (millones de m3/año)" width="80">
+                      <af:outputText value="#{row.demandaCalculada}"/>
+                      </af:column>
+                       
+                </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+             
+            </af:panelGroupLayout>
+            
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+</f:facet>         
+        </af:pageTemplate>
+         
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

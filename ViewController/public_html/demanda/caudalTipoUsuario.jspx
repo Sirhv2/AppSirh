@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{caudalTipoUsuarioBean.document1}" id="document1">
+      <af:form binding="#{caudalTipoUsuarioBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{caudalTipoUsuarioBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{caudalTipoUsuarioBean.panelSplitter1}"
+                                  id="panelSplitter1" orientation="vertical"
+                                  splitterPosition="64" disabled="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{caudalTipoUsuarioBean.panelFormLayout1}"
+                                        id="panelFormLayout1"
+                                        maxColumns="8" rows="1">
+                      <f:facet name="footer"/>
+                      <af:inputDate label="#{viewcontrollerBundle.OBS_DEM_FINI}"
+                                    binding="#{caudalTipoUsuarioBean.idFini}"
+                                    id="idFini"/>
+                      <af:inputDate label="#{viewcontrollerBundle.OBS_DEM_FFIN}"
+                                    binding="#{caudalTipoUsuarioBean.idFFin}"
+                                    id="idFFin"/>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{caudalTipoUsuarioBean.cmdBuscar}"
+                                        id="cmdBuscar"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{caudalTipoUsuarioBean.cmdBuscar_actionListener}"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelCollection binding="#{caudalTipoUsuarioBean.panelCollection1}"
+                                        id="panelCollection1">
+                      <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                 binding="#{caudalTipoUsuarioBean.menu1}"
+                                 id="menu1">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                              binding="#{caudalTipoUsuarioBean.commandMenuItem1}"
+                                              id="commandMenuItem1"
+                                              immediate="true"
+                                              partialSubmit="true"
+                                              >
+                                  <af:exportCollectionActionListener exportedId="table1"
+                                                                     type="excelHTML"
+                                                                     filename="datosCaudalTipoUsuario.xls"/>
+                                </af:commandMenuItem>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_GRAFICAR}"
+                                              binding="#{caudalTipoUsuarioBean.commandMenuItem2}"
+                                              id="commandMenuItem2"
+                                              immediate="true"
+                                              partialSubmit="true"
+                                              disabled="#{!caudalTipoUsuarioBean.existeGrafica}"
+                                              >
+                                  <af:showPopupBehavior popupId="::popGrafica"
+                                                        triggerType="click"
+                                                        />
+                                </af:commandMenuItem>
+                        </af:menu>
+                      </f:facet>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table var="row"
+                                binding="#{caudalTipoUsuarioBean.table1}"
+                                id="table1"
+                                value="#{caudalTipoUsuarioBean.listaDatos}"
+                                rowBandingInterval="1"
+                                emptyText="No hay datos para mostrar"
+                                >
+                        
+                        <af:column sortable="false" headerText="Caudal">
+                          <af:outputText value="#{row.caudalConcesionado}"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Persona">
+                          <af:outputText value="#{row.tipoPersona}"/>
+                        </af:column>
+                        <af:column sortable="false" headerText="Autoridad">
+                          <af:outputText value="#{row.autoridad}"/>
+                        </af:column>
+                        
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end">
+                <af:panelGroupLayout binding="#{caudalTipoUsuarioBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:popup binding="#{caudalTipoUsuarioBean.popGrafica}"
+                            id="popGrafica">
+                    <af:panelWindow binding="#{caudalTipoUsuarioBean.panelWindow1}"
+                                    id="panelWindow1"
+                                    closeIconVisible="true" modal="true" 
+                                    inlineStyle="width:900px; height:400px;"
+                                    >
+                      <af:panelGroupLayout binding="#{caudalTipoUsuarioBean.panelGroupLayout3}"
+                                           id="panelGroupLayout3"
+                                           layout="scroll"
+                                           inlineStyle="width:100%; height:100%;"
+                                           >
+                        <dvt:barGraph id="barGraph1" subType="BAR_VERT_CLUST"
+                                      binding="#{caudalTipoUsuarioBean.barGraph1}"
+                                      tabularData="#{caudalTipoUsuarioBean.tabularConsulta}"
+                                      dynamicResize="FIXED_SIZE"
+                                      imageFormat="PNG" drillingEnabled="true"
+                                      contentDelivery="immediate"
+                                      imageWidth="900" imageHeight="400"
+                                      >
+                          <dvt:background>
+                            <dvt:specialEffects/>
+                          </dvt:background>
+                          <dvt:graphPlotArea/>
+                          <dvt:seriesSet>
+                            <dvt:series/>
+                          </dvt:seriesSet>
+                          <dvt:o1Axis/>
+                          <dvt:y1Axis >
+                            <dvt:numberFormat numberFormatString="#####.##"/>
+                          </dvt:y1Axis>
+                          <dvt:legendArea position="LAP_TOP"/>
+                          <dvt:o1TickLabel textRotation="TR_HORIZ_ROTATE_90"
+                                           tickLabelSkipMode="TLS_AUTOMATIC"
+                                           tickLabelSkipCount="9" tickLabelSkipFirst="10"
+                                           automaticRotation="AR_HORIZ_ROTATE_90">
+                            <dvt:graphFont name="SansSerif" size="10" color="#000000"
+                                           bold="false" italic="false" underline="false"/>
+                          </dvt:o1TickLabel>
+                        </dvt:barGraph>
+                      </af:panelGroupLayout>
+                    </af:panelWindow>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{caudalTipoUsuarioBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{caudalTipoUsuarioBean.spacer1}"
+                             id="spacer1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBSERVATORIO_OBSERVATORIO}"
+                                  binding="#{caudalTipoUsuarioBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="observatorio"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{caudalTipoUsuarioBean.spacer2}"
+                             id="spacer2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBS_DEM_COMPONENTE}"
+                                  binding="#{caudalTipoUsuarioBean.commandLink2}"
+                                  action="demanda"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{caudalTipoUsuarioBean.spacer3}"
+                             id="spacer3"/>
+                  <af:outputText value="#{viewcontrollerBundle.OBS_DEMANDA_TIPO_USUARIO}"
+                                 binding="#{caudalTipoUsuarioBean.outputText1}"
+                                 id="outputText1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:caudalTipoUsuarioBean-->
+</jsp:root>

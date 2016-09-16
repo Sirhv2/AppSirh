@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+           xmlns:c="http://java.sun.com/jsp/jstl/core">
+          <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{captacionesTotalBean.document1}" id="document1">
+      <af:form binding="#{captacionesTotalBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{captacionesTotalBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="31px">
+              <f:facet name="center">
+                  <af:panelSplitter binding="#{captacionesTotalBean.panelSplitter1}"
+                                    id="panelSplitter1" orientation="vertical"
+                                    splitterPosition="75" disabled="true" >
+                    <f:facet name="first">
+                    <af:panelFormLayout binding="#{captacionesTotalBean.panelFormLayout1}"
+                                        id="panelFormLayout1" rows="3"
+                                        maxColumns="5">
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{captacionesTotalBean.socFiltroDepartamento}"
+                                          id="socFiltroDepartamento"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{captacionesTotalBean.socFiltroDepartamento_valueChangeListener}"
+                                          >
+                        <f:selectItems value="#{captacionesTotalBean.listaDepartamentos}"
+                                       binding="#{captacionesTotalBean.siFiltroDep}"
+                                       id="siFiltroDep"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{captacionesTotalBean.socFiltroMun}"
+                                          id="socFiltroMun"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          >
+                        <f:selectItems value="#{captacionesTotalBean.listaMunicipios}"
+                                       binding="#{captacionesTotalBean.siFiltroMun}"
+                                       id="siFiltroMun"/>
+                      </af:selectOneChoice>
+                      <af:spacer width="10" height="10"
+                                 binding="#{captacionesTotalBean.spacer7}"
+                                 id="spacer7"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_AREA}" 
+                                        binding="#{captacionesTotalBean.selectOneChoiceArea}" 
+                                        id="selectOneChoiceArea" 
+                                        immediate="true"
+                                          valueChangeListener="#{captacionesTotalBean.selectOneChoiceArea_valueChangeListener}" 
+                                          autoSubmit="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{captacionesTotalBean.listaArea}" 
+                                        binding="#{captacionesTotalBean.selectItems2Area}" 
+                                        id="selectItems2Area"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_ZONA}" 
+                                        binding="#{captacionesTotalBean.selectOneChoiceZona}" 
+                                        id="selectOneChoiceZona" immediate="true"
+                                          valueChangeListener="#{captacionesTotalBean.selectOneChoiceZona_valueChangeListener}" autoSubmit="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{captacionesTotalBean.listaZona}" 
+                                        binding="#{captacionesTotalBean.selectItems3Zona}" 
+                                        id="selectItems3Zona"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SUBZONA}" 
+                                        binding="#{captacionesTotalBean.selectOneChoiceSubzona}" 
+                                        id="selectOneChoiceSubzona"
+                                          valueChangeListener="#{captacionesTotalBean.selectOneChoiceSubzona_valueChangeListener}" 
+                                          autoSubmit="true" immediate="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{captacionesTotalBean.listaSubzona}" 
+                                    binding="#{captacionesTotalBean.selectItems4Subzona}" 
+                                    id="selectItems4Subzona"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                          binding="#{captacionesTotalBean.selectOneChoice1Fuente}"
+                                          id="selectOneChoice1Fuente"
+                                          immediate="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{captacionesTotalBean.listaFuentes}"
+                                       binding="#{captacionesTotalBean.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.USO_USO}"
+                                          binding="#{captacionesTotalBean.selectOneChoiceUsos}"
+                                          id="selectOneChoiceUsos"
+                                          valueChangeListener="#{captacionesTotalBean.socTipoUso_valueChangeListener}"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          immediate="true" autoSubmit="true">
+                        <f:selectItems value="#{ captacionesTotalBean.listaUsos}"
+                                       binding="#{captacionesTotalBean.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.USO_OTRO}"
+                                          binding="#{captacionesTotalBean.soc_otroUso}"
+                                          id="soc_otroUso" visible="false"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{ captacionesTotalBean.listaTiposUsoOtro}"
+                                       binding="#{captacionesTotalBean.selectItems3}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                      <af:spacer width="10" height="10" 
+                            binding="#{captacionesTotalBean.spacer5}" 
+                            id="spacer5"/>
+                      <af:spacer width="10" height="10" 
+                            binding="#{captacionesTotalBean.spacer6}" 
+                            id="spacer6"/>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{captacionesTotalBean.cmdBuscar}"
+                                        id="cmdBuscar"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{captacionesTotalBean.cmdBuscar_actionListener}"
+                                        />
+                    </af:panelFormLayout>
+                  </f:facet>
+                    
+                    <f:facet name="second">
+                        <af:panelCollection binding="#{captacionesTotalBean.panelCollection1}"
+                                  id="panelCollection1"
+                                  inlineStyle="width:100%;" >
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}" binding="#{captacionesTotalBean.menu1}"
+                                       id="menu1">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                                    binding="#{captacionesTotalBean.cmi_imprimir}"
+                                                    id="cmi_imprimir"
+                                                    actionListener="#{captacionesTotalBean.cmi_imprimir_actionListener}"
+                                                    />
+                         <!--Reporte de Detalle Captaciones DL
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimirDCapT}"
+                                              binding="#{captacionesTotalBean.cmi_ImprimirDetalleCaptaciones}"
+                                              id="cmi_ImprimirDetalleCaptaciones"
+                                              actionListener="#{captacionesTotalBean.cmiImprimirDetalleCaptaciones_actionListener}"/> 
+                        -->                                              
+                        <!--Reporte de Detalle Captaciones DL-->
+                              </af:menu>
+                            </f:facet>
+                            
+                            <af:table var="row" binding="#{captacionesTotalBean.t_captaciones}"
+                                      id="t_captaciones" rowSelection="single"
+                                      value="#{captacionesTotalBean.listaCaptaciones}"
+                                      rowBandingInterval="1"
+                                      emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                      >
+                                
+                                 <!--Carlos Abril Mar 04 2015 -->
+                                <af:column 
+                                           headerText="#{viewcontrollerBundle.FNT_NUMERO}" id="c111"
+                                           width="50"
+                                          >
+                                  <af:outputText value="#{row.num}" id="ot111"/>
+                                </af:column>
+                                      
+                                <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.login_campo_usuario}"
+                                           id="c12" sortProperty="usuario">
+                                  <af:commandLink text="#{row.usuario}" id="cl1"
+                                                  actionListener="#{captacionesTotalBean.usuario_actionListener}"
+                                                  action="detalleUsuario">
+                                    <f:attribute value="#{row.idUsuario}" 
+                                                 name="codigoUsuario"/>
+                                  </af:commandLink>
+                                </af:column>
+                                <af:column id="c11" sortable="true"
+                                           headerText="#{viewcontrollerBundle.PREDIO}"
+                                           sortProperty="nombrePredio">
+                                  <af:commandLink text="#{row.predio}" id="cl_predio"
+                                                  action="detallePredio"
+                                                  actionListener="#{captacionesTotalBean.predio_actionListener}">
+                                    <f:attribute value="#{row.idPredio}"
+                                                 name="codigoPredio"/>
+                                    <f:attribute value="#{row.idUsuario}"
+                                                 name="codigoUsuario"/>
+                                  </af:commandLink>
+                                </af:column>
+                               
+                                <af:column 
+                                           headerText="#{viewcontrollerBundle.C_EDULA_CATASTRAL}"
+                                          >
+                                  <af:outputText value="#{row.cedula_catastral}"
+                                                />
+                                </af:column>
+                                <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.NUMERO_DE_EXPEDIENTE}"
+                                           align="start" 
+                                           sortProperty="numeroExpediente"
+                                           >
+                                  <af:commandLink text="#{row.numExpediente}" id="cl2"
+                                                  action="detalleConcesion"
+                                                  actionListener="#{captacionesTotalBean.concesion_actionListener}"
+                                                  visible="#{row.no_valida==null}">
+                                    <f:attribute value="#{row.idPredio}"
+                                                 name="codigoPredio"/>
+                                    <f:attribute value="#{row.idUsuario}"
+                                                 name="codigoUsuario"/>
+                                    <f:attribute value="#{row.idConcesion}" name="codigo"/>
+                                  </af:commandLink>
+                                    <af:outputText value="Sin datos" visible="#{row.no_valida!=null}"/>
+                              </af:column>
+                              
+                                       <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.MUNICIPIO}"
+                                           sortProperty="idMunicipio">
+                                  <af:outputText value="#{row.munCapt}"
+                                                converter="Divipola" />
+                                </af:column>
+                                <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                           sortProperty="idDepartamento">
+                                  <af:outputText value="#{row.deptoCapt}"
+                                                 converter="Divipola" />
+                                </af:column>
+                              
+                              <af:column sortable="true"
+                                           headerText="#{viewcontrollerBundle.CPT_TIPO_CPT}"
+                                           align="start" 
+                                           sortProperty="tipoFuenteCaptacion">
+                                  <af:commandLink id="clCaptacion"
+                                                  action="detalleCaptacion"
+                                                  actionListener="#{captacionesTotalBean.captacion_actionListener}"
+                                                   >
+                                        <af:outputText value="#{row.tipoFuenteCaptacion}"
+                                            converter="TipoFuenteCaptacion"
+                                            />
+                                        <f:attribute value="#{row.id}"
+                                                 name="codigoCaptacion"/>
+                                        <f:attribute value="#{row.idPredio}"
+                                                 name="codigoPredio"/>
+                                        <f:attribute value="#{row.idUsuario}"
+                                                 name="codigoUsuario"/>
+                                        <f:attribute value="#{row.idConcesion}" name="codigo"/>
+                                  </af:commandLink>
+                              </af:column>
+                              
+                               <af:column sortable="true"
+                                         headerText="Tipo Fuente"
+                                         sortProperty="tipoFuente">
+                                <af:outputText value="#{row.tipoFuente}"/>
+                              </af:column>
+                               <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                         sortProperty="fuente">
+                                <af:outputText value="#{row.fuente}"/>
+                              </af:column>
+                              
+                              <!-- -->
+                              <af:column 
+                                         headerText="#{viewcontrollerBundle.CPT_OFER_TOTAL_CAP}"
+                                        >
+                                <af:outputText value="#{row.ofertaHidricaTotalCapt}"/>
+                              </af:column>
+                              
+                              <af:column 
+                                         headerText="#{viewcontrollerBundle.CPT_OFER_DISP_CAP}"
+                                        >
+                                <af:outputText value="#{row.ofertaDisponibleCapt}"/>
+                              </af:column>                              
+                              <!-- -->
+                                                          <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.TRM_TRAMO}"
+                                        sortProperty="tramo">
+                                <af:outputText value="#{row.tramo}"/>
+                              </af:column>
+                              
+                             <af:column 
+                                         headerText="#{viewcontrollerBundle.CPT_CAUDAL_DISEGNO}"
+                                        >
+                                <af:outputText value="#{row.caudalDisegnoCapt}"/>
+                              </af:column>
+                              
+                              <af:column 
+                                         headerText="#{viewcontrollerBundle.CPT_RES_CAUDAL}"
+                                        >
+                                <af:outputText value="#{row.numResCaudal}"/>
+                              </af:column>                           
+                              
+                              <af:column 
+                                        headerText="#{viewcontrollerBundle.TRM_SISTEMA}"
+                                        >
+                                <af:outputText value="#{row.nombreSistemaReferencia}"/>
+                              </af:column>
+                              <af:column headerText="#{viewcontrollerBundle.PTO_LATITUD}" >
+                                <af:outputText value="#{row.gradosLatCapt}°  #{row.minutosLatCapt}' #{row.segundosLatCapt}&quot;"/>
+                              </af:column>
+                              <af:column headerText="#{viewcontrollerBundle.PTO_LONGITUD}">
+                                <af:outputText value="#{row.gradosLongCapt}°  #{row.minutosLongCapt}' #{row.segundosLongCapt}&quot;"/>
+                              </af:column>
+                          
+                              <af:column sortable="true"
+                                         headerText="#{viewcontrollerBundle.ALTITUD} (msnm)"
+                                         sortProperty="altitudPi">
+                                <af:outputText value="#{row.altitudCapt}"/>
+                              </af:column>
+                             
+                              <!-- 
+                             <af:column 
+                                         headerText="#{viewcontrollerBundle.CPT_NUMERO_USOS}"
+                                        >
+                                <af:outputText value="#{row.numeroUsos}"/>
+                              </af:column>  
+                              -->
+                              <!-- -->
+                            
+                            </af:table>
+                          </af:panelCollection>
+                    </f:facet>
+                  </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{captacionesTotalBean.panelGroupLayout3}" id="panelGroupLayout3">
+                  <af:outputText value="Captaciones" 
+                  styleClass="AFBrandingBarTitle"
+                  binding="#{captacionesTotalBean.outputText1Titulo}" id="outputText1Titulo"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:captacionesTotalBean-->
+</jsp:root>

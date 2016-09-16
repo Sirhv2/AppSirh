@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{predios.d2}">
+      <af:form id="f2" binding="#{predios.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+              <af:panelStretchLayout binding="#{predios.panelStretchLayout1}" id="panelStretchLayout1" topHeight="29px"
+                                     startWidth="0px" endWidth="0px"
+                                     bottomHeight="0px">
+                <f:facet name="bottom">
+                  <af:panelGroupLayout binding="#{predios.pgl1}" id="pgl1">
+                    <af:popup binding="#{predios.p_errores}" id="p_errores">
+                      <af:dialog binding="#{predios.d_errores}" id="d_errores"
+                                 title="Errores de Validación" type="ok"
+                                 affirmativeTextAndAccessKey="#{viewcontrollerBundle.boton_cerrar}">
+                        <af:panelFormLayout binding="#{predios.pfl1}" id="pfl1">
+                          <af:outputText value="Erroes de Validacion para el Usuario"
+                                         binding="#{predios.ot_errores}"
+                                         id="ot_errores"/>
+                          <af:inputText label="Label 1"
+                                        binding="#{predios.it_errores}"
+                                        id="it_errores" columns="50" rows="5"
+                                        simple="true" readOnly="true"/>
+                        </af:panelFormLayout>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="center">
+                <af:panelSplitter binding="#{predios.ps1}" id="ps1" orientation="vertical" splitterPosition="50"
+                                  disabled="true">
+                <f:facet name="first">
+                  <af:panelFormLayout binding="#{predios.pfl11}" id="pfl11"
+                                      rows="1" maxColumns="9999" labelAlignment="top">
+                                      
+                      <af:inputText label="#{viewcontrollerBundle.menu_nombre}"
+                                    binding="#{predios.it_filtro_nombre}"
+                                    id="it_filtro_nombre" columns="12"/>
+                      <af:inputText label="#{viewcontrollerBundle.C_EDULA_CATASTRAL}"
+                                    binding="#{predios.it_filtro_cedCatastral}"
+                                    id="it_filtro_cedCatastral" columns="12"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.CLASIFICACION_DEL_SUELO}"
+                                          binding="#{predios.soc_ubicacion1}"
+                                          id="soc_ubicacion1"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          value="#{predios.ubicacionSeleccionada}">
+                        <f:selectItems value="#{predios.listaTipoSuelo}"
+                                       binding="#{predios.si11}" id="si11"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{predios.soc_filtro_dpto}"
+                                          id="soc_filtro_dpto"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{predios.soc_filtro_depto_valueChangeListener}"
+                                          immediate="true" autoSubmit="true">
+                        <f:selectItems value="#{predios.listaDepartamentos}"
+                                       binding="#{predios.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{predios.soc_filtro_mun}"
+                                          id="soc_filtro_mun"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          immediate="true">
+                        <f:selectItems value="#{predios.listaMunicipios}"
+                                       binding="#{predios.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="Autoridad"
+                                          binding="#{predios.soc_autoridad_id}"
+                                          id="soc_autoridad_id"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" 
+                                          valueChangeListener="#{predios.soc_filtro_porAtoridad}"
+                                          visible="#{!predios.visiblePerfil}" >
+                        <f:selectItems value="#{predios.listaAutoridades}"
+                                       binding="#{predios.si1Autoridad}" id="si1a"/>
+                                       
+                      </af:selectOneChoice>   
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}" binding="#{predios.cb_buscar1}" id="cb_buscar1" icon="/imgs/binoculars_24.png"
+                                      actionListener="#{predios.cb_buscar_actionListener}"/>
+                  </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelCollection binding="#{predios.pc11}" id="pc11">
+                    <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}" binding="#{predios.m2}"
+                                   id="m2">
+                            <af:commandMenuItem text="#{viewcontrollerBundle.VER_ERRORES}"
+                                                binding="#{predios.cmi2}"
+                                                id="cmi2"
+                                                actionListener="#{predios.cmi_errores_actionListener}"/>
+                          </af:menu>
+                        </f:facet>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{predios.listaPredios}" var="row"
+                              rowBandingInterval="1" binding="#{predios.t_predios1}" id="t_predios1"
+                              rowSelection="single">
+                       
+                       <!--Carlos Abril Mar 04 2015 -->
+                        <af:column 
+                                   headerText="#{viewcontrollerBundle.FNT_NUMERO}" id="c111"
+                                   width="50"
+                                  >
+                          <af:outputText value="#{row.num}" id="ot111"/>
+                        </af:column>
+                        
+                        
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.auditoria_consulta_usuario}" align="start" id="c1" sortProperty="nombreUsuario"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}" width="150">
+                        <af:commandLink  visible="#{predios.visiblePerfil}" text="#{row.nombreUsuario}" id="cl1" actionListener="#{predios.usuario_actionListener}" action="detalleUsuario">
+                          <f:attribute value="#{row.codigoUsuario}" name="codigoUsuario"/>
+                        </af:commandLink>
+                        <af:outputText visible="#{!predios.visiblePerfil}" value="#{row.nombreUsuario}" id="usuSinLink"/>
+                      </af:column>
+                      <af:column id="c2" headerText="#{viewcontrollerBundle.PREDIO}" sortable="true" sortProperty="nombre"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}" width="150">
+                        <af:commandLink visible="#{predios.visiblePerfil}" text="#{row.nombre}" id="cl_predio" action="detallePredio" actionListener="#{concesiones.predio_actionListener}">
+                          <f:attribute value="#{row.codigo}" name="codigoPredio"/>
+                          <f:attribute value="#{row.codigoUsuario}" name="codigoUsuario"/>
+                        </af:commandLink>
+                        <af:outputText visible="#{!predios.visiblePerfil}" value="#{row.nombre}" id="cl_predioSinLink"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.CENTRO_POBLADO}" id="c3" sortProperty="nombreCentroPoblado"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.nombreCentroPoblado}" id="ot2"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.C_EDULA_CATASTRAL}" id="c4" sortProperty="cedulaCatastral"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.cedulaCatastral}" id="ot3"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.MATRICULA_CATASTRAL}" id="c5" sortProperty="matriculaCatastral"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.matriculaCatastral}" id="ot4"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.DIRECCI_U00F3N}" id="c6" sortProperty="direccion"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.direccion}" id="ot5"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.DEPARTAMENTO}" id="c7" sortProperty="departamento"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.departamento}" id="ot6"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.MUNICIPIO}" id="c8" sortProperty="municipio"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.municipio}" id="ot7"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.PTO_LATITUD}" id="c9" sortProperty="latitud"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.latitud}" id="ot8"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.PTO_LONGITUD}" id="c10" sortProperty="longitud"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.longitud}" id="ot9"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.ALTITUD}" id="c11" sortProperty="altitud"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.altitud}" id="ot10"/>
+                      </af:column>
+                      <af:column sortable="true" headerText="#{viewcontrollerBundle.CLASIFICACION_DEL_SUELO}" id="c12" sortProperty="tipoSuelo"
+                                 inlineStyle="#{row.valid ? 'color:Black;' : 'color:Red;'}">
+                        <af:outputText value="#{row.tipoSuelo}" id="ot11"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+              </af:panelSplitter>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top">
+                  <af:panelGroupLayout binding="#{predios.panelGroupLayout1}" id="panelGroupLayout1">
+                    <af:outputText value="Busquedas de predios" binding="#{predios.outputText1titulo}" 
+                      styleClass="AFBrandingBarTitle"
+                      id="outputText1titulo"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelStretchLayout>
+          
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:predios-->
+</jsp:root>

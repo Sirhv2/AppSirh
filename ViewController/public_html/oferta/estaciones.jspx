@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{estacionesBacking.document1}" id="document1">
+      <af:form binding="#{estacionesBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{estacionesBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" startWidth="10px"
+                                   endWidth="10px" topHeight="30px"
+                                   bottomHeight="10px"
+                                   inlineStyle="width:100%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{estacionesBacking.panelSplitter1}"
+                                  id="panelSplitter1" orientation="vertical"
+                                  splitterPosition="128" disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{estacionesBacking.panelGroupLayout4}"
+                                         id="panelGroupLayout4">
+                      <af:panelBox text="#{estacionesBacking.tituloPanel}"
+                                   binding="#{estacionesBacking.panelBox1}"
+                                   id="panelBox1" showDisclosure="false">
+                        <f:facet name="toolbar"/>
+                    <af:panelFormLayout binding="#{estacionesBacking.panelFormLayout1}"
+                                        id="panelFormLayout1" 
+                                        maxColumns="1" rows="1"
+                                        labelAlignment="top">
+                          <af:activeOutputText binding="#{estacionesBacking.aot_area}"
+                                               id="aot_area"
+                                               value="#{estacionesBacking.labelAyuda}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{estacionesBacking.spacer31}"
+                                     id="spacer31"/>
+                        </af:panelFormLayout>
+                        <af:panelFormLayout binding="#{estacionesBacking.panelFormLayout2}"
+                                            id="panelFormLayout2" rows="1"
+                                            maxColumns="5" rendered="#{!estacionesBacking.flagIDF}"
+                                            inlineStyle="padding-bottom: 10px;">
+                      <f:facet name="footer"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                                          binding="#{estacionesBacking.socArea}"
+                                          id="socArea"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{estacionesBacking.socArea_valueChangeListener}">
+                        <f:selectItems value="#{estacionesBacking.listaArea}"
+                                       binding="#{estacionesBacking.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_ZONA}"
+                                          binding="#{estacionesBacking.socZona}"
+                                          id="socZona"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{estacionesBacking.socZona_valueChangeListener}">
+                        <f:selectItems value="#{estacionesBacking.listaZona}"
+                                       binding="#{estacionesBacking.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                          binding="#{estacionesBacking.socSubzona}"
+                                          id="socSubzona"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          >
+                        <f:selectItems value="#{estacionesBacking.listaSubzona}"
+                                       binding="#{estacionesBacking.selectItems3}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                          <af:inputText label="Codigo:"
+                                        binding="#{estacionesBacking.codigoEstacion}"
+                                        id="codigoEstacion"
+                                        rendered="#{estacionesBacking.flagHidro}"/>
+                          <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{estacionesBacking.cmdBuscar}"
+                                        id="cmdBuscar"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{estacionesBacking.cmdBuscar_actionListener}"
+                                        rendered="#{estacionesBacking.flagHidro}"/>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        id="cmdBuscarM"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{estacionesBacking.cmdBuscarMeteo_actionListener}"
+                                        rendered="#{!estacionesBacking.flagHidro}"/>
+                    </af:panelFormLayout>
+                    
+                    <!--CDONCEL-->
+                    <af:panelFormLayout binding="#{estacionesBacking.panelFormLayout3}"
+                                            id="panelFormLayout3" rows="1"
+                                            maxColumns="5" rendered="#{!estacionesBacking.flagIDF}"
+                                        inlineStyle=" width:600px; padding-top: 10px; padding-bottom: 10px; padding-left: 40px">
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{estacionesBacking.filtro_depto}"
+                                          id="filtro_depto"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{estacionesBacking.depto_valueChangeListener}">
+                        <f:selectItems value="#{estacionesBacking.listaDep}"
+                                       id="selectItemsDept"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{estacionesBacking.filtro_mun}"
+                                          id="filtroMun"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{estacionesBacking.listaMun}"
+                                       id="selectItemMun"/>
+                      </af:selectOneChoice>                     
+                        
+                          <!--af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{estacionesBacking.cmdBuscarMun}"
+                                        id="cmdBuscarMun"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{estacionesBacking.cmdBuscarMun_actionListener}"/-->
+                    </af:panelFormLayout>
+                    
+                    <!-- FILTRO BUSQUEDA ESTACIONES IDF-->
+                     <af:outputLabel value="A continuación seleccione el municipio y la estación para generar el documento con la gráfica IDF"
+                     rendered="#{estacionesBacking.flagIDF}"/>
+                  <af:spacer width="10" height="10"
+                                     binding="#{estacionesBacking.spaceridf}"
+                                     id="spaceridf"/>
+                     <af:panelFormLayout  binding="#{estacionesBacking.panelFormLayout4}"
+                                            id="panelFormLayout4" rows="1"
+                                            maxColumns="3"
+                                          rendered="#{estacionesBacking.flagIDF}">
+                    
+                  <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                         binding="#{estacionesBacking.filtro_munIDF}"
+                                          id="filtroMunIDF"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                           autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{estacionesBacking.munIDF_valueChangeListener}">                        
+                        <f:selectItems value="#{estacionesBacking.listaMun}"
+                                       id="selectItemMunIDF"/>
+                      </af:selectOneChoice>  
+                      
+                      <af:selectOneChoice label="Estación"
+                                          binding="#{estacionesBacking.filtro_EstIDF}"
+                                          id="filtro_EstIDF"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{estacionesBacking.lsEstIDFAux}"
+                                       id="selectItemEstIDF"/>
+                      </af:selectOneChoice>
+                       <af:commandButton text="Generar"
+                                        id="cmdGenerar"
+                                        icon="/imgs/activo.png"
+                                        actionListener="#{estacionesBacking.preparaIDF_actionListener}"/>
+                  </af:panelFormLayout>
+                    <!--FIN_CDONCEL-->
+                    
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                    
+                     
+                  </f:facet>
+                  <f:facet name="second">                  
+                    <af:panelGroupLayout layout="vertical"
+                                         binding="#{estacionesBacking.panelGroupLayout3}"
+                                         id="panelGroupLayout3"
+                                         inlineStyle="width:100%; height:100%;"
+                                         rendered="#{!estacionesBacking.flagIDF}">
+                      <af:panelCollection binding="#{estacionesBacking.pcReferencia}"
+                                          id="pcReferencia"
+                                          featuresOff="detach viewMenu columnsMenuItem sortMenuItem reorderColumnsMenuItem"
+                                          inlineStyle="width:99%; height:120px;" 
+                                          rendered="#{estacionesBacking.flagHidro}">
+                        <af:table var="row"
+                                  binding="#{estacionesBacking.tena}"
+                                  id="tena"
+                                  value="#{estacionesBacking.listaEna}"
+                                  rowBandingInterval="1"
+                                  emptyText="No hay datos para mostrar"
+                                  >
+                          <af:column sortable="true" headerText="ENA" 
+                                    sortProperty="ofertaSubzonasPK.annoEna">
+                            <af:outputText value="#{row.ofertaSubzonasPK.annoEna}"/>
+                          </af:column>        
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_MEDIA}">
+                            <af:outputText value="#{row.ofertaMedia}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_SECA}">
+                            <af:outputText value="#{row.ofertaSeca}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_DEMANDA}">
+                            <af:outputText value="#{row.demanda}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_IUA_MEDIO}">
+                            <af:outputText value="#{row.iuaAnnoMedio}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_IUA_SECO}">
+                            <af:outputText value="#{row.iuaAnnoSeco}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_IACAL_MEDIO}">
+                            <af:outputText value="#{row.iacalAnnoMedio}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_IACAL_SECO}">
+                            <af:outputText value="#{row.iacalAnnoSeco}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_VULNERA_MEDIO}">
+                            <af:outputText value="#{row.indVulnerabAnnoMedio}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_VULNERA_SECO}">
+                            <af:outputText value="#{row.indVulnerabAnnoSeco}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="#{viewcontrollerBundle.OFERTA_INDICE_REGULACION}">
+                            <af:outputText value="#{row.indRegulacion}"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10"
+                                 binding="#{estacionesBacking.spacer2}"
+                                 id="spacer2"/>
+                      <af:panelCollection binding="#{estacionesBacking.pcEstaciones}"
+                                          id="pcEstaciones"
+                                          inlineStyle="width:99%; height:200px;"
+                                          >
+                        <f:facet name="menus">
+                          <af:menu text="Opciones"
+                                   binding="#{estacionesBacking.menu1}"
+                                   id="menu1">
+                            <af:commandMenuItem text="#{viewcontrollerBundle.OF_ESTACION_DETALLE}"
+                                                binding="#{estacionesBacking.detalleEstacion}"
+                                                id="detalleEstacion"
+                                                immediate="true"
+                                                partialSubmit="true"
+                                                action="#{estacionesBacking.getAccion}"
+                                                actionListener="#{estacionesBacking.detalleEstacion_actionListener}"/>
+                          </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{estacionesBacking.LEstaciones}"
+                                  var="row"
+                                  binding="#{estacionesBacking.testaciones}"
+                                  id="testaciones" rowSelection="single"
+                                  rowBandingInterval="1" 
+                                  emptyText="No hay datos para mostrar"
+                                  selectionListener="#{estacionesBacking.testaciones_selectionListener}"
+                                  contentDelivery="immediate">
+                          <af:column sortable="true" headerText="Id"
+                                     align="start" id="id" sortProperty="codCatalogoEs">
+                            <af:outputText value="#{row.codCatalogoEs}"/>
+                          </af:column>
+                          <af:column sortable="true" headerText="Nombre"
+                                     align="start" sortProperty="nombreEs">
+                            <af:outputText value="#{row.nombreEs}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Categoria"
+                                     align="start">
+                            <af:outputText value="#{row.descCategoria}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Clase"
+                                     align="start">
+                            <af:outputText value="#{row.descClase}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Tipo"
+                                     align="start">
+                            <af:outputText value="#{row.descTipo}"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Municipio"
+                                     align="start">
+                            <af:outputText value="#{row.descDivipola}"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="Pronostico FEWS" align="start"
+                                     visible="#{estacionesBacking.visibleCol}" id="cpronosticoFEWS">
+                            <af:image id="image1"
+                                      source='#{row.tieneFews ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="Consultar FEWS"
+                                     align="start" visible="#{estacionesBacking.visibleCol}"
+                                     id="cconsultarFEWS">
+                            <af:commandLink text="#{row.tieneFews ? &quot;Consultar FEWS&quot; : &quot;&quot;}"
+                                            id="cc" immediate="true"
+                                            actionListener="#{estacionesBacking.consultaFews_actionListener}">
+                              <f:attribute value="#{row.urlFews}"
+                                           name="urlFews"/>
+                              
+                            </af:commandLink>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{estacionesBacking.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal"
+                                     >
+                  <af:spacer width="10" height="10"
+                             binding="#{estacionesBacking.spacer1}"
+                             id="spacer1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBSERVATORIO_OBSERVATORIO}"
+                                  binding="#{estacionesBacking.commandLink1}"
+                                  id="commandLink1"
+                                  action="observatorio"
+                                  immediate="true" partialSubmit="true"/>
+                  <af:spacer width="25" height="10" />
+                  <af:commandLink text="Observatorio Aguas Superficiales "
+                                  action="observatorioSuperficiales"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{estacionesBacking.spacer4}"
+                             id="spacer4"/>
+                  <af:outputText value="#{viewcontrollerBundle.OF_ESTACIONES}"
+                                 binding="#{estacionesBacking.outputText1}"
+                                 id="outputText1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:estacionesBacking-->
+</jsp:root>

@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{detalleCuencaBean.document1}" id="document1">
+      <af:form binding="#{detalleCuencaBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleCuencaBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{detalleCuencaBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2" layout="scroll">
+                  <af:panelBox text="#{viewcontrollerBundle.CNC_DATOS_BASICOS}"
+                               binding="#{detalleCuencaBean.panelBox1}"
+                               id="panelBox1">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout binding="#{detalleCuencaBean.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelFormLayout binding="#{detalleCuencaBean.panelFormLayout1}"
+                                          id="panelFormLayout1">
+                        <f:facet name="footer"/>
+                        <af:inputText label="#{viewcontrollerBundle.CNC_NOMBRE}"
+                                      binding="#{detalleCuencaBean.itNombre}"
+                                      id="itNombre" readOnly="true"
+                                      value="#{detalleCuencaBean.cuencaSeleccionada.nombre}"
+                                      />
+                        <af:inputText label="#{viewcontrollerBundle.CNC_CODIGO}"
+                                      binding="#{detalleCuencaBean.itCodigo}"
+                                      id="itCodigo"
+                                      value="#{detalleCuencaBean.detalleCuenca.codigo}"/>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.CNC_FUENTE_PPAL}"
+                                            binding="#{detalleCuencaBean.socFuentePpal}"
+                                            id="socFuentePpal"
+                                            showRequired="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            value="#{detalleCuencaBean.detalleCuenca.fuente}"
+                                            >
+                          <f:selectItems value="#{detalleCuencaBean.fuentesList}"
+                                         binding="#{detalleCuencaBean.selectItems1}"
+                                         id="selectItems1"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{detalleCuencaBean.spacer3}"
+                               id="spacer3"/>
+                  </af:panelBox>
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleCuencaBean.spacer6}"
+                             id="spacer6"/>
+                  <af:panelBox text="#{viewcontrollerBundle.CNC_FUENTES}"
+                               binding="#{detalleCuencaBean.panelBox2}"
+                               id="panelBox2">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout binding="#{detalleCuencaBean.panelGroupLayout4}"
+                                         id="panelGroupLayout4">
+                      <af:panelFormLayout binding="#{detalleCuencaBean.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <f:facet name="footer"/>
+                        <af:selectManyListbox binding="#{detalleCuencaBean.smlFuentes}"
+                                              id="smlFuentes" 
+                                              label="#{viewcontrollerBundle.CNC_FUENTES_AA}"
+                                              size="10"
+                                              value="#{detalleCuencaBean.fuentesRelacionadasList}"
+                                              >
+                          <f:selectItems value="#{detalleCuencaBean.fuentesList}"
+                                         binding="#{detalleCuencaBean.selectItems2}"
+                                         id="selectItems2"/>
+                        </af:selectManyListbox>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{detalleCuencaBean.spacer4}"
+                               id="spacer4"/>
+                  </af:panelBox>
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleCuencaBean.spacer7}"
+                             id="spacer7"/>
+                  <af:panelGroupLayout binding="#{detalleCuencaBean.panelGroupLayout5}"
+                                       id="panelGroupLayout5"
+                                       layout="horizontal"
+                                       halign="center"
+                                       >
+                    <af:spacer width="10" height="10"
+                               binding="#{detalleCuencaBean.spacer5}"
+                               id="spacer5"/>
+                    <af:commandButton icon="/imgs/check_mark.png"
+                                      text="#{viewcontrollerBundle.boton_actualizar}"
+                                      binding="#{detalleCuencaBean.cmdSave}"
+                                      id="cmdSave"
+                                      action="#{detalleCuencaBean.cmdSave_action}"/>
+                  </af:panelGroupLayout>
+                  
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{detalleCuencaBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1"
+                                     layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleCuencaBean.spacer1}"
+                             id="spacer1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CNC_CUENCAS}"
+                                  binding="#{detalleCuencaBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="cuencas"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{detalleCuencaBean.spacer2}"
+                             id="spacer2"/>
+                  <af:outputText value="#{viewcontrollerBundle.CNC_DETALLE_CNC}"
+                                 binding="#{detalleCuencaBean.outputText1}"
+                                 id="outputText1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleCuencaBean-->
+</jsp:root>

@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document>
+      <af:form>
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarUsoBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1">
+                  <af:panelBox text="#{viewcontrollerBundle.USO_USO}"
+                               binding="#{adicionarUsoBean.panelBox1}"
+                               id="panelBox1" showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarUsoBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           inlineStyle="width:100%;"
+                                           bottomHeight="14px"
+                                           startWidth="20px" topHeight="20px"
+                                           endWidth="20px">
+                      <f:facet name="bottom">
+                      
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout4}"
+                                             id="panelGroupLayout4"
+                                             layout="scroll"
+                                             inlineStyle="width:100%;heigth:50px;">
+                          <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox6}"
+                                            id="decorativeBox6"
+                                            inlineStyle="width:100%;height:50px;"
+                                           topHeight="0px">
+                            <f:facet name="center">
+                                <af:panelFormLayout binding="#{adicionarUsoBean.panelFormLayout1}"
+                                              id="panelFormLayout1"
+                                                    inlineStyle="width:100%;height:50px;">
+                                    <af:selectOneChoice label="#{viewcontrollerBundle.USO_TIPO_USO}"
+                                                        binding="#{adicionarUsoBean.socTipoUso}"
+                                                        id="socTipoUso"
+                                                        showRequired="true"
+                                                      unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                      valueChangeListener="#{adicionarUsoBean.socTipoUso_valueChangeListener}"
+                                                      autoSubmit="true" immediate="true"
+                                                      helpTopicId="adicionarUso"
+                                                      >
+                                      <f:selectItems value="#{adicionarUsoBean.listaTiposUso}"
+                                                     binding="#{adicionarUsoBean.siTipoUso}"
+                                                     id="siTipoUso"/>
+                                    </af:selectOneChoice>
+                                </af:panelFormLayout>
+                            </f:facet>
+                          </af:decorativeBox>
+                          
+                            <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox1}"
+                                              id="decorativeBox1"
+                                              visible="false" 
+                                              inlineStyle="width:100%;height:130px;">
+                              <f:facet name="center">
+                                <af:panelGroupLayout layout="scroll"
+                                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                     binding="#{adicionarUsoBean.panelGroupLayout10}"
+                                                     id="panelGroupLayout10">
+                                  
+                                    <af:panelFormLayout binding="#{adicionarUsoBean.panelFormLayout2}"
+                                                        id="panelFormLayout2">
+                                      <f:facet name="footer"/>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_CAUDAL_ASIGNADO}"
+                                                    binding="#{adicionarUsoBean.itCaudalAsignadoDomestico}"
+                                                    id="itCaudalAsignadoDomestico"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  maxFractionDigits="3"
+                                                  minFractionDigits="0"
+                                                  pattern="#####.###"
+                                                  />
+                                      </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_PERSONAS_PERMANENTES}"
+                                                    binding="#{adicionarUsoBean.itPersonasPermanentes}"
+                                                    id="itPersonasPermanentes"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="true" />
+                                      </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_PERSONAS_TRANSITORIAS}"
+                                                    binding="#{adicionarUsoBean.itPersonasTransitorias}"
+                                                    id="itPersonasTransitorias"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="true" />
+                                      </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_APROVECHAMIENTO}"
+                                                    binding="#{adicionarUsoBean.itAprovechamiento}"
+                                                    id="itAprovechamiento"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="false" 
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  maxFractionDigits="3"
+                                                  minFractionDigits="0"
+                                                  pattern="#####.###"
+                                                  />
+                                      </af:inputText>
+                                    </af:panelFormLayout>
+                                  </af:panelGroupLayout>
+                              </f:facet>
+                            </af:decorativeBox>
+                            <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox2}"
+                                              id="decorativeBox2"
+                                              visible="false"
+                                              inlineStyle="width:100%;height:130px;"
+                                              >
+                              <f:facet name="center">
+                                <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout11}"
+                                                     id="panelGroupLayout11"
+                                                     layout="scroll">
+                                    <af:panelFormLayout binding="#{adicionarUsoBean.panelFormLayout3}"
+                                                        id="panelFormLayout3">
+                                      <f:facet name="footer"/>
+                                          <af:inputText label="#{viewcontrollerBundle.USO_TIPO_CULTIVO}"
+                                                        binding="#{adicionarUsoBean.itTipoCultivo}"
+                                                        id="itTipoCultivo"/>
+                                          <af:inputText label="#{viewcontrollerBundle.USO_CAUDAL_ASIGNADO}"
+                                                        binding="#{adicionarUsoBean.itCaudalAsignadoAgricola}"
+                                                        id="itCaudalAsignadoAgricola"
+                                                        columns="10">
+                                            <af:convertNumber type="number"
+                                                      integerOnly="false" 
+                                                      maxIntegerDigits="5"
+                                                      minIntegerDigits="1"
+                                                      maxFractionDigits="3"
+                                                      minFractionDigits="0"
+                                                      pattern="#####.###"
+                                                      />
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.USO_PRODUCCION}"
+                                                        binding="#{adicionarUsoBean.itProduccion}"
+                                                        id="itProduccion"
+                                                        columns="10">
+                                            <af:convertNumber type="number"
+                                                      integerOnly="false" 
+                                                      maxIntegerDigits="5"
+                                                      minIntegerDigits="1"
+                                                      maxFractionDigits="3"
+                                                      minFractionDigits="0"
+                                                      pattern="#####.###"
+                                                      />
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.USO_EFICIENCIA}"
+                                                        binding="#{adicionarUsoBean.itEficiencia}"
+                                                        id="itEficiencia"
+                                                        columns="10">
+                                            <af:convertNumber type="number"
+                                                      integerOnly="false" 
+                                                      maxIntegerDigits="5"
+                                                      minIntegerDigits="1"
+                                                      maxFractionDigits="3"
+                                                      minFractionDigits="0"
+                                                      pattern="#####.###"
+                                                      />
+                                          </af:inputText>
+                                          <af:inputText label="#{viewcontrollerBundle.USO_AREA}"
+                                                        binding="#{adicionarUsoBean.itArea}"
+                                                        id="itArea"
+                                                        columns="10">
+                                            <af:convertNumber type="number"
+                                                      integerOnly="false" 
+                                                      maxIntegerDigits="5"
+                                                      minIntegerDigits="1"
+                                                      maxFractionDigits="3"
+                                                      minFractionDigits="0"
+                                                      pattern="#####.###"
+                                                      />
+                                          </af:inputText>
+                                    </af:panelFormLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <f:facet name="top"/>
+                            </af:decorativeBox>
+                            <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox3}"
+                                              id="decorativeBox3"
+                                              visible="false"
+                                              inlineStyle="width:100%;height:130px;"
+                                              >
+                              <f:facet name="center">
+                                <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout12}"
+                                                     id="panelGroupLayout12"
+                                                     layout="scroll">
+                                    
+                                    <af:panelFormLayout binding="#{adicionarUsoBean.panelFormLayout4}"
+                                                        id="panelFormLayout4">
+                                      <f:facet name="footer"/>
+                                      
+                                        <af:inputText label="#{viewcontrollerBundle.USO_TIPO_ANIMAL}"
+                                                    binding="#{adicionarUsoBean.itTipoAnimalPecuario}"
+                                                    id="itTipoAnimalPecuario"/>
+                                        <af:inputText label="#{viewcontrollerBundle.USO_CAUDAL_ASIGNADO}"
+                                                    binding="#{adicionarUsoBean.itCaudalAsignadoPecuario}"
+                                                    id="itCaudalAsignadoPecuario"
+                                                    columns="10">
+                                            <af:convertNumber type="number"
+                                                      integerOnly="false" 
+                                                      maxIntegerDigits="5"
+                                                      minIntegerDigits="1"
+                                                      maxFractionDigits="3"
+                                                      minFractionDigits="0"
+                                                      pattern="#####.###"
+                                                      />
+                                          </af:inputText>
+                                        <af:inputText label="#{viewcontrollerBundle.USO_NUMERO_ANIMAL}"
+                                                    binding="#{adicionarUsoBean.itNumeroAnimalesPecuario}"
+                                                    id="itNumeroAnimalesPecuario"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="true" />
+                                      </af:inputText>
+                                      
+                                    </af:panelFormLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <f:facet name="top"/>
+                            </af:decorativeBox>
+                            <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox4}"
+                                              id="decorativeBox4"
+                                              visible="false"
+                                              inlineStyle="width:100%;height:130px;"
+                                            >
+                              <f:facet name="center">
+                                <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout13}"
+                                                     id="panelGroupLayout13"
+                                                     layout="scroll">
+                                  
+                                    <af:panelFormLayout binding="#{adicionarUsoBean.panelFormLayout5}"
+                                                        id="panelFormLayout5">
+                                      <f:facet name="footer"/>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_TIPO_ANIMAL}"
+                                                    binding="#{adicionarUsoBean.itTipoAnimalAcuicola}"
+                                                    id="itTipoAnimalAcuicola"/>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_CAUDAL_ASIGNADO}"
+                                                    binding="#{adicionarUsoBean.itCaudalAsignadoAcuicola}"
+                                                    id="itCaudalAsignadoAcuicola"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="false" 
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  maxFractionDigits="3"
+                                                  minFractionDigits="0"
+                                                  pattern="#####.###"
+                                                  />
+                                      </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_NUMERO_ANIMAL}"
+                                                    binding="#{adicionarUsoBean.itNumeroAnimalesAcuicola}"
+                                                    id="itNumeroAnimalesAcuicola"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="true" />
+                                      </af:inputText>
+                                      
+                                    </af:panelFormLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              <f:facet name="top"/>
+                            </af:decorativeBox>
+                            <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox5}"
+                                              id="decorativeBox5"
+                                              visible="false"
+                                              inlineStyle="width:100%;height:130px;"
+                                              >
+                              <f:facet name="center">
+                                <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout14}"
+                                                     id="panelGroupLayout14"
+                                                     layout="scroll">
+                                  
+                                    <af:panelFormLayout binding="#{adicionarUsoBean.panelFormLayout6}"
+                                                        id="panelFormLayout6">
+                                      <f:facet name="footer"/>
+                                      <af:selectOneChoice label="#{viewcontrollerBundle.USO_TIPO_USO_OTRO}"
+                                                          binding="#{adicionarUsoBean.socTipoUsoOtro}"
+                                                          id="socTipoUsoOtro"
+                                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                        <f:selectItems value="#{adicionarUsoBean.listaTiposUsoOtro}"
+                                                       binding="#{adicionarUsoBean.siTipoUsoOtro}"
+                                                       id="siTipoUsoOtro"/>
+                                      </af:selectOneChoice>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_CAUDAL_ASIGNADO}"
+                                                    binding="#{adicionarUsoBean.itCaudalAsignadoOtro}"
+                                                    id="itCaudalAsignadoOtro"
+                                                    columns="10">
+                                        <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  maxFractionDigits="3"
+                                                  minFractionDigits="0"
+                                                  pattern="#####.###"
+                                                  />
+                                      </af:inputText>
+                                      <af:inputText label="#{viewcontrollerBundle.USO_DESCRIPCION}"
+                                                    binding="#{adicionarUsoBean.itDescripcionOtro}"
+                                                    id="itDescripcionOtro"
+                                                    rows="3" columns="60"/>
+                                    </af:panelFormLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                            </af:decorativeBox>
+                          <af:decorativeBox binding="#{adicionarUsoBean.decorativeBox7}"
+                                            id="decorativeBox7"  visible="false" inlineStyle="width:100%;height:100px;">
+                            <f:facet name="center">
+                              <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout2}"
+                                             id="panelGroupLayout2"
+                                             layout="vertical" halign="right">
+                          <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout3}"
+                                               id="panelGroupLayout3"
+                                               layout="horizontal" halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarUsoBean.cbGuardar}"
+                                              id="cbGuardar" 
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarUsoBean.cbGuardar_actionListener}"
+                                              />
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+
+                            </f:facet>
+                           
+                          </af:decorativeBox>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{adicionarUsoBean.p_registro_exitoso}" 
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{adicionarUsoBean.d_registro_exitoso}"
+                               id="d_registro_exitoso"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                               type="none" closeIconVisible="false"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}">
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout15}"
+                                             id="panelGroupLayout15">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{adicionarUsoBean.cbAceptar}"
+                                            id="cbAceptar"
+                                              actionListener="#{adicionarUsoBean.cb_aceptar_actionListener}"
+                                            action="#{adicionarUsoBean.getAceptarAction}"
+                                            immediate="true" partialSubmit="true" 
+                                            />
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:panelStretchLayout binding="#{adicionarUsoBean.panelStretchLayout3}"
+                                             id="panelStretchLayout3"
+                                             endWidth="0px"
+                                             topHeight="0px" bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="#{viewcontrollerBundle.USO_REGISTRADO}"
+                                         binding="#{adicionarUsoBean.outputText6}"
+                                         id="outputText6"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image binding="#{adicionarUsoBean.image1}"
+                                    id="image1"
+                                    source="/imgs/info.png" shortDesc="info"/>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top">
+               <af:panelGroupLayout binding="#{adicionarUsoBean.panelGroupLayout5}"
+                                     id="panelGroupLayout5"
+                                     layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarUsoBean.spacer10}"
+                             id="spacer10"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  binding="#{adicionarUsoBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="usuariosAgua" />
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarUsoBean.spacer11}"
+                             id="spacer11"/>
+                  <af:commandLink text="#{viewcontrollerBundle.login_campo_usuario} : #{adicionarUsoBean.usuario.nombre}"
+                                  binding="#{adicionarUsoBean.commandLink2}"
+                                  id="commandLink2" action="detalleUsuario"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarUsoBean.spacer12}"
+                             id="spacer12"/>
+                  <af:commandLink text="#{viewcontrollerBundle.PREDIO} : #{adicionarUsoBean.predio.nombre}"
+                                  binding="#{adicionarUsoBean.commandLink3}"
+                                  id="commandLink3" action="detallePredio"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarUsoBean.spacer13}"
+                             id="spacer13"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CONCESI_U00F3N__} : #{adicionarUsoBean.concesion.numeroExpediente}"
+                                  binding="#{adicionarUsoBean.commandLink4}"
+                                  id="commandLink4"
+                                  action="detalleConcesion"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{adicionarUsoBean.spacer14}"
+                             id="spacer14"/>
+                  <af:commandLink text="#{viewcontrollerBundle.CPT_CAPTACION} : #{adicionarUsoBean.captacion.objTipoFuenteCaptacion.valor}"
+                                  binding="#{adicionarUsoBean.commandLink5}"
+                                  id="commandLink5"
+                                  action="detalleCaptacion"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarUsoBean-->
+</jsp:root>

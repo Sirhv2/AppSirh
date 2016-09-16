@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+         
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{actorConflictoBean.documentAF1}" id="document1">
+      <af:form binding="#{actorConflictoBean.formAF1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">     
+                <af:panelStretchLayout binding="#{actorConflictoBean.psl2}" id="psl2"
+                                 bottomHeight="0" topHeight="73px"
+                                 endWidth="0px" startWidth="0px">
+                    <f:facet name="center">
+                        <af:panelGroupLayout binding="#{actorConflictoBean.pgl1}"
+                                     id="pgl1" layout="scroll">
+                            
+                            <af:panelBox
+                               binding="#{actorConflictoBean.pb1}" id="pb1"
+                               showDisclosure="false" visible="true"
+                                         text="#{viewcontrollerBundle.ACTOR_CONFLICTO}">
+                    <af:panelFormLayout binding="#{actorConflictoBean.pfl21}"
+                                        id="pfl21" rows="10">
+                      <af:inputText label="Nombre Fuente"
+                                    binding="#{actorConflictoBean.it_nombre1}"
+                                    id="it_nombre1"
+                                    value="#{actorConflictoBean.fuente.nombre}"
+                                    readOnly="true"/>
+                      <af:inputText binding="#{actorConflictoBean.it_nombre2}"
+                                    id="it_nombre2"
+                                    requiredMessageDetail="Nombre de conflicto requerido"
+                                    contentStyle="text-transform:uppercase"
+                                    label="Nombre conflicto"
+                                    value="#{actorConflictoBean.conflicto.nombre}"
+                                    readOnly="true"/>
+                      <af:selectManyListbox
+                                            binding="#{actorConflictoBean.smlbPoblacionConflicto}"
+                                            id="smlbPoblacionConflicto"
+                                              helpTopicId="sectorProyecto"
+                                            value="#{actorConflictoBean.listaPoblacionConflictoAsociado}"
+                                            label="#{viewcontrollerBundle.SECTOR_CONFLICTO}">
+                        <f:selectItems value="#{actorConflictoBean.listaPoblacionConflicto}"
+                                       binding="#{actorConflictoBean.siPoblacionConflicto}"
+                                       id="siPoblacionConflicto"/>
+                      </af:selectManyListbox>
+                      <af:inputText binding="#{actorConflictoBean.inputText1}"
+                                    id="inputText1"
+                                    requiredMessageDetail="Nombre de conflicto requerido"
+                                    contentStyle="text-transform:uppercase"
+                                    label="#{viewcontrollerBundle.NOMB_PROYECTO_RELACIONADO}"
+                                    value="#{actorConflictoBean.conflicto.poblacionOtro}"/>
+                      <af:commandButton text="Actualizar"
+                                        binding="#{actorConflictoBean.cbNext1}"
+                                        id="cbNext1" icon="/imgs/next.png"
+                                        actionListener="#{actorConflictoBean.cbNext1_actionListener}"/>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Actores involucrados"
+                               showDisclosure="false" showHeader="always"
+                               binding="#{actorConflictoBean.panelBox1}"
+                               id="panelBox1">
+                    <af:panelStretchLayout topHeight="20px" startWidth="2px"
+                                           inlineStyle="width:99%; height:280px;"
+                                           bottomHeight="51px" endWidth="0px"
+                                           binding="#{actorConflictoBean.panelStretchLayout1}"
+                                           id="panelStretchLayout1">
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{actorConflictoBean.panelGroupLayout1}"
+                                             id="panelGroupLayout1">
+                          <af:panelGroupLayout layout="vertical"
+                                               binding="#{actorConflictoBean.panelGroupLayout2}"
+                                               id="panelGroupLayout2">
+                            <af:panelFormLayout rows="1" maxColumns="1"
+                                                binding="#{actorConflictoBean.panelFormLayout1}"
+                                                id="panelFormLayout1">
+                              <af:spacer width="10" height="10"
+                                         binding="#{actorConflictoBean.spacer2}"
+                                         id="spacer2"/>
+                              <af:activeOutputText styleClass="AFBrandingBarTitle"
+                                                   visible="true"
+                                                   inlineStyle="font-size:11px;"
+                                                   value="Actores Conflicto"
+                                                   binding="#{actorConflictoBean.activeOutputText1}"
+                                                   id="activeOutputText1"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{actorConflictoBean.spacer3}"
+                                         id="spacer3"/>
+                              <af:panelStretchLayout startWidth="40%"
+                                                     endWidth="55%"
+                                                     topHeight="0"
+                                                     bottomHeight="0px"
+                                                     inlineStyle="width: 900px;height:180px;"
+                                                     binding="#{actorConflictoBean.panelStretchLayout2}"
+                                                     id="panelStretchLayout2">
+                                <f:facet name="start">
+                                  <af:panelFormLayout
+                                                      inlineStyle="border:1px solid #BFC6C9; margin:0px; padding:0px;"
+                                                      binding="#{actorConflictoBean.panelFormLayout2}"
+                                                      id="panelFormLayout2"
+                                                      rows="5">
+                                    <af:selectOneChoice label="Actor"
+                                                        binding="#{actorConflictoBean.soc_actor}"
+                                                        id="soc_actor"
+                                                        showRequired="true"
+                                                         helpTopicId="actoresIdentificados"
+                                                        unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                        autoSubmit="false"
+                                                        immediate="true">
+                                      <f:selectItems value="#{actorConflictoBean.listaActoresConflicto}"
+                                                     binding="#{actorConflictoBean.si1}"
+                                                     id="si1"/>
+                                    </af:selectOneChoice>
+                                    <af:inputText label="Nombre"
+                                                  binding="#{actorConflictoBean.inputText_nombre}"
+                                                  id="inputText_nombre"/>
+                                    <af:spacer width="30" height="10"
+                                               binding="#{actorConflictoBean.spacer4}"
+                                               id="spacer4"/>
+                                    <af:panelGroupLayout binding="#{actorConflictoBean.panelGroupLayout3}"
+                                                         id="panelGroupLayout3">
+                                      <af:commandButton text="#{viewcontrollerBundle.plan_btn_relacionar}"
+                                                        icon="/imgs/add.png"
+                                                        binding="#{actorConflictoBean.commandButton1}"
+                                                        id="commandButton1"
+                                                        actionListener="#{actorConflictoBean.cb_relacionar_actionListener}"/>
+                                      <af:spacer width="10" height="10"
+                                                 binding="#{actorConflictoBean.spacer6}"
+                                                 id="spacer6"/>
+                                      <af:commandButton text="Borrar"
+                                                        icon="/imgs/delete.png"
+                                                        binding="#{actorConflictoBean.cb_borrarActor}"
+                                                        id="cb_borrarActor"
+                                                        actionListener="#{actorConflictoBean.cb_borrar_actionListener}"/>
+                                    </af:panelGroupLayout>
+                                  </af:panelFormLayout>
+                                </f:facet>
+                                <f:facet name="end">
+                                  <af:table var="row" rowSelection="single"
+                                            value="#{actorConflictoBean.listaActoresSeleccionada}"
+                                            rowBandingInterval="1"
+                                            selectionListener="#{actorConflictoBean.t_actores_selectionListener}"
+                                            emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                            summary="Municipios de la Jurisdiccion de la Cuenca"
+                                            binding="#{actorConflictoBean.tb_conflictos}"
+                                            id="tb_conflictos">
+                                    <af:column sortable="true"
+                                               headerText="Actor"
+                                               sortProperty="anio" width="126">
+                                      <af:outputText value="#{row.actorConflicto.valor}"/>
+                                    </af:column>
+                                    <af:column sortable="true"
+                                               headerText="Nombre"
+                                               sortProperty="anio" width="126">
+                                      <af:outputText value="#{row.nombre}"/>
+                                    </af:column>
+                                  </af:table>
+                                </f:facet>
+                              </af:panelStretchLayout>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="bottom"/>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{actorConflictoBean.p_registro_exitoso}"
+                                    id="p_registro_exitoso">
+                                <af:dialog binding="#{actorConflictoBean.d_registro_exitoso}"
+                                           id="d_registro_exitoso" type="none"
+                                           title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                           closeIconVisible="false">
+                                  <f:facet name="buttonBar">
+                                    <af:panelGroupLayout binding="#{actorConflictoBean.pgl14}"
+                                                         id="pgl14">
+                                      <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                        binding="#{actorConflictoBean.cbAceptar}"
+                                                        id="cbAceptar"
+                                                        actionListener="#{actorConflictoBean.cb_aceptar_actionListener}"
+                                           
+                                                        immediate="true" partialSubmit="true"
+                                                        action="#{actorConflictoBean.getAceptarAction}"/>
+                                    </af:panelGroupLayout>
+                                  </f:facet>
+                                  <af:panelStretchLayout binding="#{actorConflictoBean.psl7}"
+                                                         id="psl7" endWidth="0px"
+                                                         topHeight="0px" bottomHeight="2px"
+                                                         inlineStyle="height:41px; width:316px;">
+                                    <f:facet name="bottom"/>
+                                    <f:facet name="center">
+                                      <af:outputText value="Conflicto actualizado exitosamente"
+                                                     binding="#{actorConflictoBean.ot8}"
+                                                     id="ot8"/>
+                                    </f:facet>
+                                    <f:facet name="start">
+                                      <af:image source="/imgs/info.png" shortDesc="info"
+                                                binding="#{actorConflictoBean.i1}" id="i1"/>
+                                    </f:facet>
+                                    <f:facet name="end"/>
+                                    <f:facet name="top"/>
+                                  </af:panelStretchLayout>
+                                </af:dialog>
+                            </af:popup>
+                </af:panelGroupLayout>
+                    </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{actorConflictoBean.pgl4}" id="pgl4"
+                                     layout="vertical">
+                  <af:panelGroupLayout binding="#{actorConflictoBean.panelGroupLayout6}"
+                                       id="panelGroupLayout6">
+                    <af:panelGroupLayout layout="horizontal"
+                                         binding="#{actorConflictoBean.panelGroupLayout7}"
+                                         id="panelGroupLayout7">
+                      <af:commandLink text="#{viewcontrollerBundle.TODAS_LAS_FUENTES}"
+                                      binding="#{actorConflictoBean.cl4}"
+                                      id="cl4" action="fuentes"/>
+                      <af:spacer width="25" height="10"
+                                 binding="#{actorConflictoBean.spacer5}"
+                                 id="spacer5"/>
+                      <af:commandLink text="Todos los conflictos"
+                                      binding="#{actorConflictoBean.commandLink1}"
+                                      id="commandLink1"
+                                      action="#{actorConflictoBean.getAceptarAction}"
+                                      actionListener="#{actorConflictoBean.lk_todosConflictos_actionListener}"/>
+                      <af:spacer width="25" height="10"
+                                 binding="#{actorConflictoBean.spacer8}"
+                                 id="spacer8"/>
+                      <af:outputText value="#{viewcontrollerBundle.FNT_FUENTE} : #{actorConflictoBean.fuente.nombre}"
+                                     binding="#{actorConflictoBean.outputText1}"
+                                     id="outputText1"/>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10"
+                               binding="#{actorConflictoBean.spacer9}"
+                               id="spacer9"/>
+                    <af:panelGroupLayout layout="horizontal"
+                                         inlineStyle="width:97%"
+                                         binding="#{actorConflictoBean.panelGroupLayout8}"
+                                         id="panelGroupLayout8">
+                      <af:menuBar id="menuBar1" inlineStyle="width:99%;"
+                                  binding="#{actorConflictoBean.menuBar1}">
+                        <af:menu text="Detalles Conflicto"
+                                 binding="#{actorConflictoBean.menu3}"
+                                 id="menu3">
+                          <af:commandMenuItem id="commandMenuItem11"
+                                              action="datosConflicto"
+                                              text="Datos Basicos"
+                                              binding="#{actorConflictoBean.commandMenuItem11}"/>
+                          <af:commandMenuItem id="commandMenuItem2"
+                                              action="tipoConflicto"
+                                              text="Tipo y Origen"
+                                              binding="#{actorConflictoBean.commandMenuItem2}"/>
+                          <af:commandMenuItem id="commandMenuItem3"
+                                              action="actoresConflicto"
+                                              text="Actores y Poblacion afectada"
+                                              binding="#{actorConflictoBean.commandMenuItem3}"/>
+                          <af:commandMenuItem id="commandMenuItem4"
+                                              action="derechosConflicto"
+                                              text="Derechos Afectados"
+                                              binding="#{actorConflictoBean.commandMenuItem4}"/>
+                          <af:commandMenuItem   action="actividadLogroConflicto"
+                                              text="Actividades economicas y Logros"
+                                              />
+                          <af:commandMenuItem id="commandMenuItem5"
+                                              action="gestionConflicto"
+                                              text="Gestion Realizada"
+                                              binding="#{actorConflictoBean.commandMenuItem5}"/>
+                        </af:menu>
+                      </af:menuBar>
+                    </af:panelGroupLayout>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:actorConflictoBean-->
+</jsp:root>

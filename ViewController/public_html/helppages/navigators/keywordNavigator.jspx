@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright (c) 2008, 2009, Oracle and/or its affiliates. 
+All rights reserved. -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" version="1.2">
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description>This component will show the Rich OHW Index Keyword
+                     Navigator</description>
+        <attribute>
+          <attribute-name>navigator</attribute-name>
+          <description>The Navigator object</description>
+          <required>true</required>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="vertical" splitterPosition="215" id="ptps1">
+      <f:facet name="first">
+        <af:panelGroupLayout inlineStyle="height:100%;width:100%;" id="ptpgl1">
+          <af:spacer height="5" id="pts1"/>
+          <af:panelGroupLayout layout="horizontal" id="ptpgl2">
+            <af:spacer width="3" id="pts2"/>
+            <af:outputLabel value="#{ohw.richResourceBundle['index.search_jumpto']}" id="ptol1"/>
+            <af:inputText id="searchText">
+              <af:clientListener method="RichKeywordNavPeer.findKeyword"
+                                 type="keyUp"/>
+            </af:inputText>
+          </af:panelGroupLayout>
+          <af:spacer height="5" id="pts3"/>
+          <af:selectOneListbox id="keywordIndex" size="10" 
+                               valuePassThru="true"
+                               autoSubmit="true"
+                               valueChangeListener="#{attrs.navigator.refreshTopics}"
+                               shortDesc="#{ohw.richResourceBundle['index.search_jumpto_tooltip']}"
+                               inlineStyle="width:100%;">
+            <f:selectItems value="#{attrs.navigator.keywords}" id="ptsi1"/>
+          </af:selectOneListbox>
+        </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="second">
+        <af:panelStretchLayout partialTriggers="keywordIndex"
+                               topHeight="#{attrs.navigator.topicResultCountHeight}" id="ptpsl1">
+          <f:facet name="top">
+            <af:panelGroupLayout id="ptpgl3">
+              <af:outputLabel id="topicHeader"
+                              value="#{attrs.navigator.topicCountLabel}"
+                              styleClass="TopicCountLabel"
+                              partialTriggers="topics"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="center">
+            <af:table var="rowData" value="#{attrs.navigator.topicsTable}"
+                      id="topics" rowSelection="single"
+                      verticalGridVisible="false" horizontalGridVisible="false"
+                      emptyText="#{ohw.richResourceBundle['index.topic_empty_text']}"
+                      partialTriggers="::keywordIndex"
+                      styleClass="ListOfTopicsTableStyle"
+                      columnStretching="last">
+              <f:facet name="contextMenu">
+                <af:popup contentDelivery="lazyUncached" id="ptp1">
+                  <af:menu id="ptm1">
+                    <af:group id="ptg1">
+                      <af:commandMenuItem text="#{ohw.richResourceBundle['contents.print_this_topic']}"
+                                          id="ptcmi1">
+                        <af:clientListener type="action"
+                                           method="RichOHWGlobalToolbarPeer.printViewTopicContent"/>
+                      </af:commandMenuItem>
+                      <af:commandMenuItem text="#{ohw.richResourceBundle['contents.email_topic_link']}"
+                                          id="ptcmi2">
+                        <af:clientListener type="action"
+                                           method="RichOHWGlobalToolbarPeer.sendTopicLinkEmail"/>
+                      </af:commandMenuItem>
+                      <af:commandMenuItem text="#{ohw.richResourceBundle['contents.show_url']}"
+                                          id="ptcmi3">
+                        <af:clientListener type="action"
+                                           method="RichOHWGlobalToolbarPeer.showBrowserURL"/>
+                      </af:commandMenuItem>
+                    </af:group>
+                  </af:menu>
+                </af:popup>
+              </f:facet>
+              <af:column sortable="true" width="180" sortProperty="topic"
+                         align="start" id="ptc1">
+                <f:facet name="header">
+                  <af:outputText value="#{ohw.richResourceBundle['index.topic']}"
+                                 styleClass="ListOfTopicsTableHeader" id="ptot1"/>
+                </f:facet>
+                <af:outputText id="topicTitle" value="#{rowData.topic}"
+                               shortDesc="#{rowData.topic}"
+                               styleClass="TopicTitleTableColumnStyle">
+                  <af:clientAttribute name="location"
+                                      value="#{rowData.location}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortable="true" width="80" sortProperty="source"
+                         align="start" id="ptc2">
+                <f:facet name="header">
+                  <af:outputText value="#{ohw.richResourceBundle['index.source']}"
+                                 styleClass="ListOfTopicsTableHeader" id="ptot2"/>
+                </f:facet>
+                <af:outputText value="#{rowData.source}"
+                               shortDesc="#{rowData.source}" id="ptot3"/>
+              </af:column>
+              <af:clientListener type="selection"
+                                 method="RichKeywordNavPeer.selectionChanged"/>
+            </af:table>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:panelSplitter>
+  </af:pageTemplateDef>
+</jsp:root>

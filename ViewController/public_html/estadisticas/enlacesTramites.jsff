@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+     
+  <af:panelStretchLayout binding="#{enlacesTramites.panelStretchLayout1}"
+                         id="panelStretchLayout1" topHeight="8px"
+                         startWidth="2px" endWidth="8px">
+    <f:facet name="center">
+      <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           binding="#{enlacesTramites.panelGroupLayout1}"
+                           id="panelGroupLayout1">
+        <af:panelFormLayout rows="1" maxColumns="2"
+                            binding="#{enlacesTramites.panelFormLayout2}"
+                            id="panelFormLayout2">
+          <af:commandLink text="#{viewcontrollerBundle.CONSULTA_TRAMITE1}"
+                          binding="#{enlacesTramites.clink1}" id="clink1"
+                          immediate="true"
+                          action="#{enlacesTramites.getAccionLink1}"
+                          actionListener="#{enlacesTramites.clink1_actionListener}"/>
+          <af:image source="/imgs/addavailable_ena.png"
+                    binding="#{enlacesTramites.imgLink1}" id="imgLink1"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10" binding="#{enlacesTramites.spacer1}"
+                   id="spacer1"/>
+        <af:panelFormLayout binding="#{enlacesTramites.panelFormLayout3}"
+                            id="panelFormLayout3" maxColumns="2" rows="1">
+          <af:commandLink text="#{viewcontrollerBundle.CONSULTA_TRAMITE2}"
+                          binding="#{enlacesTramites.clink2}"
+                          id="clink2" immediate="true"
+                          action="#{enlacesTramites.getAccionLink1}"
+                          actionListener="#{enlacesTramites.clink2_actionListener}"/>
+          <af:image source="/imgs/addavailable_ena.png"
+                    binding="#{enlacesTramites.imgLink2}" id="imgLink2"/>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:enlacesTramites-->
+</jsp:root>

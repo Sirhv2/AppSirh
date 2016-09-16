@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{resultadoConsultaOrganizaciones.d2}">
+      <af:form id="f2" binding="#{resultadoConsultaOrganizaciones.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{resultadoConsultaOrganizaciones.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="30px" bottomHeight="30px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{resultadoConsultaOrganizaciones.pgl4}"
+                                     id="pgl4" layout="vertical">
+                  <af:panelGroupLayout binding="#{resultadoConsultaOrganizaciones.pgl5}"
+                                       id="pgl5" layout="horizontal"
+                                       halign="center">
+                    <af:commandButton text="#{viewcontrollerBundle.menu_regresar}"
+                                      binding="#{resultadoConsultaOrganizaciones.cb1}"
+                                      id="cb1" icon="/imgs/back.png"
+                                      action="consultaOrganizaciones"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelCollection binding="#{resultadoConsultaOrganizaciones.pc2}"
+                                    id="pc2">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{resultadoConsultaOrganizaciones.listaOrganizaciones}"
+                            var="row" rowBandingInterval="1"
+                            binding="#{resultadoConsultaOrganizaciones.t1}"
+                            id="t1" rowSelection="single"
+                            emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                    <af:column sortable="true" headerText="Nombre"
+                               align="start" id="c6" sortProperty="nombre">
+                      <af:outputText value="#{row.nombre}" id="ot6"/>
+                    </af:column>
+                    <af:column sortable="true"
+                               headerText="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                               align="start" id="c4" sortProperty="direccion">
+                      <af:outputText value="#{row.direccion}" id="ot4"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Departamento"
+                               align="start" id="c2"
+                               sortProperty="divipolaDepto.nombre">
+                      <af:outputText value="#{row.divipolaDepto.nombre}"
+                                     id="ot7"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Municipio"
+                               align="start" id="c7"
+                               sortProperty="divipolaMunipio.nombre">
+                      <af:outputText value="#{row.divipolaMunicipio.nombre}"
+                                     id="ot8"/>
+                    </af:column>
+                    <af:column sortable="true"
+                               headerText="#{viewcontrollerBundle.TELEFONO}"
+                               align="start" id="c8" sortProperty="telefono">
+                      <af:outputText value="#{row.telefono}" id="ot3"/>
+                    </af:column>
+                    <af:column sortable="true"
+                               headerText="#{viewcontrollerBundle.P_U00E1GIA_WEB}"
+                               align="start" id="c3" sortProperty="paginaWeb">
+                      <af:outputText value="#{row.paginaWeb}" id="outputText1"/>
+                    </af:column>
+                    <af:column sortable="true" headerText="Naturaleza"
+                               align="start" id="c5"
+                               sortProperty="listaNAturaleza.valor">
+                      <af:outputText value="#{row.listaNAturaleza.valor}"
+                                     id="ot2"/>
+                    </af:column>
+                    <af:column sortable="true"
+                               headerText="Tipo de Organización" align="start"
+                               id="c1" width="150"
+                               sortProperty="listaTipoOrganizacion.valor">
+                      <af:outputText value="#{row.listaTipoOrganizacion.valor}"
+                                     id="ot5"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout id="pgl1"
+                                     binding="#{resultadoConsultaOrganizaciones.pgl1}"
+                                     halign="center" layout="vertical">
+                  <af:outputText value="Consulta de Organizaciones"
+                                 binding="#{resultadoConsultaOrganizaciones.ot1}"
+                                 styleClass="AFBrandingBarTitle" id="ot1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:resultadoConsultaOrganizaciones-->
+</jsp:root>

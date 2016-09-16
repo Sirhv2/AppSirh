@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{puntosdeMonitoreo.document1}" id="document1">
+      <af:form binding="#{puntosdeMonitoreo.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{puntosdeMonitoreo.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="32px"
+                                   startWidth="3px" bottomHeight="4px"
+                                   endWidth="2px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                
+                  <af:panelSplitter orientation="vertical" disabled="true"
+                                    splitterPosition="70">
+                    <f:facet name="first">
+                      <af:panelFormLayout maxColumns="4" rows="2">
+                      <af:inputText label="#{viewcontrollerBundle.PTO_NOMBRE}"
+                       binding="#{puntosdeMonitoreo.filtro_nombre}"
+                                          id="filtro_nombre"
+                                    helpTopicId="puntosdeMonitoreo"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.PTO_TIPO_PTO}"
+                         binding="#{puntosdeMonitoreo.selectOneChoiceTipoPunto}"
+                                            id="selectOneChoiceTipoPunto"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                          <f:selectItems value="#{puntosdeMonitoreo.listaTipoPuntos}"/>
+                        </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                                          binding="#{puntosdeMonitoreo.selectOneChoiceArea}"
+                                          id="selectOneChoiceArea"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{puntosdeMonitoreo.selectArea_valueChangeListener}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{puntosdeMonitoreo.listaArea}"
+                                       binding="#{puntosdeMonitoreo.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_ZONA}"
+                                          binding="#{puntosdeMonitoreo.selectOneChoiceZona}"
+                                          id="selectOneChoiceZona"
+                                          
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{puntosdeMonitoreo.selectZona_valueChangeListener}" 
+                                          immediate="true" autoSubmit="true">
+                        <f:selectItems value="#{ puntosdeMonitoreo.listaZona}"
+                                       binding="#{puntosdeMonitoreo.selectItems5}"
+                                       id="selectItems5"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                          binding="#{puntosdeMonitoreo.selectOneChoiceSubzona}"
+                                          id="selectOneChoiceSubzona"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{puntosdeMonitoreo.selecSubzona_valueChangeListener}"
+                                          immediate="true" autoSubmit="true"  >
+                        <f:selectItems value="#{puntosdeMonitoreo.listaSubzona}"
+                                       binding="#{puntosdeMonitoreo.selectItems3}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                          binding="#{puntosdeMonitoreo.selectOneChoiceFuente}"
+                                              id="selectOneChoiceFuente"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              immediate="true"
+                                              autoSubmit="true">
+                            <f:selectItems value="#{ puntosdeMonitoreo.listaFuentes}"
+                                           binding="#{puntosdeMonitoreo.selectItems2}"
+                                           id="selectItems2"/>
+                          </af:selectOneChoice>
+                      <af:panelGroupLayout>
+                        <af:spacer width="10" height="10"/>
+                        <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                         binding="#{puntosdeMonitoreo.cb_filtrar}"
+                                          id="cb_filtrar"
+                                          icon="/imgs/binoculars_24.png"
+                                          actionListener="#{puntosdeMonitoreo.cb_filtrar_actionListener}"/>
+                      </af:panelGroupLayout>
+                    </af:panelFormLayout>
+                    </f:facet>
+                    <f:facet name="second">
+                      <af:panelCollection binding="#{puntosdeMonitoreo.panelCollection1}"
+                                          id="panelCollection1"
+                                          inlineStyle="width:100%px;">
+                        <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                   id="m_archivo">
+                            <af:commandMenuItem text="#{viewcontrollerBundle.menu_adicionar}"
+                                                id="cmi_adicionar"
+                                                actionListener="#{puntosdeMonitoreo.cmi_adicionar_actionListener}"
+                                                action="#{puntosdeMonitoreo.getAccionAdicionar}"
+                                                icon="/imgs/add.png"
+                                                visible="#{ puntosdeMonitoreo.visiblePerfil}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                id="cmi_editar"
+                                                actionListener="#{puntosdeMonitoreo.cmi_editar_actionListener}"
+                                                action="#{puntosdeMonitoreo.getAccionAdicionar}"
+                                                icon="/imgs/edit_24.png"
+                                                visible="#{ puntosdeMonitoreo.visiblePerfil}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimirPDF}"
+                          binding="#{puntosdeMonitoreo.cmiImprimir}" id="cmiImprimir" 
+                          actionListener="#{puntosdeMonitoreo.cmiImprimir_actionListener}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                              binding="#{puntosdeMonitoreo.cmi_ImprimirListado}"
+                                              id="cmi_ImprimirListado"
+                                              actionListener="#{puntosdeMonitoreo.cmiImprimirListado_actionListener}"/>
+                          <af:commandMenuItem text="Consolidado de mediciones por punto"
+                                              binding="#{puntosdeMonitoreo.cmi_listadoMediciones}"
+                                              id="cmi_listadoMediciones"
+                                              actionListener="#{puntosdeMonitoreo.cmiImprimirListadoMediciones_actionListener}"/>
+                        </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{puntosdeMonitoreo.listaPuntosMonitoreo}"
+                        var="row"     rowBandingInterval="1"
+                                binding="#{puntosdeMonitoreo.t_puntosMonitoreo}"
+                                id="t_puntosMonitoreo" rowSelection="single"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                 width="100%" inlineStyle="width:100%px;">
+                           <af:column sortable="true"
+                                     headerText="#{viewcontrollerBundle.PTO_NOMBRE}"
+                                     width="150" sortProperty="nombre">
+                            <af:outputText value="#{row.nombre}"
+                                           styleClass="text-transform:uppercase;"/>
+                          </af:column>
+                          <af:column width="110"
+                                     headerText="#{viewcontrollerBundle.PTO_TIPO_PTO}"
+                                     sortable="true"
+                                     sortProperty="tipo_punto">
+                          <af:outputText value="#{row.tipo_punto}"/>
+                        </af:column>
+                         <af:column width="146"
+                                    headerText="#{viewcontrollerBundle.PTO_UBICACION}"
+                                    sortable="true"
+                                    sortProperty="ubicacion">
+                          <af:outputText value="#{row.ubicacion}"/>
+                        </af:column>
+                          <af:column headerText="#{viewcontrollerBundle.TRM_AREA}"
+                                     width="107" sortable="true"
+                                     sortProperty="area">
+                            <af:outputText value="#{row.area}"/>
+                          </af:column>
+                          <af:column headerText="#{viewcontrollerBundle.TRM_ZONA}"
+                                     width="107" sortProperty="zona"
+                                     sortable="true">
+                            <af:outputText value="#{row.zona}"/>
+                          </af:column>
+                        <af:column headerText="#{viewcontrollerBundle.TRM_SUBZONA}"
+                                   width="107" sortable="true"
+                                   sortProperty="subzona">
+                          <af:outputText value="#{row.subzona}"/>
+                        </af:column>
+                              <af:column headerText="#{viewcontrollerBundle.FNT_TIPO}"
+                                   width="107" sortable="true"
+                                   sortProperty="fuente">
+                          <af:outputText value="#{row.tipo_fuente}"/>
+                        </af:column>
+                           <af:column headerText="#{viewcontrollerBundle.FNT_FUENTE}"
+                                   width="107" sortable="true"
+                                   sortProperty="fuente">
+                          <af:outputText value="#{row.fuente}"/>
+                        </af:column>
+                        <af:column
+                                   headerText="#{viewcontrollerBundle.SISTEMA_DE_REFERENCIA}"
+                                     width="130">
+                            <af:outputText value="#{row.sist_ref}"/>
+                          </af:column>
+                          <af:column headerText="Latitud" width="90">
+                            <af:outputText value="#{row.latitud}"/>
+                          </af:column>
+                        
+                          <af:column headerText="Longitud " width="90">
+                            <af:outputText value="#{row.longitud}"/>
+                          </af:column>
+                       
+                          <af:column headerText="#{viewcontrollerBundle.PTO_ALTITUD}"
+                                     width="60">
+                            <af:outputText value="#{row.altitud}"/>
+                          </af:column>
+                       
+                      </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelSplitter>
+                
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{puntosdeMonitoreo.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:activeOutputText value="#{viewcontrollerBundle.MODULO_PUNTOS}"
+                                       binding="#{puntosdeMonitoreo.titulo}"
+                                       id="titulo"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{puntosdeMonitoreo.spacer1}"
+                             id="spacer1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:puntosdeMonitoreo-->
+ 
+</jsp:root>

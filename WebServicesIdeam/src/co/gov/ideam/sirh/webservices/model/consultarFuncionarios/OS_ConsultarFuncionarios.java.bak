@@ -1,0 +1,39 @@
+package co.gov.ideam.sirh.webservices.model.consultarFuncionarios;
+
+import co.gov.ideam.sirh.seguridad.model.Funcionario;
+
+import java.util.List;
+
+public class OS_ConsultarFuncionarios {
+    public OS_ConsultarFuncionarios() {
+    }
+    
+    private String codigoError;
+    private String mensajeError;
+    private List<Funcionario> funcionarios;
+
+
+    public void setCodigoError(String codigoError) {
+        this.codigoError = codigoError;
+    }
+
+    public String getCodigoError() {
+        return codigoError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+}

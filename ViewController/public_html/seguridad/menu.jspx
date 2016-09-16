@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view beforePhase="#{menu.cargarSeguridad}">
+    <af:document id="d2" binding="#{menu.d2}">
+      <af:form id="f2" binding="#{menu.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">        
+          <f:facet name="center">          
+            <af:panelStretchLayout binding="#{menu.psl2}" id="psl2"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="0px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+            <af:panelSplitter binding="#{menu.ps1}" id="ps1"
+                              splitterPosition="302">
+            <f:facet name="first">                    
+            <af:panelCollection binding="#{menu.pc1}" id="pc1">
+              <f:facet name="menus">
+                    <af:menu binding="#{menu.m_archivo}"
+                             id="m_archivo"
+                             text="#{viewcontrollerBundle.menu_archivo}">
+                      <af:commandMenuItem
+                                          binding="#{menu.cmi_adicionar}"
+                                          id="cmi_adicionar"
+                                          text="#{viewcontrollerBundle.menu_adicionar}"
+                                          icon="/imgs/add.png"
+                                          actionListener="#{menu.cmi_adicionar_actionListener}"/>
+                      <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                          binding="#{menu.cmi_editar}"
+                                          id="cmi_editar"
+                                          actionListener="#{menu.cmi_editar_actionListener}"
+                                          icon="/imgs/edit_24.png"/>
+                    </af:menu>
+                  </f:facet>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:tree id="tree_menu" binding="#{menu.tree_menu}"
+                       value="#{LibraryTreeHandler.treemodel}" var="node"
+                       varStatus="nodeStatus"
+                       focusRowKey="#{LibraryTreeHandler.focusRowKey}"
+                       rowSelection="single"
+                       selectionListener="#{menu.tree_menu_selectionListener}">
+                <f:facet name="nodeStamp">
+                  <af:outputText value="#{node.description}" binding="#{menu.ot1}"
+                                 id="ot1"/>
+                </f:facet>
+              </af:tree>
+            </af:panelCollection>
+            </f:facet>
+            <f:facet name="second">
+                <af:panelCollection binding="#{menu.pc2}" id="pc2">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{menu.t1}" id="t1">
+                      <af:commandToolbarButton text="#{viewcontrollerBundle.menu_boton_actualizar}"
+                                               binding="#{menu.ctb_actualizar}"
+                                               id="ctb_actualizar"
+                                               icon="/imgs/refresh.png"
+                                               actionListener="#{menu.ctb_actualizar_actionListener}"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar">
+                    <af:toolbar binding="#{menu.t2}" id="t2">
+                      <af:outputText
+                                     binding="#{menu.ot_nombre_menu}"
+                                     id="ot_nombre_menu"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table value="#{menu.listaOpcionesMenuSeleccionado}"
+                            var="row" rowBandingInterval="0"
+                            binding="#{menu.t_opciones}" id="t_opciones"
+                            emptyText="#{viewcontrollerBundle.tabla_vacia}">
+                    <af:column sortable="false" headerText="Nombre"
+                               align="start" id="c1">
+                      <af:outputText value="#{row.opcNombre}" id="ot3"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Activo" id="c2">
+                      <af:image id="i2"
+                                source='#{row.activo ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Id" id="c3">
+                      <af:outputText value="#{row.opcIdJsf}" id="ot2"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+            </af:panelSplitter>
+            </f:facet>
+              <f:facet name="start">
+<af:popup binding="#{menu.popup_detalle}" id="popup_detalle">
+              <af:dialog binding="#{menu.d_detalle}" id="d_detalle"
+                         title="#{viewcontrollerBundle.menu_detalle}"
+                         affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                         cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                         dialogListener="#{menu.d_detalle_dialogListener}">
+                <af:panelStretchLayout binding="#{menu.psl1}" id="psl1"
+                                       topHeight="0" endWidth="0"
+                                       bottomHeight="0">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelFormLayout binding="#{menu.pfl1}" id="pfl1">
+                      <af:inputText label="#{viewcontrollerBundle.menu_nombre}" binding="#{menu.it_nombre}"
+                                    id="it_nombre" required="true"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.menu_padre}"
+                                          binding="#{menu.soc_padre}"
+                                          id="soc_padre" required="true">
+                        <f:selectItems value="#{menu.listaPadres}"
+                                       binding="#{menu.si1}" id="si1"/>
+                      </af:selectOneChoice>
+                      <af:selectBooleanRadio text="#{viewcontrollerBundle.estado_activo}"
+                                             label="#{viewcontrollerBundle.menu_estado}"
+                                             binding="#{menu.sbr_activo}"
+                                             id="sbr_activo"
+                                             group="estado" required="true"/>
+                      <af:selectBooleanRadio
+                                             binding="#{menu.sbr_inactivo}"
+                                             id="sbr_inactivo"
+                                             text="#{viewcontrollerBundle.estado_inactivo}"
+                                             group="estado"/>
+                      <af:inputText label="#{viewcontrollerBundle.menu_imagen}"
+                                    binding="#{menu.it_imagen}"
+                                    id="it_imagen"/>
+                      <af:inputNumberSpinbox label="#{viewcontrollerBundle.menu_orden}"
+                                             binding="#{menu.ins_orden}"
+                                             id="ins_orden" required="true"
+                                             minimum="0"/>
+                      <af:inputText label="#{viewcontrollerBundle.menu_accion}"
+                                    binding="#{menu.it_accion}"
+                                    id="it_accion"/>
+                      <af:inputText label="#{viewcontrollerBundle.menu_pagina}"
+                                    binding="#{menu.it_pagina}"
+                                    id="it_pagina" required="false"/>
+                      <af:inputText label="#{viewcontrollerBundle.menu_clase}"
+                                    binding="#{menu.it_nombre_clase}"
+                                    id="it_nombre_clase"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="start">
+                    <af:image source="/imgs/book.png" shortDesc="imgs"
+                              binding="#{menu.i1}" id="i1"/>
+                  </f:facet>
+                  <f:facet name="end"/>
+                  <f:facet name="top"/>
+                </af:panelStretchLayout>
+              </af:dialog>
+            </af:popup>              
+              </f:facet>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>                      
+          </f:facet>
+          <f:facet name="menu">
+          </f:facet>
+          <f:facet name="toolbar">
+          </f:facet>
+          <f:attribute name="title"
+                       value="#{viewcontrollerBundle.menu_titulo}"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:menu-->
+</jsp:root>

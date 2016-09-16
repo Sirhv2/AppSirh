@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{observatorioDemandaSubtBacking.document1}"
+                 id="document1">
+      <af:form binding="#{observatorioDemandaSubtBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioDemandaSubtBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="17px">
+              <f:facet name="center">
+                <af:switcher binding="#{observatorioDemandaSubtBacking.centerSwitcher}"
+                             id="centerSwitcher" defaultFacet="restored">
+                  <f:facet name="restored">
+                    <af:panelStretchLayout binding="#{observatorioDemandaSubtBacking.psl2}"
+                                           id="psl2">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelDashboard binding="#{observatorioDemandaSubtBacking.dashboard}"
+                                           id="dashboard" shortDesc="panel"
+                                           columns="2" rowHeight="175px">
+                          <af:dataFlavor flavorClass="javax.faces.component.UIComponent"
+                                         discriminant="fromDashboardSideBar"/>
+                          <af:panelBox text="Naturaleza de los Usuarios"
+                                       binding="#{observatorioDemandaSubtBacking.pbnaturaleza}"
+                                       id="pbnaturaleza" showDisclosure="false"
+                                       type="stretch" visible="true">
+                            <af:declarativeComponent id="dc2"
+                                                     viewId="estadisticas/naturalezaUsuariosSubt.jsff"/>
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaSubtBacking.dc1}"
+                                                       id="dc1"/>
+                            </f:facet>
+                          </af:panelBox>
+                          <af:panelBox text="Predios por Departamentos"
+                                       binding="#{observatorioDemandaSubtBacking.pbPrediosPorDpto}"
+                                       id="pbPrediosPorDpto"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaSubtBacking.dc36}"
+                                                       id="dc36"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc37"
+                                                     viewId="estadisticas/prediosPorDepartamentoSubt.jsff"
+                                                     binding="#{observatorioDemandaSubtBacking.dc37}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Ubicación de Usuarios"
+                                       binding="#{observatorioDemandaSubtBacking.pb3}"
+                                       id="pb3" showDisclosure="false"
+                                       type="stretch">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaSubtBacking.dc6}"
+                                                       id="dc6"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc5"
+                                                     viewId="estadisticas/ubicacionUsuariosSubt.jsff"
+                                                     binding="#{observatorioDemandaSubtBacking.dc5}"/>
+                          </af:panelBox>
+                            <af:panelBox text="Vigencia de Concesiones"
+                                         binding="#{observatorioDemandaSubtBacking.pb4}"
+                                         id="pb4" showDisclosure="false"
+                                         visible="true" type="stretch">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{observatorioDemandaSubtBacking.dc8}"
+                                                       id="dc8"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc7"
+                                                     viewId="estadisticas/vigenciaConcesionesSubt.jsff"
+                                                     binding="#{observatorioDemandaSubtBacking.dc7}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Captaciones por fuentes"
+                                       binding="#{observatorioDemandaSubtBacking.panelBoxCaptaciones}"
+                                       id="panelBoxCaptaciones"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaSubtBacking.dc14}"
+                                                       id="dc14"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc13"
+                                                     viewId="estadisticas/captacionesfuenteSubt.jsff"
+                                                     binding="#{observatorioDemandaSubtBacking.dc13}"/>
+                          </af:panelBox>
+                          <af:panelBox text="Usos de captaciones"
+                                       binding="#{observatorioDemandaSubtBacking.usosCaptaciones}"
+                                       id="usosCaptaciones"
+                                       showDisclosure="false" type="stretch"
+                                       visible="true">
+                            <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                       binding="#{observatorioDemandaSubtBacking.dc26}"
+                                                       id="dc26"/>
+                            </f:facet>
+                            <af:declarativeComponent id="dc27"
+                                                     viewId="estadisticas/usosAguaSubt.jsff"
+                                                     binding="#{observatorioDemandaSubtBacking.dc27}"/>
+                          </af:panelBox>
+                        </af:panelDashboard>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top">
+                        <af:panelGroupLayout binding="#{observatorioDemandaSubtBacking.panelGroupLayout1}"
+                                             id="panelGroupLayout1"
+                                             layout="horizontal">
+                         <h:outputLink value="/Sirh/faces/observatorio.jspx">
+                           
+                            <h:outputText value="Observatorio"/>
+                          </h:outputLink>
+                         <af:spacer width="10" height="10"
+                                       binding="#{observatorioDemandaSubtBacking.spacer1}"
+                                       id="spacer1"/>
+                           <h:outputLink value="/Sirh/faces//observatorioSubterraneas.jspx">
+                            <h:outputText value="Observatorio Subterraneas"/>
+                          </h:outputLink>
+                           <af:spacer width="10" height="10"/>
+                           <h:outputLink value="/Sirh/faces/busqFuentesZonifSubt.jspx">
+                            <h:outputText value="Fuentes Subterráneas por Autoridad "/>
+                          </h:outputLink>
+                          <h:outputText value=" | "/>
+                          <h:outputLink value="/Sirh/faces/JSDemanda3.jspx">
+                              <h:outputText value="Demanda -Tipo Punto"/>
+                            </h:outputLink>
+                            <h:outputText value=" | "/>
+                            <h:outputLink value="/Sirh/faces/JSDemandaAcuifero.jspx">
+                              <h:outputText value="Demanda - Acuifero"/>
+                            </h:outputLink>
+                            <h:outputText value=" | "/>
+                            <h:outputLink value="/Sirh/faces/JSDemandaProvincia.jspx">
+                              <h:outputText value="Demanda - Provincia"/>
+                            </h:outputLink>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="maximized">
+                    <af:panelStretchLayout binding="#{observatorioDemandaSubtBacking.psl3}"
+                                           id="psl3">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox text="#{observatorioDemandaSubtBacking.maximizedTitle}"
+                                     binding="#{observatorioDemandaSubtBacking.pb_max}"
+                                     id="pb_max" showDisclosure="false">
+                          <f:facet name="toolbar">
+                            <af:declarativeComponent viewId="dashBoard/toolbarMaximized.jsff"
+                                                     binding="#{observatorioDemandaSubtBacking.dc12}"
+                                                     id="dc12"/>
+                          </f:facet>
+                          <af:declarativeComponent id="dc11"
+                                                   viewId="#{observatorioDemandaSubtBacking.maximizedPanelUrl}"
+                                                   binding="#{observatorioDemandaSubtBacking.dc11}"/>
+                         
+                        </af:panelBox>
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      
+                                    
+               
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:switcher>
+              </f:facet>
+              <f:facet name="end"/>
+              
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioDemandaSubtBacking-->
+</jsp:root>

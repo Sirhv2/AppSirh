@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{AdicionarProyectoBean.document1}" id="document1">
+      <af:form binding="#{AdicionarProyectoBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{AdicionarProyectoBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{AdicionarProyectoBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1">
+                  <af:panelBox text="#{viewcontrollerBundle.NUEVO_PROYECTO}"
+                               binding="#{AdicionarProyectoBean.panelBox1}"
+                               id="panelBox1" showDisclosure="false">
+                    <af:panelStretchLayout binding="#{AdicionarProyectoBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             binding="#{AdicionarProyectoBean.panelGroupLayout2}"
+                                             id="panelGroupLayout2">
+                          <af:panelFormLayout binding="#{AdicionarProyectoBean.panelFormLayout1}"
+                                              id="panelFormLayout1">
+                            <f:facet name="footer"/>
+                            <af:inputText
+                                          binding="#{AdicionarProyectoBean.it_nombreFuente}"
+                                          id="it_nombreFuente"
+                                          label="#{viewcontrollerBundle.CUENCA_NOMBRE}"
+                                          value="#{AdicionarProyectoBean.cuenca.nombre}"
+                                          readOnly="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.NOMBRE_PROGRAMA}"
+                                          binding="#{AdicionarProyectoBean.it_nombrePrograma}"
+                                          id="it_nombrePrograma"
+                                          value="#{AdicionarProyectoBean.programa.nombre}"
+                                          readOnly="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.NOMBRE_PROYECTO}"
+                                          binding="#{AdicionarProyectoBean.it_nombre}"
+                                          id="it_nombre"
+                                          value="#{ AdicionarProyectoBean.proyecto.nombre}"
+                                          contentStyle="text-transform:uppercase"/>
+                            <af:inputText label="#{viewcontrollerBundle.DESCRIPCION_PROYECTO}"
+                                          binding="#{AdicionarProyectoBean.it_descripcion}"
+                                          id="it_descripcion"
+                                          value="#{AdicionarProyectoBean.proyecto.descripcion}"
+                                          rows="3" columns="30"/>
+                            <af:inputDate label="#{viewcontrollerBundle.FECHA_INICIO_PROYECTO}"
+                                          binding="#{AdicionarProyectoBean.id_fechaInicio}"
+                                          id="id_fechaInicio"
+                                          value="#{AdicionarProyectoBean.proyecto.fechaInicio}"/>
+                            <af:inputDate label="#{viewcontrollerBundle.FECHA_VIGENCIA_PROYECTO}"
+                                          binding="#{AdicionarProyectoBean.id_fechaVigencia}"
+                                          id="id_fechaVigencia"
+                                          value="#{AdicionarProyectoBean.proyecto.fechaVigencia}"/>
+                            <af:inputText label="#{viewcontrollerBundle.PRESUPUESTO_ASIGNADO}"
+                                          binding="#{AdicionarProyectoBean.it_presupuestoAsignado}"
+                                          id="it_presupuestoAsignado"
+                                          value="#{AdicionarProyectoBean.proyecto.presupuestoAsignado}"
+                                          readOnly="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.PORC_CUMPLIMIENTO}"
+                                          binding="#{AdicionarProyectoBean.it_porcCumplimiento}"
+                                          id="it_porcCumplimiento"
+                                          value="#{AdicionarProyectoBean.proyecto.porcCumplimiento}"
+                                          readOnly="true"/>
+                            <af:inputText label="#{viewcontrollerBundle.PORC_EJECUCION}"
+                                          binding="#{AdicionarProyectoBean.it_porcEjecucion}"
+                                          id="it_porcEjecucion"
+                                          value="#{AdicionarProyectoBean.proyecto.porcEjecucion}"
+                                          readOnly="true"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{AdicionarProyectoBean.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{AdicionarProyectoBean.d_registro_exitoso}"
+                               id="d_registro_exitoso" type="none"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               closeIconVisible="false">
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{AdicionarProyectoBean.pgl14}"
+                                             id="pgl14">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{AdicionarProyectoBean.cbAceptar}"
+                                            id="cbAceptar"
+                                            action="adicionarPomca"
+                                            immediate="true"
+                                            partialSubmit="true"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:panelStretchLayout binding="#{AdicionarProyectoBean.psl7}"
+                                             id="psl7" endWidth="0px"
+                                             topHeight="0px" bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="#{viewcontrollerBundle.PROYECTO_REGISTRADO}"
+                                         binding="#{AdicionarProyectoBean.ot8}"
+                                         id="ot8"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image source="/imgs/info.png" shortDesc="info"
+                                    binding="#{AdicionarProyectoBean.i1}"
+                                    id="i1"/>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top"/>
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{AdicionarProyectoBean.pgl2}"
+                                     id="pgl2" halign="right" layout="vertical">
+                  <af:panelGroupLayout binding="#{AdicionarProyectoBean.pgl3}"
+                                       id="pgl3" layout="horizontal"
+                                       halign="right">
+                    <af:commandButton text="#{viewcontrollerBundle.BTN_CANCELAR}"
+                                      binding="#{AdicionarProyectoBean.cb_cancelar}"
+                                      id="cb_cancelar" icon="/imgs/close.png"
+                                      action="#{AdicionarProyectoBean.cb_cancelar_action}"/>
+                    <af:spacer width="50" height="10"
+                               binding="#{AdicionarProyectoBean.s1}" id="s1"/>
+                    <af:commandButton text="#{viewcontrollerBundle.BTN_FINALIZAR}"
+                                      binding="#{AdicionarProyectoBean.cbNext1}"
+                                      id="cbNext1" icon="/imgs/next.png"
+                                      action="#{AdicionarProyectoBean.cbNext1_action}"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AdicionarProyectoBean-->
+</jsp:root>

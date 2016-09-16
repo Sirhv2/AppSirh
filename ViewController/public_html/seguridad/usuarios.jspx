@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"          
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8" />    
+  <f:view beforePhase="#{usuarios.cargarSeguridad}">    
+    <af:document id="d2" binding="#{usuarios.d2}">      
+      <af:form id="f2" binding="#{usuarios.f2}">
+        <af:resource type="css" source="/css/incStyle.css"/>
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">        
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{usuarios.psl1}" id="psl1"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="0px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">          
+            <af:panelCollection binding="#{usuarios.pc1}" id="pc1"
+                                featuresOff="detach">
+              <f:facet name="menus">
+                <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                         binding="#{usuarios.m_archivo}" id="m_archivo">
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_adicionar}"
+                                      binding="#{usuarios.cmi_adicionar}"
+                                      id="cmi_adicionar" icon="/imgs/add.png"
+                                      actionListener="#{usuarios.cmi_adicionar_actionListener}"/>
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                      binding="#{usuarios.cmi_editar}"
+                                      id="cmi_editar" icon="/imgs/edit_24.png"
+                                      actionListener="#{usuarios.cmi_editar_actionListener}"/>
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_borrar}"
+                                      binding="#{usuarios.cmi_borrar}"
+                                      id="cmi_borrar"
+                                      icon="/imgs/cross_24.png"
+                                      actionListener="#{usuarios.cmi_borrar_actionListener}"/>
+                  <af:menu text="#{viewcontrollerBundle.menu_filtrar}"
+                           binding="#{usuarios.m_filtrar}" id="m_filtrar"
+                           icon="/imgs/binoculars_24.png">
+                    <af:commandMenuItem text="#{viewcontrollerBundle.menu_filtrar_mostrar}"
+                                        binding="#{usuarios.cmi_mostrar_filtros}"
+                                        id="cmi_mostrar_filtros"
+                                        actionListener="#{usuarios.cmi_mostrar_filtros_actionListener}"/>
+                    <af:commandMenuItem text="#{viewcontrollerBundle.menu_filtrar_ejecutar}"
+                                        binding="#{usuarios.cmi_ejecutar_filtros}"
+                                        id="cmi_ejecutar_filtros"
+                                        actionListener="#{usuarios.cmi_ejecutar_filtros_actionListener}"/>
+                    <af:commandMenuItem text="#{viewcontrollerBundle.menu_filtrar_limpiar}"
+                                        binding="#{usuarios.cmi_limpiar_filtros}"
+                                        id="cmi_limpiar_filtros"
+                                        actionListener="#{usuarios.cmi_limpiar_filtros_actionListener}"/>
+                  </af:menu>
+                  <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                      binding="#{usuarios.cmi_imprimir}"
+                                      id="cmi_imprimir"
+                                      icon="/imgs/printer.png"
+                                      actionListener="#{usuarios.cmi_imprimir_actionListener}"/>
+                </af:menu>
+              </f:facet>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar">
+                <af:toolbar binding="#{usuarios.t1}" id="t1">
+                  <af:outputText
+                                 binding="#{usuarios.ot_filtrando}"
+                                 id="ot_filtrando" visible="false"/>
+                </af:toolbar>
+              </f:facet>
+              <af:table value="#{usuarios.listaUsuarios}" var="row"
+                        rowBandingInterval="1" binding="#{usuarios.t_usuarios}"
+                        id="t_usuarios"
+                        rowSelection="single"
+                        columnStretching="column:c_apellidos"
+                        filterVisible="true"
+                        emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                        displayRow="selected" varStatus="vs"
+                        selectionListener="#{usuarios.t_usuarios_selectionListener}"
+                        fetchSize="25" autoHeightRows="-1">
+                <af:column sortable="true" headerText="login" align="start"
+                           id="c_login" minimumWidth="50" width="150" 
+                            sortProperty="login" filterable="true">
+                  <af:outputText value="#{row.login}" id="ot5"/>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl2" layout="vertical">
+                      <af:outputText value="Login" id="ot7"/>
+                      <af:inputText id="it_filtro_login"
+                                    binding="#{usuarios.it_filtro_login}"
+                                    columns="20" visible="false"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="true" headerText="Nombres" id="c_nombres"
+                           minimumWidth="120" width="200">
+                  <af:outputText value="#{row.nombres}" id="ot6"/>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl3" layout="vertical">
+                      <af:outputText value="Nombres" id="ot8"/>
+                      <af:inputText id="it_filtro_nombres"
+                                    binding="#{usuarios.it_filtro_nombres}"
+                                    visible="false"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="true" headerText="Apellidos"
+                           id="c_apellidos" minimumWidth="120" width="120">
+                  <af:outputText value="#{row.apellidos}" id="ot1"/>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl4" layout="vertical">
+                      <af:outputText value="Apellidos" id="ot9"/>
+                      <af:inputText id="it_filtro_apellidos"
+                                    binding="#{usuarios.it_filtro_apellidos}"
+                                    visible="false"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="false"
+                           headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}" id="c4">
+                  <af:outputText value="#{row.autoridadAmbiental.nombre}" id="ot15"/>
+                </af:column>
+                <af:column sortable="true" headerText="email" id="c_email"
+                           minimumWidth="120" width="200">
+                  <af:outputText value="#{row.email}" id="ot3"/>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl5" layout="vertical">
+                      <af:outputText value="Email" id="ot10"/>
+                      <af:inputText id="it_filtro_email"
+                                    binding="#{usuarios.it_filtro_email}"
+                                    visible="false"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="true" headerText="Activo" id="c_activo"
+                           width="120">
+                  <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                       halign="center">
+                    <af:image id="i1"
+                              source='#{row.activoAux? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                  </af:panelGroupLayout>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl6" layout="vertical">
+                      <af:outputText value="Activo" id="ot11"/>
+                      <af:panelGroupLayout id="pgl9" layout="horizontal">
+                        <af:selectBooleanRadio label="#{viewcontrollerBundle.estado_activo}"
+                                               id="sbr_filtro_estado_activo"
+                                               binding="#{usuarios.sbr_filtro_estado_activo}"
+                                               group="estado" visible="false"/>
+                        <af:selectBooleanRadio label="#{viewcontrollerBundle.estado_inactivo}"
+                                               id="sbr_filtro_estado_inactivo"
+                                               binding="#{usuarios.sbr_filtro_estado_inactivo}"
+                                               group="estado" visible="false"/>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="true" headerText="Ultimo Ingreso Exitoso"
+                           id="c_ingreso_exitoso" visible="false" width="160"
+                           helpTopicId="usuarioIngresoExitoso">
+                  <af:outputText value="#{row.ultimoIngresoExitoso}" id="ot2">
+                    <af:convertDateTime dateStyle="full" timeStyle="medium"
+                                        type="both"/>
+                  </af:outputText>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl7" layout="vertical">
+                      <af:outputText value="Ultimo Ingreso Exitoso" id="ot12"/>
+                      <af:panelGroupLayout id="pgl8" layout="vertical">
+                        <af:inputDate label="#{viewcontrollerBundle.fecha_desde}"
+                                      binding="#{usuarios.id_ingreso_exitoso_inicial}"
+                                      id="id_filtro_exitoso_desde"
+                                      columns="10" visible="false"/>
+                        <af:inputDate label="#{viewcontrollerBundle.fecha_hasta}"
+                                      binding="#{usuarios.id_ingreso_exitoso_final}" 
+                                      id="id_filtro_exitoso_hasta"
+                                      columns="10" visible="false"/>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortable="true"
+                           headerText="Ultimo Ingreso No Exitoso"
+                           id="c_ingreso_no_exitoso"
+                           visible="false" width="160"
+                           helpTopicId="usuarioIngresoExitoso">
+                  <af:outputText value="#{row.ultimoIngresoNoExitoso}"
+                                 id="ot4">
+                    <af:convertDateTime timeStyle="medium" type="both"
+                                        dateStyle="full"/>
+                  </af:outputText>
+                  <f:facet name="header">
+                    <af:panelGroupLayout id="pgl10" layout="vertical">
+                      <af:outputText value="Ultimo Ingreso No Exitoso" id="ot13"/>
+                      <af:panelGroupLayout id="pgl11" layout="vertical">
+                        <af:inputDate label="#{viewcontrollerBundle.fecha_desde}"
+                                      binding="#{usuarios.id_ingreso_no_exitoso_inicial}" 
+                                      id="id_filtro_no_exitoso_desde"
+                                      columns="10" visible="false"/>
+                        <af:inputDate label="#{viewcontrollerBundle.fecha_hasta}"
+                                      binding="#{usuarios.id_ingreso_no_exitoso_final}" 
+                                      id="id_filtro_no_exitoso_hasta"
+                                      columns="10" visible="false"/>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          
+          </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+  <af:group binding="#{usuarios.g1}" id="g1">
+              <af:popup binding="#{usuarios.popup_borrar}" id="popup_borrar">
+                <af:dialog binding="#{usuarios.d_borrar}" id="d_borrar"
+                           type="okCancel"
+                           title="#{viewcontrollerBundle.titulo_confirmacion}"
+                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                           cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                           helpTopicId="borrar_usuario"
+                           dialogListener="#{usuarios.d_borrar_dialogListener}">
+                  <af:outputText
+                                 binding="#{usuarios.ot_confirmacion_borrar}"
+                                 id="ot_confirmacion_borrar"/>
+                </af:dialog>
+              </af:popup>
+              <af:popup binding="#{usuarios.popupUsuario}" id="popupUsuario" >
+                <af:dialog binding="#{usuarios.d_detalle}" id="d1"
+                           title="#{viewcontrollerBundle.usuarios_detalle}"
+                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                           cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                           dialogListener="#{usuarios.d_detalle_dialogListener}"
+                           inlineStyle='height="1000px"'>
+                  <af:panelStretchLayout binding="#{usuarios.psl2}" id="psl2"
+                                         bottomHeight="0" topHeight="0"
+                                         endWidth="0px"
+                                         inlineStyle="width:710px; height:495px;">
+                    <f:facet name="center">
+                      <af:panelFormLayout binding="#{usuarios.pfl2}" id="pfl2"
+                                        >
+                        <af:inputText label="#{viewcontrollerBundle.usuarios_login}"
+                                      binding="#{usuarios.it_login}"
+                                      id="it1" required="true"
+                                      requiredMessageDetail="#{viewcontrollerBundle.usuarios_no_login}"/>
+                         <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                      binding="#{usuarios.it_nrodocumento}"
+                                      id="it23" required="true"
+                                      />
+                        <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                                  binding="#{usuarios.soc_nat_tipo_id}"
+                                                  id="soc_nat_tipo_id" showRequired="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  >
+                                <f:selectItems value="#{usuarios.listaTipodocumento}"
+                                               binding="#{usuarios.si21}"
+                                               id="si21"/>
+                              </af:selectOneChoice>
+                                      
+                                      
+                                      
+                        <af:inputText label="#{viewcontrollerBundle.usuarios_nombres}"
+                                      binding="#{usuarios.it_nombres}"
+                                      id="it2" required="true"
+                                      requiredMessageDetail="#{viewcontrollerBundle.usuarios_no_nombres}"
+                                      helpTopicId="caracteres_validos"/>
+                        <af:inputText label="#{viewcontrollerBundle.usuarios_apellidos}"
+                                      binding="#{usuarios.it_apellidos}"
+                                      id="it3" required="true"
+                                      requiredMessageDetail="#{viewcontrollerBundle.usuarios_no_apellidos}"
+                                      helpTopicId="caracteres_validos"/>
+                        <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                      binding="#{usuarios.it_email}"
+                                      id="it4" required="true"
+                                      requiredMessageDetail="#{viewcontrollerBundle.usuarios_no_email}"/>
+                        <af:selectOneChoice label="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                            binding="#{usuarios.soc_autoridad}"
+                                            id="soc_autoridad" showRequired="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                          <f:selectItems value="#{usuarios.listaAutoridades}"
+                                         binding="#{usuarios.si1}" id="si1"/>
+                        </af:selectOneChoice>
+                        <af:selectBooleanRadio text="#{viewcontrollerBundle.estado_activo}"
+                                               label="#{viewcontrollerBundle.usuarios_estado}"
+                                               binding="#{usuarios.sbr_estado_activo}"
+                                               id="sbr1"
+                                               required="true" group="estado"
+                                               requiredMessageDetail="#{viewcontrollerBundle.usuarios_no_estado}"
+                                               value="1"/>
+                        <af:selectBooleanRadio binding="#{usuarios.sbr_estado_inactivo}"
+                                               id="sbr2"
+                                               group="estado" value="2"
+                                               text="#{viewcontrollerBundle.estado_inactivo}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{usuarios.s1}" id="s1"/>
+                        <af:outputLabel value="#{viewcontrollerBundle.usuarios_perfiles}"
+                                        binding="#{usuarios.ol1}" id="ol1"/>
+                        <af:message binding="#{usuarios.m2}" id="m2" for="t2"/>
+                        <af:table value="#{usuarios.listaPerfiles}" var="row"
+                                  rowBandingInterval="1"
+                                  binding="#{usuarios.t2}" id="t2"
+                                  rowSelection="single"
+                                  columnStretching="column:c3"
+                                  emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                  verticalGridVisible="false"
+                                  autoHeightRows="3">
+                          <af:column sortable="false" headerText="Asignado"
+                                     id="c1">
+                            <af:panelGroupLayout id="pgl12" halign="center"
+                                                 layout="horizontal">
+                              <af:selectBooleanCheckbox id="sbc1"
+                                                        value="#{row.selected}"/>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column sortable="false" headerText="Nombre"
+                                     align="start" id="c3">
+                            <af:outputText value="#{row.nombre}" id="ot14"/>
+                          </af:column>
+                          <af:column sortable="false" headerText="Activo"
+                                     id="c2">
+                            <af:panelGroupLayout id="pgl13" halign="center"
+                                                 layout="horizontal">
+                              <af:image id="i2"
+                                        source='#{row.activo ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                            </af:panelGroupLayout>
+                          </af:column>
+                        </af:table>
+                      </af:panelFormLayout>
+                    </f:facet>
+                    <f:facet name="start">
+                      <af:image source="/imgs/user_48.png" shortDesc="Usuario"
+                                binding="#{usuarios.i3}" id="i3"/>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:dialog>
+              </af:popup>
+            </af:group>              
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          
+          <f:facet name="menu">
+          </f:facet>
+          <f:facet name="toolbar">
+          
+          </f:facet>
+          <f:attribute name="title"
+                       value="#{viewcontrollerBundle.usuarios_titulo}"/>
+        </af:pageTemplate>
+      </af:form>      
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:usuarios-->
+</jsp:root>

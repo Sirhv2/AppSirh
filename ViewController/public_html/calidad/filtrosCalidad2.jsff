@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+ value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelGroupLayout binding="#{filtrosCalidad.fc_panelGroupLayout1}"
+                       id="fc_panelGroupLayout1" layout="vertical"
+                       inlineStyle="width:100%;">
+    <af:panelBox text="Seleccione los criterios de consulta"
+                 binding="#{filtrosCalidad.panelFiltros}" id="panelFiltros"
+                 showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelFormLayout binding="#{filtrosCalidad.pnl_filtros}"
+                          id="pnl_filtros"
+                          labelAlignment="top" fieldWidth="30%" visible="true"
+                          rows="3" maxColumns="3">
+        <af:selectOneChoice label="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                            binding="#{filtrosCalidad.autoridades}"
+                            id="autoridades" autoSubmit="true" immediate="true"
+                            valueChangeListener="#{filtrosCalidad.autoridades_valueChangeListener}"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            showRequired="true">
+          <f:selectItems value="#{filtrosCalidad.listaAutoridades}"
+                         binding="#{filtrosCalidad.selectItems6}"
+                         id="selectItems6"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                            binding="#{filtrosCalidad.departamentos}"
+                            id="departamentos" autoSubmit="true"
+                            immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidad.departamentos_valueChangeListener}"
+                            showRequired="true">
+          <f:selectItems value="#{filtrosCalidad.listaDepartamentos}"
+                         binding="#{filtrosCalidad.selectItems4}"
+                         id="selectItems4"/>
+        </af:selectOneChoice>
+        <!--<af:selectOneChoice label="#{viewcontrollerBundle.MST_ANO}"
+                            binding="#{filtrosCalidad.anio}" id="anio"
+                            autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            visible="true">
+          <f:selectItems value="#{filtrosCalidad.listaAnios}"
+                         binding="#{filtrosCalidad.selectItems10}"
+                         id="selectItems10"/>
+        </af:selectOneChoice>
+        <af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_inicial}"
+                      binding="#{filtrosCalidad.fechaInicial}" id="fechaInicial"
+                      columns="10" autoSubmit="true" immediate="true" visible="false"/>-->
+       <!-- <af:spacer width="10" height="20" binding="#{filtrosCalidad.fc_spacer1}"
+                   id="fc_spacer1"/>
+        <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                            binding="#{filtrosCalidad.area}" id="area"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidad.area_valueChangeListener}"
+                            autoSubmit="true" immediate="true" visible="false"
+                            >
+          <f:selectItems value="#{ filtrosCalidad.listaArea}"
+                         binding="#{filtrosCalidad.selectItems1}"
+                         id="selectItems1"/>
+        </af:selectOneChoice>
+        <af:spacer width="10" height="20" binding="#{filtrosCalidad.spacerf1}"
+                   id="spacerf1"/>-->
+        <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                            binding="#{filtrosCalidad.municipios}"
+                            id="municipios" autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidad.municipios_valueChangeListener}">
+          <f:selectItems value="#{ filtrosCalidad.listaMunicipios}"
+                         binding="#{filtrosCalidad.selectItems5}"
+                         id="selectItems5"/>
+        </af:selectOneChoice>
+        <!--<af:inputDate label="#{viewcontrollerBundle.auditoria_borrar_tabla_fecha_final}"
+                      binding="#{filtrosCalidad.fechaFinal}" id="fechaFinal"
+                      columns="10" immediate="true" autoSubmit="true" visible="false"/>
+        <af:selectOneChoice label="#{viewcontrollerBundle.TRM_ZONA}"
+                            binding="#{filtrosCalidad.zona}" id="zona"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidad.zona_valueChangeListener}"
+                            autoSubmit="true" immediate="true">
+          <f:selectItems value="#{filtrosCalidad.listaZona}"
+                         binding="#{filtrosCalidad.selectItems2}"
+                         id="selectItems2"/>
+        </af:selectOneChoice>
+        <af:spacer width="10" height="20" binding="#{filtrosCalidad.spacerf2}"
+                   id="spacerf2"/>-->
+        <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                            binding="#{filtrosCalidad.fuentes}" id="fuentes"
+                            autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidad.fuente_valueChangeListener}"
+                            inlineStyle="width:80px;">
+          <f:selectItems value="#{filtrosCalidad.listaFuentes}"
+                         binding="#{filtrosCalidad.selectItems7}"
+                         id="selectItems7"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice label="#{viewcontrollerBundle.MODULO_PUNTOS}"
+                            binding="#{filtrosCalidad.ptoMonitoreo}"
+                            id="ptoMonitoreo" autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            inlineStyle="width:80%;" 
+                            valueChangeListener="#{filtrosCalidad.ptoMonitoreo_valueChangeListener}">
+          <f:selectItems value="#{ filtrosCalidad.listaPuntosMonitoreo}"
+                         binding="#{filtrosCalidad.selectItems9}"
+                         id="selectItems9"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                            binding="#{filtrosCalidad.parametro}" id="parametro"
+                            autoSubmit="true" immediate="true"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                          
+                            visible="true">
+          <f:selectItems value="#{filtrosCalidad.listaParametros}"
+                         binding="#{filtrosCalidad.selectItems8}"
+                         id="selectItems8"/>
+        </af:selectOneChoice>
+        <!--<af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                            binding="#{filtrosCalidad.subZona}" id="subZona"
+                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                            valueChangeListener="#{filtrosCalidad.subZona_valueChangeListener}"
+                            autoSubmit="true" immediate="true">
+          <f:selectItems value="#{ filtrosCalidad.listaSubZona}"
+                         binding="#{filtrosCalidad.selectItems3}"
+                         id="selectItems3"/>
+        </af:selectOneChoice>-->
+      </af:panelFormLayout>
+    </af:panelBox>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:filtrosCalidad-->
+</jsp:root>

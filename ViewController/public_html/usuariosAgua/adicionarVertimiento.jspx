@@ -1,0 +1,742 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" >
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <f:view>
+    <af:document binding="#{adicionarVertimientoBean.document1}" id="document1">
+      <af:form binding="#{adicionarVertimientoBean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarVertimientoBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="0px"
+                                   startWidth="1px" bottomHeight="93px"
+                                   endWidth="3px">
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1">
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_VERT}"
+                               binding="#{adicionarVertimientoBean.panelBox1}"
+                               id="panelBox1"
+                               showDisclosure="false"
+                               titleHalign="left" inlineStyle="height:324px;">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarVertimientoBean.panelStretchLayout2}"
+                                           id="panelStretchLayout2"
+                                           inlineStyle="width:100%;"
+                                           startWidth="2px" topHeight="9px"
+                                           bottomHeight="50px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout2}"
+                                             id="panelGroupLayout2"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout3}"
+                                               id="panelGroupLayout3"
+                                               layout="horizontal"
+                                                halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarVertimientoBean.cbNextDatosBasicos}"
+                                              id="cbNextDatosBasicos"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarVertimientoBean.cbNextDatosBasicos_actionListener}"
+                                              />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer1}"
+                                       id="spacer1"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout4}"
+                                             id="panelGroupLayout4"
+                                             visible="true">
+                          <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout1}"
+                                              id="panelFormLayout1"
+                                              inlineStyle="height:228px;"
+                                              visible="true">
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer14}"
+                                       id="spacer14"/>
+                            <af:activeOutputText value="#{viewcontrollerBundle.VRT_DATOS}"
+                                                 binding="#{adicionarVertimientoBean.activeOutputText1}"
+                                                 id="activeOutputText1"
+                                                 styleClass="AFBrandingBarTitle"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer17}"
+                                       id="spacer17"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                                              binding="#{adicionarVertimientoBean.soc_area}"
+                                              id="soc_area" showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              valueChangeListener="#{adicionarVertimientoBean.soc_area_valueChangeListener}"
+                                              autoSubmit="true" immediate="true">
+                                <f:selectItems value="#{adicionarVertimientoBean.listaArea}"
+                                           binding="#{adicionarVertimientoBean.si_area}"
+                                           id="si_area"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FNT_ZONA}"
+                                              binding="#{adicionarVertimientoBean.soc_zona}"
+                                              id="soc_zona" showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              valueChangeListener="#{adicionarVertimientoBean.soc_zona_valueChangeListener}"
+                                              autoSubmit="true" immediate="true">
+                                <f:selectItems value="#{adicionarVertimientoBean.listaZona}"
+                                           binding="#{adicionarVertimientoBean.si_zona}"
+                                           id="si_zona"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                              binding="#{adicionarVertimientoBean.soc_subzona}"
+                                              id="soc_subzona" showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              valueChangeListener="#{adicionarVertimientoBean.soc_subzona_valueChangeListener}"
+                                              autoSubmit="true" immediate="true">
+                                <f:selectItems value="#{adicionarVertimientoBean.listaSubzona}"
+                                           binding="#{adicionarVertimientoBean.si_subzona}"
+                                           id="si_subzona"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FNT_TIPO}"
+                                                binding="#{adicionarVertimientoBean.socTipoFuente}"
+                                                id="socTipoFuente"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                autoSubmit="true" immediate="true"
+                                                valueChangeListener="#{adicionarVertimientoBean.socTipoFuente_valueChangeListener}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaTiposFuente}"
+                                             binding="#{adicionarVertimientoBean.siTipoFuente}"
+                                             id="siTipoFuente"/>
+                            </af:selectOneChoice>
+                            
+                            <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                                binding="#{adicionarVertimientoBean.socFuente}"
+                                                id="socFuente" showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                valueChangeListener="#{adicionarVertimientoBean.socFuente_valueChangeListener}"
+                                                autoSubmit="true" immediate="true">
+                              <f:selectItems value="#{adicionarVertimientoBean.listaFuentes}"
+                                             binding="#{adicionarVertimientoBean.siFuentes}"
+                                             id="siFuentes"/>
+                            </af:selectOneChoice>
+
+                            <af:selectOneChoice label="#{viewcontrollerBundle.TRM_TRAMO}"
+                                                binding="#{adicionarVertimientoBean.socTramo}"
+                                                id="socTramo" showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaTramos}"
+                                             binding="#{adicionarVertimientoBean.siTramos}"
+                                             id="siTramos"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.VRT_TIPO}"
+                                                binding="#{adicionarVertimientoBean.socTipoVertimiento}"
+                                                id="socTipoVertimiento"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaTipoVertimiento}"
+                                             binding="#{adicionarVertimientoBean.siTipoVertimiento}"
+                                             id="siTipoVertimiento"/>
+                            </af:selectOneChoice>
+                            
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_VERT}"
+                               binding="#{adicionarVertimientoBean.panelBox2}"
+                               id="panelBox2" visible="false"
+                               showDisclosure="false"
+                               titleHalign="left">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarVertimientoBean.panelStretchLayout3}"
+                                           id="panelStretchLayout3"
+                                            inlineStyle="width:100%;height:400px;"
+                                           startWidth="2px" topHeight="9px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout5}"
+                                             id="panelGroupLayout5"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout6}"
+                                               id="panelGroupLayout6"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">                             
+                                  
+                                <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                                  binding="#{adicionarVertimientoBean.cbPrevUbicacion}"
+                                                  id="cbPrevUbicacion"
+                                                  actionListener="#{adicionarVertimientoBean.cbPrevUbicacion_actionListener}"
+                                                  icon="/imgs/back.png"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarVertimientoBean.spacer5}"
+                                           id="spacer5"/>
+                                <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                                  binding="#{adicionarVertimientoBean.cbNextUbicacion}"
+                                                  id="cbNextUbicacion"
+                                                  actionListener="#{adicionarVertimientoBean.cbNextUbicacion_actionListener}"
+                                                  icon="/imgs/next.png"/>
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarVertimientoBean.spacer6}"
+                                           id="spacer6"/> 
+                            </af:panelGroupLayout>          
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout7}"
+                                             id="panelGroupLayout7">
+                          <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout2}"
+                                              id="panelFormLayout2">
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer18}"
+                                       id="spacer18"/>
+                            <af:activeOutputText value="#{viewcontrollerBundle.VRT_UBICACION}"
+                                                 binding="#{adicionarVertimientoBean.activeOutputText2}"
+                                                 id="activeOutputText2"
+                                                 styleClass="AFBrandingBarTitle"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer19}"
+                                       id="spacer19"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                                binding="#{adicionarVertimientoBean.socDepartamento}"
+                                                id="socDepartamento"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                autoSubmit="true" immediate="true"
+                                                valueChangeListener="#{adicionarVertimientoBean.socDepartamento_valueChangeListener}">
+                              <f:selectItems value="#{adicionarVertimientoBean.listaDepartamentos}"
+                                             binding="#{adicionarVertimientoBean.siDepartamento}"
+                                             id="siDepartamento"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                                binding="#{adicionarVertimientoBean.socMunicipio}"
+                                                id="socMunicipio"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaMunicipios}"
+                                             binding="#{adicionarVertimientoBean.siMunicipio}"
+                                             id="siMunicipio"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.CPT_TIPO_CP}"
+                                                binding="#{adicionarVertimientoBean.socTipoCP}"
+                                                id="socTipoCP"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaTipoCentroPoblado}"
+                                             binding="#{adicionarVertimientoBean.siTipoCP}"
+                                             id="siTipoCP"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="#{viewcontrollerBundle.CPT_NOMBRE_CP}"
+                                          binding="#{adicionarVertimientoBean.itNombreCentroPoblado}"
+                                          id="itNombreCentroPoblado"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_VERT}"
+                               binding="#{adicionarVertimientoBean.panelBox3}"
+                               id="panelBox3" visible="false"
+                               showDisclosure="false"
+                               titleHalign="left" >
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarVertimientoBean.panelStretchLayout5}"
+                                           id="panelStretchLayout5"
+                                           inlineStyle="width:100%;height:400px;"
+                                           startWidth="2px" topHeight="9px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout14}"
+                                             id="panelGroupLayout14"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout15}"
+                                               id="panelGroupLayout15"
+                                               layout="horizontal"
+                                               inlineStyle="width:100%;"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarVertimientoBean.cbPrevCaracteristicas}"
+                                              id="cbPrevCaracteristicas"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarVertimientoBean.cbPrevCaracteristicas_actionListener}"
+                                              />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer2}"
+                                       id="spacer2"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarVertimientoBean.cbNextCaracteristicas}"
+                                              id="cbNextCaracteristicas"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarVertimientoBean.cbNextCaracteristicas_actionListener}"
+                                              />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer3}"
+                                       id="spacer3"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout18}"
+                                             id="panelGroupLayout18">
+                          <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout5}"
+                                              id="panelFormLayout5"
+                                              inlineStyle="height:400px;">
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer20}"
+                                       id="spacer20"/>
+                            <af:activeOutputText value="#{viewcontrollerBundle.VRT_CARACTERISTICAS}"
+                                                 binding="#{adicionarVertimientoBean.activeOutputText3}"
+                                                 id="activeOutputText3"
+                                                 styleClass="AFBrandingBarTitle"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer21}"
+                                       id="spacer21"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.VRT_TIPO_FLUJO}"
+                                                binding="#{adicionarVertimientoBean.socTipoFlujo}"
+                                                id="socTipoFlujo"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaTipoFlujo}"
+                                             binding="#{adicionarVertimientoBean.siTipoFlujo}"
+                                             id="siTipoFlujo"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="#{viewcontrollerBundle.VRT_TIEMPO_DESCARGA}"
+                                          binding="#{adicionarVertimientoBean.itTiempoDescarga}"
+                                          id="itTiempoDescarga" columns="10"
+                                          showRequired="true"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="true" />
+                            </af:inputText>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.VRT_FRECUENCIA}"
+                                                binding="#{adicionarVertimientoBean.socFrecuencia}"
+                                                id="socFrecuencia"
+                                                showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaDias}"
+                                             binding="#{adicionarVertimientoBean.siFrecuencia}"
+                                             id="siFrecuencia"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="#{viewcontrollerBundle.VRT_CAUDAL}"
+                                          binding="#{adicionarVertimientoBean.itCaudalDisegno}"
+                                          id="itCaudalDisegno" columns="10"
+                                          showRequired="true"
+                                          >
+                                <af:convertNumber type="number"
+                                              integerOnly="false" 
+                                              maxIntegerDigits="5"
+                                              minIntegerDigits="1"
+                                              maxFractionDigits="3"
+                                              minFractionDigits="0"
+                                              pattern="#####.###"
+                                              />
+                            </af:inputText>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_VERT}"
+                               binding="#{adicionarVertimientoBean.panelBox4}"
+                               id="panelBox4" visible="false"
+                               showDisclosure="false" 
+                               titleHalign="left" inlineStyle="height:400px;">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarVertimientoBean.panelStretchLayout6}"
+                                           id="panelStretchLayout6"
+                                           inlineStyle="width:100%;height:400px;"
+                                           topHeight="9px" startWidth="2px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout16}"
+                                             id="panelGroupLayout16"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout17}"
+                                               id="panelGroupLayout17"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">
+                            <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                              binding="#{adicionarVertimientoBean.cbPrevTratamiento}"
+                                              id="cbPrevTratamiento"
+                                              icon="/imgs/back.png"
+                                              actionListener="#{adicionarVertimientoBean.cbPrevTratamiento_actionListener}"
+                                              />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer4}"
+                                       id="spacer4"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarVertimientoBean.cbNextTratamiento}"
+                                              id="cbNextTratamiento"
+                                              icon="/imgs/next.png"
+                                              actionListener="#{adicionarVertimientoBean.cbNextTratamiento_actionListener}"
+                                              />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer7}"
+                                       id="spacer7"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout19}"
+                                             id="panelGroupLayout19"
+                                             layout="scroll">
+                          <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout9}"
+                                              id="panelFormLayout9" rows="1"
+                                              maxColumns="1">
+                             <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer22}"
+                                       id="spacer22"/>
+                            <af:activeOutputText value="#{viewcontrollerBundle.VRT_TRATAMIENTO}"
+                                                 binding="#{adicionarVertimientoBean.activeOutputText4}"
+                                                 id="activeOutputText4"
+                                                 styleClass="AFBrandingBarTitle"/>
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarVertimientoBean.spacer23}"
+                                       id="spacer23"/>
+                          </af:panelFormLayout>
+                          <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout6}"
+                                              id="panelFormLayout6" rows="2"
+                                                maxColumns="3"
+                                              inlineStyle="height:280px;">
+                            
+                          
+                            <af:selectManyListbox label="#{viewcontrollerBundle.VRT_PRETRATAMIENTO}"
+                                                binding="#{adicionarVertimientoBean.smlbPretratamiento}"
+                                                id="smlbPretratamiento"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaPretratamiento}"
+                                             binding="#{adicionarVertimientoBean.siPretratamiento}"
+                                             id="siPretratamiento"/>
+                            </af:selectManyListbox>
+                            <af:selectManyListbox label="#{viewcontrollerBundle.VRT_PRIMARIO}"
+                                                binding="#{adicionarVertimientoBean.smlbPrimario}"
+                                                id="smlbPrimario"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaPrimario}"
+                                             binding="#{adicionarVertimientoBean.siPrimario}"
+                                             id="siPrimario"/>
+                            </af:selectManyListbox>
+                            <af:selectManyListbox label="#{viewcontrollerBundle.VRT_SECUNDARIO}"
+                                                binding="#{adicionarVertimientoBean.smlbSecundario}"
+                                                id="smlbSecundario"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaSecundario}"
+                                             binding="#{adicionarVertimientoBean.siSecundario}"
+                                             id="siSecundario"/>
+                            </af:selectManyListbox>
+                            <af:selectManyListbox label="#{viewcontrollerBundle.VRT_TERCIARIO}"
+                                                binding="#{adicionarVertimientoBean.smlbTerciario}"
+                                                id="smlbTerciario"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaTerciario}"
+                                             binding="#{adicionarVertimientoBean.siTerciario}"
+                                             id="siTerciario"/>
+                            </af:selectManyListbox>
+                            <af:selectManyListbox label="#{viewcontrollerBundle.VRT_OTRO}"
+                                                binding="#{adicionarVertimientoBean.smlbOtro}"
+                                                id="smlbOtro"
+                                                >
+                              <f:selectItems value="#{adicionarVertimientoBean.listaOtro}"
+                                             binding="#{adicionarVertimientoBean.siOtro}"
+                                             id="siOtro"/>
+                            </af:selectManyListbox>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:panelBox text="#{viewcontrollerBundle.ADICIONAR_VERT}"
+                               binding="#{adicionarVertimientoBean.panelBox5}"
+                               id="panelBox5" visible="false"
+                               showDisclosure="false"
+                               titleHalign="left">
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarVertimientoBean.panelStretchLayout4}"
+                                           id="panelStretchLayout4"
+                                           inlineStyle="width:100%;height:60vh;"
+                                           topHeight="9px" startWidth="2px"
+                                           bottomHeight="50px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout8}"
+                                             id="panelGroupLayout8"
+                                             layout="vertical">
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout9}"
+                                               id="panelGroupLayout9"
+                                               layout="horizontal"
+                                               halign="right"
+                                               inlineStyle="width:100%;">
+                                               
+                                <af:commandButton text="#{viewcontrollerBundle.ANTERIOR}"
+                                                  binding="#{adicionarVertimientoBean.cbPrevGeoreferencia}"
+                                                  id="cbPrevGeoreferencia"
+                                                  icon="/imgs/back.png"
+                                                  actionListener="#{adicionarVertimientoBean.cbPrevGeoreferencia_actionListener}"
+                                                  />
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarVertimientoBean.spacer11}"
+                                           id="spacer11"/>
+                                <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                                  binding="#{adicionarVertimientoBean.cbNextGeoreferencia}"
+                                                  id="cbNextGeoreferencia"
+                                                  icon="/imgs/next.png"
+                                                  actionListener="#{adicionarVertimientoBean.cbNextGeoreferencia_actionListener}"
+                                                  />
+                                <af:spacer width="10" height="10"
+                                           binding="#{adicionarVertimientoBean.spacer12}"
+                                           id="spacer12"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout10}"
+                                             id="panelGroupLayout10"
+                                             layout="scroll">
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout11}"
+                                               id="panelGroupLayout11">
+                            <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout3}"
+                                                id="panelFormLayout3" >
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer8}"
+                                         id="spacer8"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.VRT_GEOREFERENCIACION}"
+                                                   binding="#{adicionarVertimientoBean.activeOutputText5}"
+                                                   id="activeOutputText5"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer24}"
+                                         id="spacer24"/>
+                              <af:selectOneChoice label="#{viewcontrollerBundle.TRM_SISTEMA}"
+                                                  binding="#{adicionarVertimientoBean.socSistemaReferencia}"
+                                                  id="socSistemaReferencia"
+                                                  showRequired="true"
+                                                unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  >
+                                <f:selectItems value="#{adicionarVertimientoBean.listaSistemasReferencia}"
+                                               binding="#{adicionarVertimientoBean.siSistemaReferencia}"
+                                               id="siSistemaReferencia"/>
+                              </af:selectOneChoice>
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer15}"
+                                         id="spacer15"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                          <af:panelGroupLayout binding="#{adicionarVertimientoBean.panelGroupLayout20}"
+                                               id="panelGroupLayout20"
+                                               layout="vertical">
+                            <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout7}"
+                                                id="panelFormLayout7"
+                                                maxColumns="999999" rows="1"
+                                                labelAlignment="top">
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer9}"
+                                         id="spacer9"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                              binding="#{adicionarVertimientoBean.outputLabel1}"
+                                              id="outputLabel1"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{adicionarVertimientoBean.itGradosLat}"
+                                            id="it_lat_grados0"
+                                            showRequired="true"
+                                            columns="5"
+                                            >
+                                    <af:convertNumber type="number"
+                                                      integerOnly="true"
+                                                      minIntegerDigits="1"
+                                                      maxIntegerDigits="2"/>
+                                    <af:validateLongRange minimum="-4"
+                                                      maximum="15"/>
+                              </af:inputText>  
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{adicionarVertimientoBean.itMinutosLat}"
+                                            id="it_lat_min0"
+                                            showRequired="true"
+                                            columns="5"
+                                            >
+                                    <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0"
+                                                      maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{adicionarVertimientoBean.itSegundosLat}"
+                                            id="it_lat_seg0"
+                                            showRequired="true"
+                                            columns="5" >    
+                                            <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"
+                                                  pattern="##.#####"
+                                                  />
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.999"/>
+                              </af:inputText>     
+                                              
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout8}"
+                                                id="panelFormLayout8"
+                                                maxColumns="999999" rows="1"
+                                                labelAlignment="top">
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer10}"
+                                         id="spacer10"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                              binding="#{adicionarVertimientoBean.outputLabel2}"
+                                              id="outputLabel2"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{adicionarVertimientoBean.it_grad_long}"
+                                            id="it_long_grados0" columns="5"
+                                            immediate="true"
+                                            showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{adicionarVertimientoBean.it_min_long}"
+                                            id="it_long_min0" columns="5"
+                                            immediate="true"
+                                            showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{adicionarVertimientoBean.it_seg_long}"
+                                            id="it_long_seg0" columns="5"
+                                            immediate="true"
+                                            showRequired="true">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"
+                                                  pattern="##.#####"
+                                                  />
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.999"/>
+                              </af:inputText>
+                            </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{adicionarVertimientoBean.panelFormLayout4}"
+                                                id="panelFormLayout4" rows="2"
+                                                maxColumns="1">
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer25}"
+                                         id="spacer25"/>
+                              <af:activeOutputText value="#{viewcontrollerBundle.CPT_DESCRIPCION_ACCESO}"
+                                                   binding="#{adicionarVertimientoBean.activeOutputText6}"
+                                                   id="activeOutputText6"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:spacer width="10" height="10"
+                                         binding="#{adicionarVertimientoBean.spacer26}"
+                                         id="spacer26"/>
+                              <af:inputText label="#{viewcontrollerBundle.TRM_ALTITUD}"
+                                            binding="#{adicionarVertimientoBean.itAltitud}"
+                                            id="itAltitudPi"
+                                            showRequired="true"
+                                            columns="7"
+                                            >
+                                <af:convertNumber type="number"
+                                                   integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="5"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="3"
+                                                  groupingUsed="false"
+                                                 
+                                                  />
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="5500.999"/>                  
+                                                      
+                              </af:inputText>
+                              
+                              <af:inputText label="#{viewcontrollerBundle.PTO_TITDESCRIPCION}"
+                                          binding="#{adicionarVertimientoBean.itDescripcionAcceso}"
+                                          id="itDescripcionAcceso" rows="3"
+                                          columns="50" showRequired="true"/>
+                                          
+                                <af:inlineFrame source="/utils/views/mapa_un_punto.html"
+											clientComponent="true"
+											id="mapFrame"
+											inlineStyle="width:500px;height:300px;padding-top:50px;"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                            
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  
+                  
+                  <af:popup binding="#{adicionarVertimientoBean.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                        <af:dialog binding="#{adicionarVertimientoBean.d_registro_exitoso}"
+                                   id="d_registro_exitoso" type="none"
+                                   title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                   affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                   closeIconVisible="false">
+                          <f:facet name="buttonBar">
+                            <af:panelGroupLayout binding="#{adicionarVertimientoBean.pgl14}"
+                                                 id="pgl14">
+                              <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                binding="#{adicionarVertimientoBean.cbAceptar}"
+                                                id="cbAceptar"
+                                                action="listarVertimientos"
+                                                immediate="true" partialSubmit="true" />
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <af:panelStretchLayout binding="#{adicionarVertimientoBean.psl7}"
+                                                 id="psl7" endWidth="0px"
+                                                 topHeight="0px" bottomHeight="2px"
+                                                 inlineStyle="height:41px; width:316px;">
+                            <f:facet name="bottom"/>
+                            <f:facet name="center">
+                              <af:outputText value="#{viewcontrollerBundle.VRT_REGISTRADA}"
+                                             binding="#{adicionarVertimientoBean.ot8}"
+                                             id="ot8"/>
+                            </f:facet>
+                            <f:facet name="start">
+                              <af:image source="/imgs/info.png" shortDesc="info"
+                                        binding="#{adicionarVertimientoBean.i1}" id="i1"/>
+                            </f:facet>
+                            <f:facet name="end"/>
+                            <f:facet name="top"/>
+                          </af:panelStretchLayout>
+                        </af:dialog>
+                    </af:popup>
+                  
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarVertimientoBean-->
+</jsp:root>

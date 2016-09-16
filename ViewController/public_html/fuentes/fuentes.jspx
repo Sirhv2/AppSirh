@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{FuentesBean.documentF1}" id="documentF1">
+      <af:form binding="#{FuentesBean.formF1}" id="formF1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="ptf1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{FuentesBean.pslf1}"
+                                   id="pslf1" startWidth="2px" endWidth="0px"
+                                   topHeight="39px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{FuentesBean.psf1}"
+                                  id="psf1" orientation="vertical"
+                                  splitterPosition="64" disabled="true">
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{FuentesBean.pflf1}"
+                                        id="pflf1" maxColumns="8" rows="1"
+                                        labelAlignment="top">
+                      
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_AREA}"
+                                          binding="#{FuentesBean.selectOneChoice1}"
+                                          id="selectOneChoice1"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{FuentesBean.selectOneChoice1_valueChangeListener}"
+                                          autoSubmit="true" immediate="true"
+                                          helpTopicId="fuentes"
+                                          >
+                        <f:selectItems value="#{FuentesBean.listaArea}"
+                                       binding="#{FuentesBean.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_ZONA}"
+                                          binding="#{FuentesBean.selectOneChoice2}"
+                                          id="selectOneChoice2"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{FuentesBean.selectOneChoice2_valueChangeListener}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{FuentesBean.listaZona}"
+                                       binding="#{FuentesBean.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.FNT_SUBZONA}"
+                                          binding="#{FuentesBean.selectOneChoice3}"
+                                          id="selectOneChoice3"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                        <f:selectItems value="#{FuentesBean.listaSubzona}"
+                                       binding="#{FuentesBean.selectItems3}"
+                                       id="selectItems3"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{FuentesBean.selectOneChoice4}"
+                                          id="selectOneChoice4"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          valueChangeListener="#{FuentesBean.selectOneChoice4_valueChangeListener}"
+                                          autoSubmit="true" immediate="true">
+                        <f:selectItems value="#{FuentesBean.listaDepartamentos}"
+                                       binding="#{FuentesBean.selectItems4}"
+                                       id="selectItems4"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{FuentesBean.selectOneChoice5}"
+                                          id="selectOneChoice5"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          >
+                        <f:selectItems value="#{FuentesBean.listaMunicipios}"
+                                       binding="#{FuentesBean.selectItems5}"
+                                       id="selectItems5"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="Autoridad"
+                                          binding="#{FuentesBean.soc_autoridad_id}"
+                                          id="soc_autoridad_id"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}" 
+                                          valueChangeListener="#{FuentesBean.soc_filtro_porAtoridad}"
+                                          visible="#{!FuentesBean.visiblePerfil}" >
+                        <f:selectItems value="#{FuentesBean.listaAutoridades}"
+                                       binding="#{FuentesBean.si1Autoridad}" id="si1a"/>
+                                       
+                      </af:selectOneChoice>  
+                      <af:inputText label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                    binding="#{FuentesBean.it_fuente}"
+                                    id="it_fuente"
+                                    contentStyle="text-transform:uppercase"/>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{FuentesBean.commandButton1}"
+                                        id="commandButton1"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{FuentesBean.commandButton1_actionListener}"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                      <af:panelCollection binding="#{FuentesBean.panelCollection1}"
+                                          id="panelCollection1"
+                                          inlineStyle="width:100%;">
+                        <f:facet name="menus">
+                        <af:menu text="#{viewcontrollerBundle.menu_archivo}" 
+                                    binding="#{FuentesBean.menu1}"
+                                    id="menu1">
+                          <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                              binding="#{FuentesBean.commandMenuItem1}"
+                                              id="commandMenuItem1"
+                                              icon="/imgs/add.png"
+                                              visible="#{ FuentesBean.visiblePerfil}"
+                                              action="#{FuentesBean.commandMenuItem1_action}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                              binding="#{FuentesBean.commandMenuItem2}"
+                                              id="commandMenuItem2"
+                                              icon="/imgs/edit_24.png"
+                                              visible="#{ FuentesBean.visiblePerfil}"
+                                              action="#{FuentesBean.getAccionAdicionar}"
+                                              actionListener="#{FuentesBean.commandMenuItem2_actionListener}"
+                                              immediate="true"
+                                              partialSubmit="true"/>
+                          <af:commandMenuItem text="Establecer PORH" 
+                                              binding="#{FuentesBean.cmi_porh}"
+                                              id="cmi_porh"
+                                              visible="#{ FuentesBean.visiblePerfil}"
+                                              actionListener="#{FuentesBean.cmi_porh_actionListener}"
+                                              action="#{FuentesBean.getAccionAdicionar}"/>
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimir}"
+                                              binding="#{FuentesBean.cmi_ImprimirListado}"
+                                              id="cmi_ImprimirListado"
+                                              actionListener="#{FuentesBean.cmiImprimirListado_actionListener}"/>
+                          <af:commandMenuItem text="Establecer Conflicto"
+                                              binding="#{FuentesBean.cmi_establecerConflicto}"
+                                              id="cmi_establecerConflicto"
+                                              actionListener="#{FuentesBean.cmEstablecerConflicto_actionListener}"
+                                              action="#{FuentesBean.getAccionAdicionar}"/>
+                          <af:commandMenuItem text="Registrar Buena Practica"
+                                              binding="#{FuentesBean.cmi_regBuenaPractica}"
+                                              id="cmi_regBuenaPractica"
+                                              actionListener="#{FuentesBean.cmRegistraBuenaPractica_actionListener}"
+                                              action="#{FuentesBean.getAccionAdicionar}"/>                    
+
+
+                         <!--Reporte de tramos relacionadso por fuente DL-->
+                          <af:commandMenuItem text="#{viewcontrollerBundle.menu_imprimirFT}"
+                                              binding="#{FuentesBean.cmi_ImprimirReporteTramos}"
+                                              id="cmi_ImprimirReporteTramos"
+                                              actionListener="#{FuentesBean.cmiImprimirReporteTramos_actionListener}"/> 
+          <!--Reporte de tramos relacionadso por fuente DL-->
+
+ </af:menu>
+                      </f:facet>
+                      
+                      
+                      <af:table var="row" binding="#{FuentesBean.t_fuentes}"
+                                id="t_fuentes" rowSelection="single"
+                                value="#{FuentesBean.listaFuentes}"
+                                rowBandingInterval="1"
+                                selectionListener="#{FuentesBean.t_fuentes_selectionListener}"
+                                emptyText="#{viewcontrollerBundle.tabla_vacia}"
+                                >
+                                    <af:column 
+                                   headerText="#{viewcontrollerBundle.FNT_NUMERO}"
+                                  width="50">
+                          <af:outputText value="#{row.num}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_NOMBRE}"
+                                   sortProperty="nombre" width="126">
+                          <af:outputText value="#{row.nombre}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_TIPO}"
+                                   sortProperty="idTipoFuente.valor" width="94">
+                          <af:outputText value="#{row.idTipoFuente.valor}"/>
+                        </af:column>
+                        <!-- Carlos Abril  headerText="#{viewcontrollerBundle.FNT_CODCUENCA_AA}" -->
+                         <af:column sortable="true"
+                                   
+                                   headerText="#{viewcontrollerBundle.FNT_CODCUENCA_AA}"
+                                   sortProperty="codigoCuencaAA" width="94">
+                          <af:outputText value="#{row.codigoCuencaAA}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.FNT_DESCRIPCION}"
+                                   width="110">
+                          <af:outputText value="#{row.descripcion}"/>
+                        </af:column>
+                        
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.CPT_PROVINCIA}"
+                                   sortProperty="provinciaH" width="94">
+                          <af:outputText value="#{row.provinciaH}"/>
+                        </af:column>
+                         <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.CPT_UNIDAD}"
+                                   sortProperty="unidadhidro" width="94">
+                          <af:outputText value="#{row.unidadhidro}"/>
+                        </af:column>
+                        <af:column sortable="true"
+                                   headerText="#{viewcontrollerBundle.FNT_COMPARTIDA}"
+                                   sortProperty="esCompartida" width="110">  
+                          <af:image id="i1"
+                                      source='#{row.esCompartidaAux ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>            
+                        </af:column>
+                        
+                        <af:column sortable="false"
+                                   headerText="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                   width="244">
+                          <af:outputText value="#{row.codAutoridad.nombre}"/>
+                        </af:column>
+                        <af:column sortable="false"
+                                    headerText="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}"
+                                   width="76">
+                          <af:image id="i2"
+                                source='#{(row.tramosRelacionados ) ? "/imgs/activo.png" : "/imgs/inactivo.png"}'/>
+                        </af:column>
+                        <af:column sortable="false"
+				   headerText="#{viewcontrollerBundle.TIENE_PORH}" id="c1"
+				   align="center">
+			  <af:image source="#{row.tienePorh ? &quot;/imgs/activo.png&quot; : &quot;/imgs/inactivo.png&quot;}" shortDesc="porh"
+				    id="i3"/>
+                        </af:column>
+                      </af:table>
+                      
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{FuentesBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2">
+                  <af:activeOutputText value="#{viewcontrollerBundle.FNT_TITULO}"
+                                       binding="#{FuentesBean.activeOutputText1}"
+                                       id="activeOutputText1"
+                                       styleClass="AFBrandingBarTitle"/>
+                  <af:spacer width="10" height="10"
+                             binding="#{FuentesBean.spacer1}" id="spacer1"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:FuentesBean-->
+</jsp:root>

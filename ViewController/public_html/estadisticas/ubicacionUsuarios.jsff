@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <af:panelStretchLayout binding="#{ubicacionUsuarios.psl1}" id="psl1"
+                         startWidth="0px" endWidth="0px" topHeight="0px"
+                         bottomHeight="0px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <dvt:pieGraph id="pg_ubicacion" subType="PIE"
+                    binding="#{ubicacionUsuarios.pg_ubicacion}"
+                    value="#{ubicacionUsuarios.graphData}" visualEffects="AUTO"
+                    animationOnDisplay="AUTO" threeDEffect="true"
+                    contentDelivery="immediate" dynamicResize="DYNAMIC_SIZE"
+                    
+                    clickListener="#{ubicacionUsuarios.pg_ubicacion_clickListener}">
+        <dvt:background fillTransparent="true">
+          <dvt:specialEffects/>
+        </dvt:background>
+        <dvt:graphPieFrame/>
+        <dvt:seriesSet>
+          <dvt:series pieSliceExplode="100"/>
+        </dvt:seriesSet>
+        <dvt:sliceLabel textType="LD_TEXT_PERCENT" rendered="true">
+          <dvt:numberFormat decimalDigit="0" thousandSeparator="."/>
+        </dvt:sliceLabel>
+        <dvt:pieLabel rendered="true" text="Grafica"/>
+        <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      </dvt:pieGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end">
+      <af:panelGroupLayout binding="#{ubicacionUsuarios.pgl1}" id="pgl1">
+        <af:popup binding="#{ubicacionUsuarios.p_detalle}" id="p_detalle">
+          <af:dialog binding="#{ubicacionUsuarios.d_detalle}" id="d_detalle"
+                     type="none" title="#{viewcontrollerBundle.VER_DETALLE}">
+            <af:outputText value="#{viewcontrollerBundle.DESEA_VER_DETALLE}"
+                           binding="#{ubicacionUsuarios.ot_detalle}"
+                           id="ot_detalle"/>
+            <f:facet name="buttonBar">
+              <af:panelGroupLayout binding="#{ubicacionUsuarios.pgl2}"
+                                   id="pgl2">
+                <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_si}"
+                                  binding="#{ubicacionUsuarios.cb_si}"
+                                  id="cb_si"
+                                  actionListener="#{ubicacionUsuarios.cb_si_actionListener}"
+                                  action="#{ubicacionUsuarios.getAction}"/>
+                <af:spacer width="10" height="10"
+                           binding="#{ubicacionUsuarios.s1}" id="s1"/>
+                <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_reporte_log_no}"
+                                  binding="#{ubicacionUsuarios.cb_no}"
+                                  id="cb_no"
+                                  actionListener="#{ubicacionUsuarios.cb_no_actionListener}"/>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:dialog>
+        </af:popup>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:ubicacionUsuarios-->
+</jsp:root>

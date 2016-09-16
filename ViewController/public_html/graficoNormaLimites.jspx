@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{graficoNormaLimites.document1}" id="document1">
+      <af:form binding="#{graficoNormaLimites.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{graficoNormaLimites.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="center">
+                <af:panelGroupLayout 
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{graficoNormaLimites.panelGroupLayout3}"
+                                     id="panelGroupLayout3" 
+                                     layout="scroll">
+                  <af:panelFormLayout binding="#{graficoNormaLimites.panelFormLayout3}"
+                                      id="panelFormLayout3" maxColumns="1"
+                                      rows="2">
+                    <af:commandLink text="Volver"
+                                    binding="#{graficoNormaLimites.commandLinkVolver}"
+                                    id="commandLinkVolver" action="normaUsos"/>
+                    <af:panelBox text="#{viewcontrollerBundle.NORMA_TITULO_GRAFICO}"
+                                 binding="#{graficoNormaLimites.panelBox1}"
+                                 id="panelBox1" showDisclosure="false" >
+                      <f:facet name="toolbar"/>
+                      <af:panelSplitter binding="#{graficoNormaLimites.panelSplitter11}"
+                                        id="panelSplitter11"
+                                        orientation="vertical"
+                                        splitterPosition="60"
+                                        inlineStyle="width:1000px; height:400px;"
+                                        disabled="true">
+                        <f:facet name="first">
+                          <af:panelGroupLayout binding="#{graficoNormaLimites.panelGroupLayout111}"
+                                               id="panelGroupLayout111">
+                           
+                              <af:selectOneChoice label="#{viewcontrollerBundle.PTO_TEXT}"
+                                                  binding="#{graficoNormaLimites.sc_puntos1}"
+                                                  id="sc_puntos1"
+                                                  immediate="true"
+                                                  showRequired="true"
+                                                  autoSubmit="true"
+                                                  unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                  valueChangeListener="#{graficoNormaLimites.sc_punto_valueChangeListener}">
+                                <f:selectItems value="#{ graficoNormaLimites.listaPuntos}"
+                                               binding="#{graficoNormaLimites.selectpuntos1}"
+                                               id="selectpuntos1"/>
+                              </af:selectOneChoice>
+                           
+                            <af:panelFormLayout binding="#{graficoNormaLimites.panelFormLayout21}"
+                                                id="panelFormLayout21"
+                                                maxColumns="1" rows="1">
+                              <af:spacer width="10" height="10"
+                                         binding="#{graficoNormaLimites.spacer31}"
+                                         id="spacer31"/>
+                              <af:outputLabel value="Nota: Para graficar estos datos el Sistema asumió que la unidad de medida es la misma."
+                                              binding="#{graficoNormaLimites.otNota1}"
+                                              id="otNota1"/>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                          <af:panelGroupLayout binding="#{graficoNormaLimites.panelGroupLayout21}"
+                                               id="panelGroupLayout21"
+                                               layout="scroll">
+                            <af:panelFormLayout binding="#{graficoNormaLimites.panelFormGrafico1}"
+                                                id="panelFormGrafico1"
+                                                maxColumns="1" rows="1"
+                                                visible="false">
+                              <af:activeOutputText binding="#{graficoNormaLimites.datos}"
+                                                   id="datos"
+                                                   value="#{viewcontrollerBundle.NORMA_DATOS}"
+                                                   styleClass="AFBrandingBarTitle"/>
+                              <af:activeOutputText binding="#{graficoNormaLimites.dparamtro}"
+                                                   id="dparamtro"/>
+                              <af:activeOutputText binding="#{graficoNormaLimites.dunidad}"
+                                                   id="dunidad"/>
+                              <dvt:lineGraph id="lineGraph"
+                                             subType="LINE_VERT_ABS"
+                                             binding="#{graficoNormaLimites.lineGraph}"
+                                             tabularData="#{graficoNormaLimites.listObjectGrafico}"
+                                             imageFormat="FLASH"
+                                             inlineStyle="width:800px;height:260px;"
+                                             animationOnDisplay="AUTO">
+                                <dvt:background>
+                                  <dvt:specialEffects/>
+                                </dvt:background>
+                                <dvt:graphPlotArea/>
+                                <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                                               defaultAssignedToY2="DY2_TRUE"
+                                               defaultLineWidth="3">
+                                  <dvt:series lineStyle="LS_SOLID"
+                                              color="#FF0000" lineWidth="2"/>
+                                  <dvt:series lineStyle="LS_SOLID"
+                                              color="#0000FF" lineWidth="2"/>
+                                </dvt:seriesSet>
+                                <dvt:o1Axis/>
+                                <dvt:y1Axis/>
+                                <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                              </dvt:lineGraph>
+                            </af:panelFormLayout>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelSplitter>
+                    </af:panelBox>
+                  </af:panelFormLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:graficoNormaLimites-->
+</jsp:root>

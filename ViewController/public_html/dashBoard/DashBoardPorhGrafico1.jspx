@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{DashBoardPorhGrafico1Bean.document1}"
+                 id="document1">
+      <af:form binding="#{DashBoardPorhGrafico1Bean.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{DashBoardPorhGrafico1Bean.panelStretchLayout1}"
+                                   id="panelStretchLayout1" topHeight="29px">
+              <f:facet name="center">
+                <af:panelSplitter binding="#{DashBoardPorhGrafico1Bean.panelSplitter1}"
+                                  id="panelSplitter1" splitterPosition="250"
+                                  disabled="true">
+                  <f:facet name="first">
+                    <af:panelGroupLayout binding="#{DashBoardPorhGrafico1Bean.panelGroupLayout2}"
+                                         id="panelGroupLayout2">
+                      <af:panelFormLayout binding="#{DashBoardPorhGrafico1Bean.panelFormLayout2}"
+                                          id="panelFormLayout2">
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPorhGrafico1Bean.spacer4}"
+                                   id="spacer4"/>
+                        <af:commandLink text="Inicio"
+                                        binding="#{DashBoardPorhGrafico1Bean.clink_inicio}"
+                                        id="clink_inicio"
+                                        action="#{DashBoardPorhGrafico1Bean.getRedireccionar}"
+                                        actionListener="#{DashBoardPorhGrafico1Bean.redireccionarAOrigen}"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{DashBoardPorhGrafico1Bean.spacer5}"
+                                   id="spacer5"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO1}"
+                                        binding="#{DashBoardPorhGrafico1Bean.clink_grafico1}"
+                                        id="clink_grafico1"
+                                        action="dashBoardPorhGrafico1"/>
+                        <af:spacer width="10" height="10"
+                                   id="spacerdashBoardPorhGrafico1"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO2}" visible="false"
+                                        binding="#{DashBoardPorhGrafico1Bean.clink_grafico2}"
+                                        id="clink_grafico2"
+                                        action="dashBoardPorhGrafico2"/>
+                        <af:spacer width="10" height="10"
+                                   id="spacer5dashBoardPorhGrafico2"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO3}" visible="false"
+                                        binding="#{DashBoardPorhGrafico1Bean.clink_grafico3}"
+                                        id="clink_grafico3"
+                                        action="dashBoardPorhGrafico3"/>
+                        <af:spacer width="10" height="10"
+                                   id="spacer5dashBoardPorhGrafico3"/>
+                        <af:commandLink text="#{viewcontrollerBundle.PORH_GRAFICO4}" visible="false"
+                                        binding="#{DashBoardPorhGrafico1Bean.clink_grafico4}"
+                                        id="clink_grafico4"
+                                        action="dashBoardPorhGrafico4"/>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{DashBoardPorhGrafico1Bean.panelGroupLayout3}"
+                                         id="panelGroupLayout3">
+                      <af:panelBox text="#{viewcontrollerBundle.PORH_GRAFICO1}"
+                                   binding="#{DashBoardPorhGrafico1Bean.panelBoxCalidadGraf1}"
+                                   id="panelBoxCalidadGraf1"
+                                   showDisclosure="false" immediate="true"
+                                   inlineStyle="width:800px; height:600px;">
+                        <f:facet name="toolbar"/>
+                        <af:panelSplitter binding="#{DashBoardPorhGrafico1Bean.panelSplitter2}"
+                                          id="panelSplitter2"
+                                          orientation="vertical"
+                                          splitterPosition="130" disabled="true"
+                                          inlineStyle="width:100%;">
+                          <f:facet name="first">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{DashBoardPorhGrafico1Bean.panelGroupLayout4}"
+                                                 id="panelGroupLayout4">
+                              <af:panelFormLayout binding="#{DashBoardPorhGrafico1Bean.panelFormLayout12}"
+                                                  id="panelFormLayout12"
+                                                  rows="1" maxColumns="1">
+                                <af:selectOneChoice label="#{viewcontrollerBundle.AUTORIDAD_AMBIENTAL}"
+                                                    binding="#{DashBoardPorhGrafico1Bean.rsoc_autoridades}"
+                                                    id="rsoc_autoridades"
+                                                    autoSubmit="true"
+                                                    immediate="true"
+                                                    valueChangeListener="#{DashBoardPorhGrafico1Bean.rsoc_autoridades_valueChangeListener}"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico1Bean.listaAutoridades}"
+                                                 binding="#{DashBoardPorhGrafico1Bean.selectItemsListaAutoridades}"
+                                                 id="selectItems6"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_FUENTE}"
+                                                    binding="#{DashBoardPorhGrafico1Bean.rsoc_fuentes}"
+                                                    id="fuentes"
+                                                    autoSubmit="true"
+                                                    immediate="true"
+                                                    valueChangeListener="#{DashBoardPorhGrafico1Bean.rsoc_fuentes_valueChangeListener}"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    inlineStyle="width:80px;"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico1Bean.listaFuentes}"
+                                                 binding="#{DashBoardPorhGrafico1Bean.selectItemsListaFuentes}"
+                                                 id="selectItemsListaFuentes"/>
+                                </af:selectOneChoice>
+                                
+                                <af:selectOneChoice label="#{viewcontrollerBundle.FNT_TRAMOS_RELACIONADOS}" visible="false"
+                                                    binding="#{DashBoardPorhGrafico1Bean.rsoc_tramos}"
+                                                    id="rsoc_tramos"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico1Bean.listaTramos}"
+                                                 binding="#{DashBoardPorhGrafico1Bean.selectItemsListaTramos}"
+                                                 id="selectItemsListaTramos"/>
+                                </af:selectOneChoice>
+                                
+                                <af:selectOneChoice label="#{viewcontrollerBundle.USO_DEL_TRAMO}" visible="false"
+                                                    binding="#{DashBoardPorhGrafico1Bean.rsoc_usos}"
+                                                    id="soc_adicionar_uso"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                                    showRequired="true">
+                                  <f:selectItems value="#{DashBoardPorhGrafico1Bean.listaUsos}"
+                                                 binding="#{DashBoardPorhGrafico1Bean.selectItemsListaUsos}"
+                                                 id="selectItemsListaUsos"/>
+                                </af:selectOneChoice>
+                                <af:selectOneChoice label="#{viewcontrollerBundle.PAR_NOMBRE}"
+                                                    binding="#{DashBoardPorhGrafico1Bean.rsoc_parametros}"
+                                                    id="soc_parametro"
+                                                    autoSubmit="true"
+                                                    immediate="true"
+                                                    showRequired="true"
+                                                    inlineStyle="width:80px;"
+                                                    valueChangeListener="#{DashBoardPorhGrafico1Bean.rsoc_parametros_valueChangeListener}"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                  <f:selectItems value="#{DashBoardPorhGrafico1Bean.listaParametros}"
+                                                 binding="#{DashBoardPorhGrafico1Bean.selectItemsParametros}"
+                                                 id="selectItemsParametros"/>
+                                </af:selectOneChoice>
+
+                                
+                                
+                                
+                                
+                                <af:selectOneChoice label="#{viewcontrollerBundle.LABEL_AGNO}"
+                                                    binding="#{DashBoardPorhGrafico1Bean.rsoc_annos}"
+                                                    id="rsoc_annos"
+                                                    showRequired="true"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                  <f:selectItems value="#{DashBoardPorhGrafico1Bean.listaannos}"
+                                                 binding="#{DashBoardPorhGrafico1Bean.selectItemsannos}"
+                                                 id="selectItemsannos"/>
+                                </af:selectOneChoice>
+                                <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                  id="cb_aceptar"
+                                                  icon="/imgs/check_mark.png"
+                                                  actionListener="#{DashBoardPorhGrafico1Bean.cb_aceptar_actionListener}"/>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                          <f:facet name="second">
+                            <af:panelGroupLayout layout="scroll"
+                                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                 binding="#{DashBoardPorhGrafico1Bean.panelGroupLayout1}"
+                                                 id="panelGroupLayout1">
+                              <af:panelFormLayout binding="#{DashBoardPorhGrafico1Bean.panelFormLayout1}"
+                                                  id="panelFormLayout1" rows="1"
+                                                  visible="false"
+                                                  maxColumns="1">
+                                                                
+                                <dvt:lineGraph id="lineGraph1"
+                                               subType="LINE_VERT_ABS"
+                                               binding="#{DashBoardPorhGrafico1Bean.lineGraph1}"
+                                               tabularData="#{DashBoardPorhGrafico1Bean.listObjectGrafico}"
+                                               imageFormat="FLASH"
+                                               inlineStyle="width:780px;height:290px;"
+                                               animationOnDisplay="AUTO">
+                                  <dvt:background>
+                                    <dvt:specialEffects/>
+                                  </dvt:background>
+                                  <dvt:graphPlotArea/>
+                                  <dvt:seriesSet defaultMarkerShape="MS_CIRCLE"
+                                                 defaultAssignedToY2="DY2_TRUE"
+                                                 defaultLineWidth="3">
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#FF0000" lineWidth="1"/>
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#0000FF" lineWidth="1"/>
+                                    <dvt:series lineStyle="LS_DOTTED"
+                                                color="#04B431" lineWidth="1"/>
+                                  </dvt:seriesSet>
+                                  <dvt:o1Axis/>
+                                  <dvt:y1Axis/>
+                                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                                </dvt:lineGraph>
+                                
+                                <f:facet name="footer"/>
+                              </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelSplitter>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:DashBoardPomcaGrafico1Bean-->
+</jsp:root>

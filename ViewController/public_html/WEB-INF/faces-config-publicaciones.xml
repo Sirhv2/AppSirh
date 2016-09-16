@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+   <managed-bean>
+    <managed-bean-name>publicaciones</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.publicaciones.view.PublicacionesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pomca/detallePublicaciones.jspx-->
+  </managed-bean>
+    <managed-bean>
+    <managed-bean-name>adicionarPublicacion</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.publicaciones.view.AdicionarPublicacionBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pomca/adicionarPublicacion.jspx-->
+  </managed-bean>
+   <managed-bean>
+    <managed-bean-name>detallePublicacion</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.publicaciones.view.DetallePublicacionBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pomca/detallePublicacion.jspx-->
+  </managed-bean>
+  
+  
+  <navigation-rule>
+    <from-view-id>/publicaciones/publicaciones.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>adicionarPublicacion</from-outcome>
+      <to-view-id>/publicaciones/adicionarPublicacion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePublicacion</from-outcome>
+      <to-view-id>/publicaciones/detallePublicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/publicaciones/adicionarPublicacion.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>detallePublicacion</from-outcome>
+      <to-view-id>/publicaciones/detallePublicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>verPublicaciones</from-outcome>
+      <to-view-id>/publicaciones/publicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  <navigation-rule>
+    <from-view-id>/publicaciones/detallePublicaciones.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>verPublicaciones</from-outcome>
+      <to-view-id>/publicaciones/publicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>detallePublicacion</from-outcome>
+      <to-view-id>/publicaciones/adicionarPublicacion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+   <navigation-rule>
+    <from-view-id>faces/dashBoard.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>verPublicaciones</from-outcome>
+      <to-view-id>/publicaciones/publicaciones.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+ 
+  
+  
+</faces-config>

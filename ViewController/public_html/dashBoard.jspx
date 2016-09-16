@@ -1,0 +1,837 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>          
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document binding="#{dashBoard.d1}" id="d1"  title=":: Sistema de Información del Recurso Hidrico -  SIRH ::">      
+      <af:resource type="css">
+        .MySideBarItem {
+          background-color: #E8F3FF;
+          background-image: url('../../imgs/side_bar_dis_bg.png');
+          background-repeat: repeat-x;
+          background-position: top;
+          border: 1px solid #BFCDC9;
+          margin: 4px;
+          padding: 4px;
+        }
+        .MySideBarItemDisabled {
+          color: #AAADB1;
+        }
+        .MySideBarItemEnabled {
+          cursor: move;
+          background-color: white;
+          background-image: url('../../imgs/side_bar_ena_bg.png');
+          border: 1px solid #858FA5;
+        }
+        .MySideBarTitle {
+          font-weight: bold;
+        }
+        .MySideBarItemDisabled .MySideBarTitle {
+          color: #AAADB1;
+        }
+        .MySideBarItemEnabled .MySideBarTitle {
+          color: #003D5B;
+        }
+      </af:resource>        
+      <af:form id="f2" binding="#{dashBoard.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">            
+        <af:panelSplitter binding="#{dashBoard.ps1}" id="ps1"
+                          inlineStyle="width:100%; height:100.0%;" disabled="true"
+                          splitterPosition="250">
+          <f:facet name="first">
+            <af:panelGroupLayout binding="#{dashBoard.pgl1}" id="pgl1"
+                                 layout="scroll">
+              <af:panelGroupLayout binding="#{dashBoard.sideBar}"
+                                   id="sideBar" layout="vertical">
+                    <af:panelBorderLayout binding="#{dashBoard.pbl2}" id="pbl2"
+                                          inlineStyle="MySideBarItem MySideBarItemEnabled">
+                      <af:commandButton text="   #{viewcontrollerBundle.INGRESAR}"
+                                        binding="#{dashBoard.cb1}" id="cb1"
+                                        icon="/imgs/user_48.png"
+                                        action="login"
+                                        visible="#{!principal.menuCargdo}"/>
+                      <f:facet name="top">
+                        <af:spacer width="10" height="15"
+                                   binding="#{dashBoard.s5}" id="s5"/>
+                      </f:facet>
+                      <f:facet name="bottom">
+                        <af:spacer width="10" height="15"
+                                   binding="#{dashBoard.s4}" id="s4"/>
+                      </f:facet>
+                    </af:panelBorderLayout>
+                    <af:iterator binding="#{dashBoard.i1}" id="i1"
+                             value="#{dashBoard.listaPorlets}" var="item">
+                  <af:switcher binding="#{dashBoard.sideSwitch}"
+                               id="sideSwitch"
+                               facetName="#{item.rendered}">
+                    <f:facet name="false">
+                      <af:panelGroupLayout binding="#{dashBoard.pgl3}"
+                                           id="pgl3" layout="vertical"
+                                           styleClass="MySideBarItem MySideBarItemDisabled">
+                        <af:outputText value="#{item.nombre}" id="ot5"/>
+                        <af:spacer width="10" height="10"
+                                   binding="#{dashBoard.s2}" id="s2"/>
+                        <af:activeOutputText value="#{item.descripcion}"
+                                             binding="#{dashBoard.aot1}"
+                                             id="aot1"/>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="true">
+                      <af:panelGroupLayout binding="#{dashBoard.pgl4}"
+                                           id="pgl4"
+                                           styleClass="MySideBarItem MySideBarItemEnabled"
+                                           layout="vertical">
+                        <af:panelBorderLayout binding="#{dashBoard.pbl1}"
+                                              id="pbl1">
+                          <af:panelGroupLayout binding="#{dashBoard.pgl2}"
+                                               id="pgl2" layout="vertical"
+                                               halign="left">
+                            <af:outputText value="#{item.nombre}"
+                                           binding="#{dashBoard.ot6}" id="ot6"
+                                           styleClass="MySideBarTitle"/>
+                            <af:spacer width="5" height="10"
+                                       binding="#{dashBoard.s1}" id="s1"/>
+                            <af:outputText value="#{item.descripcion}"
+                                           binding="#{dashBoard.ot7}" id="ot7"
+                                           styleClass="MySideBarTitle"/>
+                          </af:panelGroupLayout>
+                            <f:facet name="end">
+                              <af:panelGroupLayout binding="#{dashBoard.pgl5}"
+                                                   id="pgl5" layout="vertical">
+                              <af:commandImageLink
+                                                   binding="#{dashBoard.cil4}"
+                                                   id="cil4"
+                                                   icon="/imgs/addavailable_ena.png"
+                                                   depressedIcon="/imgs/addavailable_dwn.png"
+                                                   hoverIcon="/imgs/addavailable_ovr.png"
+                                                   rendered="#{dashBoard.maximizedKey == 'empty'}"
+                                                   partialSubmit="true"
+                                                   actionListener="#{dashBoard.sideBarShow}">
+                                <f:attribute name="urlPorlet" value="#{item.url}"/>
+                                <af:panelDashboardBehavior for="dashboard"
+                                                           index="#{dashBoard.indexIfRendered}"
+                                                           type="insert"/>
+                              </af:commandImageLink>
+                              <af:commandImageLink
+                                                   binding="#{dashBoard.cil3}"
+                                                   id="cil3"
+                                                   icon="/img/addavailable_ena.png"
+                                                   hoverIcon="/imgs/addavailable_ovr.png"
+                                                   depressedIcon="/imgs/addavailable_dwn.png"
+                                                   rendered="#{dashBoard.maximizedKey != 'empty'}"/>
+                            </af:panelGroupLayout>
+                            </f:facet>                          
+                        </af:panelBorderLayout>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                  </af:switcher>
+                </af:iterator>
+                  </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="second">
+            <af:panelStretchLayout binding="#{dashBoard.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="15px" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:switcher binding="#{dashBoard.centerSwitcher}"
+                             id="centerSwitcher" defaultFacet="restored">
+                  <f:facet name="restored">
+                    <af:panelStretchLayout binding="#{dashBoard.psl2}"
+                                           id="psl2" startWidth="0px"
+                                           endWidth="0px" topHeight="2.5em"
+                                           bottomHeight="0px">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                          <af:panelDashboard binding="#{dashBoard.dashboard}"
+                                             id="dashboard"
+                                             shortDesc="panel" columns="2"
+                                             rowHeight="175px">
+                            <af:dataFlavor flavorClass="javax.faces.component.UIComponent"
+                                           discriminant="fromDashboardSideBar"/>
+                                           
+                                           
+                            <af:panelBox text="Naturaleza de los Usuarios"
+                                         binding="#{dashBoard.pbnaturaleza}"
+                                         id="pbnaturaleza"
+                                         showDisclosure="false" type="stretch">
+                                         
+                              <af:declarativeComponent id="dc2"
+                                                       viewId="estadisticas/naturalezaUsuarios.jsff" />
+                                                       
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"                                                         
+                                                         binding="#{dashBoard.dc1}"
+                                                         id="dc1"/>
+                              </f:facet>
+                            </af:panelBox>
+                            
+                            <af:panelBox text="Predios por departamentos"
+                                         binding="#{dashBoard.pbPrediosPorDpto}" id="pbPrediosPorDpto"
+                                         showDisclosure="false" type="stretch"
+                                         visible="true">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc36}"
+                                                         id="dc36"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc37"
+                                                       viewId="estadisticas/prediosPorDepartamento.jsff"
+                                                       binding="#{dashBoard.dc37}"/>
+                            </af:panelBox>
+                            
+                            
+                             <af:panelBox text="Tipo de fuentes con aprovechamiento"
+                                         binding="#{dashBoard.pbCapFuentes}" id="pbCapTipoFuente"
+                                         showDisclosure="false" type="stretch"
+                                         visible="true">
+                                         
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc40}"
+                                                         id="dc40"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc41"
+                                                       viewId="estadisticas/CaptacionTipoFuente.jsff"
+                                                       binding="#{dashBoard.dc41}"/>
+                            </af:panelBox>
+                            
+                            
+                            <!--<af:panelBox text="Uso de Agua por Actividades"
+                                         binding="#{dashBoard.pb2}" id="pb2"
+                                         showDisclosure="false" type="stretch"
+                                         visible="false">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc3}"
+                                                         id="dc3"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc4"
+                                                       viewId="estadisticas/usoAguaXActividad.jsff"
+                                                       binding="#{dashBoard.dc4}"/>
+                            </af:panelBox>-->
+                            <af:panelBox text="Ubicación de Usuarios"
+                                         binding="#{dashBoard.pb3}" id="pb3"
+                                         showDisclosure="false" type="stretch">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc6}"
+                                                         id="dc6"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc5"
+                                                       viewId="estadisticas/ubicacionUsuarios.jsff"
+                                                       binding="#{dashBoard.dc5}"/>
+                            </af:panelBox>
+                            <af:panelBox text="Vigencia de Concesiones"
+                                         binding="#{dashBoard.pb4}" id="pb4"
+                                         showDisclosure="false"
+                                         rendered="false" type="stretch">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc8}"
+                                                         id="dc8"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc7"
+                                                       viewId="estadisticas/vigenciaConcesiones.jsff"
+                                                       binding="#{dashBoard.dc7}"/>
+                            </af:panelBox>
+                              <af:panelBox text="Vigencia Permisos Vert."
+                                           binding="#{dashBoard.pb5}" id="pb5"
+                                           showDisclosure="false"
+                                           rendered="false" type="stretch">
+                                <f:facet name="toolbar">
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc10}"
+                                                           id="dc10"/>
+                                </f:facet>
+                                <af:declarativeComponent id="dc9"
+                                                         viewId="estadisticas/vigenciaPermisosVertimiento.jsff"
+                                                         binding="#{dashBoard.dc9}"/>
+                              </af:panelBox>
+                              <af:panelBox text="Captaciones por fuentes" binding="#{dashBoard.panelBoxCaptaciones}" id="panelBoxCaptaciones"
+                                           showDisclosure="false" type="stretch"
+                                           rendered="false">
+                              <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc14}"
+                                                           id="dc14"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc13"
+                                                         viewId="estadisticas/captacionesfuente.jsff"
+                                                         binding="#{dashBoard.dc13}"/>
+                                
+                              </af:panelBox>
+                              
+                            
+                            
+                               <af:panelBox text="Estadisticas por Tramites" binding="#{dashBoard.enlacesTramites}" id="enlacesTramites"
+                                           showDisclosure="false" type="stretch"
+                                           rendered="false">
+                              <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc62}"
+                                                           id="dc62"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc63"
+                                                         viewId="estadisticas/enlacesTramites.jsff"
+                                                         binding="#{dashBoard.dc63}"/>
+                                
+                              </af:panelBox>
+                            
+                              
+                        <af:panelBox text="Vertimientos por fuentes" binding="#{dashBoard.panelBoxVertimientos}" id="panelBoxVertimientos"
+                                           showDisclosure="false" type="stretch"
+                                           rendered="false">
+                              <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc56}"
+                                                           id="dc56"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc57"
+                                                         viewId="estadisticas/vertimientosfuente.jsff"
+                                                         binding="#{dashBoard.dc57}"/>
+                                
+                              </af:panelBox>
+                              
+                              
+                                  <af:panelBox text="Vertimientos por Tipo" binding="#{dashBoard.panelBoxVert}" id="panelBoxVert"
+                                           showDisclosure="false" type="stretch"
+                                           rendered="false">
+                              <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc58}"
+                                                           id="dc58"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc59"
+                                                         viewId="estadisticas/vertimientostipo.jsff"
+                                                         binding="#{dashBoard.dc59}"/>
+                                
+                              </af:panelBox>
+                              
+                                 <af:panelBox text="Caudales vertidos por Fuente Hidrica" binding="#{dashBoard.boxCaudalesVert}" id="boxCaudalesVert"
+                                           showDisclosure="false" type="stretch"
+                                           rendered="false">
+                              <f:facet name="toolbar">
+                              <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc60}"
+                                                           id="dc60"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc61"
+                                                         viewId="estadisticas/caudalesVertidos.jsff"
+                                                         binding="#{dashBoard.dc61}"/>
+                                
+                              </af:panelBox>
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                            <af:panelBox text="Usos de captaciones" binding="#{dashBoard.usosCaptaciones}" id="usosCaptaciones"
+                                            showDisclosure="false" type="stretch"
+                                           rendered="false">
+                                  <f:facet name="toolbar">
+                                  
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc26}"
+                                                           id="dc26"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc27"
+                                                         viewId="estadisticas/usosAgua.jsff"
+                                                         binding="#{dashBoard.dc27}"/>
+                                  
+                             </af:panelBox>
+                            <af:panelBox text="Caudales Concesionados" binding="#{dashBoard.boxCaudales}" id="caudalesConcesionados"
+                                            showDisclosure="false" type="stretch"
+                                           rendered="false">
+                                  <f:facet name="toolbar">
+                                  
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc34}"
+                                                           id="dc34"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc35"
+                                                         viewId="estadisticas/caudalesConcesionados.jsff"
+                                                         binding="#{dashBoard.dc35}"/>
+                                  
+                             </af:panelBox>
+                           
+                             <af:panelBox text="Número de Muestras de Calidad" binding="#{dashBoard.muestrasTipo}" id="muestrasTipo"
+                                            showDisclosure="false" type="stretch"
+                                           rendered="false">
+                                  <f:facet name="toolbar">
+                                  
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc28}"
+                                                           id="dc28"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc29"
+                                                         viewId="estadisticas/muestrasPorTipo.jsff"
+                                                         binding="#{dashBoard.dc29}"/>
+                                  
+                             </af:panelBox>
+                             
+                               <af:panelBox text="Muestras de Calidad Por Año" binding="#{dashBoard.muestrasAnio}" id="muestrasAnio"
+                                            showDisclosure="false" type="stretch"
+                                           rendered="false">
+                                  <f:facet name="toolbar">
+                                  
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc30}"
+                                                           id="dc30"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc31"
+                                                         viewId="estadisticas/muestrasPorAnio.jsff"
+                                                         binding="#{dashBoard.dc31}"/>
+                                  
+                             </af:panelBox>
+                           
+                           
+                                  <af:panelBox text="Estadisticas Por Parametros de Calidad" binding="#{dashBoard.boxParametros}" id="boxParametros"
+                                            showDisclosure="false" type="stretch"
+                                           rendered="false">
+                                  <f:facet name="toolbar">
+                                  
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc32}"
+                                                           id="dc32"/>
+                               </f:facet>
+                                <af:declarativeComponent id="dc33"
+                                                         viewId="estadisticas/enlacesParametros.jsff"
+                                                         binding="#{dashBoard.dc33}"/>
+                                  
+                             </af:panelBox>
+
+                            <af:panelBox text="Cumplimiento por Programa"
+                                         binding="#{dashBoard.boxCumplimiento}"
+                                         id="boxCumplimiento" showDisclosure="false"
+                                         type="stretch" rendered="false">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc43}"
+                                                         id="dc43"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc42"
+                                                       viewId="estadisticas/cumplimientoPorPrograma.jsff"
+                                                       binding="#{dashBoard.dc42}"/>
+                            </af:panelBox>
+                            
+                            <af:panelBox text="Ejecucion por Programa"
+                                         binding="#{dashBoard.boxEjecucion}"
+                                         id="boxEjecucion" showDisclosure="false"
+                                         type="stretch" rendered="false">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc45}"
+                                                         id="dc45"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc44"
+                                                       viewId="estadisticas/ejecucionPorPrograma.jsff"
+                                                       binding="#{dashBoard.dc44}"/>
+                            </af:panelBox>
+                              <af:panelBox text="#{viewcontrollerBundle.FORMACI_U00F3N_DE_ESPECIALISTA}"
+                                           binding="#{dashBoard.pbFormacion}"
+                                           id="pbFormacion"
+                                           showDisclosure="false"
+                                           rendered="false" type="stretch">
+                                <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc47}"
+                                                         id="dc47"/>                                
+                                </f:facet>
+                                        <af:declarativeComponent id="dc46"
+                                                       viewId="estadisticas/formacionEspecialistas.jsff"
+                                                       binding="#{dashBoard.dc46}"/>
+
+                              </af:panelBox>
+                              <af:panelBox text="#{viewcontrollerBundle.INVESTIGACI_U00F3N_DE_ESPECIAL}"
+                                           binding="#{dashBoard.pbInvestigacion}"
+                                           id="pbInvestigacion"
+                                           rendered="false" type="stretch"
+                                           showDisclosure="false">
+                                <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc49}"
+                                                         id="dc49"/>                                                                
+                                </f:facet>
+                                        <af:declarativeComponent id="dc48"
+                                                       viewId="estadisticas/investigacionGestion.jsff"
+                                                       binding="#{dashBoard.dc48}"/>                                
+                              </af:panelBox>
+                              <af:panelBox text="#{viewcontrollerBundle.GESTI_U00F3N_DE_ESPECIALISTAS}"
+                                           binding="#{dashBoard.pbGestion}"
+                                           id="pbGestion" rendered="false"
+                                           showDisclosure="false" type="stretch">
+                                <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc51}"
+                                                         id="dc51"/>                                                                                                
+                                </f:facet>
+                                        <af:declarativeComponent id="dc50"
+                                                       viewId="estadisticas/gestionEspecialistas.jsff"
+                                                       binding="#{dashBoard.dc50}"/>                                                                
+                              </af:panelBox>
+                              
+                              
+
+                            <af:panelBox text="Estadisticas POMCA"
+                                         binding="#{dashBoard.boxPomca}"
+                                         id="boxPomca" showDisclosure="false"
+                                         type="stretch" rendered="false">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc52}"
+                                                         id="dc52"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc53"
+                                                       viewId="pomca/enlacesParametros.jsff"
+                                                       binding="#{dashBoard.dc53}"/>
+                            </af:panelBox>
+
+
+
+
+
+                                <af:panelBox text="Busquedas FUENTES"
+                                         binding="#{dashBoard.boxFuentes}"
+                                         id="boxFuentes" showDisclosure="false"
+                                         type="stretch" rendered="false">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc54}"
+                                                         id="dc54"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc55"
+                                                       viewId="estadisticas/enlacesBusquedas.jsff"
+                                                       binding="#{dashBoard.dc55}"/>
+                            </af:panelBox>
+
+
+                            
+                            <!--
+                            <af:panelBox text="Analisis de la oferta por estación"
+                                         binding="#{dashBoard.boxOferta}" id="boxOferta"
+                                         showDisclosure="false" type="stretch"
+                                         visible="true">
+                              <f:facet name="toolbar">
+                                <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                         binding="#{dashBoard.dc64}"
+                                                         id="dc64"/>
+                              </f:facet>
+                              <af:declarativeComponent id="dc65"
+                                                       viewId="oferta/enlacesParametros.jsff"
+                                                       binding="#{dashBoard.dc65}"/>
+                            </af:panelBox>
+                            
+                              <af:panelBox text="Datos de referencia"
+                                           binding="#{dashBoard.boxDemanda}"
+                                           id="boxDemanda"
+                                           showDisclosure="false" type="stretch"
+                                           visible="true">
+                                <f:facet name="toolbar">
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc66}"
+                                                           id="dc66"/>
+                                </f:facet>
+                                <af:declarativeComponent id="dc67"
+                                                         viewId="demanda/enlacesDemanda.jsff"
+                                                         binding="#{dashBoard.dc67}"/>
+                              </af:panelBox>-->
+                              <af:panelBox text="Alertas de Riesgo"
+                                           binding="#{dashBoard.boxAlerta}"
+                                           id="boxAlerta" showDisclosure="false"
+                                           type="stretch" rendered="false">
+                                <f:facet name="toolbar">
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           binding="#{dashBoard.dc71}"
+                                                           id="dc71"/>
+                                </f:facet>
+                                <af:declarativeComponent id="dc70"
+                                                         viewId="dashBoard/enlacesAlertas.jsff"
+                                                         binding="#{dashBoard.dc70}"/>
+                              </af:panelBox>
+							  
+							  
+							  <!-- OCGA -->
+								<af:panelBox text="Buenas Practicas por departamentos"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.buenasPracticasPorDepartamento}"
+															PortletId="buenasPracticasPorDepartamento"/>
+								</af:panelBox>
+								
+								<af:panelBox text="Buenas Practicas por promotores"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.buenasPracticasPorPromotores}"
+															PortletId="buenasPracticasPorPromotores"/>
+								</af:panelBox>
+														   
+								<af:panelBox text="Frecuencia de Principios en Buenas Practicas"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaPrincipios}"
+															PortletId="frecuenciaPrincipios"/>
+								</af:panelBox>
+														   
+								<af:panelBox text="Inversión de promotores para desarrollo de buenas prácticas"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.buenasPracticasPorInversion}"
+															PortletId="buenasPracticasPorInversion"/>
+								</af:panelBox>
+														   
+								<af:panelBox text="Principales logros de las buenas prácticas"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaLogros}"
+															PortletId="frecuenciaLogros"/>
+								</af:panelBox>
+														   
+								<af:panelBox text="Tipo de proyectos educativos desarrollados por la ejecución de la buena práctica"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.buenasPracticasPorTipoProyecto}"
+															PortletId="buenasPracticasPorTipoProyecto"/>
+								</af:panelBox>	
+
+								<af:panelBox text="Buenas Practicas por Categoria"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphPie.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.buenasPracticasPorCategoria}"
+															PortletId="buenasPracticasPorCategoria"/>
+								</af:panelBox>	
+
+								<af:panelBox text="Motivaciones"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphPie.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaMotivaciones}"
+															PortletId="frecuenciaMotivaciones"/>
+								</af:panelBox>
+
+								<af:panelBox text="Conflictos Por Departamento"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.conflictosPorDepartamento}"
+															PortletId="conflictosPorDepartamento"/>
+								</af:panelBox>
+
+								<af:panelBox text="Tipo Conflicto"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaCFTipoConflicto}"
+															PortletId="frecuenciaCFTipoConflicto"/>
+								</af:panelBox>
+
+								<af:panelBox text="Poblacion Afectada"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaCFPoblacionAfectada}"
+															PortletId="frecuenciaCFPoblacionAfectada"/>
+								</af:panelBox>
+
+								<af:panelBox text="Actores Conflicto"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaCFActores}"
+															PortletId="frecuenciaCFActores"/>
+								</af:panelBox>
+
+								<af:panelBox text="Frecuencia Gestion de Conflicto"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphPie.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaCFGestion}"
+															PortletId="frecuenciaCFGestion"/>
+								</af:panelBox>
+
+								<af:panelBox text="Frecuencia Subgestion conflicto"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.frecuenciaCFSubgestion}"
+															PortletId="frecuenciaCFSubgestion"/>
+								</af:panelBox>
+
+								<af:panelBox text="Conflictos Por Cuenca"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphPie.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.conflictosPorCuenca}"
+															PortletId="conflictosPorCuenca"/>
+								</af:panelBox>
+
+								<af:panelBox text="Conflictos Por Subzona"                                         
+											 showDisclosure="false" type="stretch"
+											 visible="true" rendered="false">
+								  <f:facet name="toolbar">
+									<af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+															 />
+								  </f:facet>
+								  <af:declarativeComponent 	viewId="estadisticas/graphBar.jsff" 
+															GraphDataModel="#{EstadisticasBuenasPracticasBean.conflictosPorSubzona}"
+															PortletId="conflictosPorSubzona"/>
+								</af:panelBox>
+
+								
+														   
+								
+							  <!-- OCGA -->
+                            
+
+                            </af:panelDashboard>
+                          </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top">
+                        <af:panelGroupLayout binding="#{dashBoard.pgl6}"
+                                             id="pgl6" layout="horizontal">
+                              <af:navigationPane binding="#{dashBoard.np1}"
+                                                 id="np1" hint="bar">
+                                <af:forEach var="item"
+                                            items="#{dashBoard.listaCategorias}">
+                                  <af:spacer width="10" height="10" id="s3"/>
+                                  <af:commandNavigationItem text="#{item.nombre}"
+                                                            id="cni1"
+                                                            actionListener="#{dashBoard.showPresetItems}"
+                                                            partialSubmit="true">
+                                    <af:panelDashboardBehavior for="dashboard"
+                                                               index="#{dashBoard.indexIfRendered}"
+                                                               type="insert"/>
+                                  </af:commandNavigationItem>
+                                </af:forEach>
+                              </af:navigationPane>
+                              <af:spacer width="10" height="10" id="s4001"/>
+                              <af:outputText value="Version 16.07.21"
+                                             binding="#{dashBoard.outputText1}"
+                                             id="outputText1"/>
+                            </af:panelGroupLayout>
+					
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                  <f:facet name="maximized">
+                    <af:panelStretchLayout binding="#{dashBoard.psl3}"
+                                           id="psl3">
+                      <f:facet name="bottom"/>
+                      <f:facet name="center">
+                        <af:panelBox
+                                     binding="#{dashBoard.pb_max}"
+                                     id="pb_max" showDisclosure="false"
+                                     text="#{dashBoard.maximizedTitle}">
+                          <f:facet name="toolbar">
+                            <af:declarativeComponent viewId="dashBoard/toolbarMaximized.jsff"
+                                                     binding="#{dashBoard.dc12}"
+                                                     id="dc12"/>
+                          </f:facet>
+                          <af:declarativeComponent id="dc11"
+                                                   viewId="#{dashBoard.maximizedPanelUrl}"
+                                                   binding="#{dashBoard.dc11}"/>
+                        </af:panelBox>
+                        
+                      </f:facet>
+                      <f:facet name="start"/>
+                      <f:facet name="end"/>
+                      <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:switcher>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                    <af:outputText value="Nota: La información usuarios del agua se encuentra en proceso de consolidación (Decreto 303 de 2012)"
+                                   binding="#{dashBoard.nota}" id="nota"/>
+                  </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:panelSplitter>      
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:dashBoard-->
+</jsp:root>

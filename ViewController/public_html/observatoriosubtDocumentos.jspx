@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="document1">
+      <af:form id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">          
+          	<af:panelStretchLayout startWidth="10px"
+						   endWidth="10px" topHeight="30px"
+				           bottomHeight="10px"
+				           inlineStyle="width:100%;">
+						   
+		<f:facet name="top">
+<af:panelBox inlineStyle="text-align: left;">
+<af:commandLink text="Observatorio"
+                                    action="observatorio"/>
+                    <af:spacer width="25" height="10"/>
+                    <af:commandLink text="Observatorio Aguas Subterraneas "
+                                    action="observatorioSubterraneas"/>
+                    <af:spacer width="25" height="10"/>
+</af:panelBox>
+		</f:facet>
+
+		<f:facet name="center">
+			
+			<!--inicio -->
+			<af:panelDashboard id="dashBoard"
+                                   binding="#{observatorioSubterraneasBacking.dashBoard}"
+                                   columns="2" rowHeight="170px"> 
+                     
+                  <af:panelBox text="Estudios Hidrogeológicos"                            
+                               id="pbEstudio" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                               
+                    <af:panelGroupLayout   id="panelGroupLayout1" halign="center"
+                                         layout="horizontal" >
+                       <af:commandLink binding="#{observatorioSubterraneasBacking.commandLink8}"
+                            id="commandLink8" action="publicacionesPublico">
+                            <af:image source="/imgs/demanda.png"                                 
+                                id="image2"/>
+                       </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.SUB_ESTUDIOS}"                                   
+                                    id="it1" label="" 
+                                    columns="60" rows="10" readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  
+                   
+                    <af:panelBox text="Asociaciones y Grupos de Investigación"                            
+                               id="pbGrupo" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                               
+                    <af:panelGroupLayout   id="panelGroupLayout3" halign="center"
+                                         layout="horizontal" >
+                  <af:commandLink binding="#{observatorioSubterraneasBacking.commandLink10}"
+                        id="commandLink10" action="consultas">
+                    <af:image source="/imgs/demanda.png"                                 
+                          id="image4"/>
+                      </af:commandLink>
+                      <af:inputText value="#{viewcontrollerBundle.SUB_GRUPOS}"                                   
+                                    id="it3"
+                                    columns="60" rows="10" readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                   
+                     <af:panelBox text="Guias, Protocolos y Normativas"                            
+                               id="pbGuia" showDisclosure="false" visible="false"
+                               type="stretch" inlineStyle="height:165px;">
+                  
+                    <af:panelGroupLayout   id="panelGroupLayout2" halign="center"
+                                         layout="horizontal" >
+                    <af:commandLink binding="#{observatorioSubterraneasBacking.commandLink9}"
+                        id="commandLink9" >
+                    <af:image source="/imgs/demanda.png"                                 
+                          id="image3"/>
+                      </af:commandLink>
+                      
+                      <af:inputText value="#{viewcontrollerBundle.SUB_GUIAS}"                                   
+                                    id="it2" label="" 
+                                    columns="60" rows="10" readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  
+                </af:panelDashboard>
+
+		<!-- fin -->
+		
+		</f:facet>
+
+		<f:facet name="bottom"/>
+
+	</af:panelStretchLayout>
+          </f:facet>          
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

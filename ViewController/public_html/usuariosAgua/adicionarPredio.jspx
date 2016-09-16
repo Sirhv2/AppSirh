@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{adicionarPredio.d2}">
+      <af:form id="f2" binding="#{adicionarPredio.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{adicionarPredio.psl12}"
+                                   id="psl12"
+                                   startWidth="0px" endWidth="0px"
+                                   topHeight="0px" bottomHeight="0px"
+                                   inlineStyle="width:100%; height:100.0%;">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{adicionarPredio.pgl115}"
+                                     id="pgl115">
+                  <af:panelBox text="#{viewcontrollerBundle.DETALLE_PREDIO}"
+                               binding="#{adicionarPredio.pb_paso_predio}"
+                               id="pb_paso_predio" visible="true"
+                               showDisclosure="false"
+                              >
+                    <f:facet name="toolbar"/>
+                    <af:panelStretchLayout binding="#{adicionarPredio.psl6}"
+                                           id="psl6"
+                                           inlineStyle="width:100%; height:60vh;"
+                                           topHeight="28px">
+                      <f:facet name="bottom">
+                        <af:panelGroupLayout binding="#{adicionarPredio.pgl10}"
+                                             id="pgl10" layout="vertical"
+                                             halign="right">
+                          <af:panelGroupLayout binding="#{adicionarPredio.pgl11}"
+                                               id="pgl11" layout="horizontal"
+                                               halign="right">
+                            <af:commandButton text="#{viewcontrollerBundle.boton_cancelar}"
+                                              binding="#{adicionarPredio.cb_cancelar_predio}"
+                                              id="cb_cancelar_predio"
+                                               actionListener="#{adicionarPredio.cb_aceptar_actionListener}"
+                                           action="#{adicionarPredio.getAceptarAction}"
+                                              icon="/imgs/close.png"
+                                           />
+                            <af:spacer width="10" height="10"
+                                       binding="#{adicionarPredio.s20}"
+                                       id="s20"/>
+                            <af:commandButton text="#{viewcontrollerBundle.SIGUIENTE}"
+                                              binding="#{adicionarPredio.cb_terminar}"
+                                              id="cb_terminar"
+                                              actionListener="#{adicionarPredio.cb_terminar_actionListener}"
+                                              icon="/imgs/next.png"
+                                              />
+                            <af:spacer width="50" height="10"
+                                       binding="#{adicionarPredio.s17}"
+                                       id="s17"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:panelGroupLayout id="group999" layout="scroll"
+                                            >
+                        <af:panelFormLayout binding="#{adicionarPredio.pfl5}"
+                                            id="pfl5">
+                           
+                            <af:inputText label="#{viewcontrollerBundle.menu_nombre}"
+                                        binding="#{adicionarPredio.it_nombre_predio}"
+                                        id="it_nombre_predio"
+                                        showRequired="true"
+                                        value="#{adicionarPredio.predio.nombre}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                        binding="#{adicionarPredio.it_direccion_predio}"
+                                        id="it_direccion_predio"
+                                        showRequired="true"
+                                        value="#{adicionarPredio.predio.direccion}"
+                                        contentStyle="text-transform:uppercase;"/>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                              binding="#{adicionarPredio.soc_depto_predio}"
+                                              id="soc_depto_predio"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true"
+                                              value="#{adicionarPredio.predio.departamento}"
+                                              autoSubmit="true"
+                                              immediate="true"
+                                                valueChangeListener="#{adicionarPredio.soc_depto_predio_valueChangeListener}">
+                                              >
+                            <f:selectItems value="#{adicionarPredio.listaDeptosPredio}"
+                                           binding="#{adicionarPredio.si9}"
+                                           id="si9"/>
+                          </af:selectOneChoice>
+                          <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                              binding="#{adicionarPredio.soc_municipio_predio}"
+                                              id="soc_municipio_predio"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              showRequired="true"
+                                              value="#{adicionarPredio.predio.municipio}">
+                            <f:selectItems value="#{adicionarPredio.listaMunPredio}"
+                                           binding="#{adicionarPredio.si10}"
+                                           id="si10"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.C_EDULA_CATASTRAL}"
+                                        binding="#{adicionarPredio.it_cedula_predio}"
+                                        id="it_cedula_predio"
+                                        showRequired="true"
+                                           
+                                        value="#{adicionarPredio.predio.cedulaCatastral}"
+                                        contentStyle="text-transform:uppercase;"/>
+                            <af:inputText label="#{viewcontrollerBundle.MATRICULA_CATASTRAL}"
+                                          binding="#{adicionarPredio.it_matricula}"
+                                          id="it_matricula"
+                                           
+                                          value="#{adicionarPredio.predio.matriculaCatastral}"
+                                          showRequired="true"
+                                          contentStyle="text-transform:uppercase;"/>
+                            <af:selectOneChoice label="#{viewcontrollerBundle.CLASIFICACION_DEL_SUELO}"
+                                              binding="#{adicionarPredio.soc_clasifica_suelo}"
+                                              id="soc_clasifica_suelo"
+                                              showRequired="true"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              value="#{adicionarPredio.predio.tipoSuelo}">
+                            <f:selectItems value="#{adicionarPredio.listaClasificacionSuelo}"
+                                           binding="#{adicionarPredio.si11}"
+                                           id="si11"/>
+                          </af:selectOneChoice>
+                        
+                                          
+                               <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_DE_CENTRO_POBLADO}"
+                                                    binding="#{adicionarPredio.soc_tipo_centro}"
+                                                    id="soc_tipo_centro"
+                                                   
+                                                    value="#{adicionarPredio.predio.tipoCentroPoblado}"
+                                                    showRequired="true"
+                                                    unselectedLabel="#{viewcontrollerBundle.label_seleccione}">
+                                  <f:selectItems value="#{adicionarPredio.listaTipoCentroPoblado}"
+                                                 binding="#{adicionarPredio.si5}"
+                                                 id="si5"/>
+                                </af:selectOneChoice>            
+                                           <af:inputText label="#{viewcontrollerBundle.CPT_NOMBRE_CP}"
+                                              binding="#{adicionarPredio.it_nombre_centro_poblado}"
+                                              id="it_nombre_centro_poblado"
+                                              value="#{adicionarPredio.predio.nombreCentroPoblado}"
+                                              
+                                              showRequired="true"/>
+                                              
+                          <af:inputText label="Area (Ha)"
+                                          binding="#{adicionarPredio.it_area}"
+                                          id="it_area"  columns="7"
+                                          value="#{adicionarPredio.predio.area}"/>
+                                              
+                          <af:selectOneChoice label="#{viewcontrollerBundle.SISTEMA_DE_REFERENCIA}"
+                                              binding="#{adicionarPredio.soc_sistema_referencia}"
+                                              id="soc_sistema_referencia"
+                                          
+                                   
+                                              value="#{adicionarPredio.predio.sistemaReferencia}"
+                                              unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                              >
+                            <f:selectItems value="#{adicionarPredio.listaSistemasReferencia}"
+                                           binding="#{adicionarPredio.si12}"
+                                           id="si12"/>
+                          </af:selectOneChoice>
+                          <af:inputText label="#{viewcontrollerBundle.ALTITUD}"
+                                        binding="#{adicionarPredio.it_altitud}"
+                                        id="it_altitud" 
+                                        columns="7"
+                                        value="#{adicionarPredio.predio.altitud}">
+                        <af:convertNumber type="number"
+                                                  maxIntegerDigits="5"
+                                                  minIntegerDigits="1"
+                                                  integerOnly="false"
+                                                  groupingUsed="false"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="3"  />
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="5500.0"/>
+                            </af:inputText>
+                            
+                          </af:panelFormLayout>
+                          <af:panelGroupLayout binding="#{adicionarPredio.pgl13}"
+                                               id="pgl13" layout="vertical"
+                                                          >
+                            <af:panelFormLayout binding="#{adicionarPredio.pfl6}"
+                                              id="pfl6" rows="1"
+                                              maxColumns="99999"
+                                              labelAlignment="top">
+                            <f:facet name="footer"/>
+                              <af:spacer width="80" height="10"
+                                         binding="#{adicionarPredio.s22}"
+                                         id="s22"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LATITUD}"
+                                              binding="#{adicionarPredio.ol1}"
+                                              id="ol1"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                          binding="#{adicionarPredio.it_grados}"
+                                          id="it_lat_grados0" columns="5"
+                                          
+                                          value="#{adicionarPredio.predio.gradosLatitud}">
+                              <af:convertNumber type="number"
+                                                integerOnly="true"
+                                                minIntegerDigits="1"
+                                                maxIntegerDigits="2"/>
+                              <af:validateLongRange minimum="-4"
+                                                    maximum="15"/>
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                          binding="#{adicionarPredio.it_minutos}"
+                                          id="it_lat_min0" columns="5"
+                                          
+                                          value="#{adicionarPredio.predio.minutosLatitud}">
+                              <af:convertNumber type="number"
+                                                integerOnly="true"
+                                                minIntegerDigits="1"
+                                                maxIntegerDigits="2"/>
+                              <af:validateLongRange minimum="0" maximum="59"/>
+                            </af:inputText>
+                            <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                          binding="#{adicionarPredio.it_segundos}"
+                                          id="it_lat_seg0" columns="5"
+                                          
+                                          value="#{adicionarPredio.predio.segundosLatitud}">
+                              <af:convertNumber type="number"
+                                                integerOnly="false"
+                                                minIntegerDigits="1"
+                                                maxIntegerDigits="2"
+                                                minFractionDigits="0"
+                                                maxFractionDigits="5"
+                                                pattern="##.#####"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                            </af:inputText>
+                          </af:panelFormLayout>
+                            <af:panelFormLayout binding="#{adicionarPredio.pfl9}"
+                                                id="pfl9" rows="1"
+                                                maxColumns="999999"
+                                                labelAlignment="top">
+                              <f:facet name="footer"/>
+                              <af:spacer width="80" height="10"
+                                         binding="#{adicionarPredio.s30}"
+                                         id="s30"/>
+                              <af:outputLabel value="#{viewcontrollerBundle.PTO_LONGITUD}"
+                                              binding="#{adicionarPredio.ol2}"
+                                              id="ol2"/>
+                              <af:inputText label="#{viewcontrollerBundle.GRADOS_0}"
+                                            binding="#{adicionarPredio.it2}"
+                                            id="it_long_grados0" columns="5"
+                                            
+                                            value="#{adicionarPredio.predio.gradosLongitud}">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="-82"
+                                                      maximum="-66"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.MINUTOS}"
+                                            binding="#{adicionarPredio.it1}"
+                                            id="it_long_min0" columns="5"
+                                            
+                                            value="#{adicionarPredio.predio.minutosLongitud}">
+                                <af:convertNumber type="number"
+                                                  integerOnly="true"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"/>
+                                <af:validateLongRange minimum="0" maximum="59"/>
+                              </af:inputText>
+                              <af:inputText label="#{viewcontrollerBundle.SEGUNDOS}"
+                                            binding="#{adicionarPredio.it3}"
+                                            id="it_long_seg0" columns="5"
+                                            
+                                            value="#{adicionarPredio.predio.segundosLongitud}">
+                                <af:convertNumber type="number"
+                                                  integerOnly="false"
+                                                  minIntegerDigits="1"
+                                                  maxIntegerDigits="2"
+                                                  minFractionDigits="0"
+                                                  maxFractionDigits="5"
+                                                  pattern="##.#####"/>
+                                <af:validateDoubleRange minimum="0.0"
+                                                        maximum="59.99999"/>
+                              </af:inputText>
+							  
+                            </af:panelFormLayout>
+                            
+                              <af:inputText label="#{viewcontrollerBundle.OBSERVACIONES}"
+                                          binding="#{adicionarPredio.it_observaciones}"
+                                          id="it_observaciones"
+                                          
+                                          value="#{adicionarPredio.predio.observaciones}"
+                                          rows="3" columns="80"/>
+										  
+										  <af:inlineFrame source="/utils/views/mapa_un_punto.html"
+										  clientComponent="true"
+										  id="mapFrame"
+										  inlineStyle="width:500px;height:300px;padding-top:17px;"/>
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="start">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarPredio.s19}" id="s19"/>
+                      </f:facet>
+                      <f:facet name="end">
+                        <af:spacer width="10" height="10"
+                                   binding="#{adicionarPredio.s18}" id="s18"/>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:outputText
+                                       binding="#{adicionarPredio.ot5}"
+                                       id="ot5"
+                                       styleClass="AFBrandingBarTitle"
+                                       value="#{viewcontrollerBundle.INGRESE_LOS_DATOS_DEL_PREDIO}"/>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </af:panelBox>
+                  <af:popup binding="#{adicionarPredio.p_registro_exitoso}"
+                            id="p_registro_exitoso">
+                    <af:dialog binding="#{adicionarPredio.d_registro_exitoso}"
+                               id="d_registro_exitoso" type="none"
+                               title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               closeIconVisible="false">
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{adicionarPredio.pgl14}"
+                                             id="pgl14">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{adicionarPredio.cb_aceptar}"
+                                            id="cb_aceptar"
+                                            actionListener="#{adicionarPredio.cb_aceptar_actionListener}"
+                                           action="#{adicionarPredio.getAceptarAction}"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:panelStretchLayout binding="#{adicionarPredio.psl7}"
+                                             id="psl7" endWidth="0px"
+                                             topHeight="0px" bottomHeight="2px"
+                                             inlineStyle="height:41px; width:316px;">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:outputText value="#{viewcontrollerBundle.REGISTRO_USUARIO_PREDIO_OK}"
+                                         binding="#{adicionarPredio.ot8}"
+                                         id="ot8"/>
+                        </f:facet>
+                        <f:facet name="start">
+                          <af:image source="/imgs/info.png" shortDesc="info"
+                                    binding="#{adicionarPredio.i1}" id="i1"/>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                      </af:panelStretchLayout>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:adicionarPredio-->
+</jsp:root>

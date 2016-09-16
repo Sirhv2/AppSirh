@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{observatorioBacking.document1}" id="document1">
+      <af:form binding="#{observatorioBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" >
+              <f:facet name="center">
+                <af:panelDashboard id="dashBoard"
+                                   binding="#{observatorioSubterraneasBacking.dashBoard}"
+                                   columns="2" rowHeight="170px">                
+                  <af:panelBox text="Zonificación Hidrogeológica"                            
+                               id="pbOferta" showDisclosure="false"
+                               type="stretch" inlineStyle="height:165px;">
+                    <af:panelGroupLayout   id="panelGroupLayout1" halign="center"
+                                         layout="horizontal" >
+                      
+                      <af:inputText value="#{viewcontrollerBundle.ZONIFICACION_HIDROGEO}"                                   
+                                    id="it1" label="" 
+                                    columns="60" rows="10" readOnly="true"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                    
+                </af:panelDashboard>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioBacking-->
+</jsp:root>

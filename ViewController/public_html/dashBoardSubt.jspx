@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1"
+                 title=":: Sistema de Información del Recurso Hidrico -  SIRH ::">
+      
+      <af:form id="f2">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelSplitter id="ps1" inlineStyle="width:100%; height:100.0%;"
+                              splitterPosition="250">
+              <f:facet name="first">
+                <af:panelStretchLayout id="psl1" startWidth="0px" endWidth="0px"
+                                       topHeight="15px" bottomHeight="0px">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:switcher id="centerSwitcher" defaultFacet="restored">
+                      <f:facet name="restored">
+                        <af:panelStretchLayout id="psl2" startWidth="0px"
+                                               endWidth="0px" topHeight="2.5em"
+                                               bottomHeight="0px">
+                          <f:facet name="bottom"/>
+                          <f:facet name="center">
+                            <af:panelDashboard id="dashboard" shortDesc="panel"
+                                               columns="2" rowHeight="175px">
+                              <af:dataFlavor flavorClass="javax.faces.component.UIComponent"
+                                             discriminant="fromDashboardSideBar"/>
+                              <af:panelBox text="Número de Muestras de Calidad"
+                                           binding="#{dashBoard.muestrasTipo}"
+                                           id="muestrasTipo"
+                                           showDisclosure="false"
+                                           type="stretch">
+                                <f:facet name="toolbar">
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           id="dc28"/>
+                                </f:facet>
+                                <af:declarativeComponent id="dc29"
+                                                         viewId="estadisticas/muestrasPorTipoSubt.jsff"/>
+                              </af:panelBox>
+                              <af:panelBox text="Muestras de Calidad Por Año"
+                                           binding="#{dashBoard.muestrasAnio}"
+                                           id="muestrasAnio"
+                                           showDisclosure="false"
+                                           type="stretch">
+                                <f:facet name="toolbar">
+                                  <af:declarativeComponent viewId="dashBoard/toolbar.jsff"
+                                                           id="dc30"/>
+                                </f:facet>
+                                <af:declarativeComponent id="dc31"
+                                                         viewId="estadisticas/muestrasPorAnioSubt.jsff"/>
+                              </af:panelBox>
+                              
+                              <af:panelBox text="Accesos Calidad" type="strech" inlineStyle="text-align:left;">
+                               <h:outputLink value="/Sirh/faces/JSCalidadParametros.jspx" style="border:1px solid white;" >
+                             <h:outputText value="Calidad Parametros" id="LinkCalidad"   style="border:1px solid white;" />
+                             </h:outputLink>
+                              </af:panelBox>
+                            </af:panelDashboard>
+                          </f:facet>
+                          <f:facet name="start"/>
+                          <f:facet name="end"/>
+                        </af:panelStretchLayout>
+                      </f:facet>
+                      <f:facet name="maximized">
+                        <af:panelStretchLayout id="psl3">
+                          <f:facet name="bottom"/>
+                          <f:facet name="start"/>
+                          <f:facet name="end"/>
+                          <f:facet name="top"/>
+                        </af:panelStretchLayout>
+                      </f:facet>
+                    </af:switcher>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top">                    
+                    <af:panelBox inlineStyle="text-align: left;"  >
+                  <af:commandLink text="Observatorio"
+                                    action="observatorio"/>
+                    <af:spacer width="25" height="10" />
+                    <af:commandLink text="Observatorio Monitoreo Subterránea "
+                                    action="monitoreoSubt"/>
+                    <af:spacer width="25" height="10" />                
+                    <af:commandLink text="Observatorio Aguas Subterraneas "
+                    action="observatorioSubterraneas"/>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelSplitter>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:dashBoard-->
+</jsp:root>

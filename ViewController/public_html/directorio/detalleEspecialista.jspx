@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d2" binding="#{detalleEspecialista.d2}">
+      <af:form id="f2" binding="#{detalleEspecialista.f2}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{detalleEspecialista.psl1}"
+                                   id="psl1" startWidth="0px" endWidth="0px"
+                                   topHeight="20px" bottomHeight="0px">
+              <f:facet name="bottom">
+                <af:panelGroupLayout binding="#{detalleEspecialista.pgl4}"
+                                     id="pgl4">
+                  <af:popup binding="#{detalleEspecialista.p_formacion}"
+                            id="p_formacion">
+                    <af:dialog binding="#{detalleEspecialista.d_formacion}"
+                               id="d_formacion" title="Detalle Formación"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.boton_cancelar}"
+                               dialogListener="#{detalleEspecialista.d_formacion_dialogListener}">
+                      <af:panelFormLayout binding="#{detalleEspecialista.pfl2}"
+                                          id="pfl2">
+                        <af:selectOneChoice
+                                            binding="#{detalleEspecialista.soc_nivel_formacion}"
+                                            id="soc_nivel_formacion" showRequired="true"
+                                            unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                            value="#{detalleEspecialista.formacionSeleccionada.listaFormacion}"
+                                            label="#{viewcontrollerBundle.NIVEL_DE_FORMACI_U00F3N}">
+                          <f:selectItems value="#{detalleEspecialista.listaFormacionesTotales}"
+                                         binding="#{detalleEspecialista.si5}"
+                                         id="si5"/>
+                        </af:selectOneChoice>
+                        <af:inputText label="#{viewcontrollerBundle.T_U00EDTULO_OBTENIDO}"
+                                      binding="#{detalleEspecialista.it_titulo}"
+                                      id="it_titulo" showRequired="true"
+                                      columns="50"
+                                      value="#{detalleEspecialista.formacionSeleccionada.tituloObtenido}"/>
+                      </af:panelFormLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup binding="#{detalleEspecialista.p_borrar}"
+                            id="p_borrar">
+                    <af:dialog binding="#{detalleEspecialista.d_borrar}"
+                               id="d_borrar"
+                               title="#{viewcontrollerBundle.titulo_confirmacion}"
+                               affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                               cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}"
+                               type="none">
+                      <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                     binding="#{detalleEspecialista.ot5}"
+                                     id="ot5"/>
+                      <f:facet name="buttonBar">
+                        <af:panelGroupLayout binding="#{detalleEspecialista.pgl5}"
+                                             id="pgl5" layout="horizontal"
+                                             halign="right">
+                          <af:commandButton text="#{viewcontrollerBundle.OPCION_SI}"
+                                            binding="#{detalleEspecialista.cb_si_borrar}"
+                                            id="cb_si_borrar"
+                                            actionListener="#{detalleEspecialista.cb_si_borrar_actionListener}"
+                                            action="#{detalleEspecialista.getAccion}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleEspecialista.s7}"
+                                     id="s7"/>
+                          <af:commandButton text="#{viewcontrollerBundle.OPCION_NO}"
+                                            binding="#{detalleEspecialista.cb_no_borrar}"
+                                            id="cb_no_borrar"
+                                            actionListener="#{detalleEspecialista.cb_no_borrar_actionListener}"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="center">
+                <af:panelBox text="Detalle Especialista"
+                             binding="#{detalleEspecialista.pb1}" id="pb1"
+                             showDisclosure="false">
+                  <f:facet name="toolbar"/>
+                  <af:panelGroupLayout binding="#{detalleEspecialista.pgl1}"
+                                       id="pgl1" layout="scroll">
+                    <af:panelFormLayout binding="#{detalleEspecialista.pfl1}"
+                                        id="pfl1">
+                      <af:spacer width="10" height="10"
+                                 binding="#{detalleEspecialista.s1}" id="s1"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.TIPO_IDENTIFICACI_U00F3N}"
+                                          binding="#{detalleEspecialista.soc_tipo_id}"
+                                          id="soc_tipo_id" showRequired="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          value="#{detalleEspecialista.especialista.listaTipoId}">
+                        <f:selectItems value="#{detalleEspecialista.listaTipoId}"
+                                       binding="#{detalleEspecialista.si1}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.N_U00FAMERO_IDENTIFICACI_U00F3}"
+                                    binding="#{detalleEspecialista.it_numero_id}"
+                                    id="it_numero_id" showRequired="true"
+                                    value="#{detalleEspecialista.especialista.numeroId}"/>
+                      <af:inputText label="#{viewcontrollerBundle.menu_nombre}"
+                                    binding="#{detalleEspecialista.it_nombre}"
+                                    id="it_nombre" showRequired="true"
+                                    value="#{detalleEspecialista.especialista.nombre}"/>
+                      <af:inputText label="#{viewcontrollerBundle.DIRECCI_U00F3N}"
+                                    binding="#{detalleEspecialista.it_direccion}"
+                                    id="it_direccion" showRequired="true"
+                                    value="#{detalleEspecialista.especialista.direccion}"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.DEPARTAMENTO}"
+                                          binding="#{detalleEspecialista.soc_depto}"
+                                          id="soc_depto" showRequired="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          value="#{detalleEspecialista.especialista.divipolaDepartamento}"
+                                          autoSubmit="true" immediate="true"
+                                          valueChangeListener="#{detalleEspecialista.soc_depto_valueChangeListener}">
+                        <f:selectItems value="#{detalleEspecialista.listaDepartamentos}"
+                                       binding="#{detalleEspecialista.si2}"
+                                       id="si2"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.MUNICIPIO}"
+                                          binding="#{detalleEspecialista.soc_municipio}"
+                                          id="soc_municipio" showRequired="true"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          value="#{detalleEspecialista.especialista.divipolaMunicipio}">
+                        <f:selectItems value="#{detalleEspecialista.listaMunicipios}"
+                                       binding="#{detalleEspecialista.si3}"
+                                       id="si3"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.TELEFONO}"
+                                    binding="#{detalleEspecialista.it_telefono}"
+                                    id="it_telefono" showRequired="true"
+                                    value="#{detalleEspecialista.especialista.telefono}"/>
+                      <af:inputText label="#{viewcontrollerBundle.P_U00E1GINA_WEB}"
+                                    binding="#{detalleEspecialista.it_pagina}"
+                                    id="it_pagina"
+                                    value="#{detalleEspecialista.especialista.paginaWeb}"/>
+                      <af:inputText label="#{viewcontrollerBundle.usuarios_email}"
+                                    binding="#{detalleEspecialista.it_email}"
+                                    id="it_email"
+                                    value="#{detalleEspecialista.especialista.email}"/>
+                      <af:selectOneRadio label="Organización o Red a la que pertenece"
+                                         binding="#{detalleEspecialista.sor_red}"
+                                         id="sor_red" showRequired="true"
+                                         value="#{detalleEspecialista.redEspecialista}"
+                                         autoSubmit="true" immediate="true"
+                                         valueChangeListener="#{detalleEspecialista.sor_red_valueChangeListener}">
+                        <af:selectItem label="#{viewcontrollerBundle.PERTENECE_A_UNA_ORGANIZACI_U00}"
+                                       value="1"
+                                       binding="#{detalleEspecialista.si_organizacion}"
+                                       id="si_organizacion"/>
+                        <af:selectItem label="Es independiente" value="2"
+                                       binding="#{detalleEspecialista.si_independiente}"
+                                       id="si_independiente"/>
+                      </af:selectOneRadio>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.ORGANIZACI_U00F3N_}"
+                                          binding="#{detalleEspecialista.soc_organizacion}"
+                                          id="soc_organizacion"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          disabled="#{detalleEspecialista.especialista.organizacion==null}"
+                                          value="#{detalleEspecialista.especialista.organizacion}">
+                        <f:selectItems value="#{detalleEspecialista.listaOrganizaciones}"
+                                       binding="#{detalleEspecialista.si4}"
+                                       id="si4"/>
+                      </af:selectOneChoice>
+                      <f:facet name="footer">
+                        <af:panelGroupLayout binding="#{detalleEspecialista.pgl3}"
+                                             id="pgl3" layout="horizontal"
+                                             halign="center">
+                          <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                            binding="#{detalleEspecialista.cb_aceptar}"
+                                            id="cb_aceptar"
+                                            icon="/imgs/check_mark.png"
+                                            actionListener="#{detalleEspecialista.cb_aceptar_actionListener}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleEspecialista.s3}"
+                                     id="s3"/>
+                          <af:commandButton text="#{viewcontrollerBundle.BTN_BORRAR}"
+                                            binding="#{detalleEspecialista.cb_borrar}"
+                                            id="cb_borrar"
+                                            icon="/imgs/close.png"
+                                            actionListener="#{detalleEspecialista.cb_borrar_actionListener}"
+                                            visible="#{detalleEspecialista.especialista.id > 0}"/>
+                          <af:spacer width="10" height="10"
+                                     binding="#{detalleEspecialista.s6}"
+                                     id="s6"/>
+                          <af:commandButton text="#{viewcontrollerBundle.BTN_CANCELAR}"
+                                            binding="#{detalleEspecialista.cb_cancelar}"
+                                            id="cb_cancelar"
+                                            icon="/imgs/close.png"
+                                            action="especialistas"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <af:spacer width="10" height="10"
+                                 binding="#{detalleEspecialista.s4}" id="s4"/>
+                      <af:outputText value="#{viewcontrollerBundle.FORMACI_U00F3N}"
+                                     binding="#{detalleEspecialista.ot4}"
+                                     id="ot4" styleClass="AFBrandingBarTitle"/>
+                      <af:panelCollection binding="#{detalleEspecialista.pc1}"
+                                          id="pc1" featuresOff="detach">
+                        <f:facet name="menus">
+                          <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                   binding="#{detalleEspecialista.m_archivo}"
+                                   id="m_archivo">
+                            <af:commandMenuItem text="#{viewcontrollerBundle.ADICIONAR}"
+                                                binding="#{detalleEspecialista.cmi_adicionar}"
+                                                id="cmi_adicionar"
+                                                actionListener="#{detalleEspecialista.cmi_adicionar_actionListener}"/>
+                            <af:commandMenuItem text="#{viewcontrollerBundle.menu_editar}"
+                                                binding="#{detalleEspecialista.cmi_consultar}"
+                                                id="cmi_consultar"
+                                                actionListener="#{detalleEspecialista.cmi_consultar_actionListener}"/>
+                          </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{detalleEspecialista.listaFormacion}"
+                                  var="row" rowBandingInterval="1"
+                                  binding="#{detalleEspecialista.t_formacion}"
+                                  id="t_formacion" rowSelection="single">
+                          <af:column sortable="false"
+                                     headerText="#{viewcontrollerBundle.NIVEL_DE_FORMACI_U00F3N}"
+                                     align="start" id="c1" width="150">
+                            <af:outputText value="#{row.listaFormacion.valor}"
+                                           id="ot3"/>
+                          </af:column>
+                          <af:column sortable="false"
+                                     headerText="Titulo Obtenido" align="start"
+                                     id="c2" width="250">
+                            <af:outputText value="#{row.tituloObtenido}"
+                                           id="ot1"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10"
+                                 binding="#{detalleEspecialista.s5}" id="s5"/>
+                      <af:outputText value="#{viewcontrollerBundle.DESCRIPCI_U00F3N_DEL_TRABAJO_E}"
+                                     binding="#{detalleEspecialista.ot2}"
+                                     id="ot2" styleClass="AFBrandingBarTitle"/>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.GESTI_U00F3N__}"
+                                             value="#{detalleEspecialista.listaGestionSeleccionadas}"
+                                             binding="#{detalleEspecialista.smc_gestion}"
+                                             id="smc_gestion"
+                                             showRequired="true">
+                        <f:selectItems value="#{detalleEspecialista.listaGestion}"
+                                       binding="#{detalleEspecialista.si7}"
+                                       id="si7"/>
+                      </af:selectManyCheckbox>
+                      <af:inputText label="#{viewcontrollerBundle.OTRO_C_U00FAAL}"
+                                    binding="#{detalleEspecialista.it_otro}"
+                                    id="it_otro"
+                                    value="#{detalleEspecialista.especialista.detalleOtraGestion}"/>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.INVESTIGACI_U00F3N}"
+                                             value="#{detalleEspecialista.listaInvestigacionSeleccionadas}"
+                                             binding="#{detalleEspecialista.smc_investigacion}"
+                                             id="smc_investigacion"
+                                             showRequired="true">
+                        <f:selectItems value="#{detalleEspecialista.listaInvestigacion}"
+                                       binding="#{detalleEspecialista.si8}"
+                                       id="si8"/>
+                      </af:selectManyCheckbox>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.POR__U00C1REAS_DE_TRABAJO}"
+                                             value="#{detalleEspecialista.listaAreasSeleccionadas}"
+                                             binding="#{detalleEspecialista.smc_areas}"
+                                             id="smc_areas" showRequired="true">
+                        <f:selectItems value="#{detalleEspecialista.listaAreas}"
+                                       binding="#{detalleEspecialista.si9}"
+                                       id="si9"/>
+                      </af:selectManyCheckbox>
+                      <af:selectManyCheckbox label="#{viewcontrollerBundle.TIPO_DE_FUENTE_H_U00EDDRICA}"
+                                             binding="#{detalleEspecialista.smc_tipo_fuente}"
+                                             id="smc_tipo_fuente"
+                                             value="#{detalleEspecialista.listaFuentesSeleccionadas}"
+                                             showRequired="true">
+                        <f:selectItems value="#{detalleEspecialista.listaTipoFuente}"
+                                       binding="#{detalleEspecialista.si10}"
+                                       id="si10"/>
+                      </af:selectManyCheckbox>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{detalleEspecialista.pgl2}"
+                                     id="pgl2" layout="horizontal">
+                  <af:spacer width="50" height="10"
+                             binding="#{detalleEspecialista.s2}" id="s2"/>
+                  <af:commandLink text="Todos los Especialistas"
+                                  binding="#{detalleEspecialista.cl2}" id="cl2"
+                                  action="especialistas"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:detalleEspecialista-->
+</jsp:root>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--JOSEPH-->
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+  <managed-bean>
+    <managed-bean-name>pomtplan</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.pomca.view.PomtBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>planesBean</managed-bean-name>
+    <managed-bean-class>co.gov.ideam.sirh.pomca.view.PomtPlanesBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1pomca/detallePlan.jspx-->
+  </managed-bean>
+  
+  
+ 
+  
+  
+ 
+  
+  
+
+  <navigation-rule>
+    <from-view-id>/pomca/cuencas.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>adicionarPlan</from-outcome>
+      <to-view-id>/pomca/detallePlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  <navigation-rule>
+    <from-view-id>/pomca/detallePlan.jspx</from-view-id>
+    <navigation-case>
+      <from-outcome>cuencas</from-outcome>
+      <to-view-id>/pomca/cuencas.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>aprestamiento</from-outcome>
+      <to-view-id>/pomca/detallePlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>diagnostico</from-outcome>
+      <to-view-id>/pomca/diagnosticoPlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>zonificacion</from-outcome>
+      <to-view-id>/pomca/zonificacionPlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>formulacion</from-outcome>
+      <to-view-id>/pomca/adicionarPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>ejecucion</from-outcome>
+      <to-view-id>/pomca/registrarGestion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>seguimiento</from-outcome>
+      <to-view-id>/pomca/seguimientoPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- ZSDG IN -->    
+    <navigation-case>
+      <from-outcome>determinante</from-outcome>
+      <to-view-id>/pomca/determinanteAmbiental.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- ZSDG  -->
+     <navigation-case>
+      <from-outcome>editarProyecto</from-outcome>
+      <to-view-id>/pomca/editarProyecto.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>editarActividad</from-outcome>
+      <to-view-id>/pomca/editarActividad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+   <navigation-rule>
+    <from-view-id>/pomca/diagnosticoPlan.jspx</from-view-id>
+    
+     <navigation-case>
+      <from-outcome>cuencas</from-outcome>
+      <to-view-id>/pomca/cuencas.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>aprestamiento</from-outcome>
+      <to-view-id>/pomca/detallePlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>diagnostico</from-outcome>
+      <to-view-id>/pomca/diagnosticoPlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>zonificacion</from-outcome>
+      <to-view-id>/pomca/zonificacionPlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>formulacion</from-outcome>
+      <to-view-id>/pomca/adicionarPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>ejecucion</from-outcome>
+      <to-view-id>/pomca/registrarGestion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>seguimiento</from-outcome>
+      <to-view-id>/pomca/seguimientoPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+       <!-- ZSDG IN -->    
+    <navigation-case>
+      <from-outcome>determinante</from-outcome>
+      <to-view-id>/pomca/determinanteAmbiental.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- ZSDG  -->
+     <navigation-case>
+      <from-outcome>editarProyecto</from-outcome>
+      <to-view-id>/pomca/editarProyecto.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>editarActividad</from-outcome>
+      <to-view-id>/pomca/editarActividad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+    <from-view-id>/pomca/zonificacionPlan.jspx</from-view-id>
+  <navigation-case>
+      <from-outcome>cuencas</from-outcome>
+      <to-view-id>/pomca/cuencas.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>aprestamiento</from-outcome>
+      <to-view-id>/pomca/detallePlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>diagnostico</from-outcome>
+      <to-view-id>/pomca/diagnosticoPlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>zonificacion</from-outcome>
+      <to-view-id>/pomca/zonificacionPlan.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  <navigation-case>
+      <from-outcome>formulacion</from-outcome>
+      <to-view-id>/pomca/adicionarPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>ejecucion</from-outcome>
+      <to-view-id>/pomca/registrarGestion.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>seguimiento</from-outcome>
+      <to-view-id>/pomca/seguimientoPomca.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+       <!-- ZSDG IN -->    
+    <navigation-case>
+      <from-outcome>determinante</from-outcome>
+      <to-view-id>/pomca/determinanteAmbiental.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+    <!-- ZSDG  -->
+     <navigation-case>
+      <from-outcome>editarProyecto</from-outcome>
+      <to-view-id>/pomca/editarProyecto.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+     <navigation-case>
+      <from-outcome>editarActividad</from-outcome>
+      <to-view-id>/pomca/editarActividad.jspx</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+  
+  
+</faces-config>

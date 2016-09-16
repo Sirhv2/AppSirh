@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{observatorioBacking.document1}" id="document1">
+      <af:form binding="#{observatorioBacking.form1}" id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{observatorioBacking.panelStretchLayout1}"
+                                   id="panelStretchLayout1" >
+              <f:facet name="center">
+                <af:panelGroupLayout layout="scroll"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{observatorioBacking.panelGroupLayout5}"
+                                     id="panelGroupLayout7">
+                                     
+                 <![CDATA[
+                 
+                 
+                 
+                 <style>
+                  .mensajeObservatorio{
+                 position: absolute;
+    margin-top: 49px;
+    margin-left: 206px;
+    
+    width: 655px;
+    height: 274px;
+    color: black;
+    padding: 15px;
+    font-family: arial. helvetica, tahoma;
+    font-size: 13px;
+    text-align: justify;
+    /* background-color: blue; */
+    /* border: 1px solid blue; */
+    /* opacity: 0.6; */
+    filter: alpha(opacity=60);
+                  }
+                  .botonesObservatorio{
+                    font-size:80px;
+                    letter-spacing:100px;
+                    border:0;
+                  }
+                  .contenidoMenu{
+                    position:center; 
+                    background:url('/Sirh/imgs/aguas4.png') no-repeat;  
+                    overflow:hidden;border:1px solid white;
+                
+                    height:500px;
+                  }
+                  a.botonesObservatorio:hover{text-decoration:none;}
+                  a.botonesObservatorio:active{text-decoration:none;}
+                  a.botonesObservatorio:link{text-decoration:none;}
+                  a.botonesObservatorio:visited{text-decoration:none;}
+                  a.botonesObservatorio{text-decoration:none;}
+                 </style>
+                 <div class="contenidoMenu">
+                     <div class="mensajeObservatorio">La información que se gestiona a través del SIRH parte del  reconocimiento de las variables que influyen en el ciclo hidrológico en torno a la cantidad y calidad  del agua superficial y subterránea.
+                        <br /> <br />
+                        Es decir, el Sistema de Información de Recurso Hídrico – SIRH - es el instrumento que articula información para gestionar conocimiento asociado al agua, y permite soportar la toma de decisiones en torno a la administración, planificación y gobernanza del recurso hídrico.
+                     </div>
+                     <a class="botonesObservatorio" style="position:absolute;top:328px; left:274px;" href="/Sirh/faces/observatorioSuperficiales.jspx">&nbsp;&nbsp;</a>
+                     <a class="botonesObservatorio" style="position:absolute;top:400px; left:541px;" href="/Sirh/faces/observatorioSubterraneas.jspx">&nbsp;&nbsp;</a>
+                 </div>
+                ]]>
+              
+                </af:panelGroupLayout>
+                <!--div style="width:971px; height:575px; border:1px solid red; background:url('imgs/aguas.jpg') no-repeat;"></div-->
+            
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:observatorioBacking-->
+</jsp:root>

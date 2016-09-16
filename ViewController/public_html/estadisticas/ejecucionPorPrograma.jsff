@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:EjecucionPorProgramaBean-->
+  <af:panelStretchLayout binding="#{EjecucionPorProgramaBean.panelStretchLayout1}"
+                         id="panelStretchLayout1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <dvt:barGraph id="barGrapPrediosDepto" subType="BAR_VERT_CLUST"
+                    binding="#{EjecucionPorProgramaBean.barGrapPrediosDepto}"
+                    value="#{EjecucionPorProgramaBean.graphData}"
+                    shortDesc="Ejecucion por Programa"
+                    contentDelivery="immediate" dynamicResize="DYNAMIC_SIZE">
+        <dvt:background>
+          <dvt:specialEffects/>
+        </dvt:background>
+        <dvt:graphPlotArea/>
+        <dvt:seriesSet>
+          <dvt:series/>
+        </dvt:seriesSet>
+        <dvt:o1Axis/>
+        <dvt:y1Axis/>
+        <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      </dvt:barGraph>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

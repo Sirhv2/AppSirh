@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{adicionarSeguimientoBean.d1}">
+      <af:form id="f1" binding="#{adicionarSeguimientoBean.f1}">
+        <af:pageTemplate viewId="/template/templateMenu.jspx" id="pt1">
+          <f:facet name="center">
+            <af:panelStretchLayout id="psl_total" startWidth="0px"
+                                   endWidth="0px" topHeight="20px"
+                                   bottomHeight="0px">
+              <f:facet name="center">
+                <af:group id="g1">
+                  <af:panelSplitter id="ps1" orientation="vertical"
+                                    disabled="true" splitterPosition="700">
+                    <f:facet name="first">
+                      <af:panelStretchLayout id="psl12" startWidth="0px"
+                                             endWidth="0px" topHeight="0px"
+                                             bottomHeight="0px"
+                                             styleClass="AFStretchWidth">
+                        <f:facet name="bottom"/>
+                        <f:facet name="center">
+                          <af:panelGroupLayout layout="scroll" halign="center"
+                                               binding="#{adicionarSeguimientoBean.panelGroupLayoutGeneral}">
+                            <af:panelGroupLayout layout="scroll" id="pgl4">
+                              <af:popup binding="#{adicionarSeguimientoBean.p_borrar}"
+                                        id="p_borrar">
+                                <af:dialog binding="#{adicionarSeguimientoBean.d_borrar}"
+                                           id="d_borrar"
+                                           title="#{viewcontrollerBundle.titulo_confirmacion}"
+                                           affirmativeTextAndAccessKey="#{viewcontrollerBundle.OPCION_SI}"
+                                           cancelTextAndAccessKey="#{viewcontrollerBundle.OPCION_NO}"
+                                           dialogListener="#{adicionarSeguimientoBean.d_borrar_dialogListener}">
+                                  <af:outputText value="#{viewcontrollerBundle.CONFIRMA_QUE_DESEA_BORRAR_EL_R}"
+                                                 id="ot5"/>
+                                </af:dialog>
+                              </af:popup>
+                            </af:panelGroupLayout>
+                            <af:spacer width="100%" height="10"
+                                       id="metaInicio"/>
+                            <af:outputText binding="#{adicionarPueaa.ot5}"
+                                           id="ot55"
+                                           styleClass="AFBrandingBarTitle"
+                                           value="Seguimiento Proyecto:  #{adicionarSeguimientoBean.proyecto.nombreProyecto} "/>
+                            <af:spacer width="100%" height="20"/>
+                            <af:panelFormLayout id="panelFormLayoutMetas"
+                                                binding="#{adicionarSeguimientoBean.panelFormLayoutMetas}"
+                                                rows="1" maxColumns="15"
+                                                inlineStyle="width:80%;">
+                              <!--Boton Editar 1 -->
+                              <af:commandButton text="Editar" id="cbEditar1"
+                                                binding="#{adicionarSeguimientoBean.cbEditarRow1}"
+                                                partialSubmit="true"
+                                                actionListener="#{adicionarSeguimientoBean.cbEditar1_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.visualMeta1}"/>
+                              <!-- Meta 1-->
+                              <af:outputText id="label_meta1"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_VALOR_META_1}"
+                                             inlineStyle="width:10%;"/>
+                              <af:outputText id="valor_meta1"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaConsumoAno1}"/>
+                              <af:outputText id="fecha_label_meta1"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_FECHA}"/>
+                              <af:outputText id="fecha_meta1"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaFechaAno1}"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta1_valor"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta1}"/>
+                              <af:outputText id="valor_meta1_valor"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno1}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta1}"/>
+                              <!--Sin Datos Seguimiento -->
+                              <af:inputText label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                            binding="#{adicionarSeguimientoBean.itConsumoM1}"
+                                            id="itConsumoM1" showRequired="false"
+                                            columns="14"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno1}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta1}"
+                                            maximumLength="9"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta1_fecha"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta1}"/>
+                              <af:outputText id="valor_meta1_fecha"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno1}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta1}"/>
+                              <!--Sin Datos Seguimiento -->
+                              <af:inputDate id="idFechaS1" showRequired="false"
+                                            contentStyle="width:100px;"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno1}"
+                                            label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                            binding="#{adicionarSeguimientoBean.idFechaS1}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta1}">
+                                <af:convertDateTime pattern="d/M/yyyy"/>
+                              </af:inputDate>
+                              <af:outputText id="cumplio_label_meta1"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_CUMPLE}"/>
+                              <af:outputText id="al_dia_meta1"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta1 == 0}"
+                                             value="Sin Seguimiento"/>
+                              <af:outputText id="cumplio_meta1"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta1 == 1}"
+                                             value="Cumplio"/>
+                              <af:outputText id="no_cumplio_meta1"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta1 == 2}"
+                                             value="No Cumplio"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="100%" height="10"
+                                       id="spacemeta2"/>
+                            <af:panelFormLayout id="panelFormLayoutMetas2"
+                                                binding="#{adicionarSeguimientoBean.panelFormLayoutMetas2}"
+                                                rows="1" maxColumns="15"
+                                                inlineStyle="width:80%;">
+                              <!--Boton Editar 2 -->
+                              <af:commandButton text="Editar" id="cbEditar2"
+                                                binding="#{adicionarSeguimientoBean.cbEditarRow2}"
+                                                partialSubmit="true"
+                                                actionListener="#{adicionarSeguimientoBean.cbEditar2_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.visualMeta2}"/>
+                              <!-- Meta 2-->
+                              <af:outputText id="label_meta2"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_VALOR_META_2}"
+                                             inlineStyle="width:10%;"/>
+                              <af:outputText id="valor_meta2"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaConsumoAno2}"/>
+                              <af:outputText id="fecha_label_meta2"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_FECHA}"/>
+                              <af:outputText id="fecha_meta2"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaFechaAno2}"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta2_valor"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta2}"/>
+                              <af:outputText id="valor_meta2_valor"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno2}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta2}"/>
+                              <af:inputText label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                            binding="#{adicionarSeguimientoBean.itConsumoM2}"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno2}"
+                                            id="itConsumoM2" showRequired="false"
+                                            columns="14"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta2}"
+                                            maximumLength="9"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta2_fecha"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta2}"/>
+                              <af:outputText id="valor_meta2_fecha"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno2}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta2}"/>
+                              <af:inputDate id="idFechaS2" showRequired="false"
+                                            contentStyle="width:100px;"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno2}"
+                                            label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                            binding="#{adicionarSeguimientoBean.idFechaS2}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta2}">
+                                <af:convertDateTime pattern="d/M/yyyy"/>
+                              </af:inputDate>
+                              <af:outputText id="cumplio_label_meta2"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_CUMPLE}"/>
+                              <af:outputText id="cumplio_meta2"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta2 == 1}"
+                                             value="Cumplio"/>
+                              <af:outputText id="no_cumplio_meta2"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta2 == 2}"
+                                             value="No Cumplio"/>
+                              <af:outputText id="al_dia_meta2"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta2 == 0}"
+                                             value="Sin Seguimiento"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="100%" height="10"
+                                       id="spacemeta3"/>
+                            <af:panelFormLayout id="panelFormLayoutMetas3"
+                                                binding="#{adicionarSeguimientoBean.panelFormLayoutMetas3}"
+                                                rows="1" maxColumns="15"
+                                                inlineStyle="width:80%;">
+                              <!--Boton Editar 3 -->
+                              <af:commandButton text="Editar" id="cbEditar3"
+                                                binding="#{adicionarSeguimientoBean.cbEditarRow3}"
+                                                partialSubmit="true"
+                                                actionListener="#{adicionarSeguimientoBean.cbEditar3_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.visualMeta3}"/>
+                              <!-- Meta 3-->
+                              <af:outputText id="label_meta3"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_VALOR_META_3}"
+                                             inlineStyle="width:10%;"/>
+                              <af:outputText id="valor_meta3"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaConsumoAno3}"/>
+                              <af:outputText id="fecha_label_meta3"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_FECHA}"/>
+                              <af:outputText id="fecha_meta3"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaFechaAno3}"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta3_valor"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta3}"/>
+                              <af:outputText id="valor_meta3_valor"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno3}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta3}"/>
+                              <af:inputText label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                            binding="#{adicionarSeguimientoBean.itConsumoM3}"
+                                            id="itConsumoM3" showRequired="false"
+                                            columns="14"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno3}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta3}"
+                                            maximumLength="9"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta3_fecha"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta3}"/>
+                              <af:outputText id="valor_meta3_fecha"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno3}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta3}"/>
+                              <af:inputDate id="idFechaS3" showRequired="false"
+                                            contentStyle="width:100px;"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno3}"
+                                            label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                            binding="#{adicionarSeguimientoBean.idFechaS3}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta3}">
+                                <af:convertDateTime pattern="d/M/yyyy"/>
+                              </af:inputDate>
+                              <af:outputText id="cumplio_label_meta3"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_CUMPLE}"/>
+                              <af:outputText id="cumplio_meta3"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta3 == 1}"
+                                             value="Cumplio"/>
+                              <af:outputText id="no_cumplio_meta3"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta3 == 2}"
+                                             value="No Cumplio"/>
+                              <af:outputText id="al_dia_meta3"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta3 == 0}"
+                                             value="Sin Seguimiento"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="100%" height="10"
+                                       id="spacemeta4"/>
+                            <af:panelFormLayout id="panelFormLayoutMetas4"
+                                                binding="#{adicionarSeguimientoBean.panelFormLayoutMetas4}"
+                                                rows="1" maxColumns="15"
+                                                inlineStyle="width:80%;">
+                              <!--Boton Editar 4 -->
+                              <af:commandButton text="Editar" id="cbEditar4"
+                                                binding="#{adicionarSeguimientoBean.cbEditarRow4}"
+                                                partialSubmit="true"
+                                                actionListener="#{adicionarSeguimientoBean.cbEditar4_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.visualMeta4}"/>
+                              <!-- Meta 4-->
+                              <af:outputText id="label_meta4"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_VALOR_META_4}"
+                                             inlineStyle="width:10%;"/>
+                              <af:outputText id="valor_meta4"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaConsumoAno4}"/>
+                              <af:outputText id="fecha_label_meta4"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_FECHA}"/>
+                              <af:outputText id="fecha_meta4"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaFechaAno4}"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta4_valor"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta4}"/>
+                              <af:outputText id="valor_meta4_valor"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno4}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta4}"/>
+                              <af:inputText label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                            binding="#{adicionarSeguimientoBean.itConsumoM4}"
+                                            id="itConsumoM4" showRequired="false"
+                                            columns="14"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno4}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta4}"
+                                            maximumLength="9"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta4_fecha"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta4}"/>
+                              <af:outputText id="valor_meta4_fecha"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno4}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta4}"/>
+                              <af:inputDate id="idFechaS4" showRequired="false"
+                                            contentStyle="width:100px;"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno4}"
+                                            label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                            binding="#{adicionarSeguimientoBean.idFechaS4}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta4}">
+                                <af:convertDateTime pattern="d/M/yyyy"/>
+                              </af:inputDate>
+                              <af:outputText id="cumplio_label_meta4"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_CUMPLE}"/>
+                              <af:outputText id="cumplio_meta4"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta4 == 1}"
+                                             value="Cumplio"/>
+                              <af:outputText id="no_cumplio_meta4"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta4 == 2}"
+                                             value="No Cumplio"/>
+                              <af:outputText id="al_dia_meta4"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta4 == 0}"
+                                             value="Sin Seguimiento"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="100%" height="10"
+                                       id="spacemeta5"/>
+                            <af:panelFormLayout id="panelFormLayoutMetas5"
+                                                binding="#{adicionarSeguimientoBean.panelFormLayoutMetas5}"
+                                                rows="1" maxColumns="15"
+                                                inlineStyle="width:80%;">
+                              <!--Boton Editar 5 -->
+                              <af:commandButton text="Editar" id="cbEditar5"
+                                                binding="#{adicionarSeguimientoBean.cbEditarRow5}"
+                                                partialSubmit="true"
+                                                actionListener="#{adicionarSeguimientoBean.cbEditar5_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.visualMeta5}"/>
+                              <!-- Meta 5-->
+                              <af:outputText id="label_meta5"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_VALOR_META_5}"
+                                             inlineStyle="width:10%;"/>
+                              <af:outputText id="valor_meta5"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaConsumoAno5}"/>
+                              <af:outputText id="fecha_label_meta5"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_FECHA}"/>
+                              <af:outputText id="fecha_meta5"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaFechaAno5}"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta5_valor"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta5}"/>
+                              <af:outputText id="valor_meta5_valor"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno5}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta5}"/>
+                              <af:inputText label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_CONSUMO}"
+                                            binding="#{adicionarSeguimientoBean.itConsumoM5}"
+                                            id="itConsumoM5" showRequired="false"
+                                            columns="14"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoAno5}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta5}"
+                                            maximumLength="9"/>
+                              <!--Con Datos Seguimiento -->
+                              <af:outputText id="label_meta5_fecha"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta5}"/>
+                              <af:outputText id="valor_meta5_fecha"
+                                             value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno5}"
+                                             visible="#{adicionarSeguimientoBean.visualMeta5}"/>
+                              <af:inputDate id="idFechaS5" showRequired="false"
+                                            contentStyle="width:100px;"
+                                            value="#{adicionarSeguimientoBean.proyecto.metaSeguimientoFechaAno5}"
+                                            label="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_FECHA_VISITA}"
+                                            binding="#{adicionarSeguimientoBean.idFechaS5}"
+                                            visible="#{!adicionarSeguimientoBean.visualMeta5}">
+                                <af:convertDateTime pattern="d/M/yyyy"/>
+                              </af:inputDate>
+                              <af:outputText id="cumplio_label_meta5"
+                                             value="#{viewcontrollerBundle.PUEAA_SEGUIMIENTO_LABEL_CUMPLE}"/>
+                              <af:outputText id="cumplio_meta5"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta5 == 1}"
+                                             value="Cumplio"/>
+                              <af:outputText id="no_cumplio_meta5"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta5 == 2}"
+                                             value="No Cumplio"/>
+                              <af:outputText id="al_dia_meta5"
+                                             rendered="#{adicionarSeguimientoBean.cumplioMeta5 == 0}"
+                                             value="Sin Seguimiento"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="100%" height="10"
+                                       id="spacemetafin"/>
+                            <af:panelFormLayout id="panelFormLayoutBotones"
+                                                rows="1" maxColumns="5">
+                              <af:commandButton text="Guardar seguimiento"
+                                                id="cbGuardar"
+                                                binding="#{adicionarSeguimientoBean.cbGuardar}"
+                                                partialSubmit="true"
+                                                actionListener="#{adicionarSeguimientoBean.cbGuardar_actionListener}"
+                                                action="adicionarSeguimiento"
+                                                visible="#{!adicionarSeguimientoBean.visualBotonG}"/>
+                              <af:commandButton text="#{viewcontrollerBundle.menu_borrar}"
+                                                binding="#{adicionarSeguimientoBean.cb_borrar}"
+                                                id="cb_borrar"
+                                                actionListener="#{adicionarSeguimientoBean.cb_borrar_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.seguimiento.id !=null}"/>
+                              <af:commandButton text="#{viewcontrollerBundle.menu_limpiar}"
+                                                binding="#{adicionarSeguimientoBean.cb_limpiar}"
+                                                id="cb_limpiar"
+                                                actionListener="#{adicionarSeguimientoBean.cb_limpiar_actionListener}"
+                                                visible="#{adicionarSeguimientoBean.seguimiento.id !=null}"/>
+                            </af:panelFormLayout>
+                            <af:spacer width="100%" height="10" id="s4"/>
+                            <af:popup binding="#{adicionarSeguimientoBean.p_registro_exitoso}"
+                                      id="p_registro_exitoso">
+                              <af:dialog binding="#{adicionarSeguimientoBean.d_registro_exitoso}"
+                                         id="d_registro_exitoso" type="none"
+                                         title="#{viewcontrollerBundle.REGISTRO_EXITOSO}"
+                                         affirmativeTextAndAccessKey="#{viewcontrollerBundle.login_boton_aceptar}"
+                                         closeIconVisible="false">
+                                <f:facet name="buttonBar">
+                                  <af:panelGroupLayout binding="#{adicionarSeguimientoBean.pgl14}"
+                                                       id="pgl14">
+                                    <af:commandButton text="#{viewcontrollerBundle.login_boton_aceptar}"
+                                                      binding="#{adicionarSeguimientoBean.cb_aceptar}"
+                                                      id="cb_aceptar"
+                                                      actionListener="#{adicionarSeguimientoBean.cb_aceptar_actionListener}"
+                                                      action="#{adicionarSeguimientoBean.getAceptarAction}"/>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                                <af:panelStretchLayout binding="#{adicionarSeguimientoBean.psl7}"
+                                                       id="psl7" endWidth="0px"
+                                                       topHeight="0px"
+                                                       bottomHeight="2px"
+                                                       inlineStyle="height:41px; width:316px;">
+                                  <f:facet name="bottom"/>
+                                  <f:facet name="center">
+                                    <af:outputText value="#{viewcontrollerBundle.REGISTRO_EXITOSO_SEGUIMIENTO}"
+                                                   binding="#{adicionarSeguimientoBean.ot8}"
+                                                   id="ot8"/>
+                                  </f:facet>
+                                  <f:facet name="start">
+                                    <af:image source="/imgs/info.png"
+                                              shortDesc="info"
+                                              binding="#{adicionarPueaa.i1}"
+                                              id="i1"/>
+                                  </f:facet>
+                                  <f:facet name="end"/>
+                                  <f:facet name="top"/>
+                                </af:panelStretchLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </f:facet>
+                    <f:facet name="second"></f:facet>
+                  </af:panelSplitter>
+                </af:group>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:panelGroupLayout id="pgl_miga01" layout="horizontal">
+                  <af:spacer width="50" height="10" id="s_miga01"/>
+                  <af:commandLink text="#{viewcontrollerBundle.TODOS_LOS_USUARIOS}"
+                                  id="cl_miga01"
+                                  action="regresarTodosUsuarios"/>
+                  <af:spacer width="10" height="10" id="s_miga02"/>
+                  <af:commandLink text="Usuario:  #{detalleUsuarioAgua.usuarioAgua.nombre}"
+                                  id="cl_miga02" action="regresarUsuarioAgua"
+                                  actionListener="#{adicionarSeguimientoBean.cb_cancelar_actionListener}"/>
+                  <af:spacer width="10" height="10" id="s_miga03"/>
+                  <af:commandLink text="PUEAA" id="cl_miga03"
+                                  action="regresarPueaa"
+                                  actionListener="#{adicionarSeguimientoBean.cb_cancelar_actionListener}"/>
+                  <af:spacer width="10" height="10" id="s_miga04"/>
+                  <af:commandLink text="Proyecto:  #{adicionarSeguimientoBean.proyecto.nombreProyecto}"
+                                  id="cl_miga04" action="regresarProyecto"
+                                  actionListener="#{adicionarSeguimientoBean.cb_cancelar_actionListener}"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:AdicionarPueaa-->
+</jsp:root>

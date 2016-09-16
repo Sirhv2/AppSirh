@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright (c) 2008, 2009, Oracle and/or its affiliates. 
+All rights reserved. -->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" version="1.2">
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <description>This component will show the Rich OHW Search Navigator</description>
+        <attribute>
+          <attribute-name>navigator</attribute-name>
+          <description>The Navigator object</description>
+          <required>true</required>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="vertical" splitterPosition="105"
+                      partialTriggers=":execQuickSearch" id="ptps1">
+      <f:facet name="first">
+        <!-- Search Criteria -->
+        <af:panelGroupLayout layout="scroll" id="ptpgl1">
+          <f:facet name="separator">
+            <af:spacer height="5" id="pts1"/>
+          </f:facet>    
+          <!-- search string and button -->
+          <af:panelGroupLayout layout="horizontal" id="ptpgl2">
+             <f:facet name="separator">
+              <af:spacer width="5" id="pts2"/>
+            </f:facet>      
+            <af:inputText value="#{attrs.navigator.userSearchState.searchString}"
+                          accessKey="r" id="ptit1">
+              <af:serverListener type="enterPressedOnSearchInputEvent"
+                                 method="#{attrs.navigator.executeSearchOnInputEnter}"/>
+              <af:clientListener type="keyPress"
+                                 method="RichSearchNavPeer.handleKeyPress"/>
+            </af:inputText>
+            <af:commandButton id="searchButton"
+                              text="#{ohw.shareResourceBundle['search.header_label']}"
+                              actionListener="#{attrs.navigator.executeSearch}"
+                              partialSubmit="true"
+                              shortDesc="#{ohw.richResourceBundle['search.enter_searchtext_tooltip']}"
+                              accessKey="m"/>
+          </af:panelGroupLayout>
+          
+          <!-- source combo -->
+          <af:selectOneChoice value="#{attrs.navigator.userSearchState.source}"
+                              rendered="#{attrs.navigator.hasSources}" id="ptsoc1">
+            <f:selectItems value="#{attrs.navigator.sourceList}" id="ptsi1"/>
+          </af:selectOneChoice>
+          <af:spacer height="5" id="pts3"/>
+          
+          <!-- radio buttons search option -->
+          <af:panelGroupLayout layout="horizontal" id="ptpgl3">
+            <f:facet name="separator">
+              <af:spacer width="5" id="pts4"/>
+            </f:facet>
+            <af:selectBooleanRadio autoSubmit="true" group="matchChoice"
+                                   id="allwords"
+                                   text="#{ohw.shareResourceBundle['search.search_option_all_1']}"
+                                   value="#{attrs.navigator.userSearchState.allWords}"
+                                   styleClass="SearchSelectBooleanRadioText"/>
+            <af:selectBooleanRadio autoSubmit="true" group="matchChoice"
+                                   id="anywords"
+                                   text="#{ohw.shareResourceBundle['search.search_option_any_1']}"
+                                   value="#{attrs.navigator.userSearchState.anyWords}"
+                                   styleClass="SearchSelectBooleanRadioText"/>
+            <af:selectBooleanRadio autoSubmit="true" group="matchChoice"
+                                   id="booleanex"
+                                   text="#{ohw.shareResourceBundle['search.search_option_bool_1']}"
+                                   value="#{attrs.navigator.userSearchState.booleanExpression}"
+                                   styleClass="SearchSelectBooleanRadioText"/>
+          </af:panelGroupLayout>
+          
+          <!-- case sensitive check box -->
+          <af:panelGroupLayout layout="horizontal" id="ptpgl4">
+            <af:selectBooleanCheckbox value="#{attrs.navigator.userSearchState.caseSensitive}"
+                                      partialTriggers="searchButton" id="ptsbc1"/>
+            <af:outputLabel value="#{ohw.shareResourceBundle['search.search_case_sense']}"
+                            id="ptol1"/>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="second">
+        <!-- Search Result -->
+        <af:panelStretchLayout topHeight="20" id="ptpsl1">
+          <f:facet name="top">
+            <af:panelGroupLayout id="ptpgl5">
+              <af:outputLabel id="topicCountLabel"
+                              value="#{attrs.navigator.userSearchState.matchesFound}"
+                              partialTriggers="searchButton"
+                              styleClass="TopicCountLabel"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="center">
+            <af:table var="rowData"
+                      value="#{attrs.navigator.userSearchState.searchResult}"
+                      id="resultTable" rowSelection="single"
+                      verticalGridVisible="false" horizontalGridVisible="false"
+                      emptyText="#{ohw.shareResourceBundle['search.no_results_header']}"
+                      partialTriggers="::searchButton"
+                      styleClass="ListOfTopicsTableStyle"
+                      columnStretching="last">
+              <f:facet name="contextMenu">
+                <af:popup contentDelivery="lazyUncached" id="ptp1">
+                  <af:menu id="ptm1">
+                    <af:group id="ptg1">
+                      <af:commandMenuItem text="#{ohw.richResourceBundle['contents.print_this_topic']}"
+                                          id="ptcmi1">
+                        <af:clientListener type="action"
+                                           method="RichOHWGlobalToolbarPeer.printViewTopicContent"/>
+                      </af:commandMenuItem>
+                      <af:commandMenuItem text="#{ohw.richResourceBundle['contents.email_topic_link']}"
+                                          id="ptcmi2">
+                        <af:clientListener type="action"
+                                           method="RichOHWGlobalToolbarPeer.sendTopicLinkEmail"/>
+                      </af:commandMenuItem>
+                      <af:commandMenuItem text="#{ohw.richResourceBundle['contents.show_url']}"
+                                          id="ptcmi3">
+                        <af:clientListener type="action"
+                                           method="RichOHWGlobalToolbarPeer.showBrowserURL"/>
+                      </af:commandMenuItem>
+                    </af:group>
+                  </af:menu>
+                </af:popup>
+              </f:facet>
+              <af:column sortable="true" sortProperty="topicTitle" align="start"
+                         width="180" id="ptc1">
+                <f:facet name="header">
+                  <af:outputText value="#{ohw.richResourceBundle['search.title']}"
+                                 styleClass="ListOfTopicsTableHeader" id="ptot1"/>
+                </f:facet>
+                <af:outputText id="topicTitle" value="#{rowData.topicTitle}"
+                               shortDesc="#{rowData.topicTitle}"
+                               styleClass="TopicTitleTableColumnStyle">
+                  <af:clientAttribute name="topicURL"
+                                      value="#{rowData.topicURL}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortable="true" sortProperty="rank" width="70"
+                         align="start" id="ptc2">
+                <f:facet name="header">
+                  <af:outputText value="#{ohw.richResourceBundle['search.rank']}"
+                                 styleClass="ListOfTopicsTableHeader" id="ptot2"/>
+                </f:facet>
+                <af:switcher defaultFacet="five_bars"
+                             facetName="#{rowData.rankPercentile}" id="pts5">
+                  <f:facet name="five_bars">
+                    <af:image source="helppages.resource?name=mini_bargraph_5.png"
+                              shortDesc="#{rowData.rank}" id="pti1"/>
+                  </f:facet>
+                  <f:facet name="four_bars">
+                    <af:image source="helppages.resource?name=mini_bargraph_4.png"
+                              shortDesc="#{rowData.rank}" id="pti2"/>
+                  </f:facet>
+                  <f:facet name="three_bars">
+                    <af:image source="helppages.resource?name=mini_bargraph_3.png"
+                              shortDesc="#{rowData.rank}" id="pti3"/>
+                  </f:facet>
+                  <f:facet name="two_bars">
+                    <af:image source="helppages.resource?name=mini_bargraph_2.png"
+                              shortDesc="#{rowData.rank}" id="pti4"/>
+                  </f:facet>
+                  <f:facet name="one_bar">
+                    <af:image source="helppages.resource?name=mini_bargraph_1.png"
+                              shortDesc="#{rowData.rank}" id="pti5"/>
+                  </f:facet>
+                </af:switcher>
+              </af:column>
+              <af:column sortable="true" sortProperty="source" width="80"
+                         align="start" id="ptc3">
+                <f:facet name="header">
+                  <af:outputText value="#{ohw.richResourceBundle['search.source']}"
+                                 styleClass="ListOfTopicsTableHeader" id="ptot3"/>
+                </f:facet>
+                <af:outputText value="#{rowData.source}"
+                               shortDesc="#{rowData.source}" id="ptot4"/>
+              </af:column>
+              <af:clientListener type="selection"
+                                 method="RichSearchNavPeer.selectionChanged"/>
+            </af:table>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:panelSplitter>
+  </af:pageTemplateDef>
+</jsp:root> 

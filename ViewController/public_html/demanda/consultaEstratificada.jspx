@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{consultaEstratificadaBean.document1}"
+                 id="document1">
+      <af:form binding="#{consultaEstratificadaBean.form1}"
+               id="form1">
+        <af:pageTemplate viewId="/template/templateMenu.jspx">
+          <f:facet name="center">
+            <af:panelStretchLayout binding="#{consultaEstratificadaBean.panelStretchLayout1}"
+                                   id="panelStretchLayout1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter binding="#{consultaEstratificadaBean.panelSplitter1}"
+                                  id="panelSplitter1" orientation="vertical"
+                                  disabled="true" splitterPosition="64" >
+                  <f:facet name="first">
+                    <af:panelFormLayout binding="#{consultaEstratificadaBean.panelFormLayout1}"
+                                        id="panelFormLayout1"
+                                        maxColumns="8" rows="1"
+                                        >
+                      <f:facet name="footer"/>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.OBS_DEM_VARIABLE}"
+                                          binding="#{consultaEstratificadaBean.socVariable}"
+                                          id="socVariable"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          showRequired="true"
+                                          >
+                        <f:selectItems value="#{consultaEstratificadaBean.listaVariable}"
+                                       binding="#{consultaEstratificadaBean.selectItems1}"
+                                       id="selectItems1"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="#{viewcontrollerBundle.LABEL_AGNO}"
+                                    binding="#{consultaEstratificadaBean.itAgno}"
+                                    id="itAgno"
+                                    columns="5" showRequired="true"
+                                    >
+                        <af:convertNumber type="number"
+                                          integerOnly="true"
+                                          minIntegerDigits="4"
+                                          maxIntegerDigits="4"
+                                          pattern="####"
+                                          />  
+                      </af:inputText>
+                      <af:selectOneChoice label="#{viewcontrollerBundle.OBS_DEM_CLASE}"
+                                          binding="#{consultaEstratificadaBean.socClase}"
+                                          id="socClase"
+                                          unselectedLabel="#{viewcontrollerBundle.label_seleccione}"
+                                          >
+                        <f:selectItems value="#{consultaEstratificadaBean.listaClase}"
+                                       binding="#{consultaEstratificadaBean.selectItems2}"
+                                       id="selectItems2"/>
+                      </af:selectOneChoice>
+                      <af:commandButton text="#{viewcontrollerBundle.auditoria_consulta_boton_buscar}"
+                                        binding="#{consultaEstratificadaBean.cmdBuscar}"
+                                        id="cmdBuscar"
+                                        icon="/imgs/binoculars_24.png"
+                                        actionListener="#{consultaEstratificadaBean.cmdBuscar_actionListener}"/>
+                    </af:panelFormLayout>
+                  </f:facet>
+                  <f:facet name="second">
+
+                          <af:panelCollection binding="#{consultaEstratificadaBean.panelCollection1}"
+                                              id="panelCollection1"
+                                              >
+                            <f:facet name="menus">
+                              <af:menu text="#{viewcontrollerBundle.menu_archivo}"
+                                       binding="#{consultaEstratificadaBean.menu1}"
+                                       id="menu1">
+                                <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_DESCARGAR}"
+                                                    binding="#{consultaEstratificadaBean.commandMenuItem1}"
+                                                    id="commandMenuItem1"
+                                                    immediate="true"
+                                                    partialSubmit="true">
+                                  <af:exportCollectionActionListener exportedId="table1"
+                                                                     type="excelHTML"
+                                                                     filename="datosConsulta.xls"/>
+                                </af:commandMenuItem>
+                                <af:commandMenuItem text="#{viewcontrollerBundle.OBS_MENU_GRAFICAR}"
+                                                    binding="#{consultaEstratificadaBean.commandMenuItem2}"
+                                                    id="commandMenuItem2"
+                                                    immediate="true"
+                                                    partialSubmit="true"
+                                                    disabled="#{!consultaEstratificadaBean.existeGrafica}"
+                                                    >
+                                  <af:showPopupBehavior popupId="::popGrafica"
+                                                        triggerType="click"
+                                                        />
+                                </af:commandMenuItem>
+                              </af:menu>
+                            </f:facet>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table var="row"
+                                      binding="#{consultaEstratificadaBean.table1}"
+                                      id="table1"
+                                      value="#{consultaEstratificadaBean.listaDatos}"
+                                      rowBandingInterval="1"
+                                      emptyText="No hay datos para mostrar">
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_DEPTO}">
+                                <af:outputText value="#{row.descDepartamento}"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_MUN}">
+                                <af:outputText value="#{row.descMunicipio}"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_CLASE}">
+                                <af:outputText value="#{row.descClase}"/>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO1}">
+                                <af:outputText value="#{row.estrato1}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO2}">
+                                <af:outputText value="#{row.estrato2}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO3}">
+                                <af:outputText value="#{row.estrato3}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO4}">
+                                <af:outputText value="#{row.estrato4}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO5}">
+                                <af:outputText value="#{row.estrato5}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO6}">
+                                <af:outputText value="#{row.estrato6}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO10}">
+                                <af:outputText value="#{row.estrato10}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO11}">
+                                <af:outputText value="#{row.estrato11}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortable="false"
+                                         headerText="#{viewcontrollerBundle.OBS_DEM_ESTRATO12}">
+                                <af:outputText value="#{row.estrato12}">
+                                  <f:convertNumber maxFractionDigits="2"/>
+                                </af:outputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end" >
+                <af:panelGroupLayout layout="horizontal"
+                                     binding="#{consultaEstratificadaBean.panelGroupLayout2}"
+                                     id="panelGroupLayout2" >
+                  <af:popup binding="#{consultaEstratificadaBean.popGrafica}"
+                            id="popGrafica" >
+                    <af:panelWindow binding="#{consultaEstratificadaBean.panelWindow1}"
+                                    id="panelWindow1" modal="true" 
+                                    closeIconVisible="true"
+                                    inlineStyle="width:900px; height:600px;"
+                                    >
+                      <af:panelGroupLayout binding="#{consultaEstratificadaBean.panelGroupLayout4}"
+                                           id="panelGroupLayout4"
+                                           layout="scroll"
+                                           inlineStyle="width:100%; height:100%;"
+                                           >
+                        
+                        <dvt:barGraph id="barGraph1" subType="BAR_VERT_CLUST"
+                                      binding="#{consultaEstratificadaBean.barGraph1}"
+                                      tabularData="#{consultaEstratificadaBean.tabularConsulta}"
+                                      dynamicResize="FIXED_SIZE"
+                                      imageFormat="PNG" drillingEnabled="true"
+                                      contentDelivery="immediate"
+                                      imageWidth="900" imageHeight="600">
+                          <dvt:background>
+                            <dvt:specialEffects/>
+                          </dvt:background>
+                          <dvt:graphPlotArea/>
+                          <dvt:seriesSet>
+                            <dvt:series/>
+                          </dvt:seriesSet>
+                          <dvt:o1Axis/>
+                          <dvt:y1Axis >
+                            <dvt:numberFormat numberFormatString="#####.##"/>
+                          </dvt:y1Axis>
+                          <dvt:y2Axis >
+                            <dvt:numberFormat numberFormatString="#####.##"/>
+                          </dvt:y2Axis>
+                          <dvt:legendArea  position="LAP_TOP"/>
+                          <dvt:o1TickLabel textRotation="TR_HORIZ_ROTATE_90"
+                                           tickLabelSkipMode="TLS_AUTOMATIC"
+                                           tickLabelSkipCount="9" tickLabelSkipFirst="10"
+                                           automaticRotation="AR_HORIZ_ROTATE_90">
+                            <dvt:graphFont name="SansSerif" size="10" color="#000000"
+                                           bold="false" italic="false" underline="false"/>
+                          </dvt:o1TickLabel>
+                        </dvt:barGraph>
+                        
+                      </af:panelGroupLayout>
+                    </af:panelWindow>
+                  </af:popup>
+                
+                </af:panelGroupLayout>
+              </f:facet> 
+              
+              
+              <f:facet name="top">
+                <af:panelGroupLayout binding="#{consultaEstratificadaBean.panelGroupLayout1}"
+                                     id="panelGroupLayout1" layout="horizontal">
+                  <af:spacer width="10" height="10"
+                             binding="#{consultaEstratificadaBean.spacer1}"
+                             id="spacer1"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBSERVATORIO_OBSERVATORIO}"
+                                  binding="#{consultaEstratificadaBean.commandLink1}"
+                                  id="commandLink1"
+                                  action="observatorio"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{consultaEstratificadaBean.spacer2}"
+                             id="spacer2"/>
+                  <af:commandLink text="#{viewcontrollerBundle.OBS_DEM_COMPONENTE}"
+                                  binding="#{consultaEstratificadaBean.commandLink2}"
+                                  id="commandLink2"
+                                  action="demanda"
+                                  immediate="true" partialSubmit="true"
+                                  />
+                  <af:spacer width="10" height="10"
+                             binding="#{consultaEstratificadaBean.spacer3}"
+                             id="spacer3"/>
+                  <af:outputText value="#{viewcontrollerBundle.OBS_DEMANDA_ESTRATOS}"
+                                 binding="#{consultaEstratificadaBean.outputText1}"
+                                 id="outputText1"/>
+                  
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="menu"/>
+          <f:facet name="toolbar"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:consultaEstratificadaBean-->
+</jsp:root>
